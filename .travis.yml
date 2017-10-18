@@ -1,9 +1,20 @@
 language: ruby
-script:
-  - bundle exec rspec
+
+# See https://docs.travis-ci.com/user/database-setup/#PostgreSQL
+services:
+  - postgresql
+addons:
+  postgresql: "9.6"
+
+# Cache bundle between builds
+# See https://docs.travis-ci.com/user/caching/
+cache: bundler
 
 jobs:
   include:
     - stage: test
-      script: bundle exec rspec
+      before_script:
+        - bin/rails db:setup
+      script:
+        - bundle exec rspec
     - script: bundle exec rubocop
