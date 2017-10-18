@@ -49,7 +49,7 @@ end
 
 group :test do
   gem "rails-controller-testing"
-  gem "simplecov"
+  gem "simplecov", require: false
 end
 
 group :development do

@@ -1,9 +1,16 @@
 language: ruby
-script:
-  - bundle exec rspec
+
+services:
+  - postgresql
+
+addons:
+  postgresql: "9.6"
 
 jobs:
   include:
     - stage: test
-      script: bundle exec rspec
+      before_script:
+        - bin/rails db:setup
+      script:
+        - bundle exec rspec
     - script: bundle exec rubocop

@@ -29,6 +29,8 @@ module Rubytoolbox
 
     config.lograge.enabled = true
 
+    config.active_record.schema_format = :sql
+
     config.generators do |c|
       # Don't generate system test files.
       c.system_tests = nil
