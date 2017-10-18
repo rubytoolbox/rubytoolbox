@@ -9,6 +9,8 @@ require: rubocop-rspec
 AllCops:
   Exclude:
     - 'tmp/**/*.rb'
+    # Apparently needed for Travis CI since it bundles into this directory
+    - 'vendor/bundle/**/*'
 
 Metrics/BlockLength:
   Exclude:
