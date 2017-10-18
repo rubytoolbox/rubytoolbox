@@ -27,7 +27,13 @@ module Rubytoolbox
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
-    # Don't generate system test files.
-    config.generators.system_tests = nil
+    config.generators do |c|
+      # Don't generate system test files.
+      c.system_tests = nil
+
+      c.helper       = false
+      c.javascripts  = false
+      c.stylesheets  = false
+    end
   end
 end
