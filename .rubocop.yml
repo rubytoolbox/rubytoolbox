@@ -1,0 +1,50 @@
+#
+# Our adjustments to rubocop default code policies.
+#
+# See http://rubocop.readthedocs.io/en/latest/ for detailed configuration options documentation
+
+# Additional cops for working with RSpec. See https://github.com/backus/rubocop-rspec
+require: rubocop-rspec
+
+AllCops:
+  Exclude:
+    - 'tmp/**/*.rb'
+
+Metrics/BlockLength:
+  Exclude:
+    # The default guard-rspec config fails this, but it's ok.
+    - 'Guardfile'
+    - 'spec/**/*_spec.rb'
+
+# Big screens are common :)
+Metrics/LineLength:
+  Max: 120
+
+Rails:
+  Enabled: true
+
+# We use RSpec as a format linter, so no specific classes under test neccessarily :)
+RSpec/DescribeClass:
+  Enabled: false
+
+# Prefer to use the up-front message expectations
+RSpec/MessageSpies:
+  Enabled: false
+
+# Prefer structure over small indentation
+RSpec/NestedGroups:
+  Max: 5
+
+Style/Documentation:
+  Enabled: false
+
+# Prefer to create "real" booleans using double negation
+Style/DoubleNegation:
+  Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/TrailingCommaInLiteral:
+  EnforcedStyleForMultiline: comma
+
