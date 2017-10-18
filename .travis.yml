@@ -1,0 +1,9 @@
+language: ruby
+script:
+  - bundle exec rspec
+
+jobs:
+  include:
+    - stage: test
+      script: bundle exec rspec
+    - script: bundle exec rubocop

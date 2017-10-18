@@ -1,0 +1,15 @@
+# http://EditorConfig.org
+root = true
+
+[*]
+# Unix-style newlines
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# Default indentation
+indent_style = space
+indent_size = 2
+
+# Set default charset
+charset = utf-8
