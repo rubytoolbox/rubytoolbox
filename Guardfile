@@ -81,7 +81,19 @@ guard :rspec, cmd: "bundle exec rspec" do
   end
 end
 
-guard :rubocop do
-  watch(%r{.+\.rb$})
+rubocop_cli_args = []
+
+if ENV["AUTOCORRECT"]
+  puts "*" * 80, "Rubocop auto-correct mode enabled", "*" * 80
+  rubocop_cli_args << "--auto-correct"
+else
+  puts "*" * 80
+  puts "You can set Rubocop to auto-correct fixable offenses by setting ENV['AUTOCORRECT']"
+  puts "e.g. `$ AUTOCORRECT=yesplease guard`"
+  puts "*" * 80
+end
+
+guard :rubocop, run_on_start: true, cli: rubocop_cli_args.join(" ") do
+  watch(/.+\.rb$/)
   watch(%r{(?:.+/)?\.rubocop(?:_todo)?\.yml$}) { |m| File.dirname(m[0]) }
 end
