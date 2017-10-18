@@ -1,24 +1,8 @@
-# README
+# The Ruby Toolbox
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The new Ruby Toolbox is being re-built here. It's still early stages, actually helpful information will be added here soon :)
 
-Things you may want to cover:
+## Useful links
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* [Discussion issue: The future of the Ruby Toolbox](https://github.com/rubytoolbox/rubytoolbox/issues/1)
+* [The library catalog on Github](https://github.com/rubytoolbox/catalog)
