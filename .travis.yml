@@ -1,10 +1,14 @@
 language: ruby
 
+# See https://docs.travis-ci.com/user/database-setup/#PostgreSQL
 services:
   - postgresql
-
 addons:
   postgresql: "9.6"
+
+# Cache bundle between builds
+# See https://docs.travis-ci.com/user/caching/
+cache: bundler
 
 jobs:
   include:
