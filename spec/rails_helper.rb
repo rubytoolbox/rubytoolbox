@@ -9,6 +9,14 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require "rspec/rails"
 # Add additional requires below this line. Rails is not loaded until this point!
 
+# It's early stages, and SimpleCov is not happy about those not being loaded
+# and hence coverage does not hit 100% - hence, we reference them once so Rails
+# auto-loads them. Also, rubocop does not like us referencing things nonsensically...
+#
+# rubocop:disable Lint/Void
+#
+[ApplicationJob, ApplicationMailer, ApplicationRecord]
+
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
