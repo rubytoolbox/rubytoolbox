@@ -38,23 +38,38 @@ CREATE TABLE ar_internal_metadata (
 
 
 --
--- Name: rubygems; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: categories; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE TABLE rubygems (
+CREATE TABLE categories (
+    permalink character varying NOT NULL,
     name character varying NOT NULL,
-    downloads integer NOT NULL,
-    version character varying NOT NULL,
-    authors character varying,
-    bug_tracker_uri character varying,
-    changelog_uri character varying,
-    documentation_uri character varying,
-    homepage_uri character varying,
-    mailing_list_uri character varying,
-    source_code_uri character varying,
-    wiki_uri character varying,
-    info text,
-    github_repo character varying,
+    description text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    category_group_permalink character varying NOT NULL
+);
+
+
+--
+-- Name: category_groups; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE category_groups (
+    permalink character varying NOT NULL,
+    name character varying NOT NULL,
+    description text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: projects; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE projects (
+    permalink character varying NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -86,12 +101,51 @@ ALTER TABLE ONLY schema_migrations
 
 
 --
+-- Name: index_categories_on_category_group_permalink; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_categories_on_category_group_permalink ON categories USING btree (category_group_permalink);
+
+
+--
+-- Name: index_categories_on_permalink; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_categories_on_permalink ON categories USING btree (permalink);
+
+
+--
+-- Name: index_category_groups_on_permalink; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_category_groups_on_permalink ON category_groups USING btree (permalink);
+
+
+--
+-- Name: index_projects_on_permalink; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_projects_on_permalink ON projects USING btree (permalink);
+
+
+--
+-- Name: fk_rails_4bd2d3273a; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY categories
+    ADD CONSTRAINT fk_rails_4bd2d3273a FOREIGN KEY (category_group_permalink) REFERENCES category_groups(permalink);
+
+
+--
 -- PostgreSQL database dump complete
 --
 
 SET search_path TO "$user",public;
 
 INSERT INTO "schema_migrations" (version) VALUES
-('20170504202906');
+('20171026191745'),
+('20171026202351'),
+('20171026220117'),
+('20171026221717');
 
 
