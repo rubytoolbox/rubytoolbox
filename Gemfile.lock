@@ -116,6 +116,7 @@ GEM
     notiffany (0.1.1)
       nenv (~> 0.1)
       shellany (~> 0.0)
+    oj (3.3.8)
     overcommit (0.41.0)
       childprocess (~> 0.6, >= 0.6.3)
       iniparse (~> 1.4)
@@ -266,6 +267,7 @@ DEPENDENCIES
   guard-rubocop
   listen (>= 3.0.5, < 3.2)
   lograge
+  oj
   overcommit
   pg (~> 0.18)
   pry

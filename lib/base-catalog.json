@@ -1,0 +1,69 @@
+{
+  "category_groups": [
+    {
+      "categories": [
+        {
+          "name": "Active Record Versioning",
+          "description": null,
+          "projects": [
+            "acts-as-approvable",
+            "version_fu",
+            "vestal_versions"
+          ],
+          "permalink": "Active_Record_Versioning"
+        },
+        {
+          "name": "Pagination",
+          "description": null,
+          "projects": [
+            "ajax_pagination",
+            "kaminari",
+            "willian/has_paginate"
+          ],
+          "permalink": "pagination"
+        },
+        {
+          "name": "Rails Search",
+          "description": null,
+          "projects": [
+            "elasticsearch-rails",
+            "ruby_simple_search",
+            "xapit"
+          ],
+          "permalink": "rails_search"
+        }
+      ],
+      "description": null,
+      "name": "Active Record Plugins",
+      "permalink": "Active_Record_Plugins"
+    },
+    {
+      "categories": [
+        {
+          "name": "Background Jobs",
+          "description": null,
+          "projects": [
+            "resque",
+            "sidekiq"
+          ],
+          "permalink": "Background_Jobs"
+        },
+        {
+          "name": "Scheduling",
+          "description": null,
+          "projects": [
+            "clockwork",
+            "resque-scheduler",
+            "rufus-scheduler",
+            "Swirrl/Taskit",
+            "whenever"
+          ],
+          "permalink": "scheduling"
+        }
+      ],
+      "description": null,
+      "name": "Background Processing",
+      "permalink": "Background_Processing"
+    }
+  ]
+}
