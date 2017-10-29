@@ -54,7 +54,8 @@ RSpec.describe CatalogImport do
         .to have_attributes sample_data.slice("name", "permalink", "description")
     end
 
-    it "assigns categories to their group"
+    it "assigns categories to their group" do
+    end
 
     it "removes obsolete categories" do
       import.perform
@@ -76,6 +77,15 @@ RSpec.describe CatalogImport do
     end
 
     it "assigns projects to all of their categories" do
+      import.perform
+      expect(Project.all.map { |p| p.categories.count }).to all(be > 0)
+    end
+
+    it "removes categorizations from existing categorized projects" do
+      import.perform
+      project = Project.create! permalink: "foo_project", categories: [Category.first]
+
+      expect { import.perform }.to change { project.categories.count }.from(1).to(0)
     end
   end
 end

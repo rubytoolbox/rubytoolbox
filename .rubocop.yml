@@ -23,6 +23,10 @@ Metrics/BlockLength:
 Metrics/LineLength:
   Max: 120
 
+Metrics/MethodLength:
+  Exclude:
+    - 'db/migrate/**/*'
+
 Rails:
   Enabled: true
 

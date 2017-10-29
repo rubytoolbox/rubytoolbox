@@ -6,4 +6,11 @@ class Category < ApplicationRecord
   belongs_to :category_group,
              primary_key: :permalink,
              foreign_key: :category_group_permalink
+
+  has_many :categorizations,
+           primary_key: :permalink,
+           foreign_key: :category_permalink,
+           dependent:   :destroy
+
+  has_many :projects, through: :categorizations
 end
