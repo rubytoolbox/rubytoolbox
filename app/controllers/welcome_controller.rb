@@ -2,6 +2,7 @@
 
 class WelcomeController < ApplicationController
   def home
+    @groups = CategoryGroup.order(name: :asc).includes(categories: :projects)
     render action: :home
   end
 end

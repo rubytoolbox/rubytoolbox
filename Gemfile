@@ -25,6 +25,8 @@ gem "uglifier", ">= 1.3.0"
 gem "redcarpet"
 gem "slim-rails"
 
+gem "lato-rails"
+
 # Shorter request logs
 gem "lograge"
 
