@@ -10,6 +10,19 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
  *= require_self
  */
+
+@import url('https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i,900,900i')
+
+// Default bulma font stack, plus Lato webfont as priority
+$family-sans-serif: "Lato", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif
+
+// Adjust bulma weight variables to Lato font
+$weight-light:    300
+$weight-normal:   400
+$weight-medium:   400
+$weight-semibold: 700
+$weight-bold:     900
+
+@import "bulma/bulma"

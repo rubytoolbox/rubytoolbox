@@ -31,6 +31,8 @@ module Rubytoolbox
 
     config.active_record.schema_format = :sql
 
+    config.assets.paths << Rails.root.join("node_modules")
+
     config.generators do |c|
       # Don't generate system test files.
       c.system_tests = nil
