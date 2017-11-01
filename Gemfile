@@ -25,6 +25,11 @@ gem "uglifier", ">= 1.3.0"
 # Heroku ruby buildpack installs yarn only when webpacker gem is detected...
 gem "webpacker", require: false
 
+gem "foreman", require: false
+
+gem "rack-canonical-host"
+gem "rack-ssl-enforcer"
+
 gem "redcarpet"
 gem "slim-rails"
 

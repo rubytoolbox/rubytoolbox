@@ -1,20 +1,28 @@
 language: ruby
-
 # See https://docs.travis-ci.com/user/database-setup/#PostgreSQL
 services:
-  - postgresql
+- postgresql
 addons:
-  postgresql: "9.6"
-
+  postgresql: '9.6'
 # Cache bundle between builds
 # See https://docs.travis-ci.com/user/caching/
 cache: bundler
-
 jobs:
   include:
-    - stage: test
-      before_script:
-        - bin/rails db:setup
-      script:
-        - bundle exec rspec
-    - script: bundle exec rubocop
+  - stage: test
+    before_script:
+    - bin/rails db:setup
+    script:
+    - bundle exec rspec
+  - script: bundle exec rubocop
+  - stage: deploy
+    script: skip
+    deploy:
+      provider: heroku
+      api_key:
+        secure: KjWlZDF/3XlhjcS6xNPEUlMhUFH05JrMuMiVc1CLooTl/43y/WjjXN0CY24wYZMJ8Ro+G9vm7Hn2YViNEEzVFoth65LoUDfUIHoe/nxmuayZ1+Vh66La3w+OvZSzm1IfQFl115HaUcW11Ho1zw94YuBit7vjOtdtFbwHSF477moQhgB8Z3C0oBIehm3ErdfmSV8V36siip1XICtY4YfrZ7CcPZw4lHHz0ntkklpVvRjauDJFwl9AyevtwlBR5dxTS6TYVrnO62PSbLex7xXQn+gI/skO1Y2j+sJwYiQKeJd3foD3AvoYB+i0wumymlHbVKgiQ8L10X8vOB+JacsJpZHTfQVBA89TJ+CwdGOCSILFKQ7c99TwAqTM5DcxfnDVlOcCBfcMU65tM5gfb75kg8lpnIxEk9itPcqlbiKkAWuuIVu0ItdJbdJZck5LnSxgvv5uiwIwolrcGBDdVnkITmbYCGbgCGTT2aGw2dtkC17KkCrRpJYcfMJDNbHscUPMZomXH3aqGIkby6qnFRi4gJke5Qq3jENMAZ+XX9yWCkdao5/PBYyK3xGY87KXZNWXkp/i0yHC/jIGwQlKeECNbaZCFcjt5mzVaR4GzcWjHTmkOPGTaGyLJA6w2h0PtxILYwt/9oc98HtF5crP932LNZ+t0JdgzmRR594Go1c0BTU=
+      app:
+        master: rubytoolbox-production
+      run:
+        - "rake db:migrate"
+
