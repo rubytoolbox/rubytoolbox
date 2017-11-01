@@ -13,7 +13,7 @@
             p.panel-heading
               = group.name
             - group.categories.each do |category|
-              a.panel-block href="#"
+              a.panel-block href=category_path(category)
                 span.panel-icon
                   i.fa.fa-folder
                 = category.name

@@ -13,4 +13,8 @@ class Category < ApplicationRecord
            dependent:   :destroy
 
   has_many :projects, through: :categorizations
+
+  def self.find_for_show!(permalink)
+    includes(:category_group, :projects).find(permalink)
+  end
 end
