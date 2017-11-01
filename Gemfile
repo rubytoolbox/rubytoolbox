@@ -27,6 +27,9 @@ gem "webpacker", require: false
 
 gem "foreman", require: false
 
+gem "rack-canonical-host"
+gem "rack-ssl-enforcer"
+
 gem "redcarpet"
 gem "slim-rails"
 
