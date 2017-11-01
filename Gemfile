@@ -28,8 +28,6 @@ gem "webpacker", require: false
 gem "redcarpet"
 gem "slim-rails"
 
-gem "lato-rails"
-
 # Shorter request logs
 gem "lograge"
 

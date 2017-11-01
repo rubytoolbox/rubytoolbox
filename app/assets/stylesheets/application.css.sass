@@ -13,17 +13,18 @@
  *= require_self
  */
 
-@import "lato"
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700')
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
 
 // Default bulma font stack, plus Lato webfont as priority
 $family-sans-serif: "Lato", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif
 
-// Adjust bulma weight variables to Lato font
-$weight-light:    300
+// Adjust bulma weight variables to weights of lato font that are actually loaded
+$weight-light:    400
 $weight-normal:   400
 $weight-medium:   400
 $weight-semibold: 700
-$weight-bold:     900
+$weight-bold:     700
 
 $red: #A61414
 
