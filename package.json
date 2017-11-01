@@ -1,5 +1,12 @@
 {
   "name": "rubytoolbox",
-  "private": true,
-  "dependencies": {}
+  "private": false,
+  "dependencies": {
+    "bulma": "^0.6.0"
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:rubytoolbox/rubytoolbox.git",
+  "author": "Christoph Olszowka <christoph@olszowka.de>",
+  "license": "MIT"
 }

@@ -1,7 +1,19 @@
-.content.has-text-centered
-  markdown:
-    # Hello World!
+.container
+  .notification.is-danger
+    markdown:
+      **Welcome!** This is the new Ruby Toolbox in the making. Please visit our [github repository][repo] for the time being!
 
-    This is the new Ruby Toolbox in the making. Please visit our [github repository][repo] for the time being!
+      [repo]: https://github.com/rubytoolbox/rubytoolbox
 
-    [repo]: https://github.com/rubytoolbox/rubytoolbox
+  - @groups.in_groups_of(3, false).each do |groups|
+    .columns
+      - groups.each do |group|
+        .column.is-one-third
+          nav.panel
+            p.panel-heading
+              = group.name
+            - group.categories.each do |category|
+              a.panel-block href=category_path(category)
+                span.panel-icon
+                  i.fa.fa-folder
+                = category.name

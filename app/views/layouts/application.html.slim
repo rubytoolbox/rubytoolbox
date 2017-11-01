@@ -6,13 +6,13 @@ html
 
     meta charset="utf-8"/
     meta name="viewport" content="width=device-width, initial-scale=1"/
-    link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css"/
+
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    .container
-      section.section.has-text-centered
+    header.section
+      .container.has-text-centered
         = link_to "/" do
-          = image_tag "logo/regular.svg", alt: "The Ruby Toolbox - Know your options!", style: "height: 50px"
+          = image_tag "logo/regular.svg", alt: "The Ruby Toolbox - Know your options!", style: "height: 35px"
 
-      section.section= yield
+    = yield

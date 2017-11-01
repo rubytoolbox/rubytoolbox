@@ -34,6 +34,10 @@ Rails:
 RSpec/DescribeClass:
   Enabled: false
 
+# When setting up message expectations, 5 is frequently too little
+RSpec/ExampleLength:
+  Max: 10
+
 # Prefer to use the up-front message expectations
 RSpec/MessageSpies:
   Enabled: false

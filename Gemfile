@@ -22,6 +22,9 @@ gem "uglifier", ">= 1.3.0"
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+# Heroku ruby buildpack installs yarn only when webpacker gem is detected...
+gem "webpacker", require: false
+
 gem "redcarpet"
 gem "slim-rails"
 

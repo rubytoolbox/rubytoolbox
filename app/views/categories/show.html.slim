@@ -1,0 +1,24 @@
+.container
+  nav.breadcrumb aria-label="breadcrumbs"
+    ul
+      li
+        a href="/"
+          | Home
+      li
+        a href="/##{@category.category_group.permalink}"
+          = @category.category_group.name
+      li.is-active
+        a aria-current="page" href=category_path(@category)
+          = @category.name
+
+
+.container.has-text-centered
+  h3.subtitle.has-text-weight-light Category
+  h2.title
+    span= @category.name
+
+.container
+  .projects
+    - @category.projects.each do |project|
+      .project
+        = project.permalink

@@ -13,5 +13,11 @@ RSpec.describe WelcomeController, type: :controller do
     it "renders template home" do
       expect(do_request).to render_template :home
     end
+
+    it "assigns CategoryGroup.for_welcome_page" do
+      allow(CategoryGroup).to receive(:for_welcome_page).and_return("The Groups")
+      do_request
+      expect(assigns(:groups)).to be == "The Groups"
+    end
   end
 end

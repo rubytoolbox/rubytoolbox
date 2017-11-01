@@ -7,4 +7,8 @@ class CategoryGroup < ApplicationRecord
            -> { order(name: :asc) },
            foreign_key: :category_group_permalink,
            dependent: :destroy
+
+  def self.for_welcome_page
+    order(name: :asc).includes(:categories)
+  end
 end
