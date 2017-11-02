@@ -16,13 +16,14 @@ jobs:
     - bundle exec rspec
   - script: bundle exec rubocop
   - stage: deploy
+    cache: skip
+    install: skip
+    before_script: skip
     script: skip
     deploy:
       provider: heroku
-      api_key:
-        secure: $HEROKU_API_KEY_ENCRYPTED
+      api_key: $HEROKU_API_KEY_ENCRYPTED
       app:
         co-ops: rubytoolbox-production
       run:
-        - "rake db:migrate"
-
+      - rake db:migrate
