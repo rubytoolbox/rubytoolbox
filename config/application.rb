@@ -28,6 +28,7 @@ module Rubytoolbox
     # -- all .rb files in that directory are automatically loaded.
 
     config.lograge.enabled = true
+    config.lograge.formatter = Lograge::Formatters::Logstash.new
 
     config.active_record.schema_format = :sql
 

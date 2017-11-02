@@ -35,6 +35,8 @@ gem "slim-rails"
 
 # Shorter request logs
 gem "lograge"
+# Needed for logstash json_event formatter for lograge
+gem "logstash-event"
 
 # Faster JSON
 gem "oj"
