@@ -27,6 +27,8 @@ gem "webpacker", require: false
 
 gem "foreman", require: false
 
+gem "appsignal"
+
 gem "rack-canonical-host"
 gem "rack-ssl-enforcer"
 
@@ -35,6 +37,8 @@ gem "slim-rails"
 
 # Shorter request logs
 gem "lograge"
+# Needed for logstash json_event formatter for lograge
+gem "logstash-event"
 
 # Faster JSON
 gem "oj"
