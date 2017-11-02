@@ -27,6 +27,8 @@ gem "webpacker", require: false
 
 gem "foreman", require: false
 
+gem "appsignal"
+
 gem "rack-canonical-host"
 gem "rack-ssl-enforcer"
 

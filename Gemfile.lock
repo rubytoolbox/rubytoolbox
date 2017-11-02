@@ -40,6 +40,8 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
+    appsignal (2.4.0)
+      rack
     arel (8.0.0)
     ast (2.3.0)
     bindex (0.5.0)
@@ -278,6 +280,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  appsignal
   byebug
   coffee-rails (~> 4.2)
   foreman
