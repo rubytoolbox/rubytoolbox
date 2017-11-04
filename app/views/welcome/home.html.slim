@@ -1,19 +1,21 @@
-.container
-  .notification.is-danger
+.hero
+  section.container.section
     markdown:
-      **Welcome!** This is the new Ruby Toolbox in the making. Please visit our [github repository][repo] for the time being!
+      **Welcome!** This is the new Ruby Toolbox in the making. Please visit our **[github repository][repo]** for the time being!
 
       [repo]: https://github.com/rubytoolbox/rubytoolbox
 
-  - @groups.in_groups_of(3, false).each do |groups|
-    .columns
-      - groups.each do |group|
-        .column.is-one-third
-          nav.panel
-            p.panel-heading
-              = group.name
+.container
+  section.section
+    .columns.is-multiline
+      - @groups.each do |group|
+        .category-group
+          h3.is-size-4
+            = group.name
+          .categories
             - group.categories.each do |category|
-              a.panel-block href=category_path(category)
-                span.panel-icon
-                  i.fa.fa-folder
-                = category.name
+              .column.is-half-desktop
+                .control
+                  a.button href=category_path(category)
+                    span.icon: i.fa.fa-folder
+                    span= category.name

@@ -26,10 +26,41 @@ $weight-medium:   400
 $weight-semibold: 700
 $weight-bold:     700
 
+// Bulma colors reference:
+// * https://bulma.io/documentation/overview/colors/
+// * https://bulma.io/documentation/modifiers/typography-helpers/
 $red: #A61414
-
+$link: $red
+$primary: $red
 $text: #222
 
 @import "bulma/bulma"
 
+header.section
+  @extend .has-text-centered
+  padding: 1.5rem
+  border-bottom: 1px solid $light
+  img
+    max-width: 100%
 
+.hero
+  border-bottom: 1px solid $light
+  a
+    color: $text
+  h2
+    @extend .is-size-2, .is-size-3-mobile
+    small
+      @extend .is-uppercase, .is-size-7, .has-text-grey
+      display: block
+
+.category-group
+  @extend .column, .is-half
+  h3
+    @extend .is-size-4
+    padding: 0.75rem 0
+    border-bottom: 2px solid $light
+  .categories
+    @extend .columns, .is-multiline
+    padding: 0.75rem 0
+  a.button
+    @extend .is-white, .is-fullwidth, .is-inline-block, .has-text-left
