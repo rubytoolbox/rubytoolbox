@@ -34,7 +34,15 @@ $link: $red
 $primary: $red
 $text: #222
 
-@import "bulma/bulma"
+@import "bulma/sass/utilities/_all"
+@import "bulma/sass/base/_all"
+@import "bulma/sass/grid/_all"
+@import "bulma/sass/layout/_all"
+@import "bulma/sass/elements/box"
+@import "bulma/sass/elements/button"
+@import "bulma/sass/elements/container"
+@import "bulma/sass/elements/icon"
+@import "bulma/sass/elements/other"
 
 header.section
   @extend .has-text-centered
@@ -49,9 +57,6 @@ header.section
     color: $text
   h2
     @extend .is-size-2, .is-size-3-mobile
-    small
-      @extend .is-uppercase, .is-size-7, .has-text-grey
-      display: block
 
 .category-group
   @extend .column, .is-half
@@ -64,3 +69,27 @@ header.section
     padding: 0.75rem 0
   a.button
     @extend .is-white, .is-fullwidth, .is-inline-block, .has-text-left
+
+.project
+  @extend .box
+  header
+    @extend .columns, .is-mobile
+    h3
+      @extend .column, .is-size-4
+    .score
+      @extend .is-size-5, .is-pulled-right
+
+  .description
+    @extend .has-text-grey
+    padding: 0.75rem
+  .metrics
+    @extend .columns
+    display: flex
+    .metric
+      @extend .column
+      // Align content to bottom
+      align-self: flex-end
+      strong
+        @extend .is-size-5
+        // Compensate for default icon padding in heading above
+        margin-left: 5px

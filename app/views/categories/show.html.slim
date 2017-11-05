@@ -1,12 +1,51 @@
 .hero
-  section.container.section
+  section.section: .container
+    p.heading Category
     h2
-      small Category
       a href=category_path(@category)
         = @category.name
 
-section.section.container
+section.section: .container: .columns
   .projects
     - @category.projects.each do |project|
       .project
-        = project.permalink
+        header
+          h3.is-size-4
+            = project.permalink
+          .column: .score
+            span.icon
+              i.fa.fa-flask
+            span= project.score
+
+        .columns: .column.description
+          = project.description
+
+        .metrics
+          .metric
+            span &nbsp;
+            strong
+              | Popularity
+          .metric
+            .heading
+              span.icon
+                i.fa.fa-download
+              | Downloads
+            strong= rand(500_000)
+          .metric
+            .heading
+              span.icon
+                i.fa.fa-star
+              | Stars
+            strong= rand(3000)
+          .metric
+            .heading
+              span.icon
+                i.fa.fa-code-fork
+              | Forks
+            strong= rand(500)
+          .metric
+            .heading
+              span.icon
+                i.fa.fa-eye
+              | Watchers
+            strong= rand(100)
