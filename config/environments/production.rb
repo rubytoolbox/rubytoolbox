@@ -44,6 +44,10 @@ Rails.application.configure do
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
 
+  # https://github.com/tobmatth/rack-ssl-enforcer#http-strict-transport-security-hsts
+  # Equivalent to { :expires => 31536000, :subdomains => true, :preload => false }
+  config.middleware.use Rack::SslEnforcer, hsts: true
+
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
   config.log_level = :info
