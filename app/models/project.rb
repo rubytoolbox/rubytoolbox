@@ -6,13 +6,14 @@ class Project < ApplicationRecord
   has_many :categorizations,
            primary_key: :permalink,
            foreign_key: :project_permalink,
+           inverse_of:  :project,
            validate:    false,
            dependent:   :destroy
 
   has_many :categories, through: :categorizations
 
   def description
-    Forgery(:lorem_ipsum).words(20 + rand(20))
+    Forgery(:lorem_ipsum).words(rand(20..39))
   end
 
   def score

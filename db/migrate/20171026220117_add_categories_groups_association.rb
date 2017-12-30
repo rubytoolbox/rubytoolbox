@@ -8,4 +8,5 @@ class AddCategoriesGroupsAssociation < ActiveRecord::Migration[5.1]
     add_index :categories, :category_group_permalink
     add_foreign_key :categories, :category_groups, column: :category_group_permalink, primary_key: :permalink
   end
+  # rubocop:enable Rails/NotNullColumn:
 end

@@ -53,6 +53,10 @@ Style/Documentation:
 Style/DoubleNegation:
   Enabled: false
 
+Style/MixinUsage:
+  Exclude:
+    - 'bin/*'
+
 Style/StringLiterals:
   EnforcedStyle: double_quotes
 
