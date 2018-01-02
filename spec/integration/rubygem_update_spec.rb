@@ -37,7 +37,7 @@ RSpec.describe RubygemUpdateJob, :real_http do
 
     describe "which exists locally" do
       it "deletes the local record" do
-        Rubygem.create! name: gem_name, downloads: 500
+        Rubygem.create! name: gem_name, downloads: 500, current_version: "123"
         expect { do_perform }.to change { Rubygem.count }.by(-1)
       end
     end
