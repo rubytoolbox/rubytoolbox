@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class RubygemInfoJob < ApplicationJob
+class RubygemUpdateJob < ApplicationJob
   def perform(name)
     info = fetch_gem_info name
 
@@ -23,6 +23,6 @@ class RubygemInfoJob < ApplicationJob
     return nil if response.status == 404
     return Oj.load(response.body)  if response.status == 200
 
-    raise "Unknown response status #{response.status}"
+    raise "Unknown response status #{response.status.to_i}"
   end
 end

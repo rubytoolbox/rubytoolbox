@@ -2,11 +2,11 @@
 
 require "rails_helper"
 
-RSpec.describe RubygemInfoJob do
+RSpec.describe RubygemUpdateJob do
   let(:job) { described_class.new }
   let(:do_perform) { job.perform gem_name }
 
-  describe "for existing gem" do
+  describe "for existing gem", vcr: { cassette_name: :rspec } do
     let(:gem_name) { "rspec" }
 
     shared_examples_for "a rubygem data update" do
@@ -32,7 +32,7 @@ RSpec.describe RubygemInfoJob do
     end
   end
 
-  describe "for non-existent gem" do
+  describe "for non-existent gem", vcr: { cassette_name: :unknown_gem } do
     let(:gem_name) { "(foo)" }
 
     describe "which exists locally" do
@@ -46,6 +46,19 @@ RSpec.describe RubygemInfoJob do
       it "does not create a record" do
         expect { do_perform }.not_to(change { Rubygem.count })
       end
+    end
+  end
+
+  describe "when rubygems is down" do
+    let(:gem_name) { "foo" }
+
+    before do
+      stub_request(:get, "https://rubygems.org/api/v1/gems/foo.json")
+        .to_return(status: 500)
+    end
+
+    it "raises an exception" do
+      expect { do_perform }.to raise_error "Unknown response status 500"
     end
   end
 end
