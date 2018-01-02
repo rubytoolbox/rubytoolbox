@@ -18,7 +18,7 @@ class RubygemUpdateJob < ApplicationJob
 
   def fetch_gem_info(name)
     url = File.join("https://rubygems.org/api/v1/gems", "#{name}.json")
-    response = HTTP.get(url)
+    response = HttpService.client.get url
 
     return nil if response.status == 404
     return Oj.load(response.body)  if response.status == 200
