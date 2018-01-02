@@ -48,17 +48,4 @@ RSpec.describe RubygemUpdateJob, :real_http do
       end
     end
   end
-
-  describe "when rubygems is down" do
-    let(:gem_name) { "foo" }
-
-    before do
-      stub_request(:get, "https://rubygems.org/api/v1/gems/foo.json")
-        .to_return(status: 500)
-    end
-
-    it "raises an exception" do
-      expect { do_perform }.to raise_error "Unknown response status 500"
-    end
-  end
 end
