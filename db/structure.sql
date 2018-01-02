@@ -103,6 +103,25 @@ CREATE TABLE category_groups (
 CREATE TABLE projects (
     permalink character varying NOT NULL,
     created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    repo character varying,
+    description text,
+    downloads integer,
+    stars integer,
+    watchers integer,
+    forks integer
+);
+
+
+--
+-- Name: rubygems; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE rubygems (
+    name character varying NOT NULL,
+    description text,
+    downloads integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
 
@@ -197,6 +216,13 @@ CREATE UNIQUE INDEX index_projects_on_permalink ON projects USING btree (permali
 
 
 --
+-- Name: index_rubygems_on_name; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_rubygems_on_name ON rubygems USING btree (name);
+
+
+--
 -- Name: fk_rails_1c87ed593b; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -231,6 +257,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20171026202351'),
 ('20171026220117'),
 ('20171026221717'),
-('20171028210534');
+('20171028210534'),
+('20171230221823'),
+('20171230223928');
 
 

@@ -34,6 +34,8 @@ gem "forgery"
 gem "rack-canonical-host"
 gem "rack-ssl-enforcer"
 
+gem "http"
+
 gem "sidekiq"
 
 gem "redcarpet"
@@ -69,6 +71,9 @@ end
 group :test do
   gem "rails-controller-testing"
   gem "simplecov", require: false
+
+  gem "vcr"
+  gem "webmock"
 end
 
 group :development do

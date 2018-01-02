@@ -62,3 +62,7 @@ Style/StringLiterals:
 
 Style/TrailingCommaInLiteral:
   EnforcedStyleForMultiline: comma
+
+RSpec/FilePath:
+  Exclude:
+    - 'spec/integration/*'
