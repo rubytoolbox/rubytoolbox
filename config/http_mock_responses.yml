@@ -1,0 +1,43 @@
+"https://rubygems.org/api/v1/gems/rspec.json":
+  status: 200
+  body: |
+    {
+      "name": "rspec",
+      "downloads": 145999055,
+      "version": "3.7.0",
+      "version_downloads": 20169199,
+      "platform": "ruby",
+      "authors": "Steven Baker, David Chelimsky, Myron Marston",
+      "info": "BDD for Ruby",
+      "licenses": [
+        "MIT"
+      ],
+      "metadata": {},
+      "sha": "0174cfbed780e42aa181227af623e2ae37511f20a2fdfec48b54f6cf4d7a6404",
+      "project_uri": "https://rubygems.org/gems/rspec",
+      "gem_uri": "https://rubygems.org/gems/rspec-3.7.0.gem",
+      "homepage_uri": "http://github.com/rspec",
+      "wiki_uri": "",
+      "documentation_uri": "http://relishapp.com/rspec",
+      "mailing_list_uri": "http://rubyforge.org/mailman/listinfo/rspec-users",
+      "source_code_uri": "http://github.com/rspec/rspec",
+      "bug_tracker_uri": "",
+      "changelog_uri": null,
+      "dependencies": {
+        "development": [],
+        "runtime": [
+          {
+            "name": "rspec-core",
+            "requirements": "~> 3.7.0"
+          },
+          {
+            "name": "rspec-expectations",
+            "requirements": "~> 3.7.0"
+          },
+          {
+            "name": "rspec-mocks",
+            "requirements": "~> 3.7.0"
+          }
+        ]
+      }
+    }

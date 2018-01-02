@@ -42,5 +42,7 @@ module Rubytoolbox
       c.javascripts  = false
       c.stylesheets  = false
     end
+
+    config.http_connect = true
   end
 end
