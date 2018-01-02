@@ -29,5 +29,13 @@ RSpec.describe RubygemUpdateJob, type: :job do
 
       expect(Rubygem.find(gem_name)).to have_attributes(expected_attributes)
     end
+
+    describe "when rubygems.org is down" do
+      let(:gem_name) { "thisisdowninmock" }
+
+      it "raises an exception" do
+        expect { do_perform }.to raise_error "Unknown response status 500"
+      end
+    end
   end
 end

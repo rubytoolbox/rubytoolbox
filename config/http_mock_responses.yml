@@ -41,3 +41,6 @@
         ]
       }
     }
+
+"https://rubygems.org/api/v1/gems/thisisdowninmock.json":
+  status: 500
