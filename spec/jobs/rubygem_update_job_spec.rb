@@ -30,6 +30,11 @@ RSpec.describe RubygemUpdateJob, type: :job do
       expect(Rubygem.find(gem_name)).to have_attributes(expected_attributes)
     end
 
+    it "enqueues a corresponding project update job" do
+      expect(ProjectUpdateJob).to receive(:perform_async).with(gem_name)
+      do_perform
+    end
+
     describe "when rubygems.org is down" do
       let(:gem_name) { "thisisdowninmock" }
 

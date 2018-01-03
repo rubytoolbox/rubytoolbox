@@ -19,6 +19,20 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 
 
+--
+-- Name: pg_stat_statements; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS pg_stat_statements WITH SCHEMA public;
+
+
+--
+-- Name: EXTENSION pg_stat_statements; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION pg_stat_statements IS 'track execution statistics of all SQL statements executed';
+
+
 SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
@@ -103,7 +117,10 @@ CREATE TABLE category_groups (
 CREATE TABLE projects (
     permalink character varying NOT NULL,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    rubygem_name character varying,
+    github_repo_path character varying,
+    CONSTRAINT check_project_permalink_and_rubygem_name_parity CHECK (((rubygem_name IS NULL) OR ((rubygem_name)::text = (permalink)::text)))
 );
 
 
@@ -220,6 +237,13 @@ CREATE UNIQUE INDEX index_projects_on_permalink ON projects USING btree (permali
 
 
 --
+-- Name: index_projects_on_rubygem_name; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_projects_on_rubygem_name ON projects USING btree (rubygem_name);
+
+
+--
 -- Name: index_rubygems_on_name; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -251,6 +275,14 @@ ALTER TABLE ONLY categories
 
 
 --
+-- Name: fk_rails_ddb4eb0108; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY projects
+    ADD CONSTRAINT fk_rails_ddb4eb0108 FOREIGN KEY (rubygem_name) REFERENCES rubygems(name);
+
+
+--
 -- PostgreSQL database dump complete
 --
 
@@ -262,6 +294,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20171026220117'),
 ('20171026221717'),
 ('20171028210534'),
-('20171230223928');
+('20171230223928'),
+('20180103193038'),
+('20180103194335');
 
 
