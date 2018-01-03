@@ -8,6 +8,7 @@ class RubygemUpdateJob < ApplicationJob
       Rubygem.find_or_initialize_by(name: name).tap do |gem|
         gem.update_attributes! mapped_attributes(info)
       end
+      ProjectUpdateJob.perform_async name
     else
       Rubygem.where(name: name).destroy_all
     end

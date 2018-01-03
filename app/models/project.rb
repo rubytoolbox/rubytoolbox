@@ -18,6 +18,10 @@ class Project < ApplicationRecord
              optional:    true,
              inverse_of:  :project
 
+  def github_only?
+    permalink.include? "/"
+  end
+
   def description
     Forgery(:lorem_ipsum).words(rand(20..39))
   end

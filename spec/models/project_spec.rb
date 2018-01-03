@@ -22,4 +22,14 @@ RSpec.describe Project, type: :model do
       /check_project_permalink_and_rubygem_name_parity/
     )
   end
+
+  describe "#github_only?" do
+    it "is false when no / is present in permalink" do
+      expect(Project.new(permalink: "foobar")).not_to be_github_only
+    end
+
+    it "is true when a / is present in permalink" do
+      expect(Project.new(permalink: "foo/bar")).to be_github_only
+    end
+  end
 end
