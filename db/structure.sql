@@ -103,7 +103,10 @@ CREATE TABLE category_groups (
 CREATE TABLE projects (
     permalink character varying NOT NULL,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    rubygem_name character varying,
+    github_repo_path character varying,
+    CONSTRAINT check_project_permalink_and_rubygem_name_parity CHECK (((rubygem_name IS NULL) OR ((rubygem_name)::text = (permalink)::text)))
 );
 
 
@@ -220,6 +223,13 @@ CREATE UNIQUE INDEX index_projects_on_permalink ON projects USING btree (permali
 
 
 --
+-- Name: index_projects_on_rubygem_name; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_projects_on_rubygem_name ON projects USING btree (rubygem_name);
+
+
+--
 -- Name: index_rubygems_on_name; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -262,6 +272,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20171026220117'),
 ('20171026221717'),
 ('20171028210534'),
-('20171230223928');
+('20171230223928'),
+('20180103193038'),
+('20180103194335');
 
 

@@ -12,11 +12,17 @@ class Project < ApplicationRecord
 
   has_many :categories, through: :categorizations
 
+  belongs_to :rubygem,
+             primary_key: :name,
+             foreign_key: :rubygem_name,
+             optional:    true,
+             inverse_of:  :project
+
   def description
     Forgery(:lorem_ipsum).words(rand(20..39))
   end
 
   def score
-    (rand * 100.0).round(2)
+    rand(100).round(2)
   end
 end
