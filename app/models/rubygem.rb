@@ -8,4 +8,11 @@ class Rubygem < ApplicationRecord
           foreign_key: :rubygem_name,
           inverse_of: :rubygem,
           dependent: :destroy
+
+  def self.update_batch
+    where("updated_at < ? ", 24.hours.ago.utc)
+      .order(updated_at: :asc)
+      .limit((count / 24.0).ceil)
+      .pluck(:name)
+  end
 end

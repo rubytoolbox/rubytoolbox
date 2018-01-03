@@ -4,6 +4,11 @@ require "rubygems"
 require "rubygems/remote_fetcher"
 require "rubygems/name_tuple"
 
+#
+# This sidekiq background job compares the rubygems.org
+# gem index against the gems present in the local mirror
+# and queues updates on differing gems
+#
 class RubygemsSyncJob < ApplicationJob
   def perform
     (remote_gems - local_gems).each do |locally_missing_gem|
