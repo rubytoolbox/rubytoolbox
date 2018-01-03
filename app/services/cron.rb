@@ -11,5 +11,8 @@ class Cron
     when 0
       RubygemsSyncJob.perform_async
     end
+  rescue StandardError => err
+    Appsignal.set_error err
+    raise err
   end
 end

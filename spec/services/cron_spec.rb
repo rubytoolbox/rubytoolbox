@@ -18,4 +18,23 @@ RSpec.describe Cron, type: :service do
     expect(RubygemsSyncJob).not_to receive(:perform_async)
     cron.run time: time_at(1)
   end
+
+  describe "on exceptions" do
+    let(:err) { StandardError.new("Foobar") }
+
+    before do
+      allow(RubygemsSyncJob).to receive(:perform_async).and_raise(err)
+    end
+
+    it "forwards exceptions to Appsignal" do
+      expect(Appsignal).to receive(:set_error).with(err).and_call_original
+      cron.run time: time_at(0)
+    rescue StandardError
+      "The exception can bubble"
+    end
+
+    it "bubbles exceptions" do
+      expect { cron.run time: time_at(0) }.to raise_error(err)
+    end
+  end
 end
