@@ -1,5 +1,10 @@
 # frozen_string_literal: true
 
+#
+# This sidekiq background job takes care of syncing the data
+# of one individual rubygem from rubygems.org to the local
+# mirror db
+#
 class RubygemUpdateJob < ApplicationJob
   def perform(name)
     info = fetch_gem_info name
