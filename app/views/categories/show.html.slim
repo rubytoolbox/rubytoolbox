@@ -26,28 +26,7 @@ section.section: .container: .columns
             strong
               | Popularity
           .column: .metrics
-            .metric
-              - if project.rubygem_downloads
-                .heading
-                  span.icon
-                    i.fa.fa-download
-                  | Downloads
-                strong= number_with_delimiter project.rubygem_downloads
-            .metric
-              .heading
-                span.icon
-                  i.fa.fa-star
-                | Stars
-              strong= rand(3000)
-            .metric
-              .heading
-                span.icon
-                  i.fa.fa-code-fork
-                | Forks
-              strong= rand(500)
-            .metric
-              .heading
-                span.icon
-                  i.fa.fa-eye
-                | Watchers
-              strong= rand(100)
+            = metric "Downloads", project.rubygem_downloads, icon: "download"
+            = metric "Stars", rand(3000), icon: "star"
+            = metric "Forks", rand(500), icon: "code-fork"
+            = metric "Watchers", rand(100), icon: "eye"
