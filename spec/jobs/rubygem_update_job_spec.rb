@@ -30,6 +30,12 @@ RSpec.describe RubygemUpdateJob, type: :job do
       expect(Rubygem.find(gem_name)).to have_attributes(expected_attributes)
     end
 
+    it "changes the updated_at timestamp regardless of changes" do
+      described_class.new.perform gem_name
+      Rubygem.find(gem_name).update_attributes! updated_at: 2.days.ago
+      expect { do_perform }.to(change { Rubygem.find(gem_name).updated_at })
+    end
+
     it "enqueues a corresponding project update job" do
       expect(ProjectUpdateJob).to receive(:perform_async).with(gem_name)
       do_perform
