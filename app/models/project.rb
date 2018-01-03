@@ -17,6 +17,6 @@ class Project < ApplicationRecord
   end
 
   def score
-    rand(100).round(2)
+    (rand * 100.0).round(2)
   end
 end

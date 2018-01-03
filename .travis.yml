@@ -10,11 +10,18 @@ cache: bundler
 jobs:
   include:
   - stage: test
+    before_install:
+    # See https://github.com/travis-ci/travis-ci/issues/8978
+    - gem update --system
     before_script:
     - bin/rails db:setup
     script:
     - bundle exec rspec
-  - script: bundle exec rubocop
+  - before_install:
+    # See https://github.com/travis-ci/travis-ci/issues/8978
+    - gem update --system
+    script:
+    - bundle exec rubocop
   - stage: deploy
     cache: skip
     install: skip
