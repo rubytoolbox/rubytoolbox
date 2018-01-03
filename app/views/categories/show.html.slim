@@ -27,11 +27,12 @@ section.section: .container: .columns
               | Popularity
           .column: .metrics
             .metric
-              .heading
-                span.icon
-                  i.fa.fa-download
-                | Downloads
-              strong= rand(500_000)
+              - if project.rubygem_downloads
+                .heading
+                  span.icon
+                    i.fa.fa-download
+                  | Downloads
+                strong= number_with_delimiter project.rubygem_downloads
             .metric
               .heading
                 span.icon

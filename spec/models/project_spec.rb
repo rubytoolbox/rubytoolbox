@@ -10,8 +10,13 @@ RSpec.describe Project, type: :model do
   end
 
   describe "#description" do
-    it "is a random string" do
-      expect(described_class.new.description).to be_a String
+    it "is nil by default" do
+      expect(described_class.new.description).to be_nil
+    end
+
+    it "is the associated rubygem's description when present" do
+      project = described_class.new rubygem: Rubygem.new(description: "Hello World!")
+      expect(project.description).to be == "Hello World!"
     end
   end
 
