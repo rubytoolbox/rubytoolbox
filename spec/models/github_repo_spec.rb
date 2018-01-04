@@ -30,4 +30,10 @@ RSpec.describe GithubRepo, type: :model do
       expect(described_class.update_batch).to match %w[foo/outdated1 foo/outdated2]
     end
   end
+
+  describe "#path=" do
+    it "normalizes the path to the stripped, downcase variant" do
+      expect(GithubRepo.new(path: " FoO/BaR ").path).to be == "foo/bar"
+    end
+  end
 end

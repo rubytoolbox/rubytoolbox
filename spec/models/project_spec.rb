@@ -37,4 +37,10 @@ RSpec.describe Project, type: :model do
       expect(Project.new(permalink: "foo/bar")).to be_github_only
     end
   end
+
+  describe "#path=" do
+    it "normalizes the path to the stripped, downcase variant" do
+      expect(Project.new(github_repo_path: " FoO/BaR ").github_repo_path).to be == "foo/bar"
+    end
+  end
 end

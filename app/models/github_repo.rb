@@ -15,4 +15,8 @@ class GithubRepo < ApplicationRecord
       .limit((count / 24.0).ceil)
       .pluck(:path)
   end
+
+  def path=(path)
+    super path&.downcase&.strip
+  end
 end

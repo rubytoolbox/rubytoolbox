@@ -41,4 +41,8 @@ class Project < ApplicationRecord
   def score
     rand(100).round(2)
   end
+
+  def github_repo_path=(github_repo_path)
+    super github_repo_path&.downcase&.strip
+  end
 end

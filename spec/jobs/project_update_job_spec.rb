@@ -25,14 +25,31 @@ RSpec.describe ProjectUpdateJob, type: :job do
       expect { do_perform }.to change { project.reload.rubygem }.from(nil).to(rubygem)
     end
 
-    it "assigns a github_repo_path if detected in gem urls" do
-      project = Project.create! permalink: permalink
-      RubygemUpdateJob.new.perform(permalink)
-      expect { do_perform }.to change { project.reload.github_repo_path }.from(nil).to("rspec/rspec")
+    describe "github repo detection" do
+      let(:project) { Project.create! permalink: permalink }
+
+      before do
+        RubygemUpdateJob.new.perform(permalink)
+      end
+
+      it "assigns a github_repo_path if detected in gem urls" do
+        expect { do_perform }.to change { project.reload.github_repo_path }.from(nil).to("rspec/rspec")
+      end
+
+      it "enqueues a GithubRepoUpdateJob if the github repo is missing" do
+        expect(GithubRepoUpdateJob).to receive(:perform_async).with("rspec/rspec")
+        do_perform
+      end
+
+      it "does not enqueue a GithubRepoUpdateJob if the github repo exists" do
+        GithubRepo.create! path: "rspec/rspec", stargazers_count: 0, watchers_count: 0, forks_count: 0
+        expect(GithubRepoUpdateJob).not_to receive(:perform_async)
+        do_perform
+      end
     end
 
     describe "for github-only project" do
-      let(:permalink) { "RSPEC/RsPeC" } # Also verify downcasing / normalization work
+      let(:permalink) { "rspec/rspec" }
 
       it "assigns permalink as the github_repo_path for github-only projects" do
         project = Project.create! permalink: permalink
