@@ -13,6 +13,17 @@ RSpec.describe GithubRepoUpdateJob, type: :job do
         stargazers_count: 38_140,
         watchers_count: 2520,
         forks_count: 15_500,
+        description: "Ruby on Rails",
+        repo_created_at: Time.zone.parse("2008-04-11T02:19:47Z"),
+        repo_updated_at: Time.zone.parse("2018-01-03T21:10:44Z"),
+        repo_pushed_at: Time.zone.parse("2018-01-03T22:39:06Z"),
+        homepage_url: "http://rubyonrails.org",
+        has_issues: true,
+        has_projects: true,
+        has_downloads: true,
+        has_wiki: false,
+        has_pages: false,
+        archived: false,
       }
     end
 

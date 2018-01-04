@@ -119,6 +119,17 @@ CREATE TABLE github_repos (
     stargazers_count integer NOT NULL,
     forks_count integer NOT NULL,
     watchers_count integer NOT NULL,
+    description character varying,
+    homepage_url character varying,
+    repo_created_at timestamp without time zone,
+    repo_updated_at timestamp without time zone,
+    repo_pushed_at timestamp without time zone,
+    has_issues boolean,
+    has_projects boolean,
+    has_downloads boolean,
+    has_wiki boolean,
+    has_pages boolean,
+    archived boolean,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );

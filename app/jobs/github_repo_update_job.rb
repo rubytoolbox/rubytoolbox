@@ -19,14 +19,27 @@ class GithubRepoUpdateJob < ApplicationJob
   private
 
   ATTRIBUTE_MAPPING = {
+    archived: :archived,
+    created_at: :repo_created_at,
+    description: :description,
+    forks_count: :forks_count,
+    has_downloads: :has_downloads,
+    has_issues: :has_issues,
+    has_pages: :has_pages,
+    has_projects: :has_projects,
+    has_wiki: :has_wiki,
+    homepage: :homepage_url,
+    pushed_at: :repo_pushed_at,
     stargazers_count: :stargazers_count,
     subscribers_count: :watchers_count,
-    forks_count: :forks_count,
+    updated_at: :repo_updated_at,
   }.freeze
 
   def mapped_attributes(info)
     ATTRIBUTE_MAPPING.each_with_object({}) do |(remote_name, local_name), mapped|
-      mapped[local_name] = info[remote_name.to_s].presence
+      value = info[remote_name.to_s]
+      # Ensure we keep true falses around
+      mapped[local_name] = value == false ? false : value.presence
     end
   end
 
