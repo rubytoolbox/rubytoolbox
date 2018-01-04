@@ -46,6 +46,12 @@ RSpec.describe ProjectUpdateJob, type: :job do
         expect(GithubRepoUpdateJob).not_to receive(:perform_async)
         do_perform
       end
+
+      it "does not enqueue a GithubRepoUpdateJob if no repo is referenced" do
+        Rubygem.find(permalink).destroy
+        expect(GithubRepoUpdateJob).not_to receive(:perform_async)
+        do_perform
+      end
     end
 
     describe "for github-only project" do

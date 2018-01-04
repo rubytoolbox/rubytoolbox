@@ -54,7 +54,12 @@ class GithubRepoUpdateJob < ApplicationJob
   end
 
   def github_client
-    HttpService.client.headers(
+    # Instead of following 301s, the broken github path
+    # (either coming from the catalog for github-only projects,
+    # or from a rubygems urls) should somehow be flagged and
+    # remapped locally, but this needs some more consideration
+    # regarding the various possible cases
+    HttpService.client.follow.headers(
       accept: "application/vnd.github.v3+json"
     )
   end

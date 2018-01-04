@@ -24,7 +24,7 @@ class ProjectUpdateJob < ApplicationJob
   end
 
   def enqueue_github_repo_sync(path)
-    return if GithubRepo.find_by(path: path)
+    return if path.nil? || GithubRepo.find_by(path: path)
     GithubRepoUpdateJob.perform_async path
   end
 end

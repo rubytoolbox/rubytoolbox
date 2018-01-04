@@ -41,6 +41,10 @@ module HttpService
       self
     end
 
+    def follow
+      self
+    end
+
     def responses
       YAML.load_file responses_source_file_path
     end
