@@ -111,6 +111,20 @@ CREATE TABLE category_groups (
 
 
 --
+-- Name: github_repos; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE github_repos (
+    path character varying NOT NULL,
+    stargazers_count integer NOT NULL,
+    forks_count integer NOT NULL,
+    watchers_count integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
 -- Name: projects; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -230,6 +244,13 @@ CREATE UNIQUE INDEX index_category_groups_on_permalink ON category_groups USING 
 
 
 --
+-- Name: index_github_repos_on_path; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_github_repos_on_path ON github_repos USING btree (path);
+
+
+--
 -- Name: index_projects_on_permalink; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -296,6 +317,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20171028210534'),
 ('20171230223928'),
 ('20180103193038'),
-('20180103194335');
+('20180103194335'),
+('20180103233845');
 
 

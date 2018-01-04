@@ -27,6 +27,8 @@ gem "webpacker", require: false
 
 gem "foreman", require: false
 
+gem "dotenv-rails"
+
 gem "appsignal"
 
 gem "forgery"

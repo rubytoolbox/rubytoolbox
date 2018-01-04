@@ -18,6 +18,12 @@ class Project < ApplicationRecord
              optional:    true,
              inverse_of:  :project
 
+  belongs_to :github_repo,
+             primary_key: :path,
+             foreign_key: :github_repo_path,
+             optional:    true,
+             inverse_of:  :projects
+
   delegate :description,
            :downloads,
            to: :rubygem,
