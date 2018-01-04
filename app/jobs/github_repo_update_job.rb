@@ -9,8 +9,8 @@ class GithubRepoUpdateJob < ApplicationJob
         # Set updated at to ensure we flag what we've pulled
         repo.updated_at = Time.current.utc
         repo.update_attributes! mapped_attributes(info)
+        trigger_project_updates repo.projects.pluck(:permalink)
       end
-      ProjectUpdateJob.perform_async path
     else
       GithubRepo.where(path: path).destroy_all
     end
@@ -69,5 +69,11 @@ class GithubRepoUpdateJob < ApplicationJob
       client_id: ENV["GITHUB_CLIENT_ID"],
       client_secret: ENV["GITHUB_CLIENT_SECRET"],
     }
+  end
+
+  def trigger_project_updates(project_permalinks)
+    project_permalinks.each do |permalink|
+      ProjectUpdateJob.perform_async permalink
+    end
   end
 end
