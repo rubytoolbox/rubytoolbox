@@ -30,12 +30,19 @@ class Project < ApplicationRecord
            allow_nil: true,
            prefix: :rubygem
 
+  delegate :stargazers_count,
+           :forks_count,
+           :description,
+           to: :github_repo,
+           allow_nil: true,
+           prefix: :github_repo
+
   def github_only?
     permalink.include? "/"
   end
 
   def description
-    rubygem_description || github_repo&.description
+    rubygem_description || github_repo_description
   end
 
   def github_repo_path=(github_repo_path)

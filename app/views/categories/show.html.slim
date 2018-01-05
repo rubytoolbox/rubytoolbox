@@ -27,6 +27,6 @@ section.section: .container: .columns
               | Popularity
           .column: .metrics
             = metric "Downloads", project.rubygem_downloads, icon: "download"
-            = metric "Stars", project.github_repo&.stargazers_count, icon: "star"
-            = metric "Forks", project.github_repo&.forks_count, icon: "code-fork"
-            = metric "Watchers", project.github_repo&.watchers_count, icon: "eye"
+            = metric "Stars", project.github_repo_stargazers_count, icon: "star"
+            = metric "Forks", project.github_repo_forks_count, icon: "code-fork"
+            = metric "Watchers", project.github_repo_watchers_count, icon: "eye"

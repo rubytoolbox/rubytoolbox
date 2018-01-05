@@ -39,6 +39,7 @@ ActiveRecord::Migration.maintain_test_schema!
 
 VCR.configure do |c|
   c.cassette_library_dir = Rails.root.join("spec", "cassettes")
+  c.default_cassette_options = { record: :new_episodes }
   c.hook_into :webmock
   c.configure_rspec_metadata!
 end
@@ -54,6 +55,13 @@ RSpec.configure do |config|
 
   config.before do |example|
     Rails.configuration.http_connect = example.metadata[:real_http]
+  end
+
+  config.around do |example|
+    Sidekiq::Testing.inline! if example.metadata[:sidekiq_inline]
+    example.run
+  ensure
+    Sidekiq::Testing.fake!
   end
 
   # RSpec Rails can automatically mix in different behaviours to your tests
