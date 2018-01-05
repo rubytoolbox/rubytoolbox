@@ -3,12 +3,6 @@
 require "rails_helper"
 
 RSpec.describe Project, type: :model do
-  describe "#score" do
-    it "is a random number" do
-      expect(described_class.new.score).to be_an Integer
-    end
-  end
-
   describe "#description" do
     it "is nil by default" do
       expect(described_class.new.description).to be_nil

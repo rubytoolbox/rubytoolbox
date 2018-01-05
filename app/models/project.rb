@@ -35,11 +35,7 @@ class Project < ApplicationRecord
   end
 
   def description
-    rubygem_description
-  end
-
-  def score
-    rand(100).round(2)
+    rubygem_description || github_repo&.description
   end
 
   def github_repo_path=(github_repo_path)
