@@ -14,7 +14,8 @@ class Category < ApplicationRecord
            inverse_of:  :category,
            dependent:   :destroy
 
-  has_many :projects, through: :categorizations
+  has_many :projects, -> { order(score: :desc) },
+           through: :categorizations
 
   def self.find_for_show!(permalink)
     includes(:category_group, projects: %i[rubygem]).find(permalink)

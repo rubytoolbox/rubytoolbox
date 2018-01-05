@@ -6,6 +6,7 @@ class ProjectUpdateJob < ApplicationJob
       project.rubygem = Rubygem.find_by(name: permalink)
       project.github_repo_path = detect_repo_path(project)
       project.save!
+      ProjectScoreJob.perform_async permalink
       enqueue_github_repo_sync project.github_repo_path
     end
   end

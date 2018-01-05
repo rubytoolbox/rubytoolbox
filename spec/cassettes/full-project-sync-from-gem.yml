@@ -1,0 +1,166 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://rubygems.org/api/v1/gems/rspec.json
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      User-Agent:
+      - ruby-toolbox.com API client
+      Connection:
+      - close
+      Host:
+      - rubygems.org
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Security-Policy:
+      - default-src 'self'; script-src 'self' https://secure.gaug.es; style-src 'self'
+        https://fonts.googleapis.com; img-src 'self' https://secure.gaug.es https://gravatar.com
+        https://secure.gravatar.com; font-src 'self' https://fonts.gstatic.com; connect-src
+        https://s3-us-west-2.amazonaws.com/rubygems-dumps/; frame-src https://ghbtns.com
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - c2f20956-bd96-451a-9a56-fa620d337081
+      X-Runtime:
+      - '0.015169'
+      Strict-Transport-Security:
+      - max-age=0
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      X-Backend:
+      - F_Rails 54.186.104.15:443
+      Transfer-Encoding:
+      - chunked
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Fri, 05 Jan 2018 22:18:50 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '0'
+      Connection:
+      - close
+      X-Served-By:
+      - cache-ams4135-AMS
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+      X-Timer:
+      - S1515190731.587696,VS0,VE179
+      Vary:
+      - Accept-Encoding,Fastly-SSL
+      Etag:
+      - '"06eab95c8957ef2bc77e81db97fe00f1"'
+      Server:
+      - RubyGems.org
+    body:
+      encoding: UTF-8
+      string: '{"name":"rspec","downloads":147041200,"version":"3.7.0","version_downloads":21054219,"platform":"ruby","authors":"Steven
+        Baker, David Chelimsky, Myron Marston","info":"BDD for Ruby","licenses":["MIT"],"metadata":{},"sha":"0174cfbed780e42aa181227af623e2ae37511f20a2fdfec48b54f6cf4d7a6404","project_uri":"https://rubygems.org/gems/rspec","gem_uri":"https://rubygems.org/gems/rspec-3.7.0.gem","homepage_uri":"http://github.com/rspec","wiki_uri":"","documentation_uri":"http://relishapp.com/rspec","mailing_list_uri":"http://rubyforge.org/mailman/listinfo/rspec-users","source_code_uri":"http://github.com/rspec/rspec","bug_tracker_uri":"","changelog_uri":null,"dependencies":{"development":[],"runtime":[{"name":"rspec-core","requirements":"~\u003e
+        3.7.0"},{"name":"rspec-expectations","requirements":"~\u003e 3.7.0"},{"name":"rspec-mocks","requirements":"~\u003e
+        3.7.0"}]}}'
+    http_version: 
+  recorded_at: Fri, 05 Jan 2018 22:18:50 GMT
+- request:
+    method: get
+    uri: https://api.github.com/repos/rspec/rspec?client_id=&client_secret=
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      User-Agent:
+      - ruby-toolbox.com API client
+      Accept:
+      - application/vnd.github.v3+json
+      Connection:
+      - close
+      Host:
+      - api.github.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Fri, 05 Jan 2018 22:19:27 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '5363'
+      Connection:
+      - close
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '60'
+      X-Ratelimit-Remaining:
+      - '53'
+      X-Ratelimit-Reset:
+      - '1515191452'
+      Cache-Control:
+      - public, max-age=60, s-maxage=60
+      Vary:
+      - Accept
+      Etag:
+      - '"49379f15829c966ada9a46aa6e2659d3"'
+      Last-Modified:
+      - Tue, 02 Jan 2018 22:22:52 GMT
+      X-Github-Media-Type:
+      - github.v3; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Security-Policy:
+      - default-src 'none'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - deny
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Runtime-Rack:
+      - '0.039861'
+      X-Github-Request-Id:
+      - B405:6562:CD231A:18FEAF4:5A4FF9EF
+    body:
+      encoding: UTF-8
+      string: '{"id":239001,"name":"rspec","full_name":"rspec/rspec","owner":{"login":"rspec","id":22388,"avatar_url":"https://avatars0.githubusercontent.com/u/22388?v=4","gravatar_id":"","url":"https://api.github.com/users/rspec","html_url":"https://github.com/rspec","followers_url":"https://api.github.com/users/rspec/followers","following_url":"https://api.github.com/users/rspec/following{/other_user}","gists_url":"https://api.github.com/users/rspec/gists{/gist_id}","starred_url":"https://api.github.com/users/rspec/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/rspec/subscriptions","organizations_url":"https://api.github.com/users/rspec/orgs","repos_url":"https://api.github.com/users/rspec/repos","events_url":"https://api.github.com/users/rspec/events{/privacy}","received_events_url":"https://api.github.com/users/rspec/received_events","type":"Organization","site_admin":false},"private":false,"html_url":"https://github.com/rspec/rspec","description":"RSpec
+        meta-gem that depends on the other components","fork":false,"url":"https://api.github.com/repos/rspec/rspec","forks_url":"https://api.github.com/repos/rspec/rspec/forks","keys_url":"https://api.github.com/repos/rspec/rspec/keys{/key_id}","collaborators_url":"https://api.github.com/repos/rspec/rspec/collaborators{/collaborator}","teams_url":"https://api.github.com/repos/rspec/rspec/teams","hooks_url":"https://api.github.com/repos/rspec/rspec/hooks","issue_events_url":"https://api.github.com/repos/rspec/rspec/issues/events{/number}","events_url":"https://api.github.com/repos/rspec/rspec/events","assignees_url":"https://api.github.com/repos/rspec/rspec/assignees{/user}","branches_url":"https://api.github.com/repos/rspec/rspec/branches{/branch}","tags_url":"https://api.github.com/repos/rspec/rspec/tags","blobs_url":"https://api.github.com/repos/rspec/rspec/git/blobs{/sha}","git_tags_url":"https://api.github.com/repos/rspec/rspec/git/tags{/sha}","git_refs_url":"https://api.github.com/repos/rspec/rspec/git/refs{/sha}","trees_url":"https://api.github.com/repos/rspec/rspec/git/trees{/sha}","statuses_url":"https://api.github.com/repos/rspec/rspec/statuses/{sha}","languages_url":"https://api.github.com/repos/rspec/rspec/languages","stargazers_url":"https://api.github.com/repos/rspec/rspec/stargazers","contributors_url":"https://api.github.com/repos/rspec/rspec/contributors","subscribers_url":"https://api.github.com/repos/rspec/rspec/subscribers","subscription_url":"https://api.github.com/repos/rspec/rspec/subscription","commits_url":"https://api.github.com/repos/rspec/rspec/commits{/sha}","git_commits_url":"https://api.github.com/repos/rspec/rspec/git/commits{/sha}","comments_url":"https://api.github.com/repos/rspec/rspec/comments{/number}","issue_comment_url":"https://api.github.com/repos/rspec/rspec/issues/comments{/number}","contents_url":"https://api.github.com/repos/rspec/rspec/contents/{+path}","compare_url":"https://api.github.com/repos/rspec/rspec/compare/{base}...{head}","merges_url":"https://api.github.com/repos/rspec/rspec/merges","archive_url":"https://api.github.com/repos/rspec/rspec/{archive_format}{/ref}","downloads_url":"https://api.github.com/repos/rspec/rspec/downloads","issues_url":"https://api.github.com/repos/rspec/rspec/issues{/number}","pulls_url":"https://api.github.com/repos/rspec/rspec/pulls{/number}","milestones_url":"https://api.github.com/repos/rspec/rspec/milestones{/number}","notifications_url":"https://api.github.com/repos/rspec/rspec/notifications{?since,all,participating}","labels_url":"https://api.github.com/repos/rspec/rspec/labels{/name}","releases_url":"https://api.github.com/repos/rspec/rspec/releases{/id}","deployments_url":"https://api.github.com/repos/rspec/rspec/deployments","created_at":"2009-06-29T16:13:38Z","updated_at":"2018-01-02T22:22:52Z","pushed_at":"2017-11-20T03:41:36Z","git_url":"git://github.com/rspec/rspec.git","ssh_url":"git@github.com:rspec/rspec.git","clone_url":"https://github.com/rspec/rspec.git","svn_url":"https://github.com/rspec/rspec","homepage":"","size":118,"stargazers_count":2148,"watchers_count":2148,"language":"Ruby","has_issues":false,"has_projects":true,"has_downloads":false,"has_wiki":true,"has_pages":false,"forks_count":187,"mirror_url":null,"archived":false,"open_issues_count":0,"license":{"key":"mit","name":"MIT
+        License","spdx_id":"MIT","url":"https://api.github.com/licenses/mit"},"forks":187,"open_issues":0,"watchers":2148,"default_branch":"master","organization":{"login":"rspec","id":22388,"avatar_url":"https://avatars0.githubusercontent.com/u/22388?v=4","gravatar_id":"","url":"https://api.github.com/users/rspec","html_url":"https://github.com/rspec","followers_url":"https://api.github.com/users/rspec/followers","following_url":"https://api.github.com/users/rspec/following{/other_user}","gists_url":"https://api.github.com/users/rspec/gists{/gist_id}","starred_url":"https://api.github.com/users/rspec/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/rspec/subscriptions","organizations_url":"https://api.github.com/users/rspec/orgs","repos_url":"https://api.github.com/users/rspec/repos","events_url":"https://api.github.com/users/rspec/events{/privacy}","received_events_url":"https://api.github.com/users/rspec/received_events","type":"Organization","site_admin":false},"network_count":187,"subscribers_count":95}'
+    http_version: 
+  recorded_at: Fri, 05 Jan 2018 22:19:27 GMT
+recorded_with: VCR 4.0.0
