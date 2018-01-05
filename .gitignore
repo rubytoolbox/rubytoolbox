@@ -20,3 +20,4 @@ public/assets
 .byebug_history
 
 coverage
+.env*

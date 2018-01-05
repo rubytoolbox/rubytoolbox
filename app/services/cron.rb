@@ -7,7 +7,7 @@
 #
 class Cron
   def run(time: Time.current.utc)
-    RubygemsUpdateSchedulerJob.perform_async
+    RemoteUpdateSchedulerJob.perform_async
 
     case time.hour
     when 0

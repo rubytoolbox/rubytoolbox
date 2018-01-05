@@ -18,6 +18,12 @@ class Project < ApplicationRecord
              optional:    true,
              inverse_of:  :project
 
+  belongs_to :github_repo,
+             primary_key: :path,
+             foreign_key: :github_repo_path,
+             optional:    true,
+             inverse_of:  :projects
+
   delegate :description,
            :downloads,
            to: :rubygem,
@@ -34,5 +40,9 @@ class Project < ApplicationRecord
 
   def score
     rand(100).round(2)
+  end
+
+  def github_repo_path=(github_repo_path)
+    super github_repo_path&.downcase&.strip
   end
 end

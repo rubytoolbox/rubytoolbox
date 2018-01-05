@@ -31,10 +31,18 @@ module HttpService
   class MockClient
     class UnmockedRequestError < StandardError; end
 
-    def get(url)
+    def get(url, **_args)
       response = responses[url]
       raise UnmockedRequestError unless response
       HTTP::Response.new(status: response["status"], body: response["body"], version: "1.1")
+    end
+
+    def headers(*_args)
+      self
+    end
+
+    def follow
+      self
     end
 
     def responses

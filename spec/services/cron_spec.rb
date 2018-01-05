@@ -9,8 +9,8 @@ RSpec.describe Cron, type: :service do
     Time.utc(2018, 1, 3, hour, 10, 12)
   end
 
-  it "queues RubygemUpdateSchedulerJob every hour" do
-    expect(RubygemsUpdateSchedulerJob).to receive(:perform_async)
+  it "queues RemoteUpdateSchedulerJob every hour" do
+    expect(RemoteUpdateSchedulerJob).to receive(:perform_async)
     cron.run time: time_at(rand(24))
   end
 
