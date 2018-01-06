@@ -6,13 +6,16 @@ addons:
   postgresql: '9.6'
 # Cache bundle between builds
 # See https://docs.travis-ci.com/user/caching/
-cache: bundler
+cache:
+  - yarn
+  - bundler
 jobs:
   include:
   - stage: test
     before_install:
     # See https://github.com/travis-ci/travis-ci/issues/8978
     - gem update --system
+    - yarn install
     before_script:
     - bin/rails db:setup
     script:
