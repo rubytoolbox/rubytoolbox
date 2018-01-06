@@ -156,6 +156,10 @@ GEM
     parser (2.4.0.2)
       ast (~> 2.3)
     pg (0.21.0)
+    pg_search (2.1.2)
+      activerecord (>= 4.2)
+      activesupport (>= 4.2)
+      arel (>= 6)
     powerpack (0.1.1)
     pry (0.11.3)
       coderay (~> 1.1.0)
@@ -339,6 +343,7 @@ DEPENDENCIES
   oj
   overcommit
   pg (~> 0.18)
+  pg_search
   pry
   puma (~> 3.7)
   rack-canonical-host

@@ -24,6 +24,12 @@ class Project < ApplicationRecord
              optional:    true,
              inverse_of:  :projects
 
+  include PgSearch
+  pg_search_scope :search, against: { permalink: "A", description: "C" },
+                           using: %i[tsearch],
+                           # Project.where.not(score: nil).search("ruby on rails").limit(10).pluck(:permalink)
+                           ranked_by: ":tsearch * #{table_name}.score"
+
   delegate :current_version,
            :description,
            :documentation_url,
@@ -64,10 +70,6 @@ class Project < ApplicationRecord
 
   def github_only?
     permalink.include? "/"
-  end
-
-  def description
-    rubygem_description || github_repo_description
   end
 
   def github_repo_path=(github_repo_path)

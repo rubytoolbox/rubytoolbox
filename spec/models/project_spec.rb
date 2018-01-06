@@ -3,17 +3,6 @@
 require "rails_helper"
 
 RSpec.describe Project, type: :model do
-  describe "#description" do
-    it "is nil by default" do
-      expect(described_class.new.description).to be_nil
-    end
-
-    it "is the associated rubygem's description when present" do
-      project = described_class.new rubygem: Rubygem.new(description: "Hello World!")
-      expect(project.description).to be == "Hello World!"
-    end
-  end
-
   it "does not allow mismatches between permalink and rubygem name" do
     project = Project.create! permalink: "simplecov"
     expect { project.update_attributes! rubygem_name: "rails" }.to raise_error(
