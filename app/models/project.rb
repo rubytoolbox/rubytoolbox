@@ -32,6 +32,7 @@ class Project < ApplicationRecord
 
   delegate :stargazers_count,
            :forks_count,
+           :watchers_count,
            :description,
            to: :github_repo,
            allow_nil: true,
