@@ -38,6 +38,10 @@ class Project < ApplicationRecord
            allow_nil: true,
            prefix: :github_repo
 
+  def self.find_for_show!(permalink)
+    includes(:github_repo, :rubygem, :categories).find(permalink)
+  end
+
   def github_only?
     permalink.include? "/"
   end
