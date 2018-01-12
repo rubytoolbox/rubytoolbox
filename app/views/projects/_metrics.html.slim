@@ -1,0 +1,10 @@
+.metrics
+  .label
+    span &nbsp;
+    strong
+      | Popularity
+  .column: .metrics
+    = metric "Downloads", project.rubygem_downloads, icon: "download"
+    = metric "Stars", project.github_repo_stargazers_count, icon: "star"
+    = metric "Forks", project.github_repo_forks_count, icon: "code-fork"
+    = metric "Watchers", project.github_repo_watchers_count, icon: "eye"

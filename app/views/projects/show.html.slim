@@ -1,0 +1,29 @@
+.hero
+  section.section: .container
+    .columns
+      .column
+        p.heading Project
+        h2
+          // Note that rails url helpers escape slashes (as seen in github-based projects) and this breaks.
+          a href="/projects/#{@project.permalink}"
+            = @project.permalink
+      .column.has-text-right
+        p.score
+          span.icon
+            i.fa.fa-flask
+          span= @project.score
+        p.categories
+          ul
+            - @project.categories.each do |category|
+              li
+                .control
+                  a href=category_path(category)
+                    span.icon: i.fa.fa-folder
+                    span= category.name
+
+
+    .description= @project.description
+
+
+section.section: .container: .project
+  = render partial: "projects/metrics", locals: { project: @project }

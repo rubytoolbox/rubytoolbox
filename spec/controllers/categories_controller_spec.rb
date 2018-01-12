@@ -30,9 +30,9 @@ RSpec.describe CategoriesController, type: :controller do
       end
 
       it "assigns Category.find_for_show!" do
-        allow(Category).to receive(:find_for_show!).and_return("The Category")
+        allow(Category).to receive(:find_for_show!).and_return(category)
         do_request
-        expect(assigns(:category)).to be == "The Category"
+        expect(assigns(:category)).to be == category
       end
     end
   end

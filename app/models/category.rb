@@ -18,6 +18,6 @@ class Category < ApplicationRecord
            through: :categorizations
 
   def self.find_for_show!(permalink)
-    includes(:category_group, projects: %i[rubygem]).find(permalink)
+    includes(:category_group, projects: %i[rubygem github_repo]).find(permalink)
   end
 end

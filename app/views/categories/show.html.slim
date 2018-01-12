@@ -8,10 +8,12 @@
 section.section: .container: .columns
   .projects
     - @category.projects.each do |project|
-      .project
+      .project.box
         header
           h3.is-size-4
-            = project.permalink
+            // Note that rails url helpers escape slashes (as seen in github-based projects) and this breaks.
+            a href="/projects/#{project.permalink}"
+              = project.permalink
           .column: .score
             span.icon
               i.fa.fa-flask
@@ -20,13 +22,4 @@ section.section: .container: .columns
         .columns: .column.description
           = project.description
 
-        .metrics
-          .label
-            span &nbsp;
-            strong
-              | Popularity
-          .column: .metrics
-            = metric "Downloads", project.rubygem_downloads, icon: "download"
-            = metric "Stars", project.github_repo_stargazers_count, icon: "star"
-            = metric "Forks", project.github_repo_forks_count, icon: "code-fork"
-            = metric "Watchers", project.github_repo_watchers_count, icon: "eye"
+        = render partial: "projects/metrics", locals: { project: project }
