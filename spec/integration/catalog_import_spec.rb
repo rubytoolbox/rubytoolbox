@@ -13,7 +13,7 @@ RSpec.describe CatalogImport do
 
   describe "perform" do
     it "creates all category groups" do
-      expect { import.perform }.to change { CategoryGroup.count }.to(catalog_data["category_groups"].count)
+      expect { import.perform }.to change(CategoryGroup, :count).to(catalog_data["category_groups"].count)
     end
 
     it "results in expected set of category groups" do
@@ -37,7 +37,7 @@ RSpec.describe CatalogImport do
     end
 
     it "creates all categories" do
-      expect { import.perform }.to change { Category.count }.to(category_data.count)
+      expect { import.perform }.to change(Category, :count).to(category_data.count)
     end
 
     it "results in expected set of categories" do
@@ -68,7 +68,7 @@ RSpec.describe CatalogImport do
     end
 
     it "creates all projects" do
-      expect { import.perform }.to change { Project.count }.to(project_permalinks.count)
+      expect { import.perform }.to change(Project, :count).to(project_permalinks.count)
     end
 
     it "results in expected set of projects" do

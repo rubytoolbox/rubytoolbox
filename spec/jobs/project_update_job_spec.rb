@@ -15,7 +15,7 @@ RSpec.describe ProjectUpdateJob, type: :job do
 
     it "does not create another project if present" do
       Project.create! permalink: permalink
-      expect { do_perform }.not_to(change { Project.count })
+      expect { do_perform }.not_to(change(Project, :count))
     end
 
     it "assigns an existing gem if matching" do

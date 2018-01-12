@@ -26,7 +26,7 @@ RSpec.describe GithubRepoUpdateJob, :real_http do
 
     describe "which does not exist locally" do
       it "creates a new record" do
-        expect { do_perform }.to change { GithubRepo.count }.by(1)
+        expect { do_perform }.to change(GithubRepo, :count).by(1)
       end
 
       it_behaves_like "a github repo data update"
@@ -39,13 +39,13 @@ RSpec.describe GithubRepoUpdateJob, :real_http do
     describe "which exists locally" do
       it "deletes the local record" do
         GithubRepo.create! path: repo_path, stargazers_count: 5, watchers_count: 5, forks_count: 5
-        expect { do_perform }.to change { GithubRepo.count }.by(-1)
+        expect { do_perform }.to change(GithubRepo, :count).by(-1)
       end
     end
 
     describe "which does not exist locally" do
       it "does not create a record" do
-        expect { do_perform }.not_to(change { GithubRepo.count })
+        expect { do_perform }.not_to(change(GithubRepo, :count))
       end
     end
   end

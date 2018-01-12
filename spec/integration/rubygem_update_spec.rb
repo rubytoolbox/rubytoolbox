@@ -25,7 +25,7 @@ RSpec.describe RubygemUpdateJob, :real_http do
 
     describe "which does not exist locally" do
       it "creates a new record" do
-        expect { do_perform }.to change { Rubygem.count }.by(1)
+        expect { do_perform }.to change(Rubygem, :count).by(1)
       end
 
       it_behaves_like "a rubygem data update"
@@ -38,13 +38,13 @@ RSpec.describe RubygemUpdateJob, :real_http do
     describe "which exists locally" do
       it "deletes the local record" do
         Rubygem.create! name: gem_name, downloads: 500, current_version: "123"
-        expect { do_perform }.to change { Rubygem.count }.by(-1)
+        expect { do_perform }.to change(Rubygem, :count).by(-1)
       end
     end
 
     describe "which does not exist locally" do
       it "does not create a record" do
-        expect { do_perform }.not_to(change { Rubygem.count })
+        expect { do_perform }.not_to(change(Rubygem, :count))
       end
     end
   end
