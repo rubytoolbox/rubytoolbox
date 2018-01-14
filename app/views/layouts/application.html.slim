@@ -1,18 +1,47 @@
 doctype html
-html
+html lang="en"
   head
-    title The Ruby Toolbox - Know your options!
+    title= title
     = csrf_meta_tags
 
     meta charset="utf-8"/
     meta name="viewport" content="width=device-width, initial-scale=1"/
+    meta http-equiv="x-ua-compatible" content="ie=edge"/
+    meta name="description" content=description
 
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+    link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180" /
+    link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png" /
+    link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png" /
+    link href="/favicon.ico" rel="shortcut icon"
+    link href="/manifest.json" rel="manifest" /
+    link color="#dd2b2b" href="/safari-pinned-tab.svg" rel="mask-icon" /
+    meta content=site_name name="apple-mobile-web-app-title" /
+    meta content=site_name name="application-name" /
+    meta content="#ffffff" name="theme-color" /
+
+    meta content="website" property="og:type" /
+    meta content=request.original_url property="og:url" /
+    meta content=title property="og:title" /
+    meta content=image_url("logo/box-with-padding.png") property="og:image" /
+    meta content=description property="og:description" /
+    meta content=site_name property="og:site_name" /
+    meta content="en_US" property="og:locale" /
+
+    meta content="summary" name="twitter:card" /
+    meta content="@rubytoolbox" name="twitter:site" /
+    meta content="@thedeadserious" name="twitter:creator" /
+    meta content=request.original_url name="twitter:url" /
+    meta content=title name="twitter:title" /
+    meta content=description name="twitter:description" /
+    meta content=image_url("logo/box-with-padding.png") name="twitter:image" /
+
   body
     header.section
       .container
-        = link_to "/" do
-          = image_tag "logo/regular.svg", alt: "The Ruby Toolbox - Know your options!", style: "height: 35px"
+        = link_to "/", title: title(default: true) do
+          = image_tag "logo/regular.svg", alt: title(default: true)
 
     = yield
