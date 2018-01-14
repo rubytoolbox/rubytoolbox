@@ -25,7 +25,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Fri, 05 Jan 2018 23:30:35 GMT
+      - Tue, 16 Jan 2018 20:14:42 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -37,17 +37,17 @@ http_interactions:
       X-Ratelimit-Limit:
       - '60'
       X-Ratelimit-Remaining:
-      - '59'
+      - '49'
       X-Ratelimit-Reset:
-      - '1515198635'
+      - '1516136899'
       Cache-Control:
       - public, max-age=60, s-maxage=60
       Vary:
       - Accept
       Etag:
-      - '"9831597895138b77c57b515dcf9d3420"'
+      - '"4984cbbbcbe0661a2f8928796dfc06e2"'
       Last-Modified:
-      - Wed, 03 Jan 2018 07:35:58 GMT
+      - Fri, 12 Jan 2018 04:16:38 GMT
       X-Github-Media-Type:
       - github.v3; format=json
       Access-Control-Expose-Headers:
@@ -66,14 +66,14 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Runtime-Rack:
-      - '0.039771'
+      - '0.040167'
       X-Github-Request-Id:
-      - B49D:6563:A69E33:1B9CBCA:5A500A9B
+      - 7EDC:1B97:115A12:219CC0:5A5E5D32
     body:
       encoding: UTF-8
       string: '{"id":5266284,"name":"chruby","full_name":"postmodern/chruby","owner":{"login":"postmodern","id":12671,"avatar_url":"https://avatars2.githubusercontent.com/u/12671?v=4","gravatar_id":"","url":"https://api.github.com/users/postmodern","html_url":"https://github.com/postmodern","followers_url":"https://api.github.com/users/postmodern/followers","following_url":"https://api.github.com/users/postmodern/following{/other_user}","gists_url":"https://api.github.com/users/postmodern/gists{/gist_id}","starred_url":"https://api.github.com/users/postmodern/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/postmodern/subscriptions","organizations_url":"https://api.github.com/users/postmodern/orgs","repos_url":"https://api.github.com/users/postmodern/repos","events_url":"https://api.github.com/users/postmodern/events{/privacy}","received_events_url":"https://api.github.com/users/postmodern/received_events","type":"User","site_admin":false},"private":false,"html_url":"https://github.com/postmodern/chruby","description":"Changes
-        the current Ruby","fork":false,"url":"https://api.github.com/repos/postmodern/chruby","forks_url":"https://api.github.com/repos/postmodern/chruby/forks","keys_url":"https://api.github.com/repos/postmodern/chruby/keys{/key_id}","collaborators_url":"https://api.github.com/repos/postmodern/chruby/collaborators{/collaborator}","teams_url":"https://api.github.com/repos/postmodern/chruby/teams","hooks_url":"https://api.github.com/repos/postmodern/chruby/hooks","issue_events_url":"https://api.github.com/repos/postmodern/chruby/issues/events{/number}","events_url":"https://api.github.com/repos/postmodern/chruby/events","assignees_url":"https://api.github.com/repos/postmodern/chruby/assignees{/user}","branches_url":"https://api.github.com/repos/postmodern/chruby/branches{/branch}","tags_url":"https://api.github.com/repos/postmodern/chruby/tags","blobs_url":"https://api.github.com/repos/postmodern/chruby/git/blobs{/sha}","git_tags_url":"https://api.github.com/repos/postmodern/chruby/git/tags{/sha}","git_refs_url":"https://api.github.com/repos/postmodern/chruby/git/refs{/sha}","trees_url":"https://api.github.com/repos/postmodern/chruby/git/trees{/sha}","statuses_url":"https://api.github.com/repos/postmodern/chruby/statuses/{sha}","languages_url":"https://api.github.com/repos/postmodern/chruby/languages","stargazers_url":"https://api.github.com/repos/postmodern/chruby/stargazers","contributors_url":"https://api.github.com/repos/postmodern/chruby/contributors","subscribers_url":"https://api.github.com/repos/postmodern/chruby/subscribers","subscription_url":"https://api.github.com/repos/postmodern/chruby/subscription","commits_url":"https://api.github.com/repos/postmodern/chruby/commits{/sha}","git_commits_url":"https://api.github.com/repos/postmodern/chruby/git/commits{/sha}","comments_url":"https://api.github.com/repos/postmodern/chruby/comments{/number}","issue_comment_url":"https://api.github.com/repos/postmodern/chruby/issues/comments{/number}","contents_url":"https://api.github.com/repos/postmodern/chruby/contents/{+path}","compare_url":"https://api.github.com/repos/postmodern/chruby/compare/{base}...{head}","merges_url":"https://api.github.com/repos/postmodern/chruby/merges","archive_url":"https://api.github.com/repos/postmodern/chruby/{archive_format}{/ref}","downloads_url":"https://api.github.com/repos/postmodern/chruby/downloads","issues_url":"https://api.github.com/repos/postmodern/chruby/issues{/number}","pulls_url":"https://api.github.com/repos/postmodern/chruby/pulls{/number}","milestones_url":"https://api.github.com/repos/postmodern/chruby/milestones{/number}","notifications_url":"https://api.github.com/repos/postmodern/chruby/notifications{?since,all,participating}","labels_url":"https://api.github.com/repos/postmodern/chruby/labels{/name}","releases_url":"https://api.github.com/repos/postmodern/chruby/releases{/id}","deployments_url":"https://api.github.com/repos/postmodern/chruby/deployments","created_at":"2012-08-01T23:46:08Z","updated_at":"2018-01-03T07:35:58Z","pushed_at":"2017-11-07T18:11:20Z","git_url":"git://github.com/postmodern/chruby.git","ssh_url":"git@github.com:postmodern/chruby.git","clone_url":"https://github.com/postmodern/chruby.git","svn_url":"https://github.com/postmodern/chruby","homepage":"","size":547,"stargazers_count":2098,"watchers_count":2098,"language":"Shell","has_issues":true,"has_projects":true,"has_downloads":true,"has_wiki":true,"has_pages":false,"forks_count":169,"mirror_url":null,"archived":false,"open_issues_count":73,"license":{"key":"mit","name":"MIT
-        License","spdx_id":"MIT","url":"https://api.github.com/licenses/mit"},"forks":169,"open_issues":73,"watchers":2098,"default_branch":"master","network_count":169,"subscribers_count":55}'
+        the current Ruby","fork":false,"url":"https://api.github.com/repos/postmodern/chruby","forks_url":"https://api.github.com/repos/postmodern/chruby/forks","keys_url":"https://api.github.com/repos/postmodern/chruby/keys{/key_id}","collaborators_url":"https://api.github.com/repos/postmodern/chruby/collaborators{/collaborator}","teams_url":"https://api.github.com/repos/postmodern/chruby/teams","hooks_url":"https://api.github.com/repos/postmodern/chruby/hooks","issue_events_url":"https://api.github.com/repos/postmodern/chruby/issues/events{/number}","events_url":"https://api.github.com/repos/postmodern/chruby/events","assignees_url":"https://api.github.com/repos/postmodern/chruby/assignees{/user}","branches_url":"https://api.github.com/repos/postmodern/chruby/branches{/branch}","tags_url":"https://api.github.com/repos/postmodern/chruby/tags","blobs_url":"https://api.github.com/repos/postmodern/chruby/git/blobs{/sha}","git_tags_url":"https://api.github.com/repos/postmodern/chruby/git/tags{/sha}","git_refs_url":"https://api.github.com/repos/postmodern/chruby/git/refs{/sha}","trees_url":"https://api.github.com/repos/postmodern/chruby/git/trees{/sha}","statuses_url":"https://api.github.com/repos/postmodern/chruby/statuses/{sha}","languages_url":"https://api.github.com/repos/postmodern/chruby/languages","stargazers_url":"https://api.github.com/repos/postmodern/chruby/stargazers","contributors_url":"https://api.github.com/repos/postmodern/chruby/contributors","subscribers_url":"https://api.github.com/repos/postmodern/chruby/subscribers","subscription_url":"https://api.github.com/repos/postmodern/chruby/subscription","commits_url":"https://api.github.com/repos/postmodern/chruby/commits{/sha}","git_commits_url":"https://api.github.com/repos/postmodern/chruby/git/commits{/sha}","comments_url":"https://api.github.com/repos/postmodern/chruby/comments{/number}","issue_comment_url":"https://api.github.com/repos/postmodern/chruby/issues/comments{/number}","contents_url":"https://api.github.com/repos/postmodern/chruby/contents/{+path}","compare_url":"https://api.github.com/repos/postmodern/chruby/compare/{base}...{head}","merges_url":"https://api.github.com/repos/postmodern/chruby/merges","archive_url":"https://api.github.com/repos/postmodern/chruby/{archive_format}{/ref}","downloads_url":"https://api.github.com/repos/postmodern/chruby/downloads","issues_url":"https://api.github.com/repos/postmodern/chruby/issues{/number}","pulls_url":"https://api.github.com/repos/postmodern/chruby/pulls{/number}","milestones_url":"https://api.github.com/repos/postmodern/chruby/milestones{/number}","notifications_url":"https://api.github.com/repos/postmodern/chruby/notifications{?since,all,participating}","labels_url":"https://api.github.com/repos/postmodern/chruby/labels{/name}","releases_url":"https://api.github.com/repos/postmodern/chruby/releases{/id}","deployments_url":"https://api.github.com/repos/postmodern/chruby/deployments","created_at":"2012-08-01T23:46:08Z","updated_at":"2018-01-12T04:16:38Z","pushed_at":"2017-11-07T18:11:20Z","git_url":"git://github.com/postmodern/chruby.git","ssh_url":"git@github.com:postmodern/chruby.git","clone_url":"https://github.com/postmodern/chruby.git","svn_url":"https://github.com/postmodern/chruby","homepage":"","size":547,"stargazers_count":2106,"watchers_count":2106,"language":"Shell","has_issues":true,"has_projects":true,"has_downloads":true,"has_wiki":true,"has_pages":false,"forks_count":171,"mirror_url":null,"archived":false,"open_issues_count":74,"license":{"key":"mit","name":"MIT
+        License","spdx_id":"MIT","url":"https://api.github.com/licenses/mit"},"forks":171,"open_issues":74,"watchers":2106,"default_branch":"master","network_count":171,"subscribers_count":55}'
     http_version: 
-  recorded_at: Fri, 05 Jan 2018 23:30:35 GMT
+  recorded_at: Tue, 16 Jan 2018 20:14:42 GMT
 recorded_with: VCR 4.0.0

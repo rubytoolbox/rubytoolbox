@@ -6,15 +6,19 @@ RSpec.describe RubygemUpdateJob, :real_http do
   let(:job) { described_class.new }
   let(:do_perform) { job.perform gem_name }
 
-  describe "for existing gem", vcr: { cassette_name: :rspec } do
-    let(:gem_name) { "rspec" }
+  describe "for existing gem", vcr: { cassette_name: :thread_safe_gem } do
+    let(:gem_name) { "thread_safe" }
 
     shared_examples_for "a rubygem data update" do
       it "stores the data locally" do
         do_perform
         expect(Rubygem.find(gem_name)).to have_attributes(
           description: kind_of(String),
-          downloads: (a_value > 1_000_000)
+          downloads: (a_value > 1_000_000),
+          first_release_on: (a_value > Date.new(2012, 4, 25)),
+          latest_release_on: (a_value > Date.new(2017, 2, 21)),
+          reverse_dependencies_count: (a_value > 50),
+          releases_count: (a_value > 20)
         )
       end
     end

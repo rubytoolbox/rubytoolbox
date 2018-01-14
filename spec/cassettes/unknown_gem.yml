@@ -4,15 +4,19 @@ http_interactions:
     method: get
     uri: https://rubygems.org/api/v1/gems/(foo).json
     body:
-      encoding: US-ASCII
+      encoding: UTF-8
       string: ''
     headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      User-Agent:
+      - ruby-toolbox.com API client
       Connection:
       - close
       Host:
       - rubygems.org
-      User-Agent:
-      - http.rb/2.2.2
   response:
     status:
       code: 404
@@ -21,9 +25,9 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Request-Id:
-      - 2157e20f-5b90-4a33-8ccc-012c3c1da35f
+      - 3e9d7fca-afcd-4871-b2b0-5e8c53edf0e1
       X-Runtime:
-      - '0.001416'
+      - '0.001740'
       Strict-Transport-Security:
       - max-age=0
       Content-Length:
@@ -31,26 +35,26 @@ http_interactions:
       Accept-Ranges:
       - bytes
       Date:
-      - Tue, 02 Jan 2018 19:38:54 GMT
+      - Tue, 16 Jan 2018 20:14:40 GMT
       Via:
       - 1.1 varnish
       Age:
-      - '90'
+      - '12'
       Connection:
       - close
       X-Served-By:
-      - cache-hhn1525-HHN
+      - cache-ams4448-AMS
       X-Cache:
       - HIT
       X-Cache-Hits:
       - '1'
       X-Timer:
-      - S1514921935.917655,VS0,VE0
+      - S1516133681.673714,VS0,VE0
       Server:
       - RubyGems.org
     body:
       encoding: UTF-8
       string: '{"status":404,"error":"Not Found"}'
     http_version: 
-  recorded_at: Tue, 02 Jan 2018 19:38:54 GMT
-recorded_with: VCR 3.0.3
+  recorded_at: Tue, 16 Jan 2018 20:14:40 GMT
+recorded_with: VCR 4.0.0

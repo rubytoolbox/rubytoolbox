@@ -44,9 +44,9 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - e9399dae-6d33-4f7b-a23e-2638e631c033
+      - bf7fa666-bd19-46eb-a401-745bc21be540
       X-Runtime:
-      - '0.012465'
+      - '0.017854'
       Strict-Transport-Security:
       - max-age=0
       X-Ua-Compatible:
@@ -58,7 +58,7 @@ http_interactions:
       Accept-Ranges:
       - bytes
       Date:
-      - Tue, 16 Jan 2018 20:14:41 GMT
+      - Tue, 16 Jan 2018 20:14:40 GMT
       Via:
       - 1.1 varnish
       Age:
@@ -66,13 +66,13 @@ http_interactions:
       Connection:
       - close
       X-Served-By:
-      - cache-ams4138-AMS
+      - cache-ams4122-AMS
       X-Cache:
       - MISS
       X-Cache-Hits:
       - '0'
       X-Timer:
-      - S1516133681.003206,VS0,VE195
+      - S1516133680.886561,VS0,VE186
       Vary:
       - Accept-Encoding,Fastly-SSL
       Etag:
@@ -87,7 +87,7 @@ http_interactions:
         1.1.16"},{"name":"rake","requirements":"\u003c 12.0"},{"name":"rspec","requirements":"~\u003e
         3.2"}],"runtime":[]}}'
     http_version: 
-  recorded_at: Tue, 16 Jan 2018 20:14:40 GMT
+  recorded_at: Tue, 16 Jan 2018 20:14:39 GMT
 - request:
     method: get
     uri: https://rubygems.org/api/v1/versions/thread_safe.json
@@ -142,21 +142,21 @@ http_interactions:
       Accept-Ranges:
       - bytes
       Date:
-      - Tue, 16 Jan 2018 20:14:41 GMT
+      - Tue, 16 Jan 2018 20:14:40 GMT
       Via:
       - 1.1 varnish
       Age:
-      - '15'
+      - '14'
       Connection:
       - close
       X-Served-By:
-      - cache-ams4437-AMS
+      - cache-ams4423-AMS
       X-Cache:
       - HIT
       X-Cache-Hits:
       - '1'
       X-Timer:
-      - S1516133681.287978,VS0,VE1
+      - S1516133680.166368,VS0,VE1
       Vary:
       - Accept-Encoding,Fastly-SSL
       Etag:
@@ -274,7 +274,7 @@ http_interactions:
         collection of data structures and utilities to make thread-safe programming
         in Ruby easier","platform":"ruby","rubygems_version":"\u003e= 0","ruby_version":null,"prerelease":false,"licenses":null,"requirements":null,"sha":"b1f7dfeb8bc765e421a90836c6a7e7dbe587abe238b2f660a89c6ad6e8e4975d"}]'
     http_version: 
-  recorded_at: Tue, 16 Jan 2018 20:14:40 GMT
+  recorded_at: Tue, 16 Jan 2018 20:14:39 GMT
 - request:
     method: get
     uri: https://rubygems.org/api/v1/gems/thread_safe/reverse_dependencies.json
@@ -313,9 +313,9 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - b77028e7-88b4-46a2-80cc-c491dc75d743
+      - acfe7c65-a1ef-4932-8df0-67a3f638a404
       X-Runtime:
-      - '0.030573'
+      - '0.032287'
       Strict-Transport-Security:
       - max-age=0
       X-Ua-Compatible:
@@ -327,7 +327,7 @@ http_interactions:
       Accept-Ranges:
       - bytes
       Date:
-      - Tue, 16 Jan 2018 20:14:41 GMT
+      - Tue, 16 Jan 2018 20:14:40 GMT
       Via:
       - 1.1 varnish
       Age:
@@ -335,13 +335,13 @@ http_interactions:
       Connection:
       - close
       X-Served-By:
-      - cache-ams4138-AMS
+      - cache-ams4425-AMS
       X-Cache:
       - MISS
       X-Cache-Hits:
       - '0'
       X-Timer:
-      - S1516133681.381222,VS0,VE198
+      - S1516133680.272669,VS0,VE200
       Vary:
       - Accept-Encoding,Fastly-SSL
       Etag:
@@ -352,81 +352,5 @@ http_interactions:
       encoding: UTF-8
       string: '["r4s","cache_digests","tickr_client","racing-sprockets","clasp","gemerald_beanstalk","ruby_skynet","autodeps","dskiplist","barker","memoizable","descendants_tracker","axiom-types","devise-bootstrap","devbootsrap","axiom-memory-adapter","mongoid_connection_pool","cap_proxy","jirabas","gene_pool","metrics_logger","ruby_nsq","multi_connection","brainsome_devise","postamt","devision","venet-backup","mock_dns_server","whisperer","thread_hazardous","deviseOne","aws_student_accounts","colossus","vigilem-core","pd-blender","hexx-storage","stapfen","prepor-protobuf","persie","rom-generated_id","pagseguro-transparente","smelter","faraday_persistent_excon","persistent_excon","ruby_storm","email_crawler","backup_zh","collectr","ruby-dovado","dry-data","hermann","hermann","turbot-ruby-gems","pg_helper","asciidoctor-bespoke","fluent-plugin-multiline-parser","iplan-appsignal","wet-command_bus","arkency-command_bus","fleck","sliday_backup","neo4j_legacy","rester","slack-cli","sportweb","rohbau","killbill-payu-latam","killbill-firstdata_e4","killbill-securenet","killbill-chartmogul","s3reamer","datashift","elastics","peastash","shuttle_cli","asciidoctor-htmlbook","mixture","asciidoctor-accelerated-mobile-pages","asciidoctor-instant-articles","backup-ssh","asciidoctor-epub3","docli","protobuffy","killbill-litle","killbill-stripe","wechat_client","killbill-braintree_blue","nexpose_pxgrid","killbill-payment-test","gooddata-edge","asciidoctor","asciidoctor-pdf","asciidoctor-doctest","asciidoctor-html5s","killbill-cybersource","protobuf","tzinfo","killbill-orbital","logstash-filter-metrics","logstash-filter-throttle","asciidoctor-rfc","zapnito-cli","lines-engine","killbill-paypal-express","sequent","logstash-input-syslog","asciidoctor-iso","splitclient-rb","asciidoctor-revealjs","gooddata","gooddata","logstash-input-beats","killbill","ldclient-rb","easy_translate","hu","logstash-core"]'
     http_version: 
-  recorded_at: Tue, 16 Jan 2018 20:14:41 GMT
-- request:
-    method: get
-    uri: https://api.github.com/repos/ruby-concurrency/thread_safe?client_id=&client_secret=
-    body:
-      encoding: UTF-8
-      string: ''
-    headers:
-      Content-Type:
-      - application/json
-      User-Agent:
-      - ruby-toolbox.com API client
-      Accept:
-      - application/vnd.github.v3+json
-      Connection:
-      - close
-      Host:
-      - api.github.com
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - GitHub.com
-      Date:
-      - Tue, 16 Jan 2018 20:14:42 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Content-Length:
-      - '6443'
-      Connection:
-      - close
-      Status:
-      - 200 OK
-      X-Ratelimit-Limit:
-      - '60'
-      X-Ratelimit-Remaining:
-      - '50'
-      X-Ratelimit-Reset:
-      - '1516136899'
-      Cache-Control:
-      - public, max-age=60, s-maxage=60
-      Vary:
-      - Accept
-      Etag:
-      - '"a36e762413f838b8d6d3765d762ca9f5"'
-      Last-Modified:
-      - Fri, 08 Dec 2017 22:13:51 GMT
-      X-Github-Media-Type:
-      - github.v3; format=json
-      Access-Control-Expose-Headers:
-      - ETag, Link, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
-        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
-      Access-Control-Allow-Origin:
-      - "*"
-      Content-Security-Policy:
-      - default-src 'none'
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubdomains; preload
-      X-Content-Type-Options:
-      - nosniff
-      X-Frame-Options:
-      - deny
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Runtime-Rack:
-      - '0.036687'
-      X-Github-Request-Id:
-      - 7EC9:1B97:1159B6:219C1A:5A5E5D31
-    body:
-      encoding: UTF-8
-      string: '{"id":20579727,"name":"thread_safe","full_name":"ruby-concurrency/thread_safe","owner":{"login":"ruby-concurrency","id":5462766,"avatar_url":"https://avatars3.githubusercontent.com/u/5462766?v=4","gravatar_id":"","url":"https://api.github.com/users/ruby-concurrency","html_url":"https://github.com/ruby-concurrency","followers_url":"https://api.github.com/users/ruby-concurrency/followers","following_url":"https://api.github.com/users/ruby-concurrency/following{/other_user}","gists_url":"https://api.github.com/users/ruby-concurrency/gists{/gist_id}","starred_url":"https://api.github.com/users/ruby-concurrency/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/ruby-concurrency/subscriptions","organizations_url":"https://api.github.com/users/ruby-concurrency/orgs","repos_url":"https://api.github.com/users/ruby-concurrency/repos","events_url":"https://api.github.com/users/ruby-concurrency/events{/privacy}","received_events_url":"https://api.github.com/users/ruby-concurrency/received_events","type":"Organization","site_admin":false},"private":false,"html_url":"https://github.com/ruby-concurrency/thread_safe","description":"[DEPRECATED]
-        Thread-safe collections for Ruby (merged with concurrent-ruby)","fork":false,"url":"https://api.github.com/repos/ruby-concurrency/thread_safe","forks_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/forks","keys_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/keys{/key_id}","collaborators_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/collaborators{/collaborator}","teams_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/teams","hooks_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/hooks","issue_events_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/issues/events{/number}","events_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/events","assignees_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/assignees{/user}","branches_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/branches{/branch}","tags_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/tags","blobs_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/git/blobs{/sha}","git_tags_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/git/tags{/sha}","git_refs_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/git/refs{/sha}","trees_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/git/trees{/sha}","statuses_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/statuses/{sha}","languages_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/languages","stargazers_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/stargazers","contributors_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/contributors","subscribers_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/subscribers","subscription_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/subscription","commits_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/commits{/sha}","git_commits_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/git/commits{/sha}","comments_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/comments{/number}","issue_comment_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/issues/comments{/number}","contents_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/contents/{+path}","compare_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/compare/{base}...{head}","merges_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/merges","archive_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/{archive_format}{/ref}","downloads_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/downloads","issues_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/issues{/number}","pulls_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/pulls{/number}","milestones_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/milestones{/number}","notifications_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/notifications{?since,all,participating}","labels_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/labels{/name}","releases_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/releases{/id}","deployments_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/deployments","created_at":"2014-06-06T22:13:43Z","updated_at":"2017-12-08T22:13:51Z","pushed_at":"2017-07-23T14:05:44Z","git_url":"git://github.com/ruby-concurrency/thread_safe.git","ssh_url":"git@github.com:ruby-concurrency/thread_safe.git","clone_url":"https://github.com/ruby-concurrency/thread_safe.git","svn_url":"https://github.com/ruby-concurrency/thread_safe","homepage":"http://concurrent-ruby.com","size":526,"stargazers_count":189,"watchers_count":189,"language":"Java","has_issues":true,"has_projects":true,"has_downloads":true,"has_wiki":true,"has_pages":true,"forks_count":19,"mirror_url":null,"archived":false,"open_issues_count":1,"license":{"key":"apache-2.0","name":"Apache
-        License 2.0","spdx_id":"Apache-2.0","url":"https://api.github.com/licenses/apache-2.0"},"forks":19,"open_issues":1,"watchers":189,"default_branch":"master","organization":{"login":"ruby-concurrency","id":5462766,"avatar_url":"https://avatars3.githubusercontent.com/u/5462766?v=4","gravatar_id":"","url":"https://api.github.com/users/ruby-concurrency","html_url":"https://github.com/ruby-concurrency","followers_url":"https://api.github.com/users/ruby-concurrency/followers","following_url":"https://api.github.com/users/ruby-concurrency/following{/other_user}","gists_url":"https://api.github.com/users/ruby-concurrency/gists{/gist_id}","starred_url":"https://api.github.com/users/ruby-concurrency/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/ruby-concurrency/subscriptions","organizations_url":"https://api.github.com/users/ruby-concurrency/orgs","repos_url":"https://api.github.com/users/ruby-concurrency/repos","events_url":"https://api.github.com/users/ruby-concurrency/events{/privacy}","received_events_url":"https://api.github.com/users/ruby-concurrency/received_events","type":"Organization","site_admin":false},"network_count":19,"subscribers_count":14}'
-    http_version: 
-  recorded_at: Tue, 16 Jan 2018 20:14:41 GMT
+  recorded_at: Tue, 16 Jan 2018 20:14:40 GMT
 recorded_with: VCR 4.0.0
