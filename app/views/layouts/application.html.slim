@@ -1,14 +1,17 @@
 doctype html
 html
   head
-    title The Ruby Toolbox - Know your options!
+    title= ["The Ruby Toolbox", content_for(:title).presence || "Know your options!"].join(" - ")
     = csrf_meta_tags
 
     meta charset="utf-8"/
     meta name="viewport" content="width=device-width, initial-scale=1"/
+    meta http-equiv="x-ua-compatible" content="ie=edge"/
+    meta name="description" content="Explore and compare open source Ruby libraries"
 
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
   body
     header.section
       .container
