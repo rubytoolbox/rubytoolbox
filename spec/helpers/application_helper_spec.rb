@@ -26,4 +26,31 @@ RSpec.describe ApplicationHelper, type: :helper do
       expect(helper.metric("FooBar", "", icon: "star")).to be == "<div class=\"metric\"></div>"
     end
   end
+
+  describe "#title" do
+    it "is the site name and tagline by default" do
+      expect(helper.title).to be == [helper.site_name, helper.tagline].join(" - ")
+    end
+
+    it "uses the content_for title if present and appends site name" do
+      helper.content_for(:title) { "My content" }
+      expect(helper.title).to be == ["My content", helper.site_name].join(" - ")
+    end
+
+    it "returns default title even when given when default: true" do
+      helper.content_for(:title) { "My content" }
+      expect(helper.title(default: true)).to be == [helper.site_name, helper.tagline].join(" - ")
+    end
+  end
+
+  describe "#description" do
+    it "comes from i18n by default" do
+      expect(helper.description).to be == I18n.t(:description)
+    end
+
+    it "can be customized using content_for" do
+      helper.content_for(:description) { "Some other text" }
+      expect(helper.description).to be == "Some other text"
+    end
+  end
 end

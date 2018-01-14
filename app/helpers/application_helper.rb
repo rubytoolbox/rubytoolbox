@@ -5,11 +5,23 @@ module ApplicationHelper
     render partial: "projects/metric", locals: { label: label, value: value, icon: icon }
   end
 
-  def title
-    ["The Ruby Toolbox", content_for(:title).presence || "Know your options!"].join(" - ")
+  def site_name
+    t(:name)
+  end
+
+  def tagline
+    t(:tagline)
+  end
+
+  def title(default: false)
+    if !default && content_for(:title).present?
+      [content_for(:title), site_name].join(" - ")
+    else
+      [site_name, tagline].join(" - ")
+    end
   end
 
   def description
-    content_for(:description).presence || "Explore and compare open source Ruby libraries"
+    content_for(:description).presence || t(:description)
   end
 end

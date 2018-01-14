@@ -18,8 +18,8 @@ html lang="en"
     link href="/favicon.ico" rel="shortcut icon"
     link href="/manifest.json" rel="manifest" /
     link color="#dd2b2b" href="/safari-pinned-tab.svg" rel="mask-icon" /
-    meta content="The Ruby Toolbox" name="apple-mobile-web-app-title" /
-    meta content="The Ruby Toolbox" name="application-name" /
+    meta content=site_name name="apple-mobile-web-app-title" /
+    meta content=site_name name="application-name" /
     meta content="#ffffff" name="theme-color" /
 
     meta content="website" property="og:type" /
@@ -27,7 +27,7 @@ html lang="en"
     meta content=title property="og:title" /
     meta content=image_url("logo/box-with-padding.png") property="og:image" /
     meta content=description property="og:description" /
-    meta content="The Ruby Toolbox" property="og:site_name" /
+    meta content=site_name property="og:site_name" /
     meta content="en_US" property="og:locale" /
 
     meta content="summary" name="twitter:card" /
@@ -38,11 +38,10 @@ html lang="en"
     meta content=description name="twitter:description" /
     meta content=image_url("logo/box-with-padding.png") name="twitter:image" /
 
-
   body
     header.section
       .container
-        = link_to "/" do
-          = image_tag "logo/regular.svg", alt: "The Ruby Toolbox - Know your options!", style: "height: 35px"
+        = link_to "/", title: title(default: true) do
+          = image_tag "logo/regular.svg", alt: title(default: true)
 
     = yield
