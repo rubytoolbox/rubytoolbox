@@ -3,18 +3,18 @@
 .hero
   section.section: .container
     .columns
-      .column
+      .column.is-6-mobile
         p.heading Project
         h2
           // Note that rails url helpers escape slashes (as seen in github-based projects) and this breaks.
           a href="/projects/#{@project.permalink}"
             = @project.permalink
-      .column.has-text-right
-        p.score
+      .meta
+        .score
           span.icon
             i.fa.fa-flask
           span= @project.score
-        p.categories
+        .categories
           ul
             - @project.categories.each do |category|
               li

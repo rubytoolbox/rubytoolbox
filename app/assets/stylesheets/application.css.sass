@@ -59,6 +59,17 @@ header.section
   h2
     @extend .is-size-2, .is-size-3-mobile
 
+  .columns
+    display: flex
+  .meta
+    @extend .column, .is-size-5, .has-text-right
+  .description
+    @extend .is-size-5, .is-size-6-mobile, .has-text-grey-dark
+  .categories
+    margin-top: 0.75rem
+    a
+      @extend .button, .is-light
+
 .category-group
   @extend .column, .is-half
   h3
@@ -71,14 +82,15 @@ header.section
   a.button
     @extend .is-white, .is-fullwidth, .is-inline-block, .has-text-left
 
-.score
-  @extend .is-size-5, .has-text-right
 
 .project
   header
     @extend .columns, .is-mobile
     h3
       @extend .column, .is-size-4
+
+  .score
+    @extend .is-size-5, .has-text-right
 
   .description
     @extend .has-text-grey
