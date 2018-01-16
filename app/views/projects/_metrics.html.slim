@@ -8,3 +8,14 @@
     = metric "Stars", project.github_repo_stargazers_count, icon: "star"
     = metric "Forks", project.github_repo_forks_count, icon: "code-fork"
     = metric "Watchers", project.github_repo_watchers_count, icon: "eye"
+
+- if project.rubygem_releases_count
+  .metrics
+    .label
+      span &nbsp;
+      strong
+        | Releases
+    .column: .metrics
+      = metric "Total releases", project.rubygem_releases_count, icon: "archive"
+      = metric "First release", project.rubygem_first_release_on, icon: "file-o"
+      = metric "Latest release", project.rubygem_latest_release_on, icon: "file-text-o"

@@ -26,6 +26,9 @@ class Project < ApplicationRecord
 
   delegate :description,
            :downloads,
+           :first_release_on,
+           :latest_release_on,
+           :releases_count,
            to: :rubygem,
            allow_nil: true,
            prefix: :rubygem
