@@ -14,6 +14,11 @@ RSpec.describe Cron, type: :service do
     cron.run time: time_at(rand(24))
   end
 
+  it "queues CatalogImportJob every hour" do
+    expect(CatalogImportJob).to receive(:perform_async)
+    cron.run time: time_at(rand(24))
+  end
+
   it "enqueues RubygemsSyncJob at 0 am" do
     expect(RubygemsSyncJob).to receive(:perform_async)
     cron.run time: time_at(0)

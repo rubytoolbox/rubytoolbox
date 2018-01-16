@@ -8,6 +8,7 @@
 class Cron
   def run(time: Time.current.utc)
     RemoteUpdateSchedulerJob.perform_async
+    CatalogImportJob.perform_async
 
     case time.hour
     when 0
