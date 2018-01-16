@@ -1,0 +1,51 @@
+# frozen_string_literal: true
+
+require "rails_helper"
+
+RSpec.describe CatalogImportJob, type: :job do
+  let(:job) { described_class.new }
+
+  describe "#perform" do
+    let(:catalog_body) { Rails.root.join("lib", "base-catalog.json").read }
+
+    def stub_response(status: 200)
+      response = HTTP::Response.new(
+        status: status,
+        body: catalog_body,
+        version: "1.1"
+      )
+      allow(job.http_client).to receive(:get).with(job.catalog_url).and_return(response)
+    end
+
+    it "fetches the catalog" do
+      response = HTTP::Response.new(
+        status: 200,
+        body: catalog_body,
+        version: "1.1"
+      )
+      expect(job.http_client).to receive(:get).with(job.catalog_url)
+                                              .and_return(response)
+      job.perform
+    end
+
+    it "raises an error when fetching fails" do
+      stub_response status: 502
+      expect { job.perform }.to raise_error(/response status was 502/)
+    end
+
+    it "passes the parsed body to the import" do
+      stub_response
+      import_double = instance_double CatalogImport, perform: nil
+      expect(CatalogImport).to receive(:new).with(JSON.parse(catalog_body)).and_return(import_double)
+      job.perform
+    end
+
+    it "performs the import" do
+      stub_response
+      import_double = instance_double CatalogImport, perform: nil
+      allow(CatalogImport).to receive(:new).and_return(import_double)
+      expect(import_double).to receive(:perform)
+      job.perform
+    end
+  end
+end
