@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 
 class CatalogImport
+  # A shorthand for `new(data).perform`, mostly to ease
+  # spec call assertions
+  def self.perform(catalog_data)
+    new(catalog_data).perform
+  end
+
   attr_accessor :catalog_data
   private :catalog_data=
 

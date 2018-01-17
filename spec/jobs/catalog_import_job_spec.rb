@@ -33,18 +33,9 @@ RSpec.describe CatalogImportJob, type: :job do
       expect { job.perform }.to raise_error(/response status was 502/)
     end
 
-    it "passes the parsed body to the import" do
+    it "passes the parsed body to CatalogImport.perform" do
       stub_response
-      import_double = instance_double CatalogImport, perform: nil
-      expect(CatalogImport).to receive(:new).with(JSON.parse(catalog_body)).and_return(import_double)
-      job.perform
-    end
-
-    it "performs the import" do
-      stub_response
-      import_double = instance_double CatalogImport, perform: nil
-      allow(CatalogImport).to receive(:new).and_return(import_double)
-      expect(import_double).to receive(:perform)
+      expect(CatalogImport).to receive(:perform).with(JSON.parse(catalog_body))
       job.perform
     end
   end
