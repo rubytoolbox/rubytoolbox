@@ -42,6 +42,64 @@
       }
     }
 
+"https://rubygems.org/api/v1/gems/rspec/reverse_dependencies.json":
+  status: 200
+  body: |
+    ["rspec-fixture", "rspec-file-transfer-matchers", "rkid", "rbehave", "quicktest", "picolena"]
+
+"https://rubygems.org/api/v1/versions/rspec.json":
+  status: 200
+  body: |
+    [{
+      "authors": "Steven Baker, David Chelimsky, Myron Marston",
+      "built_at": "2017-10-17T00:00:00.000Z",
+      "created_at": "2017-10-17T15:12:32.872Z",
+      "description": "BDD for Ruby",
+      "downloads_count": 23558708,
+      "metadata": {},
+      "number": "3.7.0",
+      "summary": "rspec-3.7.0",
+      "platform": "ruby",
+      "rubygems_version": "\u003e= 0",
+      "ruby_version": "\u003e= 0",
+      "prerelease": false,
+      "licenses": ["MIT"],
+      "requirements": [],
+      "sha": "0174cfbed780e42aa181227af623e2ae37511f20a2fdfec48b54f6cf4d7a6404"
+    }, {
+      "authors": "Steven Baker, David Chelimsky, Myron Marston",
+      "built_at": "2017-05-04T00:00:00.000Z",
+      "created_at": "2017-05-04T23:58:19.430Z",
+      "description": "BDD for Ruby",
+      "downloads_count": 41425604,
+      "metadata": {},
+      "number": "3.6.0",
+      "summary": "rspec-3.6.0",
+      "platform": "ruby",
+      "rubygems_version": "\u003e= 0",
+      "ruby_version": "\u003e= 0",
+      "prerelease": false,
+      "licenses": ["MIT"],
+      "requirements": [],
+      "sha": "ebc3d479cf2f144b3deef5d72dbb1cc6a15750899d26a8da164a2cc53c04a5d9"
+    }, {
+      "authors": "Steven Baker",
+      "built_at": "2005-08-11T04:00:00.000Z",
+      "created_at": "2009-07-25T17:56:49.000Z",
+      "description": "RSpec is a behaviour specification framework for Ruby.  RSpec was created in response to Dave Astels' article _A New Look at Test Driven Development_ which can be read at: http://daveastels.com/index.php?p=5  RSpec is intended to provide the features discussed in Dave's article.",
+      "downloads_count": 2298,
+      "metadata": {},
+      "number": "0.1.0",
+      "summary": "Behaviour Specification Framework for Ruby",
+      "platform": "ruby",
+      "rubygems_version": "\u003e= 0",
+      "ruby_version": null,
+      "prerelease": false,
+      "licenses": null,
+      "requirements": null,
+      "sha": "b59c1eb10f74c00b28cdb771618814a863bbfaa5a92314d92868c59850720300"
+    }]
+
 "https://rubygems.org/api/v1/gems/thisisdowninmock.json":
   status: 500
 

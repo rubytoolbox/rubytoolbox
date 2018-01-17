@@ -21,6 +21,10 @@ RSpec.describe RubygemUpdateJob, type: :job do
         name: "rspec",
         source_code_url: "http://github.com/rspec/rspec",
         wiki_url: nil,
+        first_release_on: Date.new(2005, 8, 11),
+        latest_release_on: Date.new(2017, 10, 17),
+        releases_count: 3,
+        reverse_dependencies_count: 6,
       }
     end
 

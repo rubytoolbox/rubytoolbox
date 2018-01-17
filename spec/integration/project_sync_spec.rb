@@ -4,19 +4,19 @@ require "rails_helper"
 
 RSpec.describe "Full Project Sync", :real_http, :sidekiq_inline do
   describe "for Rubygem-based projects", vcr: { cassette_name: "full-project-sync-from-gem" } do
-    let(:do_perform) { RubygemUpdateJob.perform_async "rspec" }
+    let(:do_perform) { RubygemUpdateJob.perform_async "thread_safe" }
 
     it "creates the project" do
-      expect { do_perform }.to change { Project.where(permalink: "rspec").count }.from(0).to(1)
+      expect { do_perform }.to change { Project.where(permalink: "thread_safe").count }.from(0).to(1)
     end
 
     it "assigns the expected attributes to the resulting project" do
       do_perform
-      expect(Project.find("rspec")).to have_attributes(
-        rubygem_name: "rspec",
-        github_repo_path: "rspec/rspec",
-        github_repo_stargazers_count: (a_value > 1500),
-        github_repo_forks_count: (a_value > 100),
+      expect(Project.find("thread_safe")).to have_attributes(
+        rubygem_name: "thread_safe",
+        github_repo_path: "ruby-concurrency/thread_safe",
+        github_repo_stargazers_count: (a_value > 100),
+        github_repo_forks_count: (a_value > 10),
         rubygem_downloads: (a_value > 10_000_000),
         score: 100.0
       )
