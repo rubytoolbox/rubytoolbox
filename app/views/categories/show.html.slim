@@ -10,20 +10,4 @@
 section.section: .container: .columns
   .projects
     - @category.projects.each do |project|
-      .project.box
-        header
-          h3.is-size-4
-            // Note that rails url helpers escape slashes (as seen in github-based projects) and this breaks.
-            a href="/projects/#{project.permalink}"
-              = project.permalink
-          .column: .score
-            span.icon
-              i.fa.fa-flask
-            span= project.score
-
-        .columns: .links.column
-          = render partial: "projects/links", locals: { project: project }
-
-        .columns: .description.column= project.description
-
-        = render partial: "projects/metrics", locals: { project: project }
+      = render project
