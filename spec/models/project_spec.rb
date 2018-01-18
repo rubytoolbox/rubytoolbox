@@ -11,6 +11,22 @@ RSpec.describe Project, type: :model do
     )
   end
 
+  describe ".search" do
+    it "can find a matching project" do
+      expected = Project.create! permalink: "widgets", score: 1
+      Project.create! permalink: "airplanes", score: 1
+      Project.create! permalink: "rockets", score: 1
+
+      expect(Project.search("widget")).to be == [expected]
+    end
+
+    it "does not return projects without a score" do
+      expected = Project.create! permalink: "somethingelse", score: 1, description: "Provides amazing widgets"
+      Project.create! permalink: "widgets"
+      expect(Project.search("widget")).to be == [expected]
+    end
+  end
+
   describe "#github_only?" do
     it "is false when no / is present in permalink" do
       expect(Project.new(permalink: "foobar")).not_to be_github_only

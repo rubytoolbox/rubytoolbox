@@ -12,7 +12,7 @@ section.section: .container: .columns
           span Search
 
 section.section: .container: .columns
-  - if @projects.any?
+  - if @projects&.any?
     .projects
       - @projects.each do |project|
         = render project
