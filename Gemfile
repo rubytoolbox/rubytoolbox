@@ -13,6 +13,7 @@ end
 gem "rails", "~> 5.1.4"
 
 # Use postgresql as the database for Active Record
+gem "hairtrigger"
 gem "pg", "~> 0.18"
 gem "pg_search"
 

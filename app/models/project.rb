@@ -25,10 +25,20 @@ class Project < ApplicationRecord
              inverse_of:  :projects
 
   include PgSearch
-  pg_search_scope :search, against: { permalink: "A", description: "C" },
-                           using: %i[tsearch],
-                           # Project.where.not(score: nil).search("ruby on rails").limit(10).pluck(:permalink)
-                           ranked_by: ":tsearch * #{table_name}.score"
+  pg_search_scope :search_scope,
+                  against: { permalink_tsvector: "A", description_tsvector: "C" },
+                  using: {
+                    tsearch: {
+                      tsvector_column: %w[permalink_tsvector description_tsvector],
+                      prefix: true,
+                      dictionary: "simple",
+                    },
+                  },
+                  ranked_by: ":tsearch * (#{table_name}.score + 1)"
+
+  def self.search(query)
+    Project.where.not(score: nil).search_scope(query)
+  end
 
   delegate :current_version,
            :description,
