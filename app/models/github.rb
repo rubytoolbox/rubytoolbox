@@ -15,4 +15,8 @@ module Github
 
     nil
   end
+
+  def self.normalize_path(repo_path)
+    repo_path.presence&.downcase&.strip
+  end
 end
