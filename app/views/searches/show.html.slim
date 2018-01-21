@@ -2,14 +2,15 @@
   - content_for :title, "Search results for '#{h(@query)}'".html_safe
 
 section.section: .container: .columns
-  = form_tag search_path, method: :get do
-    .field.has-addons.has-addons-centered
-      .control.is-expanded
-        input.input.is-medium placeholder="Search" type="text" name="query" value=@query
-      .control
-        a.button.is-info.is-medium
-          span.icon: i.fa.fa-search
-          span Search
+  .column
+    = form_tag search_path, method: :get do
+      .field.has-addons.has-addons-centered
+        .control.is-expanded
+          input.input.is-medium placeholder="Search" type="text" name="query" value=@query
+        .control
+          a.button.is-medium
+            span.icon: i.fa.fa-search
+            span Search
 
 section.section: .container: .columns
   - if @projects&.any?

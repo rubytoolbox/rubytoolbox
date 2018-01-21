@@ -24,6 +24,8 @@ class Project < ApplicationRecord
              optional:    true,
              inverse_of:  :projects
 
+  scope :includes_associations, -> { includes(:github_repo, :rubygem, :categories) }
+
   include PgSearch
   pg_search_scope :search_scope,
                   against: { permalink_tsvector: "A", description_tsvector: "C" },
@@ -37,7 +39,7 @@ class Project < ApplicationRecord
                   ranked_by: ":tsearch * (#{table_name}.score + 1)"
 
   def self.search(query)
-    Project.where.not(score: nil).search_scope(query)
+    Project.where.not(score: nil).includes_associations.search_scope(query)
   end
 
   delegate :current_version,
@@ -71,7 +73,7 @@ class Project < ApplicationRecord
            prefix: :github_repo
 
   def self.find_for_show!(permalink)
-    includes(:github_repo, :rubygem, :categories).find(permalink)
+    includes_associations.find(permalink)
   end
 
   def permalink=(permalink)
