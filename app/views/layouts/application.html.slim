@@ -39,9 +39,22 @@ html lang="en"
     meta content=image_url("logo/box-with-padding.png") name="twitter:image" /
 
   body
-    header.section
-      .container
-        = link_to "/", title: title(default: true) do
-          = image_tag "logo/regular.svg", alt: title(default: true)
+    header.section: .container
+      nav.level.is-mobile
+        .level-left
+          .level-item
+            = link_to "/", title: title(default: true) do
+              = image_tag "logo/regular.svg", alt: title(default: true)
+        .level-right
+          .search-form.level-item
+            = form_tag search_path, method: :get do
+              .field.has-addons.has-addons-centered
+                .control
+                  input.input placeholder="Search" type="text" name="q" value=@query
+                .control
+                  a.button
+                    span.icon: i.fa.fa-search
+                    span Search
+
 
     = yield

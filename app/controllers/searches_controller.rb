@@ -2,7 +2,7 @@
 
 class SearchesController < ApplicationController
   def show
-    @query = params[:query].presence
-    @projects = Project.search(params[:query]).limit(20) if @query
+    @query = params[:q].presence
+    @projects = Project.search(@query).limit(20) if @query
   end
 end
