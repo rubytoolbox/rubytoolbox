@@ -16,6 +16,7 @@
       strong
         | Releases
     .column: .metrics
+      = metric "Current version", project.rubygem_current_version, icon: "diamond"
       = metric "Total releases", project.rubygem_releases_count, icon: "archive"
       = metric "First release", project.rubygem_first_release_on, icon: "file-o"
       = metric "Latest release", project.rubygem_latest_release_on, icon: "file-text-o"
