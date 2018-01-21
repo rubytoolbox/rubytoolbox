@@ -24,7 +24,8 @@ class Project < ApplicationRecord
              optional:    true,
              inverse_of:  :projects
 
-  delegate :description,
+  delegate :current_version,
+           :description,
            :downloads,
            :first_release_on,
            :latest_release_on,
