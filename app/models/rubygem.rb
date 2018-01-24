@@ -15,4 +15,12 @@ class Rubygem < ApplicationRecord
       .limit((count / 24.0).ceil)
       .pluck(:name)
   end
+
+  def url
+    File.join "https://rubygems.org/gems", name
+  end
+
+  def documentation_url
+    super.presence || File.join("http://www.rubydoc.info/gems", name, "frames")
+  end
 end

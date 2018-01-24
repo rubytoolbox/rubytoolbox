@@ -19,4 +19,16 @@ class GithubRepo < ApplicationRecord
   def path=(path)
     super path&.downcase&.strip
   end
+
+  def url
+    File.join "https://github.com", path
+  end
+
+  def issues_url
+    File.join(url, "issues") if has_issues?
+  end
+
+  def wiki_url
+    File.join(url, "wiki") if has_wiki?
+  end
 end
