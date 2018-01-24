@@ -26,6 +26,24 @@
 
     .description= @project.description
 
-
 section.section: .container: .project
+  .columns
+    .column
+        p.menu-label Project
+        ul.menu-list
+          = project_link "Rubygem", @project.rubygem_url, icon: :diamond
+          = project_link "Github Repo", @project.github_repo_url, icon: :github
+
+    .column
+      aside.menu
+        p.menu-label Links
+        ul.menu-list
+          = project_link "Homepage", @project.homepage_url, icon: :home
+          = project_link "Documentation", @project.documentation_url, icon: :book
+          = project_link "Source Code", @project.source_code_url, icon: "code-fork"
+          = project_link "Bug Tracker", @project.bug_tracker_url, icon: :bug
+          = project_link "Changelog", @project.changelog_url, icon: "file-text-o"
+          = project_link "Mailing List", @project.mailing_list_url, icon: :envelope
+          = project_link "Wiki", @project.wiki_url, icon: "pencil-square"
+
   = render partial: "projects/metrics", locals: { project: @project }

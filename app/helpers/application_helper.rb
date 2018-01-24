@@ -5,6 +5,10 @@ module ApplicationHelper
     render partial: "projects/metric", locals: { label: label, value: value, icon: icon }
   end
 
+  def project_link(label, url, icon:)
+    render partial: "projects/link", locals: { label: label, url: url, icon: icon }
+  end
+
   def site_name
     t(:name)
   end
