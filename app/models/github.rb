@@ -15,4 +15,10 @@ module Github
 
     nil
   end
+
+  def self.normalize_path(repo_path)
+    return unless repo_path.presence
+    return repo_path unless repo_path.include? "/"
+    repo_path.presence&.downcase&.strip
+  end
 end
