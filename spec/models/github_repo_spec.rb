@@ -33,7 +33,35 @@ RSpec.describe GithubRepo, type: :model do
 
   describe "#path=" do
     it "normalizes the path to the stripped, downcase variant" do
-      expect(GithubRepo.new(path: " FoO/BaR ").path).to be == "foo/bar"
+      expect(described_class.new(path: " FoO/BaR ").path).to be == "foo/bar"
+    end
+  end
+
+  describe "#url" do
+    it "is derived from the repo path" do
+      expect(described_class.new(path: "foo/bar").url).to be == "https://github.com/foo/bar"
+    end
+  end
+
+  describe "#wiki_url" do
+    it "is nil when has_wiki is false" do
+      expect(described_class.new(has_wiki: false).wiki_url).to be_nil
+    end
+
+    it "is derived from repo path when has_wiki is true" do
+      expected_url = "https://github.com/foo/bar/wiki"
+      expect(described_class.new(path: "foo/bar", has_wiki: true).wiki_url).to be == expected_url
+    end
+  end
+
+  describe "#issues_url" do
+    it "is nil when has_issues is false" do
+      expect(described_class.new(has_issues: false).issues_url).to be_nil
+    end
+
+    it "is derived from repo path when has_issues is true" do
+      expected_url = "https://github.com/foo/bar/issues"
+      expect(described_class.new(path: "foo/bar", has_issues: true).issues_url).to be == expected_url
     end
   end
 end

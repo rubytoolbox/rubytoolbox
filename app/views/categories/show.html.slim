@@ -21,7 +21,9 @@ section.section: .container: .columns
               i.fa.fa-flask
             span= project.score
 
-        .columns: .column.description
-          = project.description
+        .columns: .links.column
+          = render partial: "projects/links", locals: { project: project }
+
+        .columns: .description.column= project.description
 
         = render partial: "projects/metrics", locals: { project: project }

@@ -38,6 +38,7 @@ $text: #222
 @import "bulma/sass/base/_all"
 @import "bulma/sass/grid/_all"
 @import "bulma/sass/layout/_all"
+@import "bulma/sass/components/menu"
 @import "bulma/sass/elements/box"
 @import "bulma/sass/elements/button"
 @import "bulma/sass/elements/container"
@@ -59,10 +60,8 @@ header.section
   h2
     @extend .is-size-2, .is-size-3-mobile
 
-  .columns
-    display: flex
   .meta
-    @extend .column, .is-size-5, .has-text-right
+    @extend .column, .is-size-5, .is-size-6-mobile, .is-narrow-tablet, .has-text-right-tablet
   .description
     @extend .is-size-5, .is-size-6-mobile, .has-text-grey-dark
   .categories

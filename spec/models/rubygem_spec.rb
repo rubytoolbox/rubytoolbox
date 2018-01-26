@@ -22,4 +22,21 @@ RSpec.describe Rubygem, type: :model do
       expect(described_class.update_batch).to match %w[outdated1 outdated2]
     end
   end
+
+  describe "#url" do
+    it "is derived from the gem name" do
+      expect(Rubygem.new(name: "foobar").url).to be == "https://rubygems.org/gems/foobar"
+    end
+  end
+
+  describe "#documentation_url" do
+    it "is the gem's documentation_url if set" do
+      url = "https://api.rubyonrails.org"
+      expect(Rubygem.new(documentation_url: url).documentation_url).to be == url
+    end
+
+    it "falls back to rubydoc.info if not set in gem metadata" do
+      expect(Rubygem.new(name: "rails").documentation_url).to be == "http://www.rubydoc.info/gems/rails/frames"
+    end
+  end
 end

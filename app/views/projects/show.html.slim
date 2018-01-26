@@ -1,31 +1,33 @@
 - content_for :title, "Project: #{@project.permalink}"
 
-.hero
-  section.section: .container
-    .columns
-      .column.is-6-mobile
-        p.heading Project
-        h2
-          // Note that rails url helpers escape slashes (as seen in github-based projects) and this breaks.
-          a href="/projects/#{@project.permalink}"
-            = @project.permalink
-      .meta
-        .score
-          span.icon
-            i.fa.fa-flask
-          span= @project.score
-        .categories
-          ul
-            - @project.categories.each do |category|
-              li
-                .control
-                  a href=category_path(category)
-                    span.icon: i.fa.fa-folder
-                    span= category.name
+.hero: section.section: .container
+  .columns
+    .column
+      p.heading Project
+      h2
+        // Note that rails url helpers escape slashes (as seen in github-based projects) and this breaks.
+        a href="/projects/#{@project.permalink}"
+          = @project.permalink
 
+    .meta
+      .score
+        span.icon
+          i.fa.fa-flask
+        span= @project.score
+      .categories
+        ul
+          - @project.categories.each do |category|
+            li
+              .control
+                a href=category_path(category)
+                  span.icon: i.fa.fa-folder
+                  span= category.name
 
-    .description= @project.description
+  .columns: .links.column
+    = render partial: "projects/links", locals: { project: @project }
 
+  .columns: .description.column= @project.description
 
 section.section: .container: .project
+
   = render partial: "projects/metrics", locals: { project: @project }

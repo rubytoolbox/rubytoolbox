@@ -26,18 +26,30 @@ class Project < ApplicationRecord
 
   delegate :current_version,
            :description,
+           :documentation_url,
            :downloads,
            :first_release_on,
+           :homepage_url,
+           :source_code_url,
            :latest_release_on,
            :releases_count,
+           :mailing_list_url,
+           :changelog_url,
+           :wiki_url,
+           :bug_tracker_url,
+           :url,
            to: :rubygem,
            allow_nil: true,
            prefix: :rubygem
 
   delegate :stargazers_count,
            :forks_count,
+           :homepage_url,
            :watchers_count,
            :description,
+           :wiki_url,
+           :issues_url,
+           :url,
            to: :github_repo,
            allow_nil: true,
            prefix: :github_repo
@@ -56,5 +68,25 @@ class Project < ApplicationRecord
 
   def github_repo_path=(github_repo_path)
     super github_repo_path&.downcase&.strip
+  end
+
+  alias documentation_url rubygem_documentation_url
+  alias changelog_url rubygem_changelog_url
+  alias mailing_list_url rubygem_mailing_list_url
+
+  def source_code_url
+    rubygem_source_code_url || github_repo_url
+  end
+
+  def homepage_url
+    rubygem_homepage_url || github_repo_homepage_url
+  end
+
+  def wiki_url
+    rubygem_wiki_url || github_repo_wiki_url
+  end
+
+  def bug_tracker_url
+    rubygem_bug_tracker_url || github_repo_issues_url
   end
 end
