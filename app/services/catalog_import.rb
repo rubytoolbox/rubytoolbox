@@ -29,7 +29,15 @@ class CatalogImport
   end
 
   def category_data
-    @category_data ||= category_group_data.map { |g| g["categories"] }.flatten
+    @category_data ||= begin
+      flattened = category_group_data.map { |g| g["categories"] }.flatten
+      # Since we compare the normalized github repos against the de-normalized
+      # permalinks in the upstream catalog, we need to ensure those are matching.
+      flattened.map do |category|
+        category["projects"].map! { |p| Github.normalize_path(p) }
+        category
+      end
+    end
   end
 
   def project_data
@@ -58,7 +66,7 @@ class CatalogImport
                                   description: category_data["description"],
                                   category_group: group
 
-      upsert_projects category_data["projects"]
+      upsert_github_projects category_data["projects"]
     end
   end
 
@@ -67,15 +75,24 @@ class CatalogImport
     obsolete_categories.each { |permalink| Category.find(permalink).destroy }
   end
 
-  def upsert_projects(projects)
+  #
+  # Rubygems-based projects are created automatically whenever a newly added
+  # gem is synced via the regular sync background jobs. Github projects
+  # are only created when they are referenced in the catalog - hence,
+  # we must deal with adding them here.
+  #
+  def upsert_github_projects(projects)
     projects.each do |project|
+      next unless project.include? "/"
       Project.find_or_initialize_by(permalink: project).save!
     end
   end
 
   def link_projects_to_categories
     project_data.each do |project_permalink|
-      Project.find(project_permalink).update_attributes! categories: categories_for_project_permalink(project_permalink)
+      project = Project.find_by(permalink: Github.normalize_path(project_permalink))
+      next unless project
+      project.update_attributes! categories: categories_for_project_permalink(project_permalink)
     end
   end
 

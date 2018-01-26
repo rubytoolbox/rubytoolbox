@@ -58,6 +58,10 @@ class Project < ApplicationRecord
     includes(:github_repo, :rubygem, :categories).find(permalink)
   end
 
+  def permalink=(permalink)
+    super Github.normalize_path(permalink)
+  end
+
   def github_only?
     permalink.include? "/"
   end

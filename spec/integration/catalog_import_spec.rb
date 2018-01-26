@@ -7,9 +7,14 @@ RSpec.describe CatalogImport do
 
   let(:category_data) { catalog_data["category_groups"].map { |g| g["categories"] }.flatten }
 
-  let(:project_permalinks) { category_data.map { |c| c["projects"] } .flatten.uniq }
+  let(:project_permalinks) { %w[clockwork sidekiq swirrl/taskit willian/has_paginate] }
 
   let(:import) { described_class.new(catalog_data) }
+
+  before do
+    Project.create! permalink: "clockwork"
+    Project.create! permalink: "sidekiq"
+  end
 
   describe "perform" do
     it "creates all category groups" do
@@ -54,9 +59,6 @@ RSpec.describe CatalogImport do
         .to have_attributes sample_data.slice("name", "permalink", "description")
     end
 
-    it "assigns categories to their group" do
-    end
-
     it "removes obsolete categories" do
       import.perform
 
@@ -67,8 +69,8 @@ RSpec.describe CatalogImport do
       expect { import.perform }.to change { Category.find_by(permalink: obsolete_category.permalink) }.to(nil)
     end
 
-    it "creates all projects" do
-      expect { import.perform }.to change(Project, :count).to(project_permalinks.count)
+    it "creates all missing github-based projects" do
+      expect { import.perform }.to change(Project, :count).by(2)
     end
 
     it "results in expected set of projects" do

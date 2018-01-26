@@ -28,6 +28,8 @@ RSpec.describe Github, type: :model do
       "foo/bar" => "foo/bar",
       " foo/bar " => "foo/bar",
       "Foo/bar" => "foo/bar",
+      "foobar" => "foobar",
+      "FooBar" => "FooBar",
     }.each do |path, expected_normalized|
       it "is #{expected_normalized.inspect} when given #{path.inspect}" do
         expect(Github.normalize_path(path)).to be == expected_normalized

@@ -32,7 +32,7 @@ RSpec.describe Project, type: :model do
     end
   end
 
-  describe "#path=" do
+  describe "#github_repo_path=" do
     it "normalizes the path to the stripped, downcase variant" do
       expect(Project.new(github_repo_path: " FoO/BaR ").github_repo_path).to be == "foo/bar"
     end
@@ -118,6 +118,16 @@ RSpec.describe Project, type: :model do
         project.rubygem.bug_tracker_url = nil
         expect(project.bug_tracker_url).to be == project.github_repo_issues_url
       end
+    end
+  end
+
+  describe "permalink=" do
+    it "normalizes the permalink to the stripped, downcase variant for github repo" do
+      expect(Project.new(permalink: " FoO/BaR ").permalink).to be == "foo/bar"
+    end
+
+    it "does not normalize the permalink for non-github project" do
+      expect(Project.new(permalink: "FoOBaR").permalink).to be == "FoOBaR"
     end
   end
 end
