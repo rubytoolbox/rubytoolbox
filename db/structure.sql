@@ -146,7 +146,6 @@ CREATE TABLE projects (
     rubygem_name character varying,
     github_repo_path character varying,
     score numeric(5,2),
-    description text,
     CONSTRAINT check_project_permalink_and_rubygem_name_parity CHECK (((rubygem_name IS NULL) OR ((rubygem_name)::text = (permalink)::text)))
 );
 
@@ -337,7 +336,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180103194335'),
 ('20180103233845'),
 ('20180104223026'),
-('20180105234511'),
-('20180114223052');
+('20180114223052'),
+('20180126213034');
 
 
