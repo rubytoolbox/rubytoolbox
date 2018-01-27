@@ -13,6 +13,7 @@ RSpec.describe CatalogImport do
 
   before do
     Project.create! permalink: "clockwork"
+    Project.create! permalink: "swirrl/taskit"
     Project.create! permalink: "sidekiq"
   end
 
@@ -69,8 +70,8 @@ RSpec.describe CatalogImport do
       expect { import.perform }.to change { Category.find_by(permalink: obsolete_category.permalink) }.to(nil)
     end
 
-    it "creates all missing github-based projects" do
-      expect { import.perform }.to change(Project, :count).by(2)
+    it "creates missing github-based project" do
+      expect { import.perform }.to change(Project, :count).by(1)
     end
 
     it "results in expected set of projects" do
