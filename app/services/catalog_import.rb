@@ -83,8 +83,9 @@ class CatalogImport
   #
   def upsert_github_projects(projects)
     projects.each do |project|
-      next unless project.include? "/"
-      Project.find_or_initialize_by(permalink: project).save!
+      normalized_path = Github.normalize_path(project)
+      next if !project.include?("/") || Project.find_by(permalink: normalized_path)
+      Project.create! permalink: normalized_path
     end
   end
 
