@@ -1,0 +1,5 @@
+.buttons
+  - categories.each do |category|
+      a.button.is-light href=category_path(category)
+        span.icon: i.fa.fa-folder
+        span= category.name

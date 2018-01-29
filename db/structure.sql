@@ -35,6 +35,48 @@ COMMENT ON EXTENSION pg_stat_statements IS 'track execution statistics of all SQ
 
 SET search_path = public, pg_catalog;
 
+--
+-- Name: categories_update_name_tsvector_trigger(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION categories_update_name_tsvector_trigger() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+    new.name_tsvector := to_tsvector('pg_catalog.simple', coalesce(new.name, ''));
+    RETURN NEW;
+END;
+$$;
+
+
+--
+-- Name: projects_update_description_tsvector_trigger(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION projects_update_description_tsvector_trigger() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+    new.description_tsvector := to_tsvector('pg_catalog.simple', coalesce(new.description, ''));
+    RETURN NEW;
+END;
+$$;
+
+
+--
+-- Name: projects_update_permalink_tsvector_trigger(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION projects_update_permalink_tsvector_trigger() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+    new.permalink_tsvector := to_tsvector('pg_catalog.simple', coalesce(new.permalink, ''));
+    RETURN NEW;
+END;
+$$;
+
+
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -61,7 +103,8 @@ CREATE TABLE categories (
     description text,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    category_group_permalink character varying NOT NULL
+    category_group_permalink character varying NOT NULL,
+    name_tsvector tsvector
 );
 
 
@@ -146,6 +189,9 @@ CREATE TABLE projects (
     rubygem_name character varying,
     github_repo_path character varying,
     score numeric(5,2),
+    description text,
+    permalink_tsvector tsvector,
+    description_tsvector tsvector,
     CONSTRAINT check_project_permalink_and_rubygem_name_parity CHECK (((rubygem_name IS NULL) OR ((rubygem_name)::text = (permalink)::text)))
 );
 
@@ -232,6 +278,13 @@ CREATE INDEX index_categories_on_category_group_permalink ON categories USING bt
 
 
 --
+-- Name: index_categories_on_name_tsvector; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_categories_on_name_tsvector ON categories USING gin (name_tsvector);
+
+
+--
 -- Name: index_categories_on_permalink; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -267,10 +320,24 @@ CREATE UNIQUE INDEX index_github_repos_on_path ON github_repos USING btree (path
 
 
 --
+-- Name: index_projects_on_description_tsvector; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_projects_on_description_tsvector ON projects USING gin (description_tsvector);
+
+
+--
 -- Name: index_projects_on_permalink; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE UNIQUE INDEX index_projects_on_permalink ON projects USING btree (permalink);
+
+
+--
+-- Name: index_projects_on_permalink_tsvector; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_projects_on_permalink_tsvector ON projects USING gin (permalink_tsvector);
 
 
 --
@@ -285,6 +352,27 @@ CREATE UNIQUE INDEX index_projects_on_rubygem_name ON projects USING btree (ruby
 --
 
 CREATE UNIQUE INDEX index_rubygems_on_name ON rubygems USING btree (name);
+
+
+--
+-- Name: categories_update_name_tsvector_trigger; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER categories_update_name_tsvector_trigger BEFORE INSERT OR UPDATE ON categories FOR EACH ROW EXECUTE PROCEDURE categories_update_name_tsvector_trigger();
+
+
+--
+-- Name: projects_update_description_tsvector_trigger; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER projects_update_description_tsvector_trigger BEFORE INSERT OR UPDATE ON projects FOR EACH ROW EXECUTE PROCEDURE projects_update_description_tsvector_trigger();
+
+
+--
+-- Name: projects_update_permalink_tsvector_trigger; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER projects_update_permalink_tsvector_trigger BEFORE INSERT OR UPDATE ON projects FOR EACH ROW EXECUTE PROCEDURE projects_update_permalink_tsvector_trigger();
 
 
 --
@@ -336,9 +424,12 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180103194335'),
 ('20180103233845'),
 ('20180104223026'),
+('20180105234511'),
 ('20180114223052'),
+('20180118191419'),
 ('20180126213034'),
 ('20180126214714'),
-('20180127203832');
+('20180127203832'),
+('20180127211755');
 
 

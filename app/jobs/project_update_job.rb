@@ -5,6 +5,7 @@ class ProjectUpdateJob < ApplicationJob
     Project.find_or_initialize_by(permalink: permalink).tap do |project|
       project.rubygem = Rubygem.find_by(name: permalink)
       project.github_repo_path = detect_repo_path(project)
+      project.description = project.rubygem_description || project.github_repo_description
       project.save!
       ProjectScoreJob.perform_async permalink
       enqueue_github_repo_sync project.github_repo_path

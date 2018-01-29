@@ -1,0 +1,34 @@
+- if @query
+  - content_for :title, "Search results for '#{h(@query)}'".html_safe
+- else
+  - content_for :title, "Search".html_safe
+
+.hero
+  section.section: .container
+    .columns: .column
+      .is-hidden-mobile
+        h2
+          a href=search_path(q: @query)
+            = content_for(:title)
+      .is-hidden-tablet
+        = form_tag search_path, method: :get do
+          .field.has-addons.has-addons-centered
+            .control.is-expanded
+              input.input.is-medium placeholder="Search" type="text" name="q" value=@query
+            .control
+              a.button.is-outlined.is-medium
+                span.icon: i.fa.fa-search
+                span Search
+
+- if @search
+  section.section.search-results: .container
+    - if @search.categories.any?
+      .columns: .column.categories
+        h2.subtitle.is-4 Categories
+        = render partial: "categories/list", locals: { categories: @search.categories }
+
+    - if @search.projects.any?
+      .columns: .column.projects
+        h2.subtitle.is-4 Projects
+        - @search.projects.each do |project|
+          = render project, show_categories: true

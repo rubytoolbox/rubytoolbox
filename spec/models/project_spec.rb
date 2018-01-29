@@ -3,23 +3,28 @@
 require "rails_helper"
 
 RSpec.describe Project, type: :model do
-  describe "#description" do
-    it "is nil by default" do
-      expect(described_class.new.description).to be_nil
-    end
-
-    it "is the associated rubygem's description when present" do
-      project = described_class.new rubygem: Rubygem.new(description: "Hello World!")
-      expect(project.description).to be == "Hello World!"
-    end
-  end
-
   it "does not allow mismatches between permalink and rubygem name" do
     project = Project.create! permalink: "simplecov"
     expect { project.update_attributes! rubygem_name: "rails" }.to raise_error(
       ActiveRecord::StatementInvalid,
       /check_project_permalink_and_rubygem_name_parity/
     )
+  end
+
+  describe ".search" do
+    it "can find a matching project" do
+      expected = Project.create! permalink: "widgets", score: 1
+      Project.create! permalink: "airplanes", score: 1
+      Project.create! permalink: "rockets", score: 1
+
+      expect(Project.search("widget")).to be == [expected]
+    end
+
+    it "does not return projects without a score" do
+      expected = Project.create! permalink: "somethingelse", score: 1, description: "Provides amazing widgets"
+      Project.create! permalink: "widgets"
+      expect(Project.search("widget")).to be == [expected]
+    end
   end
 
   describe "#github_only?" do

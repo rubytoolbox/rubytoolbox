@@ -24,6 +24,26 @@ class Project < ApplicationRecord
              optional:    true,
              inverse_of:  :projects
 
+  scope :includes_associations, -> { includes(:github_repo, :rubygem, :categories) }
+
+  include PgSearch
+  pg_search_scope :search_scope,
+                  # This is unfortunately not used when using explicit tsvector columns,
+                  # see https://github.com/Casecommons/pg_search#using-tsvector-columns
+                  against: { permalink_tsvector: "A", description_tsvector: "C" },
+                  using: {
+                    tsearch: {
+                      tsvector_column: %w[permalink_tsvector description_tsvector],
+                      prefix: true,
+                      dictionary: "simple",
+                    },
+                  },
+                  ranked_by: ":tsearch * (#{table_name}.score + 1) * (#{table_name}.score + 1)"
+
+  def self.search(query)
+    where.not(score: nil).includes_associations.search_scope(query).limit(25)
+  end
+
   delegate :current_version,
            :description,
            :documentation_url,
@@ -55,7 +75,7 @@ class Project < ApplicationRecord
            prefix: :github_repo
 
   def self.find_for_show!(permalink)
-    includes(:github_repo, :rubygem, :categories).find(permalink)
+    includes_associations.find(permalink)
   end
 
   def permalink=(permalink)
@@ -64,10 +84,6 @@ class Project < ApplicationRecord
 
   def github_only?
     permalink.include? "/"
-  end
-
-  def description
-    rubygem_description || github_repo_description
   end
 
   def github_repo_path=(github_repo_path)
