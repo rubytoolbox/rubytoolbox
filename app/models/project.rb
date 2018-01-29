@@ -28,6 +28,8 @@ class Project < ApplicationRecord
 
   include PgSearch
   pg_search_scope :search_scope,
+                  # This is unfortunately not used when using explicit tsvector columns,
+                  # see https://github.com/Casecommons/pg_search#using-tsvector-columns
                   against: { permalink_tsvector: "A", description_tsvector: "C" },
                   using: {
                     tsearch: {
@@ -36,7 +38,7 @@ class Project < ApplicationRecord
                       dictionary: "simple",
                     },
                   },
-                  ranked_by: ":tsearch * (#{table_name}.score + 1)"
+                  ranked_by: ":tsearch * (#{table_name}.score + 1) * (#{table_name}.score + 1)"
 
   def self.search(query)
     where.not(score: nil).includes_associations.search_scope(query).limit(25)

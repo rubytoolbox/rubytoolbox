@@ -19,7 +19,7 @@ class Category < ApplicationRecord
 
   include PgSearch
   pg_search_scope :search_scope,
-                  against: { name_tsvector: "A" },
+                  against: :name_tsvector,
                   using: {
                     tsearch: {
                       tsvector_column: %w[name_tsvector],
