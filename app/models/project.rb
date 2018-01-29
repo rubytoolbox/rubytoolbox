@@ -39,7 +39,7 @@ class Project < ApplicationRecord
                   ranked_by: ":tsearch * (#{table_name}.score + 1)"
 
   def self.search(query)
-    Project.where.not(score: nil).includes_associations.search_scope(query)
+    where.not(score: nil).includes_associations.search_scope(query).limit(25)
   end
 
   delegate :current_version,

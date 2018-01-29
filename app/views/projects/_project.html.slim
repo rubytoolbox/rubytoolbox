@@ -9,6 +9,10 @@
         i.fa.fa-flask
       span= project.score
 
+  - if local_assigns[:show_categories] and project.categories.any?
+    .columns: .category-list.column
+      = render partial: "categories/list", locals: { categories: project.categories }
+
   .columns: .links.column
     = render partial: "projects/links", locals: { project: project }
 

@@ -20,8 +20,15 @@
                 span.icon: i.fa.fa-search
                 span Search
 
-section.section: .container: .columns
-  - if @projects&.any?
-    .projects
-      - @projects.each do |project|
-        = render project
+- if @search
+  section.section.search-results: .container
+    - if @search.categories.any?
+      .columns: .column.categories
+        h2.subtitle.is-3 Categories
+        = render partial: "categories/list", locals: { categories: @search.categories }
+
+    - if @search.projects.any?
+      .columns: .column.projects
+        h2.subtitle.is-3 Projects
+        - @search.projects.each do |project|
+          = render project, show_categories: true

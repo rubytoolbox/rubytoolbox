@@ -8,6 +8,6 @@
         = @category.name
 
 section.section: .container: .columns
-  .projects
+  .column.projects
     - @category.projects.each do |project|
       = render project
