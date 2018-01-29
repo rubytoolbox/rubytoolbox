@@ -1,0 +1,19 @@
+- content_for :title, @post.title
+
+.hero
+  section.section: .container
+    .columns: .column.has-text-centered
+      p.heading
+        a href=blog_index_path
+          | News Blog
+      h2
+        a href="/blog/#{@post.slug}"
+          = @post.title
+      span
+        | Published on&nbsp;
+        strong: date= l(@post.published_on, format: :long)
+
+section.section: .container: .columns
+  article.column.content.is-three-fifths-desktop.is-offset-one-fifth-desktop
+    == @post.body_html
+

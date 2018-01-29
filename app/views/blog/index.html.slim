@@ -1,0 +1,16 @@
+- content_for :title, "Blog"
+
+.hero
+  section.section: .container
+    h2
+      a href=blog_index_path
+        | Blog
+
+section.section: .container: .columns
+  .column
+    - @posts.each do |post|
+      h3.subtitle.is-4
+        a href="/blog/#{post.slug}"
+          span= post.published_on
+          | &nbsp;
+          strong= post.title
