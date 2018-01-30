@@ -2,6 +2,10 @@
 
 .hero
   section.section: .container
+    .pull-right
+      a.button.is-light href=@category.catalog_edit_url
+        span.icon: i.fa.fa-edit
+        span Edit this category
     p.heading Category
     h2
       a href=category_path(@category)
