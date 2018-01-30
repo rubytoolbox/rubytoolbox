@@ -5,15 +5,14 @@
     .columns: .column.has-text-centered
       p.heading
         a href=blog_index_path
-          | News Blog
+          | News
       h2
-        a href="/blog/#{@post.slug}"
+        a href=blog_post_path(@post)
           = @post.title
       span
         | Published on&nbsp;
         strong: date= l(@post.published_on, format: :long)
 
 section.section: .container: .columns
-  article.column.content.is-three-fifths-desktop.is-offset-one-fifth-desktop
+  article.blog-post
     == @post.body_html
-
