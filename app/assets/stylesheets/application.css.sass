@@ -74,6 +74,27 @@ header.section
     a
       @extend .button, .is-light
 
+section.main
+  min-height: 75vh
+
+footer.footer
+  @extend .has-text-grey-dark
+  a
+    @extend .has-text-grey-dark
+    &:hover
+      @extend .has-text-black
+  .content
+    a
+      @extend .has-text-link
+  .sponsors
+    @extend .has-text-centered
+    a
+      opacity: 0.5
+      transition: opacity 150ms ease-in
+      &:hover
+        opacity: 1
+
+
 .category-group
   @extend .column, .is-half
   h3
@@ -85,7 +106,6 @@ header.section
     padding: 0.75rem 0
   a.button
     @extend .is-white, .is-fullwidth, .is-inline-block, .has-text-left
-
 
 .project
   header
