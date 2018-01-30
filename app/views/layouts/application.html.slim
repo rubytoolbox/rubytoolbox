@@ -63,4 +63,79 @@ html lang="en"
                     span Search
 
 
-    = yield
+    section.main= yield
+
+    footer.footer
+      .container
+        .columns
+          .column.navigation
+            .heading Navigation
+            ul
+              li= link_to "Home", root_path
+              li= link_to "News", blog_index_path
+              li= link_to "Search", search_path
+
+          .column.who
+            .heading Who
+            .content
+              markdown:
+                The Ruby Toolbox is brought to you from Hamburg since 2009 by [Christoph Olszowka](http://www.olszowka.de)
+
+                If you want to personally say hi or complain, you can do so via mail to me at christoph (at) ruby-toolbox (dot) com
+
+                You can also find me on Twitter as [@thedeadserious](https://twitter.com/thedeadserious)
+                and on [Github](https://github.com/colszowka)
+
+          .column.contributing
+            .heading Contributing
+            .content
+              markdown:
+                You can find the source code for this site [on github](https://github.com/rubytoolbox/rubytoolbox).
+
+                The categorization of gems is handled via the [catalog][catalog], which you can also find [on
+                Github][catalog]
+
+                [catalog]: https://github.com/rubytoolbox/catalog
+
+                Contributions welcome <span class="icon has-text-danger"><i class="fa fa-heart"></i></span>!
+
+          .column.links
+            .heading Links
+            ul
+              li: a href="https://github.com/rubytoolbox/rubytoolbox/blob/master/CODE_OF_CONDUCT.md"
+                span.icon: i.fa.fa-users
+                span Code of Conduct
+              li: a href=feed_url
+                span.icon: i.fa.fa-rss-square
+                span RSS Feed
+              li: a href="https://github.com/rubytoolbox/rubytoolbox/projects/1"
+                span.icon: i.fa.fa-github
+                span Project Planning Board
+              li: a href="https://github.com/rubytoolbox/rubytoolbox"
+                span.icon: i.fa.fa-github
+                span rubytoolbox/rubytoolbox
+              li: a href="https://github.com/rubytoolbox/catalog"
+                span.icon: i.fa.fa-github
+                span rubytoolbox/catalog
+
+        hr
+
+        .columns
+          .column
+            h4.subtitle.is-5.has-text-centered Sponsors
+        .columns.sponsors
+          .column
+            .heading Development funded by
+            a href="https://rubytogether.org/"
+              = image_tag "sponsors/rubytogether-white.svg", style: "height: 95px"
+          .column
+            .heading Hosted on
+            a href="https://heroku.com/"
+              = image_tag "sponsors/heroku.svg", style: "height: 55px; margin-top: 20px"
+          .column
+            .heading Monitored with
+            a href="https://appsignal.com/"
+              = image_tag "sponsors/appsignal-logo-horizontal.svg", style: "height: 35px; margin-top: 28px"
+        .columns: .column.has-text-centered: strong.heading Thank You!
+
+
