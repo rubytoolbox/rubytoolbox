@@ -42,20 +42,24 @@ $text: #222
 @import "bulma/sass/elements/box"
 @import "bulma/sass/elements/button"
 @import "bulma/sass/elements/container"
+@import "bulma/sass/elements/content"
 @import "bulma/sass/elements/form"
 @import "bulma/sass/elements/icon"
 @import "bulma/sass/elements/other"
 @import "bulma/sass/elements/title"
 
+.border-bottom
+  border-bottom: 1px solid $light
+
 header.section
   padding: 1.5rem
-  border-bottom: 1px solid $light
+  @extend .border-bottom
   img
     max-width: 100%
     height: 35px
 
 .hero
-  border-bottom: 1px solid $light
+  @extend .border-bottom
   a
     color: $text
   h2
@@ -113,3 +117,7 @@ header.section
       strong
         // Compensate for default icon padding in heading above
         margin-left: 5px
+
+article.blog-post
+  @extend .column, .content, .is-three-fifths-desktop, .is-offset-one-fifth-desktop
+  font-size: 125%

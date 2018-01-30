@@ -1,0 +1,20 @@
+- content_for :title, "Blog"
+
+.hero
+  section.section: .container: .columns: .column.has-text-centered
+    h2
+      a href=blog_index_path
+        | News
+    = link_to feed_url, class: "button is-light" do
+      span.icon: i.fa.fa-rss-square
+      span Feed
+
+
+section.section: .container: .columns
+  .column.is-three-fifths-desktop.is-offset-one-fifth-desktop
+    - @posts.each do |post|
+      h3.subtitle.is-4
+        a href=blog_post_path(post)
+          span= post.published_on
+          | &nbsp;
+          strong= post.title

@@ -79,6 +79,15 @@ GEM
       railties (>= 3.2, < 5.2)
     erubi (1.7.0)
     execjs (2.7.0)
+    faraday (0.14.0)
+      multipart-post (>= 1.2, < 3)
+    faraday_middleware (0.12.2)
+      faraday (>= 0.7.4, < 1.0)
+    feedjira (2.1.3)
+      faraday (>= 0.9)
+      faraday_middleware (>= 0.9)
+      loofah (>= 2.0)
+      sax-machine (>= 1.0)
     ffi (1.9.18)
     foreman (0.84.0)
       thor (~> 0.19.1)
@@ -145,6 +154,7 @@ GEM
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
     minitest (5.11.1)
+    multipart-post (2.0.0)
     nenv (0.3.0)
     nio4r (2.2.0)
     nokogiri (1.8.1)
@@ -266,6 +276,7 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
+    sax-machine (1.3.2)
     sexp_processor (4.10.0)
     shellany (0.0.1)
     sidekiq (5.0.5)
@@ -341,6 +352,7 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 4.2)
   dotenv-rails
+  feedjira
   foreman
   forgery
   guard-bundler

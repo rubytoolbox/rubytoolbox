@@ -77,6 +77,8 @@ end
 group :test do
   gem "capybara"
 
+  gem "feedjira"
+
   gem "rails-controller-testing"
   gem "simplecov", require: false
 

@@ -38,6 +38,8 @@ html lang="en"
     meta content=description name="twitter:description" /
     meta content=image_url("logo/box-with-padding.png") name="twitter:image" /
 
+    = auto_discovery_link_tag :rss, blog_index_url(format: :rss)
+
   body
     header.section: .container
       nav.level.is-mobile
