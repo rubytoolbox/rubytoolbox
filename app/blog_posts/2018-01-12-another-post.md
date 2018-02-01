@@ -1,3 +1,0 @@
-# Another title
-
-Hello again!
