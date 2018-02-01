@@ -2,10 +2,4 @@
 
 [![Build Status](https://travis-ci.org/rubytoolbox/rubytoolbox.svg?branch=master)](https://travis-ci.org/rubytoolbox/rubytoolbox)
 
-
-The new Ruby Toolbox is being re-built here. It's still early stages, actually helpful information will be added here soon :)
-
-## Useful links
-
-* [Discussion issue: The future of the Ruby Toolbox](https://github.com/rubytoolbox/rubytoolbox/issues/1)
-* [The library catalog on Github](https://github.com/rubytoolbox/catalog)
+As I was focusing on [getting the new site ready for relaunch](https://www.ruby-toolbox.com/blog/2018-02-01/lets-push-things-forward), development setup documentation got postponed. Pending [#82](https://github.com/rubytoolbox/rubytoolbox/issues/82), development documentation will be added here very soon! Thanks for your patience! All in all, it's a rails app, `bundle`, `rake db:setup` and `bundle exec rspec`, you know the process :)
