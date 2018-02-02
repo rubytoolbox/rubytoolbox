@@ -14,13 +14,13 @@ Using OS-X:
 
 ##### Ruby
 
-Using [RVM](https://rvm.io/rubies/installing)
-
-    $ rvm install 2.5.0
-    
 Using [RBEnv](https://github.com/rbenv/rbenv#installing-ruby-versions)
 
     $ rbenv install 2.5.0 
+
+Using [RVM](https://rvm.io/rubies/installing)
+
+    $ rvm install 2.5.0
 
 ##### Yarn (https://yarnpkg.com/en/docs/install)            
 See [YARN](https://yarnpkg.com/en/docs/install)
