@@ -15,13 +15,19 @@
 PostCheckout:
   BundleInstall:
     enabled: true
+  YarnInstall:
+    enabled: true
 
 PostMerge:
   BundleInstall:
     enabled: true
+  YarnInstall:
+    enabled: true
 
 PostRewrite:
   BundleInstall:
+    enabled: true
+  YarnInstall:
     enabled: true
 
 PreCommit:
