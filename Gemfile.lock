@@ -43,7 +43,7 @@ GEM
     appsignal (2.4.3)
       rack
     arel (8.0.0)
-    ast (2.3.0)
+    ast (2.4.0)
     bindex (0.5.0)
     builder (3.2.3)
     byebug (10.0.0)
@@ -255,7 +255,7 @@ GEM
       rainbow (>= 2.2.2, < 4.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (~> 1.0, >= 1.0.1)
-    rubocop-rspec (1.22.1)
+    rubocop-rspec (1.22.2)
       rubocop (>= 0.52.1)
     ruby-progressbar (1.9.0)
     ruby2ruby (2.4.0)
