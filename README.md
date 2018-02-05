@@ -92,7 +92,7 @@ $ rake yarn:install
 ```
 5. Start ruby-toolbox
 ```
-   (sacrebleu@1.3.3.7 ~/private/ruby/opensource/rubytoolbox)$puma -e development
+   (user@1.3.3.7 ~/private/ruby/opensource/rubytoolbox)$puma -e development
    Puma starting in single mode...
    * Version 3.11.2 (ruby 2.5.0-p0), codename: Love Song
    * Min threads: 5, max threads: 5
