@@ -5,11 +5,11 @@ Hello, good to see you again, and welcome to the new Ruby Toolbox!
 If you haven't been following Toolbox-related news recently, here's a quick rundown:
 
 * Started in 2009, over the past few years the existing site was in a deteriorating state of maintenance due to a continuous lack of free time on my side
-* In early june of 2017, the Toolbox's server crashed and instead of rebuilding what we had from backups I decided to take this as a final sign to discuss the future of the site with the community, only putting an absolutely minimal static version of the site back online.
+* In early June of 2017, the Toolbox's server crashed and instead of rebuilding what we had from backups I decided to take this as a final sign to discuss the future of the site with the community, only putting an absolutely minimal static version of the site back online.
 * I reached out and [asked on github][issue-1] whether people actually still want to have this resource - turns out many people still do, which was very encouraging, thank you :)
-* [Ruby Together][rubytogether] soon reached out to me regarding funding my work on re-building and maintaing the site, which we announced at the end of september
+* [Ruby Together][rubytogether] soon reached out to me regarding funding my work on re-building and maintaining the site, which we announced at the end of September
 
-I immediately got started on this during evening hours in early october. Holiday season and the surrounding family events put a brief dent into progress, but in january I got back on track and today I'm proud to present to you the new ([and finally fully open source][github]!) Ruby Toolbox!
+I immediately got started on this during evening hours in early October. Holiday season and the surrounding family events put a brief dent into progress, but in January I got back on track and today I'm proud to present to you the new ([and finally fully open source][github]!) Ruby Toolbox!
 
 My main focus for the past few months was to provide a solid foundation based on what (at least I believe to be ;) the core of the old site - categories, project metrics, and search. I initially planned to launch as early as possible with an absolutely minimal subset, but eventually those pesky "this one more thing really needs to get done so it's nice"-tasks kept cropping up, so ~70 hours of work and ~40 pull requests later I believe we're launching with a feature set at least on par with the old site.
 
