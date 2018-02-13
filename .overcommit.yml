@@ -39,6 +39,8 @@ PreCommit:
     enabled: true
   YamlSyntax:
     enabled: true
+  YarnCheck:
+    enabled: true
 
 PrePush:
   RSpec:
