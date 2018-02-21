@@ -20,6 +20,20 @@ COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 
 
 --
+-- Name: citext; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS citext WITH SCHEMA public;
+
+
+--
+-- Name: EXTENSION citext; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION citext IS 'data type for case-insensitive character strings';
+
+
+--
 -- Name: pg_stat_statements; Type: EXTENSION; Schema: -; Owner: -
 --
 
@@ -98,12 +112,12 @@ CREATE TABLE ar_internal_metadata (
 --
 
 CREATE TABLE categories (
-    permalink character varying NOT NULL,
+    permalink citext NOT NULL,
     name character varying NOT NULL,
     description text,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    category_group_permalink character varying NOT NULL,
+    category_group_permalink citext NOT NULL,
     name_tsvector tsvector
 );
 
@@ -114,7 +128,7 @@ CREATE TABLE categories (
 
 CREATE TABLE categorizations (
     id bigint NOT NULL,
-    category_permalink character varying NOT NULL,
+    category_permalink citext NOT NULL,
     project_permalink character varying NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
@@ -145,7 +159,7 @@ ALTER SEQUENCE categorizations_id_seq OWNED BY categorizations.id;
 --
 
 CREATE TABLE category_groups (
-    permalink character varying NOT NULL,
+    permalink citext NOT NULL,
     name character varying NOT NULL,
     description text,
     created_at timestamp without time zone NOT NULL,
@@ -158,7 +172,7 @@ CREATE TABLE category_groups (
 --
 
 CREATE TABLE github_repos (
-    path character varying NOT NULL,
+    path citext NOT NULL,
     stargazers_count integer NOT NULL,
     forks_count integer NOT NULL,
     watchers_count integer NOT NULL,
@@ -187,7 +201,7 @@ CREATE TABLE projects (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     rubygem_name character varying,
-    github_repo_path character varying,
+    github_repo_path citext,
     score numeric(5,2),
     description text,
     permalink_tsvector tsvector,
@@ -430,6 +444,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180126213034'),
 ('20180126214714'),
 ('20180127203832'),
-('20180127211755');
+('20180127211755'),
+('20180221214013');
 
 
