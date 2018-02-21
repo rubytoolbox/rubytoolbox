@@ -41,7 +41,7 @@ Yarn is used to manage frontend dependencies for the project. It can be installe
 1. Install the frontend dependencies using `yarn install`
 1. Run the services with `foreman start`. You can access the site at `http://localhost:5000`
 
-**Further steps:**
+### Further steps
 
 * You can run the test suite with `bundle exec rspec`
 * You can check code style with `bundle exec rubocop`
