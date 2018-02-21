@@ -29,7 +29,7 @@ You will also need [Bundler](http://bundler.io/) for installing the project's de
 
 Yarn is used to manage frontend dependencies for the project. It can be installed by following [the official installation guide](https://yarnpkg.com/lang/en/docs/install/). You will also need to [install Node.js](https://nodejs.org/en/download/package-manager/).
 
-#### Running the application
+### Running the application
 
 1. Start postgres and redis
 1. Install the project's dependencies by running `bundle install`
@@ -40,8 +40,8 @@ Yarn is used to manage frontend dependencies for the project. It can be installe
 **Further steps:**
 
 * You can run the test suite with `bundle exec rspec`
-* You can check the code with `bundle exec rubocop`
-* During development you can launch [guard](https://github.com/guard/guard) using `bundle exec guard` to continuously check changes
+* You can check code style with `bundle exec rubocop`
+* During development you can launch [guard](https://github.com/guard/guard) using `bundle exec guard` to continuously check your changes
 * The repo has [overcommit](https://github.com/brigade/overcommit) git hooks set up to check your changes before commit, push etc. You can set it up once with `bundle exec overcommit --install`. Whenever the hook config file `.overcommit.yml` changes, you need to verify it's contents and approve the changes with `bundle exec overcommit --sign`
 
 ## Code of Conduct
