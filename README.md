@@ -25,9 +25,9 @@ Install the [current project ruby version](./.ruby-version), preferrably with
 
 You will also need [Bundler](http://bundler.io/) for installing the project's dependencies.
 
-#### [Yarn](https://yarnpkg.com)
+#### [Node.js](https://nodejs.org) and [Yarn](https://yarnpkg.com)
 
-Yarn is used to manage frontend dependencies for the project. It can be installed by following [the official installation guide](https://yarnpkg.com/lang/en/docs/install/)
+Yarn is used to manage frontend dependencies for the project. It can be installed by following [the official installation guide](https://yarnpkg.com/lang/en/docs/install/). You will also need to [install Node.js](https://nodejs.org/en/download/package-manager/).
 
 #### Running the application
 
