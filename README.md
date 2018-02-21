@@ -1,102 +1,57 @@
-# The Ruby Toolbox
+<div align="center">
+  <img src="./app/assets/images/logo/regular.svg" width="400px" alt="The Ruby Toolbox"/>
 
-[![Build Status](https://travis-ci.org/rubytoolbox/rubytoolbox.svg?branch=master)](https://travis-ci.org/rubytoolbox/rubytoolbox)
+  [![Build Status](https://travis-ci.org/rubytoolbox/rubytoolbox.svg?branch=master)](https://travis-ci.org/rubytoolbox/rubytoolbox) [![Depfu](https://badges.depfu.com/badges/84ab24dbd83e15c8dfd36144e10d14f2/overview.svg)](https://depfu.com/github/rubytoolbox/rubytoolbox)
 
-As I was focusing on [getting the new site ready for relaunch](https://www.ruby-toolbox.com/blog/2018-02-01/lets-push-things-forward), 
-development setup documentation got postponed. Pending [#82](https://github.com/rubytoolbox/rubytoolbox/issues/82), development documentation will be added here very soon! Thanks for your patience! 
+  **Explore and compare open source Ruby libraries**
+</div>
+
+## Development
 
 ### Prerequisites
 
-Ruby-toolbox depends on a few external services which you will need to install before you begin.
+The Ruby Toolbox depends on a few utilities which you will need to install before you begin.
 
-#### Upgrading your system dependency manager
+#### [PostgreSQL](https://www.postgresql.org/)
 
-Linux with [Yum](https://en.wikipedia.org/wiki/Yellow_Dog_Updater,_Modified)-based package management:
+* **Linux:** Use the official postgres repositories for [Apt](https://wiki.postgresql.org/wiki/Apt) or [Yum](https://yum.postgresql.org/)
+* **Mac OS:** Use [HomeBrew](http://brewformulas.org/Postgresql) or [Postgres.app](https://postgresapp.com/)
 
-    [root@ip-1.3.3.7 ~]# yum update
-    Loaded plugins: priorities, update-motd, upgrade-helper
-    ...
-    Complete!
-    [root@ip-1.3.3.7 ~]#
-    
-Linux with [Apt](https://en.wikipedia.org/wiki/APT_(Debian))-based package management:
+#### [Redis](https://redis.io/)
 
-    admin@ip-1-3-3-7:~$ sudo apt-get update
-    Ign http://cloudfront.debian.net jessie InRelease
-    ...
-    Fetched 15.3 MB in 3s (4,634 kB/s)
-    Reading package lists... Done
-    admin@ip-1.3.3.7:~$
-    
-OS-X with [Homebrew](https://brew.sh/):
-        
-    (user@1.3.3.7 ~)$brew update
-    Updated 3 taps (homebrew/core, caskroom/versions, caskroom/cask).
-    ==> New Formulae
-    ...
-    ==> Updated Formulae
-    ...
-    (user@1.3.3.7 ~)
-    
-#### Installing Postgresql
+* **Linux:** On Ubuntu, you can use [this PPA](https://launchpad.net/%7Echris-lea/+archive/ubuntu/redis-server). Otherwise build from source as detailed in [The Redis quickstart](https://redis.io/topics/quickstart).
+* **Mac OS:** Use [HomeBrew](http://brewformulas.org/Redis) or build from source as detailed in [The Redis quickstart](https://redis.io/topics/quickstart).
 
-**Linux:** Use the official package postgres repositories for 
+#### [Ruby](https://www.ruby-lang.org)
 
-* [Apt](https://wiki.postgresql.org/wiki/Apt) - see [How to install and use postgreaql on ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-16-04) for examples
-
-* [Yum](https://yum.postgresql.org/) - see [How to install and use postgresql on CentOS 7](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-centos-7) for exmaples 
-
-**OS-X:** 
-
-* [HomeBrew](http://brewformulas.org/Postgresql) - see [How to install PostgreSQL on a Mac](https://www.moncefbelyamani.com/how-to-install-postgresql-on-a-mac-with-homebrew-and-lunchy/) for examples
-
-#### Installing REDIS
-
-**APT**
-
-If you want to use a prebuilt package, we recommend you use one from [This PPA](https://launchpad.net/%7Echris-lea/+archive/ubuntu/redis-server).
-Otherwise build from source as detailed in [The REDIS quickstart](https://redis.io/topics/quickstart)    
- 
-**YUM etc** 
-    
-There is no easy mode for this, you will need to build it from source.  See [The REDIS quickstart](https://redis.io/topics/quickstart)    
-
-#### Ruby
-
-Install the [current project ruby version](./.ruby-version), preferably with 
+Install the [current project ruby version](./.ruby-version), preferrably with
 [a Ruby version manager like chruby, rbenv, or rvm](https://www.ruby-toolbox.com/categories/ruby_version_management)
 
-#### YARN
+You will also need [Bundler](http://bundler.io/) for installing the project's dependencies.
 
-Yarn is used to manage javascript dependencies necessary to build the javascript assets for the project.
-            
-YARN can be installed by following [the official installation guide](https://yarnpkg.com/lang/en/docs/install/)      
+#### [Node.js](https://nodejs.org) and [Yarn](https://yarnpkg.com)
 
-#### Configuring the ruby-toolbox application
+Yarn is used to manage frontend dependencies for the project. It can be installed by following [the official installation guide](https://yarnpkg.com/lang/en/docs/install/). You will also need to [install Node.js](https://nodejs.org/en/download/package-manager/).
 
-1. Start Postgresql
-2. Start REDIS
-2. Install Bundler and gem dependencies
-```
-$ gem install bundler
-$ bundle install
-```
-3. Create the database schema
-```    
-$ rake db:setup
-$ rake db:migrate
-```
-4. Install and configure YARN into the project    
-```
-$ rake yarn:install
-```
-5. Start ruby-toolbox
-```
-   (user@1.3.3.7 ~/private/ruby/opensource/rubytoolbox)$puma -e development
-   Puma starting in single mode...
-   * Version 3.11.2 (ruby 2.5.0-p0), codename: Love Song
-   * Min threads: 5, max threads: 5
-   * Environment: development
-   * Listening on tcp://0.0.0.0:3000
-```
-    
+### Running the application
+
+1. Start postgres and redis
+1. Install the project's dependencies by running `bundle install`
+1. Prepare the database with `rake db:setup` (**Note that this is currently semi-useful until [#147](https://github.com/rubytoolbox/rubytoolbox/issues/147) is fixed**)
+1. Install the frontend dependencies using `yarn install`
+1. Run the services with `foreman start`. You can access the site at `http://localhost:5000`
+
+### Further steps
+
+* You can run the test suite with `bundle exec rspec`
+* You can check code style with `bundle exec rubocop`
+* During development you can launch [guard](https://github.com/guard/guard) using `bundle exec guard` to continuously check your changes
+* The repo has [overcommit](https://github.com/brigade/overcommit) git hooks set up to check your changes before commit, push etc. You can set it up once with `bundle exec overcommit --install`. Whenever the hook config file `.overcommit.yml` changes, you need to verify it's contents and approve the changes with `bundle exec overcommit --sign`
+
+## Code of Conduct
+
+Everyone participating in this project's development, issue trackers and other channels is expected to follow our [Code of Conduct](./CODE_OF_CONDUCT.md)
+
+## License
+
+This project is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
