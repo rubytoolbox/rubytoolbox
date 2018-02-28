@@ -45,4 +45,8 @@ module ApplicationHelper
   def description
     content_for(:description).presence || t(:description)
   end
+
+  def category_description(category)
+    category.description || "No description yet"
+  end
 end
