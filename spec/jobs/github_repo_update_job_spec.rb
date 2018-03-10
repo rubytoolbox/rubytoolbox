@@ -35,7 +35,7 @@ RSpec.describe GithubRepoUpdateJob, type: :job do
 
     it "changes the updated_at timestamp regardless of changes" do
       described_class.new.perform repo_path
-      GithubRepo.find(repo_path).update_attributes! updated_at: 2.days.ago
+      GithubRepo.find(repo_path).update! updated_at: 2.days.ago
       expect { do_perform }.to(change { GithubRepo.find(repo_path).updated_at })
     end
 
