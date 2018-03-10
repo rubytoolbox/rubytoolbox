@@ -10,6 +10,8 @@
     h2
       a href=category_path(@category)
         = @category.name
+    p.subtitle
+      = category_description(@category)
 
 section.section: .container: .columns
   .column.projects

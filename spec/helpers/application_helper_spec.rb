@@ -53,4 +53,16 @@ RSpec.describe ApplicationHelper, type: :helper do
       expect(helper.description).to be == "Some other text"
     end
   end
+
+  describe "#category_description" do
+    it "returns a default for a Category without description" do
+      category = Category.new name: "Indescribable Category"
+      expect(helper.category_description(category)).to be == "No description yet"
+    end
+
+    it "returns a given description of a Category" do
+      category = Category.new name: "Described Category", description: "Some description"
+      expect(helper.category_description(category)).to be == "Some description"
+    end
+  end
 end
