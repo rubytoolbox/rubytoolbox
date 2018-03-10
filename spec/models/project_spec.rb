@@ -5,7 +5,7 @@ require "rails_helper"
 RSpec.describe Project, type: :model do
   it "does not allow mismatches between permalink and rubygem name" do
     project = Project.create! permalink: "simplecov"
-    expect { project.update_attributes! rubygem_name: "rails" }.to raise_error(
+    expect { project.update! rubygem_name: "rails" }.to raise_error(
       ActiveRecord::StatementInvalid,
       /check_project_permalink_and_rubygem_name_parity/
     )

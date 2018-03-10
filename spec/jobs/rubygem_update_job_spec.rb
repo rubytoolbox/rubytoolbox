@@ -36,7 +36,7 @@ RSpec.describe RubygemUpdateJob, type: :job do
 
     it "changes the updated_at timestamp regardless of changes" do
       described_class.new.perform gem_name
-      Rubygem.find(gem_name).update_attributes! updated_at: 2.days.ago
+      Rubygem.find(gem_name).update! updated_at: 2.days.ago
       expect { do_perform }.to(change { Rubygem.find(gem_name).updated_at })
     end
 

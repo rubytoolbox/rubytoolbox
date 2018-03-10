@@ -3,7 +3,7 @@
 class ProjectScoreJob < ApplicationJob
   def perform(permalink)
     Project.find(permalink).tap do |project|
-      project.update_attributes! score: score_for_project(project)
+      project.update! score: score_for_project(project)
     end
   end
 

@@ -20,7 +20,7 @@ class RubygemUpdateJob < ApplicationJob
       Rubygem.find_or_initialize_by(name: name).tap do |gem|
         # Set updated at to ensure we flag what we've pulled
         gem.updated_at = Time.current.utc
-        gem.update_attributes! mapped_info.merge(extra_attributes)
+        gem.update! mapped_info.merge(extra_attributes)
       end
       ProjectUpdateJob.perform_async name
     else
