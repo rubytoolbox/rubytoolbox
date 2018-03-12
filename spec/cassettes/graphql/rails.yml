@@ -1,0 +1,84 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.github.com/graphql
+    body:
+      encoding: UTF-8
+      string: '{"query":"{\n  repository(owner: \"rails\", name: \"rails\") {\n    nameWithOwner\n    forks
+        {\n      totalCount\n    }\n    stargazers {\n      totalCount\n    }\n    watchers
+        {\n      totalCount\n    }\n    createdAt\n    defaultBranchRef {\n      name\n      target
+        {\n        ... on Commit {\n          history(first: 50) {\n            edges
+        {\n              node {\n                authoredDate\n              }\n            }\n          }\n        }\n      }\n    }\n    description\n    hasIssuesEnabled\n    hasWikiEnabled\n    homepageUrl\n    isArchived\n    isFork\n    isMirror\n    licenseInfo
+        {\n      key\n    }\n    primaryLanguage {\n      name\n    }\n    pushedAt\n    closedIssues:
+        issues(states: CLOSED) {\n      totalCount\n    }\n    openIssues: issues(states:
+        OPEN) {\n      totalCount\n    }\n    closedPullRequests: pullRequests(states:
+        CLOSED) {\n      totalCount\n    }\n    openPullRequests: pullRequests(states:
+        OPEN) {\n      totalCount\n    }\n    mergedPullRequests: pullRequests(states:
+        MERGED) {\n      totalCount\n    }\n  }\n\n  rateLimit {\n    limit\n    cost\n    remaining\n    resetAt\n  }\n}\n"}'
+    headers:
+      Authorization:
+      - bearer <GITHUB_TOKEN>
+      User-Agent:
+      - ruby-toolbox.com API client
+      Connection:
+      - close
+      Host:
+      - api.github.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Mon, 12 Mar 2018 21:26:08 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '3242'
+      Connection:
+      - close
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4994'
+      X-Ratelimit-Reset:
+      - '1520891517'
+      Cache-Control:
+      - no-cache
+      X-Oauth-Scopes:
+      - public_repo
+      X-Accepted-Oauth-Scopes:
+      - repo
+      X-Github-Media-Type:
+      - github.v4; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Security-Policy:
+      - default-src 'none'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - deny
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Runtime-Rack:
+      - '0.657690'
+      X-Github-Request-Id:
+      - 4122:7473:36EDCF2:6C5706F:5AA6F06F
+    body:
+      encoding: UTF-8
+      string: '{"data":{"repository":{"nameWithOwner":"rails/rails","forks":{"totalCount":15265},"stargazers":{"totalCount":38930},"watchers":{"totalCount":2613},"createdAt":"2008-04-11T02:19:47Z","defaultBranchRef":{"name":"master","target":{"history":{"edges":[{"node":{"authoredDate":"2018-03-12T17:34:42Z"}},{"node":{"authoredDate":"2018-03-12T13:55:58Z"}},{"node":{"authoredDate":"2018-03-12T13:41:12Z"}},{"node":{"authoredDate":"2018-03-12T13:02:27Z"}},{"node":{"authoredDate":"2018-03-12T11:39:24Z"}},{"node":{"authoredDate":"2018-03-12T10:43:22Z"}},{"node":{"authoredDate":"2018-03-11T20:22:20Z"}},{"node":{"authoredDate":"2018-03-11T19:48:50Z"}},{"node":{"authoredDate":"2018-03-11T01:00:26Z"}},{"node":{"authoredDate":"2018-03-10T10:43:31Z"}},{"node":{"authoredDate":"2018-03-09T21:13:11Z"}},{"node":{"authoredDate":"2018-03-09T20:14:36Z"}},{"node":{"authoredDate":"2018-03-09T16:55:46Z"}},{"node":{"authoredDate":"2018-03-09T10:51:30Z"}},{"node":{"authoredDate":"2018-03-09T08:41:43Z"}},{"node":{"authoredDate":"2018-03-09T08:28:38Z"}},{"node":{"authoredDate":"2018-03-09T07:33:41Z"}},{"node":{"authoredDate":"2018-03-09T07:04:56Z"}},{"node":{"authoredDate":"2018-03-09T02:31:48Z"}},{"node":{"authoredDate":"2018-03-09T01:23:47Z"}},{"node":{"authoredDate":"2018-03-09T00:27:15Z"}},{"node":{"authoredDate":"2018-03-08T14:14:09Z"}},{"node":{"authoredDate":"2018-03-08T14:01:15Z"}},{"node":{"authoredDate":"2018-03-05T12:42:49Z"}},{"node":{"authoredDate":"2018-03-08T11:55:01Z"}},{"node":{"authoredDate":"2018-03-08T09:59:52Z"}},{"node":{"authoredDate":"2018-03-08T09:49:36Z"}},{"node":{"authoredDate":"2018-03-07T16:18:54Z"}},{"node":{"authoredDate":"2018-03-07T03:06:03Z"}},{"node":{"authoredDate":"2018-03-07T00:41:46Z"}},{"node":{"authoredDate":"2018-03-05T19:24:11Z"}},{"node":{"authoredDate":"2018-03-06T22:09:34Z"}},{"node":{"authoredDate":"2018-03-06T22:07:24Z"}},{"node":{"authoredDate":"2018-02-06T01:33:35Z"}},{"node":{"authoredDate":"2018-03-06T18:09:22Z"}},{"node":{"authoredDate":"2018-02-12T11:29:18Z"}},{"node":{"authoredDate":"2018-03-06T14:17:59Z"}},{"node":{"authoredDate":"2018-03-06T12:41:49Z"}},{"node":{"authoredDate":"2018-02-26T19:20:43Z"}},{"node":{"authoredDate":"2018-03-06T02:57:49Z"}},{"node":{"authoredDate":"2018-03-06T01:53:28Z"}},{"node":{"authoredDate":"2018-03-06T01:44:39Z"}},{"node":{"authoredDate":"2018-03-06T01:27:16Z"}},{"node":{"authoredDate":"2018-03-05T22:01:31Z"}},{"node":{"authoredDate":"2018-03-05T20:57:52Z"}},{"node":{"authoredDate":"2018-03-05T20:12:04Z"}},{"node":{"authoredDate":"2018-03-05T18:27:14Z"}},{"node":{"authoredDate":"2018-03-04T19:14:51Z"}},{"node":{"authoredDate":"2018-03-05T16:53:31Z"}},{"node":{"authoredDate":"2018-03-05T16:23:20Z"}}]}}},"description":"Ruby
+        on Rails","hasIssuesEnabled":true,"hasWikiEnabled":false,"homepageUrl":"http://rubyonrails.org","isArchived":false,"isFork":false,"isMirror":false,"licenseInfo":{"key":"mit"},"primaryLanguage":{"name":"Ruby"},"pushedAt":"2018-03-12T19:56:09Z","closedIssues":{"totalCount":10829},"openIssues":{"totalCount":352},"closedPullRequests":{"totalCount":6604},"openPullRequests":{"totalCount":709},"mergedPullRequests":{"totalCount":13695}},"rateLimit":{"limit":5000,"cost":1,"remaining":4994,"resetAt":"2018-03-12T21:51:57Z"}}}'
+    http_version: 
+  recorded_at: Mon, 12 Mar 2018 21:26:08 GMT
+recorded_with: VCR 4.0.0

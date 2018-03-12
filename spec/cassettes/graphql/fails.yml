@@ -1,0 +1,84 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.github.com/graphql
+    body:
+      encoding: UTF-8
+      string: '{"query":"{\n  repository(owner: \"thisverylikely\", name: \"fails\")
+        {\n    nameWithOwner\n    forks {\n      totalCount\n    }\n    stargazers
+        {\n      totalCount\n    }\n    watchers {\n      totalCount\n    }\n    createdAt\n    defaultBranchRef
+        {\n      name\n      target {\n        ... on Commit {\n          history(first:
+        50) {\n            edges {\n              node {\n                authoredDate\n              }\n            }\n          }\n        }\n      }\n    }\n    description\n    hasIssuesEnabled\n    hasWikiEnabled\n    homepageUrl\n    isArchived\n    isFork\n    isMirror\n    licenseInfo
+        {\n      key\n    }\n    primaryLanguage {\n      name\n    }\n    pushedAt\n    closedIssues:
+        issues(states: CLOSED) {\n      totalCount\n    }\n    openIssues: issues(states:
+        OPEN) {\n      totalCount\n    }\n    closedPullRequests: pullRequests(states:
+        CLOSED) {\n      totalCount\n    }\n    openPullRequests: pullRequests(states:
+        OPEN) {\n      totalCount\n    }\n    mergedPullRequests: pullRequests(states:
+        MERGED) {\n      totalCount\n    }\n  }\n\n  rateLimit {\n    limit\n    cost\n    remaining\n    resetAt\n  }\n}\n"}'
+    headers:
+      Authorization:
+      - bearer <GITHUB_TOKEN>
+      User-Agent:
+      - ruby-toolbox.com API client
+      Connection:
+      - close
+      Host:
+      - api.github.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Mon, 12 Mar 2018 22:17:39 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '280'
+      Connection:
+      - close
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4999'
+      X-Ratelimit-Reset:
+      - '1520896659'
+      Cache-Control:
+      - no-cache
+      X-Oauth-Scopes:
+      - public_repo
+      X-Accepted-Oauth-Scopes:
+      - repo
+      X-Github-Media-Type:
+      - github.v4; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Security-Policy:
+      - default-src 'none'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - deny
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Runtime-Rack:
+      - '0.051332'
+      X-Github-Request-Id:
+      - 412E:7473:375968F:6D30E15:5AA6FC82
+    body:
+      encoding: UTF-8
+      string: '{"data":{"repository":null,"rateLimit":{"limit":5000,"cost":1,"remaining":4999,"resetAt":"2018-03-12T23:17:39Z"}},"errors":[{"message":"Could
+        not resolve to a User with the username ''thisverylikely''.","type":"NOT_FOUND","path":["repository"],"locations":[{"line":2,"column":3}]}]}'
+    http_version: 
+  recorded_at: Mon, 12 Mar 2018 22:17:39 GMT
+recorded_with: VCR 4.0.0
