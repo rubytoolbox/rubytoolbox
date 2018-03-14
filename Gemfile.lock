@@ -77,7 +77,7 @@ GEM
     dotenv-rails (2.2.1)
       dotenv (= 2.2.1)
       railties (>= 3.2, < 5.2)
-    erubi (1.7.0)
+    erubi (1.7.1)
     execjs (2.7.0)
     faraday (0.14.0)
       multipart-post (>= 1.2, < 3)
@@ -186,7 +186,7 @@ GEM
       rack (>= 1.0.0, < 3)
     rack-protection (2.0.0)
       rack
-    rack-proxy (0.6.3)
+    rack-proxy (0.6.4)
       rack
     rack-ssl-enforcer (0.2.9)
     rack-test (0.8.3)
@@ -333,7 +333,7 @@ GEM
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff
-    webpacker (3.3.0)
+    webpacker (3.3.1)
       activesupport (>= 4.2)
       rack-proxy (>= 0.6.1)
       railties (>= 4.2)
