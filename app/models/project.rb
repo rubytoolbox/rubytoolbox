@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/ClassLength
 class Project < ApplicationRecord
   self.primary_key = :permalink
 
@@ -57,7 +58,9 @@ class Project < ApplicationRecord
            :changelog_url,
            :wiki_url,
            :bug_tracker_url,
+           :licenses,
            :url,
+           :reverse_dependencies_count,
            to: :rubygem,
            allow_nil: true,
            prefix: :rubygem
@@ -70,6 +73,20 @@ class Project < ApplicationRecord
            :wiki_url,
            :issues_url,
            :url,
+           :primary_language,
+           :has_issues,
+           :license,
+           :default_branch,
+           :is_fork,
+           :is_mirror,
+           :open_issues_count,
+           :closed_issues_count,
+           :issue_closure_rate,
+           :open_pull_requests_count,
+           :merged_pull_requests_count,
+           :closed_pull_requests_count,
+           :pull_request_acceptance_rate,
+           :average_recent_committed_at,
            to: :github_repo,
            allow_nil: true,
            prefix: :github_repo
@@ -110,3 +127,4 @@ class Project < ApplicationRecord
     rubygem_bug_tracker_url || github_repo_issues_url
   end
 end
+# rubocop:enable Metrics/ClassLength

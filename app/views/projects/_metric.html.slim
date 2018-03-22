@@ -5,7 +5,10 @@
         i.fa class="fa-#{icon}"
       span= label
     strong
-      - if value.kind_of? Integer
+      - if value.kind_of? Float
+        = number_with_delimiter value.floor
+        | %
+      - elsif value.kind_of? Integer
         = number_with_delimiter value
       - elsif value.kind_of? Date or value.kind_of? Time
         time datetime=value.iso8601 title=l(value)
