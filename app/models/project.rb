@@ -75,7 +75,7 @@ class Project < ApplicationRecord
            prefix: :github_repo
 
   def self.find_for_show!(permalink)
-    includes_associations.find(permalink)
+    includes_associations.find(Github.normalize_path(permalink))
   end
 
   def permalink=(permalink)
