@@ -39,9 +39,9 @@ RSpec.describe GithubClient, :real_http do
   end
 
   describe "for unknown repo", vcr: { cassette_name: "graphql/fails" } do
-    it "raises an GithubClient::InvalidResponse" do
+    it "raises a GithubClient::UnknownRepoError" do
       expect { client.fetch_repository("thisverylikely/fails") }.to raise_error(
-        GithubClient::InvalidResponse, /Could not resolve to a User with the username/
+        GithubClient::UnknownRepoError, /Cannot find repo/
       )
     end
   end
@@ -49,10 +49,10 @@ RSpec.describe GithubClient, :real_http do
   # This is currently not possible with Github's GraphQL API :(
   # https://platform.github.community/t/repository-redirects-in-api-v4-graphql/4417
   #
-  # describe "for a moved repo", vcr: { cassette_name: "graphql/carrierwave" } do
-  #   it "resolves to the real repository path" do
-  #     response = client.fetch_repository "jnicklas/carrierwave"
-  #     expect(response.path).to be == "carrierwaveuploader/carrierwave"
-  #   end
-  # end
+  describe "for a moved repo", vcr: { cassette_name: "graphql/carrierwave" } do
+    it "resolves to the real repository path" do
+      response = client.fetch_repository "jnicklas/carrierwave"
+      expect(response.path).to be == "carrierwaveuploader/carrierwave"
+    end
+  end
 end

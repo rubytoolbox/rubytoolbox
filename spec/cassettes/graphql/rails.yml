@@ -1,6 +1,77 @@
 ---
 http_interactions:
 - request:
+    method: head
+    uri: https://github.com/rails/rails
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Connection:
+      - close
+      Host:
+      - github.com
+      User-Agent:
+      - http.rb/3.0.0
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Thu, 22 Mar 2018 22:14:08 GMT
+      Content-Type:
+      - text/html; charset=utf-8
+      Connection:
+      - close
+      Status:
+      - 200 OK
+      X-Frame-Options:
+      - deny
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Cache-Control:
+      - no-cache
+      Vary:
+      - X-PJAX
+      Set-Cookie:
+      - _gh_sess=Z1prcnpISmtaa0M4dlNhRDdCVWhrendPdUlaa0w2TVdBZzN1ZW93Z3ZEcFZhZ0wxWlQ0R24vTFZEVGVCTWJMTDk1YkRBSG9rUmdyaTFmV2ltRjlZMmxHTGdDdlFDMkdzUmM2ajJmY1E4c251YVVSQ0NGWEFUWmxtc1pzOFZRaVdmNFJSbnoxeXBpR2dUQWxDYlV1Z3RBUGlaTHQ5YksrQmNOZUpGMTg4QjZEaEV0U2VtUXI4QkNrcWxHSmdWZE9RRHZiTm1rVWdHNmlyRGNUMHVmalBOUnlaaGhyMGlBTlZUVEdwRUJUTTM5cmpjNDh1RHhGVkNQVVFxQ0FlUmZWbDhSR2EyQkxDYzRpSUhwUW1uWnBBSlMxdFpDZWxteXFSZUJxcElRNXBNdCs2WHFsWWlwcmJqTTJEc085MDlaaitUSS84QXpRemFTU0pvTmJpWVNRNlpZVmF2R0N3MCtvOEI3MVcydnJYSDlPc1FsRnpyanJJRHV3NHpZLzBuV2FDQzdUVk9nTjIyUmJoZzBzdlIxV0pUZz09LS1FQmFzK082aDFxNExEdDNGRW1uUTJRPT0%3D--4dac50735fbacf072c36e38b828582e10da04d9c;
+        path=/; secure; HttpOnly
+      - logged_in=no; domain=.github.com; path=/; expires=Mon, 22 Mar 2038 22:14:08
+        -0000; secure; HttpOnly
+      X-Request-Id:
+      - 2b0b032b-a3ce-4edc-a7a1-3d14adce4270
+      X-Runtime:
+      - '0.275794'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      Expect-Ct:
+      - max-age=2592000, report-uri="https://api.github.com/_private/browser/errors"
+      Content-Security-Policy:
+      - 'default-src ''none''; base-uri ''self''; block-all-mixed-content; child-src
+        render.githubusercontent.com; connect-src ''self'' uploads.github.com status.github.com
+        collector.githubapp.com api.github.com www.google-analytics.com github-cloud.s3.amazonaws.com
+        github-production-repository-file-5c1aeb.s3.amazonaws.com github-production-upload-manifest-file-7fdce7.s3.amazonaws.com
+        github-production-user-asset-6210df.s3.amazonaws.com wss://live.github.com;
+        font-src assets-cdn.github.com; form-action ''self'' github.com gist.github.com;
+        frame-ancestors ''none''; img-src ''self'' data: assets-cdn.github.com identicons.github.com
+        collector.githubapp.com github-cloud.s3.amazonaws.com *.githubusercontent.com;
+        manifest-src ''self''; media-src ''none''; script-src assets-cdn.github.com;
+        style-src ''unsafe-inline'' assets-cdn.github.com; worker-src ''self'''
+      X-Runtime-Rack:
+      - '0.281688'
+      X-Github-Request-Id:
+      - EDCC:351F:19CECBB:2DAB30F:5AB42AB0
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Thu, 22 Mar 2018 22:14:08 GMT
+- request:
     method: post
     uri: https://api.github.com/graphql
     body:
@@ -33,7 +104,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Mon, 12 Mar 2018 21:26:08 GMT
+      - Thu, 22 Mar 2018 22:14:10 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -45,9 +116,9 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4994'
+      - '4995'
       X-Ratelimit-Reset:
-      - '1520891517'
+      - '1521759633'
       Cache-Control:
       - no-cache
       X-Oauth-Scopes:
@@ -61,24 +132,26 @@ http_interactions:
         X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
       Access-Control-Allow-Origin:
       - "*"
-      Content-Security-Policy:
-      - default-src 'none'
       Strict-Transport-Security:
       - max-age=31536000; includeSubdomains; preload
-      X-Content-Type-Options:
-      - nosniff
       X-Frame-Options:
       - deny
+      X-Content-Type-Options:
+      - nosniff
       X-Xss-Protection:
       - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
       X-Runtime-Rack:
-      - '0.657690'
+      - '1.267134'
       X-Github-Request-Id:
-      - 4122:7473:36EDCF2:6C5706F:5AA6F06F
+      - ED77:4B8D:F0B8AD:221B690:5AB42AB0
     body:
       encoding: UTF-8
-      string: '{"data":{"repository":{"nameWithOwner":"rails/rails","forks":{"totalCount":15265},"stargazers":{"totalCount":38930},"watchers":{"totalCount":2613},"createdAt":"2008-04-11T02:19:47Z","defaultBranchRef":{"name":"master","target":{"history":{"edges":[{"node":{"authoredDate":"2018-03-12T17:34:42Z"}},{"node":{"authoredDate":"2018-03-12T13:55:58Z"}},{"node":{"authoredDate":"2018-03-12T13:41:12Z"}},{"node":{"authoredDate":"2018-03-12T13:02:27Z"}},{"node":{"authoredDate":"2018-03-12T11:39:24Z"}},{"node":{"authoredDate":"2018-03-12T10:43:22Z"}},{"node":{"authoredDate":"2018-03-11T20:22:20Z"}},{"node":{"authoredDate":"2018-03-11T19:48:50Z"}},{"node":{"authoredDate":"2018-03-11T01:00:26Z"}},{"node":{"authoredDate":"2018-03-10T10:43:31Z"}},{"node":{"authoredDate":"2018-03-09T21:13:11Z"}},{"node":{"authoredDate":"2018-03-09T20:14:36Z"}},{"node":{"authoredDate":"2018-03-09T16:55:46Z"}},{"node":{"authoredDate":"2018-03-09T10:51:30Z"}},{"node":{"authoredDate":"2018-03-09T08:41:43Z"}},{"node":{"authoredDate":"2018-03-09T08:28:38Z"}},{"node":{"authoredDate":"2018-03-09T07:33:41Z"}},{"node":{"authoredDate":"2018-03-09T07:04:56Z"}},{"node":{"authoredDate":"2018-03-09T02:31:48Z"}},{"node":{"authoredDate":"2018-03-09T01:23:47Z"}},{"node":{"authoredDate":"2018-03-09T00:27:15Z"}},{"node":{"authoredDate":"2018-03-08T14:14:09Z"}},{"node":{"authoredDate":"2018-03-08T14:01:15Z"}},{"node":{"authoredDate":"2018-03-05T12:42:49Z"}},{"node":{"authoredDate":"2018-03-08T11:55:01Z"}},{"node":{"authoredDate":"2018-03-08T09:59:52Z"}},{"node":{"authoredDate":"2018-03-08T09:49:36Z"}},{"node":{"authoredDate":"2018-03-07T16:18:54Z"}},{"node":{"authoredDate":"2018-03-07T03:06:03Z"}},{"node":{"authoredDate":"2018-03-07T00:41:46Z"}},{"node":{"authoredDate":"2018-03-05T19:24:11Z"}},{"node":{"authoredDate":"2018-03-06T22:09:34Z"}},{"node":{"authoredDate":"2018-03-06T22:07:24Z"}},{"node":{"authoredDate":"2018-02-06T01:33:35Z"}},{"node":{"authoredDate":"2018-03-06T18:09:22Z"}},{"node":{"authoredDate":"2018-02-12T11:29:18Z"}},{"node":{"authoredDate":"2018-03-06T14:17:59Z"}},{"node":{"authoredDate":"2018-03-06T12:41:49Z"}},{"node":{"authoredDate":"2018-02-26T19:20:43Z"}},{"node":{"authoredDate":"2018-03-06T02:57:49Z"}},{"node":{"authoredDate":"2018-03-06T01:53:28Z"}},{"node":{"authoredDate":"2018-03-06T01:44:39Z"}},{"node":{"authoredDate":"2018-03-06T01:27:16Z"}},{"node":{"authoredDate":"2018-03-05T22:01:31Z"}},{"node":{"authoredDate":"2018-03-05T20:57:52Z"}},{"node":{"authoredDate":"2018-03-05T20:12:04Z"}},{"node":{"authoredDate":"2018-03-05T18:27:14Z"}},{"node":{"authoredDate":"2018-03-04T19:14:51Z"}},{"node":{"authoredDate":"2018-03-05T16:53:31Z"}},{"node":{"authoredDate":"2018-03-05T16:23:20Z"}}]}}},"description":"Ruby
-        on Rails","hasIssuesEnabled":true,"hasWikiEnabled":false,"homepageUrl":"http://rubyonrails.org","isArchived":false,"isFork":false,"isMirror":false,"licenseInfo":{"key":"mit"},"primaryLanguage":{"name":"Ruby"},"pushedAt":"2018-03-12T19:56:09Z","closedIssues":{"totalCount":10829},"openIssues":{"totalCount":352},"closedPullRequests":{"totalCount":6604},"openPullRequests":{"totalCount":709},"mergedPullRequests":{"totalCount":13695}},"rateLimit":{"limit":5000,"cost":1,"remaining":4994,"resetAt":"2018-03-12T21:51:57Z"}}}'
+      string: '{"data":{"repository":{"nameWithOwner":"rails/rails","forks":{"totalCount":15303},"stargazers":{"totalCount":39070},"watchers":{"totalCount":2623},"createdAt":"2008-04-11T02:19:47Z","defaultBranchRef":{"name":"master","target":{"history":{"edges":[{"node":{"authoredDate":"2018-03-22T21:44:38Z"}},{"node":{"authoredDate":"2018-03-22T21:43:48Z"}},{"node":{"authoredDate":"2018-03-22T21:39:35Z"}},{"node":{"authoredDate":"2018-03-22T11:46:20Z"}},{"node":{"authoredDate":"2018-03-21T16:33:36Z"}},{"node":{"authoredDate":"2018-03-21T21:52:33Z"}},{"node":{"authoredDate":"2018-03-21T20:02:36Z"}},{"node":{"authoredDate":"2018-03-21T18:20:04Z"}},{"node":{"authoredDate":"2018-03-12T18:43:41Z"}},{"node":{"authoredDate":"2018-03-21T18:09:46Z"}},{"node":{"authoredDate":"2018-03-21T18:03:23Z"}},{"node":{"authoredDate":"2018-03-21T17:58:57Z"}},{"node":{"authoredDate":"2018-03-21T16:48:47Z"}},{"node":{"authoredDate":"2018-03-21T13:38:52Z"}},{"node":{"authoredDate":"2018-03-21T10:19:10Z"}},{"node":{"authoredDate":"2018-03-21T00:59:43Z"}},{"node":{"authoredDate":"2018-03-20T15:58:14Z"}},{"node":{"authoredDate":"2018-03-20T15:42:31Z"}},{"node":{"authoredDate":"2018-03-20T04:15:16Z"}},{"node":{"authoredDate":"2018-03-20T14:17:35Z"}},{"node":{"authoredDate":"2018-03-20T01:36:03Z"}},{"node":{"authoredDate":"2018-03-20T11:36:26Z"}},{"node":{"authoredDate":"2018-03-18T13:59:47Z"}},{"node":{"authoredDate":"2018-03-19T21:47:23Z"}},{"node":{"authoredDate":"2018-03-19T20:25:39Z"}},{"node":{"authoredDate":"2018-03-19T18:46:07Z"}},{"node":{"authoredDate":"2018-03-19T15:30:23Z"}},{"node":{"authoredDate":"2018-03-19T15:25:40Z"}},{"node":{"authoredDate":"2018-03-19T13:29:30Z"}},{"node":{"authoredDate":"2018-03-19T12:07:23Z"}},{"node":{"authoredDate":"2018-03-19T12:06:42Z"}},{"node":{"authoredDate":"2018-03-19T10:16:31Z"}},{"node":{"authoredDate":"2018-03-18T23:03:39Z"}},{"node":{"authoredDate":"2018-03-18T23:43:01Z"}},{"node":{"authoredDate":"2018-03-18T21:07:12Z"}},{"node":{"authoredDate":"2018-03-18T16:48:46Z"}},{"node":{"authoredDate":"2018-03-14T14:33:33Z"}},{"node":{"authoredDate":"2018-03-17T20:26:03Z"}},{"node":{"authoredDate":"2018-03-17T17:45:30Z"}},{"node":{"authoredDate":"2018-03-16T23:41:34Z"}},{"node":{"authoredDate":"2018-03-16T22:02:48Z"}},{"node":{"authoredDate":"2018-03-16T19:18:26Z"}},{"node":{"authoredDate":"2018-03-16T16:40:34Z"}},{"node":{"authoredDate":"2018-03-09T22:14:39Z"}},{"node":{"authoredDate":"2018-03-16T05:22:49Z"}},{"node":{"authoredDate":"2018-03-16T05:19:40Z"}},{"node":{"authoredDate":"2018-03-15T21:32:20Z"}},{"node":{"authoredDate":"2018-03-15T21:29:21Z"}},{"node":{"authoredDate":"2018-03-15T19:49:21Z"}},{"node":{"authoredDate":"2018-03-15T19:36:51Z"}}]}}},"description":"Ruby
+        on Rails","hasIssuesEnabled":true,"hasWikiEnabled":false,"homepageUrl":"http://rubyonrails.org","isArchived":false,"isFork":false,"isMirror":false,"licenseInfo":{"key":"mit"},"primaryLanguage":{"name":"Ruby"},"pushedAt":"2018-03-22T21:45:47Z","closedIssues":{"totalCount":10866},"openIssues":{"totalCount":350},"closedPullRequests":{"totalCount":6623},"openPullRequests":{"totalCount":715},"mergedPullRequests":{"totalCount":13728}},"rateLimit":{"limit":5000,"cost":1,"remaining":4995,"resetAt":"2018-03-22T23:00:33Z"}}}'
     http_version: 
-  recorded_at: Mon, 12 Mar 2018 21:26:08 GMT
+  recorded_at: Thu, 22 Mar 2018 22:14:10 GMT
 recorded_with: VCR 4.0.0
