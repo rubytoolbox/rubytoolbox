@@ -34,6 +34,15 @@ RSpec.describe CategoriesController, type: :controller do
         do_request
         expect(assigns(:category)).to be == category
       end
+
+      describe "case-sensitivity" do
+        ["CATegory", " catEGory "].each do |variant|
+          it "redirects to the correct variant if accessed via #{variant.inspect}" do
+            category
+            expect(get(:show, params: { id: variant })).to redirect_to(category_url("category"))
+          end
+        end
+      end
     end
   end
 end
