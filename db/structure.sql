@@ -2,6 +2,7 @@ SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
@@ -20,6 +21,20 @@ COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 
 
 --
+-- Name: citext; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS citext WITH SCHEMA public;
+
+
+--
+-- Name: EXTENSION citext; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION citext IS 'data type for case-insensitive character strings';
+
+
+--
 -- Name: pg_stat_statements; Type: EXTENSION; Schema: -; Owner: -
 --
 
@@ -33,13 +48,11 @@ CREATE EXTENSION IF NOT EXISTS pg_stat_statements WITH SCHEMA public;
 COMMENT ON EXTENSION pg_stat_statements IS 'track execution statistics of all SQL statements executed';
 
 
-SET search_path = public, pg_catalog;
-
 --
 -- Name: categories_update_name_tsvector_trigger(); Type: FUNCTION; Schema: public; Owner: -
 --
 
-CREATE FUNCTION categories_update_name_tsvector_trigger() RETURNS trigger
+CREATE FUNCTION public.categories_update_name_tsvector_trigger() RETURNS trigger
     LANGUAGE plpgsql
     AS $$
 BEGIN
@@ -53,7 +66,7 @@ $$;
 -- Name: projects_update_description_tsvector_trigger(); Type: FUNCTION; Schema: public; Owner: -
 --
 
-CREATE FUNCTION projects_update_description_tsvector_trigger() RETURNS trigger
+CREATE FUNCTION public.projects_update_description_tsvector_trigger() RETURNS trigger
     LANGUAGE plpgsql
     AS $$
 BEGIN
@@ -67,7 +80,7 @@ $$;
 -- Name: projects_update_permalink_tsvector_trigger(); Type: FUNCTION; Schema: public; Owner: -
 --
 
-CREATE FUNCTION projects_update_permalink_tsvector_trigger() RETURNS trigger
+CREATE FUNCTION public.projects_update_permalink_tsvector_trigger() RETURNS trigger
     LANGUAGE plpgsql
     AS $$
 BEGIN
@@ -85,7 +98,7 @@ SET default_with_oids = false;
 -- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE TABLE ar_internal_metadata (
+CREATE TABLE public.ar_internal_metadata (
     key character varying NOT NULL,
     value character varying,
     created_at timestamp without time zone NOT NULL,
@@ -97,13 +110,13 @@ CREATE TABLE ar_internal_metadata (
 -- Name: categories; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE TABLE categories (
-    permalink character varying NOT NULL,
+CREATE TABLE public.categories (
+    permalink public.citext NOT NULL,
     name character varying NOT NULL,
     description text,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    category_group_permalink character varying NOT NULL,
+    category_group_permalink public.citext NOT NULL,
     name_tsvector tsvector
 );
 
@@ -112,9 +125,9 @@ CREATE TABLE categories (
 -- Name: categorizations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE TABLE categorizations (
+CREATE TABLE public.categorizations (
     id bigint NOT NULL,
-    category_permalink character varying NOT NULL,
+    category_permalink public.citext NOT NULL,
     project_permalink character varying NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
@@ -125,7 +138,7 @@ CREATE TABLE categorizations (
 -- Name: categorizations_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE categorizations_id_seq
+CREATE SEQUENCE public.categorizations_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -137,15 +150,15 @@ CREATE SEQUENCE categorizations_id_seq
 -- Name: categorizations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE categorizations_id_seq OWNED BY categorizations.id;
+ALTER SEQUENCE public.categorizations_id_seq OWNED BY public.categorizations.id;
 
 
 --
 -- Name: category_groups; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE TABLE category_groups (
-    permalink character varying NOT NULL,
+CREATE TABLE public.category_groups (
+    permalink public.citext NOT NULL,
     name character varying NOT NULL,
     description text,
     created_at timestamp without time zone NOT NULL,
@@ -157,8 +170,8 @@ CREATE TABLE category_groups (
 -- Name: github_repos; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE TABLE github_repos (
-    path character varying NOT NULL,
+CREATE TABLE public.github_repos (
+    path public.citext NOT NULL,
     stargazers_count integer NOT NULL,
     forks_count integer NOT NULL,
     watchers_count integer NOT NULL,
@@ -182,12 +195,12 @@ CREATE TABLE github_repos (
 -- Name: projects; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE TABLE projects (
+CREATE TABLE public.projects (
     permalink character varying NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     rubygem_name character varying,
-    github_repo_path character varying,
+    github_repo_path public.citext,
     score numeric(5,2),
     description text,
     permalink_tsvector tsvector,
@@ -200,7 +213,7 @@ CREATE TABLE projects (
 -- Name: rubygems; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE TABLE rubygems (
+CREATE TABLE public.rubygems (
     name character varying NOT NULL,
     downloads integer NOT NULL,
     current_version character varying NOT NULL,
@@ -227,7 +240,7 @@ CREATE TABLE rubygems (
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE TABLE schema_migrations (
+CREATE TABLE public.schema_migrations (
     version character varying NOT NULL
 );
 
@@ -236,14 +249,14 @@ CREATE TABLE schema_migrations (
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY categorizations ALTER COLUMN id SET DEFAULT nextval('categorizations_id_seq'::regclass);
+ALTER TABLE ONLY public.categorizations ALTER COLUMN id SET DEFAULT nextval('public.categorizations_id_seq'::regclass);
 
 
 --
 -- Name: ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
-ALTER TABLE ONLY ar_internal_metadata
+ALTER TABLE ONLY public.ar_internal_metadata
     ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
 
 
@@ -251,7 +264,7 @@ ALTER TABLE ONLY ar_internal_metadata
 -- Name: categorizations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
-ALTER TABLE ONLY categorizations
+ALTER TABLE ONLY public.categorizations
     ADD CONSTRAINT categorizations_pkey PRIMARY KEY (id);
 
 
@@ -259,7 +272,7 @@ ALTER TABLE ONLY categorizations
 -- Name: schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
-ALTER TABLE ONLY schema_migrations
+ALTER TABLE ONLY public.schema_migrations
     ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
 
 
@@ -267,144 +280,144 @@ ALTER TABLE ONLY schema_migrations
 -- Name: categorizations_unique_index; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE UNIQUE INDEX categorizations_unique_index ON categorizations USING btree (category_permalink, project_permalink);
+CREATE UNIQUE INDEX categorizations_unique_index ON public.categorizations USING btree (category_permalink, project_permalink);
 
 
 --
 -- Name: index_categories_on_category_group_permalink; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE INDEX index_categories_on_category_group_permalink ON categories USING btree (category_group_permalink);
+CREATE INDEX index_categories_on_category_group_permalink ON public.categories USING btree (category_group_permalink);
 
 
 --
 -- Name: index_categories_on_name_tsvector; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE INDEX index_categories_on_name_tsvector ON categories USING gin (name_tsvector);
+CREATE INDEX index_categories_on_name_tsvector ON public.categories USING gin (name_tsvector);
 
 
 --
 -- Name: index_categories_on_permalink; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE UNIQUE INDEX index_categories_on_permalink ON categories USING btree (permalink);
+CREATE UNIQUE INDEX index_categories_on_permalink ON public.categories USING btree (permalink);
 
 
 --
 -- Name: index_categorizations_on_category_permalink; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE INDEX index_categorizations_on_category_permalink ON categorizations USING btree (category_permalink);
+CREATE INDEX index_categorizations_on_category_permalink ON public.categorizations USING btree (category_permalink);
 
 
 --
 -- Name: index_categorizations_on_project_permalink; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE INDEX index_categorizations_on_project_permalink ON categorizations USING btree (project_permalink);
+CREATE INDEX index_categorizations_on_project_permalink ON public.categorizations USING btree (project_permalink);
 
 
 --
 -- Name: index_category_groups_on_permalink; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE UNIQUE INDEX index_category_groups_on_permalink ON category_groups USING btree (permalink);
+CREATE UNIQUE INDEX index_category_groups_on_permalink ON public.category_groups USING btree (permalink);
 
 
 --
 -- Name: index_github_repos_on_path; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE UNIQUE INDEX index_github_repos_on_path ON github_repos USING btree (path);
+CREATE UNIQUE INDEX index_github_repos_on_path ON public.github_repos USING btree (path);
 
 
 --
 -- Name: index_projects_on_description_tsvector; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE INDEX index_projects_on_description_tsvector ON projects USING gin (description_tsvector);
+CREATE INDEX index_projects_on_description_tsvector ON public.projects USING gin (description_tsvector);
 
 
 --
 -- Name: index_projects_on_permalink; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE UNIQUE INDEX index_projects_on_permalink ON projects USING btree (permalink);
+CREATE UNIQUE INDEX index_projects_on_permalink ON public.projects USING btree (permalink);
 
 
 --
 -- Name: index_projects_on_permalink_tsvector; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE INDEX index_projects_on_permalink_tsvector ON projects USING gin (permalink_tsvector);
+CREATE INDEX index_projects_on_permalink_tsvector ON public.projects USING gin (permalink_tsvector);
 
 
 --
 -- Name: index_projects_on_rubygem_name; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE UNIQUE INDEX index_projects_on_rubygem_name ON projects USING btree (rubygem_name);
+CREATE UNIQUE INDEX index_projects_on_rubygem_name ON public.projects USING btree (rubygem_name);
 
 
 --
 -- Name: index_rubygems_on_name; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE UNIQUE INDEX index_rubygems_on_name ON rubygems USING btree (name);
+CREATE UNIQUE INDEX index_rubygems_on_name ON public.rubygems USING btree (name);
 
 
 --
 -- Name: categories_update_name_tsvector_trigger; Type: TRIGGER; Schema: public; Owner: -
 --
 
-CREATE TRIGGER categories_update_name_tsvector_trigger BEFORE INSERT OR UPDATE ON categories FOR EACH ROW EXECUTE PROCEDURE categories_update_name_tsvector_trigger();
+CREATE TRIGGER categories_update_name_tsvector_trigger BEFORE INSERT OR UPDATE ON public.categories FOR EACH ROW EXECUTE PROCEDURE public.categories_update_name_tsvector_trigger();
 
 
 --
 -- Name: projects_update_description_tsvector_trigger; Type: TRIGGER; Schema: public; Owner: -
 --
 
-CREATE TRIGGER projects_update_description_tsvector_trigger BEFORE INSERT OR UPDATE ON projects FOR EACH ROW EXECUTE PROCEDURE projects_update_description_tsvector_trigger();
+CREATE TRIGGER projects_update_description_tsvector_trigger BEFORE INSERT OR UPDATE ON public.projects FOR EACH ROW EXECUTE PROCEDURE public.projects_update_description_tsvector_trigger();
 
 
 --
 -- Name: projects_update_permalink_tsvector_trigger; Type: TRIGGER; Schema: public; Owner: -
 --
 
-CREATE TRIGGER projects_update_permalink_tsvector_trigger BEFORE INSERT OR UPDATE ON projects FOR EACH ROW EXECUTE PROCEDURE projects_update_permalink_tsvector_trigger();
+CREATE TRIGGER projects_update_permalink_tsvector_trigger BEFORE INSERT OR UPDATE ON public.projects FOR EACH ROW EXECUTE PROCEDURE public.projects_update_permalink_tsvector_trigger();
 
 
 --
 -- Name: fk_rails_1c87ed593b; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY categorizations
-    ADD CONSTRAINT fk_rails_1c87ed593b FOREIGN KEY (category_permalink) REFERENCES categories(permalink);
+ALTER TABLE ONLY public.categorizations
+    ADD CONSTRAINT fk_rails_1c87ed593b FOREIGN KEY (category_permalink) REFERENCES public.categories(permalink);
 
 
 --
 -- Name: fk_rails_2f82cbb022; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY categorizations
-    ADD CONSTRAINT fk_rails_2f82cbb022 FOREIGN KEY (project_permalink) REFERENCES projects(permalink);
+ALTER TABLE ONLY public.categorizations
+    ADD CONSTRAINT fk_rails_2f82cbb022 FOREIGN KEY (project_permalink) REFERENCES public.projects(permalink);
 
 
 --
 -- Name: fk_rails_4bd2d3273a; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY categories
-    ADD CONSTRAINT fk_rails_4bd2d3273a FOREIGN KEY (category_group_permalink) REFERENCES category_groups(permalink);
+ALTER TABLE ONLY public.categories
+    ADD CONSTRAINT fk_rails_4bd2d3273a FOREIGN KEY (category_group_permalink) REFERENCES public.category_groups(permalink);
 
 
 --
 -- Name: fk_rails_ddb4eb0108; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY projects
-    ADD CONSTRAINT fk_rails_ddb4eb0108 FOREIGN KEY (rubygem_name) REFERENCES rubygems(name);
+ALTER TABLE ONLY public.projects
+    ADD CONSTRAINT fk_rails_ddb4eb0108 FOREIGN KEY (rubygem_name) REFERENCES public.rubygems(name);
 
 
 --
@@ -430,6 +443,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180126213034'),
 ('20180126214714'),
 ('20180127203832'),
-('20180127211755');
+('20180127211755'),
+('20180221214013');
 
 

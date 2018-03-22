@@ -33,5 +33,23 @@ RSpec.describe ProjectsController, type: :controller do
         expect(assigns(:project)).to be == project
       end
     end
+
+    describe "for known github project" do
+      def do_request(permalink)
+        get :show, params: { id: permalink }
+      end
+
+      before do
+        Project.create! permalink: "rails/rails"
+      end
+
+      it "responds with success when accessed with the 'correct' permalink" do
+        expect(do_request("rails/rails")).to have_http_status :success
+      end
+
+      it "redirects to normalized path if accessed as 'Rails/Rails'" do
+        expect(do_request("Rails/Rails")).to redirect_to("/projects/rails/rails")
+      end
+    end
   end
 end
