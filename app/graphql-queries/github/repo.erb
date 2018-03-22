@@ -1,0 +1,65 @@
+{
+  repository(owner: <%= owner.inspect %>, name: <%= name.inspect %>) {
+    nameWithOwner
+    forks {
+      totalCount
+    }
+    stargazers {
+      totalCount
+    }
+    watchers {
+      totalCount
+    }
+    createdAt
+    defaultBranchRef {
+      name
+      target {
+        ... on Commit {
+          history(first: 50) {
+            edges {
+              node {
+                authoredDate
+              }
+            }
+          }
+        }
+      }
+    }
+    description
+    hasIssuesEnabled
+    hasWikiEnabled
+    homepageUrl
+    isArchived
+    isFork
+    isMirror
+    licenseInfo {
+      key
+    }
+    primaryLanguage {
+      name
+    }
+    pushedAt
+    closedIssues: issues(states: CLOSED) {
+      totalCount
+    }
+    openIssues: issues(states: OPEN) {
+      totalCount
+    }
+    closedPullRequests: pullRequests(states: CLOSED) {
+      totalCount
+    }
+    openPullRequests: pullRequests(states: OPEN) {
+      totalCount
+    }
+    mergedPullRequests: pullRequests(states: MERGED) {
+      totalCount
+    }
+  }
+
+  rateLimit {
+    limit
+    cost
+    remaining
+    resetAt
+  }
+}

@@ -37,14 +37,6 @@ module HttpService
       HTTP::Response.new(status: response["status"], body: response["body"], version: "1.1")
     end
 
-    def headers(*_args)
-      self
-    end
-
-    def follow
-      self
-    end
-
     def responses
       YAML.load_file responses_source_file_path
     end

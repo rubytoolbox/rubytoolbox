@@ -25,9 +25,9 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Request-Id:
-      - 3e9d7fca-afcd-4871-b2b0-5e8c53edf0e1
+      - 42158ddf-58c7-492d-ba0c-150a87946dbc
       X-Runtime:
-      - '0.001740'
+      - '0.001373'
       Strict-Transport-Security:
       - max-age=0
       Content-Length:
@@ -35,26 +35,26 @@ http_interactions:
       Accept-Ranges:
       - bytes
       Date:
-      - Tue, 16 Jan 2018 20:14:40 GMT
+      - Thu, 22 Mar 2018 23:15:21 GMT
       Via:
       - 1.1 varnish
       Age:
-      - '12'
+      - '0'
       Connection:
       - close
       X-Served-By:
-      - cache-ams4448-AMS
+      - cache-ams4120-AMS
       X-Cache:
-      - HIT
+      - MISS
       X-Cache-Hits:
-      - '1'
+      - '0'
       X-Timer:
-      - S1516133681.673714,VS0,VE0
+      - S1521760521.259126,VS0,VE183
       Server:
       - RubyGems.org
     body:
       encoding: UTF-8
       string: '{"status":404,"error":"Not Found"}'
     http_version: 
-  recorded_at: Tue, 16 Jan 2018 20:14:40 GMT
+  recorded_at: Thu, 22 Mar 2018 23:15:21 GMT
 recorded_with: VCR 4.0.0

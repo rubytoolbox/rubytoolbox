@@ -178,16 +178,23 @@ CREATE TABLE public.github_repos (
     description character varying,
     homepage_url character varying,
     repo_created_at timestamp without time zone,
-    repo_updated_at timestamp without time zone,
     repo_pushed_at timestamp without time zone,
     has_issues boolean,
-    has_projects boolean,
-    has_downloads boolean,
     has_wiki boolean,
-    has_pages boolean,
     archived boolean,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    primary_language character varying,
+    license character varying,
+    default_branch character varying,
+    is_fork boolean,
+    is_mirror boolean,
+    open_issues_count integer,
+    closed_issues_count integer,
+    open_pull_requests_count integer,
+    merged_pull_requests_count integer,
+    closed_pull_requests_count integer,
+    average_recent_committed_at timestamp without time zone
 );
 
 
@@ -444,6 +451,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180126214714'),
 ('20180127203832'),
 ('20180127211755'),
-('20180221214013');
+('20180221214013'),
+('20180322231205'),
+('20180322231848');
 
 
