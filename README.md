@@ -47,6 +47,7 @@ Yarn is used to manage frontend dependencies for the project. It can be installe
 * You can check code style with `bundle exec rubocop`
 * During development you can launch [guard](https://github.com/guard/guard) using `bundle exec guard` to continuously check your changes
 * The repo has [overcommit](https://github.com/brigade/overcommit) git hooks set up to check your changes before commit, push etc. You can set it up once with `bundle exec overcommit --install`. Whenever the hook config file `.overcommit.yml` changes, you need to verify it's contents and approve the changes with `bundle exec overcommit --sign`
+* You can find the [sidekiq](https://github.com/mperham/sidekiq/) web UI at `http://localhost:5000/ops/sidekiq`. Username can be empty, the default password is `development`.
 
 ## Code of Conduct
 
