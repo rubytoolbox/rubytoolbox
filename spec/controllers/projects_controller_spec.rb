@@ -48,7 +48,7 @@ RSpec.describe ProjectsController, type: :controller do
       end
 
       it "redirects to normalized path if accessed as 'Rails/Rails'" do
-        expect(do_request("Rails/Rails")).to redirect_to(project_url("rails/rails"))
+        expect(do_request("Rails/Rails")).to redirect_to("/projects/rails/rails")
       end
     end
   end
