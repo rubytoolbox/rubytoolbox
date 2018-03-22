@@ -27,15 +27,26 @@ class GithubRepoUpdateJob < ApplicationJob
 
   ATTRIBUTE_MAPPING = {
     archived?: :archived,
+    average_recent_committed_at: :average_recent_committed_at,
+    closed_issues_count: :closed_issues_count,
+    closed_pull_requests_count: :closed_pull_requests_count,
     created_at: :repo_created_at,
+    default_branch: :default_branch,
     description: :description,
+    fork?: :is_fork,
     forks_count: :forks_count,
-    issues?: :has_issues,
-    wiki?: :has_wiki,
     homepage_url: :homepage_url,
+    issues?: :has_issues,
+    license: :license,
+    merged_pull_requests_count: :merged_pull_requests_count,
+    mirror?: :is_mirror,
+    open_issues_count: :open_issues_count,
+    open_pull_requests_count: :open_pull_requests_count,
+    primary_language: :primary_language,
     pushed_at: :repo_pushed_at,
     stargazers_count: :stargazers_count,
     watchers_count: :watchers_count,
+    wiki?: :has_wiki,
   }.freeze
 
   def mapped_attributes(info)
