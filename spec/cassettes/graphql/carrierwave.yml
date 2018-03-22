@@ -21,7 +21,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Thu, 22 Mar 2018 22:14:07 GMT
+      - Thu, 22 Mar 2018 23:15:17 GMT
       Content-Type:
       - text/html; charset=utf-8
       Connection:
@@ -41,12 +41,12 @@ http_interactions:
       Location:
       - https://github.com/carrierwaveuploader/carrierwave
       Set-Cookie:
-      - _gh_sess=d2pxRE9UcGhNYUM0Z1pBMEFJS0ZWbWxJVXdRendyWlVaNWxoNGpuU2RhRnRFbGFsSjd5SHJyVWJ6cWZYZUREL2NJR011eENlbjdHQjh6TWFDOUZSVjIwRWFFNjVPdExyVGZmZXZtb0NBSlU9LS1KQi9FQzJLcm5QN3ZYQ2JQbStrUFB3PT0%3D--08af9011db28e974dab87aaf7bb6cd742b7652ab;
+      - _gh_sess=NWhUa1pDSmMxclFKM3kvaHdnTExhRmc0bWdxQ3pzMVRVN2w0UUtlNVhhK1hsa0N1RHVYa1ZrandKUEgyb1hOcXB6QzdPL0g1ZW0rb1U0Mm96aEJ5MXQ4d2h2THp1anUwa3JZT2I5NkJzVlE9LS1hd21WQXRBRVRPMFlnZlZObFRvZXZRPT0%3D--69f0ba09d7d8b4e8356a468042eea9fff8c50643;
         path=/; secure; HttpOnly
       X-Request-Id:
-      - e06c3ca9-32c8-4181-ac04-ac390ed12417
+      - 94bc5f58-f53e-43c7-bc50-e879c0cae74d
       X-Runtime:
-      - '0.020095'
+      - '0.022630'
       Strict-Transport-Security:
       - max-age=31536000; includeSubdomains; preload
       Referrer-Policy:
@@ -65,14 +65,14 @@ http_interactions:
         manifest-src ''self''; media-src ''none''; script-src assets-cdn.github.com;
         style-src ''unsafe-inline'' assets-cdn.github.com; worker-src ''self'''
       X-Runtime-Rack:
-      - '0.025276'
+      - '0.028138'
       X-Github-Request-Id:
-      - ED58:3521:1B5569C:337C148:5AB42AAF
+      - ED46:351F:1A38D8B:2E6294E:5AB43905
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Thu, 22 Mar 2018 22:14:07 GMT
+  recorded_at: Thu, 22 Mar 2018 23:15:17 GMT
 - request:
     method: post
     uri: https://api.github.com/graphql
@@ -106,7 +106,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Thu, 22 Mar 2018 22:14:07 GMT
+      - Thu, 22 Mar 2018 23:15:18 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -118,9 +118,9 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4996'
+      - '4994'
       X-Ratelimit-Reset:
-      - '1521759633'
+      - '1521763907'
       Cache-Control:
       - no-cache
       X-Oauth-Scopes:
@@ -147,13 +147,13 @@ http_interactions:
       Content-Security-Policy:
       - default-src 'none'
       X-Runtime-Rack:
-      - '0.182142'
+      - '0.267369'
       X-Github-Request-Id:
-      - ED14:4B95:16079BD:2F7EF9D:5AB42AAF
+      - EDE6:4B96:18CA14A:3631F77:5AB43905
     body:
       encoding: UTF-8
       string: '{"data":{"repository":{"nameWithOwner":"carrierwaveuploader/carrierwave","forks":{"totalCount":1370},"stargazers":{"totalCount":7901},"watchers":{"totalCount":156},"createdAt":"2008-08-28T18:39:49Z","defaultBranchRef":{"name":"master","target":{"history":{"edges":[{"node":{"authoredDate":"2018-02-23T01:37:44Z"}},{"node":{"authoredDate":"2018-02-16T16:48:00Z"}},{"node":{"authoredDate":"2018-02-13T10:54:25Z"}},{"node":{"authoredDate":"2018-02-13T10:54:02Z"}},{"node":{"authoredDate":"2018-02-13T10:37:04Z"}},{"node":{"authoredDate":"2018-02-13T07:00:10Z"}},{"node":{"authoredDate":"2018-02-13T10:35:51Z"}},{"node":{"authoredDate":"2018-02-13T10:17:08Z"}},{"node":{"authoredDate":"2018-02-13T10:48:04Z"}},{"node":{"authoredDate":"2018-02-13T10:14:41Z"}},{"node":{"authoredDate":"2018-02-13T08:57:51Z"}},{"node":{"authoredDate":"2018-02-13T08:56:10Z"}},{"node":{"authoredDate":"2018-02-10T07:17:06Z"}},{"node":{"authoredDate":"2018-02-10T06:56:26Z"}},{"node":{"authoredDate":"2018-02-10T06:13:56Z"}},{"node":{"authoredDate":"2018-02-09T08:20:08Z"}},{"node":{"authoredDate":"2018-02-08T10:33:45Z"}},{"node":{"authoredDate":"2018-01-18T08:51:01Z"}},{"node":{"authoredDate":"2018-01-18T06:00:34Z"}},{"node":{"authoredDate":"2018-01-02T09:20:23Z"}},{"node":{"authoredDate":"2018-01-02T06:20:10Z"}},{"node":{"authoredDate":"2018-01-02T06:18:21Z"}},{"node":{"authoredDate":"2017-12-31T13:44:15Z"}},{"node":{"authoredDate":"2017-12-29T14:44:08Z"}},{"node":{"authoredDate":"2017-12-29T13:21:09Z"}},{"node":{"authoredDate":"2017-11-29T01:26:38Z"}},{"node":{"authoredDate":"2017-11-23T01:03:23Z"}},{"node":{"authoredDate":"2017-11-15T08:23:28Z"}},{"node":{"authoredDate":"2017-10-30T13:57:30Z"}},{"node":{"authoredDate":"2017-10-19T02:21:42Z"}},{"node":{"authoredDate":"2017-10-18T13:18:22Z"}},{"node":{"authoredDate":"2017-10-09T02:13:27Z"}},{"node":{"authoredDate":"2017-10-06T18:11:55Z"}},{"node":{"authoredDate":"2017-10-04T01:49:40Z"}},{"node":{"authoredDate":"2017-10-03T09:50:23Z"}},{"node":{"authoredDate":"2017-09-30T08:57:16Z"}},{"node":{"authoredDate":"2017-09-30T08:12:58Z"}},{"node":{"authoredDate":"2017-09-30T05:04:39Z"}},{"node":{"authoredDate":"2017-09-30T05:00:06Z"}},{"node":{"authoredDate":"2017-09-30T04:53:16Z"}},{"node":{"authoredDate":"2017-09-30T04:17:29Z"}},{"node":{"authoredDate":"2017-09-21T16:40:17Z"}},{"node":{"authoredDate":"2017-09-12T10:36:09Z"}},{"node":{"authoredDate":"2017-09-03T03:30:04Z"}},{"node":{"authoredDate":"2017-09-01T02:51:27Z"}},{"node":{"authoredDate":"2017-08-19T08:02:00Z"}},{"node":{"authoredDate":"2017-07-12T02:11:22Z"}},{"node":{"authoredDate":"2017-07-12T01:48:26Z"}},{"node":{"authoredDate":"2017-07-10T06:32:28Z"}},{"node":{"authoredDate":"2017-07-09T10:44:11Z"}}]}}},"description":"Classier
-        solution for file uploads for Rails, Sinatra and other Ruby web frameworks","hasIssuesEnabled":true,"hasWikiEnabled":true,"homepageUrl":"https://github.com/carrierwaveuploader/carrierwave","isArchived":false,"isFork":false,"isMirror":false,"licenseInfo":null,"primaryLanguage":{"name":"Ruby"},"pushedAt":"2018-03-11T18:17:04Z","closedIssues":{"totalCount":1383},"openIssues":{"totalCount":208},"closedPullRequests":{"totalCount":233},"openPullRequests":{"totalCount":13},"mergedPullRequests":{"totalCount":457}},"rateLimit":{"limit":5000,"cost":1,"remaining":4996,"resetAt":"2018-03-22T23:00:33Z"}}}'
+        solution for file uploads for Rails, Sinatra and other Ruby web frameworks","hasIssuesEnabled":true,"hasWikiEnabled":true,"homepageUrl":"https://github.com/carrierwaveuploader/carrierwave","isArchived":false,"isFork":false,"isMirror":false,"licenseInfo":null,"primaryLanguage":{"name":"Ruby"},"pushedAt":"2018-03-11T18:17:04Z","closedIssues":{"totalCount":1383},"openIssues":{"totalCount":208},"closedPullRequests":{"totalCount":233},"openPullRequests":{"totalCount":13},"mergedPullRequests":{"totalCount":457}},"rateLimit":{"limit":5000,"cost":1,"remaining":4994,"resetAt":"2018-03-23T00:11:47Z"}}}'
     http_version: 
-  recorded_at: Thu, 22 Mar 2018 22:14:07 GMT
+  recorded_at: Thu, 22 Mar 2018 23:15:18 GMT
 recorded_with: VCR 4.0.0

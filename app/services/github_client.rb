@@ -36,6 +36,11 @@ class GithubClient
     case response.status
     when 200
       path
+    # Instead of following 301s, the broken github path
+    # (either coming from the catalog for github-only projects,
+    # or from a rubygems urls) should somehow be flagged and
+    # remapped locally, but this needs some more consideration
+    # regarding the various possible cases
     when 301, 302
       Github.detect_repo_name response.headers["Location"]
     else

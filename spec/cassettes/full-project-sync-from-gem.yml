@@ -44,9 +44,9 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - e9399dae-6d33-4f7b-a23e-2638e631c033
+      - d0fd225f-5eca-4e43-9366-0d774c94d3b8
       X-Runtime:
-      - '0.012465'
+      - '0.015303'
       Strict-Transport-Security:
       - max-age=0
       X-Ua-Compatible:
@@ -58,7 +58,7 @@ http_interactions:
       Accept-Ranges:
       - bytes
       Date:
-      - Tue, 16 Jan 2018 20:14:41 GMT
+      - Thu, 22 Mar 2018 23:15:22 GMT
       Via:
       - 1.1 varnish
       Age:
@@ -66,28 +66,28 @@ http_interactions:
       Connection:
       - close
       X-Served-By:
-      - cache-ams4138-AMS
+      - cache-ams4125-AMS
       X-Cache:
       - MISS
       X-Cache-Hits:
       - '0'
       X-Timer:
-      - S1516133681.003206,VS0,VE195
+      - S1521760523.521263,VS0,VE198
       Vary:
       - Accept-Encoding,Fastly-SSL
       Etag:
-      - '"5bf5b1998cfb0796b91cd8d4932f56dd"'
+      - '"018ba1b55a8c5bed5e439aa1efa5823d"'
       Server:
       - RubyGems.org
     body:
       encoding: UTF-8
-      string: '{"name":"thread_safe","downloads":116338126,"version":"0.3.6","version_downloads":24843666,"platform":"ruby","authors":"Charles
+      string: '{"name":"thread_safe","downloads":125922046,"version":"0.3.6","version_downloads":32885325,"platform":"ruby","authors":"Charles
         Oliver Nutter, thedarkone","info":"A collection of data structures and utilities
         to make thread-safe programming in Ruby easier","licenses":["Apache-2.0"],"metadata":{},"sha":"9ed7072821b51c57e8d6b7011a8e282e25aeea3a4065eab326e43f66f063b05a","project_uri":"https://rubygems.org/gems/thread_safe","gem_uri":"https://rubygems.org/gems/thread_safe-0.3.6.gem","homepage_uri":"https://github.com/ruby-concurrency/thread_safe","wiki_uri":"","documentation_uri":"http://ruby-concurrency.github.io/thread_safe/frames.html","mailing_list_uri":"https://groups.google.com/forum/#!forum/concurrent-ruby","source_code_uri":"https://github.com/ruby-concurrency/thread_safe","bug_tracker_uri":"https://github.com/ruby-concurrency/thread_safe/issues","changelog_uri":null,"dependencies":{"development":[{"name":"atomic","requirements":"=
         1.1.16"},{"name":"rake","requirements":"\u003c 12.0"},{"name":"rspec","requirements":"~\u003e
         3.2"}],"runtime":[]}}'
     http_version: 
-  recorded_at: Tue, 16 Jan 2018 20:14:40 GMT
+  recorded_at: Thu, 22 Mar 2018 23:15:22 GMT
 - request:
     method: get
     uri: https://rubygems.org/api/v1/versions/thread_safe.json
@@ -128,9 +128,9 @@ http_interactions:
       Cache-Control:
       - max-age=0, public
       X-Request-Id:
-      - 6957a204-37d4-411a-8306-162eacaa2758
+      - 7b5d3ff0-1a5e-4837-9da6-5d81d3221797
       X-Runtime:
-      - '0.044680'
+      - '0.050672'
       Strict-Transport-Security:
       - max-age=0
       X-Ua-Compatible:
@@ -142,21 +142,21 @@ http_interactions:
       Accept-Ranges:
       - bytes
       Date:
-      - Tue, 16 Jan 2018 20:14:41 GMT
+      - Thu, 22 Mar 2018 23:15:22 GMT
       Via:
       - 1.1 varnish
       Age:
-      - '15'
+      - '1'
       Connection:
       - close
       X-Served-By:
-      - cache-ams4437-AMS
+      - cache-ams4421-AMS
       X-Cache:
       - HIT
       X-Cache-Hits:
       - '1'
       X-Timer:
-      - S1516133681.287978,VS0,VE1
+      - S1521760523.797774,VS0,VE0
       Vary:
       - Accept-Encoding,Fastly-SSL
       Etag:
@@ -167,114 +167,114 @@ http_interactions:
       encoding: UTF-8
       string: '[{"authors":"Charles Oliver Nutter, thedarkone","built_at":"2017-02-22T00:00:00.000Z","created_at":"2017-02-22T19:51:15.835Z","description":"A
         collection of data structures and utilities to make thread-safe programming
-        in Ruby easier","downloads_count":1023129,"metadata":{},"number":"0.3.6","summary":"Thread-safe
+        in Ruby easier","downloads_count":1254028,"metadata":{},"number":"0.3.6","summary":"Thread-safe
         collections and utilities for Ruby","platform":"java","rubygems_version":"\u003e=
         0","ruby_version":"\u003e= 0","prerelease":false,"licenses":["Apache-2.0"],"requirements":[],"sha":"bb28394cd0924c068981adee71f36a81c85c92e7d74d3f62372bd51489a0e0c2"},{"authors":"Charles
         Oliver Nutter, thedarkone","built_at":"2017-02-22T00:00:00.000Z","created_at":"2017-02-22T19:50:54.397Z","description":"A
         collection of data structures and utilities to make thread-safe programming
-        in Ruby easier","downloads_count":24843666,"metadata":{},"number":"0.3.6","summary":"Thread-safe
+        in Ruby easier","downloads_count":32885325,"metadata":{},"number":"0.3.6","summary":"Thread-safe
         collections and utilities for Ruby","platform":"ruby","rubygems_version":"\u003e=
         0","ruby_version":"\u003e= 0","prerelease":false,"licenses":["Apache-2.0"],"requirements":[],"sha":"9ed7072821b51c57e8d6b7011a8e282e25aeea3a4065eab326e43f66f063b05a"},{"authors":"Charles
         Oliver Nutter, thedarkone","built_at":"2015-03-11T00:00:00.000Z","created_at":"2015-03-11T15:00:52.728Z","description":"Thread-safe
-        collections and utilities for Ruby","downloads_count":6932543,"metadata":{},"number":"0.3.5","summary":"A
+        collections and utilities for Ruby","downloads_count":6977588,"metadata":{},"number":"0.3.5","summary":"A
         collection of data structures and utilities to make thread-safe programming
         in Ruby easier","platform":"java","rubygems_version":"\u003e= 0","ruby_version":"\u003e=
         0","prerelease":false,"licenses":["Apache-2.0"],"requirements":[],"sha":"52976573c9934c696a0c577ea57f51e38714191cc6bd0fac499f9ad5843e060c"},{"authors":"Charles
         Oliver Nutter, thedarkone","built_at":"2015-03-11T00:00:00.000Z","created_at":"2015-03-11T15:00:41.140Z","description":"Thread-safe
-        collections and utilities for Ruby","downloads_count":42224424,"metadata":{},"number":"0.3.5","summary":"A
+        collections and utilities for Ruby","downloads_count":43198343,"metadata":{},"number":"0.3.5","summary":"A
         collection of data structures and utilities to make thread-safe programming
         in Ruby easier","platform":"ruby","rubygems_version":"\u003e= 0","ruby_version":"\u003e=
         0","prerelease":false,"licenses":["Apache-2.0"],"requirements":[],"sha":"993da065f98b8575c537ebf984ffb79eecdb6064559a3b9d2a9d7aaf313704c3"},{"authors":"Charles
         Oliver Nutter, thedarkone","built_at":"2014-05-27T00:00:00.000Z","created_at":"2014-05-27T20:10:29.698Z","description":"Thread-safe
-        collections and utilities for Ruby","downloads_count":31846703,"metadata":{},"number":"0.3.4","summary":"A
+        collections and utilities for Ruby","downloads_count":32104263,"metadata":{},"number":"0.3.4","summary":"A
         collection of data structures and utilities to make thread-safe programming
         in Ruby easier","platform":"ruby","rubygems_version":"\u003e= 0","ruby_version":"\u003e=
         0","prerelease":false,"licenses":["Apache-2.0"],"requirements":[],"sha":"16315baa971c48d00104bcd35e8934e3f9ccfd3b8f429e3fca7ee2dfd81734b2"},{"authors":"Charles
         Oliver Nutter, thedarkone","built_at":"2014-05-27T00:00:00.000Z","created_at":"2014-05-27T20:10:16.778Z","description":"Thread-safe
-        collections and utilities for Ruby","downloads_count":402480,"metadata":{},"number":"0.3.4","summary":"A
+        collections and utilities for Ruby","downloads_count":404491,"metadata":{},"number":"0.3.4","summary":"A
         collection of data structures and utilities to make thread-safe programming
         in Ruby easier","platform":"java","rubygems_version":"\u003e= 0","ruby_version":"\u003e=
         0","prerelease":false,"licenses":["Apache-2.0"],"requirements":[],"sha":"903716024d787ea90b6647c81f3ff3710721279f1ed435fc0e219582ca851ba0"},{"authors":"Charles
         Oliver Nutter, thedarkone","built_at":"2014-04-07T00:00:00.000Z","created_at":"2014-04-07T10:05:01.221Z","description":"Thread-safe
-        collections and utilities for Ruby","downloads_count":61512,"metadata":{},"number":"0.3.3","summary":"A
+        collections and utilities for Ruby","downloads_count":62245,"metadata":{},"number":"0.3.3","summary":"A
         collection of data structures and utilities to make thread-safe programming
         in Ruby easier","platform":"java","rubygems_version":"\u003e= 0","ruby_version":"\u003e=
         0","prerelease":false,"licenses":["Apache-2.0"],"requirements":[],"sha":"e8122caeee98b9294f36760ca1fcf5589b4e27ead202296ffef6854b01693731"},{"authors":"Charles
         Oliver Nutter, thedarkone","built_at":"2014-04-07T00:00:00.000Z","created_at":"2014-04-07T10:04:43.000Z","description":"Thread-safe
-        collections and utilities for Ruby","downloads_count":1652137,"metadata":{},"number":"0.3.3","summary":"A
+        collections and utilities for Ruby","downloads_count":1655478,"metadata":{},"number":"0.3.3","summary":"A
         collection of data structures and utilities to make thread-safe programming
         in Ruby easier","platform":"ruby","rubygems_version":"\u003e= 0","ruby_version":"\u003e=
         0","prerelease":false,"licenses":["Apache-2.0"],"requirements":[],"sha":"f0f4307ea85d6eff7f9c304587073e3465da58beb198ea686bf69ec87f2ddb7e"},{"authors":"Charles
         Oliver Nutter, thedarkone","built_at":"2014-04-05T00:00:00.000Z","created_at":"2014-04-05T12:15:16.825Z","description":"Thread-safe
-        collections and utilities for Ruby","downloads_count":3269,"metadata":{},"number":"0.3.2","summary":"A
+        collections and utilities for Ruby","downloads_count":3376,"metadata":{},"number":"0.3.2","summary":"A
         collection of data structures and utilities to make thread-safe programming
         in Ruby easier","platform":"java","rubygems_version":"\u003e= 0","ruby_version":"\u003e=
         0","prerelease":false,"licenses":["Apache-2.0"],"requirements":[],"sha":"a475303101015f279b2791ddcb821e275d0f76cbce46251359a15d39dfb69117"},{"authors":"Charles
         Oliver Nutter, thedarkone","built_at":"2014-04-05T00:00:00.000Z","created_at":"2014-04-05T12:14:51.531Z","description":"Thread-safe
-        collections and utilities for Ruby","downloads_count":46769,"metadata":{},"number":"0.3.2","summary":"A
+        collections and utilities for Ruby","downloads_count":46816,"metadata":{},"number":"0.3.2","summary":"A
         collection of data structures and utilities to make thread-safe programming
         in Ruby easier","platform":"ruby","rubygems_version":"\u003e= 0","ruby_version":"\u003e=
         0","prerelease":false,"licenses":["Apache-2.0"],"requirements":[],"sha":"e66e8c03414aa0e1982a5f505d659ed5fd1a411fee71b8e852ab57e0eb9e4853"},{"authors":"Charles
         Oliver Nutter, thedarkone","built_at":"2014-03-21T00:00:00.000Z","created_at":"2014-03-21T07:24:51.143Z","description":"Thread-safe
-        collections and utilities for Ruby","downloads_count":474763,"metadata":{},"number":"0.3.1","summary":"A
+        collections and utilities for Ruby","downloads_count":475319,"metadata":{},"number":"0.3.1","summary":"A
         collection of data structures and utilities to make thread-safe programming
         in Ruby easier","platform":"ruby","rubygems_version":"\u003e= 0","ruby_version":"\u003e=
         0","prerelease":false,"licenses":["Apache-2.0"],"requirements":[],"sha":"aff0cf52e87876f46767c5327b8c4332381c6f6f832dff36679e928c30b82f3d"},{"authors":"Charles
         Oliver Nutter, thedarkone","built_at":"2014-03-21T00:00:00.000Z","created_at":"2014-03-21T07:24:24.214Z","description":"Thread-safe
-        collections and utilities for Ruby","downloads_count":29116,"metadata":{},"number":"0.3.1","summary":"A
+        collections and utilities for Ruby","downloads_count":29875,"metadata":{},"number":"0.3.1","summary":"A
         collection of data structures and utilities to make thread-safe programming
         in Ruby easier","platform":"java","rubygems_version":"\u003e= 0","ruby_version":"\u003e=
         0","prerelease":false,"licenses":["Apache-2.0"],"requirements":[],"sha":"d71d0686a011d478562460c7734694c750afb03f769445bd46c6da740e869020"},{"authors":"Charles
         Oliver Nutter, thedarkone","built_at":"2014-02-26T00:00:00.000Z","created_at":"2014-02-26T17:43:22.372Z","description":"Thread-safe
-        collections and utilities for Ruby","downloads_count":29136,"metadata":{},"number":"0.2.0","summary":"A
+        collections and utilities for Ruby","downloads_count":29196,"metadata":{},"number":"0.2.0","summary":"A
         collection of data structures and utilities to make thread-safe programming
         in Ruby easier","platform":"java","rubygems_version":"\u003e= 0","ruby_version":null,"prerelease":false,"licenses":["Apache-2.0"],"requirements":[],"sha":"a184903697075973c6959e48ab28b8f6c3ad628728bb2817c2b0d0bc6aa67433"},{"authors":"Charles
         Oliver Nutter, thedarkone","built_at":"2014-02-26T00:00:00.000Z","created_at":"2014-02-26T17:40:40.192Z","description":"Thread-safe
-        collections and utilities for Ruby","downloads_count":662261,"metadata":{},"number":"0.2.0","summary":"A
+        collections and utilities for Ruby","downloads_count":663522,"metadata":{},"number":"0.2.0","summary":"A
         collection of data structures and utilities to make thread-safe programming
         in Ruby easier","platform":"ruby","rubygems_version":"\u003e= 0","ruby_version":null,"prerelease":false,"licenses":["Apache-2.0"],"requirements":[],"sha":"a85f7f14c3269fd6c77514aa4fdeef20bef19eee91839762b3b4a4f8cf323145"},{"authors":"Charles
         Oliver Nutter, thedarkone","built_at":"2013-09-10T00:00:00.000Z","created_at":"2013-09-10T14:35:21.960Z","description":"Thread-safe
-        collections and utilities for Ruby","downloads_count":4146136,"metadata":{},"number":"0.1.3","summary":"A
+        collections and utilities for Ruby","downloads_count":4160454,"metadata":{},"number":"0.1.3","summary":"A
         collection of data structures and utilities to make thread-safe programming
         in Ruby easier","platform":"ruby","rubygems_version":"\u003e= 0","ruby_version":null,"prerelease":false,"licenses":["Apache-2.0"],"requirements":[],"sha":"f8b9f8db0889aa97676b4a1efe919b1e76601ed9c9662a986825755bba305c38"},{"authors":"Charles
         Oliver Nutter, thedarkone","built_at":"2013-09-10T00:00:00.000Z","created_at":"2013-09-10T14:34:01.740Z","description":"Thread-safe
-        collections and utilities for Ruby","downloads_count":148657,"metadata":{},"number":"0.1.3","summary":"A
+        collections and utilities for Ruby","downloads_count":149141,"metadata":{},"number":"0.1.3","summary":"A
         collection of data structures and utilities to make thread-safe programming
         in Ruby easier","platform":"java","rubygems_version":"\u003e= 0","ruby_version":null,"prerelease":false,"licenses":["Apache-2.0"],"requirements":[],"sha":"24905e6433a692412ddfeb2105c4768266ef693b7e51d9b9dcdb789141b5a7e1"},{"authors":"Charles
         Oliver Nutter","built_at":"2013-07-24T00:00:00.000Z","created_at":"2013-07-24T00:12:01.379Z","description":"Thread-safe
-        collections and utilities for Ruby","downloads_count":929854,"metadata":{},"number":"0.1.2","summary":"A
+        collections and utilities for Ruby","downloads_count":939589,"metadata":{},"number":"0.1.2","summary":"A
         collection of data structures and utilities to make thread-safe programming
         in Ruby easier","platform":"ruby","rubygems_version":"\u003e= 0","ruby_version":null,"prerelease":false,"licenses":["Apache-2.0"],"requirements":[],"sha":"7e2b957c28f2676b0a5ba5c0ad3a92988887922edfcb7be66acac6106881beaf"},{"authors":"Charles
         Oliver Nutter","built_at":"2013-07-24T00:00:00.000Z","created_at":"2013-07-24T00:11:38.470Z","description":"Thread-safe
-        collections and utilities for Ruby","downloads_count":97167,"metadata":{},"number":"0.1.2","summary":"A
+        collections and utilities for Ruby","downloads_count":97278,"metadata":{},"number":"0.1.2","summary":"A
         collection of data structures and utilities to make thread-safe programming
         in Ruby easier","platform":"java","rubygems_version":"\u003e= 0","ruby_version":null,"prerelease":false,"licenses":["Apache-2.0"],"requirements":[],"sha":"d31bb9b0cafd67510f9d5d026064e00c99dcd2935fe310a9deba987788146da7"},{"authors":"Charles
         Oliver Nutter","built_at":"2013-07-23T00:00:00.000Z","created_at":"2013-07-23T19:40:30.776Z","description":"Thread-safe
-        collections and utilities for Ruby","downloads_count":5064,"metadata":{},"number":"0.1.1","summary":"A
+        collections and utilities for Ruby","downloads_count":5095,"metadata":{},"number":"0.1.1","summary":"A
         collection of data structures and utilities to make thread-safe programming
         in Ruby easier","platform":"ruby","rubygems_version":"\u003e= 0","ruby_version":null,"prerelease":false,"licenses":["Apache-2.0"],"requirements":[],"sha":"3102637a5f58ebb8adfbffad76acd9d40b2f0889c3fb4959a9b5e45b6f82942b"},{"authors":"Charles
         Oliver Nutter","built_at":"2013-07-23T00:00:00.000Z","created_at":"2013-07-23T19:39:55.576Z","description":"Thread-safe
-        collections and utilities for Ruby","downloads_count":1347,"metadata":{},"number":"0.1.1","summary":"A
+        collections and utilities for Ruby","downloads_count":1377,"metadata":{},"number":"0.1.1","summary":"A
         collection of data structures and utilities to make thread-safe programming
         in Ruby easier","platform":"java","rubygems_version":"\u003e= 0","ruby_version":null,"prerelease":false,"licenses":["Apache-2.0"],"requirements":[],"sha":"787f8084a847cbe26a9aad685a6e7b46ae113cd87aa144d78a9c3e4f631161db"},{"authors":"Charles
         Oliver Nutter, thedarkone","built_at":"2012-12-12T23:00:00.000Z","created_at":"2012-12-13T12:37:46.787Z","description":"Thread-safe
-        collections and utilities for Ruby","downloads_count":741215,"metadata":{},"number":"0.1.0","summary":"A
+        collections and utilities for Ruby","downloads_count":742385,"metadata":{},"number":"0.1.0","summary":"A
         collection of data structures and utilities to make thread-safe programming
         in Ruby easier","platform":"ruby","rubygems_version":"\u003e= 0","ruby_version":null,"prerelease":false,"licenses":[],"requirements":null,"sha":"4ee7605080ea11b1bfd8a5d7ddeef97a73609d1ad8355e648c91d00842201d3a"},{"authors":"Charles
         Oliver Nutter","built_at":"2012-04-27T00:00:00.000Z","created_at":"2012-04-27T16:52:19.721Z","description":"Thread-safe
-        collections and utilities for Ruby","downloads_count":3582,"metadata":{},"number":"0.0.3","summary":"A
+        collections and utilities for Ruby","downloads_count":3609,"metadata":{},"number":"0.0.3","summary":"A
         collection of data structures and utilities to make thread-safe programming
         in Ruby easier","platform":"ruby","rubygems_version":"\u003e= 0","ruby_version":null,"prerelease":false,"licenses":null,"requirements":null,"sha":"d4fac31142dd3262bcf4e66f730e8ef5d0f058e4f5bc43d510fc4db92a4085e9"},{"authors":"Charles
         Oliver Nutter","built_at":"2012-04-26T00:00:00.000Z","created_at":"2012-04-26T00:12:31.448Z","description":"Thread-safe
-        collections and utilities for Ruby","downloads_count":1806,"metadata":{},"number":"0.0.2","summary":"A
+        collections and utilities for Ruby","downloads_count":1834,"metadata":{},"number":"0.0.2","summary":"A
         collection of data structures and utilities to make thread-safe programming
         in Ruby easier","platform":"ruby","rubygems_version":"\u003e= 0","ruby_version":null,"prerelease":false,"licenses":null,"requirements":null,"sha":"bd74ee7ad95567721f7cd5757d6fb5a6cbf21e6613cf6f187ad3d72c245c2b39"},{"authors":"Charles
         Oliver Nutter","built_at":"2012-04-26T00:00:00.000Z","created_at":"2012-04-26T00:02:37.807Z","description":"Thread-safe
-        collections and utilities for Ruby","downloads_count":1788,"metadata":{},"number":"0.0.1","summary":"A
+        collections and utilities for Ruby","downloads_count":1816,"metadata":{},"number":"0.0.1","summary":"A
         collection of data structures and utilities to make thread-safe programming
         in Ruby easier","platform":"ruby","rubygems_version":"\u003e= 0","ruby_version":null,"prerelease":false,"licenses":null,"requirements":null,"sha":"b1f7dfeb8bc765e421a90836c6a7e7dbe587abe238b2f660a89c6ad6e8e4975d"}]'
     http_version: 
-  recorded_at: Tue, 16 Jan 2018 20:14:40 GMT
+  recorded_at: Thu, 22 Mar 2018 23:15:22 GMT
 - request:
     method: get
     uri: https://rubygems.org/api/v1/gems/thread_safe/reverse_dependencies.json
@@ -313,9 +313,9 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - b77028e7-88b4-46a2-80cc-c491dc75d743
+      - 1167cebd-58b8-44ea-bac2-84b34675a84f
       X-Runtime:
-      - '0.030573'
+      - '0.028130'
       Strict-Transport-Security:
       - max-age=0
       X-Ua-Compatible:
@@ -327,7 +327,7 @@ http_interactions:
       Accept-Ranges:
       - bytes
       Date:
-      - Tue, 16 Jan 2018 20:14:41 GMT
+      - Thu, 22 Mar 2018 23:15:23 GMT
       Via:
       - 1.1 varnish
       Age:
@@ -335,37 +335,116 @@ http_interactions:
       Connection:
       - close
       X-Served-By:
-      - cache-ams4138-AMS
+      - cache-ams4129-AMS
       X-Cache:
       - MISS
       X-Cache-Hits:
       - '0'
       X-Timer:
-      - S1516133681.381222,VS0,VE198
+      - S1521760523.887147,VS0,VE199
       Vary:
       - Accept-Encoding,Fastly-SSL
       Etag:
-      - '"cccee33f2e7f9909d8b82cfe39b92db6"'
+      - '"d38483f52e86f34ead7b98a2f81f20ef"'
       Server:
       - RubyGems.org
     body:
       encoding: UTF-8
-      string: '["r4s","cache_digests","tickr_client","racing-sprockets","clasp","gemerald_beanstalk","ruby_skynet","autodeps","dskiplist","barker","memoizable","descendants_tracker","axiom-types","devise-bootstrap","devbootsrap","axiom-memory-adapter","mongoid_connection_pool","cap_proxy","jirabas","gene_pool","metrics_logger","ruby_nsq","multi_connection","brainsome_devise","postamt","devision","venet-backup","mock_dns_server","whisperer","thread_hazardous","deviseOne","aws_student_accounts","colossus","vigilem-core","pd-blender","hexx-storage","stapfen","prepor-protobuf","persie","rom-generated_id","pagseguro-transparente","smelter","faraday_persistent_excon","persistent_excon","ruby_storm","email_crawler","backup_zh","collectr","ruby-dovado","dry-data","hermann","hermann","turbot-ruby-gems","pg_helper","asciidoctor-bespoke","fluent-plugin-multiline-parser","iplan-appsignal","wet-command_bus","arkency-command_bus","fleck","sliday_backup","neo4j_legacy","rester","slack-cli","sportweb","rohbau","killbill-payu-latam","killbill-firstdata_e4","killbill-securenet","killbill-chartmogul","s3reamer","datashift","elastics","peastash","shuttle_cli","asciidoctor-htmlbook","mixture","asciidoctor-accelerated-mobile-pages","asciidoctor-instant-articles","backup-ssh","asciidoctor-epub3","docli","protobuffy","killbill-litle","killbill-stripe","wechat_client","killbill-braintree_blue","nexpose_pxgrid","killbill-payment-test","gooddata-edge","asciidoctor","asciidoctor-pdf","asciidoctor-doctest","asciidoctor-html5s","killbill-cybersource","protobuf","tzinfo","killbill-orbital","logstash-filter-metrics","logstash-filter-throttle","asciidoctor-rfc","zapnito-cli","lines-engine","killbill-paypal-express","sequent","logstash-input-syslog","asciidoctor-iso","splitclient-rb","asciidoctor-revealjs","gooddata","gooddata","logstash-input-beats","killbill","ldclient-rb","easy_translate","hu","logstash-core"]'
+      string: '["killbill-cybersource","logstash-core","asciidoctor","datashift","asciidoctor-iso","isodoc","html2doc","killbill","hu","logstash-input-beats","gooddata","gooddata","asciidoctor-gb","ldclient-rb","asciidoctor-html5s","splitclient-rb","protobuf","asciidoctor-epub3","logstash-input-syslog","tzinfo","asciidoctor-revealjs","asciidoctor-csd","easy_translate","killbill-chartmogul","killbill-securenet","killbill-firstdata_e4","killbill-payu-latam","rohbau","sportweb","slack-cli","rester","neo4j_legacy","sliday_backup","iplan-appsignal","fluent-plugin-multiline-parser","asciidoctor-bespoke","asciidoctor-pdf","gooddata-edge","killbill-payment-test","nexpose_pxgrid","wechat_client","killbill-braintree_blue","killbill-litle","killbill-stripe","protobuffy","docli","backup-ssh","asciidoctor-instant-articles","asciidoctor-accelerated-mobile-pages","mixture","asciidoctor-htmlbook","shuttle_cli","peastash","elastics","s3reamer","pg_helper","turbot-ruby-gems","dry-data","ruby-dovado","collectr","sequent","killbill-paypal-express","lines-engine","asciidoctor-rfc","zapnito-cli","logstash-filter-throttle","logstash-filter-metrics","killbill-orbital","asciidoctor-doctest","fleck","arkency-command_bus","wet-command_bus","rom-generated_id","persie","prepor-protobuf","stapfen","hexx-storage","pd-blender","vigilem-core","hermann","hermann","colossus","aws_student_accounts","deviseOne","thread_hazardous","whisperer","mock_dns_server","venet-backup","devision","postamt","brainsome_devise","multi_connection","backup_zh","email_crawler","ruby_storm","persistent_excon","faraday_persistent_excon","smelter","pagseguro-transparente","ruby_nsq","r4s","cache_digests","tickr_client","racing-sprockets","clasp","gemerald_beanstalk","ruby_skynet","autodeps","dskiplist","barker","memoizable","descendants_tracker","axiom-types","devise-bootstrap","devbootsrap","axiom-memory-adapter","mongoid_connection_pool","cap_proxy","jirabas","gene_pool","metrics_logger"]'
     http_version: 
-  recorded_at: Tue, 16 Jan 2018 20:14:41 GMT
+  recorded_at: Thu, 22 Mar 2018 23:15:23 GMT
 - request:
-    method: get
-    uri: https://api.github.com/repos/ruby-concurrency/thread_safe?client_id=&client_secret=
+    method: head
+    uri: https://github.com/ruby-concurrency/thread_safe
     body:
       encoding: UTF-8
       string: ''
     headers:
+      Connection:
+      - close
+      Host:
+      - github.com
+      User-Agent:
+      - http.rb/3.0.0
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Thu, 22 Mar 2018 23:15:23 GMT
       Content-Type:
-      - application/json
+      - text/html; charset=utf-8
+      Connection:
+      - close
+      Status:
+      - 200 OK
+      X-Frame-Options:
+      - deny
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Cache-Control:
+      - no-cache
+      Vary:
+      - X-PJAX
+      Set-Cookie:
+      - _gh_sess=aWxvajlrOGh2ZzdEUjZWek43enRwdG1hQkk2d0crTC9YdHN5M0EzMDIvOEpsYlAyV1hwUXNsZUYzR1RzT1FpSlFxU3hldFhPK05hK0ZSeklYR0NubmVvTG1TSk9jQnM0aGtGRzJrVGRYSjJ0ODZxM2JWeDFyMWJQNTk3dDhMME14cGJBZ2pCRldCWXhnZ0EyV1N2OFE3NldVQkpvMUJRekd1cGk5bmpWalErSWVDSEN0akNOMm1oOFRtT0ZGeGlHRlJWQ1FxTkYyYlFMSXBOUzBEczJkZlJnR1NFUmFaU2NHejVJTHJZOW9vWkx3ZE9wVjI1ckJNTGJleVltT1p6Y1Y0OWpCaXVJbyt4OHJCbnlGNm9ML0dUVWtaL1FWQ25PbTMxVkNabXpNTkJTTlQ0ZTNYaGEyRTlIZWhicG9QNWtiQXIwSVk4MU8zeDB2cHQwRmR2Qk10cTZHZXQyYjFxcE5ZS3NqVloyRm04ZFFQNXNEdFV2dlFXR1pyb2taWUp4Yko3VEM0ZTNJWUR1ZW40TEUvb2ZYQ2dPR2FCUVZLdzd0QUdSb2lKcEt2OD0tLVExbXY4SmhMYlJmTkllUWFMdjhXUnc9PQ%3D%3D--f7c14d59f2fb14491e988957e91070bcaaf4b91d;
+        path=/; secure; HttpOnly
+      - logged_in=no; domain=.github.com; path=/; expires=Mon, 22 Mar 2038 23:15:23
+        -0000; secure; HttpOnly
+      X-Request-Id:
+      - cce82281-489a-4eec-88a2-081a963ab099
+      X-Runtime:
+      - '0.298562'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      Expect-Ct:
+      - max-age=2592000, report-uri="https://api.github.com/_private/browser/errors"
+      Content-Security-Policy:
+      - 'default-src ''none''; base-uri ''self''; block-all-mixed-content; child-src
+        render.githubusercontent.com; connect-src ''self'' uploads.github.com status.github.com
+        collector.githubapp.com api.github.com www.google-analytics.com github-cloud.s3.amazonaws.com
+        github-production-repository-file-5c1aeb.s3.amazonaws.com github-production-upload-manifest-file-7fdce7.s3.amazonaws.com
+        github-production-user-asset-6210df.s3.amazonaws.com wss://live.github.com;
+        font-src assets-cdn.github.com; form-action ''self'' github.com gist.github.com;
+        frame-ancestors ''none''; img-src ''self'' data: assets-cdn.github.com identicons.github.com
+        collector.githubapp.com github-cloud.s3.amazonaws.com *.githubusercontent.com;
+        manifest-src ''self''; media-src ''none''; script-src assets-cdn.github.com;
+        style-src ''unsafe-inline'' assets-cdn.github.com; worker-src ''self'''
+      X-Runtime-Rack:
+      - '0.306961'
+      X-Github-Request-Id:
+      - ED30:3520:2471F5D:3B72E15:5AB4390B
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Thu, 22 Mar 2018 23:15:23 GMT
+- request:
+    method: post
+    uri: https://api.github.com/graphql
+    body:
+      encoding: UTF-8
+      string: '{"query":"{\n  repository(owner: \"ruby-concurrency\", name: \"thread_safe\")
+        {\n    nameWithOwner\n    forks {\n      totalCount\n    }\n    stargazers
+        {\n      totalCount\n    }\n    watchers {\n      totalCount\n    }\n    createdAt\n    defaultBranchRef
+        {\n      name\n      target {\n        ... on Commit {\n          history(first:
+        50) {\n            edges {\n              node {\n                authoredDate\n              }\n            }\n          }\n        }\n      }\n    }\n    description\n    hasIssuesEnabled\n    hasWikiEnabled\n    homepageUrl\n    isArchived\n    isFork\n    isMirror\n    licenseInfo
+        {\n      key\n    }\n    primaryLanguage {\n      name\n    }\n    pushedAt\n    closedIssues:
+        issues(states: CLOSED) {\n      totalCount\n    }\n    openIssues: issues(states:
+        OPEN) {\n      totalCount\n    }\n    closedPullRequests: pullRequests(states:
+        CLOSED) {\n      totalCount\n    }\n    openPullRequests: pullRequests(states:
+        OPEN) {\n      totalCount\n    }\n    mergedPullRequests: pullRequests(states:
+        MERGED) {\n      totalCount\n    }\n  }\n\n  rateLimit {\n    limit\n    cost\n    remaining\n    resetAt\n  }\n}\n"}'
+    headers:
+      Authorization:
+      - bearer <GITHUB_TOKEN>
       User-Agent:
       - ruby-toolbox.com API client
-      Accept:
-      - application/vnd.github.v3+json
       Connection:
       - close
       Host:
@@ -378,55 +457,54 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Tue, 16 Jan 2018 20:14:42 GMT
+      - Thu, 22 Mar 2018 23:15:24 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
-      - '6443'
+      - '3311'
       Connection:
       - close
       Status:
       - 200 OK
       X-Ratelimit-Limit:
-      - '60'
+      - '5000'
       X-Ratelimit-Remaining:
-      - '50'
+      - '4993'
       X-Ratelimit-Reset:
-      - '1516136899'
+      - '1521763907'
       Cache-Control:
-      - public, max-age=60, s-maxage=60
-      Vary:
-      - Accept
-      Etag:
-      - '"a36e762413f838b8d6d3765d762ca9f5"'
-      Last-Modified:
-      - Fri, 08 Dec 2017 22:13:51 GMT
+      - no-cache
+      X-Oauth-Scopes:
+      - public_repo
+      X-Accepted-Oauth-Scopes:
+      - repo
       X-Github-Media-Type:
-      - github.v3; format=json
+      - github.v4; format=json
       Access-Control-Expose-Headers:
       - ETag, Link, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
         X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
       Access-Control-Allow-Origin:
       - "*"
-      Content-Security-Policy:
-      - default-src 'none'
       Strict-Transport-Security:
       - max-age=31536000; includeSubdomains; preload
-      X-Content-Type-Options:
-      - nosniff
       X-Frame-Options:
       - deny
+      X-Content-Type-Options:
+      - nosniff
       X-Xss-Protection:
       - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
       X-Runtime-Rack:
-      - '0.036687'
+      - '0.115483'
       X-Github-Request-Id:
-      - 7EC9:1B97:1159B6:219C1A:5A5E5D31
+      - EDE5:4B96:18CA2D3:36323C8:5AB4390B
     body:
       encoding: UTF-8
-      string: '{"id":20579727,"name":"thread_safe","full_name":"ruby-concurrency/thread_safe","owner":{"login":"ruby-concurrency","id":5462766,"avatar_url":"https://avatars3.githubusercontent.com/u/5462766?v=4","gravatar_id":"","url":"https://api.github.com/users/ruby-concurrency","html_url":"https://github.com/ruby-concurrency","followers_url":"https://api.github.com/users/ruby-concurrency/followers","following_url":"https://api.github.com/users/ruby-concurrency/following{/other_user}","gists_url":"https://api.github.com/users/ruby-concurrency/gists{/gist_id}","starred_url":"https://api.github.com/users/ruby-concurrency/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/ruby-concurrency/subscriptions","organizations_url":"https://api.github.com/users/ruby-concurrency/orgs","repos_url":"https://api.github.com/users/ruby-concurrency/repos","events_url":"https://api.github.com/users/ruby-concurrency/events{/privacy}","received_events_url":"https://api.github.com/users/ruby-concurrency/received_events","type":"Organization","site_admin":false},"private":false,"html_url":"https://github.com/ruby-concurrency/thread_safe","description":"[DEPRECATED]
-        Thread-safe collections for Ruby (merged with concurrent-ruby)","fork":false,"url":"https://api.github.com/repos/ruby-concurrency/thread_safe","forks_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/forks","keys_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/keys{/key_id}","collaborators_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/collaborators{/collaborator}","teams_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/teams","hooks_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/hooks","issue_events_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/issues/events{/number}","events_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/events","assignees_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/assignees{/user}","branches_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/branches{/branch}","tags_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/tags","blobs_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/git/blobs{/sha}","git_tags_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/git/tags{/sha}","git_refs_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/git/refs{/sha}","trees_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/git/trees{/sha}","statuses_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/statuses/{sha}","languages_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/languages","stargazers_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/stargazers","contributors_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/contributors","subscribers_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/subscribers","subscription_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/subscription","commits_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/commits{/sha}","git_commits_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/git/commits{/sha}","comments_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/comments{/number}","issue_comment_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/issues/comments{/number}","contents_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/contents/{+path}","compare_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/compare/{base}...{head}","merges_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/merges","archive_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/{archive_format}{/ref}","downloads_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/downloads","issues_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/issues{/number}","pulls_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/pulls{/number}","milestones_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/milestones{/number}","notifications_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/notifications{?since,all,participating}","labels_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/labels{/name}","releases_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/releases{/id}","deployments_url":"https://api.github.com/repos/ruby-concurrency/thread_safe/deployments","created_at":"2014-06-06T22:13:43Z","updated_at":"2017-12-08T22:13:51Z","pushed_at":"2017-07-23T14:05:44Z","git_url":"git://github.com/ruby-concurrency/thread_safe.git","ssh_url":"git@github.com:ruby-concurrency/thread_safe.git","clone_url":"https://github.com/ruby-concurrency/thread_safe.git","svn_url":"https://github.com/ruby-concurrency/thread_safe","homepage":"http://concurrent-ruby.com","size":526,"stargazers_count":189,"watchers_count":189,"language":"Java","has_issues":true,"has_projects":true,"has_downloads":true,"has_wiki":true,"has_pages":true,"forks_count":19,"mirror_url":null,"archived":false,"open_issues_count":1,"license":{"key":"apache-2.0","name":"Apache
-        License 2.0","spdx_id":"Apache-2.0","url":"https://api.github.com/licenses/apache-2.0"},"forks":19,"open_issues":1,"watchers":189,"default_branch":"master","organization":{"login":"ruby-concurrency","id":5462766,"avatar_url":"https://avatars3.githubusercontent.com/u/5462766?v=4","gravatar_id":"","url":"https://api.github.com/users/ruby-concurrency","html_url":"https://github.com/ruby-concurrency","followers_url":"https://api.github.com/users/ruby-concurrency/followers","following_url":"https://api.github.com/users/ruby-concurrency/following{/other_user}","gists_url":"https://api.github.com/users/ruby-concurrency/gists{/gist_id}","starred_url":"https://api.github.com/users/ruby-concurrency/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/ruby-concurrency/subscriptions","organizations_url":"https://api.github.com/users/ruby-concurrency/orgs","repos_url":"https://api.github.com/users/ruby-concurrency/repos","events_url":"https://api.github.com/users/ruby-concurrency/events{/privacy}","received_events_url":"https://api.github.com/users/ruby-concurrency/received_events","type":"Organization","site_admin":false},"network_count":19,"subscribers_count":14}'
+      string: '{"data":{"repository":{"nameWithOwner":"ruby-concurrency/thread_safe","forks":{"totalCount":16},"stargazers":{"totalCount":189},"watchers":{"totalCount":14},"createdAt":"2014-06-06T22:13:43Z","defaultBranchRef":{"name":"master","target":{"history":{"edges":[{"node":{"authoredDate":"2017-07-23T14:05:43Z"}},{"node":{"authoredDate":"2017-07-03T16:42:54Z"}},{"node":{"authoredDate":"2017-02-22T19:45:05Z"}},{"node":{"authoredDate":"2017-01-28T23:20:05Z"}},{"node":{"authoredDate":"2017-01-22T18:38:37Z"}},{"node":{"authoredDate":"2017-01-06T13:23:43Z"}},{"node":{"authoredDate":"2016-06-07T13:16:04Z"}},{"node":{"authoredDate":"2016-06-06T12:06:31Z"}},{"node":{"authoredDate":"2015-04-28T02:01:09Z"}},{"node":{"authoredDate":"2015-04-28T01:49:03Z"}},{"node":{"authoredDate":"2015-04-28T01:36:49Z"}},{"node":{"authoredDate":"2015-04-27T20:59:17Z"}},{"node":{"authoredDate":"2015-04-26T20:21:05Z"}},{"node":{"authoredDate":"2015-04-26T19:05:43Z"}},{"node":{"authoredDate":"2015-04-19T13:37:09Z"}},{"node":{"authoredDate":"2015-04-16T22:52:02Z"}},{"node":{"authoredDate":"2015-03-27T21:41:27Z"}},{"node":{"authoredDate":"2015-03-25T23:52:19Z"}},{"node":{"authoredDate":"2015-03-25T22:44:54Z"}},{"node":{"authoredDate":"2015-03-25T22:43:58Z"}},{"node":{"authoredDate":"2015-03-24T22:38:37Z"}},{"node":{"authoredDate":"2015-03-24T20:51:16Z"}},{"node":{"authoredDate":"2015-03-11T14:53:29Z"}},{"node":{"authoredDate":"2015-03-11T13:06:08Z"}},{"node":{"authoredDate":"2015-03-10T02:53:22Z"}},{"node":{"authoredDate":"2015-03-10T01:57:54Z"}},{"node":{"authoredDate":"2015-03-09T15:32:09Z"}},{"node":{"authoredDate":"2015-03-09T14:58:58Z"}},{"node":{"authoredDate":"2015-03-09T14:46:32Z"}},{"node":{"authoredDate":"2015-03-09T14:45:27Z"}},{"node":{"authoredDate":"2015-03-09T14:45:07Z"}},{"node":{"authoredDate":"2015-03-09T14:44:32Z"}},{"node":{"authoredDate":"2015-03-09T13:43:43Z"}},{"node":{"authoredDate":"2015-03-09T03:12:17Z"}},{"node":{"authoredDate":"2015-03-08T22:10:06Z"}},{"node":{"authoredDate":"2015-03-08T22:03:48Z"}},{"node":{"authoredDate":"2015-03-08T21:50:50Z"}},{"node":{"authoredDate":"2015-03-08T20:02:49Z"}},{"node":{"authoredDate":"2015-03-08T19:47:17Z"}},{"node":{"authoredDate":"2015-03-06T12:22:37Z"}},{"node":{"authoredDate":"2015-03-06T12:15:26Z"}},{"node":{"authoredDate":"2015-02-15T13:43:02Z"}},{"node":{"authoredDate":"2015-02-15T00:19:11Z"}},{"node":{"authoredDate":"2014-05-27T19:48:23Z"}},{"node":{"authoredDate":"2014-05-27T19:54:14Z"}},{"node":{"authoredDate":"2014-05-27T19:47:37Z"}},{"node":{"authoredDate":"2014-05-27T19:45:13Z"}},{"node":{"authoredDate":"2014-04-12T17:48:35Z"}},{"node":{"authoredDate":"2014-04-12T17:47:24Z"}},{"node":{"authoredDate":"2014-04-12T17:46:44Z"}}]}}},"description":"[DEPRECATED]
+        Thread-safe collections for Ruby (merged with concurrent-ruby)","hasIssuesEnabled":true,"hasWikiEnabled":true,"homepageUrl":"http://concurrent-ruby.com","isArchived":false,"isFork":false,"isMirror":false,"licenseInfo":{"key":"apache-2.0"},"primaryLanguage":{"name":"Java"},"pushedAt":"2018-01-29T06:45:29Z","closedIssues":{"totalCount":12},"openIssues":{"totalCount":1},"closedPullRequests":{"totalCount":3},"openPullRequests":{"totalCount":0},"mergedPullRequests":{"totalCount":16}},"rateLimit":{"limit":5000,"cost":1,"remaining":4993,"resetAt":"2018-03-23T00:11:47Z"}}}'
     http_version: 
-  recorded_at: Tue, 16 Jan 2018 20:14:41 GMT
+  recorded_at: Thu, 22 Mar 2018 23:15:24 GMT
 recorded_with: VCR 4.0.0

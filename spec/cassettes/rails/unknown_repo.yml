@@ -1,22 +1,18 @@
 ---
 http_interactions:
 - request:
-    method: get
-    uri: https://api.github.com/repos/rails/unknown?client_id=&client_secret=
+    method: head
+    uri: https://github.com/rails/unknown
     body:
       encoding: UTF-8
       string: ''
     headers:
-      Content-Type:
-      - application/json
-      User-Agent:
-      - ruby-toolbox.com API client
-      Accept:
-      - application/vnd.github.v3+json
       Connection:
       - close
       Host:
-      - api.github.com
+      - github.com
+      User-Agent:
+      - http.rb/3.0.0
   response:
     status:
       code: 404
@@ -25,45 +21,46 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Tue, 16 Jan 2018 20:14:47 GMT
+      - Thu, 22 Mar 2018 23:15:14 GMT
       Content-Type:
-      - application/json; charset=utf-8
-      Content-Length:
-      - '77'
+      - text/html; charset=utf-8
       Connection:
       - close
       Status:
       - 404 Not Found
-      X-Ratelimit-Limit:
-      - '60'
-      X-Ratelimit-Remaining:
-      - '47'
-      X-Ratelimit-Reset:
-      - '1516136899'
-      X-Github-Media-Type:
-      - github.v3; format=json
-      Access-Control-Expose-Headers:
-      - ETag, Link, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
-        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
-      Access-Control-Allow-Origin:
-      - "*"
-      Content-Security-Policy:
-      - default-src 'none'
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubdomains; preload
-      X-Content-Type-Options:
-      - nosniff
       X-Frame-Options:
       - deny
       X-Xss-Protection:
       - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Cache-Control:
+      - no-cache
+      Vary:
+      - X-PJAX
+      Set-Cookie:
+      - _gh_sess=ZjJiUFFQQ2cwYno3N3Y5a05WUWpWT0lTQnBGRGExTHhzSlZpSDlwRm16RDZPekdpcTIzM1ZtRnAwNEhNaklpWlBmbTQzYyt1dFl4TGNrd05ZTWl5bmdLMUhIYXFjU2lYd2txNDFNU2Z6OWM9LS1ET3REbCtwWVZxT1VUcmxRMGllUmpnPT0%3D--c173388516232b4de8021f49d04c1f6798ca9af4;
+        path=/; secure; HttpOnly
+      X-Request-Id:
+      - f29018d0-474d-4dbd-8740-1eb76ac40510
+      X-Runtime:
+      - '0.017466'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Expect-Ct:
+      - max-age=2592000, report-uri="https://api.github.com/_private/browser/errors"
+      Content-Security-Policy:
+      - default-src 'none'; base-uri 'self'; connect-src 'self'; form-action 'self';
+        img-src data:; script-src 'self'; style-src 'unsafe-inline'
       X-Runtime-Rack:
-      - '0.017414'
+      - '0.023406'
       X-Github-Request-Id:
-      - 7F55:1B94:C4A99:196914:5A5E5D37
+      - EDC7:3521:1BB8FE9:344027B:5AB43902
     body:
       encoding: UTF-8
-      string: '{"message":"Not Found","documentation_url":"https://developer.github.com/v3"}'
+      string: ''
     http_version: 
-  recorded_at: Tue, 16 Jan 2018 20:14:47 GMT
+  recorded_at: Thu, 22 Mar 2018 23:15:14 GMT
 recorded_with: VCR 4.0.0

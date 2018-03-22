@@ -1,6 +1,13 @@
 # frozen_string_literal: true
 
 class GithubRepoUpdateJob < ApplicationJob
+  attr_accessor :client
+  private :client=
+
+  def initialize(client: GithubClient.new)
+    self.client = client
+  end
+
   def perform(path)
     info = fetch_repo_info path
 
@@ -19,56 +26,30 @@ class GithubRepoUpdateJob < ApplicationJob
   private
 
   ATTRIBUTE_MAPPING = {
-    archived: :archived,
+    archived?: :archived,
     created_at: :repo_created_at,
     description: :description,
     forks_count: :forks_count,
-    has_downloads: :has_downloads,
-    has_issues: :has_issues,
-    has_pages: :has_pages,
-    has_projects: :has_projects,
-    has_wiki: :has_wiki,
-    homepage: :homepage_url,
+    issues?: :has_issues,
+    wiki?: :has_wiki,
+    homepage_url: :homepage_url,
     pushed_at: :repo_pushed_at,
     stargazers_count: :stargazers_count,
-    subscribers_count: :watchers_count,
-    updated_at: :repo_updated_at,
+    watchers_count: :watchers_count,
   }.freeze
 
   def mapped_attributes(info)
     ATTRIBUTE_MAPPING.each_with_object({}) do |(remote_name, local_name), mapped|
-      value = info[remote_name.to_s]
+      value = info.public_send remote_name
       # Ensure we keep true falses around
       mapped[local_name] = value == false ? false : value.presence
     end
   end
 
   def fetch_repo_info(path)
-    url = File.join("https://api.github.com", "repos", path)
-    response = github_client.get url, params: github_credentials
-
-    return nil if response.status == 404
-    return Oj.load(response.body)  if response.status == 200
-
-    raise "Unknown response status #{response.status.to_i}"
-  end
-
-  def github_client
-    # Instead of following 301s, the broken github path
-    # (either coming from the catalog for github-only projects,
-    # or from a rubygems urls) should somehow be flagged and
-    # remapped locally, but this needs some more consideration
-    # regarding the various possible cases
-    HttpService.client.follow.headers(
-      accept: "application/vnd.github.v3+json"
-    )
-  end
-
-  def github_credentials
-    {
-      client_id: ENV["GITHUB_CLIENT_ID"],
-      client_secret: ENV["GITHUB_CLIENT_SECRET"],
-    }
+    client.fetch_repository path
+  rescue GithubClient::UnknownRepoError
+    nil
   end
 
   def trigger_project_updates(project_permalinks)

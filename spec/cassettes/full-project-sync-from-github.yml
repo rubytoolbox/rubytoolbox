@@ -1,18 +1,97 @@
 ---
 http_interactions:
 - request:
-    method: get
-    uri: https://api.github.com/repos/postmodern/chruby?client_id=&client_secret=
+    method: head
+    uri: https://github.com/postmodern/chruby
     body:
       encoding: UTF-8
       string: ''
     headers:
+      Connection:
+      - close
+      Host:
+      - github.com
+      User-Agent:
+      - http.rb/3.0.0
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Thu, 22 Mar 2018 23:15:25 GMT
       Content-Type:
-      - application/json
+      - text/html; charset=utf-8
+      Connection:
+      - close
+      Status:
+      - 200 OK
+      X-Frame-Options:
+      - deny
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Cache-Control:
+      - no-cache
+      Vary:
+      - X-PJAX
+      Set-Cookie:
+      - _gh_sess=QXJBY2Q2eWgxSmdJdTUvdXdSR2V2aC9rWTJ2M1d3b2xHQU5sY25pRHo0VlZlSUFJTFd0OUJUZ0I5MExSQXo1by9OR25tZ2RXYXkrRUhWVlRkVXd3MkhQV3R1NEx5RE5FWlhIZkVVWm5kYndFRExtVE1WVFJQODkvOW5nRTJyTU9PY21IM1hMWXpnTHpDNWFGenMwWXNLNklFRUlqRmF4d3BkYW5zbnR6MjJFT1RQTmJKS2ovOXJDUTBnSkFXMmtQT1doYmZoVXpMdHZicmpNck9odGtBUXpUcVQ2WUlNMVZkWmpSMTc1OHJCdXBLT3grTEZUMGo2YWwrZ1JLV2RmK0FHelJHUWVRekJ2SnVVTmlrQmIrWjJ5M21BV2NJeFFvNXJYeWpoTTR5WVBEZzJ2VW5ETktVSlBIRmVYNFZpSTJ3dUpFWUtuS0tyYWZOd1BOOE9CWDVoOHN5WDFZS3pmTjFHVno1T1ZMZ2Z4d3BBdEFnUDhIZCsxRWxIK0ZYYlljdFljSGh1WHdXK29VbmtHbVZ5ZUV6UT09LS1ZWExHMVVjK1F2MzFIei96VHo5dUtRPT0%3D--e4495a9e007b2669cc2fb6cb478e7777fe22bb14;
+        path=/; secure; HttpOnly
+      - logged_in=no; domain=.github.com; path=/; expires=Mon, 22 Mar 2038 23:15:25
+        -0000; secure; HttpOnly
+      X-Request-Id:
+      - 99f6a6b1-5c0e-4e31-ab78-ec4b72ece4fe
+      X-Runtime:
+      - '0.218279'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      Expect-Ct:
+      - max-age=2592000, report-uri="https://api.github.com/_private/browser/errors"
+      Content-Security-Policy:
+      - 'default-src ''none''; base-uri ''self''; block-all-mixed-content; child-src
+        render.githubusercontent.com; connect-src ''self'' uploads.github.com status.github.com
+        collector.githubapp.com api.github.com www.google-analytics.com github-cloud.s3.amazonaws.com
+        github-production-repository-file-5c1aeb.s3.amazonaws.com github-production-upload-manifest-file-7fdce7.s3.amazonaws.com
+        github-production-user-asset-6210df.s3.amazonaws.com wss://live.github.com;
+        font-src assets-cdn.github.com; form-action ''self'' github.com gist.github.com;
+        frame-ancestors ''none''; img-src ''self'' data: assets-cdn.github.com identicons.github.com
+        collector.githubapp.com github-cloud.s3.amazonaws.com *.githubusercontent.com;
+        manifest-src ''self''; media-src ''none''; script-src assets-cdn.github.com;
+        style-src ''unsafe-inline'' assets-cdn.github.com; worker-src ''self'''
+      X-Runtime-Rack:
+      - '0.225821'
+      X-Github-Request-Id:
+      - ED47:351F:1A39148:2E62F9B:5AB4390C
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Thu, 22 Mar 2018 23:15:25 GMT
+- request:
+    method: post
+    uri: https://api.github.com/graphql
+    body:
+      encoding: UTF-8
+      string: '{"query":"{\n  repository(owner: \"postmodern\", name: \"chruby\")
+        {\n    nameWithOwner\n    forks {\n      totalCount\n    }\n    stargazers
+        {\n      totalCount\n    }\n    watchers {\n      totalCount\n    }\n    createdAt\n    defaultBranchRef
+        {\n      name\n      target {\n        ... on Commit {\n          history(first:
+        50) {\n            edges {\n              node {\n                authoredDate\n              }\n            }\n          }\n        }\n      }\n    }\n    description\n    hasIssuesEnabled\n    hasWikiEnabled\n    homepageUrl\n    isArchived\n    isFork\n    isMirror\n    licenseInfo
+        {\n      key\n    }\n    primaryLanguage {\n      name\n    }\n    pushedAt\n    closedIssues:
+        issues(states: CLOSED) {\n      totalCount\n    }\n    openIssues: issues(states:
+        OPEN) {\n      totalCount\n    }\n    closedPullRequests: pullRequests(states:
+        CLOSED) {\n      totalCount\n    }\n    openPullRequests: pullRequests(states:
+        OPEN) {\n      totalCount\n    }\n    mergedPullRequests: pullRequests(states:
+        MERGED) {\n      totalCount\n    }\n  }\n\n  rateLimit {\n    limit\n    cost\n    remaining\n    resetAt\n  }\n}\n"}'
+    headers:
+      Authorization:
+      - bearer <GITHUB_TOKEN>
       User-Agent:
       - ruby-toolbox.com API client
-      Accept:
-      - application/vnd.github.v3+json
       Connection:
       - close
       Host:
@@ -25,55 +104,54 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Tue, 16 Jan 2018 20:14:42 GMT
+      - Thu, 22 Mar 2018 23:15:25 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
-      - '4792'
+      - '3223'
       Connection:
       - close
       Status:
       - 200 OK
       X-Ratelimit-Limit:
-      - '60'
+      - '5000'
       X-Ratelimit-Remaining:
-      - '49'
+      - '4992'
       X-Ratelimit-Reset:
-      - '1516136899'
+      - '1521763907'
       Cache-Control:
-      - public, max-age=60, s-maxage=60
-      Vary:
-      - Accept
-      Etag:
-      - '"4984cbbbcbe0661a2f8928796dfc06e2"'
-      Last-Modified:
-      - Fri, 12 Jan 2018 04:16:38 GMT
+      - no-cache
+      X-Oauth-Scopes:
+      - public_repo
+      X-Accepted-Oauth-Scopes:
+      - repo
       X-Github-Media-Type:
-      - github.v3; format=json
+      - github.v4; format=json
       Access-Control-Expose-Headers:
       - ETag, Link, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
         X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
       Access-Control-Allow-Origin:
       - "*"
-      Content-Security-Policy:
-      - default-src 'none'
       Strict-Transport-Security:
       - max-age=31536000; includeSubdomains; preload
-      X-Content-Type-Options:
-      - nosniff
       X-Frame-Options:
       - deny
+      X-Content-Type-Options:
+      - nosniff
       X-Xss-Protection:
       - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
       X-Runtime-Rack:
-      - '0.040167'
+      - '0.172062'
       X-Github-Request-Id:
-      - 7EDC:1B97:115A12:219CC0:5A5E5D32
+      - ED75:4B91:12471AA:28EB59B:5AB4390D
     body:
       encoding: UTF-8
-      string: '{"id":5266284,"name":"chruby","full_name":"postmodern/chruby","owner":{"login":"postmodern","id":12671,"avatar_url":"https://avatars2.githubusercontent.com/u/12671?v=4","gravatar_id":"","url":"https://api.github.com/users/postmodern","html_url":"https://github.com/postmodern","followers_url":"https://api.github.com/users/postmodern/followers","following_url":"https://api.github.com/users/postmodern/following{/other_user}","gists_url":"https://api.github.com/users/postmodern/gists{/gist_id}","starred_url":"https://api.github.com/users/postmodern/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/postmodern/subscriptions","organizations_url":"https://api.github.com/users/postmodern/orgs","repos_url":"https://api.github.com/users/postmodern/repos","events_url":"https://api.github.com/users/postmodern/events{/privacy}","received_events_url":"https://api.github.com/users/postmodern/received_events","type":"User","site_admin":false},"private":false,"html_url":"https://github.com/postmodern/chruby","description":"Changes
-        the current Ruby","fork":false,"url":"https://api.github.com/repos/postmodern/chruby","forks_url":"https://api.github.com/repos/postmodern/chruby/forks","keys_url":"https://api.github.com/repos/postmodern/chruby/keys{/key_id}","collaborators_url":"https://api.github.com/repos/postmodern/chruby/collaborators{/collaborator}","teams_url":"https://api.github.com/repos/postmodern/chruby/teams","hooks_url":"https://api.github.com/repos/postmodern/chruby/hooks","issue_events_url":"https://api.github.com/repos/postmodern/chruby/issues/events{/number}","events_url":"https://api.github.com/repos/postmodern/chruby/events","assignees_url":"https://api.github.com/repos/postmodern/chruby/assignees{/user}","branches_url":"https://api.github.com/repos/postmodern/chruby/branches{/branch}","tags_url":"https://api.github.com/repos/postmodern/chruby/tags","blobs_url":"https://api.github.com/repos/postmodern/chruby/git/blobs{/sha}","git_tags_url":"https://api.github.com/repos/postmodern/chruby/git/tags{/sha}","git_refs_url":"https://api.github.com/repos/postmodern/chruby/git/refs{/sha}","trees_url":"https://api.github.com/repos/postmodern/chruby/git/trees{/sha}","statuses_url":"https://api.github.com/repos/postmodern/chruby/statuses/{sha}","languages_url":"https://api.github.com/repos/postmodern/chruby/languages","stargazers_url":"https://api.github.com/repos/postmodern/chruby/stargazers","contributors_url":"https://api.github.com/repos/postmodern/chruby/contributors","subscribers_url":"https://api.github.com/repos/postmodern/chruby/subscribers","subscription_url":"https://api.github.com/repos/postmodern/chruby/subscription","commits_url":"https://api.github.com/repos/postmodern/chruby/commits{/sha}","git_commits_url":"https://api.github.com/repos/postmodern/chruby/git/commits{/sha}","comments_url":"https://api.github.com/repos/postmodern/chruby/comments{/number}","issue_comment_url":"https://api.github.com/repos/postmodern/chruby/issues/comments{/number}","contents_url":"https://api.github.com/repos/postmodern/chruby/contents/{+path}","compare_url":"https://api.github.com/repos/postmodern/chruby/compare/{base}...{head}","merges_url":"https://api.github.com/repos/postmodern/chruby/merges","archive_url":"https://api.github.com/repos/postmodern/chruby/{archive_format}{/ref}","downloads_url":"https://api.github.com/repos/postmodern/chruby/downloads","issues_url":"https://api.github.com/repos/postmodern/chruby/issues{/number}","pulls_url":"https://api.github.com/repos/postmodern/chruby/pulls{/number}","milestones_url":"https://api.github.com/repos/postmodern/chruby/milestones{/number}","notifications_url":"https://api.github.com/repos/postmodern/chruby/notifications{?since,all,participating}","labels_url":"https://api.github.com/repos/postmodern/chruby/labels{/name}","releases_url":"https://api.github.com/repos/postmodern/chruby/releases{/id}","deployments_url":"https://api.github.com/repos/postmodern/chruby/deployments","created_at":"2012-08-01T23:46:08Z","updated_at":"2018-01-12T04:16:38Z","pushed_at":"2017-11-07T18:11:20Z","git_url":"git://github.com/postmodern/chruby.git","ssh_url":"git@github.com:postmodern/chruby.git","clone_url":"https://github.com/postmodern/chruby.git","svn_url":"https://github.com/postmodern/chruby","homepage":"","size":547,"stargazers_count":2106,"watchers_count":2106,"language":"Shell","has_issues":true,"has_projects":true,"has_downloads":true,"has_wiki":true,"has_pages":false,"forks_count":171,"mirror_url":null,"archived":false,"open_issues_count":74,"license":{"key":"mit","name":"MIT
-        License","spdx_id":"MIT","url":"https://api.github.com/licenses/mit"},"forks":171,"open_issues":74,"watchers":2106,"default_branch":"master","network_count":171,"subscribers_count":55}'
+      string: '{"data":{"repository":{"nameWithOwner":"postmodern/chruby","forks":{"totalCount":158},"stargazers":{"totalCount":2122},"watchers":{"totalCount":55},"createdAt":"2012-08-01T23:46:08Z","defaultBranchRef":{"name":"master","target":{"history":{"edges":[{"node":{"authoredDate":"2017-07-18T20:59:40Z"}},{"node":{"authoredDate":"2017-07-09T19:50:51Z"}},{"node":{"authoredDate":"2017-03-02T01:45:48Z"}},{"node":{"authoredDate":"2016-12-25T03:54:09Z"}},{"node":{"authoredDate":"2016-12-23T09:48:19Z"}},{"node":{"authoredDate":"2016-12-18T22:38:58Z"}},{"node":{"authoredDate":"2016-12-16T01:10:03Z"}},{"node":{"authoredDate":"2016-12-04T06:10:17Z"}},{"node":{"authoredDate":"2016-11-11T23:42:43Z"}},{"node":{"authoredDate":"2016-11-07T18:38:18Z"}},{"node":{"authoredDate":"2016-11-05T02:07:52Z"}},{"node":{"authoredDate":"2016-04-08T21:31:14Z"}},{"node":{"authoredDate":"2016-01-05T23:06:35Z"}},{"node":{"authoredDate":"2015-12-27T23:49:55Z"}},{"node":{"authoredDate":"2015-12-27T23:49:04Z"}},{"node":{"authoredDate":"2015-12-27T23:48:06Z"}},{"node":{"authoredDate":"2015-12-27T10:11:10Z"}},{"node":{"authoredDate":"2015-12-27T09:58:26Z"}},{"node":{"authoredDate":"2015-12-27T09:49:42Z"}},{"node":{"authoredDate":"2015-12-24T02:31:18Z"}},{"node":{"authoredDate":"2015-11-20T02:15:21Z"}},{"node":{"authoredDate":"2015-09-17T18:24:21Z"}},{"node":{"authoredDate":"2015-07-09T20:16:56Z"}},{"node":{"authoredDate":"2015-06-22T17:38:25Z"}},{"node":{"authoredDate":"2015-05-03T23:10:07Z"}},{"node":{"authoredDate":"2015-05-02T05:29:47Z"}},{"node":{"authoredDate":"2015-05-02T04:10:43Z"}},{"node":{"authoredDate":"2015-05-02T03:50:25Z"}},{"node":{"authoredDate":"2015-05-02T03:49:31Z"}},{"node":{"authoredDate":"2015-04-26T22:45:54Z"}},{"node":{"authoredDate":"2015-04-26T22:44:28Z"}},{"node":{"authoredDate":"2015-03-26T21:56:43Z"}},{"node":{"authoredDate":"2015-03-21T21:01:47Z"}},{"node":{"authoredDate":"2015-03-18T22:35:02Z"}},{"node":{"authoredDate":"2015-03-14T02:01:58Z"}},{"node":{"authoredDate":"2015-03-13T23:39:22Z"}},{"node":{"authoredDate":"2015-03-13T23:09:30Z"}},{"node":{"authoredDate":"2015-03-13T23:07:08Z"}},{"node":{"authoredDate":"2015-03-13T23:05:48Z"}},{"node":{"authoredDate":"2015-03-13T22:56:45Z"}},{"node":{"authoredDate":"2015-03-02T21:02:52Z"}},{"node":{"authoredDate":"2014-12-30T00:11:34Z"}},{"node":{"authoredDate":"2014-12-30T00:06:47Z"}},{"node":{"authoredDate":"2014-12-30T00:04:12Z"}},{"node":{"authoredDate":"2014-02-07T20:39:04Z"}},{"node":{"authoredDate":"2014-12-22T20:53:29Z"}},{"node":{"authoredDate":"2014-12-19T16:59:13Z"}},{"node":{"authoredDate":"2014-12-18T05:02:50Z"}},{"node":{"authoredDate":"2014-12-18T04:50:08Z"}},{"node":{"authoredDate":"2014-11-23T19:04:59Z"}}]}}},"description":"Changes
+        the current Ruby","hasIssuesEnabled":true,"hasWikiEnabled":true,"homepageUrl":"","isArchived":false,"isFork":false,"isMirror":false,"licenseInfo":{"key":"mit"},"primaryLanguage":{"name":"Shell"},"pushedAt":"2017-11-07T18:11:20Z","closedIssues":{"totalCount":194},"openIssues":{"totalCount":52},"closedPullRequests":{"totalCount":62},"openPullRequests":{"totalCount":19},"mergedPullRequests":{"totalCount":72}},"rateLimit":{"limit":5000,"cost":1,"remaining":4992,"resetAt":"2018-03-23T00:11:47Z"}}}'
     http_version: 
-  recorded_at: Tue, 16 Jan 2018 20:14:42 GMT
+  recorded_at: Thu, 22 Mar 2018 23:15:25 GMT
 recorded_with: VCR 4.0.0
