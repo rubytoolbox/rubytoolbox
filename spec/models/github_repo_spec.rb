@@ -65,6 +65,29 @@ RSpec.describe GithubRepo, type: :model do
     end
   end
 
+  describe "#total_issues_count" do
+    it "is nil if the repo has no data" do
+      expect(described_class.new.total_issues_count).to be_nil
+    end
+
+    it "is nil if the repo has issues disabled" do
+      repo = described_class.new(
+        closed_issues_count: 10,
+        open_issues_count: 5
+      )
+      expect(repo.total_issues_count).to be_nil
+    end
+
+    it "is the sum of issues if issues enabled and data available" do
+      repo = described_class.new(
+        closed_issues_count: 10,
+        open_issues_count: 5,
+        has_issues: true
+      )
+      expect(repo.total_issues_count).to be == 10 + 5
+    end
+  end
+
   describe "#issue_closure_rate" do
     it "is nil if the repo has no data" do
       expect(described_class.new.issue_closure_rate).to be_nil
@@ -72,6 +95,10 @@ RSpec.describe GithubRepo, type: :model do
 
     it "is nil if the repo has data but issues are disabled" do
       expect(described_class.new(closed_issues_count: 10, open_issues_count: 5).issue_closure_rate).to be_nil
+    end
+
+    it "is nil if the repo had no issues" do
+      expect(described_class.new(closed_issues_count: 0, open_issues_count: 0).issue_closure_rate).to be_nil
     end
 
     it "is the expected float if the repo has data" do
@@ -85,6 +112,15 @@ RSpec.describe GithubRepo, type: :model do
       expect(described_class.new.pull_request_acceptance_rate).to be_nil
     end
 
+    it "is nil if the repo had no PRs" do
+      repo = described_class.new(
+        open_pull_requests_count: 0,
+        merged_pull_requests_count: 0,
+        closed_pull_requests_count: 0
+      )
+      expect(repo.pull_request_acceptance_rate).to be_nil
+    end
+
     it "is the expected float if the repo has PR data" do
       repo = described_class.new(
         open_pull_requests_count: 7,
@@ -95,9 +131,9 @@ RSpec.describe GithubRepo, type: :model do
     end
   end
 
-  describe "#total_pull_requests" do
+  describe "#total_pull_requests_count" do
     it "is nil if PR data is missing" do
-      expect(described_class.new.total_pull_requests).to be_nil
+      expect(described_class.new.total_pull_requests_count).to be_nil
     end
 
     it "is the sum of open, closed and merged PRs" do
@@ -106,7 +142,7 @@ RSpec.describe GithubRepo, type: :model do
         merged_pull_requests_count: 11,
         closed_pull_requests_count: 3
       )
-      expect(repo.total_pull_requests).to be == 7 + 11 + 3
+      expect(repo.total_pull_requests_count).to be == 7 + 11 + 3
     end
   end
 end

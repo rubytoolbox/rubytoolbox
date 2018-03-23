@@ -32,17 +32,22 @@ class GithubRepo < ApplicationRecord
     File.join(url, "wiki") if has_wiki?
   end
 
+  def total_issues_count
+    return if !has_issues? || [open_issues_count, closed_issues_count].any?(&:nil?)
+    closed_issues_count + open_issues_count
+  end
+
   def issue_closure_rate
-    return if !has_issues? || [closed_issues_count, open_issues_count].any?(&:nil?)
+    return if !has_issues? || total_issues_count.nil? || total_issues_count.zero?
     (closed_issues_count * 100.0) / (open_issues_count + closed_issues_count)
   end
 
   def pull_request_acceptance_rate
-    return unless total_pull_requests
-    (merged_pull_requests_count * 100.0) / total_pull_requests
+    return if total_pull_requests_count.nil? || total_pull_requests_count.zero?
+    (merged_pull_requests_count * 100.0) / total_pull_requests_count
   end
 
-  def total_pull_requests
+  def total_pull_requests_count
     return if [open_pull_requests_count, merged_pull_requests_count, closed_pull_requests_count].any?(&:nil?)
     open_pull_requests_count + merged_pull_requests_count + closed_pull_requests_count
   end

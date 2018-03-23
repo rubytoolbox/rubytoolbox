@@ -29,6 +29,7 @@
     .column: .metrics
       = metric "Open", project.github_repo_open_issues_count, icon: "bug"
       = metric "Closed", project.github_repo_closed_issues_count, icon: "check"
+      = metric "Total Issues", project.github_repo_total_issues_count, icon: "bug"
       = metric "Closure Rate", project.github_repo_issue_closure_rate, icon: "percent"
 
 - if project.github_repo_pull_request_acceptance_rate
@@ -53,4 +54,4 @@
       = metric "Primary Language", project.github_repo_primary_language, icon: "code"
       = metric "Licenses", project.rubygem_licenses.try(:to_sentence), icon: "legal"
       = metric "Recent Commit Activity", project.github_repo_average_recent_committed_at, icon: "industry"
-      = metric "Reverse Depencencies", project.rubygem_reverse_dependencies_count, icon: "industry"
+      = metric "Reverse Depencencies", project.rubygem_reverse_dependencies_count, icon: "compress"

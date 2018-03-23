@@ -82,6 +82,7 @@ class Project < ApplicationRecord
            :open_issues_count,
            :closed_issues_count,
            :issue_closure_rate,
+           :total_issues_count,
            :open_pull_requests_count,
            :merged_pull_requests_count,
            :closed_pull_requests_count,
