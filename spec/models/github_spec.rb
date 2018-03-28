@@ -11,6 +11,7 @@ RSpec.describe Github, type: :model do
       [nil, "", "wat"] => nil,
       ["fakegithub.com/rails/rails"] => nil,
       ["http://github.com/{github_username}/{project_name}"] => nil,
+      ["http://github.com/foo/bar#readme"] => "foo/bar",
       ["http://github.com/rails/rails"] => "rails/rails",
       ["foobar", "http://github.com/rails/rails"] => "rails/rails",
     }.each do |args, expected_name|

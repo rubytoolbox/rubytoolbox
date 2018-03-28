@@ -39,6 +39,7 @@ Yarn is used to manage frontend dependencies for the project. It can be installe
 1. Install the project's dependencies by running `bundle install`
 1. Prepare the database with `rake db:setup` (**Note that this is currently semi-useful until [#147](https://github.com/rubytoolbox/rubytoolbox/issues/147) is fixed**)
 1. Install the frontend dependencies using `yarn install`
+1. In order to access the Github GraphQL API for pulling repo data, you need to [create a OAuth token as per Github's documentation](https://developer.github.com/v4/guides/forming-calls/#authenticating-with-graphql). No auth scopes are needed. Place the token as `GITHUB_TOKEN=yourtoken` in `.env.local` and `.env.local.test`.
 1. Run the services with `foreman start`. You can access the site at `http://localhost:5000`
 
 ### Further steps

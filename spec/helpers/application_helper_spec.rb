@@ -54,15 +54,30 @@ RSpec.describe ApplicationHelper, type: :helper do
     end
   end
 
-  describe "#category_description" do
-    it "returns a default for a Category without description" do
-      category = Category.new name: "Indescribable Category"
-      expect(helper.category_description(category)).to be == "No description yet"
-    end
-
-    it "returns a given description of a Category" do
-      category = Category.new name: "Described Category", description: "Some description"
-      expect(helper.category_description(category)).to be == "Some description"
+  describe "#recent_distance_in_words" do
+    {
+      3.days => "within last week",
+      6.days => "within last week",
+      7.days - 2.seconds => "within last week",
+      7.days => "within last two weeks",
+      14.days - 2.seconds => "within last two weeks",
+      15.days => "within last month",
+      1.month - 2.seconds => "within last month",
+      1.month => "within last 3 months",
+      3.months - 2.seconds => "within last 3 months",
+      3.months => "within last year",
+      1.year - 2.seconds => "within last year",
+      1.year => "within last 2 years",
+      2.years - 2.seconds => "within last 2 years",
+      2.years => "more than 2 years ago",
+      10.years => "more than 2 years ago",
+      nil => nil,
+      "" => nil,
+      " " => nil,
+    }.each do |time, expected_result|
+      it "is #{expected_result.inspect} for #{time.try(:ago).inspect}" do
+        expect(helper.recent_distance_in_words(time.try(:ago))).to be == expected_result
+      end
     end
   end
 end
