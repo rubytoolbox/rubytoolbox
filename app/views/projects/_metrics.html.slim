@@ -54,7 +54,7 @@
       .column: .metrics
         = metric "Primary Language", project.github_repo_primary_language, icon: "code"
         = metric "Licenses", project.rubygem_licenses.try(:to_sentence), icon: "legal"
-        = metric "Recent Commit Activity", project.github_repo_average_recent_committed_at, icon: "industry"
+        = metric "Averege date of last 50 commits", recent_distance_in_words(project.github_repo_average_recent_committed_at), icon: "link"
         = metric "Reverse Depencencies", project.rubygem_reverse_dependencies_count, icon: "compress"
 - else
   .columns: .column.has-text-right: a.button.is-outlined href="/projects/#{project.permalink}"
