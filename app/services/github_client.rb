@@ -2,6 +2,7 @@
 
 class GithubClient
   class InvalidResponse < StandardError; end
+  class InvalidResponseStatus < StandardError; end
   class UnknownRepoError < StandardError; end
 
   REPOSITORY_QUERY_TEMPLATE = Tilt.new(Rails.root.join("app", "graphql-queries", "github", "repo.erb"))
@@ -49,6 +50,7 @@ class GithubClient
   end
 
   def handle_response(response)
+    raise InvalidResponseStatus, "status=#{response.status}" unless response.status == 200
     parsed_body = Oj.load(response.body)
     raise InvalidResponse, parsed_body["errors"].map { |e| e["message"] }.join(", ") if parsed_body["errors"]
     RepositoryData.new parsed_body
