@@ -56,6 +56,7 @@ module ApplicationHelper
   }.freeze
 
   def recent_distance_in_words(time)
+    return if time.blank?
     matching_distance = DISTANCES.find do |distance, _label|
       time >= distance.ago
     end

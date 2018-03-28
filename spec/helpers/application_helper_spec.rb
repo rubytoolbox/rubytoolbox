@@ -71,9 +71,12 @@ RSpec.describe ApplicationHelper, type: :helper do
       2.years - 2.seconds => "within last 2 years",
       2.years => "more than 2 years ago",
       10.years => "more than 2 years ago",
+      nil => nil,
+      "" => nil,
+      " " => nil,
     }.each do |time, expected_result|
-      it "is #{expected_result.inspect} for #{time.ago.inspect}" do
-        expect(helper.recent_distance_in_words(time.ago)).to be == expected_result
+      it "is #{expected_result.inspect} for #{time.try(:ago).inspect}" do
+        expect(helper.recent_distance_in_words(time.try(:ago))).to be == expected_result
       end
     end
   end
