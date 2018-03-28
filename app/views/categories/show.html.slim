@@ -11,7 +11,10 @@
       a href=category_path(@category)
         = @category.name
     p.subtitle
-      = category_description(@category)
+      - if @category.description.present?
+        = @category.description
+      - else
+        em This category does not have a description yet. You can <strong><a href="#{@category.catalog_edit_url}">add one on github</a></strong>!
 
 section.section: .container: .columns
   .column.projects
