@@ -16,6 +16,8 @@ jobs:
     before_install:
     # See https://github.com/travis-ci/travis-ci/issues/8978
     - gem update --system
+    # See https://github.com/travis-ci/travis-ci/issues/9333
+    - gem install bundler
     - yarn install
     before_script:
     - bin/rails db:setup
@@ -24,6 +26,8 @@ jobs:
   - before_install:
     # See https://github.com/travis-ci/travis-ci/issues/8978
     - gem update --system
+    # See https://github.com/travis-ci/travis-ci/issues/9333
+    - gem install bundler
     script:
     - bundle exec rubocop
   - stage: deploy
