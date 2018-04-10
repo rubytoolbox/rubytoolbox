@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if bundle check &> /dev/null; then
+  bundle exec "$@"
+else
+  exec "$@"
+fi

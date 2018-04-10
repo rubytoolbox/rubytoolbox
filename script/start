@@ -1,0 +1,7 @@
+#!/bin/bash
+
+bundle check || bundle install --jobs 5
+
+yarn check || yarn install
+
+bundle exec foreman start
