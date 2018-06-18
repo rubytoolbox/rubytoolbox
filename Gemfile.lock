@@ -89,7 +89,7 @@ GEM
       loofah (>= 2.0)
       sax-machine (>= 1.0)
     ffi (1.9.23)
-    foreman (0.84.0)
+    foreman (0.85.0)
       thor (~> 0.19.1)
     forgery (0.7.0)
     formatador (0.2.5)
