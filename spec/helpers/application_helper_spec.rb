@@ -80,4 +80,47 @@ RSpec.describe ApplicationHelper, type: :helper do
       end
     end
   end
+
+  describe "#global_stats" do
+    it "returns a GlobalStats instance" do
+      expect(helper.global_stats).to be_a GlobalStats
+    end
+
+    it "memoizes the instance" do
+      expect(helper.global_stats.object_id).to be == helper.global_stats.object_id
+    end
+  end
+
+  describe "#rank" do
+    it "renders an icon for the given rank" do
+      expected = "<i class=\"fa fa-caret-up rank rank-2\" title=\"Upper half of all projects\"></i>"
+      expect(helper.rank(metric: :rubygem_downloads, value: 5000)).to be == expected
+    end
+  end
+
+  describe "#rank_icon" do
+    it "is 'fa-angle-double-up' when rank is 5" do
+      expect(helper.rank_icon(5)).to be == "fa-angle-double-up"
+    end
+
+    it "is 'fa-caret-up' when rank is below 5" do
+      expect(helper.rank_icon(rand(5))).to be == "fa-caret-up"
+    end
+  end
+
+  describe "#rank_tooltip" do
+    {
+      nil => nil,
+      "" => nil,
+      1 => "Lower half of all projects",
+      2 => "Upper half of all projects",
+      3 => "Upper quarter of all projects",
+      4 => "Top 5% of all projects",
+      5 => "Top 1% of all projects",
+    }.each do |rank, expected_label|
+      it "returns #{expected_label.inspect} for rank #{rank}" do
+        expect(helper.rank_tooltip(rank)).to be == expected_label
+      end
+    end
+  end
 end

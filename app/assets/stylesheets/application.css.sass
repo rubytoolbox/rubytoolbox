@@ -139,6 +139,16 @@ footer.footer
         // Compensate for default icon padding in heading above
         margin-left: 5px
 
+      i.rank
+        margin-left: 5px
+        &.rank-1
+          transform: rotate(135deg)
+        &.rank-2
+          transform: rotate(90deg)
+        &.rank-3
+          transform: rotate(45deg)
+
+
 article.blog-post
   @extend .column, .content, .is-three-fifths-desktop, .is-offset-one-fifth-desktop
   font-size: 125%
