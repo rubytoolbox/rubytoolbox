@@ -54,7 +54,7 @@
       = metric "Primary Language", project.github_repo_primary_language, icon: "code"
       = metric "Licenses", project.rubygem_licenses.try(:to_sentence), icon: "legal"
       = metric "Average date of last 50 commits", recent_distance_in_words(project.github_repo_average_recent_committed_at), icon: "link"
-      = metric "Reverse Depencencies", project.rubygem_reverse_dependencies_count, icon: "compress"
+      = metric "Reverse Dependencies", project.rubygem_reverse_dependencies_count, icon: "compress"
 - else
   .metrics
     .label
@@ -65,7 +65,7 @@
       = metric "Issue Closure Rate", project.github_repo_issue_closure_rate, icon: "percent"
       = metric "Pull Request Acceptance Rate", project.github_repo_pull_request_acceptance_rate, icon: "percent"
       = metric "Average date of last 50 commits", recent_distance_in_words(project.github_repo_average_recent_committed_at), icon: "link"
-      = metric "Reverse Depencencies", project.rubygem_reverse_dependencies_count, icon: "compress"
+      = metric "Reverse Dependencies", project.rubygem_reverse_dependencies_count, icon: "compress"
   .columns: .column.has-text-right
     a.button.is-outlined href="/projects/#{project.permalink}"
       span.icon: i.fa.fa-plus
