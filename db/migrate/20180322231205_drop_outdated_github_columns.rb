@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable Rails/BulkChangeTable - Legacy Migration
 class DropOutdatedGithubColumns < ActiveRecord::Migration[5.1]
   def change
     # Removes some columns that are not available or deprecated in github
@@ -10,3 +11,4 @@ class DropOutdatedGithubColumns < ActiveRecord::Migration[5.1]
     remove_column :github_repos, :repo_updated_at, type: :datetime
   end
 end
+# rubocop:enable Rails/BulkChangeTable

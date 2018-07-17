@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable Rails/BulkChangeTable - Legacy Migration
 class ChangeCategoriesAndGithubRepoPrimaryKeysToCitext < ActiveRecord::Migration[5.1]
   def up
     enable_extension "citext"
@@ -29,3 +30,4 @@ class ChangeCategoriesAndGithubRepoPrimaryKeysToCitext < ActiveRecord::Migration
     raise ActiveRecord::IrreversibleMigration
   end
 end
+# rubocop:enable Rails/BulkChangeTable

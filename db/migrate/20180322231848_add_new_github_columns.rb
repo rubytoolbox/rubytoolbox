@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable Rails/BulkChangeTable - Legacy Migration
 class AddNewGithubColumns < ActiveRecord::Migration[5.1]
   def change
     add_column :github_repos, :primary_language, :string
@@ -18,3 +19,4 @@ class AddNewGithubColumns < ActiveRecord::Migration[5.1]
     add_column :github_repos, :average_recent_committed_at, :datetime
   end
 end
+# rubocop:enable Rails/BulkChangeTable

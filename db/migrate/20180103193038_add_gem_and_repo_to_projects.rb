@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable Rails/BulkChangeTable - Legacy Migration
 class AddGemAndRepoToProjects < ActiveRecord::Migration[5.1]
   def change
     add_column :projects, :rubygem_name, :string
@@ -8,3 +9,4 @@ class AddGemAndRepoToProjects < ActiveRecord::Migration[5.1]
     add_foreign_key :projects, :rubygems, column: :rubygem_name, primary_key: :name
   end
 end
+# rubocop:enable Rails/BulkChangeTable

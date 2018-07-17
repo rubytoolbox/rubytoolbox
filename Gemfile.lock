@@ -46,9 +46,13 @@ GEM
       public_suffix (>= 2.0.2, < 4.0)
     appsignal (2.6.1)
       rack
+    archive-zip (0.11.0)
+      io-like (~> 0.3.0)
     arel (9.0.0)
     ast (2.4.0)
     bindex (0.5.0)
+    bootsnap (1.3.0)
+      msgpack (~> 1.0)
     builder (3.2.3)
     byebug (10.0.2)
     capybara (3.3.1)
@@ -60,6 +64,9 @@ GEM
       xpath (~> 3.1)
     childprocess (0.9.0)
       ffi (~> 1.0, >= 1.0.11)
+    chromedriver-helper (1.2.0)
+      archive-zip (~> 0.10)
+      nokogiri (~> 1.8)
     coderay (1.1.2)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -137,6 +144,7 @@ GEM
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
     iniparse (1.4.4)
+    io-like (0.3.0)
     jaro_winkler (1.5.1)
     json (2.1.0)
     listen (3.1.5)
@@ -162,6 +170,7 @@ GEM
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
     minitest (5.11.3)
+    msgpack (1.2.4)
     multipart-post (2.0.0)
     nenv (0.3.0)
     nio4r (2.3.1)
@@ -274,6 +283,7 @@ GEM
     ruby_dep (1.5.0)
     ruby_parser (3.10.1)
       sexp_processor (~> 4.9)
+    rubyzip (1.2.1)
     safe_yaml (1.0.4)
     sass (3.5.4)
       sass-listen (~> 4.0.0)
@@ -287,6 +297,9 @@ GEM
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
     sax-machine (1.3.2)
+    selenium-webdriver (3.13.0)
+      childprocess (~> 0.5)
+      rubyzip (~> 1.2)
     sexp_processor (4.10.0)
     shellany (0.0.1)
     sidekiq (5.1.3)
@@ -358,8 +371,10 @@ PLATFORMS
 
 DEPENDENCIES
   appsignal
+  bootsnap (>= 1.1.0)
   byebug
-  capybara
+  capybara (>= 2.15, < 4.0)
+  chromedriver-helper
   coffee-rails (~> 4.2)
   dotenv-rails
   feedjira
@@ -378,7 +393,7 @@ DEPENDENCIES
   pg (~> 0.18)
   pg_search
   pry
-  puma (~> 3.7)
+  puma (~> 3.11)
   rack-canonical-host
   rack-ssl-enforcer
   rails (~> 5.2.0)
@@ -388,6 +403,7 @@ DEPENDENCIES
   rubocop
   rubocop-rspec
   sass-rails (~> 5.0)
+  selenium-webdriver
   sidekiq
   simplecov
   slim-rails
