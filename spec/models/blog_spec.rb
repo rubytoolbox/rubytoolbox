@@ -56,7 +56,7 @@ RSpec.describe Blog, type: :model do
 
       it "does not reload posts in caching mode" do
         blog = described_class.new root: root, cache: true
-        expect(described_class::PostLoader).to receive(:new).exactly(2).times.and_call_original
+        expect(described_class::PostLoader).to receive(:new).twice.and_call_original
         blog.posts
         blog.posts
       end
