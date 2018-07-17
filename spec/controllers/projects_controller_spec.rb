@@ -20,7 +20,7 @@ RSpec.describe ProjectsController, type: :controller do
       end
 
       it "responds with success" do
-        expect(do_request).to have_http_status :success
+        expect(do_request).to be_successful
       end
 
       it "renders template show" do
@@ -44,7 +44,7 @@ RSpec.describe ProjectsController, type: :controller do
       end
 
       it "responds with success when accessed with the 'correct' permalink" do
-        expect(do_request("rails/rails")).to have_http_status :success
+        expect(do_request("rails/rails")).to be_successful
       end
 
       it "redirects to normalized path if accessed as 'Rails/Rails'" do

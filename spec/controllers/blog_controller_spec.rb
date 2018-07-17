@@ -10,7 +10,7 @@ RSpec.describe BlogController, type: :controller do
   describe "GET index" do
     shared_examples_for "a blog index response" do
       it "responds with success" do
-        expect(do_request).to have_http_status :success
+        expect(do_request).to be_successful
       end
 
       it "renders template index" do
@@ -82,7 +82,7 @@ RSpec.describe BlogController, type: :controller do
       end
 
       it "responds with success" do
-        expect(do_request).to have_http_status :success
+        expect(do_request).to be_successful
       end
 
       it "renders template show" do
