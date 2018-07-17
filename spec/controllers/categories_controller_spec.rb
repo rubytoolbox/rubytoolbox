@@ -22,7 +22,7 @@ RSpec.describe CategoriesController, type: :controller do
       end
 
       it "responds with success" do
-        expect(do_request).to have_http_status :success
+        expect(do_request).to be_successful
       end
 
       it "renders template show" do

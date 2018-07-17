@@ -7,7 +7,7 @@ RSpec.describe WelcomeController, type: :controller do
     let(:do_request) { get :home }
 
     it "responds with success" do
-      expect(do_request).to have_http_status :success
+      expect(do_request).to be_successful
     end
 
     it "renders template home" do
