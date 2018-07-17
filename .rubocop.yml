@@ -46,6 +46,11 @@ RSpec/MessageSpies:
 RSpec/NestedGroups:
   Max: 5
 
+# See https://github.com/rubocop-hq/rubocop/issues/5953#issuecomment-399973424
+# Making attr_accessor & friends private inline is more concise
+Style/AccessModifierDeclarations:
+  Enabled: false
+
 Style/Documentation:
   Enabled: false
 

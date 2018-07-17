@@ -37,6 +37,7 @@ PreCommit:
     enabled: true
   RuboCop:
     enabled: true
+    command: ["bundle", "exec", "rubocop"]
   YamlSyntax:
     enabled: true
   YarnCheck:
@@ -45,4 +46,5 @@ PreCommit:
 PrePush:
   RSpec:
     enabled: true
+    command: ["bundle", "exec", "rspec"]
 
