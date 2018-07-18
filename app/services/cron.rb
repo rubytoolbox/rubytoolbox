@@ -7,13 +7,14 @@
 #
 class Cron
   def run(time: Time.current.utc)
-    RemoteUpdateSchedulerJob.perform_async
-    CatalogImportJob.perform_async
-
     case time.hour
     when 0
       RubygemsSyncJob.perform_async
     end
+
+    RemoteUpdateSchedulerJob.perform_async
+    CatalogImportJob.perform_async
+    GithubIgnore.expire!
   rescue StandardError => err
     Appsignal.set_error err
     raise err

@@ -13,6 +13,8 @@ RSpec.describe Github, type: :model do
       ["http://github.com/{github_username}/{project_name}"] => nil,
       ["http://github.com/foo/bar#readme"] => "foo/bar",
       ["http://github.com/rails/rails"] => "rails/rails",
+      ["http://github.com/rails/rails.git"] => "rails/rails",
+      ["http://github.com/rails/rails.allowed"] => "rails/rails.allowed",
       ["foobar", "http://github.com/rails/rails"] => "rails/rails",
     }.each do |args, expected_name|
       it "is #{expected_name.inspect} when given #{args.inspect}" do

@@ -167,6 +167,17 @@ CREATE TABLE public.category_groups (
 
 
 --
+-- Name: github_ignores; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE public.github_ignores (
+    path character varying NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
 -- Name: github_repos; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -333,6 +344,13 @@ CREATE UNIQUE INDEX index_category_groups_on_permalink ON public.category_groups
 
 
 --
+-- Name: index_github_ignores_on_path; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_github_ignores_on_path ON public.github_ignores USING btree (path);
+
+
+--
 -- Name: index_github_repos_on_path; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -453,6 +471,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180127211755'),
 ('20180221214013'),
 ('20180322231205'),
-('20180322231848');
+('20180322231848'),
+('20180718195202');
 
 
