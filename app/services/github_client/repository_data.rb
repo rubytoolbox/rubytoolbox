@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class GithubClient
+  # Please write unit tests for me...
   class RepositoryData
     attr_accessor :raw_data
     private :raw_data=
@@ -95,6 +96,8 @@ class GithubClient
 
     def average_recent_committed_at
       edges = raw_data.dig("defaultBranchRef", "target", "history", "edges")
+      # Yip, sometimes published gems reference an empty github repo
+      return unless edges
       dates = edges.map { |edge| Time.zone.parse edge.dig("node", "authoredDate") }
       Time.zone.at dates.map(&:to_i).sum / dates.count
     end
