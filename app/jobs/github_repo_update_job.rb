@@ -9,15 +9,11 @@ class GithubRepoUpdateJob < ApplicationJob
   end
 
   def perform(path)
+    return if GithubIgnore.ignored? path
     info = fetch_repo_info path
 
     if info
-      GithubRepo.find_or_initialize_by(path: path.downcase).tap do |repo|
-        # Set updated at to ensure we flag what we've pulled
-        repo.updated_at = Time.current.utc
-        repo.update! mapped_attributes(info)
-        trigger_project_updates repo.projects.pluck(:permalink)
-      end
+      store_repo path: path, info: info
     else
       GithubRepo.where(path: path).destroy_all
     end
@@ -49,6 +45,15 @@ class GithubRepoUpdateJob < ApplicationJob
     wiki?: :has_wiki,
   }.freeze
 
+  def store_repo(path:, info:)
+    GithubRepo.find_or_initialize_by(path: path.downcase).tap do |repo|
+      # Set updated at to ensure we flag what we've pulled
+      repo.updated_at = Time.current.utc
+      repo.update! mapped_attributes(info)
+      trigger_project_updates repo.projects.pluck(:permalink)
+    end
+  end
+
   def mapped_attributes(info)
     ATTRIBUTE_MAPPING.each_with_object({}) do |(remote_name, local_name), mapped|
       value = info.public_send remote_name
@@ -60,6 +65,7 @@ class GithubRepoUpdateJob < ApplicationJob
   def fetch_repo_info(path)
     client.fetch_repository path
   rescue GithubClient::UnknownRepoError
+    GithubIgnore.track! path
     nil
   end
 

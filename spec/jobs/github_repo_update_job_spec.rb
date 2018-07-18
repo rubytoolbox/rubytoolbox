@@ -48,6 +48,12 @@ RSpec.describe GithubRepoUpdateJob, type: :job do
       expect(GithubRepo.find(repo_path)).to have_attributes(expected_attributes)
     end
 
+    it "does not update an ignored repo" do
+      GithubIgnore.track! repo_path
+      expect(GithubRepo).not_to receive(:find_or_initialize_by)
+      do_perform
+    end
+
     it "changes the updated_at timestamp regardless of changes" do
       described_class.new(client: faked_github_client).perform repo_path
       GithubRepo.find(repo_path).update! updated_at: 2.days.ago
@@ -59,6 +65,17 @@ RSpec.describe GithubRepoUpdateJob, type: :job do
       Project.create! permalink: "rails", github_repo_path: repo_path, rubygem: rubygem
       expect(ProjectUpdateJob).to receive(:perform_async).with("rails")
       do_perform
+    end
+
+    it "creates a GithubIgnore record when the repo is nowhere to be found" do
+      allow(faked_github_client).to receive(:fetch_repository)
+        .with(repo_path)
+        .and_raise(GithubClient::UnknownRepoError)
+
+      expect { do_perform }
+        .to change { GithubIgnore.where(path: repo_path).count }
+        .from(0)
+        .to(1)
     end
   end
 end
