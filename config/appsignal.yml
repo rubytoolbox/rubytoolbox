@@ -1,0 +1,21 @@
+#
+# To get Appsignal running, remember to:
+#
+#   * Set the APPSIGNAL_PUSH_API_KEY env variable
+#   * Set up the deploy hook, i.e. via https://devcenter.heroku.com/articles/appsignal#add-a-deploy-hook-in-heroku
+#
+# See https://docs.appsignal.com/ruby/configuration/
+default: &defaults
+  # It's easier to set this once and for all here instead of remembering
+  # to set the env variable APPSIGNAL_APP_NAME on every deployment env
+  name: Ruby Toolbox
+  # See https://docs.appsignal.com/ruby/configuration/ignore-errors.html
+  # Prevent exceptions that happen in normal operation from showing up
+  # in appsignal error reporting
+  ignore_errors:
+    - ActiveRecord::RecordNotFound
+
+development:
+  <<: *defaults
+production:
+  <<: *defaults
