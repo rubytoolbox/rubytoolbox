@@ -5,19 +5,42 @@ require "rails_helper"
 RSpec.describe RubygemsSyncJob, type: :job do
   let(:job) { described_class.new }
 
-  describe "#remote_gems" do
-    it "acquires the latest rubygems specs and returns all gem names" do
+  describe "remote spec fetching" do
+    def stub_gem_specs_fetch(type:, specs:)
       source = instance_double(::Gem::Source)
 
       allow(::Gem::Source).to receive(:new)
         .with("https://rubygems.org")
         .and_return(source)
 
-      specs = [OpenStruct.new(name: "foo"), OpenStruct.new(name: "bar")]
       allow(source).to receive(:load_specs)
-        .with(:latest).and_return(specs)
+        .with(type).and_return(specs)
+    end
 
-      expect(job.remote_gems).to be == %w[foo bar]
+    describe "#published_gems" do
+      it "acquires the latest rubygems specs and returns all gem names" do
+        specs = [OpenStruct.new(name: "foo"), OpenStruct.new(name: "bar")]
+        stub_gem_specs_fetch type: :latest, specs: specs
+
+        expect(job.published_gems).to be == %w[foo bar]
+      end
+    end
+
+    describe "#prerelease_gems" do
+      it "acquires prerelease rubygems specs and returns all unique gem names" do
+        specs = [OpenStruct.new(name: "foo"), OpenStruct.new(name: "bar"), OpenStruct.new(name: "bar")]
+        stub_gem_specs_fetch type: :prerelease, specs: specs
+
+        expect(job.prerelease_gems).to be == %w[foo bar]
+      end
+    end
+
+    describe "#remote_gems" do
+      it "is the union of the published and prerelease gems" do
+        allow(job).to receive(:prerelease_gems).and_return(%w[a b c])
+        allow(job).to receive(:published_gems).and_return(%w[a d e f])
+        expect(job.remote_gems.sort).to be == %w[a b c d e f]
+      end
     end
   end
 
