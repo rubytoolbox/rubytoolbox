@@ -19,6 +19,7 @@ class ProjectUpdateJob < ApplicationJob
       project.permalink
     else
       return unless project.rubygem
+
       Github.detect_repo_name project.rubygem.homepage_url,
                               project.rubygem.source_code_url,
                               project.rubygem.bug_tracker_url
@@ -27,6 +28,7 @@ class ProjectUpdateJob < ApplicationJob
 
   def enqueue_github_repo_sync(path)
     return if path.nil? || GithubRepo.find_by(path: path)
+
     GithubRepoUpdateJob.perform_async path
   end
 end
