@@ -201,7 +201,7 @@ GEM
     rack-canonical-host (0.2.3)
       addressable (> 0, < 3)
       rack (>= 1.0.0, < 3)
-    rack-protection (2.0.3)
+    rack-protection (2.0.4)
       rack
     rack-proxy (0.6.4)
       rack
@@ -242,7 +242,7 @@ GEM
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     redcarpet (3.4.0)
-    redis (4.0.1)
+    redis (4.0.2)
     request_store (1.4.0)
       rack (>= 1.4)
     rspec (3.8.0)
@@ -302,7 +302,7 @@ GEM
       rubyzip (~> 1.2)
     sexp_processor (4.11.0)
     shellany (0.0.1)
-    sidekiq (5.2.1)
+    sidekiq (5.2.2)
       connection_pool (~> 2.2, >= 2.2.2)
       rack-protection (>= 1.5.0)
       redis (>= 3.3.5, < 5)
