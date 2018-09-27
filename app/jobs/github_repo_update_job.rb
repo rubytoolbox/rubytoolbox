@@ -10,6 +10,7 @@ class GithubRepoUpdateJob < ApplicationJob
 
   def perform(path)
     return if GithubIgnore.ignored? path
+
     info = fetch_repo_info path
 
     if info

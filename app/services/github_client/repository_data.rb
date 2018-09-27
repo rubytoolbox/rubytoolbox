@@ -98,6 +98,7 @@ class GithubClient
       edges = raw_data.dig("defaultBranchRef", "target", "history", "edges")
       # Yip, sometimes published gems reference an empty github repo
       return unless edges
+
       dates = edges.map { |edge| Time.zone.parse edge.dig("node", "authoredDate") }
       Time.zone.at dates.map(&:to_i).sum / dates.count
     end

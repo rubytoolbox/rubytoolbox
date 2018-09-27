@@ -34,6 +34,7 @@ module HttpService
     def get(url, **_args)
       response = responses[url]
       raise UnmockedRequestError unless response
+
       HTTP::Response.new(status: response["status"], body: response["body"], version: "1.1")
     end
 

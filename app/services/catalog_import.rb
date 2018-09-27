@@ -85,6 +85,7 @@ class CatalogImport
     projects.each do |project|
       normalized_path = Github.normalize_path(project)
       next if !project.include?("/") || Project.find_by(permalink: normalized_path)
+
       Project.create! permalink: normalized_path
     end
   end
@@ -93,6 +94,7 @@ class CatalogImport
     project_data.each do |project_permalink|
       project = Project.find_by(permalink: Github.normalize_path(project_permalink))
       next unless project
+
       project.update! categories: categories_for_project_permalink(project_permalink)
     end
   end

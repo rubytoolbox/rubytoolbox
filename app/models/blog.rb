@@ -92,6 +92,7 @@ class Blog
   def find(slug)
     post = posts.find { |p| slug == p.slug }
     return post if post
+
     raise ActiveRecord::RecordNotFound, "No blog post matching #{slug.inspect} found"
   end
 

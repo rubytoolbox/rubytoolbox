@@ -51,8 +51,10 @@ class GithubClient
 
   def handle_response(response)
     raise InvalidResponseStatus, "status=#{response.status}" unless response.status == 200
+
     parsed_body = Oj.load(response.body)
     raise InvalidResponse, parsed_body["errors"].map { |e| e["message"] }.join(", ") if parsed_body["errors"]
+
     RepositoryData.new parsed_body
   end
 
