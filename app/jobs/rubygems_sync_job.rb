@@ -24,9 +24,23 @@ class RubygemsSyncJob < ApplicationJob
     @local_gems ||= Rubygem.pluck(:name)
   end
 
+  # Very similar code is also used in https://github.com/rubytoolbox/catalog/blob/master/spec/catalog_spec.rb#L40-L70
+  # it might make sense to extract this into a tiny shared library to avoid
+  # drift between the logic
   def remote_gems
-    @remote_gems ||= ::Gem::Source.new("https://rubygems.org")
-                                  .load_specs(:latest)
-                                  .map(&:name)
+    @remote_gems ||= published_gems | prerelease_gems
+  end
+
+  def published_gems
+    @published_gems ||= ::Gem::Source.new("https://rubygems.org")
+                                     .load_specs(:latest)
+                                     .map(&:name)
+  end
+
+  def prerelease_gems
+    @prerelease_gems ||= ::Gem::Source.new("https://rubygems.org")
+                                      .load_specs(:prerelease)
+                                      .map(&:name)
+                                      .uniq
   end
 end
