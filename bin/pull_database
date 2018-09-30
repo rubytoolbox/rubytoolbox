@@ -1,0 +1,45 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+APP_PATH = File.expand_path("../config/application", __dir__)
+require_relative "../config/environment"
+
+#
+# This script would likely appreciate to be moved to some proper, tested code
+#
+
+require "open-uri"
+
+puts "== Fetching public database snapshots =="
+backups = Oj.load open("https://data.ruby-toolbox.com/backups.json")
+most_recent_download_url = backups.first["download_url"]
+
+puts "Most recent database dump available is from #{backups.first["created_at"]}"
+
+Dir.mktmpdir do |dir|
+  destination = File.join dir, "rubytoolbox.dump"
+
+  puts "Downloading dump to #{destination}"
+
+  download = open most_recent_download_url
+
+  File.open destination, "w+" do |file|
+    IO.copy_stream download, file
+  end
+
+  puts "Dump downloaded successfully"
+
+  target_database = ApplicationRecord.configurations[Rails.env]["database"]
+
+  puts "== Running pg_restore against #{target_database}"
+
+  result = system "pg_restore --clean --create --no-owner --dbname=#{Shellwords.escape(target_database)} #{Shellwords.escape(destination)}"
+
+  if result
+    puts "Database successfully imported"
+  else
+    STDERR.puts "Database import failed :("
+    exit 1
+  end
+end
+
