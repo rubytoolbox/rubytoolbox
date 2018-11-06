@@ -197,7 +197,7 @@ GEM
       method_source (~> 0.9.0)
     public_suffix (3.0.3)
     puma (3.12.0)
-    rack (2.0.5)
+    rack (2.0.6)
     rack-canonical-host (0.2.3)
       addressable (> 0, < 3)
       rack (>= 1.0.0, < 3)
