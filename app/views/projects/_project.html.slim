@@ -16,6 +16,6 @@
   .columns: .links.column
     = render partial: "projects/links", locals: { project: project }
 
-  .columns: .description.column= project.description
+  .columns: .description.pre-wrap.column= project.description
 
   = render partial: "projects/metrics", locals: { project: project }

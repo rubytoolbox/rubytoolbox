@@ -26,7 +26,7 @@
   .columns: .links.column
     = render partial: "projects/links", locals: { project: @project }
 
-  .columns: .description.column= @project.description
+  .columns: .description.pre-wrap.column= @project.description
 
 section.section: .container: .project
   = render partial: "projects/metrics", locals: { project: @project, expanded_view: true }
