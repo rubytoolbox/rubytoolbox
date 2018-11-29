@@ -1,12 +1,44 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
-  def metric(label, value, icon:)
-    render partial: "projects/metric", locals: { label: label, value: value, icon: icon }
+  def metric(label, value, icon:, name: nil)
+    render partial: "projects/metric", locals: { label: label, value: value, icon: icon, name: name }
   end
 
   def project_link(label, url, icon:)
     render partial: "projects/link", locals: { label: label, url: url, icon: icon }
+  end
+
+  def global_stats
+    @global_stats ||= GlobalStats.new
+  end
+
+  def rank(metric:, value:)
+    return unless metric
+    rank = global_stats.rank metric, value
+    return unless rank
+    content_tag "i", "", class: "fa #{rank_icon(rank)} rank rank-#{rank}", title: rank_tooltip(rank)
+  end
+
+  def rank_icon(rank)
+    case rank
+    when 5
+      "fa-angle-double-up"
+    else
+      "fa-caret-up"
+    end
+  end
+
+  RANK_LABELS = {
+    1 => "Lower half of all projects",
+    2 => "Upper half of all projects",
+    3 => "Upper quarter of all projects",
+    4 => "Top 5% of all projects",
+    5 => "Top 1% of all projects",
+  }.freeze
+
+  def rank_tooltip(rank)
+    RANK_LABELS[rank]
   end
 
   # why

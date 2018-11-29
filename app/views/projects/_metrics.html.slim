@@ -4,10 +4,10 @@
     strong
       | Popularity
   .column: .metrics
-    = metric "Downloads", project.rubygem_downloads, icon: "download"
-    = metric "Stars", project.github_repo_stargazers_count, icon: "star"
-    = metric "Forks", project.github_repo_forks_count, icon: "code-fork"
-    = metric "Watchers", project.github_repo_watchers_count, icon: "eye"
+    = metric "Downloads", project.rubygem_downloads, icon: "download", name: :rubygem_downloads
+    = metric "Stars", project.github_repo_stargazers_count, icon: "star", name: :github_repo_stargazers_count
+    = metric "Forks", project.github_repo_forks_count, icon: "code-fork", name: :github_repo_forks_count
+    = metric "Watchers", project.github_repo_watchers_count, icon: "eye", name: :github_repo_watchers_count
 
 - if project.rubygem_releases_count
   .metrics
@@ -18,7 +18,7 @@
     .column: .metrics
       = metric "Current version", project.rubygem_current_version, icon: "diamond"
       = metric "Total releases", project.rubygem_releases_count, icon: "archive"
-      = metric "First release", project.rubygem_first_release_on, icon: "file-o"
+      = metric "First release", project.rubygem_first_release_on, icon: "file-o", name: :rubygem_first_release_on
       = metric "Latest release", project.rubygem_latest_release_on, icon: "file-text-o"
 - if local_assigns[:expanded_view]
   - if project.github_repo_issue_closure_rate
