@@ -13,12 +13,12 @@ RSpec.describe RubygemUpdateJob, :real_http do
       it "stores the data locally" do
         do_perform
         expect(Rubygem.find(gem_name)).to have_attributes(
-          description: kind_of(String),
-          downloads: (a_value > 1_000_000),
-          first_release_on: (a_value > Date.new(2012, 4, 25)),
-          latest_release_on: (a_value > Date.new(2017, 2, 21)),
+          description:                kind_of(String),
+          downloads:                  (a_value > 1_000_000),
+          first_release_on:           (a_value > Date.new(2012, 4, 25)),
+          latest_release_on:          (a_value > Date.new(2017, 2, 21)),
           reverse_dependencies_count: (a_value > 50),
-          releases_count: (a_value > 20)
+          releases_count:             (a_value > 20)
         )
       end
     end

@@ -10,8 +10,8 @@ RSpec.describe CatalogImportJob, type: :job do
 
     def stub_response(status: 200)
       response = HTTP::Response.new(
-        status: status,
-        body: catalog_body,
+        status:  status,
+        body:    catalog_body,
         version: "1.1"
       )
       allow(job.http_client).to receive(:get).with(job.catalog_url).and_return(response)
@@ -19,8 +19,8 @@ RSpec.describe CatalogImportJob, type: :job do
 
     it "fetches the catalog" do
       response = HTTP::Response.new(
-        status: 200,
-        body: catalog_body,
+        status:  200,
+        body:    catalog_body,
         version: "1.1"
       )
       expect(job.http_client).to receive(:get).with(job.catalog_url)

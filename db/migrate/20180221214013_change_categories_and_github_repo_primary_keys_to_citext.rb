@@ -7,7 +7,7 @@ class ChangeCategoriesAndGithubRepoPrimaryKeysToCitext < ActiveRecord::Migration
 
     remove_foreign_key :categories, column: :category_group_permalink, primary_key: :permalink
     remove_foreign_key :categorizations,
-                       column: :category_permalink,
+                       column:      :category_permalink,
                        primary_key: :permalink
 
     change_column :category_groups, :permalink, :citext, null: false
@@ -19,7 +19,7 @@ class ChangeCategoriesAndGithubRepoPrimaryKeysToCitext < ActiveRecord::Migration
 
     add_foreign_key :categories, :category_groups, column: :category_group_permalink, primary_key: :permalink
     add_foreign_key :categorizations, :categories,
-                    column: :category_permalink,
+                    column:      :category_permalink,
                     primary_key: :permalink
 
     change_column :github_repos, :path, :citext, null: false

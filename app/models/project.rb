@@ -31,12 +31,12 @@ class Project < ApplicationRecord
   pg_search_scope :search_scope,
                   # This is unfortunately not used when using explicit tsvector columns,
                   # see https://github.com/Casecommons/pg_search#using-tsvector-columns
-                  against: { permalink_tsvector: "A", description_tsvector: "C" },
-                  using: {
+                  against:   { permalink_tsvector: "A", description_tsvector: "C" },
+                  using:     {
                     tsearch: {
                       tsvector_column: %w[permalink_tsvector description_tsvector],
-                      prefix: true,
-                      dictionary: "simple",
+                      prefix:          true,
+                      dictionary:      "simple",
                     },
                   },
                   ranked_by: ":tsearch * (#{table_name}.score + 1) * (#{table_name}.score + 1)"
@@ -61,9 +61,9 @@ class Project < ApplicationRecord
            :licenses,
            :url,
            :reverse_dependencies_count,
-           to: :rubygem,
+           to:        :rubygem,
            allow_nil: true,
-           prefix: :rubygem
+           prefix:    :rubygem
 
   delegate :stargazers_count,
            :forks_count,
@@ -88,9 +88,9 @@ class Project < ApplicationRecord
            :closed_pull_requests_count,
            :pull_request_acceptance_rate,
            :average_recent_committed_at,
-           to: :github_repo,
+           to:        :github_repo,
            allow_nil: true,
-           prefix: :github_repo
+           prefix:    :github_repo
 
   def self.find_for_show!(permalink)
     includes_associations.find(Github.normalize_path(permalink))

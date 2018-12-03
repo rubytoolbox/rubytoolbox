@@ -56,7 +56,7 @@ RSpec.describe Project, type: :model do
     describe "#source_code_url" do
       let(:project) do
         described_class.new(
-          rubygem: Rubygem.new(source_code_url: "from_gem"),
+          rubygem:     Rubygem.new(source_code_url: "from_gem"),
           github_repo: GithubRepo.new(path: "foo/bar")
         )
       end
@@ -74,7 +74,7 @@ RSpec.describe Project, type: :model do
     describe "#homepage_url" do
       let(:project) do
         described_class.new(
-          rubygem: Rubygem.new(homepage_url: "from_gem"),
+          rubygem:     Rubygem.new(homepage_url: "from_gem"),
           github_repo: GithubRepo.new(homepage_url: "from_repo")
         )
       end
@@ -92,7 +92,7 @@ RSpec.describe Project, type: :model do
     describe "#wiki_url" do
       let(:project) do
         described_class.new(
-          rubygem: Rubygem.new(wiki_url: "from_gem"),
+          rubygem:     Rubygem.new(wiki_url: "from_gem"),
           github_repo: GithubRepo.new(path: "foo/bar")
         )
       end
@@ -110,7 +110,7 @@ RSpec.describe Project, type: :model do
     describe "#bug_tracker_url" do
       let(:project) do
         described_class.new(
-          rubygem: Rubygem.new(bug_tracker_url: "from_gem"),
+          rubygem:     Rubygem.new(bug_tracker_url: "from_gem"),
           github_repo: GithubRepo.new(path: "foo/bar")
         )
       end

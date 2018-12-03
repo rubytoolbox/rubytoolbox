@@ -11,14 +11,14 @@ class CreateCategorizations < ActiveRecord::Migration[5.1]
 
     add_index :categorizations, %i[category_permalink project_permalink],
               unique: true,
-              name: :categorizations_unique_index
+              name:   :categorizations_unique_index
 
     add_foreign_key :categorizations, :categories,
-                    column: :category_permalink,
+                    column:      :category_permalink,
                     primary_key: :permalink
 
     add_foreign_key :categorizations, :projects,
-                    column: :project_permalink,
+                    column:      :project_permalink,
                     primary_key: :permalink
   end
 end

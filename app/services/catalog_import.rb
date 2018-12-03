@@ -47,7 +47,7 @@ class CatalogImport
   def upsert_category_groups
     category_group_data.each do |category_group_data|
       group = CategoryGroup.find_or_initialize_by(permalink: category_group_data["permalink"])
-      group.update! name: category_group_data["name"],
+      group.update! name:        category_group_data["name"],
                     description: category_group_data["description"]
 
       upsert_categories categories_data: category_group_data["categories"], group: group
@@ -62,8 +62,8 @@ class CatalogImport
   def upsert_categories(categories_data:, group:)
     categories_data.each do |category_data|
       category = Category.find_or_initialize_by(permalink: category_data["permalink"])
-      category.update! name: category_data["name"],
-                       description: category_data["description"],
+      category.update! name:           category_data["name"],
+                       description:    category_data["description"],
                        category_group: group
 
       upsert_github_projects category_data["projects"]

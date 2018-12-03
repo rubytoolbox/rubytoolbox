@@ -13,12 +13,12 @@ RSpec.describe "Full Project Sync", :real_http, :sidekiq_inline do
     it "assigns the expected attributes to the resulting project" do
       do_perform
       expect(Project.find("thread_safe")).to have_attributes(
-        rubygem_name: "thread_safe",
-        github_repo_path: "ruby-concurrency/thread_safe",
+        rubygem_name:                 "thread_safe",
+        github_repo_path:             "ruby-concurrency/thread_safe",
         github_repo_stargazers_count: (a_value > 100),
-        github_repo_forks_count: (a_value > 10),
-        rubygem_downloads: (a_value > 10_000_000),
-        score: 100.0
+        github_repo_forks_count:      (a_value > 10),
+        rubygem_downloads:            (a_value > 10_000_000),
+        score:                        100.0
       )
     end
   end
@@ -33,11 +33,11 @@ RSpec.describe "Full Project Sync", :real_http, :sidekiq_inline do
     it "assigns the expected attributes to the resulting project" do
       do_perform
       expect(Project.find("postmodern/chruby")).to have_attributes(
-        rubygem_name: nil,
-        github_repo_path: "postmodern/chruby",
+        rubygem_name:                 nil,
+        github_repo_path:             "postmodern/chruby",
         github_repo_stargazers_count: (a_value > 1500),
-        github_repo_forks_count: (a_value > 100),
-        score: 100.0
+        github_repo_forks_count:      (a_value > 100),
+        score:                        100.0
       )
     end
   end
