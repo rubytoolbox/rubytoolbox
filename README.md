@@ -1,7 +1,7 @@
 <div align="center">
   <img src="./app/assets/images/logo/regular.svg" width="400px" alt="The Ruby Toolbox"/>
 
-  [![Build Status](https://travis-ci.org/rubytoolbox/rubytoolbox.svg?branch=master)](https://travis-ci.org/rubytoolbox/rubytoolbox) [![Depfu](https://badges.depfu.com/badges/84ab24dbd83e15c8dfd36144e10d14f2/overview.svg)](https://depfu.com/github/rubytoolbox/rubytoolbox)
+  [![Build Status](https://travis-ci.org/rubytoolbox/rubytoolbox.svg?branch=master)](https://travis-ci.org/rubytoolbox/rubytoolbox) [![Depfu](https://badges.depfu.com/badges/84ab24dbd83e15c8dfd36144e10d14f2/overview.svg)](https://depfu.com/github/rubytoolbox/rubytoolbox) [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/rubytoolbox/Lobby)
 
   **Explore and compare open source Ruby libraries**
 </div>
