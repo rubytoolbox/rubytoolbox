@@ -47,12 +47,12 @@ module ApplicationHelper
   end
 
   DISTANCES = {
-    1.week => "within last week",
-    2.weeks => "within last two weeks",
-    1.month => "within last month",
+    1.week   => "within last week",
+    2.weeks  => "within last two weeks",
+    1.month  => "within last month",
     3.months => "within last 3 months",
-    1.year => "within last year",
-    2.years => "within last 2 years",
+    1.year   => "within last year",
+    2.years  => "within last 2 years",
   }.freeze
 
   def recent_distance_in_words(time)

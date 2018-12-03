@@ -6,8 +6,8 @@ class Rubygem < ApplicationRecord
   has_one :project,
           primary_key: :name,
           foreign_key: :rubygem_name,
-          inverse_of: :rubygem,
-          dependent: :destroy
+          inverse_of:  :rubygem,
+          dependent:   :destroy
 
   def self.update_batch
     where("updated_at < ? ", 24.hours.ago.utc)

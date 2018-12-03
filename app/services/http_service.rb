@@ -17,9 +17,9 @@ module HttpService
     def real_http_client
       HTTP.timeout(connect: 3, write: 3, read: 3)
           .headers(
-            "Accept" => "application/json",
+            "Accept"       => "application/json",
             "Content-Type" => "application/json",
-            "User-Agent" => USER_AGENT
+            "User-Agent"   => USER_AGENT
           )
     end
 

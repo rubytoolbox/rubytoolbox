@@ -63,8 +63,8 @@ RSpec.describe CatalogImport do
     it "removes obsolete categories" do
       import.perform
 
-      obsolete_category = Category.create! permalink: "Obsolete",
-                                           name: "Obsolete",
+      obsolete_category = Category.create! permalink:      "Obsolete",
+                                           name:           "Obsolete",
                                            category_group: CategoryGroup.first
 
       expect { import.perform }.to change { Category.find_by(permalink: obsolete_category.permalink) }.to(nil)

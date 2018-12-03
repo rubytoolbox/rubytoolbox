@@ -14,8 +14,8 @@ RSpec.describe GithubRepoUpdateJob, :real_http do
         do_perform
         expect(GithubRepo.find(repo_path)).to have_attributes(
           stargazers_count: (a_value > 30_000),
-          watchers_count: (a_value > 1000),
-          forks_count: (a_value > 10_000)
+          watchers_count:   (a_value > 1000),
+          forks_count:      (a_value > 10_000)
         )
       end
     end

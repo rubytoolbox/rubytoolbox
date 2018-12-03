@@ -32,9 +32,9 @@ class Blog
     def post
       Post.new(
         published_on: published_on,
-        permalink: permalink,
-        title: title,
-        body_html: body_html
+        permalink:    permalink,
+        title:        title,
+        body_html:    body_html
       )
     end
 

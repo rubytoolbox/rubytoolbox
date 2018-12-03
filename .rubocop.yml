@@ -27,6 +27,11 @@ Metrics/MethodLength:
   Exclude:
     - 'db/migrate/**/*'
 
+# Reads best in my humble opinion
+Layout/AlignHash:
+  EnforcedColonStyle: table
+  EnforcedHashRocketStyle: table
+
 Rails:
   Enabled: true
 

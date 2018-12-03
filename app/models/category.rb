@@ -5,7 +5,7 @@ class Category < ApplicationRecord
 
   belongs_to :category_group,
              primary_key: :permalink,
-             inverse_of: :categories,
+             inverse_of:  :categories,
              foreign_key: :category_group_permalink
 
   has_many :categorizations,
@@ -19,12 +19,12 @@ class Category < ApplicationRecord
 
   include PgSearch
   pg_search_scope :search_scope,
-                  against: :name_tsvector,
-                  using: {
+                  against:   :name_tsvector,
+                  using:     {
                     tsearch: {
                       tsvector_column: %w[name_tsvector],
-                      prefix: true,
-                      dictionary: "simple",
+                      prefix:          true,
+                      dictionary:      "simple",
                     },
                   },
                   ranked_by: ":tsearch"

@@ -31,17 +31,17 @@ class RubygemUpdateJob < ApplicationJob
   private
 
   ATTRIBUTE_MAPPING = {
-    authors: :authors,
-    bug_tracker_uri: :bug_tracker_url,
+    authors:           :authors,
+    bug_tracker_uri:   :bug_tracker_url,
     documentation_uri: :documentation_url,
-    downloads: :downloads,
-    homepage_uri: :homepage_url,
-    info: :description,
-    licenses: :licenses,
-    mailing_list_uri: :mailing_list_url,
-    source_code_uri: :source_code_url,
-    version: :current_version,
-    wiki_uri: :wiki_url,
+    downloads:         :downloads,
+    homepage_uri:      :homepage_url,
+    info:              :description,
+    licenses:          :licenses,
+    mailing_list_uri:  :mailing_list_url,
+    source_code_uri:   :source_code_url,
+    version:           :current_version,
+    wiki_uri:          :wiki_url,
   }.freeze
 
   def mapped_info
@@ -52,9 +52,9 @@ class RubygemUpdateJob < ApplicationJob
 
   def extra_attributes
     {
-      first_release_on: releases.first["built_at"],
-      latest_release_on: releases.last["built_at"],
-      releases_count: releases.count,
+      first_release_on:           releases.first["built_at"],
+      latest_release_on:          releases.last["built_at"],
+      releases_count:             releases.count,
       reverse_dependencies_count: reverse_dependencies.count,
     }
   end

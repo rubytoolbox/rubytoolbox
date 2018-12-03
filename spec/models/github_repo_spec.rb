@@ -4,11 +4,11 @@ require "rails_helper"
 
 RSpec.describe GithubRepo, type: :model do
   def create_repo!(path:, updated_at:)
-    GithubRepo.create! path: path,
-                       updated_at: updated_at,
+    GithubRepo.create! path:             path,
+                       updated_at:       updated_at,
                        stargazers_count: 1,
-                       watchers_count: 1,
-                       forks_count: 1
+                       watchers_count:   1,
+                       forks_count:      1
   end
 
   describe ".update_batch" do
@@ -73,7 +73,7 @@ RSpec.describe GithubRepo, type: :model do
     it "is nil if the repo has issues disabled" do
       repo = described_class.new(
         closed_issues_count: 10,
-        open_issues_count: 5
+        open_issues_count:   5
       )
       expect(repo.total_issues_count).to be_nil
     end
@@ -81,8 +81,8 @@ RSpec.describe GithubRepo, type: :model do
     it "is the sum of issues if issues enabled and data available" do
       repo = described_class.new(
         closed_issues_count: 10,
-        open_issues_count: 5,
-        has_issues: true
+        open_issues_count:   5,
+        has_issues:          true
       )
       expect(repo.total_issues_count).to be == 10 + 5
     end
@@ -114,7 +114,7 @@ RSpec.describe GithubRepo, type: :model do
 
     it "is nil if the repo had no PRs" do
       repo = described_class.new(
-        open_pull_requests_count: 0,
+        open_pull_requests_count:   0,
         merged_pull_requests_count: 0,
         closed_pull_requests_count: 0
       )
@@ -123,7 +123,7 @@ RSpec.describe GithubRepo, type: :model do
 
     it "is the expected float if the repo has PR data" do
       repo = described_class.new(
-        open_pull_requests_count: 7,
+        open_pull_requests_count:   7,
         merged_pull_requests_count: 11,
         closed_pull_requests_count: 3
       )
@@ -138,7 +138,7 @@ RSpec.describe GithubRepo, type: :model do
 
     it "is the sum of open, closed and merged PRs" do
       repo = described_class.new(
-        open_pull_requests_count: 7,
+        open_pull_requests_count:   7,
         merged_pull_requests_count: 11,
         closed_pull_requests_count: 3
       )

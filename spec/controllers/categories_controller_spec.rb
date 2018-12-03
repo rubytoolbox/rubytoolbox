@@ -16,8 +16,8 @@ RSpec.describe CategoriesController, type: :controller do
       let(:do_request) { get :show, params: { id: category.permalink } }
 
       let(:category) do
-        Category.create! permalink: "category",
-                         name: "Category",
+        Category.create! permalink:      "category",
+                         name:           "Category",
                          category_group: CategoryGroup.create!(name: "Group", permalink: "group")
       end
 

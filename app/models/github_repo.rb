@@ -6,8 +6,8 @@ class GithubRepo < ApplicationRecord
   has_many :projects,
            primary_key: :path,
            foreign_key: :github_repo_path,
-           inverse_of: :github_repo,
-           dependent: :nullify
+           inverse_of:  :github_repo,
+           dependent:   :nullify
 
   def self.update_batch
     where("updated_at < ? ", 24.hours.ago.utc)
