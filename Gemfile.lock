@@ -193,7 +193,7 @@ GEM
       activesupport (>= 4.2)
       arel (>= 6)
     powerpack (0.1.2)
-    pry (0.11.3)
+    pry (0.12.2)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
     public_suffix (3.0.3)
