@@ -27,8 +27,6 @@ In the coming weeks I will work on bringing your suggestions to life, so if you 
 
 And without further ado, on to the detailed results:
 
----
-
 ### What is your experience with Ruby?
 
 <table>

@@ -141,8 +141,15 @@ footer.footer
 article.blog-post
   @extend .column, .content, .is-three-fifths-desktop, .is-offset-one-fifth-desktop
   font-size: 110%
+  line-height: 1.7
   table, blockquote
     font-size: 80%
+  h2, h3:not(:first-child), h4, h5, h6
+    font-weight: 700
+    margin-top: 90px
   blockquote
     padding: 10px
     margin: 10px 30px
+    background: none
+    border-color: $grey
+    color: $dark
