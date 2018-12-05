@@ -18,6 +18,13 @@ RSpec.describe RemoteUpdateSchedulerJob, type: :job do
     do_perform
   end
 
+  it "purges all github repos without projects from the db" do
+    relation = instance_double ActiveRecord::Relation
+    allow(GithubRepo).to receive(:without_projects).and_return(relation)
+    expect(relation).to receive(:destroy_all)
+    do_perform
+  end
+
   # I am not aware of a better way to test consecutive calls here,
   # if you know one, please send a PR :)
   #

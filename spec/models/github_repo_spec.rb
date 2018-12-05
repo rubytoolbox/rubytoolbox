@@ -3,7 +3,7 @@
 require "rails_helper"
 
 RSpec.describe GithubRepo, type: :model do
-  def create_repo!(path:, updated_at:)
+  def create_repo!(path:, updated_at: 1.day.ago)
     GithubRepo.create! path:             path,
                        updated_at:       updated_at,
                        stargazers_count: 1,
@@ -28,6 +28,18 @@ RSpec.describe GithubRepo, type: :model do
       end
 
       expect(described_class.update_batch).to match %w[foo/outdated1 foo/outdated2]
+    end
+  end
+
+  describe ".without_projects" do
+    before do
+      create_repo! path: "foo/linked"
+      Project.create! permalink: "foo/linked", github_repo_path: "foo/linked"
+      create_repo! path: "foo/orphaned"
+    end
+
+    it "contains records without associated projects" do
+      expect(described_class.without_projects.pluck(:path)).to be == %w[foo/orphaned]
     end
   end
 
