@@ -54,6 +54,15 @@ RSpec.describe GithubClient, :real_http do
     end
   end
 
+  describe "for empty repo", vcr: { cassette_name: "graphql/empty" } do
+    it "successfully fetches the repo" do
+      expected_attributes = {
+        pushed_at: nil,
+      }
+      expect(client.fetch_repository("therabidbanana/eventbright")).to have_attributes(expected_attributes)
+    end
+  end
+
   # This is currently not possible with Github's GraphQL API :(
   # https://platform.github.community/t/repository-redirects-in-api-v4-graphql/4417
   #

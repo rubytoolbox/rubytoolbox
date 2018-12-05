@@ -118,7 +118,10 @@ class GithubClient
     end
 
     def time(key)
-      Time.zone.parse raw_data.dig(key.to_s).presence
+      value = raw_data.dig(key.to_s).presence
+      return unless value
+
+      Time.zone.parse value
     end
   end
 end
