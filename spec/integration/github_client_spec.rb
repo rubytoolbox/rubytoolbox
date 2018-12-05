@@ -38,6 +38,14 @@ RSpec.describe GithubClient, :real_http do
     end
   end
 
+  describe "for invalid reference to an org", vcr: { cassette_name: "github/org_reference" } do
+    it "raises a GithubClient::UnknownRepoError" do
+      expect { client.fetch_repository("orgs/acdcorp") }.to raise_error(
+        GithubClient::UnknownRepoError, /Cannot find repo/
+      )
+    end
+  end
+
   describe "for unknown repo", vcr: { cassette_name: "graphql/fails" } do
     it "raises a GithubClient::UnknownRepoError" do
       expect { client.fetch_repository("thisverylikely/fails") }.to raise_error(
