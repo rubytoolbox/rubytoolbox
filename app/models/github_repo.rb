@@ -16,6 +16,11 @@ class GithubRepo < ApplicationRecord
       .pluck(:path)
   end
 
+  def self.without_projects
+    joins("LEFT JOIN projects ON projects.github_repo_path = github_repos.path")
+      .where(projects: { permalink: nil })
+  end
+
   def path=(path)
     super Github.normalize_path(path)
   end
