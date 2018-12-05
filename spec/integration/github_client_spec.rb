@@ -17,7 +17,7 @@ RSpec.describe GithubClient, :real_http do
         description:                 "Ruby on Rails",
         fork?:                       false,
         forks_count:                 a_value > 10_000,
-        homepage_url:                "http://rubyonrails.org",
+        homepage_url:                "https://rubyonrails.org",
         issues?:                     true,
         license:                     "mit",
         merged_pull_requests_count:  a_value > 13_000,

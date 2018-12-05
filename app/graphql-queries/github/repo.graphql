@@ -1,5 +1,6 @@
-{
-  repository(owner: <%= owner.inspect %>, name: <%= name.inspect %>) {
+query RepositoryDataQuery($owner: String!, $name: String!) {
+
+  repository(owner: $owner, name: $name) {
     nameWithOwner
     forks {
       totalCount
@@ -55,7 +56,6 @@
       totalCount
     }
   }
-
   rateLimit {
     limit
     cost

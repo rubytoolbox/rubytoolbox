@@ -5,7 +5,8 @@ class GithubClient
   class InvalidResponseStatus < StandardError; end
   class UnknownRepoError < StandardError; end
 
-  REPOSITORY_QUERY_TEMPLATE = Tilt.new(Rails.root.join("app", "graphql-queries", "github", "repo.erb"))
+  DEFAULT_TIMEOUT = 5.seconds
+  REPOSITORY_DATA_QUERY = Rails.root.join("app", "graphql-queries", "github", "repo.graphql").read
 
   attr_accessor :token, :http_client
   private :token=, :http_client=
@@ -17,13 +18,13 @@ class GithubClient
   def initialize(token: ENV["GITHUB_TOKEN"])
     self.token = token
     self.http_client = HTTP
-                       .timeout(connect: 3, write: 3, read: 3)
+                       .timeout(connect: DEFAULT_TIMEOUT, write: DEFAULT_TIMEOUT, read: DEFAULT_TIMEOUT)
   end
 
   def fetch_repository(path)
     owner, name = real_path(path).split("/")
-    query = REPOSITORY_QUERY_TEMPLATE.render(OpenStruct.new(owner: owner, name: name))
-    response = authenticated_client.post("https://api.github.com/graphql", body: { query: query }.to_json)
+    body = { query: REPOSITORY_DATA_QUERY, variables: { owner: owner, name: name } }
+    response = authenticated_client.post "https://api.github.com/graphql", body: Oj.dump(body, mode: :compat)
     handle_response response
   end
 

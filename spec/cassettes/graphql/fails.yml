@@ -12,7 +12,7 @@ http_interactions:
       Host:
       - github.com
       User-Agent:
-      - http.rb/3.0.0
+      - http.rb/4.0.0
   response:
     status:
       code: 404
@@ -21,46 +21,43 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Thu, 22 Mar 2018 23:15:16 GMT
+      - Wed, 05 Dec 2018 12:50:15 GMT
       Content-Type:
       - text/html; charset=utf-8
       Connection:
       - close
       Status:
       - 404 Not Found
-      X-Frame-Options:
-      - deny
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Content-Type-Options:
-      - nosniff
       Cache-Control:
       - no-cache
       Vary:
       - X-PJAX
       Set-Cookie:
-      - _gh_sess=KzdVaVkxMUl5S21sbnNQTVRJTEF6ckJSRTFyQ2dtalZidU9GOER4c0Voa2l6UEJmN2R0NGxDZTlrSi8rVWcvNjBLK1RZR2UyNWM1Qm4zYWtRQnhKU2ozN0VqeElqamI5a040VDVhNFVmbmM9LS15bEw4VTBsNmhKMHUrSVFVQ2pkZnFRPT0%3D--de450de9937dcfe851105df9d63104c91e083f02;
+      - _gh_sess=U2lXT3RSMVkrRTYzTnF3Z3VnTjlqVU5CZTFsSUZqQkJRVnNzQ1hKVEkrd0g1b2tvdHR4Mm8zdHh6TWkwcGx5ZmxGazNyN2xWOW9OOGFXcWFHVzk4azV6V3NxTTRZVVBGUkg4eEY3bjJ2U009LS1SRlc1UmpYSzdXWlNEazQwVFJFY2VnPT0%3D--7a6412cf9ffbc9aa8b2b59bb66736bd4c36491bf;
         path=/; secure; HttpOnly
+      - has_recent_activity=1; path=/; expires=Wed, 05 Dec 2018 13:50:15 -0000
       X-Request-Id:
-      - 48e07c1a-b285-4249-ae6a-fdef9ed10b67
-      X-Runtime:
-      - '0.019271'
+      - 4750f7c0-2e0a-415a-91c7-499b898d3280
       Strict-Transport-Security:
       - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
       Referrer-Policy:
       - origin-when-cross-origin, strict-origin-when-cross-origin
       Expect-Ct:
       - max-age=2592000, report-uri="https://api.github.com/_private/browser/errors"
       Content-Security-Policy:
       - default-src 'none'; base-uri 'self'; connect-src 'self'; form-action 'self';
-        img-src data:; script-src 'self'; style-src 'unsafe-inline'
-      X-Runtime-Rack:
-      - '0.025812'
+        img-src 'self' data:; script-src 'self'; style-src 'unsafe-inline'
       X-Github-Request-Id:
-      - EDDD:3521:1BB9190:3440574:5AB43904
+      - A6EB:4590:315AF87:5EA0111:5C07C987
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Thu, 22 Mar 2018 23:15:16 GMT
+  recorded_at: Wed, 05 Dec 2018 12:50:15 GMT
 recorded_with: VCR 4.0.0
