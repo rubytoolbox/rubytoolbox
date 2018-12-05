@@ -12,6 +12,8 @@ RSpec.describe GithubClient, :real_http do
         average_recent_committed_at: a_value > Time.utc(2018, 3, 1),
         closed_issues_count:         a_value > 10_000,
         closed_pull_requests_count:  a_value > 6000,
+        code_of_conduct_name:        "Other",
+        code_of_conduct_url:         "https://github.com/rails/rails/blob/master/CODE_OF_CONDUCT.md",
         created_at:                  Time.zone.parse("2008-04-11T02:19:47Z"),
         default_branch:              "master",
         description:                 "Ruby on Rails",

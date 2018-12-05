@@ -62,6 +62,10 @@ query RepositoryDataQuery($owner: String!, $name: String!) {
         }
       }
     }
+    codeOfConduct {
+      name
+      url
+    }
   }
   rateLimit {
     limit

@@ -107,6 +107,14 @@ class GithubClient
       raw_data.dig("repositoryTopics", "nodes").map { |topic| topic.dig("topic", "name") }.sort
     end
 
+    def code_of_conduct_name
+      raw_data.dig("codeOfConduct", "name").presence
+    end
+
+    def code_of_conduct_url
+      raw_data.dig("codeOfConduct", "url").presence
+    end
+
     private
 
     def count(key)
