@@ -3,6 +3,24 @@
 require "rails_helper"
 
 RSpec.describe CategoriesController, type: :controller do
+  describe "GET index" do
+    let(:do_request) { get :index }
+
+    it "responds with success" do
+      expect(do_request).to be_successful
+    end
+
+    it "renders template index" do
+      expect(do_request).to render_template :index
+    end
+
+    it "assigns CategoryGroup.for_welcome_page" do
+      allow(CategoryGroup).to receive(:for_welcome_page).and_return("The Groups")
+      do_request
+      expect(assigns(:groups)).to be == "The Groups"
+    end
+  end
+
   describe "GET show" do
     describe "for unknown category" do
       let(:do_request) { get :show, params: { id: "foobar" } }

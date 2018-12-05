@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 class CategoriesController < ApplicationController
+  def index
+    @groups = CategoryGroup.for_welcome_page
+  end
+
   def show
     @category = Category.find_for_show! params[:id], order: current_order
     redirect_to @category if @category.permalink != params[:id]

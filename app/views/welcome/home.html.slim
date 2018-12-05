@@ -1,20 +1,7 @@
-- unless :time_for_announcements
-  .hero.is-medium
-    section.container.section.hero-body
-      .content.has-text-centered
-        h2 Welcome to the new Ruby Toolbox!
-        a.button.is-info.is-outlined href="/blog/2018-02-01/lets-push-things-forward"
-          span.icon: i.fa.fa-newspaper-o
-          span Read the announcement blog post
-
-section.section
-  .container
-    .columns.is-multiline
-      - @groups.each do |group|
-        .category-group
-          h3.is-size-4
-            = group.name
-          .columns.is-multiline
-            - group.categories.each do |category|
-              .category-cards.two
-                = category_card category, compact: true
+.hero.is-medium
+  section.container.section.hero-body
+    .content.has-text-centered
+      h2 Welcome to the new Ruby Toolbox!
+      a.button.is-info.is-outlined href="/blog/2018-02-01/lets-push-things-forward"
+        span.icon: i.fa.fa-newspaper-o
+        span Read the announcement blog post

@@ -1,0 +1,11 @@
+section.section
+  .container
+    .columns.is-multiline
+      - @groups.each do |group|
+        .category-group
+          h3.is-size-4
+            = group.name
+          .columns.is-multiline
+            - group.categories.each do |category|
+              .category-cards.two
+                = category_card category, compact: true
