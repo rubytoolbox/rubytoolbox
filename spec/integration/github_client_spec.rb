@@ -38,11 +38,28 @@ RSpec.describe GithubClient, :real_http do
     end
   end
 
+  describe "for invalid reference to an org", vcr: { cassette_name: "github/org_reference" } do
+    it "raises a GithubClient::UnknownRepoError" do
+      expect { client.fetch_repository("orgs/acdcorp") }.to raise_error(
+        GithubClient::UnknownRepoError, /Cannot find repo/
+      )
+    end
+  end
+
   describe "for unknown repo", vcr: { cassette_name: "graphql/fails" } do
     it "raises a GithubClient::UnknownRepoError" do
       expect { client.fetch_repository("thisverylikely/fails") }.to raise_error(
         GithubClient::UnknownRepoError, /Cannot find repo/
       )
+    end
+  end
+
+  describe "for empty repo", vcr: { cassette_name: "graphql/empty" } do
+    it "successfully fetches the repo" do
+      expected_attributes = {
+        pushed_at: nil,
+      }
+      expect(client.fetch_repository("therabidbanana/eventbright")).to have_attributes(expected_attributes)
     end
   end
 

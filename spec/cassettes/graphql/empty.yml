@@ -1,0 +1,151 @@
+---
+http_interactions:
+- request:
+    method: head
+    uri: https://github.com/therabidbanana/eventbright
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Connection:
+      - close
+      Host:
+      - github.com
+      User-Agent:
+      - http.rb/4.0.0
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Wed, 05 Dec 2018 12:28:06 GMT
+      Content-Type:
+      - text/html; charset=utf-8
+      Connection:
+      - close
+      Status:
+      - 200 OK
+      Cache-Control:
+      - no-cache
+      Vary:
+      - X-PJAX
+      Set-Cookie:
+      - _gh_sess=VVp4OTBmbzY0cUMvRVNGUWMwRWJyUFBpRUFROSt4RDRVTk1OSm9RUkEwYnl4RUJSL2pnUWRLMXpIMVpqZFB4WWJITHViQjR3THVZTDNjbFA5bjlFendtUnNjMVhSTWNhb0g3MFprK0w5Nk1iRmlOQUcvWnNFcDZwWDBBRXlZMThpR0V3S2NpOThkQmJvWkNzTGNNMUNid3p5RmRrZ0l0WngwN2g4WkJWekNlTEFvckpIMDAxSUYrck1uR0VYNmdpbEU1S0pNeFFSY2Z5M0ZYN2pvamNFTUF0SXArN2Z4OGtwZ3BEMFBLVkNlTzNBUVVHSDNkekp6WFp2Tk9ZSC9Yd0lGWTVMOUJvN2JsbjNFL21zUzNDSlE9PS0tSlE1clVpR2hWTk5YZWF5bVcycmdHUT09--a9e9b3edea6accf392044d2bbe743af420c28de2;
+        path=/; secure; HttpOnly
+      - has_recent_activity=1; path=/; expires=Wed, 05 Dec 2018 13:28:06 -0000
+      X-Request-Id:
+      - 1a10dea6-4d64-4f0e-a547-8792b03b06ba
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Expect-Ct:
+      - max-age=2592000, report-uri="https://api.github.com/_private/browser/errors"
+      Content-Security-Policy:
+      - 'default-src ''none''; base-uri ''self''; block-all-mixed-content; connect-src
+        ''self'' uploads.github.com status.github.com collector.githubapp.com api.github.com
+        www.google-analytics.com github-cloud.s3.amazonaws.com github-production-repository-file-5c1aeb.s3.amazonaws.com
+        github-production-upload-manifest-file-7fdce7.s3.amazonaws.com github-production-user-asset-6210df.s3.amazonaws.com
+        wss://live.github.com; font-src assets-cdn.github.com; form-action ''self''
+        github.com gist.github.com; frame-ancestors ''none''; frame-src render.githubusercontent.com;
+        img-src ''self'' data: assets-cdn.github.com identicons.github.com collector.githubapp.com
+        github-cloud.s3.amazonaws.com *.githubusercontent.com; manifest-src ''self'';
+        media-src ''none''; script-src assets-cdn.github.com; style-src ''unsafe-inline''
+        assets-cdn.github.com'
+      X-Github-Request-Id:
+      - A210:4590:312F685:5E4FB58:5C07C456
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 05 Dec 2018 12:28:06 GMT
+- request:
+    method: post
+    uri: https://api.github.com/graphql
+    body:
+      encoding: UTF-8
+      string: '{"query":"{\n  repository(owner: \"therabidbanana\", name: \"eventbright\")
+        {\n    nameWithOwner\n    forks {\n      totalCount\n    }\n    stargazers
+        {\n      totalCount\n    }\n    watchers {\n      totalCount\n    }\n    createdAt\n    defaultBranchRef
+        {\n      name\n      target {\n        ... on Commit {\n          history(first:
+        50) {\n            edges {\n              node {\n                authoredDate\n              }\n            }\n          }\n        }\n      }\n    }\n    description\n    hasIssuesEnabled\n    hasWikiEnabled\n    homepageUrl\n    isArchived\n    isFork\n    isMirror\n    licenseInfo
+        {\n      key\n    }\n    primaryLanguage {\n      name\n    }\n    pushedAt\n    closedIssues:
+        issues(states: CLOSED) {\n      totalCount\n    }\n    openIssues: issues(states:
+        OPEN) {\n      totalCount\n    }\n    closedPullRequests: pullRequests(states:
+        CLOSED) {\n      totalCount\n    }\n    openPullRequests: pullRequests(states:
+        OPEN) {\n      totalCount\n    }\n    mergedPullRequests: pullRequests(states:
+        MERGED) {\n      totalCount\n    }\n  }\n\n  rateLimit {\n    limit\n    cost\n    remaining\n    resetAt\n  }\n}\n"}'
+    headers:
+      Authorization:
+      - bearer <GITHUB_TOKEN>
+      User-Agent:
+      - ruby-toolbox.com API client
+      Connection:
+      - close
+      Host:
+      - api.github.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Wed, 05 Dec 2018 12:28:07 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '730'
+      Connection:
+      - close
+      Status:
+      - 200 OK
+      Cache-Control:
+      - no-cache
+      X-Oauth-Scopes:
+      - public_repo
+      X-Accepted-Oauth-Scopes:
+      - repo
+      X-Github-Media-Type:
+      - github.v4; format=json
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '1071'
+      X-Ratelimit-Reset:
+      - '1544014350'
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Github-Request-Id:
+      - DF0D:2EDB:1CA4918:3E5A3F6:5C07C456
+    body:
+      encoding: UTF-8
+      string: '{"data":{"repository":{"nameWithOwner":"therabidbanana/eventbright","forks":{"totalCount":0},"stargazers":{"totalCount":1},"watchers":{"totalCount":1},"createdAt":"2011-05-29T16:16:46Z","defaultBranchRef":null,"description":"Renamed
+        to eventbrite:","hasIssuesEnabled":true,"hasWikiEnabled":true,"homepageUrl":"http://www.github.com/therabidbanana/eventbrite","isArchived":false,"isFork":false,"isMirror":false,"licenseInfo":null,"primaryLanguage":null,"pushedAt":null,"closedIssues":{"totalCount":0},"openIssues":{"totalCount":0},"closedPullRequests":{"totalCount":0},"openPullRequests":{"totalCount":0},"mergedPullRequests":{"totalCount":0}},"rateLimit":{"limit":5000,"cost":1,"remaining":1071,"resetAt":"2018-12-05T12:52:30Z"}}}'
+    http_version: 
+  recorded_at: Wed, 05 Dec 2018 12:28:07 GMT
+recorded_with: VCR 4.0.0
