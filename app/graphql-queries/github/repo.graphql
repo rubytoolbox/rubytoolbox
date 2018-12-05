@@ -1,5 +1,6 @@
-{
-  repository(owner: <%= owner.inspect %>, name: <%= name.inspect %>) {
+query RepositoryDataQuery($owner: String!, $name: String!) {
+
+  repository(owner: $owner, name: $name) {
     nameWithOwner
     forks {
       totalCount
@@ -54,8 +55,18 @@
     mergedPullRequests: pullRequests(states: MERGED) {
       totalCount
     }
+    repositoryTopics(first: 100) {
+      nodes {
+        topic {
+          name
+        }
+      }
+    }
+    codeOfConduct {
+      name
+      url
+    }
   }
-
   rateLimit {
     limit
     cost

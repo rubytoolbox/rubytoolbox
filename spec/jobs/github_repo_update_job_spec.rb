@@ -22,12 +22,14 @@ RSpec.describe GithubRepoUpdateJob, type: :job do
         average_recent_committed_at: a_value > Time.zone.parse("2018-03-03T22:39:06Z"),
         closed_issues_count:         a_value > 10_000,
         closed_pull_requests_count:  a_value > 6000,
+        code_of_conduct_name:        "Other",
+        code_of_conduct_url:         a_string_including("CODE_OF_CONDUCT"),
         default_branch:              "master",
         description:                 "Ruby on Rails",
         forks_count:                 a_value > 14_000,
         has_issues:                  true,
         has_wiki:                    false,
-        homepage_url:                "http://rubyonrails.org",
+        homepage_url:                "https://rubyonrails.org",
         is_fork:                     false,
         is_mirror:                   false,
         license:                     "mit",
@@ -38,6 +40,7 @@ RSpec.describe GithubRepoUpdateJob, type: :job do
         repo_created_at:             Time.zone.parse("2008-04-11T02:19:47Z"),
         repo_pushed_at:              a_value > Time.zone.parse("2018-01-03T22:39:06Z"),
         stargazers_count:            a_value > 38_140,
+        topics:                      a_collection_including("rails", "mvc", "html"),
         watchers_count:              a_value > 2520,
       }
     end

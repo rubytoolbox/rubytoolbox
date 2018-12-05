@@ -21,7 +21,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Wed, 05 Dec 2018 12:28:06 GMT
+      - Wed, 05 Dec 2018 12:50:12 GMT
       Content-Type:
       - text/html; charset=utf-8
       Connection:
@@ -33,11 +33,11 @@ http_interactions:
       Vary:
       - X-PJAX
       Set-Cookie:
-      - _gh_sess=VVp4OTBmbzY0cUMvRVNGUWMwRWJyUFBpRUFROSt4RDRVTk1OSm9RUkEwYnl4RUJSL2pnUWRLMXpIMVpqZFB4WWJITHViQjR3THVZTDNjbFA5bjlFendtUnNjMVhSTWNhb0g3MFprK0w5Nk1iRmlOQUcvWnNFcDZwWDBBRXlZMThpR0V3S2NpOThkQmJvWkNzTGNNMUNid3p5RmRrZ0l0WngwN2g4WkJWekNlTEFvckpIMDAxSUYrck1uR0VYNmdpbEU1S0pNeFFSY2Z5M0ZYN2pvamNFTUF0SXArN2Z4OGtwZ3BEMFBLVkNlTzNBUVVHSDNkekp6WFp2Tk9ZSC9Yd0lGWTVMOUJvN2JsbjNFL21zUzNDSlE9PS0tSlE1clVpR2hWTk5YZWF5bVcycmdHUT09--a9e9b3edea6accf392044d2bbe743af420c28de2;
+      - _gh_sess=ZmE4QTJHd2FGVmkxdFZ4YkJnNThLakJZMWpDKytDV2YxNTRCU1Btb0N2TXlobDgydzBWWFl4UVRGa01TNmx5dFVlc2lKOUhLOWw2T2JFVG5sZXIxOGVVWmFNbXB6WDdUVS8wY1ZTUngwKzkrT3k5RVFZczNJcFE4Z2I1bC9EYnl5ZkVHZXgreXR5OTNuNWk5WERIaC9VMXRab3A5cHRQay9jRDV3ZWJHNkduZW45bHFyekZ6MVBWOGxQVXpGUGxXWU5tWHhCRWhEUlVXeHc2UUhmbjVkZkF4MVBqS05rcnRLRFZJRXNpTnYwNUZBbE9mTHFYcklNRFFxOHJBR2pLZEVqdWJNbzNpWHZhSVJ2MHQ1YVJkcVE9PS0tRHozUnZRMUtrL1ZWVThRSks1WFhaUT09--c1a4e83e9169c917b5c406512d179afc0085e141;
         path=/; secure; HttpOnly
-      - has_recent_activity=1; path=/; expires=Wed, 05 Dec 2018 13:28:06 -0000
+      - has_recent_activity=1; path=/; expires=Wed, 05 Dec 2018 13:50:12 -0000
       X-Request-Id:
-      - 1a10dea6-4d64-4f0e-a547-8792b03b06ba
+      - 7d308e66-5775-4e30-b861-f72fe443d794
       Strict-Transport-Security:
       - max-age=31536000; includeSubdomains; preload
       X-Frame-Options:
@@ -60,28 +60,29 @@ http_interactions:
         media-src ''none''; script-src assets-cdn.github.com; style-src ''unsafe-inline''
         assets-cdn.github.com'
       X-Github-Request-Id:
-      - A210:4590:312F685:5E4FB58:5C07C456
+      - A6E7:4590:315ADEE:5E9FE16:5C07C984
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 05 Dec 2018 12:28:06 GMT
+  recorded_at: Wed, 05 Dec 2018 12:50:12 GMT
 - request:
     method: post
     uri: https://api.github.com/graphql
     body:
       encoding: UTF-8
-      string: '{"query":"{\n  repository(owner: \"therabidbanana\", name: \"eventbright\")
-        {\n    nameWithOwner\n    forks {\n      totalCount\n    }\n    stargazers
-        {\n      totalCount\n    }\n    watchers {\n      totalCount\n    }\n    createdAt\n    defaultBranchRef
-        {\n      name\n      target {\n        ... on Commit {\n          history(first:
-        50) {\n            edges {\n              node {\n                authoredDate\n              }\n            }\n          }\n        }\n      }\n    }\n    description\n    hasIssuesEnabled\n    hasWikiEnabled\n    homepageUrl\n    isArchived\n    isFork\n    isMirror\n    licenseInfo
+      string: '{"query":"query RepositoryDataQuery($owner: String!, $name: String!)
+        {\n\n  repository(owner: $owner, name: $name) {\n    nameWithOwner\n    forks
+        {\n      totalCount\n    }\n    stargazers {\n      totalCount\n    }\n    watchers
+        {\n      totalCount\n    }\n    createdAt\n    defaultBranchRef {\n      name\n      target
+        {\n        ... on Commit {\n          history(first: 50) {\n            edges
+        {\n              node {\n                authoredDate\n              }\n            }\n          }\n        }\n      }\n    }\n    description\n    hasIssuesEnabled\n    hasWikiEnabled\n    homepageUrl\n    isArchived\n    isFork\n    isMirror\n    licenseInfo
         {\n      key\n    }\n    primaryLanguage {\n      name\n    }\n    pushedAt\n    closedIssues:
         issues(states: CLOSED) {\n      totalCount\n    }\n    openIssues: issues(states:
         OPEN) {\n      totalCount\n    }\n    closedPullRequests: pullRequests(states:
         CLOSED) {\n      totalCount\n    }\n    openPullRequests: pullRequests(states:
         OPEN) {\n      totalCount\n    }\n    mergedPullRequests: pullRequests(states:
-        MERGED) {\n      totalCount\n    }\n  }\n\n  rateLimit {\n    limit\n    cost\n    remaining\n    resetAt\n  }\n}\n"}'
+        MERGED) {\n      totalCount\n    }\n  }\n  rateLimit {\n    limit\n    cost\n    remaining\n    resetAt\n  }\n}\n","variables":{"owner":"therabidbanana","name":"eventbright"}}'
     headers:
       Authorization:
       - bearer <GITHUB_TOKEN>
@@ -99,7 +100,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Wed, 05 Dec 2018 12:28:07 GMT
+      - Wed, 05 Dec 2018 12:50:13 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -119,7 +120,7 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '1071'
+      - '1060'
       X-Ratelimit-Reset:
       - '1544014350'
       Access-Control-Expose-Headers:
@@ -141,11 +142,11 @@ http_interactions:
       Content-Security-Policy:
       - default-src 'none'
       X-Github-Request-Id:
-      - DF0D:2EDB:1CA4918:3E5A3F6:5C07C456
+      - E3E4:2EDC:250CC32:4BEC5BC:5C07C985
     body:
       encoding: UTF-8
       string: '{"data":{"repository":{"nameWithOwner":"therabidbanana/eventbright","forks":{"totalCount":0},"stargazers":{"totalCount":1},"watchers":{"totalCount":1},"createdAt":"2011-05-29T16:16:46Z","defaultBranchRef":null,"description":"Renamed
-        to eventbrite:","hasIssuesEnabled":true,"hasWikiEnabled":true,"homepageUrl":"http://www.github.com/therabidbanana/eventbrite","isArchived":false,"isFork":false,"isMirror":false,"licenseInfo":null,"primaryLanguage":null,"pushedAt":null,"closedIssues":{"totalCount":0},"openIssues":{"totalCount":0},"closedPullRequests":{"totalCount":0},"openPullRequests":{"totalCount":0},"mergedPullRequests":{"totalCount":0}},"rateLimit":{"limit":5000,"cost":1,"remaining":1071,"resetAt":"2018-12-05T12:52:30Z"}}}'
+        to eventbrite:","hasIssuesEnabled":true,"hasWikiEnabled":true,"homepageUrl":"http://www.github.com/therabidbanana/eventbrite","isArchived":false,"isFork":false,"isMirror":false,"licenseInfo":null,"primaryLanguage":null,"pushedAt":null,"closedIssues":{"totalCount":0},"openIssues":{"totalCount":0},"closedPullRequests":{"totalCount":0},"openPullRequests":{"totalCount":0},"mergedPullRequests":{"totalCount":0}},"rateLimit":{"limit":5000,"cost":1,"remaining":1060,"resetAt":"2018-12-05T12:52:30Z"}}}'
     http_version: 
-  recorded_at: Wed, 05 Dec 2018 12:28:07 GMT
+  recorded_at: Wed, 05 Dec 2018 12:50:13 GMT
 recorded_with: VCR 4.0.0

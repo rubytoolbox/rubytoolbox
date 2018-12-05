@@ -27,6 +27,8 @@ class GithubRepoUpdateJob < ApplicationJob
     average_recent_committed_at: :average_recent_committed_at,
     closed_issues_count:         :closed_issues_count,
     closed_pull_requests_count:  :closed_pull_requests_count,
+    code_of_conduct_name:        :code_of_conduct_name,
+    code_of_conduct_url:         :code_of_conduct_url,
     created_at:                  :repo_created_at,
     default_branch:              :default_branch,
     description:                 :description,
@@ -42,6 +44,7 @@ class GithubRepoUpdateJob < ApplicationJob
     primary_language:            :primary_language,
     pushed_at:                   :repo_pushed_at,
     stargazers_count:            :stargazers_count,
+    topics:                      :topics,
     watchers_count:              :watchers_count,
     wiki?:                       :has_wiki,
   }.freeze
@@ -58,8 +61,8 @@ class GithubRepoUpdateJob < ApplicationJob
   def mapped_attributes(info)
     ATTRIBUTE_MAPPING.each_with_object({}) do |(remote_name, local_name), mapped|
       value = info.public_send remote_name
-      # Ensure we keep true falses around
-      mapped[local_name] = value == false ? false : value.presence
+      # Ensure we keep true falses and empty arrays around
+      mapped[local_name] = [false, []].include?(value) ? value : value.presence
     end
   end
 
