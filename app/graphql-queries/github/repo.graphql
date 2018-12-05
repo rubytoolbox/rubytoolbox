@@ -55,6 +55,13 @@ query RepositoryDataQuery($owner: String!, $name: String!) {
     mergedPullRequests: pullRequests(states: MERGED) {
       totalCount
     }
+    repositoryTopics(first: 100) {
+      nodes {
+        topic {
+          name
+        }
+      }
+    }
   }
   rateLimit {
     limit

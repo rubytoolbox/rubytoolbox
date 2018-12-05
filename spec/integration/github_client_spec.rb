@@ -28,6 +28,7 @@ RSpec.describe GithubClient, :real_http do
         primary_language:            "Ruby",
         pushed_at:                   a_value >= Time.zone.parse("2018-03-12T19:56:09Z"),
         stargazers_count:            a_value > 35_000,
+        topics:                      %w[rails mvc html activerecord activejob ruby framework].sort,
         watchers_count:              a_value > 2500,
         wiki?:                       false,
       }

@@ -103,6 +103,10 @@ class GithubClient
       Time.zone.at dates.map(&:to_i).sum / dates.count
     end
 
+    def topics
+      raw_data.dig("repositoryTopics", "nodes").map { |topic| topic.dig("topic", "name") }.sort
+    end
+
     private
 
     def count(key)
