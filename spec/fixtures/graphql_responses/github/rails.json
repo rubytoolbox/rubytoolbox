@@ -3,13 +3,13 @@
     "repository": {
       "nameWithOwner": "rails/rails",
       "forks": {
-        "totalCount": 15303
+        "totalCount": 16273
       },
       "stargazers": {
-        "totalCount": 39070
+        "totalCount": 41549
       },
       "watchers": {
-        "totalCount": 2623
+        "totalCount": 2652
       },
       "createdAt": "2008-04-11T02:19:47Z",
       "defaultBranchRef": {
@@ -19,252 +19,252 @@
             "edges": [
               {
                 "node": {
-                  "authoredDate": "2018-03-22T21:44:38Z"
+                  "authoredDate": "2018-12-05T04:30:43Z"
                 }
               },
               {
                 "node": {
-                  "authoredDate": "2018-03-22T21:43:48Z"
+                  "authoredDate": "2018-12-05T04:24:20Z"
                 }
               },
               {
                 "node": {
-                  "authoredDate": "2018-03-22T21:39:35Z"
+                  "authoredDate": "2018-12-05T00:55:22Z"
                 }
               },
               {
                 "node": {
-                  "authoredDate": "2018-03-22T11:46:20Z"
+                  "authoredDate": "2018-12-05T00:03:27Z"
                 }
               },
               {
                 "node": {
-                  "authoredDate": "2018-03-21T16:33:36Z"
+                  "authoredDate": "2018-12-04T23:48:35Z"
                 }
               },
               {
                 "node": {
-                  "authoredDate": "2018-03-21T21:52:33Z"
+                  "authoredDate": "2018-11-29T03:40:41Z"
                 }
               },
               {
                 "node": {
-                  "authoredDate": "2018-03-21T20:02:36Z"
+                  "authoredDate": "2018-12-04T21:50:44Z"
                 }
               },
               {
                 "node": {
-                  "authoredDate": "2018-03-21T18:20:04Z"
+                  "authoredDate": "2018-12-04T19:05:36Z"
                 }
               },
               {
                 "node": {
-                  "authoredDate": "2018-03-12T18:43:41Z"
+                  "authoredDate": "2018-12-04T19:04:04Z"
                 }
               },
               {
                 "node": {
-                  "authoredDate": "2018-03-21T18:09:46Z"
+                  "authoredDate": "2018-12-04T18:45:45Z"
                 }
               },
               {
                 "node": {
-                  "authoredDate": "2018-03-21T18:03:23Z"
+                  "authoredDate": "2018-12-04T18:40:05Z"
                 }
               },
               {
                 "node": {
-                  "authoredDate": "2018-03-21T17:58:57Z"
+                  "authoredDate": "2018-12-04T18:34:44Z"
                 }
               },
               {
                 "node": {
-                  "authoredDate": "2018-03-21T16:48:47Z"
+                  "authoredDate": "2018-12-04T18:05:53Z"
                 }
               },
               {
                 "node": {
-                  "authoredDate": "2018-03-21T13:38:52Z"
+                  "authoredDate": "2018-12-04T16:48:40Z"
                 }
               },
               {
                 "node": {
-                  "authoredDate": "2018-03-21T10:19:10Z"
+                  "authoredDate": "2018-12-04T12:46:00Z"
                 }
               },
               {
                 "node": {
-                  "authoredDate": "2018-03-21T00:59:43Z"
+                  "authoredDate": "2018-12-03T09:52:59Z"
                 }
               },
               {
                 "node": {
-                  "authoredDate": "2018-03-20T15:58:14Z"
+                  "authoredDate": "2018-12-04T06:48:22Z"
                 }
               },
               {
                 "node": {
-                  "authoredDate": "2018-03-20T15:42:31Z"
+                  "authoredDate": "2018-12-04T06:47:00Z"
                 }
               },
               {
                 "node": {
-                  "authoredDate": "2018-03-20T04:15:16Z"
+                  "authoredDate": "2018-12-04T05:33:31Z"
                 }
               },
               {
                 "node": {
-                  "authoredDate": "2018-03-20T14:17:35Z"
+                  "authoredDate": "2018-12-03T22:24:29Z"
                 }
               },
               {
                 "node": {
-                  "authoredDate": "2018-03-20T01:36:03Z"
+                  "authoredDate": "2018-12-04T00:40:46Z"
                 }
               },
               {
                 "node": {
-                  "authoredDate": "2018-03-20T11:36:26Z"
+                  "authoredDate": "2018-12-03T16:02:18Z"
                 }
               },
               {
                 "node": {
-                  "authoredDate": "2018-03-18T13:59:47Z"
+                  "authoredDate": "2018-12-03T15:47:50Z"
                 }
               },
               {
                 "node": {
-                  "authoredDate": "2018-03-19T21:47:23Z"
+                  "authoredDate": "2018-12-03T11:41:13Z"
                 }
               },
               {
                 "node": {
-                  "authoredDate": "2018-03-19T20:25:39Z"
+                  "authoredDate": "2018-12-03T08:58:10Z"
                 }
               },
               {
                 "node": {
-                  "authoredDate": "2018-03-19T18:46:07Z"
+                  "authoredDate": "2018-12-03T10:57:27Z"
                 }
               },
               {
                 "node": {
-                  "authoredDate": "2018-03-19T15:30:23Z"
+                  "authoredDate": "2018-12-02T20:50:00Z"
                 }
               },
               {
                 "node": {
-                  "authoredDate": "2018-03-19T15:25:40Z"
+                  "authoredDate": "2018-12-03T09:12:14Z"
                 }
               },
               {
                 "node": {
-                  "authoredDate": "2018-03-19T13:29:30Z"
+                  "authoredDate": "2018-12-03T02:39:54Z"
                 }
               },
               {
                 "node": {
-                  "authoredDate": "2018-03-19T12:07:23Z"
+                  "authoredDate": "2018-12-03T02:13:39Z"
                 }
               },
               {
                 "node": {
-                  "authoredDate": "2018-03-19T12:06:42Z"
+                  "authoredDate": "2018-12-03T01:16:02Z"
                 }
               },
               {
                 "node": {
-                  "authoredDate": "2018-03-19T10:16:31Z"
+                  "authoredDate": "2018-12-03T00:36:01Z"
                 }
               },
               {
                 "node": {
-                  "authoredDate": "2018-03-18T23:03:39Z"
+                  "authoredDate": "2018-12-02T23:29:57Z"
                 }
               },
               {
                 "node": {
-                  "authoredDate": "2018-03-18T23:43:01Z"
+                  "authoredDate": "2018-12-02T20:01:28Z"
                 }
               },
               {
                 "node": {
-                  "authoredDate": "2018-03-18T21:07:12Z"
+                  "authoredDate": "2018-12-02T19:50:05Z"
                 }
               },
               {
                 "node": {
-                  "authoredDate": "2018-03-18T16:48:46Z"
+                  "authoredDate": "2018-12-02T19:47:36Z"
                 }
               },
               {
                 "node": {
-                  "authoredDate": "2018-03-14T14:33:33Z"
+                  "authoredDate": "2018-12-01T19:59:16Z"
                 }
               },
               {
                 "node": {
-                  "authoredDate": "2018-03-17T20:26:03Z"
+                  "authoredDate": "2018-12-02T17:10:03Z"
                 }
               },
               {
                 "node": {
-                  "authoredDate": "2018-03-17T17:45:30Z"
+                  "authoredDate": "2018-12-01T22:48:24Z"
                 }
               },
               {
                 "node": {
-                  "authoredDate": "2018-03-16T23:41:34Z"
+                  "authoredDate": "2018-12-01T21:25:02Z"
                 }
               },
               {
                 "node": {
-                  "authoredDate": "2018-03-16T22:02:48Z"
+                  "authoredDate": "2018-12-01T17:47:54Z"
                 }
               },
               {
                 "node": {
-                  "authoredDate": "2018-03-16T19:18:26Z"
+                  "authoredDate": "2018-12-01T09:06:52Z"
                 }
               },
               {
                 "node": {
-                  "authoredDate": "2018-03-16T16:40:34Z"
+                  "authoredDate": "2018-12-01T08:44:28Z"
                 }
               },
               {
                 "node": {
-                  "authoredDate": "2018-03-09T22:14:39Z"
+                  "authoredDate": "2018-12-01T06:18:32Z"
                 }
               },
               {
                 "node": {
-                  "authoredDate": "2018-03-16T05:22:49Z"
+                  "authoredDate": "2018-12-01T00:12:55Z"
                 }
               },
               {
                 "node": {
-                  "authoredDate": "2018-03-16T05:19:40Z"
+                  "authoredDate": "2018-11-30T22:37:00Z"
                 }
               },
               {
                 "node": {
-                  "authoredDate": "2018-03-15T21:32:20Z"
+                  "authoredDate": "2018-11-30T18:40:27Z"
                 }
               },
               {
                 "node": {
-                  "authoredDate": "2018-03-15T21:29:21Z"
+                  "authoredDate": "2018-11-30T18:17:33Z"
                 }
               },
               {
                 "node": {
-                  "authoredDate": "2018-03-15T19:49:21Z"
+                  "authoredDate": "2018-11-30T16:42:44Z"
                 }
               },
               {
                 "node": {
-                  "authoredDate": "2018-03-15T19:36:51Z"
+                  "authoredDate": "2018-11-30T16:39:12Z"
                 }
               }
             ]
@@ -274,7 +274,7 @@
       "description": "Ruby on Rails",
       "hasIssuesEnabled": true,
       "hasWikiEnabled": false,
-      "homepageUrl": "http://rubyonrails.org",
+      "homepageUrl": "https://rubyonrails.org",
       "isArchived": false,
       "isFork": false,
       "isMirror": false,
@@ -284,28 +284,71 @@
       "primaryLanguage": {
         "name": "Ruby"
       },
-      "pushedAt": "2018-03-22T21:45:47Z",
+      "pushedAt": "2018-12-05T13:18:39Z",
       "closedIssues": {
-        "totalCount": 10866
+        "totalCount": 11757
       },
       "openIssues": {
-        "totalCount": 350
+        "totalCount": 329
       },
       "closedPullRequests": {
-        "totalCount": 6623
+        "totalCount": 7023
       },
       "openPullRequests": {
-        "totalCount": 715
+        "totalCount": 686
       },
       "mergedPullRequests": {
-        "totalCount": 13728
+        "totalCount": 14730
+      },
+      "repositoryTopics": {
+        "nodes": [
+          {
+            "topic": {
+              "name": "rails"
+            }
+          },
+          {
+            "topic": {
+              "name": "mvc"
+            }
+          },
+          {
+            "topic": {
+              "name": "html"
+            }
+          },
+          {
+            "topic": {
+              "name": "activerecord"
+            }
+          },
+          {
+            "topic": {
+              "name": "activejob"
+            }
+          },
+          {
+            "topic": {
+              "name": "ruby"
+            }
+          },
+          {
+            "topic": {
+              "name": "framework"
+            }
+          }
+        ]
+      },
+      "codeOfConduct": {
+        "name": "Other",
+        "url": "https://github.com/rails/rails/blob/master/CODE_OF_CONDUCT.md"
       }
     },
     "rateLimit": {
       "limit": 5000,
       "cost": 1,
-      "remaining": 4995,
-      "resetAt": "2018-03-22T23:00:33Z"
+      "remaining": 4999,
+      "resetAt": "2018-12-05T14:52:05Z"
     }
   }
 }

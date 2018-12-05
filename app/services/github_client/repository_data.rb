@@ -104,7 +104,8 @@ class GithubClient
     end
 
     def topics
-      raw_data.dig("repositoryTopics", "nodes").map { |topic| topic.dig("topic", "name") }.sort
+      edges = raw_data.dig("repositoryTopics", "nodes") || []
+      edges.map { |topic| topic.dig("topic", "name") }.sort
     end
 
     def code_of_conduct_name
