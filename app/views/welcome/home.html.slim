@@ -1,19 +1,25 @@
 section.welcome
   .hero-body
-    .container.has-text-centered
-      .column.is-three-fifths-desktop.is-offset-one-fifth-desktop
+    .container: .columns
+      .column.is-three-fifths-desktop
         h1.title
           | Find actively maintained & popular open source software libraries for the Ruby programming language
 
-        nav.level
-          .level-item
-            a.button href=categories_path
+        markdown:
+          The Ruby Toolbox is a catalog of all [Rubygems](https://www.rubygems.org) that keeps track of popularity and health metrics to help you choose a reliable library
+
+
+        .columns
+          .column
+            a.button.is-primary.is-fullwidth href=categories_path
               span.icon: i.fa.fa-bars
               span Browse by category
-          .level-item
-            h3: strong OR
-          .level-item
+
+          .column
             = render partial: "search_form"
+
+      .column.has-text-centered
+        // This is the place for a nice image :)
 
 .container
   section.section

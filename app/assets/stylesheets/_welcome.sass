@@ -1,30 +1,8 @@
 section.welcome
-  @extend .hero, .is-medium, .is-primary
-  background: rgb(107,1,3)
-  background: linear-gradient(342deg, rgba(107,1,3,1) 0%, rgba(163,0,6,1) 60%, rgba(166,20,20,1) 100%)
+  @extend .hero, .is-medium
 
   .title
-    margin-bottom: 100px
+    font-weight: 400
 
-  .level-item
-    @extend .has-text-centered
-
-  .input, .button
-    @extend .is-medium
-
-  .button
-    @extend .is-outlined, .is-primary, .is-inverted
-    &:hover
-      border-color: $white
-
-  .input
-    background: transparent
-    outline: none
-    color: $white
-    border-color: $white
-
-    &::placeholder
-      color: white
-      opacity: 0.7
-    &:focus, &:hover
-      border-color: $white
+  .title + p
+    margin-bottom: 75px
