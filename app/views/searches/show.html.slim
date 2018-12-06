@@ -11,14 +11,7 @@
           a href=search_path(q: @query)
             = content_for(:title)
       .is-hidden-tablet
-        = form_tag search_path, method: :get do
-          .field.has-addons.has-addons-centered
-            .control.is-expanded
-              input.input.is-medium placeholder="Search" type="text" name="q" value=@query
-            .control
-              button.button.is-outlined.is-medium type="submit"
-                span.icon: i.fa.fa-search
-                span Search
+        = render partial: "search_form"
 
 - if @search
   section.section.search-results: .container

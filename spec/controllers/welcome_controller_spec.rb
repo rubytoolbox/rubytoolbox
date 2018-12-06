@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe WelcomeController, type: :controller do
+  render_views
+
   describe "GET home" do
     let(:do_request) { get :home }
 

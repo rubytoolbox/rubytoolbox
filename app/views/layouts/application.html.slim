@@ -67,15 +67,7 @@ html.has-navbar-fixed-top lang="en"
               span News
 
             .navbar-item
-              = form_tag search_path, method: :get do
-                .field.has-addons.has-addons-centered
-                  .control.is-expanded
-                    input.input placeholder="Search" type="text" name="q" value=@query
-                  .control
-                    button.button type="submit"
-                      span.icon: i.fa.fa-search
-                      span Search
-
+              = render partial: "search_form"
 
     section.main
       = yield

@@ -1,0 +1,28 @@
+section.welcome
+  @extend .hero, .is-medium, .is-primary, .is-bold
+
+  .title
+    margin-bottom: 100px
+
+  .level-item
+    @extend .has-text-centered
+
+  .input, .button
+    @extend .is-medium
+
+  .button
+    @extend .is-outlined, .is-primary, .is-inverted
+    &:hover
+      border-color: $white
+
+  .input
+    background: transparent
+    outline: none
+    color: $white
+    border-color: $white
+
+    &::placeholder
+      color: white
+      opacity: 0.7
+    &:focus, &:hover
+      border-color: $white

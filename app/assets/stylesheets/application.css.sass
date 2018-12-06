@@ -44,6 +44,8 @@ $navbar-tab-active-background-color: transparent
 @import "bulma/bulma"
 @import "components/**/*"
 
+@import "welcome"
+
 .border-bottom
   border-bottom: 1px solid $light
 
@@ -175,3 +177,8 @@ article.blog-post
     background: none
     border-color: $grey
     color: $dark
+
+.hero
+  .search-form
+    .button, .input
+      @extend .is-medium

@@ -1,7 +1,27 @@
-.hero.is-medium
-  section.container.section.hero-body
-    .content.has-text-centered
-      h2 Welcome to the new Ruby Toolbox!
-      a.button.is-info.is-outlined href="/blog/2018-02-01/lets-push-things-forward"
-        span.icon: i.fa.fa-newspaper-o
-        span Read the announcement blog post
+section.welcome
+  .hero-body
+    .container.has-text-centered
+      .column.is-three-fifths-desktop.is-offset-one-fifth-desktop
+        h1.title
+          | Find actively maintained & popular open source software libraries for the Ruby programming language
+
+        nav.level
+          .level-item
+            a.button href=categories_path
+              span.icon: i.fa.fa-bars
+              span Browse by category
+          .level-item
+            h3: strong OR
+          .level-item
+            = render partial: "search_form"
+
+.container
+  section.section
+    .columns
+      - 4.times do
+        .column
+          h3.is-size-5: strong Lorem ipsum
+          br/
+          .columns
+            .column.is-one-quarter.has-text-centered: i.fa.fa-search.fa-2x
+            .column Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet
