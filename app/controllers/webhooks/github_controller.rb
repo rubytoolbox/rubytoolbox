@@ -7,7 +7,7 @@ class Webhooks::GithubController < ApplicationController
   def github_status(payload)
     return unless build_deployed? payload
 
-    CatalogImportJob.perform_async
+    CatalogImportJob.perform_in 30.seconds
   end
 
   private

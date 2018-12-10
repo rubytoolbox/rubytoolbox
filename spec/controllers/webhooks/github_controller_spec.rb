@@ -32,7 +32,7 @@ RSpec.describe Webhooks::GithubController, type: :controller do
       end
 
       it "queues a catalog import job on valid signature and page_build event" do
-        expect(CatalogImportJob).to receive(:perform_async)
+        expect(CatalogImportJob).to receive(:perform_in).with(30.seconds)
         do_request
       end
     end
@@ -45,7 +45,7 @@ RSpec.describe Webhooks::GithubController, type: :controller do
       end
 
       it "does not queue CatalogImportJob" do
-        expect(CatalogImportJob).not_to receive(:perform_async)
+        expect(CatalogImportJob).not_to receive(:perform_in)
         begin
           do_request
         rescue GithubWebhook::Processor::SignatureError
@@ -60,7 +60,7 @@ RSpec.describe Webhooks::GithubController, type: :controller do
       end
 
       it "does not queue CatalogImportJob" do
-        expect(CatalogImportJob).not_to receive(:perform_async)
+        expect(CatalogImportJob).not_to receive(:perform_in)
         do_request
       end
     end
