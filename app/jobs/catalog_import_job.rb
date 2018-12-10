@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class CatalogImportJob < ApplicationJob
+  sidekiq_options queue: :priority
+
   def perform
     response = http_client.get catalog_url
     raise "Failed to fetch catalog, response status was #{response.status}" unless response.status == 200
