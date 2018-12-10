@@ -75,6 +75,11 @@ Style/TrailingCommaInArrayLiteral:
 Style/TrailingCommaInHashLiteral:
   EnforcedStyleForMultiline: comma
 
+Style/ClassAndModuleChildren:
+  Exclude:
+    # Prefer rails convention
+    - 'app/controllers/**/*'
+
 RSpec/FilePath:
   Exclude:
     - 'spec/integration/*'

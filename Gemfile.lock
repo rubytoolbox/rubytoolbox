@@ -105,6 +105,10 @@ GEM
       thor (~> 0.19.1)
     forgery (0.7.0)
     formatador (0.2.5)
+    github_webhook (1.1.1)
+      activesupport (>= 4)
+      rack (>= 1.3)
+      railties (>= 4)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     guard (2.14.2)
@@ -381,6 +385,7 @@ DEPENDENCIES
   feedjira
   foreman
   forgery
+  github_webhook
   guard-bundler
   guard-rspec
   guard-rubocop

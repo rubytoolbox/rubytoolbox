@@ -43,6 +43,8 @@ gem "forgery"
 gem "rack-canonical-host"
 gem "rack-ssl-enforcer"
 
+gem "github_webhook"
+
 gem "http"
 
 gem "sidekiq"
