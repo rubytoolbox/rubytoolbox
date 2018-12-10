@@ -4,17 +4,26 @@ require "rails_helper"
 
 RSpec.describe Webhooks::GithubController, type: :controller do
   describe "POST create" do
-    let(:request_body) { { foo: :bar }.to_json }
-    let(:event_name) { "page_build" }
+    let(:state) { :success }
+    let(:branch) { "master" }
+    let(:request_body) do
+      {
+        state:      state,
+        branches:   { name: branch },
+        repository: { default_branch: "master" },
+      }
+    end
+
+    let(:event_name) { "status" }
     let(:secret) { ENV.fetch("GITHUB_WEBHOOK_SECRET") }
-    let(:signature) { OpenSSL::HMAC.hexdigest OpenSSL::Digest.new("sha1"), secret, request_body }
+    let(:signature) { OpenSSL::HMAC.hexdigest OpenSSL::Digest.new("sha1"), secret, request_body.to_json }
 
     def do_request
       request.headers["X-GitHub-Event"] = event_name
       request.headers["Content-Type"] = "application/json"
       request.headers["X-Hub-Signature"] = "sha1=#{signature}"
 
-      post :create, body: request_body
+      post :create, body: request_body.to_json
     end
 
     describe "with valid event and signature" do
@@ -45,7 +54,30 @@ RSpec.describe Webhooks::GithubController, type: :controller do
       end
     end
 
-    describe "with invalid event" do
+    shared_examples_for "a processed but ignored payload" do
+      it "responds with success" do
+        expect(do_request).to be_successful
+      end
+
+      it "does not queue CatalogImportJob" do
+        expect(CatalogImportJob).not_to receive(:perform_async)
+        do_request
+      end
+    end
+
+    describe "with non-applicable state" do
+      let(:state) { :pending }
+
+      it_behaves_like "a processed but ignored payload"
+    end
+
+    describe "with non-applicable branch" do
+      let(:branch) { :pr }
+
+      it_behaves_like "a processed but ignored payload"
+    end
+
+    describe "with invalid event name" do
       let(:event_name) { "cupcake!!!" }
 
       it "raises UnsupportedEventError" do
