@@ -17,6 +17,8 @@ class Category < ApplicationRecord
   has_many :projects, -> { order(score: :desc) },
            through: :categorizations
 
+  scope :by_rank, -> { where.not(rank: nil).order(rank: :asc) }
+
   include PgSearch
   pg_search_scope :search_scope,
                   against:   :name_tsvector,

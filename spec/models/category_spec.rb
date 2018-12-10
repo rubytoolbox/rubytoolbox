@@ -20,6 +20,16 @@ RSpec.describe Category, type: :model do
     end
   end
 
+  describe ".by_rank" do
+    it "returns only ranked categories, ordered by rank" do
+      Category.create! permalink: "A", name: "A", category_group: group
+      Category.create! permalink: "B", name: "B", category_group: group, rank: 2
+      Category.create! permalink: "C", name: "C", category_group: group, rank: 1
+
+      expect(Category.by_rank.pluck(:permalink)).to be == %w[C B]
+    end
+  end
+
   describe "#catalog_show_url" do
     it "is the url where the category definition can be seen on github" do
       expected = "https://github.com/rubytoolbox/catalog/tree/master/catalog/unimportant/mocking.yml"

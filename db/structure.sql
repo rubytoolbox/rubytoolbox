@@ -37,20 +37,6 @@ COMMENT ON EXTENSION citext IS 'data type for case-insensitive character strings
 
 
 --
--- Name: fuzzystrmatch; Type: EXTENSION; Schema: -; Owner: -
---
-
-CREATE EXTENSION IF NOT EXISTS fuzzystrmatch WITH SCHEMA public;
-
-
---
--- Name: EXTENSION fuzzystrmatch; Type: COMMENT; Schema: -; Owner: -
---
-
-COMMENT ON EXTENSION fuzzystrmatch IS 'determine similarities and distance between strings';
-
-
---
 -- Name: pg_stat_statements; Type: EXTENSION; Schema: -; Owner: -
 --
 
@@ -133,7 +119,8 @@ CREATE TABLE public.categories (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     category_group_permalink public.citext NOT NULL,
-    name_tsvector tsvector
+    name_tsvector tsvector,
+    rank integer
 );
 
 
@@ -492,6 +479,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180322231205'),
 ('20180322231848'),
 ('20180718195202'),
-('20181205134522');
+('20181205134522'),
+('20181210092238');
 
 

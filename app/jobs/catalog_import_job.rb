@@ -6,7 +6,9 @@ class CatalogImportJob < ApplicationJob
     raise "Failed to fetch catalog, response status was #{response.status}" unless response.status == 200
 
     catalog_data = JSON.parse response.body
-    CatalogImport.perform(catalog_data)
+    CatalogImport.perform catalog_data
+
+    CategoryRankingJob.perform_async
   end
 
   def catalog_url

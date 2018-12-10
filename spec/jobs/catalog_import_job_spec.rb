@@ -18,13 +18,7 @@ RSpec.describe CatalogImportJob, type: :job do
     end
 
     it "fetches the catalog" do
-      response = HTTP::Response.new(
-        status:  200,
-        body:    catalog_body,
-        version: "1.1"
-      )
-      expect(job.http_client).to receive(:get).with(job.catalog_url)
-                                              .and_return(response)
+      stub_response
       job.perform
     end
 
@@ -36,6 +30,12 @@ RSpec.describe CatalogImportJob, type: :job do
     it "passes the parsed body to CatalogImport.perform" do
       stub_response
       expect(CatalogImport).to receive(:perform).with(JSON.parse(catalog_body))
+      job.perform
+    end
+
+    it "queues a CategoryRankingJob" do
+      stub_response
+      expect(CategoryRankingJob).to receive(:perform_async)
       job.perform
     end
   end
