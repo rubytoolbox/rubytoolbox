@@ -51,6 +51,10 @@ Yarn is used to manage frontend dependencies for the project. It can be installe
 * The repo has [overcommit](https://github.com/brigade/overcommit) git hooks set up to check your changes before commit, push etc. You can set it up once with `bundle exec overcommit --install`. Whenever the hook config file `.overcommit.yml` changes, you need to verify it's contents and approve the changes with `bundle exec overcommit --sign`
 * You can find the [sidekiq](https://github.com/mperham/sidekiq/) web UI at `http://localhost:5000/ops/sidekiq`. Username can be empty, the default password is `development`.
 
+## Production
+
+See our overview of [Configuration](doc/configuration.md) settings for an overview of what needs to be set up to run the app in production.
+
 ## Code of Conduct
 
 Everyone participating in this project's development, issue trackers and other channels is expected to follow our [Code of Conduct](./CODE_OF_CONDUCT.md)
