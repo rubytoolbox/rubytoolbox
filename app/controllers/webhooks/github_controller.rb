@@ -19,7 +19,9 @@ class Webhooks::GithubController < ApplicationController
   # status on the default branch instead.
   #
   def build_deployed?(payload)
-    payload.dig("state") == "success" && payload.dig("branches", "name") == payload.dig("repository", "default_branch")
+    default_branch = payload.dig("repository", "default_branch")
+    referenced_branches = payload.dig("branches")&.map { |branch| branch.dig("name") }
+    payload.dig("state") == "success" && referenced_branches&.include?(default_branch)
   end
 
   def webhook_secret(_payload)

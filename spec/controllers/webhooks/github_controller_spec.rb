@@ -9,7 +9,7 @@ RSpec.describe Webhooks::GithubController, type: :controller do
     let(:request_body) do
       {
         state:      state,
-        branches:   { name: branch },
+        branches:   [{ name: branch }],
         repository: { default_branch: "master" },
       }
     end
