@@ -10,6 +10,10 @@ Rails.application.routes.draw do
   resource  :search, only: %i[show]
   resources :blog, only: %i[index show], constraints: { id: /[^\.]+/ }
 
+  namespace :webhooks do
+    post "github", to: "github#create", defaults: { formats: :json }
+  end
+
   Sidekiq::Web.use Rack::Auth::Basic do |_username, password|
     ActiveSupport::SecurityUtils.secure_compare(
       ::Digest::SHA256.hexdigest(password),
