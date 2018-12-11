@@ -59,12 +59,14 @@ html.has-navbar-fixed-top lang="en"
         .navbar-menu#mainMenu
           .navbar-end
             a.navbar-item href="/" class=active_when(controller: "welcome")
-              span.icon: i.fa.fa-home
-              span Home
+              .wrap
+                span.icon: i.fa.fa-home
+                span Home
 
             a.navbar-item href=blog_index_path class=active_when(controller: "blog")
-              span.icon: i.fa.fa-rss-square
-              span News
+              .wrap
+                span.icon: i.fa.fa-rss-square
+                span News
 
             .navbar-item
               = render partial: "search_form"
