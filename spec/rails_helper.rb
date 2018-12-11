@@ -38,12 +38,18 @@ Dir[Rails.root.join("spec", "support", "**", "*.rb")].each { |f| require f }
 ActiveRecord::Migration.maintain_test_schema!
 
 VCR.configure do |c|
+  c.ignore_hosts "localhost", "127.0.0.1"
   c.cassette_library_dir = Rails.root.join("spec", "cassettes")
   c.default_cassette_options = { record: :new_episodes }
   c.hook_into :webmock
   c.configure_rspec_metadata!
   c.filter_sensitive_data("<GITHUB_TOKEN>") { ENV["GITHUB_TOKEN"] }
 end
+
+# To clean up test output, comment this line to
+Capybara.server = :puma, { Silent: true }
+
+Capybara.javascript_driver = :selenium_chrome_headless
 
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures

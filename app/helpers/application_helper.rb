@@ -64,4 +64,8 @@ module ApplicationHelper
 
     matching_distance&.last || "more than 2 years ago"
   end
+
+  def active_when(controller:)
+    "is-active" if controller_name == controller.to_s
+  end
 end

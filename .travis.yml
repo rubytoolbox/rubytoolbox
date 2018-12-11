@@ -5,6 +5,8 @@ services:
 - redis
 addons:
   postgresql: '9.6'
+  # See https://docs.travis-ci.com/user/chrome
+  chrome: stable
 # Cache bundle between builds
 # See https://docs.travis-ci.com/user/caching/
 cache:
