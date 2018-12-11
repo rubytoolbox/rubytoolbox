@@ -7,8 +7,8 @@
           span.icon: i.fa.fa-newspaper-o
           span Read the announcement blog post
 
-.container
-  section.section
+section.section
+  .container
     .columns.is-multiline
       - @groups.each do |group|
         .category-group
@@ -16,8 +16,7 @@
             = group.name
           .categories
             - group.categories.each do |category|
-              .column.is-half-desktop
-                .control
-                  a.button href=category_path(category)
-                    span.icon: i.fa.fa-folder
-                    span= category.name
+              .category
+                a.button href=category_path(category)
+                  span.icon: i.fa.fa-folder
+                  span= category.name

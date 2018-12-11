@@ -45,9 +45,9 @@ $navbar-tab-active-background-color: transparent
 .border-bottom
   border-bottom: 1px solid $light
 
-header
+header.main
+  @extend .border-bottom
   .navbar
-    @extend .border-bottom
     img
       max-height: 35px
 
@@ -121,8 +121,12 @@ footer.footer
   .categories
     @extend .columns, .is-multiline
     padding: 0.75rem 0
+    .category
+      @extend .column, .is-full, .is-half-desktop, .control
   a.button
     @extend .is-light, .is-fullwidth, .is-inline-block, .has-text-left
+    overflow: hidden
+    text-overflow: ellipsis
 
 .project
   header

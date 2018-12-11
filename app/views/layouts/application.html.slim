@@ -42,7 +42,7 @@ html lang="en"
     = auto_discovery_link_tag :rss, blog_index_url(format: :rss)
 
   body
-    header.container
+    header.main: .container
       nav.navbar aria-label="main navigation" role="navigation"
         .navbar-brand
           = link_to "/", title: title(default: true), class: "navbar-item" do
