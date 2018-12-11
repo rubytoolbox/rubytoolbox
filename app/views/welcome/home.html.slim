@@ -16,8 +16,7 @@ section.section
             = group.name
           .categories
             - group.categories.each do |category|
-              .column.is-half-desktop
-                .control
-                  a.button href=category_path(category)
-                    span.icon: i.fa.fa-folder
-                    span= category.name
+              .category
+                a.button href=category_path(category)
+                  span.icon: i.fa.fa-folder
+                  span= category.name
