@@ -42,6 +42,14 @@ RSpec/DescribeClass:
 # When setting up message expectations, 5 is frequently too little
 RSpec/ExampleLength:
   Max: 10
+  Exclude:
+    # Not efficient for acceptance tests
+    - 'spec/features/**/*'
+
+RSpec/MultipleExpectations:
+  Exclude:
+    # Not efficient for acceptance tests
+    - 'spec/features/**/*'
 
 # Prefer to use the up-front message expectations
 RSpec/MessageSpies:
