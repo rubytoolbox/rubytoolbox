@@ -42,26 +42,39 @@ html lang="en"
     = auto_discovery_link_tag :rss, blog_index_url(format: :rss)
 
   body
-    header.section: .container
-      nav.level.is-mobile
-        .level-left
-          .level-item
-            = link_to "/", title: title(default: true) do
-              = image_tag "logo/regular.svg", alt: title(default: true)
-        .level-right
-          - unless controller_name == "searches"
-            .is-hidden-tablet
-              = link_to search_path, class: "button is-white is-large" do
-                span.icon: i.fa.fa-search
-          .search-form.level-item.is-hidden-mobile
-            = form_tag search_path, method: :get do
-              .field.has-addons.has-addons-centered
-                .control
-                  input.input placeholder="Search" type="text" name="q" value=@query
-                .control
-                  button.button type="submit"
-                    span.icon: i.fa.fa-search
-                    span Search
+    header.container
+      nav.navbar aria-label="main navigation" role="navigation"
+        .navbar-brand
+          = link_to "/", title: title(default: true), class: "navbar-item" do
+            = image_tag "logo/regular.svg", alt: title(default: true)
+
+          a.navbar-item.mobile-search href=search_path
+            span.icon: i.fa.fa-search
+
+          a.navbar-burger.burger aria-expanded="false" data-target="mainMenu" aria-label="menu" role="button"
+            span aria-hidden="true"
+            span aria-hidden="true"
+            span aria-hidden="true"
+
+        .navbar-menu#mainMenu
+          .navbar-end
+            a.navbar-item href="/" class=active_when(controller: "welcome")
+              span.icon: i.fa.fa-home
+              span Home
+
+            a.navbar-item href=blog_index_path class=active_when(controller: "blog")
+              span.icon: i.fa.fa-rss-square
+              span News
+
+            .navbar-item
+              = form_tag search_path, method: :get do
+                .field.has-addons.has-addons-centered
+                  .control.is-expanded
+                    input.input placeholder="Search" type="text" name="q" value=@query
+                  .control
+                    button.button type="submit"
+                      span.icon: i.fa.fa-search
+                      span Search
 
 
     section.main

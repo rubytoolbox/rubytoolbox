@@ -80,4 +80,18 @@ RSpec.describe ApplicationHelper, type: :helper do
       end
     end
   end
+
+  describe "#active_when" do
+    it "is 'is-active' when given controller matches current controller name" do
+      expect(helper.active_when(controller: "test")).to be == "is-active"
+    end
+
+    it "is 'is-active' when matching controller is given as symbol" do
+      expect(helper.active_when(controller: :test)).to be == "is-active"
+    end
+
+    it "is nil when given controller name does not match current controller name" do
+      expect(helper.active_when(controller: "foo")).to be nil
+    end
+  end
 end

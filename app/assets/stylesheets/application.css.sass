@@ -34,17 +34,47 @@ $link: $red
 $primary: $red
 $text: #222
 
+$navbar-height: 5rem
+$navbar-item-hover-background-color: transparent
+$navbar-item-active-background-color: transparent
+$navbar-tab-hover-background-color: transparent
+$navbar-tab-active-background-color: transparent
+
 @import "bulma/bulma"
 
 .border-bottom
   border-bottom: 1px solid $light
 
-header.section
-  padding: 1.5rem
-  @extend .border-bottom
-  img
-    max-width: 100%
-    height: 35px
+header
+  .navbar
+    @extend .border-bottom
+    img
+      max-height: 35px
+
+    // These values are hard-coded within bulma, we override
+    // them here to keep it consistent with the adjacent search icon
+    // in mobile view
+    .navbar-burger
+      margin-left: 0
+      &:hover
+        background: transparent
+        span
+          color: $primary
+      span
+        height: 2px
+
+    // Make the mobile search direct icon appear similar to the
+    // navbar burger and ensure it's nicely aligned
+    .mobile-search
+      margin-left: auto
+      @extend .is-hidden-desktop
+      height: $navbar-height
+      width: $navbar-height
+      .icon
+        display: inline-block
+        margin: 0 auto
+        width: auto
+        transform: scale(1.1)
 
 .hero
   @extend .border-bottom
