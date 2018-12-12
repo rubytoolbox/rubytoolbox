@@ -58,12 +58,17 @@ html.has-navbar-fixed-top lang="en"
 
         .navbar-menu#mainMenu
           .navbar-end
-            a.navbar-item href="/" class=active_when(controller: "welcome")
+            a.navbar-item href="/" class=active_when(controller: :welcome)
               .wrap
                 span.icon: i.fa.fa-home
                 span Home
 
-            a.navbar-item href=blog_index_path class=active_when(controller: "blog")
+            a.navbar-item href=categories_path class=active_when(controller: :categories)
+              .wrap
+                span.icon: i.fa.fa-bars
+                span Categories
+
+            a.navbar-item href=blog_index_path class=active_when(controller: :blog)
               .wrap
                 span.icon: i.fa.fa-rss-square
                 span News
