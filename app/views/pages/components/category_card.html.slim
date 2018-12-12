@@ -1,0 +1,29 @@
+section.section: .container
+  - categories = Category.limit(8)
+  .columns.is-multiline
+    - categories.each do |category|
+      .category-cards.four
+        = category_card category
+
+  .columns.is-multiline
+    - categories.each do |category|
+      .category-cards.four
+        = category_card category, compact: true
+
+  .columns.is-multiline
+    - categories.each do |category|
+      .category-cards.two
+        = category_card category, compact: false
+
+  .columns.is-multiline
+    - categories.each do |category|
+      .category-cards.two
+        = category_card category, compact: true
+
+  .columns
+    .column
+      .columns.is-multiline
+        - categories.each do |category|
+          .category-cards.two
+            = category_card category, compact: true
+    .column

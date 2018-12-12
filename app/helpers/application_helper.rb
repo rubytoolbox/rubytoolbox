@@ -68,4 +68,8 @@ module ApplicationHelper
   def active_when(controller:)
     "is-active" if controller_name == controller.to_s
   end
+
+  def category_card(category, compact: false)
+    render partial: "components/category_card", locals: { category: category, compact: compact }
+  end
 end

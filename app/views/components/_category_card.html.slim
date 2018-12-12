@@ -1,0 +1,21 @@
+.category-card
+  = link_to category, class: "card-header" do
+    p.card-header-icon
+      span.icon: i.fa.fa-folder
+    p.card-header-title
+      = category.name
+
+  - unless compact
+    .card-content
+      small.content= category.description
+
+    footer
+      .buttons
+        - limit = 2
+        - category.projects.first(limit).each do |project|
+          = link_to project, class: "project" do
+            strong= project.permalink
+
+        - if category.projects.count > limit
+          = link_to category, class: "other" do
+            = "and #{category.projects.count - limit} more"

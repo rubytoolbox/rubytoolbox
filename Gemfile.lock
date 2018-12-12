@@ -137,6 +137,7 @@ GEM
       ruby2ruby (~> 2.4)
       ruby_parser (~> 3.10)
     hashdiff (0.3.7)
+    high_voltage (3.1.0)
     http (4.0.0)
       addressable (~> 2.3)
       http-cookie (~> 1.0)
@@ -392,6 +393,7 @@ DEPENDENCIES
   guard-rspec
   guard-rubocop
   hairtrigger
+  high_voltage
   http
   launchy
   listen (>= 3.0.5, < 3.2)
