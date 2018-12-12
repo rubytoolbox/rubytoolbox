@@ -1,0 +1,36 @@
+.category-cards
+  &.four
+    @extend .column, .is-half, .is-one-quarter-desktop, .is-flex
+  &.two
+    @extend .column, .is-full, .is-half-desktop, .is-flex
+
+.category-card
+  @extend .card
+  border-radius: $radius
+  width: 100%
+  display: flex
+  flex-direction: column
+  align-items: stretch
+  align-content: stretch
+  // When used within a bulma hero, the link text color is forced to black
+  .card-header-icon
+    color: $primary
+  a.card-header
+    &:hover
+      background: $white-ter
+  &.inline
+    width: auto
+    display: inline-block
+    margin: 10px
+  .card-content
+    flex: 1
+  footer
+    @extend .card-footer
+    .buttons
+      @extend .card-footer-item
+      a
+        @extend .button, .is-small
+        &.project
+          @extend .is-outlined, .is-primary
+        &.other
+          @extend .is-white

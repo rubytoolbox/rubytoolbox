@@ -1,0 +1,54 @@
+.hero
+  section.section: .container
+    p.heading= link_to "Ruby Toolbox UI Components Styleguide", "/pages/components"
+    h2= current_page.split("/").last.humanize
+
+- categories = Category.limit(8).includes(:projects)
+
+= component_example "Full card in four column grid" do
+  .columns.is-multiline
+    - categories.each do |category|
+      .category-cards.four
+        = category_card category
+
+= component_example "Compact card in four column grid" do
+  .columns.is-multiline
+    - categories.each do |category|
+      .category-cards.four
+        = category_card category, compact: true
+
+= component_example "Full card in two column grid" do
+  .columns.is-multiline
+    - categories.each do |category|
+      .category-cards.two
+        = category_card category, compact: false
+
+= component_example "Compact card in two column grid" do
+  .columns.is-multiline
+    - categories.each do |category|
+      .category-cards.two
+        = category_card category, compact: true
+
+= component_example "The grid obviously uses just it's container" do
+  .columns
+    .column
+      .columns.is-multiline
+        - categories.each do |category|
+          .category-cards.two
+            = category_card category, compact: true
+    .column
+      .columns.is-multiline
+        - categories.each do |category|
+          .category-cards.two
+            = category_card category
+
+= component_example "Omit the wrapping grid to stack" do
+  .columns
+    .column
+      - categories.each do |category|
+        = category_card category, compact: true
+    .column Other column
+
+= component_example "Cards can be displayed inline" do
+  - categories.each do |category|
+    = category_card category, compact: true, inline: true

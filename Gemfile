@@ -45,6 +45,8 @@ gem "rack-ssl-enforcer"
 
 gem "github_webhook"
 
+gem "high_voltage"
+
 gem "http"
 
 gem "sidekiq"

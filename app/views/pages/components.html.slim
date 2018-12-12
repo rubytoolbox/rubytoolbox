@@ -1,0 +1,15 @@
+.hero
+  section.section: .container
+    p.heading= link_to "Ruby Toolbox UI Components Styleguide", "/pages/components"
+    h2 Components Overview
+
+section.section: .container
+  .content
+    markdown:
+      This is styleguide gives an overview of common UI components used across the site. The base UI framework used is [Bulma](https://bulma.io/documentation/), please refer to it's documentation for more generic topics.
+
+      This is page is of course a work-in-progress ;)
+
+  .component-list.columns.is-multiline
+    - HighVoltage.page_ids.select {|id| id.start_with? "components/" }.sort.each do |path|
+      .column.is-half= link_to path.split("/").last.humanize, page_path(path), class: "button is-outlined is-fullwidth is-info"

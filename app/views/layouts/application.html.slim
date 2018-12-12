@@ -137,6 +137,10 @@ html lang="en"
               li: a href="https://data.ruby-toolbox.com"
                 span.icon: i.fa.fa-table
                 span Production Database Exports
+              - unless Rails.env.production?
+                li: a href=page_path("components")
+                  span.icon: i.fa.fa-code
+                  span UI Styleguide
 
         hr
 

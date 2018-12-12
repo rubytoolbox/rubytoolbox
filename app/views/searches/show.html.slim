@@ -23,9 +23,11 @@
 - if @search
   section.section.search-results: .container
     - if @search.categories.any?
-      .columns: .column.categories
+      .columns: .column
         h2.subtitle.is-4 Categories
-        = render partial: "categories/list", locals: { categories: @search.categories }
+        .columns.is-multiline
+          - @search.categories.each do |category|
+            .category-cards.four= category_card category
 
     - if @search.projects.any?
       .columns: .column.projects

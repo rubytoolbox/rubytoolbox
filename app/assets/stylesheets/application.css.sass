@@ -41,6 +41,7 @@ $navbar-tab-hover-background-color: transparent
 $navbar-tab-active-background-color: transparent
 
 @import "bulma/bulma"
+@import "components/**/*"
 
 .border-bottom
   border-bottom: 1px solid $light
@@ -84,13 +85,13 @@ header.main
     @extend .is-size-2, .is-size-3-mobile
 
   .meta
-    @extend .column, .is-size-5, .is-size-6-mobile, .is-narrow-tablet, .has-text-right-tablet
+    @extend .column, .is-narrow-tablet, .has-text-right-tablet
+  .score
+    @extend .is-size-5, .is-size-6-mobile
   .description
     @extend .is-size-5, .is-size-6-mobile, .has-text-grey-dark
   .categories
     margin-top: 0.75rem
-    a
-      @extend .button, .is-light
 
 section.main
   min-height: 75vh
@@ -117,25 +118,11 @@ footer.footer
   h3
     @extend .is-size-4
     padding: 0.75rem 0
-    border-bottom: 2px solid $light
-  .categories
-    @extend .columns, .is-multiline
-    padding: 0.75rem 0
-    .category
-      @extend .column, .is-full, .is-half-desktop, .control
-  a.button
-    @extend .is-light, .is-fullwidth, .is-inline-block, .has-text-left
-    overflow: hidden
-    text-overflow: ellipsis
 
 .project
   header
-    @extend .columns, .is-mobile
-    h3
-      @extend .column, .is-size-4
-
-  .score
-    @extend .is-size-5, .has-text-right
+    .score
+      @extend .is-size-5, .has-text-right
 
   .description
     @extend .has-text-grey

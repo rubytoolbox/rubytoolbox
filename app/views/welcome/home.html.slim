@@ -14,9 +14,7 @@ section.section
         .category-group
           h3.is-size-4
             = group.name
-          .categories
+          .columns.is-multiline
             - group.categories.each do |category|
-              .category
-                a.button href=category_path(category)
-                  span.icon: i.fa.fa-folder
-                  span= category.name
+              .category-cards.two
+                = category_card category, compact: true
