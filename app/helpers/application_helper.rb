@@ -69,7 +69,17 @@ module ApplicationHelper
     "is-active" if controller_name == controller.to_s
   end
 
-  def category_card(category, compact: false)
-    render partial: "components/category_card", locals: { category: category, compact: compact }
+  def category_card(category, compact: false, inline: false)
+    extra_classes = inline ? %w[inline] : []
+    locals = {
+      category:      category,
+      compact:       compact,
+      extra_classes: extra_classes,
+    }
+    render partial: "components/category_card", locals: locals
+  end
+
+  def component_example(heading, &block)
+    render "components/component_example", heading: heading, &block
   end
 end
