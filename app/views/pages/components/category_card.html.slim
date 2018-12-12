@@ -11,6 +11,10 @@
       .category-cards.four
         = category_card category
 
+  .notification.is-warning
+    span.icon: i.fa.fa-warning
+    span Remember to eager-load the projects association when displaying categories with the full card to prevent n+1 queries
+
 = component_example "Compact card in four column grid" do
   .columns.is-multiline
     - categories.each do |category|

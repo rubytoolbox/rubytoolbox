@@ -91,6 +91,8 @@ group :test do
 
   gem "feedjira"
 
+  gem "db-query-matchers"
+
   gem "rails-controller-testing"
   gem "simplecov", require: false
 

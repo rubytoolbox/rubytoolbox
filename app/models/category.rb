@@ -32,7 +32,7 @@ class Category < ApplicationRecord
                   ranked_by: ":tsearch"
 
   def self.search(query)
-    search_scope(query)
+    includes(:projects).search_scope(query)
   end
 
   def self.find_for_show!(permalink)

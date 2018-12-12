@@ -18,6 +18,16 @@ RSpec.describe Category, type: :model do
 
       expect(Category.search("mock")).to be == [category]
     end
+
+    it "eager-loads associated projects" do
+      5.times do |i|
+        category = Category.create! name: "widgets #{i}", permalink: i.to_s, category_group: group
+        category.projects << Project.create!(permalink: i.to_s)
+      end
+
+      scope = Category.search("widgets")
+      expect { scope.flat_map { |category| category.projects.map(&:permalink) } } .to make_database_queries(count: 3)
+    end
   end
 
   describe ".by_rank" do
