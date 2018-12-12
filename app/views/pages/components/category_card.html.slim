@@ -3,7 +3,7 @@
     p.heading= link_to "Ruby Toolbox UI Components Styleguide", "/pages/components"
     h2= current_page.split("/").last.humanize
 
-- categories = Category.limit(8)
+- categories = Category.limit(8).includes(:projects)
 
 = component_example "Full card in four column grid" do
   .columns.is-multiline
