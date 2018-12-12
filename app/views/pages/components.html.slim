@@ -1,0 +1,9 @@
+.hero
+  section.section: .container
+    p.heading= link_to "Ruby Toolbox UI Components Styleguide", "/pages/components"
+    h2 Components Overview
+
+section.section: .container
+  .component-list.columns
+    - HighVoltage.page_ids.select {|id| id.start_with? "components/" }.sort.each do |path|
+      .column.is-half= link_to path.split("/").last.humanize, page_path(path), class: "button is-outlined is-fullwidth is-info"
