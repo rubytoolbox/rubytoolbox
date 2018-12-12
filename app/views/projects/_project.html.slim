@@ -1,17 +1,27 @@
 .project.box
-  header
-    h3.is-size-4
-      // Note that rails url helpers escape slashes (as seen in github-based projects) and this breaks.
-      a href="/projects/#{project.permalink}"
-        = project.permalink
-    .column: .score
-      span.icon
-        i.fa.fa-flask
-      span= project.score
+  header.level.is-mobile
+    .level-left
+      .level-item
+        // Note that rails url helpers escape slashes (as seen in github-based projects) and this breaks.
+        h3.is-size-4
+          a href="/projects/#{project.permalink}"
+            = project.permalink
+
+    .level-right
+      - if local_assigns[:show_categories] and project.categories.any?
+        .level-item.categories.is-hidden-touch
+          - project.categories.each do |category|
+            = category_card category, compact: true, inline: true
+      .level-item.score
+        span.icon
+          i.fa.fa-flask
+        span= project.score
 
   - if local_assigns[:show_categories] and project.categories.any?
-    .columns: .category-list.column
-      = render partial: "categories/list", locals: { categories: project.categories }
+    .columns.is-hidden-desktop: .column
+      - project.categories.each do |category|
+        = category_card category, compact: true, inline: true
+
 
   .columns: .links.column
     = render partial: "projects/links", locals: { project: project }
