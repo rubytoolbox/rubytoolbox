@@ -21,10 +21,10 @@ class Category < ApplicationRecord
 
   include PgSearch
   pg_search_scope :search_scope,
-                  against:   :name_tsvector,
+                  against:   %i[name_tsvector description_tsvector],
                   using:     {
                     tsearch: {
-                      tsvector_column: %w[name_tsvector],
+                      tsvector_column: %w[name_tsvector description_tsvector],
                       prefix:          true,
                       dictionary:      "simple",
                     },
