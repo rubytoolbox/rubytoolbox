@@ -51,6 +51,20 @@ COMMENT ON EXTENSION pg_stat_statements IS 'track execution statistics of all SQ
 
 
 --
+-- Name: categories_update_description_tsvector_trigger(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.categories_update_description_tsvector_trigger() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+    new.description_tsvector := to_tsvector('pg_catalog.simple', coalesce(new.description, ''));
+    RETURN NEW;
+END;
+$$;
+
+
+--
 -- Name: categories_update_name_tsvector_trigger(); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -120,7 +134,8 @@ CREATE TABLE public.categories (
     updated_at timestamp without time zone NOT NULL,
     category_group_permalink public.citext NOT NULL,
     name_tsvector tsvector,
-    rank integer
+    rank integer,
+    description_tsvector tsvector
 );
 
 
@@ -315,6 +330,13 @@ CREATE INDEX index_categories_on_category_group_permalink ON public.categories U
 
 
 --
+-- Name: index_categories_on_description_tsvector; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_categories_on_description_tsvector ON public.categories USING gin (description_tsvector);
+
+
+--
 -- Name: index_categories_on_name_tsvector; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -399,6 +421,13 @@ CREATE UNIQUE INDEX index_rubygems_on_name ON public.rubygems USING btree (name)
 
 
 --
+-- Name: categories categories_update_description_tsvector_trigger; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER categories_update_description_tsvector_trigger BEFORE INSERT OR UPDATE ON public.categories FOR EACH ROW EXECUTE PROCEDURE public.categories_update_description_tsvector_trigger();
+
+
+--
 -- Name: categories categories_update_name_tsvector_trigger; Type: TRIGGER; Schema: public; Owner: -
 --
 
@@ -480,6 +509,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180322231848'),
 ('20180718195202'),
 ('20181205134522'),
-('20181210092238');
+('20181210092238'),
+('20181213102703');
 
 

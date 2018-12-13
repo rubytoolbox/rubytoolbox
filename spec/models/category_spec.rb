@@ -7,16 +7,24 @@ RSpec.describe Category, type: :model do
     CategoryGroup.create! permalink: "unimportant", name: "unimportant"
   end
   let(:category) do
-    Category.create! permalink: "mocking", name: "Mocking Frameworks", category_group: group
+    Category.create! permalink:      "mocking",
+                     name:           "Mocking Frameworks",
+                     description:    "Widgets Factory",
+                     category_group: group
   end
 
   describe ".search" do
-    it "can find a matching category" do
+    it "can find a matching category by name" do
       category
       Category.create! permalink: "foo", name: "Foo", category_group: group
       Category.create! permalink: "bar", name: "Bar", category_group: group
 
       expect(Category.search("mock")).to be == [category]
+    end
+
+    it "can find a matching category by description" do
+      category
+      expect(Category.search("widget")).to be == [category]
     end
 
     it "eager-loads associated projects" do
