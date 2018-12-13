@@ -17,6 +17,11 @@
           i.fa.fa-flask
         span= project.score
 
+  .columns: .column
+    .project-health-tags
+      - Project::Health.new(project).status.each do |status|
+        = project_health_tag status
+
   - if local_assigns[:show_categories] and project.categories.any?
     .columns.is-hidden-desktop: .column
       - project.categories.each do |category|

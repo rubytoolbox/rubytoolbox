@@ -9,6 +9,9 @@ class GithubRepo < ApplicationRecord
            inverse_of:  :github_repo,
            dependent:   :nullify
 
+  has_many :rubygems,
+           through: :projects
+
   def self.update_batch
     where("updated_at < ? ", 24.hours.ago.utc)
       .order(updated_at: :asc)

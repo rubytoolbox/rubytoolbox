@@ -79,6 +79,10 @@ module ApplicationHelper
     render partial: "components/category_card", locals: locals
   end
 
+  def project_health_tag(health_status)
+    render "components/project_health_tag", status: health_status
+  end
+
   def component_example(heading, &block)
     render "components/component_example", heading: heading, &block
   end

@@ -84,9 +84,8 @@ Style/TrailingCommaInHashLiteral:
   EnforcedStyleForMultiline: comma
 
 Style/ClassAndModuleChildren:
-  Exclude:
-    # Prefer rails convention
-    - 'app/controllers/**/*'
+  # Against rails conventions
+  Enabled: false
 
 RSpec/FilePath:
   Exclude:

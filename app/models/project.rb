@@ -26,6 +26,7 @@ class Project < ApplicationRecord
              inverse_of:  :projects
 
   scope :includes_associations, -> { includes(:github_repo, :rubygem, :categories) }
+  scope :with_score, -> { where.not(score: nil) }
 
   include PgSearch
   pg_search_scope :search_scope,
@@ -42,7 +43,7 @@ class Project < ApplicationRecord
                   ranked_by: ":tsearch * (#{table_name}.score + 1) * (#{table_name}.score + 1)"
 
   def self.search(query)
-    where.not(score: nil).includes_associations.search_scope(query).limit(25)
+    with_score.includes_associations.search_scope(query).limit(25)
   end
 
   delegate :current_version,
@@ -70,6 +71,8 @@ class Project < ApplicationRecord
            :homepage_url,
            :watchers_count,
            :description,
+           :archived?,
+           :repo_pushed_at,
            :wiki_url,
            :issues_url,
            :url,

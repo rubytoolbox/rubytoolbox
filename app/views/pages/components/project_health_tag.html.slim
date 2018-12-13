@@ -1,0 +1,10 @@
+.hero
+  section.section: .container
+    p.heading= link_to "Ruby Toolbox UI Components Styleguide", "/pages/components"
+    h2= current_page.split("/").last.humanize
+
+= component_example "Project Health tags" do
+  .project-health-tags
+    = project_health_tag Project::Health::HEALTHY_STATUS
+    - Project::Health::Checks::ALL.each do |status|
+      = project_health_tag status
