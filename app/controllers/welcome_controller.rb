@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
 class WelcomeController < ApplicationController
-  def home; end
+  def home
+    @featured_categories = Category.featured
+  end
 end

@@ -21,38 +21,55 @@ section.welcome
       .column.has-text-centered
         // This is the place for a nice image :)
 
-.container
-  section.section
-    .columns
-      .feature.column
-        .has-text-centered
-          .icon: i.fa.fa-archive.fa-2x
-          h3 Categories
+section.section: .container
+  .columns
+    .feature.column
+      .has-text-centered
+        .icon: i.fa.fa-archive.fa-2x
+        h3 Categories
 
-        markdown:
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet
+      markdown:
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet
 
 
-      .feature.column
-        .has-text-centered
-          .icon: i.fa.fa-search.fa-2x
-          h3 Search
+    .feature.column
+      .has-text-centered
+        .icon: i.fa.fa-search.fa-2x
+        h3 Search
 
-        markdown:
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet
+      markdown:
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet
 
-      .feature.column
-        .has-text-centered
-          .icon: i.fa.fa-users.fa-2x
-          h3 Popularity
+    .feature.column
+      .has-text-centered
+        .icon: i.fa.fa-users.fa-2x
+        h3 Popularity
 
-        markdown:
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet
+      markdown:
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet
 
-      .feature.column
-        .has-text-centered
-          .icon: i.fa.fa-heartbeat.fa-2x
-          h3 Project health
+    .feature.column
+      .has-text-centered
+        .icon: i.fa.fa-heartbeat.fa-2x
+        h3 Project health
 
-        markdown:
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet
+      markdown:
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet
+
+- if @featured_categories.any?
+  section.section: .container
+    .level.is-mobile
+      .level-left
+        .level-item
+          h3.is-size-4
+            span Popular Categories
+      .level-right
+        .level-item
+          a.button.is-primary.is-outlined href=categories_path
+            span.icon: i.fa.fa-bars
+            span Browse all categories
+
+    .columns.is-multiline
+      - @featured_categories.each do |category|
+        .category-cards.four
+          = category_card category

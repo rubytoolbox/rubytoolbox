@@ -15,5 +15,12 @@ RSpec.describe WelcomeController, type: :controller do
     it "renders template home" do
       expect(do_request).to render_template :home
     end
+
+    it "assigns featured categories" do
+      collection = Category.limit(3)
+      allow(Category).to receive(:featured).and_return(collection)
+      do_request
+      expect(assigns(:featured_categories)).to be collection
+    end
   end
 end
