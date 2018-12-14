@@ -33,12 +33,12 @@ en:
   tagline: Know your options!
   description: Explore and compare open source Ruby libraries
   project_health:
-    github_repo_archived: GitHub repository is archived
-    github_repo_gone: The GitHub repo is gone
-    github_repo_open_issues: There's a lot of unresolved issues
-    rubygem_abandoned: No rubygems release in more than 3 years
-    rubygem_stale: No rubygems release in 1 year
-    low_commit_activity: Very low commit activity in last 3 years
+    github_repo_archived: Repository is archived
+    github_repo_gone: Repository is gone
+    github_repo_open_issues: There's a lot of open issues
+    rubygem_abandoned: No release in over 3 years
+    rubygem_stale: No release in over a year
+    low_commit_activity: Low commit activity in last 3 years
     no_commit_activity: No commit activity in last 3 years
-    healthy: The project appears to be in a healthy maintained state
-    rubygem_long_running: This project has been around for a long time and still gets updates
+    healthy: The project appears to be in a healthy, maintained state
+    rubygem_long_running: Has been around for more than 5 years and still receives updates
