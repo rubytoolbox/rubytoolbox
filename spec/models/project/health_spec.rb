@@ -1,0 +1,71 @@
+# frozen_string_literal: true
+
+require "rails_helper"
+
+RSpec.describe Project::Health, type: :model do
+  def status(key: :healthy, level: :green, icon: :heartbeat, &block)
+    Project::Health::Status.new key, level, icon, &block
+  end
+
+  let(:health) { described_class.new(project) }
+  let(:project) { instance_double(Project) }
+
+  describe described_class::Status do
+    it "raises an error when for an invalid level" do
+      expect { status(level: :purple) }.to raise_error ArgumentError, /Unknown level purple/
+    end
+
+    it "raises an error when for an unknown i18n key" do
+      expect { status(key: :foobar) } .to raise_error I18n::MissingTranslation, /translation missing/
+    end
+
+    describe "#label" do
+      it "is the translated label for given key" do
+        expect(status.label).to be == I18n.t(:healthy, scope: :project_health)
+      end
+    end
+
+    describe "#icon" do
+      it "is set to the passed value" do
+        expect(status.icon).to be == :heartbeat
+      end
+    end
+
+    describe "#applies?" do
+      it "is true when the given argument causes the block to return truthy value" do
+        check = status { |p| p == 1 }
+        expect(check.applies?(1)).to be true
+      end
+
+      it "is false when the given argument causes the block to return falsy value" do
+        check = status { |p| p == 2 }
+        expect(check.applies?(1)).to be false
+      end
+    end
+  end
+
+  describe "#checks" do
+    it "defaults to #{described_class}::Checks::ALL" do
+      expect(health.checks).to be described_class::Checks::ALL
+    end
+  end
+
+  describe "#status" do
+    it "passes the given project to all checks" do
+      expect(health.checks).to all(receive(:applies?).with(project))
+      health.status
+    end
+
+    it "contains any matching checks" do
+      health.checks.each { |check| allow(check).to receive(:applies?) }
+      checks = health.checks.sample(3)
+      checks.each { |check| allow(check).to receive(:applies?).and_return(true) }
+      expect(health.status.map(&:key).sort).to be == checks.map(&:key).sort
+    end
+
+    it "contains HEALTHY_STATUS if no other checks apply" do
+      health.checks.each { |check| allow(check).to receive(:applies?) }
+      expect(health.status).to be == [described_class::HEALTHY_STATUS]
+    end
+  end
+end

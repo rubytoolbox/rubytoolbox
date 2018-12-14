@@ -1,0 +1,14 @@
+.project-health-tags
+  @extend .field, .is-grouped, .is-grouped-multiline
+
+.project-health-tag
+  @extend .control
+  &.level-green
+    .tag
+      @extend .is-success
+  &.level-yellow
+    .tag
+      @extend .is-warning
+  &.level-red
+    .tag
+      @extend .is-danger
