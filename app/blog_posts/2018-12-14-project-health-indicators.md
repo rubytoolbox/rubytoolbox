@@ -4,7 +4,7 @@ In the [recent community survey](/blog/2018-12-04/survey-results) the **detectio
 
 To give you a better overview of the maintenance status of any project **from today on you can find a set of colored badges on each project that provide a visual indication of it's health** based on common properties like the time since the **last gem release, recent commit activity and open issue rates.**
 
-<a href="https://user-images.githubusercontent.com/13972/50002801-a05bfa00-ffa1-11e8-8740-0e52087a6980.gif"><img src="https://user-images.githubusercontent.com/13972/50002801-a05bfa00-ffa1-11e8-8740-0e52087a6980.gif"></a>
+<a href="https://user-images.githubusercontent.com/13972/50006036-af947500-ffac-11e8-9a9b-532676a194a4.gif"><img src="https://user-images.githubusercontent.com/13972/50006036-af947500-ffac-11e8-9a9b-532676a194a4.gif"></a>
 
 The labels are of course based on the project metrics already shown, but by automatically interpreting the plain data into colored indicators I hope to provide you with an **easier indication of the health of a project without having to compare the plain values**.
 
