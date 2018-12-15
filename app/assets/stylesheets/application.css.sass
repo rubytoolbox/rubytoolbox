@@ -50,6 +50,8 @@ $navbar-tab-active-background-color: transparent
 header.main
   @extend .border-bottom
   .navbar
+    @extend .is-fixed-top
+
     img
       max-height: 35px
 
@@ -96,6 +98,7 @@ header.main
 
 section.main
   min-height: 75vh
+  margin-top: 5rem
 
 footer.footer
   @extend .has-text-grey-dark
