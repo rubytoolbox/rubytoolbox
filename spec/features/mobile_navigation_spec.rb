@@ -31,20 +31,37 @@ RSpec.describe "Mobile Navigation", type: :feature, js: true do
 
     navbar_selector = "header.main .navbar"
 
-    expect(page).to have_selector(navbar_selector, visible: true)
-    expect(element_top_position(navbar_selector)).to be_zero
+    expect(page).to have_selector(navbar_selector)
 
-    scroll_by 1000
-    sleep 0.3 # We have to wait for the transition
+    wait_for do
+      scroll_by 260
+      element_top_position(navbar_selector) < 0
+    end
+
     expect(element_top_position(navbar_selector)).to be < 0.0
 
-    scroll_by(-100)
-    sleep 0.3 # We have to wait for the transition
-
+    wait_for do
+      scroll_by(-10)
+      element_top_position(navbar_selector).zero?
+    end
     expect(element_top_position(navbar_selector)).to be_zero
   end
 
   private
+
+  #
+  # Since we're using custom js stuff here capybaras default synchronization
+  # does not help us. In order to have the fastest-possible turnaround time,
+  # this will retry at a high frequency until the maximum amount of tries is reached,
+  # causing an exception to be raised.
+  #
+  # rubocop:disable Performance/RedundantBlockCall
+  def wait_for(&block)
+    Retriable.retriable tries: 15, base_interval: 0.05 do
+      raise "Exceeded max retries while waiting for block to pass" unless block.call
+    end
+  end
+  # rubocop:enable Performance/RedundantBlockCall
 
   def scroll_by(y) # rubocop:disable Naming/UncommunicativeMethodParamName
     # Perform the actual scroll
