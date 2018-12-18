@@ -18,7 +18,7 @@
 document.addEventListener("turbolinks:load", function () {
   // Make the sticky top nav hide on scroll, re-appear on scrolling up.
   // See https://wicky.nillia.ms/headroom.js/
-  new Headroom(document.querySelector("header.main .navbar")).init();
+  new Headroom(document.querySelector("header.main .navbar"), { offset: 250 }).init();
 
   // Snippet to enable the bulma burger menu in mobile
   // taken from https://bulma.io/documentation/components/navbar/#navbar-menu
