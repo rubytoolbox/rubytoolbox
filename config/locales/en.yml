@@ -42,3 +42,64 @@ en:
     no_commit_activity: No commit activity in last 3 years
     healthy: The project is in a healthy, maintained state
     rubygem_long_running: A long-lived project that still receives updates
+  metrics:
+    rubygem_downloads:
+      label: Downloads
+      icon: download
+    github_repo_stargazers_count:
+      label: Stars
+      icon: star
+    github_repo_forks_count:
+      label: Forks
+      icon: code-fork
+    github_repo_watchers_count:
+      label: Watchers
+      icon: eye
+    rubygem_current_version:
+      label: Current version
+      icon: diamond
+    rubygem_releases_count:
+      label: Total releases
+      icon: archive
+    rubygem_first_release_on:
+      label: First release
+      icon: file-o
+    rubygem_latest_release_on:
+      label: Latest release
+      icon: file-text-o
+    github_repo_open_issues_count:
+      label: Open Issues
+      icon: bug
+    github_repo_closed_issues_count:
+      label: Closed Issues
+      icon: check
+    github_repo_total_issues_count:
+      label: Total Issues
+      icon: bug
+    github_repo_issue_closure_rate:
+      label: Issue Closure Rate
+      icon: percent
+    github_repo_open_pull_requests_count:
+      label: Open Pull Requests
+      icon: code-fork
+    github_repo_closed_pull_requests_count:
+      label: Closed Pull Requests
+      icon: times
+    github_repo_merged_pull_requests_count:
+      label: Merged Pull Requests
+      icon: check
+    github_repo_pull_request_acceptance_rate:
+      label: Pull Request Acceptance Rate
+      icon: percent
+    github_repo_primary_language:
+      label: Primary Language
+      icon: code
+    rubygem_reverse_dependencies_count:
+      label: Reverse Dependencies
+      icon: compress
+    rubygem_licenses:
+      label: Licenses
+      icon: legal
+    github_repo_average_recent_committed_at:
+      label: Average date of last 50 commits
+      icon: link
