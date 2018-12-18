@@ -6,3 +6,8 @@ bulma@^0.7.0:
   version "0.7.2"
   resolved "https://registry.yarnpkg.com/bulma/-/bulma-0.7.2.tgz#8e944377b74c7926558830d38d8e19eaf49f5fb6"
   integrity sha512-6JHEu8U/1xsyOst/El5ImLcZIiE2JFXgvrz8GGWbnDLwTNRPJzdAM0aoUM1Ns0avALcVb6KZz9NhzmU53dGDcQ==
+
+headroom.js@^0.9.4:
+  version "0.9.4"
+  resolved "https://registry.yarnpkg.com/headroom.js/-/headroom.js-0.9.4.tgz#0c4e6b4563bb69df55aecdefaba3227566f2df5a"
+  integrity sha1-DE5rRWO7ad9Vrs3vq6MidWby31o=

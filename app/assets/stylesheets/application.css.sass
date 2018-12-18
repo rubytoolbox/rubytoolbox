@@ -52,6 +52,16 @@ header.main
     box-shadow: $box-shadow
     @extend .is-fixed-top
 
+    &.headroom
+      will-change: transform
+      transition: transform 200ms linear
+
+    &.headroom--pinned
+      transform: translateY(0%)
+
+    &.headroom--unpinned
+      transform: translateY(-100%)
+
     img
       max-height: 30px
 

@@ -2,7 +2,8 @@
   "name": "rubytoolbox",
   "private": false,
   "dependencies": {
-    "bulma": "^0.7.0"
+    "bulma": "^0.7.0",
+    "headroom.js": "^0.9.4"
   },
   "version": "1.0.0",
   "main": "index.js",

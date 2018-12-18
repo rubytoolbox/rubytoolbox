@@ -24,4 +24,19 @@ RSpec.describe "Mobile Navigation", type: :feature, js: true do
       end
     end
   end
+
+  it "has the sticky main nav re-appear when scrolling back up" do
+    Capybara.current_session.current_window.resize_to 450, 900
+    visit "/"
+
+    expect(page).to have_selector("header.main .navbar", visible: true)
+
+    page.execute_script "window.scrollBy(0,10000)"
+
+    expect(page).to have_selector("header.main .navbar", visible: false)
+
+    page.execute_script "window.scrollBy(0,-1)"
+
+    expect(page).to have_selector("header.main .navbar", visible: true)
+  end
 end

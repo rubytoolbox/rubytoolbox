@@ -12,9 +12,12 @@
 //
 //= require rails-ujs
 //= require turbolinks
+//= require headroom.js/dist/headroom
 //= require_tree .
 
 document.addEventListener("turbolinks:load", function () {
+  new Headroom(document.querySelector("header.main .navbar")).init();
+
   // Snippet to enable the bulma burger menu in mobile
   // taken from https://bulma.io/documentation/components/navbar/#navbar-menu
 
