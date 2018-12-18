@@ -67,3 +67,15 @@ By setting `RAILS_SERVE_STATIC_FILES` to true the Rails app will be hosting the 
 [redis]: https://redis.io/
 [sidekiq-web]: https://github.com/mperham/sidekiq/wiki/Monitoring#web-ui
 [sidekiq]: http://ruby-toolbox.com/projects/sidekiq
+
+---
+
+# Development Configuration
+
+## Autocorrect Rubocop offenses when running with Guard
+
+Set `AUTOCORRECT=true` when running `guard` for continuouos testing to automatically fix any auto-correctable rubocop offenses that are found.
+
+## Run feature specs in real Chrome
+
+By default capybara acceptance tests are run via Chrome Headless. By passing `CHROME_DEBUG=true` when running the tests the regular `selenium_chrome` driver will be used instead, allowing visual debugging.

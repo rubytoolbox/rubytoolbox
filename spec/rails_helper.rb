@@ -50,6 +50,7 @@ end
 Capybara.server = :puma, { Silent: true }
 
 Capybara.javascript_driver = :selenium_chrome_headless
+Capybara.javascript_driver = :selenium_chrome if ENV["CHROME_DEBUG"].present?
 
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
