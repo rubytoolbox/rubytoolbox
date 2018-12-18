@@ -35,8 +35,10 @@ class Category < ApplicationRecord
     includes(:projects).search_scope(query)
   end
 
-  def self.find_for_show!(permalink)
-    includes(:category_group, projects: %i[rubygem github_repo]).find(permalink.try(:strip))
+  def self.find_for_show!(permalink, order_by: "projects.score DESC NULLS LAST")
+    includes(:category_group, projects: %i[rubygem github_repo])
+      .order(order_by)
+      .find(permalink.try(:strip))
   end
 
   CATALOG_GITHUB_BASE_URL = "https://github.com/rubytoolbox/catalog/"

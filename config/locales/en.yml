@@ -43,6 +43,9 @@ en:
     healthy: The project is in a healthy, maintained state
     rubygem_long_running: A long-lived project that still receives updates
   metrics:
+    score:
+      label: Project Score
+      icon: flask
     rubygem_downloads:
       label: Downloads
       icon: download

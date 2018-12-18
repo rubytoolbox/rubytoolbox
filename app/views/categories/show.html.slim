@@ -16,7 +16,49 @@
       - else
         em This category does not have a description yet. You can <strong><a href="#{@category.catalog_edit_url}">add one on github</a></strong>!
 
-section.section: .container: .columns
-  .column.projects
+section.section: .container
+  .level
+    .level-left
+    .level-right: .level-item
+    // Needs JS integration, see https://github.com/jgthms/bulma/issues/1870
+    .dropdown.is-hoverable.is-right
+      .dropdown-trigger
+        button.button.is-outlined aria-controls="page-order-menu" aria-haspopup="true"
+          span
+            span.icon: i.fa.fa-sort
+            | Order by&nbsp;
+            strong
+              = metric_label current_order
+          span.icon.is-small
+            i.fa.fa-angle-down aria-hidden="true"
+      #page-order-menu.dropdown-menu role="menu"
+        .dropdown-content.has-text-left
+          a.dropdown-item href=request.path class=(current_order == "score" ? "is-active" : "")
+            span.icon: i.fa class=metric_icon(:score)
+            = metric_label(:score)
+
+          hr.dropdown-divider
+
+          .dropdown-item
+            p
+              span.icon: i.fa.fa-diamond
+              strong Rubygem
+          - %w[rubygem_downloads rubygem_reverse_dependencies_count rubygem_first_release_on rubygem_latest_release_on rubygem_releases_count].each do |order_by|
+            a.dropdown-item href=(request.path + "?order=#{order_by}") class=(current_order == order_by ? "is-active" : "")
+              span.icon: i.fa class=metric_icon(order_by)
+              = metric_label order_by
+
+          hr.dropdown-divider
+          .dropdown-item
+            p
+              span.icon: i.fa.fa-github
+              strong GitHub Repo
+          - %w[github_repo_stargazers_count github_repo_forks_count github_repo_watchers_count github_repo_average_recent_committed_at].each do |order_by|
+            a.dropdown-item href=(request.path + "?order=#{order_by}") class=(current_order == order_by ? "is-active" : "")
+              span.icon: i.fa class=metric_icon(order_by)
+              = metric_label order_by
+
+
+  .columns: .column.projects
     - @category.projects.each do |project|
       = render project
