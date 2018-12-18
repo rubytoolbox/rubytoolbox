@@ -95,6 +95,8 @@ group :test do
 
   gem "db-query-matchers"
 
+  gem "timecop"
+
   gem "rails-controller-testing"
   gem "simplecov", require: false
 

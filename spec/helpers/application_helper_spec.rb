@@ -15,13 +15,38 @@ RSpec.describe ApplicationHelper, type: :helper do
       expect(project_metrics).to include("<i class=\"fa fa-download\"></i>")
     end
 
-    it "renders the given, pretty-printed value" do
+    it "renders integers pretty-printed" do
       expect(project_metrics).to include("<strong>22,123,122</strong>")
     end
 
-    it "does not pretty-print when the value is not an integer" do
+    it "renders floats floored and pretty-printed as a percentage" do
+      allow(project).to receive(:rubygem_downloads).and_return(1297.7)
+      expect(project_metrics).to include("<strong>1,297%</strong>")
+    end
+
+    it "renders dates pretty-printed" do
+      allow(project).to receive(:rubygem_downloads).and_return(Date.new(2014, 7, 4))
+      Timecop.travel Date.new(2015, 7, 4) do
+        expect(project_metrics).to include("<time datetime=\"2014-07-04\" title=\"2014-07-04\">about 1 year ago</time>")
+      end
+    end
+
+    it "renders times pretty-printed" do
+      allow(project).to receive(:rubygem_downloads).and_return(Time.utc(2014, 7, 4, 13, 13, 0))
+      Timecop.travel Date.new(2015, 7, 4) do
+        expected = '<time datetime="2014-07-04T13:13:00Z" title="Fri, 04 Jul 2014 13:13:00 +0000">12 months ago</time>'
+        expect(project_metrics).to include(expected)
+      end
+    end
+
+    it "renders strings as-is" do
       allow(project).to receive(:rubygem_downloads).and_return("Hello")
       expect(project_metrics).to include "<strong>Hello</strong>"
+    end
+
+    it "renders arrays as sentences" do
+      allow(project).to receive(:rubygem_downloads).and_return(%w[Hello World])
+      expect(project_metrics).to include "<strong>Hello and World</strong>"
     end
 
     it "renders only the container when the value is blank" do
