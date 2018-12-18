@@ -1,5 +1,5 @@
 doctype html
-html lang="en"
+html.has-navbar-fixed-top lang="en"
   head
     title= title
     = csrf_meta_tags
@@ -42,8 +42,8 @@ html lang="en"
     = auto_discovery_link_tag :rss, blog_index_url(format: :rss)
 
   body
-    header.main: .container
-      nav.navbar aria-label="main navigation" role="navigation"
+    header.main
+      nav.navbar aria-label="main navigation" role="navigation": .container
         .navbar-brand
           = link_to "/", title: title(default: true), class: "navbar-item" do
             = image_tag "logo/regular.svg", alt: title(default: true)
