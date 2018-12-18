@@ -44,10 +44,9 @@
       strong
         | Development
     .column: .metrics
-      = metric t(:label, scope: "metrics.github_repo_primary_language"), project.github_repo_primary_language, icon: t(:icon, scope: "metrics.github_repo_primary_language")
-      = metric "Licenses", project.rubygem_licenses.try(:to_sentence), icon: "legal"
-      = metric "Average date of last 50 commits", recent_distance_in_words(project.github_repo_average_recent_committed_at), icon: "link"
-      = metric t(:label, scope: "metrics.rubygem_reverse_dependencies_count"), project.rubygem_reverse_dependencies_count, icon: t(:icon, scope: "metrics.rubygem_reverse_dependencies_count")
+      - %i[github_repo_primary_language rubygem_licenses github_repo_average_recent_committed_at rubygem_reverse_dependencies_count].each do |metric|
+        = metric t(:label, scope: "metrics.#{metric}"), project.public_send(metric), icon: t(:icon, scope: "metrics.#{metric}")
+
 - else
   .metrics
     .label

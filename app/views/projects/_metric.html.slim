@@ -13,5 +13,7 @@
       - elsif value.kind_of? Date or value.kind_of? Time
         time datetime=value.iso8601 title=l(value)
           = "#{time_ago_in_words(value)} ago"
+      - elsif value.kind_of? Array
+        = value.to_sentence
       - else
         = value

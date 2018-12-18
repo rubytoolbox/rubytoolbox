@@ -97,3 +97,9 @@ en:
     rubygem_reverse_dependencies_count:
       label: Reverse Dependencies
       icon: compress
+    rubygem_licenses:
+      label: Licenses
+      icon: legal
+    github_repo_average_recent_committed_at:
+      label: Average date of last 50 commits
+      icon: link
