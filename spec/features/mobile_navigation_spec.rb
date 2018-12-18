@@ -29,14 +29,31 @@ RSpec.describe "Mobile Navigation", type: :feature, js: true do
     Capybara.current_session.current_window.resize_to 450, 900
     visit "/"
 
-    expect(page).to have_selector("header.main .navbar", visible: true)
+    navbar_selector = "header.main .navbar"
 
-    page.execute_script "window.scrollBy(0,10000)"
+    expect(page).to have_selector(navbar_selector, visible: true)
+    expect(element_top_position(navbar_selector)).to be_zero
 
-    expect(page).to have_selector("header.main .navbar", visible: false)
+    scroll_by 1000
+    sleep 0.3 # We have to wait for the transition
+    expect(element_top_position(navbar_selector)).to be < 0.0
 
-    page.execute_script "window.scrollBy(0,-1)"
+    scroll_by(-100)
+    sleep 0.3 # We have to wait for the transition
 
-    expect(page).to have_selector("header.main .navbar", visible: true)
+    expect(element_top_position(navbar_selector)).to be_zero
+  end
+
+  private
+
+  def scroll_by(y) # rubocop:disable Naming/UncommunicativeMethodParamName
+    # Perform the actual scroll
+    page.execute_script "window.scrollBy(0, #{y})"
+    # Dispatch a scroll event - this does not seem to happen in headless chrome using scrollBy
+    page.execute_script "document.dispatchEvent(new Event('scroll'))"
+  end
+
+  def element_top_position(selector)
+    page.evaluate_script("document.querySelector(#{selector.inspect}).getBoundingClientRect().top")
   end
 end
