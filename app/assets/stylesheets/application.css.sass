@@ -35,7 +35,7 @@ $primary: $red
 $success: #59A80F
 $text: #222
 
-$navbar-height: 5rem
+$navbar-height: 4.5rem
 $navbar-item-hover-background-color: transparent
 $navbar-item-active-background-color: transparent
 $navbar-tab-hover-background-color: transparent
@@ -48,12 +48,12 @@ $navbar-tab-active-background-color: transparent
   border-bottom: 1px solid $light
 
 header.main
-  @extend .border-bottom
   .navbar
+    box-shadow: $box-shadow
     @extend .is-fixed-top
 
     img
-      max-height: 35px
+      max-height: 30px
 
     // These values are hard-coded within bulma, we override
     // them here to keep it consistent with the adjacent search icon
