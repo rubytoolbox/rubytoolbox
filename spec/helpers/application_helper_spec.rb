@@ -3,27 +3,30 @@
 require "rails_helper"
 
 RSpec.describe ApplicationHelper, type: :helper do
-  describe "#metric" do
-    let(:metric) { helper.metric("FooBar", 22_123_122, icon: "download") }
+  describe "#project_metrics" do
+    let(:project) { instance_double(Project, rubygem_downloads: 22_123_122) }
+    let(:project_metrics) { helper.project_metrics(project, :rubygem_downloads) }
 
-    it "renders the given label" do
-      expect(metric).to include("<span>FooBar</span>")
+    it "renders the expected label" do
+      expect(project_metrics).to include("<span>Downloads</span>")
     end
 
     it "renders the given icon" do
-      expect(metric).to include("<i class=\"fa fa-download\"></i>")
+      expect(project_metrics).to include("<i class=\"fa fa-download\"></i>")
     end
 
     it "renders the given, pretty-printed value" do
-      expect(metric).to include("<strong>22,123,122</strong>")
+      expect(project_metrics).to include("<strong>22,123,122</strong>")
     end
 
     it "does not pretty-print when the value is not an integer" do
-      expect(helper.metric("FooBar", "Hello", icon: "star")).to include "<strong>Hello</strong>"
+      allow(project).to receive(:rubygem_downloads).and_return("Hello")
+      expect(project_metrics).to include "<strong>Hello</strong>"
     end
 
     it "renders only the container when the value is blank" do
-      expect(helper.metric("FooBar", "", icon: "star")).to be == "<div class=\"metric\"></div>"
+      allow(project).to receive(:rubygem_downloads)
+      expect(project_metrics).to be == "<div class=\"metric\"></div>"
     end
   end
 

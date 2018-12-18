@@ -4,8 +4,7 @@
     strong
       | Popularity
   .column: .metrics
-    - %i[rubygem_downloads github_repo_stargazers_count github_repo_forks_count github_repo_watchers_count].each do |metric|
-      = metric t(:label, scope: "metrics.#{metric}"), project.public_send(metric), icon: t(:icon, scope: "metrics.#{metric}")
+    = project_metrics project, :rubygem_downloads, :github_repo_stargazers_count, :github_repo_forks_count, :github_repo_watchers_count
 
 - if project.rubygem_releases_count
   .metrics
@@ -14,8 +13,7 @@
       strong
         | Releases
     .column: .metrics
-      - %i[rubygem_current_version rubygem_releases_count rubygem_first_release_on rubygem_latest_release_on].each do |metric|
-        = metric t(:label, scope: "metrics.#{metric}"), project.public_send(metric), icon: t(:icon, scope: "metrics.#{metric}")
+      = project_metrics project, :rubygem_current_version, :rubygem_releases_count, :rubygem_first_release_on, :rubygem_latest_release_on
 
 - if local_assigns[:expanded_view]
   - if project.github_repo_issue_closure_rate
@@ -25,8 +23,7 @@
         strong
           | Issues
       .column: .metrics
-        - %i[github_repo_open_issues_count github_repo_closed_issues_count github_repo_total_issues_count github_repo_issue_closure_rate].each do |metric|
-          = metric t(:label, scope: "metrics.#{metric}"), project.public_send(metric), icon: t(:icon, scope: "metrics.#{metric}")
+        = project_metrics project, :github_repo_open_issues_count, :github_repo_closed_issues_count, :github_repo_total_issues_count, :github_repo_issue_closure_rate
 
   - if project.github_repo_pull_request_acceptance_rate
     .metrics
@@ -35,8 +32,7 @@
         strong
           | Pull Requests
       .column: .metrics
-        - %i[github_repo_open_pull_requests_count github_repo_closed_pull_requests_count github_repo_merged_pull_requests_count github_repo_pull_request_acceptance_rate].each do |metric|
-          = metric t(:label, scope: "metrics.#{metric}"), project.public_send(metric), icon: t(:icon, scope: "metrics.#{metric}")
+        = project_metrics project, :github_repo_open_pull_requests_count, :github_repo_closed_pull_requests_count, :github_repo_merged_pull_requests_count, :github_repo_pull_request_acceptance_rate
 
   .metrics
     .label
@@ -44,8 +40,7 @@
       strong
         | Development
     .column: .metrics
-      - %i[github_repo_primary_language rubygem_licenses github_repo_average_recent_committed_at rubygem_reverse_dependencies_count].each do |metric|
-        = metric t(:label, scope: "metrics.#{metric}"), project.public_send(metric), icon: t(:icon, scope: "metrics.#{metric}")
+      = project_metrics project, :github_repo_primary_language, :rubygem_licenses, :github_repo_average_recent_committed_at, :rubygem_reverse_dependencies_count
 
 - else
   .metrics
@@ -54,8 +49,7 @@
       strong
         | Activity
     .column: .metrics
-      - %i[github_repo_issue_closure_rate github_repo_pull_request_acceptance_rate github_repo_average_recent_committed_at rubygem_reverse_dependencies_count].each do |metric|
-          = metric t(:label, scope: "metrics.#{metric}"), project.public_send(metric), icon: t(:icon, scope: "metrics.#{metric}")
+      = project_metrics project, :github_repo_issue_closure_rate, :github_repo_pull_request_acceptance_rate, :github_repo_average_recent_committed_at, :rubygem_reverse_dependencies_count
 
   .columns: .column.has-text-right
     a.button.is-outlined href="/projects/#{project.permalink}"

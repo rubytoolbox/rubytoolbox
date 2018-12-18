@@ -1,8 +1,14 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
-  def metric(label, value, icon:)
-    render partial: "projects/metric", locals: { label: label, value: value, icon: icon }
+  def project_metrics(project, *metrics)
+    metrics.map do |metric|
+      render partial: "projects/metric", locals: {
+        label: t(:label, scope: "metrics.#{metric}"),
+        value: project.public_send(metric),
+        icon:  t(:icon, scope: "metrics.#{metric}"),
+      }
+    end.inject(&:+)
   end
 
   def project_link(label, url, icon:)
