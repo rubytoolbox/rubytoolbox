@@ -28,33 +28,49 @@ section.section: .container
         .icon: i.fa.fa-archive.fa-2x
         h3 Categories
 
-      markdown:
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet
+      .content
+        markdown:
+          To give you an overview of what open source libraries are available for a given task we group projects for common problems into categories.
 
+          The catalog itself is available for contributions on [GitHub](https://github.com/rubytoolbox/catalog).
+
+      .has-text-right
+        a.button.is-outlined.is-primary href=categories_path
+          | Browse all categories
 
     .feature.column
       .has-text-centered
         .icon: i.fa.fa-search.fa-2x
         h3 Search
 
-      markdown:
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet
+      .content
+        markdown:
+          With our search you can find Ruby open source libraries beyond what is listed in our categories.
+
+          We index all Rubygems published on [Rubygems.org](https://rubygems.org).
+
+      .has-text-right
+        a.button.is-outlined.is-primary href=search_path(q: "http") Try our search
 
     .feature.column
       .has-text-centered
         .icon: i.fa.fa-users.fa-2x
-        h3 Popularity
+        h3 Project popularity
 
-      markdown:
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet
+      .content
+        markdown:
+          By default we rank projects based on their popularity - Rubygem downloads as well as popularity on GitHub.
+
+          This helps to identify projects that have a big user base, which is an indicator of project stability, maturity and maintenance.
 
     .feature.column
       .has-text-centered
         .icon: i.fa.fa-heartbeat.fa-2x
         h3 Project health
 
-      markdown:
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet
+      .content
+        markdown:
+          For each project we display indicators of its health based on past activity, giving you a quick overview of the maintenance status of a project.
 
 - if @featured_categories.any?
   section.section: .container
@@ -65,7 +81,7 @@ section.section: .container
             span Popular Categories
       .level-right
         .level-item
-          a.button.is-primary.is-outlined href=categories_path
+          a.button.is-primary href=categories_path
             span.icon: i.fa.fa-bars
             span Browse all categories
 
