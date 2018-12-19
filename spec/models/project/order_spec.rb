@@ -3,69 +3,71 @@
 require "rails_helper"
 
 RSpec.describe Project::Order, type: :model do
-  describe "#ordered_by" do
-    it "is 'score' when passed nil" do
-      expect(described_class.new(order: nil).ordered_by).to be == "score"
-    end
-
-    it "is 'score' when passed unallowed value" do
-      expect(described_class.new(order: "value").ordered_by).to be == "score"
-    end
-  end
-
-  described_class::DIRECTIONS.each do |order, sql|
-    describe "when given order #{order.inspect}" do
-      it "has ordered_by #{order.inspect}" do
-        expect(described_class.new(order: order).ordered_by).to be == order
+  describe described_class::Direction do
+    describe "#key" do
+      it "is a composite of given group and attribute" do
+        expect(described_class.new(:foo, :bar).key).to be == "foo_bar"
       end
 
-      it "has order_sql #{sql.inspect}" do
-        expect(described_class.new(order: order).sql).to be == sql
+      it "can be overriden by explicit key keyword argument" do
+        expect(described_class.new(:foo, :bar, key: "widgets!").key).to be == "widgets!"
+      end
+    end
+
+    describe "#sql" do
+      it "is constructed from pluralized group, attribute and direction" do
+        expect(described_class.new(:foo, :bar).sql).to be == "foos.bar DESC NULLS LAST"
       end
 
-      describe "#is?" do
-        it "is true for current order" do
-          expect(described_class.new(order: order).is?(order)).to be true
-        end
-
-        it "is false for other string" do
-          expect(described_class.new(order: order).is?(order.upcase)).to be false
-        end
+      it "uses custom direction when given" do
+        expect(described_class.new(:foo, :bar, direction: :asc).sql).to be == "foos.bar ASC NULLS LAST"
       end
     end
   end
 
-  describe "#available_directions" do
-    it "is a list of all valid ordered_by keys" do
-      expect(described_class.new(order: nil).available_directions).to be == described_class::DIRECTIONS.keys
+  described_class::DIRECTIONS.each do |direction|
+    describe "for order #{direction.key}" do
+      let(:order) { described_class.new(order: direction.key) }
+
+      it "has ordered_by #{direction.key}" do
+        expect(order.ordered_by).to be == direction.key
+      end
+
+      it "has sql based on direction sql" do
+        allow(direction).to receive(:sql).and_return("this sql")
+        expect(order.sql).to be == "this sql"
+      end
+
+      it "returns true for is?(#{direction.key})" do
+        expect(order.is?(direction.key)).to be true
+      end
+
+      it "returns false for is?('foobar')" do
+        expect(order.is?("foobar")).to be false
+      end
+    end
+  end
+
+  DEFAULT_DIRECTION = described_class::DIRECTIONS.find { |d| d.key == "score" }
+
+  describe "for invalid order" do
+    let(:order) { described_class.new(order: "lol") }
+
+    it "has ordered_by #{DEFAULT_DIRECTION.key}" do
+      expect(order.ordered_by).to be == DEFAULT_DIRECTION.key
+    end
+
+    it "has sql based on direction sql" do
+      allow(DEFAULT_DIRECTION).to receive(:sql).and_return("this sql")
+      expect(order.sql).to be == "this sql"
     end
   end
 
   describe "#available_groups" do
-    it "has three groups: default, rubygem and github_repo" do
-      expect(described_class.new(order: nil).available_groups.keys).to be == %w[default rubygem github_repo]
-    end
+    EXPECTED_GROUPS = described_class::DIRECTIONS.map(&:group).uniq
 
-    def group(name)
-      described_class.new(order: nil).available_groups[name]
-    end
-
-    RUBYGEM_DIRECTIONS = described_class::DIRECTIONS.keys.select { |key| key.start_with? "rubygem_" }
-
-    it "contains exactly #{RUBYGEM_DIRECTIONS.to_sentence} for rubygem group" do
-      expect(group("rubygem")).to be == RUBYGEM_DIRECTIONS
-    end
-
-    GITHUB_REPO_DIRECTIONS = described_class::DIRECTIONS.keys.select { |key| key.start_with? "github_repo_" }
-
-    it "contains exactly #{GITHUB_REPO_DIRECTIONS.to_sentence} for github_repo group" do
-      expect(group("github_repo")).to be == GITHUB_REPO_DIRECTIONS
-    end
-
-    DEFAULT_DIRECTIONS = %w[score].freeze
-
-    it "contains exactly #{DEFAULT_DIRECTIONS.to_sentence} for default group" do
-      expect(group("default")).to be == DEFAULT_DIRECTIONS
+    it "has expected groups: #{EXPECTED_GROUPS.to_sentence}" do
+      expect(described_class.new(order: nil).available_groups.keys).to be == EXPECTED_GROUPS
     end
   end
 end

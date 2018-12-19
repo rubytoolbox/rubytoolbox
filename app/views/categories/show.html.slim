@@ -34,7 +34,7 @@ section.section: .container
       #page-order-menu.dropdown-menu role="menu"
         .dropdown-content.has-text-left
           - current_order.available_groups.each do |group, directions|
-            - unless group == "default"
+            - unless group == "project"
               hr.dropdown-divider
 
               .dropdown-item
@@ -42,8 +42,8 @@ section.section: .container
                   span.icon: i.fa class="fa-#{t(:icon, scope: "labels.#{group}")}"
                   strong= t(:label, scope: "labels.#{group}")
 
-            - directions.each do |direction|
-              a.dropdown-item href=request.path class=(current_order.is?(direction) ? "is-active" : "")
+            - directions.map(&:key).each do |direction|
+              a.dropdown-item href="#{request.path}?order=#{direction}" class=(current_order.is?(direction) ? "is-active" : "")
                 span.icon: i.fa class=metric_icon(direction)
                 = metric_label direction
 

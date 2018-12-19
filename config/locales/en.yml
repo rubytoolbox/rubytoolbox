@@ -49,6 +49,7 @@ en:
     github_repo:
       label: GitHub repo
       icon: github
+
   metrics:
     score:
       label: Project Score
