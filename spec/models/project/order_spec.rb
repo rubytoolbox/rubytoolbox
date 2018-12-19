@@ -48,7 +48,7 @@ RSpec.describe Project::Order, type: :model do
     end
   end
 
-  DEFAULT_DIRECTION = described_class::DIRECTIONS.find { |d| d.key == "score" }
+  DEFAULT_DIRECTION = described_class::DIRECTIONS.first
 
   describe "for invalid order" do
     let(:order) { described_class.new(order: "lol") }

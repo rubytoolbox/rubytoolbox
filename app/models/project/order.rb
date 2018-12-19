@@ -40,14 +40,15 @@ class Project::Order
     Direction.new(:github_repo, :average_recent_committed_at),
   ].freeze
 
-  attr_reader :ordered_by
+  attr_accessor :direction
+  private :direction=, :direction
 
   def initialize(order:)
-    self.ordered_by = order
+    self.direction = DIRECTIONS.find { |d| d.key == order } || DIRECTIONS.first
   end
 
-  def ordered_by=(order)
-    @ordered_by = DIRECTIONS.any? { |d| d.key == order } ? order : "score"
+  def ordered_by
+    direction.key
   end
 
   # Shorthand to check if given order is the current one
@@ -56,7 +57,7 @@ class Project::Order
   end
 
   def sql
-    DIRECTIONS.find { |d| d.key == ordered_by }.sql
+    direction.sql
   end
 
   def available_groups
