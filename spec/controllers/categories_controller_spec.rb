@@ -35,6 +35,13 @@ RSpec.describe CategoriesController, type: :controller do
         expect(assigns(:category)).to be == category
       end
 
+      it "passes a project order instance to Category.find_for_show!" do
+        order = Project::Order.new(order: "rubygem_downloads")
+        allow(Project::Order).to receive(:new).with(order: "rubygem_downloads").and_return(order)
+        expect(Category).to receive(:find_for_show!).with(category.id, order: order).and_call_original
+        get :show, params: { id: category.id, order: "rubygem_downloads" }
+      end
+
       describe "case-sensitivity" do
         ["CATegory", " catEGory "].each do |variant|
           it "redirects to the correct variant if accessed via #{variant.inspect}" do

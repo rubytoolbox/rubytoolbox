@@ -35,9 +35,9 @@ class Category < ApplicationRecord
     includes(:projects).search_scope(query)
   end
 
-  def self.find_for_show!(permalink, order_by: "projects.score DESC NULLS LAST")
+  def self.find_for_show!(permalink, order: Project::Order.new)
     includes(:category_group, projects: %i[rubygem github_repo])
-      .order(order_by)
+      .order(order.sql)
       .find(permalink.try(:strip))
   end
 
