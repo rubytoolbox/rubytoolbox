@@ -33,31 +33,19 @@ section.section: .container
             i.fa.fa-angle-down aria-hidden="true"
       #page-order-menu.dropdown-menu role="menu"
         .dropdown-content.has-text-left
-          a.dropdown-item href=request.path class=(current_order.is?("score") ? "is-active" : "")
-            span.icon: i.fa class=metric_icon(:score)
-            = metric_label(:score)
+          - current_order.available_groups.each do |group, directions|
+            - unless group == "default"
+              hr.dropdown-divider
 
-          hr.dropdown-divider
+              .dropdown-item
+                p
+                  span.icon: i.fa class="fa-#{t(:icon, scope: "labels.#{group}")}"
+                  strong= t(:label, scope: "labels.#{group}")
 
-          .dropdown-item
-            p
-              span.icon: i.fa.fa-diamond
-              strong Rubygem
-          - %w[rubygem_downloads rubygem_reverse_dependencies_count rubygem_first_release_on rubygem_latest_release_on rubygem_releases_count].each do |order_by|
-            a.dropdown-item href=(request.path + "?order=#{order_by}") class=(current_order.is?(order_by) ? "is-active" : "")
-              span.icon: i.fa class=metric_icon(order_by)
-              = metric_label order_by
-
-          hr.dropdown-divider
-          .dropdown-item
-            p
-              span.icon: i.fa.fa-github
-              strong GitHub Repo
-          - %w[github_repo_stargazers_count github_repo_forks_count github_repo_watchers_count github_repo_average_recent_committed_at].each do |order_by|
-            a.dropdown-item href=(request.path + "?order=#{order_by}") class=(current_order.is?(order_by) ? "is-active" : "")
-              span.icon: i.fa class=metric_icon(order_by)
-              = metric_label order_by
-
+            - directions.each do |direction|
+              a.dropdown-item href=request.path class=(current_order.is?(direction) ? "is-active" : "")
+                span.icon: i.fa class=metric_icon(direction)
+                = metric_label direction
 
   .columns: .column.projects
     - @category.projects.each do |project|

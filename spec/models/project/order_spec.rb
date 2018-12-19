@@ -40,4 +40,32 @@ RSpec.describe Project::Order, type: :model do
       expect(described_class.new(order: nil).available_directions).to be == described_class::DIRECTIONS.keys
     end
   end
+
+  describe "#available_groups" do
+    it "has three groups: default, rubygem and github_repo" do
+      expect(described_class.new(order: nil).available_groups.keys).to be == %w[default rubygem github_repo]
+    end
+
+    def group(name)
+      described_class.new(order: nil).available_groups[name]
+    end
+
+    RUBYGEM_DIRECTIONS = described_class::DIRECTIONS.keys.select { |key| key.start_with? "rubygem_" }
+
+    it "contains exactly #{RUBYGEM_DIRECTIONS.to_sentence} for rubygem group" do
+      expect(group("rubygem")).to be == RUBYGEM_DIRECTIONS
+    end
+
+    GITHUB_REPO_DIRECTIONS = described_class::DIRECTIONS.keys.select { |key| key.start_with? "github_repo_" }
+
+    it "contains exactly #{GITHUB_REPO_DIRECTIONS.to_sentence} for github_repo group" do
+      expect(group("github_repo")).to be == GITHUB_REPO_DIRECTIONS
+    end
+
+    DEFAULT_DIRECTIONS = %w[score].freeze
+
+    it "contains exactly #{DEFAULT_DIRECTIONS.to_sentence} for default group" do
+      expect(group("default")).to be == DEFAULT_DIRECTIONS
+    end
+  end
 end

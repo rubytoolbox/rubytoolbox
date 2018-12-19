@@ -36,4 +36,12 @@ class Project::Order
   def available_directions
     DIRECTIONS.keys
   end
+
+  def available_groups
+    {
+      "default"     => DIRECTIONS.keys.reject { |key| key =~ /^rubygem|github/ },
+      "rubygem"     => DIRECTIONS.keys.select { |key| key.start_with? "rubygem_" },
+      "github_repo" => DIRECTIONS.keys.select { |key| key.start_with? "github_repo_" },
+    }
+  end
 end

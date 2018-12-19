@@ -42,6 +42,13 @@ en:
     no_commit_activity: No commit activity in last 3 years
     healthy: The project is in a healthy, maintained state
     rubygem_long_running: A long-lived project that still receives updates
+  labels:
+    rubygem:
+      label: Rubygem
+      icon: diamond
+    github_repo:
+      label: GitHub repo
+      icon: github
   metrics:
     score:
       label: Project Score
