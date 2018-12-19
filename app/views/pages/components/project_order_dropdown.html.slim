@@ -1,0 +1,11 @@
+.hero
+  section.section: .container
+    p.heading= link_to "Ruby Toolbox UI Components Styleguide", "/pages/components"
+    h2= current_page.split("/").last.humanize
+
+= component_example "Project Order By Dropdown" do
+  - [nil, "rubygem_downloads", "github_repo_stargazers_count"].each do |order|
+    .level
+      .level-left
+      .level-right: .level-item
+        = project_order_dropdown Project::Order.new(order: order)

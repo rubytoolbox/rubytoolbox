@@ -97,6 +97,10 @@ module ApplicationHelper
     render "components/project_health_tag", status: health_status
   end
 
+  def project_order_dropdown(order)
+    render "components/project_order_dropdown", order: order
+  end
+
   def component_example(heading, &block)
     render "components/component_example", heading: heading, &block
   end

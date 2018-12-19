@@ -19,33 +19,7 @@
 section.section: .container
   .level
     .level-left
-    .level-right: .level-item
-    // Needs JS integration, see https://github.com/jgthms/bulma/issues/1870
-    .dropdown.is-hoverable.is-right
-      .dropdown-trigger
-        button.button.is-outlined aria-controls="page-order-menu" aria-haspopup="true"
-          span
-            span.icon: i.fa.fa-sort
-            | Order by&nbsp;
-            strong
-              = metric_label current_order.ordered_by
-          span.icon.is-small
-            i.fa.fa-angle-down aria-hidden="true"
-      #page-order-menu.dropdown-menu role="menu"
-        .dropdown-content.has-text-left
-          - current_order.available_groups.each do |group, directions|
-            - unless group == "project"
-              hr.dropdown-divider
-
-              .dropdown-item
-                p
-                  span.icon: i.fa class="fa-#{t(:icon, scope: "labels.#{group}")}"
-                  strong= t(:label, scope: "labels.#{group}")
-
-            - directions.map(&:key).each do |direction|
-              a.dropdown-item href="#{request.path}?order=#{direction}" class=(current_order.is?(direction) ? "is-active" : "")
-                span.icon: i.fa class=metric_icon(direction)
-                = metric_label direction
+    .level-right: .level-item= project_order_dropdown current_order
 
   .columns: .column.projects
     - @category.projects.each do |project|
