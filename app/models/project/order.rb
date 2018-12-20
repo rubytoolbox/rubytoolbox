@@ -34,6 +34,7 @@ class Project::Order
     Direction.new(:rubygem, :first_release_on, direction: :asc),
     Direction.new(:rubygem, :latest_release_on),
     Direction.new(:rubygem, :releases_count),
+    Direction.new(:rubygem, :reverse_dependencies_count),
     Direction.new(:github_repo, :stargazers_count),
     Direction.new(:github_repo, :forks_count),
     Direction.new(:github_repo, :watchers_count),
