@@ -46,6 +46,10 @@ RSpec.describe Project::Order, type: :model do
         expect(order.is?("foobar")).to be false
       end
     end
+
+    it "has a valid SQL order clause" do
+      expect { Project.includes_associations.order(direction.sql).to_a }.not_to raise_error
+    end
   end
 
   DEFAULT_DIRECTION = described_class::DIRECTIONS.first
