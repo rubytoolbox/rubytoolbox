@@ -22,5 +22,12 @@ RSpec.describe WelcomeController, type: :controller do
       do_request
       expect(assigns(:featured_categories)).to be collection
     end
+
+    it "assigns a Stats instance" do
+      stats = instance_double Stats
+      allow(Stats).to receive(:new).and_return(stats)
+      do_request
+      expect(assigns(:stats)).to be stats
+    end
   end
 end
