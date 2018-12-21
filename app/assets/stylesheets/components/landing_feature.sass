@@ -1,0 +1,26 @@
+.landing-features
+  @extend .columns, .is-multiline, .is-mobile
+
+  .feature
+    @extend .column, .is-half-mobile, .is-one-quarter-desktop
+
+    header
+      @extend .has-text-centered
+      .image
+        display: inline-block
+        img
+          margin: 0 auto
+          height: 75px
+          width: auto
+
+      h3
+        @extend .is-size-5
+        padding: 20px 0
+
+    article
+      @extend .content
+
+    footer
+      @extend .has-text-right
+      a
+        @extend .button, .is-outlined,.is-primary

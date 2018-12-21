@@ -11,56 +11,38 @@
     .column
       = render partial: "search_form"
 
-section.section.features: .container
-  .columns.is-multiline.is-mobile
-    .feature.column.is-half-mobile.is-one-quarter-desktop
-      .has-text-centered
-        .image= image_tag "startpage/box.png"
-        h3 Categories
+section.section: .container: .landing-features
+  = landing_feature title: "Categories", image: "startpage/box.png" do
+    article
+      markdown:
+        To give you an overview of what open source libraries are available for a given task we group projects for common problems into categories.
 
-      .content
-        markdown:
-          To give you an overview of what open source libraries are available for a given task we group projects for common problems into categories.
+        The catalog itself is available for contributions on [GitHub](https://github.com/rubytoolbox/catalog).
 
-          The catalog itself is available for contributions on [GitHub](https://github.com/rubytoolbox/catalog).
+    footer
+      a href=categories_path Browse all categories
 
-      .has-text-right
-        a.button.is-outlined.is-primary href=categories_path
-          | Browse all categories
+  = landing_feature title: "Search", image: "startpage/search.png" do
+    article
+      markdown:
+        With our search you can find Ruby open source libraries beyond what is listed in our categories.
 
-    .feature.column.is-half-mobile.is-one-quarter-desktop
-      .has-text-centered
-        .image= image_tag "startpage/search.png"
-        h3 Search
+        We index all Rubygems published on [Rubygems.org](https://rubygems.org).
 
-      .content
-        markdown:
-          With our search you can find Ruby open source libraries beyond what is listed in our categories.
+    footer
+      a href=search_path(q: "http") Try our search
 
-          We index all Rubygems published on [Rubygems.org](https://rubygems.org).
+  = landing_feature title: "Project Popularity", image: "startpage/rocket.png" do
+    article
+      markdown:
+        By default we rank projects based on their popularity - Rubygem downloads as well as popularity on GitHub.
 
-      .has-text-right
-        a.button.is-outlined.is-primary href=search_path(q: "http") Try our search
+        This helps to identify projects that have a big user base, which is an indicator of project stability, maturity and maintenance.
 
-    .feature.column.is-half-mobile.is-one-quarter-desktop
-      .has-text-centered
-        .image= image_tag "startpage/rocket.png"
-        h3 Project popularity
-
-      .content
-        markdown:
-          By default we rank projects based on their popularity - Rubygem downloads as well as popularity on GitHub.
-
-          This helps to identify projects that have a big user base, which is an indicator of project stability, maturity and maintenance.
-
-    .feature.column.is-half-mobile.is-one-quarter-desktop
-      .has-text-centered
-        .image= image_tag "startpage/ruby.png"
-        h3 Project health
-
-      .content
-        markdown:
-          For each project we display indicators of its health based on past activity, giving you a quick overview of the maintenance status of a project.
+  = landing_feature title: "Project Health", image: "startpage/ruby.png" do
+    article
+      markdown:
+        For each project we display indicators of its health based on past activity, giving you a quick overview of the maintenance status of a project.
 
 - if @featured_categories.any?
   section.section: .container

@@ -105,6 +105,10 @@ module ApplicationHelper
     render "components/landing_hero", title: title, image: image, &block
   end
 
+  def landing_feature(title:, image:, &block)
+    render "components/landing_feature", title: title, image: image, &block
+  end
+
   def component_example(heading, &block)
     render "components/component_example", heading: heading, &block
   end
