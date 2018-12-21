@@ -89,6 +89,10 @@ class Blog
     end
   end
 
+  def recent_posts
+    posts.select { |post| post.published_on > 2.months.ago }.first(3)
+  end
+
   def find(slug)
     post = posts.find { |p| slug == p.slug }
     return post if post

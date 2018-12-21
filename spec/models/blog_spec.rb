@@ -7,7 +7,7 @@ RSpec.describe Blog, type: :model do
     let(:root) { Rails.root.join("spec", "fixtures", "blog_posts") }
     let(:blog) { described_class.new root: root }
 
-    describe "posts" do
+    describe "#posts" do
       it "has 2 entries" do
         expect(blog.posts.length).to be == 2
       end
@@ -34,6 +34,21 @@ RSpec.describe Blog, type: :model do
           "<p>Hello World!</p><h1>Another h1, oops! Should end up in body, not title</h1>",
         ]
         expect(blog.posts.map(&:body_html)).to be == expected_bodies
+      end
+    end
+
+    describe "#recent_posts" do
+      it "contains posts published less than two months ago" do
+        recent_post = instance_double described_class::Post, published_on: 1.month.ago.to_date
+        old_post = instance_double described_class::Post, published_on: 3.months.ago.to_date
+        allow(blog).to receive(:posts).and_return([recent_post, old_post])
+        expect(blog.recent_posts).to be == [recent_post]
+      end
+
+      it "returns at most 3 recent posts" do
+        post = instance_double described_class::Post, published_on: 1.month.ago.to_date
+        allow(blog).to receive(:posts).and_return([post, post, post, post])
+        expect(blog.recent_posts).to be == [post, post, post]
       end
     end
 
