@@ -1,13 +1,12 @@
 section.welcome
   .hero-body
-    .container: .columns
-      .column.is-three-fifths-desktop
+    .container: .columns style="align-items: center;"
+      .column.is-half-desktop
         h1.title
           | Find actively maintained & popular open source software libraries for the Ruby programming language
 
         markdown:
           The Ruby Toolbox is a catalog of all [Rubygems](https://www.rubygems.org) that keeps track of popularity and health metrics to help you choose a reliable library
-
 
         .columns
           .column
@@ -19,13 +18,13 @@ section.welcome
             = render partial: "search_form"
 
       .column.has-text-centered
-        // This is the place for a nice image :)
+        = image_tag "startpage/main.png", style: "width: 100%"
 
-section.section: .container
-  .columns
-    .feature.column
+section.section.features: .container
+  .columns.is-multiline.is-mobile
+    .feature.column.is-half-mobile.is-one-quarter-desktop
       .has-text-centered
-        .icon: i.fa.fa-archive.fa-2x
+        .image= image_tag "startpage/box.png"
         h3 Categories
 
       .content
@@ -38,9 +37,9 @@ section.section: .container
         a.button.is-outlined.is-primary href=categories_path
           | Browse all categories
 
-    .feature.column
+    .feature.column.is-half-mobile.is-one-quarter-desktop
       .has-text-centered
-        .icon: i.fa.fa-search.fa-2x
+        .image= image_tag "startpage/search.png"
         h3 Search
 
       .content
@@ -52,9 +51,9 @@ section.section: .container
       .has-text-right
         a.button.is-outlined.is-primary href=search_path(q: "http") Try our search
 
-    .feature.column
+    .feature.column.is-half-mobile.is-one-quarter-desktop
       .has-text-centered
-        .icon: i.fa.fa-users.fa-2x
+        .image= image_tag "startpage/rocket.png"
         h3 Project popularity
 
       .content
@@ -63,9 +62,9 @@ section.section: .container
 
           This helps to identify projects that have a big user base, which is an indicator of project stability, maturity and maintenance.
 
-    .feature.column
+    .feature.column.is-half-mobile.is-one-quarter-desktop
       .has-text-centered
-        .icon: i.fa.fa-heartbeat.fa-2x
+        .image= image_tag "startpage/ruby.png"
         h3 Project health
 
       .content
