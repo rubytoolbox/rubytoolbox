@@ -69,8 +69,10 @@ RSpec.describe "Search", type: :feature, js: true do
 
   def search_for(query)
     visit "/"
-    fill_in "q", with: query
-    click_button "Search"
+    within ".navbar" do
+      fill_in "q", with: query
+      click_button "Search"
+    end
   end
 
   def listed_project_names

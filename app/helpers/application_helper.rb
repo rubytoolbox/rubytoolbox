@@ -101,6 +101,10 @@ module ApplicationHelper
     render "components/project_order_dropdown", order: order
   end
 
+  def landing_hero(title:, image:, &block)
+    render "components/landing_hero", title: title, image: image, &block
+  end
+
   def component_example(heading, &block)
     render "components/component_example", heading: heading, &block
   end

@@ -117,3 +117,5 @@ en:
     github_repo_average_recent_committed_at:
       label: Average date of last 50 commits
       icon: link
+  startpage:
+    title: Find actively maintained & popular open source software libraries for the Ruby programming language

@@ -1,24 +1,15 @@
-section.welcome
-  .hero-body
-    .container: .columns style="align-items: center;"
-      .column.is-half-desktop
-        h1.title
-          | Find actively maintained & popular open source software libraries for the Ruby programming language
+= landing_hero title: t(:title, scope: :startpage), image: "startpage/main.png" do
+  markdown:
+    The Ruby Toolbox is a catalog of all [Rubygems](https://www.rubygems.org) that keeps track of popularity and health metrics to help you choose a reliable library
 
-        markdown:
-          The Ruby Toolbox is a catalog of all [Rubygems](https://www.rubygems.org) that keeps track of popularity and health metrics to help you choose a reliable library
+  .columns
+    .column
+      a.button.is-primary.is-fullwidth href=categories_path
+        span.icon: i.fa.fa-bars
+        span Browse by category
 
-        .columns
-          .column
-            a.button.is-primary.is-fullwidth href=categories_path
-              span.icon: i.fa.fa-bars
-              span Browse by category
-
-          .column
-            = render partial: "search_form"
-
-      .column.has-text-centered
-        = image_tag "startpage/main.png", style: "width: 100%"
+    .column
+      = render partial: "search_form"
 
 section.section.features: .container
   .columns.is-multiline.is-mobile

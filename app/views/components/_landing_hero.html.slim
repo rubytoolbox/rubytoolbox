@@ -1,0 +1,10 @@
+section.landing-hero
+  .hero-body
+    .container: .columns
+      .text
+        h1.title= title
+
+        = yield
+
+      .image
+        = image_tag image, title: title

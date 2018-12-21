@@ -1,0 +1,19 @@
+.landing-hero
+  @extend .hero
+
+  .text, .image
+    @extend .column, .is-half-desktop
+
+  .image
+    img
+      width: 100%
+      margin: 0 auto
+
+  .title
+    font-weight: 400
+
+  .title + p
+    margin-bottom: 75px
+
+  .container > .columns
+    align-items: center
