@@ -11,6 +11,20 @@
     .column
       = render partial: "search_form"
 
+  - if @recent_posts
+    .recent-news
+      .heading
+        span.icon: i.fa.fa-rss-square
+        strong Recent News
+      ul
+        - @recent_posts.each do |post|
+          li
+            a href=blog_post_path(post)
+              span.date= l post.published_on, format: :long
+              | &nbsp;
+              strong= post.title
+
+
 section.section: .container: .landing-features
   = landing_feature title: "Categories", image: "startpage/box.png" do
     article
