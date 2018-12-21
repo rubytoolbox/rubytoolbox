@@ -3,6 +3,10 @@
 
   .feature
     @extend .column, .is-half-mobile, .is-one-quarter-desktop
+    display: flex
+    flex-direction: column
+    align-items: stretch
+    align-content: stretch
 
     header
       @extend .has-text-centered
@@ -19,6 +23,7 @@
 
     article
       @extend .content
+      flex: 1
 
     footer
       @extend .has-text-right
