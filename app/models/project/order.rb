@@ -3,14 +3,15 @@
 class Project::Order
   class Direction
     attr_accessor :group, :attribute, :direction
-    attr_writer :key
-    private :group=, :attribute=, :direction=, :key=
+    attr_writer :key, :sql
+    private :group=, :attribute=, :direction=, :key=, :sql=
 
-    def initialize(group, attribute, direction: :desc, key: nil)
+    def initialize(group, attribute, direction: :desc, key: nil, sql: nil)
       self.group = group.to_s
       self.attribute = attribute.to_s
       self.direction = direction.to_s.upcase
       self.key = key.to_s if key
+      self.sql = sql
     end
 
     def key
@@ -28,7 +29,7 @@ class Project::Order
     end
   end
 
-  DIRECTIONS = [
+  DEFAULT_DIRECTIONS = [
     Direction.new(:project, :score, key: :score),
     Direction.new(:rubygem, :downloads),
     Direction.new(:rubygem, :first_release_on, direction: :asc),
@@ -41,11 +42,16 @@ class Project::Order
     Direction.new(:github_repo, :average_recent_committed_at),
   ].freeze
 
-  attr_accessor :direction
-  private :direction=, :direction
+  SEARCH_DIRECTIONS = [
+    Direction.new(:project, :rank, key: :rank, sql: "#{PgSearch::Configuration.alias('projects')}.rank DESC"),
+  ] + DEFAULT_DIRECTIONS
 
-  def initialize(order:)
-    self.direction = DIRECTIONS.find { |d| d.key == order } || DIRECTIONS.first
+  attr_accessor :direction, :directions
+  private :direction=, :direction, :directions=, :directions
+
+  def initialize(order: nil, directions: DEFAULT_DIRECTIONS)
+    self.directions = directions
+    self.direction = directions.find { |d| d.key == order } || directions.first
   end
 
   def ordered_by
@@ -62,6 +68,6 @@ class Project::Order
   end
 
   def available_groups
-    DIRECTIONS.group_by(&:group)
+    directions.group_by(&:group)
   end
 end

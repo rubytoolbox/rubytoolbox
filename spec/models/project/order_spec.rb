@@ -22,10 +22,14 @@ RSpec.describe Project::Order, type: :model do
       it "uses custom direction when given" do
         expect(described_class.new(:foo, :bar, direction: :asc).sql).to be == "foos.bar ASC NULLS LAST"
       end
+
+      it "uses custom sql when given" do
+        expect(described_class.new(:foo, :bar, sql: "HELLO WORLD").sql).to be == "HELLO WORLD"
+      end
     end
   end
 
-  described_class::DIRECTIONS.each do |direction|
+  described_class::DEFAULT_DIRECTIONS.each do |direction|
     describe "for order #{direction.key}" do
       let(:order) { described_class.new(order: direction.key) }
 
@@ -52,7 +56,7 @@ RSpec.describe Project::Order, type: :model do
     end
   end
 
-  DEFAULT_DIRECTION = described_class::DIRECTIONS.first
+  DEFAULT_DIRECTION = described_class::DEFAULT_DIRECTIONS.first
 
   describe "for invalid order" do
     let(:order) { described_class.new(order: "lol") }
@@ -68,7 +72,7 @@ RSpec.describe Project::Order, type: :model do
   end
 
   describe "#available_groups" do
-    EXPECTED_GROUPS = described_class::DIRECTIONS.map(&:group).uniq
+    EXPECTED_GROUPS = described_class::DEFAULT_DIRECTIONS.map(&:group).uniq
 
     it "has expected groups: #{EXPECTED_GROUPS.to_sentence}" do
       expect(described_class.new(order: nil).available_groups.keys).to be == EXPECTED_GROUPS
