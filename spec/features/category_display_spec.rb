@@ -3,28 +3,12 @@
 require "rails_helper"
 
 RSpec.describe "Categories Display", type: :feature, js: true do
-  def create_project(name, score:, downloads:, first_release:) # rubocop:disable Metrics/MethodLength
-    rubygem = Rubygem.create!(
-      name:             name,
-      current_version:  "1.0",
-      downloads:        downloads,
-      first_release_on: first_release
-    )
-    github_repo = GithubRepo.create!(
-      path:             "#{name}/#{name}",
-      stargazers_count: downloads,
-      forks_count:      downloads,
-      watchers_count:   downloads
-    )
-    Project.create! permalink: name, score: score, rubygem: rubygem, github_repo: github_repo
-  end
-
   before do
     group = CategoryGroup.create! permalink: "group1", name: "Group"
     category = Category.create! permalink: "widgets", name: "Widgets", category_group: group
-    category.projects << create_project("acme", score: 25, downloads: 25_000, first_release: 3.years.ago)
-    category.projects << create_project("widget", score: 20, downloads: 50_000, first_release: 2.years.ago)
-    category.projects << create_project("toolkit", score: 22, downloads: 10_000, first_release: 5.years.ago)
+    category.projects << Factories.project("acme", score: 25, downloads: 25_000, first_release: 3.years.ago)
+    category.projects << Factories.project("widget", score: 20, downloads: 50_000, first_release: 2.years.ago)
+    category.projects << Factories.project("toolkit", score: 22, downloads: 10_000, first_release: 5.years.ago)
   end
 
   it "can display projects of a category" do
