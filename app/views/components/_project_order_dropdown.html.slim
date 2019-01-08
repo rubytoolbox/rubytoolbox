@@ -1,0 +1,26 @@
+.project-order-dropdown
+  .dropdown-trigger
+    button aria-controls="project-order-menu" aria-haspopup="true"
+      span
+        span.icon: i.fa.fa-sort
+        | Order by&nbsp;
+        strong
+          = metric_label order.ordered_by
+      span.icon.is-small
+        i.fa.fa-angle-down aria-hidden="true"
+
+  #project-order-menu.dropdown-menu role="menu"
+    .dropdown-content
+      - order.available_groups.each do |group, directions|
+        - unless group == "project"
+          hr
+
+          .dropdown-item
+            p
+              span.icon: i.fa class="fa-#{t(:icon, scope: "labels.#{group}")}"
+              strong= t(:label, scope: "labels.#{group}")
+
+        - directions.map(&:key).each do |direction|
+          a href="#{request.path}?order=#{direction}&q=#{@search&.query}" class=(order.is?(direction) ? "is-active" : "")
+            span.icon: i.fa class=metric_icon(direction)
+            = metric_label direction

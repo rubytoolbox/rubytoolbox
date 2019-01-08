@@ -16,7 +16,11 @@
       - else
         em This category does not have a description yet. You can <strong><a href="#{@category.catalog_edit_url}">add one on github</a></strong>!
 
-section.section: .container: .columns
-  .column.projects
+section.section: .container
+  .level.is-mobile
+    .level-left
+    .level-right: .level-item= project_order_dropdown current_order
+
+  .columns: .column.projects
     - @category.projects.each do |project|
       = render project

@@ -2,10 +2,8 @@
 
 require "rails_helper"
 
-RSpec.describe "Mobile Navigation", type: :feature, js: true do
+RSpec.describe "Mobile Navigation", type: :feature, js: true, viewport: :mobile do
   it "has a toggle-able hamburger navigation on mobile" do
-    Capybara.current_session.current_window.resize_to 450, 900
-
     visit "/"
 
     within "header .navbar" do
@@ -26,7 +24,6 @@ RSpec.describe "Mobile Navigation", type: :feature, js: true do
   end
 
   it "has the sticky main nav re-appear when scrolling back up" do
-    Capybara.current_session.current_window.resize_to 450, 900
     visit "/"
 
     navbar_selector = "header.main .navbar"

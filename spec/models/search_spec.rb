@@ -25,13 +25,13 @@ RSpec.describe Search, type: :model do
 
   describe "#projects" do
     it "searches projects for the given query" do
-      expect(Project).to receive(:search).with("my query")
+      expect(Project).to receive(:search).with("my query", order: kind_of(Project::Order))
       described_class.new("my query").projects
     end
 
     it "returns the resulting collection" do
       collection = %w[some projects]
-      allow(Project).to receive(:search).with("my query").and_return(collection)
+      allow(Project).to receive(:search).with("my query", order: kind_of(Project::Order)).and_return(collection)
       expect(described_class.new("my query").projects).to be == collection
     end
   end
@@ -46,6 +46,17 @@ RSpec.describe Search, type: :model do
       collection = %w[some projects]
       allow(Category).to receive(:search).with("my query").and_return(collection)
       expect(described_class.new("my query").categories).to be == collection
+    end
+  end
+
+  describe "#order" do
+    it "is a Project::Order with search directions by default" do
+      order = instance_double(Project::Order)
+      allow(Project::Order).to receive(:new)
+        .with(directions: Project::Order::SEARCH_DIRECTIONS)
+        .and_return(order)
+
+      expect(Search.new("q").order).to be order
     end
   end
 end

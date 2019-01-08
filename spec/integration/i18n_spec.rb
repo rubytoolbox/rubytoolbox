@@ -13,7 +13,9 @@ RSpec.describe I18n do
     end
 
     it "only has valid metric names" do
-      expect(described_class.t(:metrics).map(&:first)).to all(satisfy { |m| Project.new.respond_to? m })
+      # The rank is special in that it only appears in searches using pg_search, but still needs to be defined
+      # because we want to display it in the search custom order dropdown
+      expect(described_class.t(:metrics).except(:rank).map(&:first)).to all(satisfy { |m| Project.new.respond_to? m })
     end
   end
 end

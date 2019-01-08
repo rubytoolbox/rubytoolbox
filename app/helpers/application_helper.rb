@@ -1,12 +1,20 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
+  def metric_icon(metric)
+    "fa-" + t(:icon, scope: "metrics.#{metric}")
+  end
+
+  def metric_label(metric)
+    t(:label, scope: "metrics.#{metric}")
+  end
+
   def project_metrics(project, *metrics)
     metrics.map do |metric|
       render partial: "projects/metric", locals: {
-        label: t(:label, scope: "metrics.#{metric}"),
+        label: metric_label(metric),
         value: project.public_send(metric),
-        icon:  t(:icon, scope: "metrics.#{metric}"),
+        icon:  metric_icon(metric),
       }
     end.inject(&:+)
   end
@@ -87,6 +95,10 @@ module ApplicationHelper
 
   def project_health_tag(health_status)
     render "components/project_health_tag", status: health_status
+  end
+
+  def project_order_dropdown(order)
+    render "components/project_order_dropdown", order: order
   end
 
   def component_example(heading, &block)

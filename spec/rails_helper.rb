@@ -65,6 +65,17 @@ RSpec.configure do |config|
     Rails.configuration.http_connect = example.metadata[:real_http]
   end
 
+  config.before type: :feature, js: true do
+    # Ensure we are not leaking mobile size from other specs
+    Capybara.current_session.current_window.resize_to 1280, 1024
+  end
+
+  # Use the viewport: :mobile rspec tag to force the resizing
+  # of the chrome window to a "mobile" portrait resolution
+  config.before type: :feature, js: true, viewport: :mobile do
+    Capybara.current_session.current_window.resize_to 450, 900
+  end
+
   config.around do |example|
     Sidekiq::Testing.inline! if example.metadata[:sidekiq_inline]
     example.run
