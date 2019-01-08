@@ -78,4 +78,14 @@ RSpec.describe Project::Order, type: :model do
       expect(described_class.new(order: nil).available_groups.keys).to be == EXPECTED_GROUPS
     end
   end
+
+  describe "#default_direction?" do
+    it "is true when the current direction is the default" do
+      expect(described_class.new.default_direction?).to be true
+    end
+
+    it "is false when the current direction is not the default" do
+      expect(described_class.new(order: "rubygem_downloads").default_direction?).to be false
+    end
+  end
 end

@@ -22,20 +22,34 @@
 
 - if @search
   section.section.search-results: .container
-    - if @search.categories.any?
-      .columns: .column
-        h2.subtitle.is-4 Categories
-        .columns.is-multiline
-          - @search.categories.each do |category|
-            .category-cards.four= category_card category
+    .columns: .column
+      h2.subtitle.is-4 Categories
+      - if current_order.default_direction?
+        - if @search.categories.any?
+          .columns.is-multiline
+            - @search.categories.each do |category|
+              .category-cards.four= category_card category
+        - else
+          .notification.is-default
+            span.icon: i.fa.fa-info-circle
+            span No matching categories were found
+      - else
+        .notification.is-default
+          span.icon: i.fa.fa-info-circle
+          span Category results are hidden when using using a custom project result order
 
-    - if @search.projects.any?
-      .columns: .column.projects
-        .level.is-mobile
-          .level-left: .level-item
-            h2.subtitle.is-4 Projects
-          .level-right: .level-item
-            = project_order_dropdown current_order
+    .columns: .column.projects
+      .level.is-mobile
+        .level-left: .level-item
+          h2.subtitle.is-4 Projects
+        .level-right: .level-item
+          = project_order_dropdown current_order
 
+      - if @search.projects.any?
         - @search.projects.each do |project|
           = render project, show_categories: true
+
+      - else
+        .notification.is-default
+          span.icon: i.fa.fa-info-circle
+          span No matching projects were found

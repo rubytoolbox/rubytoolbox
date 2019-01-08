@@ -51,7 +51,7 @@ class Project::Order
 
   def initialize(order: nil, directions: DEFAULT_DIRECTIONS)
     self.directions = directions
-    self.direction = directions.find { |d| d.key == order } || directions.first
+    self.direction = directions.find { |d| d.key == order } || default_direction
   end
 
   def ordered_by
@@ -69,5 +69,15 @@ class Project::Order
 
   def available_groups
     directions.group_by(&:group)
+  end
+
+  def default_direction?
+    direction == default_direction
+  end
+
+  private
+
+  def default_direction
+    directions.first
   end
 end

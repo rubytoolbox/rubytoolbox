@@ -23,13 +23,20 @@ RSpec.describe "Search", type: :feature, js: true do
 
     within ".category-card" do
       expect(page).to have_text "Widgets"
+      expect(page).not_to have_text "No matching categories were found"
     end
+
+    search_for "bicycle"
+    expect(page).to have_text "No matching categories were found"
+    expect(page).to have_text "No matching projects were found"
   end
 
   it "can apply a custom project order" do
     search_for "widget"
 
     expect(listed_project_names).to be == ["more widgets", "widgets"]
+
+    expect(page).to have_selector(".category-card", count: 1)
 
     %w[Downloads Stars Forks].each do |button_label|
       within ".project-order-dropdown" do
@@ -38,6 +45,13 @@ RSpec.describe "Search", type: :feature, js: true do
         expect(page).to have_text "Order by #{button_label}"
       end
       expect(listed_project_names).to be == ["widgets", "more widgets"]
+
+      # When using a custom order, matching categories are not shown
+      # since they are not affected by the order anyway, and if a user
+      # picks a custom project order it's reasonably safe to assume
+      # they are looking for projects, not categories
+      expect(page).not_to have_selector(".category-card")
+      expect(page).to have_text "Category results are hidden"
     end
 
     within ".project-order-dropdown" do
