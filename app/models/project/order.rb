@@ -42,9 +42,13 @@ class Project::Order
     Direction.new(:github_repo, :average_recent_committed_at),
   ].freeze
 
-  SEARCH_DIRECTIONS = [
-    Direction.new(:project, :rank, key: :rank, sql: "#{PgSearch::Configuration.alias('projects')}.rank DESC"),
-  ] + DEFAULT_DIRECTIONS
+  PG_SEARCH_RANK_DIRECTION = Direction.new(
+    :project,
+    :rank,
+    key: :rank,
+    sql: "#{PgSearch::Configuration.alias('projects')}.rank DESC NULLS LAST"
+  )
+  SEARCH_DIRECTIONS = [PG_SEARCH_RANK_DIRECTION] + DEFAULT_DIRECTIONS
 
   attr_accessor :direction, :directions
   private :direction=, :direction, :directions=, :directions
