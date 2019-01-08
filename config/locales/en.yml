@@ -53,7 +53,7 @@ en:
   metrics:
     rank:
       label: Project Search Rank
-      icon: trophy
+      icon: search
     score:
       label: Project Score
       icon: flask
