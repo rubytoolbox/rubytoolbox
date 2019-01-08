@@ -25,6 +25,27 @@ RSpec.describe Project, type: :model do
       Project.create! permalink: "widgets"
       expect(Project.search("widget")).to be == [expected]
     end
+
+    describe "result order" do
+      before do
+        (1..3).each do |i|
+          rubygem = Rubygem.create! name: "widgets#{i}", downloads: 10 - i, current_version: "1.0"
+          Project.create! permalink: rubygem.name, score: 10 + i, rubygem: rubygem
+        end
+      end
+
+      it "sorts results by the search result rank by default" do
+        Project.find("widgets2").update! description: "widgets widgets!"
+        expected = %w[widgets2 widgets3 widgets1]
+        expect(Project.search("widget").pluck(:permalink)).to be == expected
+      end
+
+      it "allows to pass a custom order instance" do
+        order = Project::Order.new(order: "rubygem_downloads")
+        expected = %w[widgets1 widgets2 widgets3]
+        expect(Project.search("widget", order: order).pluck(:permalink)).to be == expected
+      end
+    end
   end
 
   describe "#github_only?" do
