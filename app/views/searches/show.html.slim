@@ -31,6 +31,12 @@
 
     - if @search.projects.any?
       .columns: .column.projects
+        .level
+          .level-left
+          .level-right: .level-item
+            = project_order_dropdown current_order
+
+
         h2.subtitle.is-4 Projects
         - @search.projects.each do |project|
           = render project, show_categories: true

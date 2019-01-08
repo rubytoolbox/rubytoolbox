@@ -51,6 +51,9 @@ en:
       icon: github
 
   metrics:
+    rank:
+      label: Project Search Rank
+      icon: trophy
     score:
       label: Project Score
       icon: flask

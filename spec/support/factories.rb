@@ -2,7 +2,7 @@
 
 module Factories
   class << self
-    def project(name, score:, downloads:, first_release:) # rubocop:disable Metrics/MethodLength
+    def project(name, score:, downloads:, first_release:, description: nil) # rubocop:disable Metrics/MethodLength
       rubygem = Rubygem.create!(
         name:             name,
         current_version:  "1.0",
@@ -15,7 +15,11 @@ module Factories
         forks_count:      downloads,
         watchers_count:   downloads
       )
-      Project.create! permalink: name, score: score, rubygem: rubygem, github_repo: github_repo
+      Project.create! permalink:   name,
+                      score:       score,
+                      rubygem:     rubygem,
+                      github_repo: github_repo,
+                      description: description
     end
   end
 end
