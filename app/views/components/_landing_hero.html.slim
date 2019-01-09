@@ -2,11 +2,13 @@ section.landing-hero
   .hero-body
     .container: .columns
       .text
+
         .mobile-image
           = image_tag image, title: title
-        h1.title= title
 
+        h1.title= title
         = yield
+
 
       .image
         = image_tag image, title: title

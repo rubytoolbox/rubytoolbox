@@ -15,7 +15,7 @@
     .recent-news
       .heading
         span.icon: i.fa.fa-rss-square
-        strong Recent News
+        strong= link_to "Recent News", blog_index_path
       ul
         - @recent_posts.each do |post|
           li
@@ -62,7 +62,7 @@ section.section: .container: .landing-features
 
 - if @featured_categories.any?
   section.section: .container
-    .level.is-mobile
+    .level
       .level-left
         .level-item
           h3.is-size-4
