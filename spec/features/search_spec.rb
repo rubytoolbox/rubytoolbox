@@ -29,6 +29,10 @@ RSpec.describe "Search", type: :feature, js: true do
     search_for "bicycle"
     expect(page).to have_text "No matching categories were found"
     expect(page).to have_text "No matching projects were found"
+
+    # Landing page search from within top hero
+    search_for "widget", container: ".landing-hero"
+    expect(listed_project_names).to be == ["more widgets", "widgets"]
   end
 
   it "can apply a custom project order" do
@@ -67,9 +71,9 @@ RSpec.describe "Search", type: :feature, js: true do
 
   private
 
-  def search_for(query)
+  def search_for(query, container: ".navbar")
     visit "/"
-    within ".navbar" do
+    within container do
       fill_in "q", with: query
       click_button "Search"
     end
