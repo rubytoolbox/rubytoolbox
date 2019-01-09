@@ -15,6 +15,5 @@ section.section: .container: .columns
     - @posts.each do |post|
       h3.subtitle.is-4
         a href=blog_post_path(post)
-          span= post.published_on
-          | &nbsp;
+          .date: small= l post.published_on, format: :long
           strong= post.title

@@ -48,6 +48,14 @@ RSpec.describe Category, type: :model do
     end
   end
 
+  describe ".featured" do
+    it "returns up to 16 ranked categories" do
+      20.times { |i| Category.create! permalink: (i + 1).to_s, name: (i + 1).to_s, category_group: group, rank: 16 - i }
+      Category.create! permalink: "A", name: "A", category_group: group
+      expect(Category.featured.pluck(:permalink)).to be == (5..20).to_a.map(&:to_s).reverse
+    end
+  end
+
   describe "#catalog_show_url" do
     it "is the url where the category definition can be seen on github" do
       expected = "https://github.com/rubytoolbox/catalog/tree/master/catalog/unimportant/mocking.yml"

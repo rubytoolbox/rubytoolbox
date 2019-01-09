@@ -2,7 +2,8 @@
 
 class WelcomeController < ApplicationController
   def home
-    @groups = CategoryGroup.for_welcome_page
-    render action: :home
+    @featured_categories = Category.featured
+    @stats = Stats.new
+    @recent_posts = BlogController::BLOG.recent_posts.presence
   end
 end

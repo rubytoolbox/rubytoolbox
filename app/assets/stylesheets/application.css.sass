@@ -65,6 +65,22 @@ header.main
     img
       max-height: 30px
 
+    // Show a little red border underneath the active item
+    .navbar-item
+      .wrap
+        padding: 5px 0px
+        border-bottom: 3px solid transparent
+
+      &.is-active
+        .wrap
+          border-color: $primary
+
+    // Do not show red active border on mobile nav
+    .navbar-menu.is-active
+      .navbar-item.is-active
+        .wrap
+          border-color: transparent
+
     // These values are hard-coded within bulma, we override
     // them here to keep it consistent with the adjacent search icon
     // in mobile view
@@ -175,3 +191,8 @@ article.blog-post
     background: none
     border-color: $grey
     color: $dark
+
+.search.hero
+  .search-form
+    .button, .input
+      @extend .is-medium

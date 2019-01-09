@@ -117,3 +117,9 @@ en:
     github_repo_average_recent_committed_at:
       label: Average date of last 50 commits
       icon: link
+  startpage:
+    title: Find actively maintained & popular open source software libraries for the Ruby programming language
+    stats:
+      |
+      We list %{projects_with_categories} projects in %{categories} categories as well as %{rubygems}
+      Rubygems in total. Here are a few categories containing very popular Ruby libraries:

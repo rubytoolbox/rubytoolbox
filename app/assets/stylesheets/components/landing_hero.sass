@@ -1,0 +1,36 @@
+.landing-hero
+  @extend .hero
+
+  .text, .image
+    @extend .column, .is-full, .is-half-tablet
+
+  .image
+    @extend .is-hidden-mobile
+    img
+      width: 100%
+      margin: 0 auto
+
+  .mobile-image
+    @extend .is-hidden-tablet
+    text-align: center
+    margin-bottom: 25px
+    img
+      width: 80%
+
+  .title
+    font-weight: 400
+    @extend .is-size-4-mobile
+
+  .title + p, .mobile-image + p
+    margin-bottom: 25px
+
+  .container > .columns
+    @extend .is-multiline
+    align-items: center
+
+  .recent-news
+    margin-top: 30px
+    .heading, a
+      opacity: 0.5
+    a:hover
+      opacity: 1

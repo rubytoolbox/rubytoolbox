@@ -1,0 +1,29 @@
+.hero
+  section.section: .container
+    p.heading= link_to "Ruby Toolbox UI Components Styleguide", "/pages/components"
+    h2= current_page.split("/").last.humanize
+
+
+= landing_hero title: "Hello World", image: "startpage/main.png" do
+  .content
+    markdown:
+      Some additional content can be added here
+
+= landing_hero title: "Hello World", image: "startpage/main.png" do
+  .content
+    markdown:
+      Additionally a recent news block can be added
+
+  .recent-news
+    .heading
+      span.icon: i.fa.fa-rss-square
+      strong Recent News
+
+    ul
+      - 3.times do |i|
+        li
+          a href="#"
+            span.date= l (i+1).days.ago.to_date, format: :long
+            | &nbsp;
+            strong Some Title
+
