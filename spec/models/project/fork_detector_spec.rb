@@ -3,33 +3,71 @@
 require "rails_helper"
 
 RSpec.describe Project::ForkDetector, type: :model do
-  describe "#fork?" do
-    it "is true for a project that references a significantly more popular repo" do
-      project = instance_double Project,
-                                github_repo_maximum_sibling_downloads: 500_000,
-                                rubygem_downloads:                     30,
-                                rubygem_description:                   "hello world"
+  let(:detector) { described_class.new(project) }
 
-      expect(described_class.new(project)).to be_fork
+  describe "for a project that references a significantly more popular gem via it's github repo" do
+    let(:rubygem) { instance_double(Rubygem, name: "foo", downloads: 500_000) }
+
+    let(:project) do
+      instance_double Project,
+                      github_repo_sibling_gem_with_most_downloads: rubygem,
+                      rubygem_downloads:                           30,
+                      rubygem_description:                         "hello world"
     end
 
-    it "is true for a project that has the same description as a much more popular gem" do
+    it "is a fork" do
+      expect(detector).to be_fork
+    end
+
+    it "has github_sibling in fork_critera" do
+      expect(detector.fork_criteria).to be == %w[github_sibling]
+    end
+
+    it "references the expected rubygem as forked_from" do
+      expect(detector.forked_from).to be == "foo"
+    end
+  end
+
+  describe "for a project that has the same description as a much more popular gem" do
+    let(:project) do
       Rubygem.create! name: "demo", current_version: "1.2", description: "Hello World", downloads: 50_000
-      project = instance_double Project,
-                                github_repo_maximum_sibling_downloads: 10,
-                                rubygem_downloads:                     1000,
-                                rubygem_description:                   "Hello World"
-
-      expect(described_class.new(project)).to be_fork
+      instance_double Project,
+                      github_repo_sibling_gem_with_most_downloads: nil,
+                      rubygem_downloads:                           1000,
+                      rubygem_description:                         "Hello World"
     end
 
-    it "is false for regular project" do
-      project = instance_double Project,
-                                github_repo_maximum_sibling_downloads: 1000,
-                                rubygem_downloads:                     1000,
-                                rubygem_description:                   "Hello World"
+    it "is a fork" do
+      expect(detector).to be_fork
+    end
 
-      expect(described_class.new(project)).not_to be_fork
+    it "has rubygem_sibling in fork_critera" do
+      expect(detector.fork_criteria).to be == %w[rubygem_sibling]
+    end
+
+    it "references the expected rubygem as forked_from" do
+      expect(detector.forked_from).to be == "demo"
+    end
+  end
+
+  describe "for a regular project" do
+    let(:project) do
+      instance_double Project,
+                      github_repo_sibling_gem_with_most_downloads: nil,
+                      rubygem_downloads:                           1000,
+                      rubygem_description:                         "Hello World"
+    end
+
+    it "isn't a fork" do
+      expect(detector).not_to be_fork
+    end
+
+    it "has empty fork_critera" do
+      expect(detector.fork_criteria).to be_empty
+    end
+
+    it "has nil as forked_from" do
+      expect(detector.forked_from).to be_nil
     end
   end
 end

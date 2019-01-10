@@ -64,7 +64,7 @@ class GithubRepo < ApplicationRecord
     open_pull_requests_count + merged_pull_requests_count + closed_pull_requests_count
   end
 
-  def maximum_sibling_downloads
-    rubygems.maximum(:downloads)
+  def sibling_gem_with_most_downloads
+    rubygems.order(downloads: :desc).first
   end
 end

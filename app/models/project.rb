@@ -95,7 +95,7 @@ class Project < ApplicationRecord
            :closed_pull_requests_count,
            :pull_request_acceptance_rate,
            :average_recent_committed_at,
-           :maximum_sibling_downloads,
+           :sibling_gem_with_most_downloads,
            to:        :github_repo,
            allow_nil: true,
            prefix:    :github_repo

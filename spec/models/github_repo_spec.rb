@@ -158,12 +158,13 @@ RSpec.describe GithubRepo, type: :model do
     end
   end
 
-  describe "#maximum_sibling_downloads" do
-    it "is the max downloads of associated rubygems" do
-      repo = described_class.new
+  describe "#sibling_gem_with_most_downloads" do
+    it "returns rubygem that has the most downloads and same repo" do
+      widget = Factories.project "widget", downloads: 50_000
+      other = Factories.project "other", downloads: 10_000
+      other.update! github_repo: widget.github_repo
 
-      allow(repo.rubygems).to receive(:maximum).with(:downloads).and_return(42)
-      expect(repo.maximum_sibling_downloads).to be 42
+      expect(other.github_repo.sibling_gem_with_most_downloads).to be == widget.rubygem
     end
   end
 end
