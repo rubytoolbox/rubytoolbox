@@ -76,6 +76,8 @@ RSpec.configure do |config|
     Capybara.current_session.current_window.resize_to 450, 900
   end
 
+  config.include FeatureSpecHelpers, type: :feature
+
   config.around do |example|
     Sidekiq::Testing.inline! if example.metadata[:sidekiq_inline]
     example.run

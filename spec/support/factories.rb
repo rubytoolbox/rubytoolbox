@@ -1,8 +1,13 @@
 # frozen_string_literal: true
 
 module Factories
+  # rubocop:disable Metrics/MethodLength All-in-one-place is more relevant than short methods here
   class << self
-    def project(name, score:, downloads:, first_release:, description: nil) # rubocop:disable Metrics/MethodLength
+    def project(name,
+                score:,
+                downloads: 5000,
+                first_release: 1.year.ago,
+                description: nil)
       rubygem = Rubygem.create!(
         name:             name,
         current_version:  "1.0",
@@ -22,4 +27,5 @@ module Factories
                       description: description
     end
   end
+  # rubocop:enable Metrics/MethodLength
 end

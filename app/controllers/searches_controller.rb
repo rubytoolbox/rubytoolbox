@@ -3,7 +3,10 @@
 class SearchesController < ApplicationController
   def show
     @query = params[:q].presence
-    @search = Search.new(@query, order: current_order) if @query
+    return unless @query
+
+    @search = Search.new(@query, order: current_order)
+    @projects = @search.projects.page(params[:page])
   end
 
   private

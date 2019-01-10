@@ -32,6 +32,11 @@ en:
   name: The Ruby Toolbox
   tagline: Know your options!
   description: Explore and compare open source Ruby libraries
+  views:
+    pagination:
+      previous: Previous page
+      next: Next page
+
   project_health:
     github_repo_archived: Repository is archived
     github_repo_gone: Repository is gone

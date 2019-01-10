@@ -7,13 +7,13 @@ RSpec.describe "Search", type: :feature, js: true do
     group = CategoryGroup.create! permalink: "group1", name: "Group"
     Category.create! permalink: "widgets", name: "Widgets", category_group: group
 
-    Factories.project("widgets", score: 25, downloads: 125_000, first_release: 3.years.ago)
-    Factories.project("more widgets",
-                      score:         25,
+    Factories.project "widgets", score: 50, downloads: 125_000, first_release: 3.years.ago
+    Factories.project "more widgets",
+                      score:         50,
                       description:   "widgets widgets",
                       downloads:     50_000,
-                      first_release: 5.years.ago)
-    Factories.project("other", score: 22, downloads: 10_000, first_release: 5.years.ago)
+                      first_release: 5.years.ago
+    Factories.project "other", score: 22, downloads: 10_000, first_release: 5.years.ago
   end
 
   it "allows users to search for projects and categories" do
@@ -69,6 +69,30 @@ RSpec.describe "Search", type: :feature, js: true do
     expect(listed_project_names).to be == ["more widgets", "widgets"]
   end
 
+  it "paginates large project collections" do
+    7.times do |i|
+      Factories.project "widgets #{i + 1}", score: 40 - i
+    end
+
+    search_for "widgets"
+
+    expect(listed_project_names).to be == ["more widgets", "widgets", "widgets 1"]
+
+    within ".pagination", match: :first do
+      click_on "Next page"
+    end
+
+    wait_for { listed_project_names.include? "widgets 2" }
+    expect(listed_project_names).to be == (2..4).map { |i| "widgets #{i}" }
+
+    within ".pagination", match: :first do
+      click_on "3"
+    end
+
+    wait_for { listed_project_names.include? "widgets 5" }
+    expect(listed_project_names).to be == (5..7).map { |i| "widgets #{i}" }
+  end
+
   private
 
   def search_for(query, container: ".navbar")
@@ -77,9 +101,5 @@ RSpec.describe "Search", type: :feature, js: true do
       fill_in "q", with: query
       click_button "Search"
     end
-  end
-
-  def listed_project_names
-    page.find_all(".project h3").map(&:text)
   end
 end

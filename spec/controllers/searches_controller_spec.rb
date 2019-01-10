@@ -23,6 +23,13 @@ RSpec.describe SearchesController, type: :controller do
       expect(assigns(:search)).to be_a Search
     end
 
+    it "assigns paginated projects scope when there is a query" do
+      do_request query: "foo"
+      expect(assigns(:projects)).to be_a(ActiveRecord::Relation)
+        .and respond_to(:current_page)
+        .and respond_to(:total_pages)
+    end
+
     it "passes query and a project order instance to Search.new" do
       order = Project::Order.new(order: "rubygem_downloads")
       allow(Project::Order).to receive(:new)

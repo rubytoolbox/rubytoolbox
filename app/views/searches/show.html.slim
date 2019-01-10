@@ -16,7 +16,9 @@
 - if @search
   section.section.search-results: .container
     .columns: .column
-      h2.subtitle.is-4 Categories
+      .level
+        .level-left: .level-item: h2.subtitle.is-4 Categories
+
       - if current_order.default_direction?
         - if @search.categories.any?
           .columns.is-multiline
@@ -32,15 +34,19 @@
           span Category results are hidden when using a custom project result order
 
     .columns: .column.projects
-      .level.is-mobile
+      .level
         .level-left: .level-item
           h2.subtitle.is-4 Projects
         .level-right: .level-item
           = project_order_dropdown current_order
 
-      - if @search.projects.any?
-        - @search.projects.each do |project|
+      - if @projects.any?
+        .columns: .column= paginate @projects
+
+        - @projects.each do |project|
           = render project, show_categories: true
+
+        .columns: .column= paginate @projects
 
       - else
         .notification.is-default
