@@ -97,10 +97,36 @@ RSpec.describe "Search", type: :feature, js: true do
     expect(listed_project_names).to be == (5..7).map { |i| "widgets #{i}" }
   end
 
+  it "automatically focuses the search input when accessed without query" do
+    search_for ""
+    expect(active_element).to(satisfy { |e| e.tag_name == "input" && e["name"] == "q" })
+
+    search_for "foo"
+    expect(active_element.tag_name).to be == "body"
+  end
+
+  it "puts search submit buttons into loading state" do
+    search_for "foo", halt: true
+    expect(page).to have_selector(".search-form .button.is-loading", count: 2)
+  end
+
   private
 
-  def search_for(query, container: ".navbar")
+  #
+  # To test onSubmit loading state change we need to prevent the form from actually
+  # submitting itself
+  #
+  HALT_FORM_SUBMISSION_JS = <<~JS
+    document.querySelectorAll(".search-form").forEach(function(form) {
+      form.addEventListener("submit", function(e) { e.preventDefault(); })
+    });
+  JS
+
+  def search_for(query, container: ".navbar", halt: false)
     visit "/"
+
+    page.evaluate_script HALT_FORM_SUBMISSION_JS if halt
+
     within container do
       fill_in "q", with: query
       click_button "Search"

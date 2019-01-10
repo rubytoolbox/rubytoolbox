@@ -6,12 +6,10 @@
 .hero.search
   section.section: .container
     .columns: .column
-      .is-hidden-mobile
-        h2
-          a href=search_path(q: @query)
-            = content_for(:title)
-      .is-hidden-tablet
-        = render partial: "search_form"
+      = render partial: "search_form"
+      - unless @search
+        javascript:
+          document.querySelector(".hero.search input[type=text]").focus();
 
 - if @search
   section.section.search-results: .container
