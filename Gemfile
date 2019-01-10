@@ -14,6 +14,8 @@ gem "hairtrigger"
 gem "pg", "~> 0.18"
 gem "pg_search"
 
+gem "kaminari"
+
 # Use Puma as the app server
 gem "puma", "~> 3.11"
 # Use SCSS for stylesheets

@@ -46,20 +46,6 @@ RSpec.describe "Mobile Navigation", type: :feature, js: true, viewport: :mobile 
 
   private
 
-  #
-  # Since we're using custom js stuff here capybaras default synchronization
-  # does not help us. In order to have the fastest-possible turnaround time,
-  # this will retry at a high frequency until the maximum amount of tries is reached,
-  # causing an exception to be raised.
-  #
-  # rubocop:disable Performance/RedundantBlockCall
-  def wait_for(&block)
-    Retriable.retriable tries: 15, base_interval: 0.05 do
-      raise "Exceeded max retries while waiting for block to pass" unless block.call
-    end
-  end
-  # rubocop:enable Performance/RedundantBlockCall
-
   def scroll_by(y) # rubocop:disable Naming/UncommunicativeMethodParamName
     # Perform the actual scroll
     page.execute_script "window.scrollBy(0, #{y})"

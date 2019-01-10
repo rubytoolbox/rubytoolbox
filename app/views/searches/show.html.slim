@@ -15,32 +15,39 @@
 
 - if @search
   section.section.search-results: .container
-    .columns: .column
-      h2.subtitle.is-4 Categories
-      - if current_order.default_direction?
-        - if @search.categories.any?
-          .columns.is-multiline
-            - @search.categories.each do |category|
-              .category-cards.four= category_card category
+    - if @projects.current_page == 1
+      .columns: .column
+        .level
+          .level-left: .level-item: h2.subtitle.is-4 Categories
+
+        - if current_order.default_direction?
+          - if @search.categories.any?
+            .columns.is-multiline
+              - @search.categories.each do |category|
+                .category-cards.four= category_card category
+          - else
+            .notification.is-default
+              span.icon: i.fa.fa-info-circle
+              span No matching categories were found
         - else
           .notification.is-default
             span.icon: i.fa.fa-info-circle
-            span No matching categories were found
-      - else
-        .notification.is-default
-          span.icon: i.fa.fa-info-circle
-          span Category results are hidden when using a custom project result order
+            span Category results are hidden when using a custom project result order
 
     .columns: .column.projects
-      .level.is-mobile
+      .level
         .level-left: .level-item
           h2.subtitle.is-4 Projects
         .level-right: .level-item
           = project_order_dropdown current_order
 
-      - if @search.projects.any?
-        - @search.projects.each do |project|
+      - if @projects.any?
+        .columns: .column= paginate @projects
+
+        - @projects.each do |project|
           = render project, show_categories: true
+
+        .columns: .column= paginate @projects
 
       - else
         .notification.is-default

@@ -48,7 +48,6 @@ class Project < ApplicationRecord
       .reorder("")
       .includes_associations
       .order(order.sql)
-      .limit(25)
   end
 
   delegate :current_version,
