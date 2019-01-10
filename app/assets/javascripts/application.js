@@ -43,4 +43,12 @@ document.addEventListener("turbolinks:load", function () {
       });
     });
   }
+
+  document.querySelectorAll("form.search-form").forEach(function(form) {
+    form.addEventListener("submit", function() {
+      document.querySelectorAll("form.search-form button[type=submit]").forEach(function(button) {
+        button.classList.add("is-loading");
+      });
+    })
+  });
 });
