@@ -157,4 +157,13 @@ RSpec.describe GithubRepo, type: :model do
       expect(repo.total_pull_requests_count).to be == 7 + 11 + 3
     end
   end
+
+  describe "#maximum_sibling_downloads" do
+    it "is the max downloads of associated rubygems" do
+      repo = described_class.new
+
+      allow(repo.rubygems).to receive(:maximum).with(:downloads).and_return(42)
+      expect(repo.maximum_sibling_downloads).to be 42
+    end
+  end
 end
