@@ -8,6 +8,7 @@ class ProjectScoreJob < ApplicationJob
     self.project = Project.includes_associations.find permalink
 
     project.update! score:                calculated_score,
+                    is_bugfix_fork:       bugfix_fork?,
                     bugfix_fork_of:       bugfix_fork_of,
                     bugfix_fork_criteria: bugfix_fork_criteria
   end
@@ -41,6 +42,10 @@ class ProjectScoreJob < ApplicationJob
 
   def fork_detector
     @fork_detector ||= Project::ForkDetector.new(project)
+  end
+
+  def bugfix_fork?
+    bugfix_fork_of.present?
   end
 
   def bugfix_fork_of

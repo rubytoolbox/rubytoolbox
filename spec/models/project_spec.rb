@@ -14,7 +14,7 @@ RSpec.describe Project, type: :model do
   describe ".with_bugfix_forks" do
     before do
       Factories.project "regular"
-      Factories.project("forked").tap { |p| p.update! bugfix_fork_of: "foobar" }
+      Factories.project("forked").tap { |p| p.update! is_bugfix_fork: true }
     end
 
     it "omits bugfix_forks when given false" do
