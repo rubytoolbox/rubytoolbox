@@ -77,6 +77,7 @@ RSpec.describe "Search", type: :feature, js: true do
     search_for "widgets"
 
     expect(listed_project_names).to be == ["more widgets", "widgets", "widgets 1"]
+    within(".search-results") { expect(page).to have_text "Categories" }
 
     within ".pagination", match: :first do
       click_on "Next page"
@@ -84,6 +85,9 @@ RSpec.describe "Search", type: :feature, js: true do
 
     wait_for { listed_project_names.include? "widgets 2" }
     expect(listed_project_names).to be == (2..4).map { |i| "widgets #{i}" }
+    # Only project results are paginated, hence we hide the categories section entirely
+    # when browsing project results
+    within(".search-results") { expect(page).not_to have_text "Categories" }
 
     within ".pagination", match: :first do
       click_on "3"
