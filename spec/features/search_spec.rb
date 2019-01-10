@@ -97,6 +97,14 @@ RSpec.describe "Search", type: :feature, js: true do
     expect(listed_project_names).to be == (5..7).map { |i| "widgets #{i}" }
   end
 
+  it "automatically focuses the search input when accessed without query" do
+    search_for ""
+    expect(active_element).to(satisfy { |e| e.tag_name == "input" && e["name"] == "q" })
+
+    search_for "foo"
+    expect(active_element.tag_name).to be == "body"
+  end
+
   private
 
   def search_for(query, container: ".navbar")

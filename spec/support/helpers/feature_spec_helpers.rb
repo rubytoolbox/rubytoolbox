@@ -18,4 +18,8 @@ module FeatureSpecHelpers
     end
   end
   # rubocop:enable Performance/RedundantBlockCall
+
+  def active_element
+    page.evaluate_script "document.activeElement"
+  end
 end
