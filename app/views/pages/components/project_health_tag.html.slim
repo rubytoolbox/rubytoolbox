@@ -8,3 +8,19 @@
     = project_health_tag Project::Health::HEALTHY_STATUS
     - Project::Health::Checks::ALL.each do |status|
       = project_health_tag status
+
+= component_example "Tag list shortcut helper" do
+  .content
+    markdown:
+      Use `project_health_tags(project)` to render the full list of health tags without iterating over individual items
+
+  = project_health_tags Project.new
+
+= component_example "Reference to bugfix forks" do
+  .content
+    markdown:
+      Projects that are a [bugfix fork](/pages/docs/features/bugfix_forks)
+      get an additional badge linking the documentation and the
+      suspected originating gem.
+
+  = project_health_tags Project.new(bugfix_fork_of: "rails")

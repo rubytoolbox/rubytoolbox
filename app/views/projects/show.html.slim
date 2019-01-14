@@ -19,10 +19,8 @@
         - @project.categories.each do |category|
           = category_card category, compact: true, inline: true
 
-  .columns: .column
-    .project-health-tags
-      - Project::Health.new(@project).status.each do |status|
-        = project_health_tag status
+  .columns: .column= project_health_tags @project
+
 
   .columns: .links.column
     = render partial: "projects/links", locals: { project: @project }
