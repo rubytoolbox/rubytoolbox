@@ -43,11 +43,7 @@ RSpec.describe "Search", type: :feature, js: true do
     expect(page).to have_selector(".category-card", count: 1)
 
     %w[Downloads Stars Forks].each do |button_label|
-      within ".project-order-dropdown" do
-        page.find("button").hover
-        click_on button_label
-        expect(page).to have_text "Order by #{button_label}"
-      end
+      order_by button_label
       expect(listed_project_names).to be == ["widgets", "more widgets"]
 
       # When using a custom order, matching categories are not shown
@@ -58,14 +54,7 @@ RSpec.describe "Search", type: :feature, js: true do
       expect(page).to have_text "Category results are hidden"
     end
 
-    within ".project-order-dropdown" do
-      page.find("button").hover
-      click_on "First release"
-    end
-
-    within ".project-order-dropdown" do
-      expect(page).to have_text "Order by First release"
-    end
+    order_by "First release"
     expect(listed_project_names).to be == ["more widgets", "widgets"]
   end
 
@@ -108,8 +97,13 @@ RSpec.describe "Search", type: :feature, js: true do
     end
 
     wait_for { listed_project_names.include? "more widgets" }
-
     expect(listed_project_names).to be == ["more widgets", "widgets"]
+    expect(page).to have_text "Bugfix forks are shown"
+
+    # Re-ordering should retain show_forks status
+    order_by "Downloads"
+    expect(listed_project_names).to be == ["widgets", "more widgets"]
+    expect(page).to have_text "Bugfix forks are shown"
 
     within ".project-search-nav" do
       click_on "Bugfix forks are shown"
@@ -163,6 +157,14 @@ RSpec.describe "Search", type: :feature, js: true do
     within container do
       fill_in "q", with: query
       click_button "Search"
+    end
+  end
+
+  def order_by(button_label)
+    within ".project-order-dropdown" do
+      page.find("button").hover
+      click_on button_label
+      expect(page).to have_text "Order by #{button_label}"
     end
   end
 end
