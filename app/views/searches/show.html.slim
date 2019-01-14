@@ -33,11 +33,23 @@
             span Category results are hidden when using a custom project result order
 
     .columns: .column.projects
-      .level
+      .level.project-search-nav
         .level-left: .level-item
           h2.subtitle.is-4 Projects
-        .level-right: .level-item
-          = project_order_dropdown current_order
+        .level-right
+          .level-item
+            - if @search.show_forks
+              a.button.is-white href=search_path(q: @search.query, order: current_order.ordered_by)
+                span.icon: i.fa.fa-check-square
+                span Bugfix forks are <strong>shown</strong>
+
+            - else
+              a.button.is-white href=search_path(q: @search.query, order: current_order.ordered_by, show_forks: true)
+                span.icon: i.fa.fa-square-o
+                span Bugfix forks are <strong>hidden</strong>
+
+          .level-item
+            = project_order_dropdown current_order
 
       - if @projects.any?
         .columns: .column= paginate @projects

@@ -97,6 +97,28 @@ RSpec.describe "Search", type: :feature, js: true do
     expect(listed_project_names).to be == (5..7).map { |i| "widgets #{i}" }
   end
 
+  it "hides bugfix forks from results by default, but allows to toggle their display" do
+    Project.find("more widgets").update! is_bugfix_fork: true
+
+    search_for "widget"
+
+    expect(listed_project_names).to be == ["widgets"]
+    within ".project-search-nav" do
+      click_on "Bugfix forks are hidden"
+    end
+
+    wait_for { listed_project_names.include? "more widgets" }
+
+    expect(listed_project_names).to be == ["more widgets", "widgets"]
+
+    within ".project-search-nav" do
+      click_on "Bugfix forks are shown"
+    end
+
+    wait_for { !listed_project_names.include? "more widgets" }
+    expect(listed_project_names).to be == ["widgets"]
+  end
+
   it "automatically focuses the search input when accessed without query" do
     search_for ""
     expect(active_element).to(satisfy { |e| e.tag_name == "input" && e["name"] == "q" })
