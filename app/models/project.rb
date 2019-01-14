@@ -45,8 +45,9 @@ class Project < ApplicationRecord
                   },
                   ranked_by: ":tsearch * (#{table_name}.score + 1) * (#{table_name}.score + 1)"
 
-  def self.search(query, order: Project::Order.new(directions: Project::Order::SEARCH_DIRECTIONS))
+  def self.search(query, order: Project::Order.new(directions: Project::Order::SEARCH_DIRECTIONS), show_forks: false)
     with_score
+      .with_bugfix_forks(show_forks)
       .search_scope(query)
       .reorder("")
       .includes_associations
