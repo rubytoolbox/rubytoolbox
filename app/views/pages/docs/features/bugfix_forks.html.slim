@@ -12,7 +12,7 @@ section.section: .container: .columns
 
       If you **ran into an issue with a gem** you were using and you or somebody else
       created a bugfix for the problem **you had to wait for the library maintainers to publish
-      a new release** to Rubygems **before you could patch your application**.
+      a new release** to Rubygems **before you could patch your application** (or use [Github's discontinued Rubygems server][github-gems], which also had namespacing).
 
       To **get around this issue** many developers adopted a pattern of **publishing a namespaced fork
       including a bugfix** to Rubygems **until the fix was merged and released upstream**.
@@ -37,3 +37,4 @@ section.section: .container: .columns
       * [rubytoolbox#380](https://github.com/rubytoolbox/rubytoolbox/pull/380)
 
       [bundler]: /projects/bundler
+      [github-gems]: https://blog.github.com/2008-04-25-github-s-rubygem-server/
