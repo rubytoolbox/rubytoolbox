@@ -7,9 +7,18 @@ class SearchesController < ApplicationController
 
     @search = Search.new(@query, order: current_order, show_forks: show_forks?)
     @projects = @search.projects.page(params[:page])
+
+    redirect_to_search_with_forks_included if !@search.show_forks && @projects.empty?
   end
 
   private
+
+  def redirect_to_search_with_forks_included
+    redirect_to action:     :show,
+                q:          @search.query,
+                order:      current_order.ordered_by,
+                show_forks: true
+  end
 
   def show_forks?
     params[:show_forks].present?

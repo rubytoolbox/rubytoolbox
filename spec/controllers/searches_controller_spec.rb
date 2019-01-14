@@ -9,8 +9,15 @@ RSpec.describe SearchesController, type: :controller do
     end
 
     it "returns http success" do
-      do_request
-      expect(response).to be_successful
+      Factories.project "foobar"
+      do_request query: "foobar"
+      expect(response).to have_http_status(:success)
+    end
+
+    it "renders show template" do
+      Factories.project "foobar"
+      do_request query: "foobar"
+      expect(response).to render_template(:show)
     end
 
     it "assigns nothing to search when there is no query" do
@@ -48,6 +55,11 @@ RSpec.describe SearchesController, type: :controller do
         )
         .and_call_original
       do_request query: "hello world", order: "rubygem_downloads", show_forks: true
+    end
+
+    it "redirects to results including forks when project search has no results" do
+      do_request query: "my query"
+      expect(response).to redirect_to(search_path(q: "my query", order: "rank", show_forks: true))
     end
   end
 end

@@ -118,8 +118,13 @@ RSpec.describe "Search", type: :feature, js: true do
     wait_for { !listed_project_names.include? "more widgets" }
     expect(listed_project_names).to be == ["widgets"]
 
-    page.find(".project-search-nav .bugfix-forks a.help").click
+    # When there are no results from projects search without
+    # forks we redirect to the page with included forks automatically
+    search_for "more widgets"
+    expect(listed_project_names).to be == ["more widgets"]
 
+    # Ensure help page is accessible
+    page.find(".project-search-nav a.bugfix-forks-help").click
     within ".hero" do
       expect(page).to have_text("Bugfix Forks")
     end
