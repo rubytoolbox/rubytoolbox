@@ -25,13 +25,24 @@ RSpec.describe Search, type: :model do
 
   describe "#projects" do
     it "searches projects for the given query" do
-      expect(Project).to receive(:search).with("my query", order: kind_of(Project::Order))
+      expect(Project).to receive(:search).with("my query", order: kind_of(Project::Order), show_forks: false)
       described_class.new("my query").projects
+    end
+
+    it "passes given show_forks value to search query" do
+      expect(Project).to receive(:search)
+        .with(
+          kind_of(String),
+          order:      kind_of(Project::Order),
+          show_forks: true
+        )
+      described_class.new("my query", show_forks: "yes").projects
     end
 
     it "returns the resulting collection" do
       collection = %w[some projects]
-      allow(Project).to receive(:search).with("my query", order: kind_of(Project::Order)).and_return(collection)
+      allow(Project).to receive(:search).with("my query", order: kind_of(Project::Order), show_forks: false)
+                                        .and_return(collection)
       expect(described_class.new("my query").projects).to be == collection
     end
   end
