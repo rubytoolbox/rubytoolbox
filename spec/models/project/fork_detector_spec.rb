@@ -48,6 +48,11 @@ RSpec.describe Project::ForkDetector, type: :model do
     it "references the expected rubygem as forked_from" do
       expect(detector.forked_from).to be == "demo"
     end
+
+    it "isn't a fork when the inspected project has more than 50k downloads" do
+      allow(project).to receive(:rubygem_downloads).and_return(50_001)
+      expect(detector).not_to be_fork
+    end
   end
 
   describe "for a regular project" do

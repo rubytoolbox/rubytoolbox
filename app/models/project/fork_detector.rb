@@ -53,7 +53,7 @@ class Project::ForkDetector
   # keywords in the name and description.
   #
   RubygemSibling = Check.new("rubygem_sibling") do |project|
-    next unless project.rubygem_downloads
+    next if !project.rubygem_downloads || (project.rubygem_downloads > 50_000)
 
     sibling = Rubygem.where(description: project.rubygem_description).order(downloads: :desc).first
 
