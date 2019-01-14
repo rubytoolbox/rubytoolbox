@@ -56,6 +56,16 @@ RSpec.describe "Search", type: :feature, js: true do
 
     order_by "First release"
     expect(listed_project_names).to be == ["more widgets", "widgets"]
+
+    # Ensure the button is correctly put into loading state on click
+    halt_js = <<~JS
+      document.querySelectorAll(".project-order-dropdown a").forEach(function(button) {
+        button.addEventListener("click", function(e) { e.preventDefault(); })
+      });
+    JS
+    page.evaluate_script halt_js
+    order_by "Downloads", expect_navigation: false
+    expect(page).to have_selector(".project-order-dropdown button.is-loading")
   end
 
   it "paginates large project collections" do
@@ -117,6 +127,16 @@ RSpec.describe "Search", type: :feature, js: true do
     search_for "more widgets"
     expect(listed_project_names).to be == ["more widgets"]
 
+    # Ensure the button is correctly put into loading state on click
+    halt_js = <<~JS
+      document.querySelectorAll("a.bugfix-forks-toggle").forEach(function(button) {
+        button.addEventListener("click", function(e) { e.preventDefault(); })
+      });
+    JS
+    page.evaluate_script halt_js
+    click_on "Bugfix forks are shown"
+    expect(page).to have_selector("a.bugfix-forks-toggle.is-loading")
+
     # Ensure help page is accessible
     page.find(".project-search-nav a.bugfix-forks-help").click
     within ".hero" do
@@ -160,11 +180,11 @@ RSpec.describe "Search", type: :feature, js: true do
     end
   end
 
-  def order_by(button_label)
+  def order_by(button_label, expect_navigation: true)
     within ".project-order-dropdown" do
       page.find("button").hover
       click_on button_label
-      expect(page).to have_text "Order by #{button_label}"
+      expect(page).to have_text "Order by #{button_label}" if expect_navigation
     end
   end
 end

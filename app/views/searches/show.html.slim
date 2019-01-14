@@ -41,12 +41,12 @@
             .field.has-addons
               .control
                 - if @search.show_forks
-                  a.button href=search_path(q: @search.query, order: current_order.ordered_by, show_forks: false)
+                  a.button.bugfix-forks-toggle href=search_path(q: @search.query, order: current_order.ordered_by, show_forks: false)
                     span.icon: i.fa.fa-check-square
                     span Bugfix forks are <strong>shown</strong>
 
                 - else
-                  a.button href=search_path(q: @search.query, order: current_order.ordered_by, show_forks: true)
+                  a.button.bugfix-forks-toggle href=search_path(q: @search.query, order: current_order.ordered_by, show_forks: true)
                     span.icon: i.fa.fa-square-o
                     span Bugfix forks are <strong>hidden</strong>
 
