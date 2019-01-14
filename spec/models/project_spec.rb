@@ -11,6 +11,21 @@ RSpec.describe Project, type: :model do
     )
   end
 
+  describe ".with_bugfix_forks" do
+    before do
+      Factories.project "regular"
+      Factories.project("forked").tap { |p| p.update! is_bugfix_fork: true }
+    end
+
+    it "omits bugfix_forks when given false" do
+      expect(Project.with_bugfix_forks(false).pluck(:permalink)).to be == %w[regular]
+    end
+
+    it "includes bugfix_forks when given true" do
+      expect(Project.with_bugfix_forks(true).order(permalink: :asc).pluck(:permalink)).to be == %w[forked regular]
+    end
+  end
+
   describe ".search" do
     it "can find a matching project" do
       expected = Project.create! permalink: "widgets", score: 1

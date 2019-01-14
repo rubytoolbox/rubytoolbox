@@ -244,6 +244,9 @@ CREATE TABLE public.projects (
     description text,
     permalink_tsvector tsvector,
     description_tsvector tsvector,
+    bugfix_fork_of character varying,
+    bugfix_fork_criteria character varying[] DEFAULT '{}'::character varying[] NOT NULL,
+    is_bugfix_fork boolean DEFAULT false NOT NULL,
     CONSTRAINT check_project_permalink_and_rubygem_name_parity CHECK (((rubygem_name IS NULL) OR ((rubygem_name)::text = (permalink)::text)))
 );
 
@@ -386,10 +389,24 @@ CREATE UNIQUE INDEX index_github_repos_on_path ON public.github_repos USING btre
 
 
 --
+-- Name: index_projects_on_bugfix_fork_of; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_projects_on_bugfix_fork_of ON public.projects USING btree (bugfix_fork_of);
+
+
+--
 -- Name: index_projects_on_description_tsvector; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_projects_on_description_tsvector ON public.projects USING gin (description_tsvector);
+
+
+--
+-- Name: index_projects_on_is_bugfix_fork; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_projects_on_is_bugfix_fork ON public.projects USING btree (is_bugfix_fork);
 
 
 --
@@ -510,6 +527,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180718195202'),
 ('20181205134522'),
 ('20181210092238'),
-('20181213102703');
+('20181213102703'),
+('20190110202221');
 
 

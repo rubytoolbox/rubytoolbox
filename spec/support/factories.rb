@@ -4,7 +4,7 @@ module Factories
   # rubocop:disable Metrics/MethodLength All-in-one-place is more relevant than short methods here
   class << self
     def project(name,
-                score:,
+                score: 25,
                 downloads: 5000,
                 first_release: 1.year.ago,
                 description: nil)

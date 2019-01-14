@@ -43,5 +43,52 @@ RSpec.describe ProjectScoreJob, type: :job do
       Project.create! permalink: "rspec", score: 2.0
       expect { job.perform "rspec" }.to change { Project.find("rspec").score }.to(nil)
     end
+
+    it "sets is_bugfix_fork to false" do
+      create_gems!
+      ProjectUpdateJob.new.perform "rspec"
+
+      expect { job.perform "rspec" }.not_to change { Project.find("rspec").is_bugfix_fork }.from(false)
+    end
+
+    it "sets the bugfix_fork_of to nil" do
+      create_gems!
+      ProjectUpdateJob.new.perform "rspec"
+
+      expect { job.perform "rspec" }.not_to change { Project.find("rspec").bugfix_fork_of }.from(nil)
+    end
+
+    it "sets the bugfix_fork_criteria to an empty array" do
+      create_gems!
+      ProjectUpdateJob.new.perform "rspec"
+
+      expect { job.perform "rspec" }.not_to change { Project.find("rspec").bugfix_fork_criteria }.from([])
+    end
+
+    describe "when bugfix fork criteria apply" do
+      let(:detector) do
+        instance_double Project::ForkDetector, forked_from: "foobar", fork_criteria: %w[foo bar]
+      end
+
+      before do
+        create_gems!
+        ProjectUpdateJob.new.perform "rspec"
+        allow(Project::ForkDetector).to receive(:new)
+          .with(Project.find("rspec"))
+          .and_return(detector)
+      end
+
+      it "sets the is_bugfix_fork to expected value" do
+        expect { job.perform "rspec" }.to change { Project.find("rspec").is_bugfix_fork }.to(true)
+      end
+
+      it "sets the bugfix_fork_of to expected gem name" do
+        expect { job.perform "rspec" }.to change { Project.find("rspec").bugfix_fork_of }.to("foobar")
+      end
+
+      it "sets the bugfix_fork_criteria to a expected matching criteria" do
+        expect { job.perform "rspec" }.to change { Project.find("rspec").bugfix_fork_criteria }.to(%w[foo bar])
+      end
+    end
   end
 end

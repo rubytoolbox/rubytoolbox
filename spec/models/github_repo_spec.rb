@@ -157,4 +157,14 @@ RSpec.describe GithubRepo, type: :model do
       expect(repo.total_pull_requests_count).to be == 7 + 11 + 3
     end
   end
+
+  describe "#sibling_gem_with_most_downloads" do
+    it "returns rubygem that has the most downloads and same repo" do
+      widget = Factories.project "widget", downloads: 50_000
+      other = Factories.project "other", downloads: 10_000
+      other.update! github_repo: widget.github_repo
+
+      expect(other.github_repo.sibling_gem_with_most_downloads).to be == widget.rubygem
+    end
+  end
 end
