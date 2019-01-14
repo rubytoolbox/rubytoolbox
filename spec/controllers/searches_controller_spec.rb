@@ -58,8 +58,13 @@ RSpec.describe SearchesController, type: :controller do
     end
 
     it "redirects to results including forks when project search has no results" do
-      do_request query: "my query"
+      get :show, params: { q: "my query" }
       expect(response).to redirect_to(search_path(q: "my query", order: "rank", show_forks: true))
+    end
+
+    it "does not redirect when project search has no results but explicit show forks is given" do
+      get :show, params: { q: "my query", show_forks: true }
+      expect(response).to have_http_status(:success)
     end
   end
 end
