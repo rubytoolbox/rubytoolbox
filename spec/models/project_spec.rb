@@ -11,6 +11,21 @@ RSpec.describe Project, type: :model do
     )
   end
 
+  describe ".includes_associations" do
+    before do
+      rand(3..14).times { |i| Factories.project "project #{i}" }
+    end
+
+    it "only makes expected amount of queries" do
+      nested_accessor = ->(p) { [p.categories.map(&:name), p.rubygem_downloads, p.github_repo_stargazers_count] }
+
+      # Sometimes activerecord sprinkles in a `SELECT a.attname, format_type(a.atttypid, a.atttypmod),`
+      # here for good measure. Actually it's supposed to be 4 queries.
+      expect { Project.includes_associations.map(&nested_accessor) }
+        .to make_database_queries(count: 4..5)
+    end
+  end
+
   describe ".with_bugfix_forks" do
     before do
       Factories.project "regular"
