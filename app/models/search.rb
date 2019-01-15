@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
 class Search
-  attr_accessor :query, :order
-  private :query=, :order=
+  attr_accessor :query, :order, :show_forks
+  private :query=, :order=, :show_forks=
 
-  def initialize(query, order: Project::Order.new(directions: Project::Order::SEARCH_DIRECTIONS))
+  def initialize(query, order: Project::Order.new(directions: Project::Order::SEARCH_DIRECTIONS), show_forks: false)
     self.query = query.presence&.strip
     self.order = order
+    self.show_forks = !!show_forks
   end
 
   def query?
@@ -14,7 +15,7 @@ class Search
   end
 
   def projects
-    @projects ||= Project.search(query, order: order)
+    @projects ||= Project.search(query, order: order, show_forks: show_forks)
   end
 
   def categories

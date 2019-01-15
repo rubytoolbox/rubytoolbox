@@ -1,0 +1,40 @@
+.hero
+  section.section: .container.has-text-centered
+    h2 Bugfix Forks
+
+
+section.section: .container: .columns
+  article.blog-post
+    markdown:
+      Nowadays it's easy to **include a patched gem version from a git repository**
+      by adding `gem "xyz", git: "some git source"` to your application's `Gemfile`, but **before
+      [bundler] existed** this was a very **cumbersome task**.
+
+      If you **ran into an issue with a gem** you were using and you or somebody else
+      created a bugfix for the problem **you had to wait for the library maintainers to publish
+      a new release** to Rubygems **before you could patch your application** (or use [Github's discontinued Rubygems server][github-gems], which also had namespacing).
+
+      To **get around this issue** many developers adopted a pattern of **publishing a namespaced fork
+      including a bugfix** to Rubygems **until the fix was merged and released upstream**.
+
+      Unfortunately the widespread adoption of this practice led to a **huge number of orphaned gems**
+      that usually have only a single or at most a handful of releases. Additionally these **forked gems
+      often retained** their upstream **github source code url**, so on the Ruby Toolbox **these forks
+      receive a high popularity ranking**.
+
+      Because of this, the Ruby Toolbox tries to identify these projects based on common patterns.
+
+      If a **project is flagged as a bugfix fork** by default it **does not show up in search results**.
+      However, you can **re-enable inclusion of bugfix forks** from within the **search navigation** if
+      you are missing a library.
+
+      If you spot a **library that is flagged as a bugfix fork wrongly** please
+      [report this as an issue on the Ruby Toolbox issue tracker](https://github.com/rubytoolbox/rubytoolbox/issues).
+
+      #### See also:
+
+      * [rubytoolbox#377](https://github.com/rubytoolbox/rubytoolbox/pull/377)
+      * [rubytoolbox#380](https://github.com/rubytoolbox/rubytoolbox/pull/380)
+
+      [bundler]: /projects/bundler
+      [github-gems]: https://blog.github.com/2008-04-25-github-s-rubygem-server/

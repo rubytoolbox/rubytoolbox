@@ -41,6 +41,24 @@ RSpec.describe Project, type: :model do
       expect(Project.search("widget")).to be == [expected]
     end
 
+    describe "for projects flagged as bugfix forks" do
+      let(:expected) do
+        Project.create! permalink: "somethingelse", score: 10, description: "Provides amazing widgets"
+      end
+
+      before do
+        Project.create! permalink: "widgets", is_bugfix_fork: true, score: 1
+      end
+
+      it "does not include them by default" do
+        expect(Project.search("widget")).to be == [expected]
+      end
+
+      it "includes them when called with show_forks true" do
+        expect(Project.search("widget", show_forks: true)).to be == [expected, Project.find("widgets")]
+      end
+    end
+
     describe "result order" do
       before do
         (1..3).each do |i|

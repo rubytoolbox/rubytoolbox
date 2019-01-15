@@ -1,0 +1,11 @@
+.project-health-tags
+  - if project.bugfix_fork_of
+    .project-health-tag.tags.has-addons
+      a.tag.is-dark href=page_path("docs/features/bugfix_forks")
+        span.icon: i.fa.fa-code-fork
+        span Bugfix fork of
+      a.tag.is-primary href=project_path(project.bugfix_fork_of)
+        = project.bugfix_fork_of
+
+  - Project::Health.new(project).status.each do |status|
+    = project_health_tag status
