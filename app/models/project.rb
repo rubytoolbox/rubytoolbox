@@ -25,7 +25,10 @@ class Project < ApplicationRecord
              optional:    true,
              inverse_of:  :projects
 
-  scope :includes_associations, -> { left_outer_joins(:github_repo, :rubygem, :categories) }
+  scope :includes_associations, lambda {
+    includes(:github_repo, :rubygem, :categories)
+      .left_outer_joins(:github_repo, :rubygem, :categories)
+  }
   scope :with_score, -> { where.not(score: nil) }
   def self.with_bugfix_forks(include_forks)
     include_forks ? self : where(is_bugfix_fork: false)
