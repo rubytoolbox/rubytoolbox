@@ -22,7 +22,7 @@ section.section: .container: .columns
       often retained** their upstream **github source code url**, so on the Ruby Toolbox **these forks
       receive a high popularity ranking**.
 
-      Because of this, the Ruby Toolbox tries to identify these projects based on common patterns.
+      Because of this, the Ruby Toolbox tries to [identify these projects based on common patterns][fork-detector-src].
 
       If a **project is flagged as a bugfix fork** by default it **does not show up in search results**.
       However, you can **re-enable inclusion of bugfix forks** from within the **search navigation** if
@@ -33,8 +33,10 @@ section.section: .container: .columns
 
       #### See also:
 
+      * [Feature Announcement Blog Post](/blog/2019-01-16/bugfix-fork-detection-and-filtering)
       * [rubytoolbox#377](https://github.com/rubytoolbox/rubytoolbox/pull/377)
       * [rubytoolbox#380](https://github.com/rubytoolbox/rubytoolbox/pull/380)
 
       [bundler]: /projects/bundler
       [github-gems]: https://blog.github.com/2008-04-25-github-s-rubygem-server/
+      [fork-detector-src]: https://github.com/rubytoolbox/rubytoolbox/blob/master/app/models/project/fork_detector.rb
