@@ -107,6 +107,6 @@ class Blog
     Dir[root.join("*.md")].each do |path|
       posts << PostLoader.new(path: path).post
     end
-    posts.sort_by(&:published_on).reverse
+    posts.sort_by(&:title).reverse.sort_by(&:published_on).reverse
   end
 end
