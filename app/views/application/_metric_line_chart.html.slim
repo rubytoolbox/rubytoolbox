@@ -1,0 +1,50 @@
+canvas class="metric-line-chart" width="400" height="150" style="margin-top: 80px"
+
+- data = percentiles table, column
+
+javascript:
+  var ctx = document.querySelector(".metric-line-chart")
+                    .getContext('2d');
+
+  var myChart = new Chart(ctx, {
+    type: "line",
+    data: {
+      labels: #{Oj.dump(data.keys.map {|i| "#{i}%" }).html_safe},
+      datasets: [
+        {
+          data: #{Oj.dump(data.values).html_safe},
+          fill: true,
+          borderWidth: 5,
+          pointRadius: 1,
+          backgroundColor: "rgba(200,200,200,0.2)",
+          borderColor: "rgba(166,20,20,1)"
+        }
+      ]
+    },
+    options: {
+      legend: {
+        display: false
+      },
+      tooltips: {
+        mode: "index",
+        intersect: false,
+        axis: "x"
+      },
+      scales: {
+        xAxes : [ {
+            gridLines : {
+                display : false
+            }
+        } ],
+        yAxes: [{
+          type: "logarithmic",
+          ticks: {
+            beginAtZero: true,
+            callback: function(value, index) {
+              if (index % 8 == 0) { return value; }
+            }
+          }
+        }]
+      }
+    }
+  });

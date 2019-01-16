@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/ModuleLength
 module ApplicationHelper
   def metric_icon(metric)
     "fa-" + t(:icon, scope: "metrics.#{metric}")
@@ -9,14 +10,53 @@ module ApplicationHelper
     t(:label, scope: "metrics.#{metric}")
   end
 
+  def percentiles(table, column)
+    groups = (0..100).map { |n| n / 100.0 }
+
+    query = <<~SQL
+      SELECT unnest(percentile_disc(array[#{groups.join(',')}])
+        WITHIN GROUP (ORDER BY #{column} ASC))
+      FROM #{table}
+    SQL
+
+    ApplicationRecord.connection.execute(query)
+                     .each_with_index
+                     .map { |result, i| [i, result["unnest"]] }
+                     .to_h
+  end
+
   def project_metrics(project, *metrics)
     metrics.map do |metric|
       render partial: "projects/metric", locals: {
-        label: metric_label(metric),
+        key:   metric,
         value: project.public_send(metric),
         icon:  metric_icon(metric),
       }
     end.inject(&:+)
+  end
+
+  def pretty_metric_value(value) # rubocop:disable Metrics/MethodLength
+    if value.is_a?(Float) || value.is_a?(BigDecimal)
+      number_with_delimiter(value.floor) + "%"
+    elsif value.is_a? Integer
+      number_with_delimiter value
+    elsif value.is_a?(Date) || value.is_a?(Time)
+      content_tag "time", "#{time_ago_in_words(value)} ago", datetime: value.iso8601, title: l(value)
+    elsif value.is_a? Array
+      value.to_sentence
+    else
+      value
+    end
+  end
+
+  def link_to_page_if_exists(page, &block)
+    content = capture(&block)
+
+    if HighVoltage.page_ids.include? page
+      link_to content, page_path(page)
+    else
+      content
+    end
   end
 
   def project_link(label, url, icon:)
@@ -117,3 +157,4 @@ module ApplicationHelper
     render "components/component_example", heading: heading, &block
   end
 end
+# rubocop:enable Metrics/ModuleLength

@@ -51,7 +51,16 @@ RSpec.describe ApplicationHelper, type: :helper do
 
     it "renders only the container when the value is blank" do
       allow(project).to receive(:rubygem_downloads)
-      expect(project_metrics).to be == "<div class=\"metric\"></div>"
+      expect(project_metrics).to be == "<div class=\"metric\" data-metric-name=\"rubygem_downloads\"></div>"
+    end
+  end
+
+  describe "#percentiles" do
+    it "returns an hash of number distribution percentiles" do
+      Factories.project "example"
+      expect(helper.percentiles(:rubygems, :downloads)).to be_a(Hash)
+        .and(satisfy { |h| h.keys == (0..100).to_a })
+        .and(satisfy { |h| h.values.all? { |v| v.is_a? Numeric } })
     end
   end
 

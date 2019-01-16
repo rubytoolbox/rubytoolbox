@@ -12,6 +12,7 @@
 //
 //= require rails-ujs
 //= require turbolinks
+//= require chart.js/dist/Chart.bundle.js
 //= require headroom.js/dist/headroom
 //= require_tree .
 
@@ -43,6 +44,11 @@ document.addEventListener("turbolinks:load", function () {
       });
     });
   }
+  Chart.defaults.global.defaultFontFamily = 'Lato, "Helvetica Neue", Helvetica, Arial, sans-serif';
+  Chart.defaults.global.defaultFontSize = 12;
+  Chart.defaults.global.defaultFontStyle = "bold";
+  Chart.defaults.global.animation = 20;
+
 
   document.querySelectorAll("form.search-form").forEach(function(form) {
     form.addEventListener("submit", function() {
