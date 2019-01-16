@@ -12,6 +12,7 @@ class ProjectUpdateJob < ApplicationJob
   # it's referenced github repo.
   REPO_LINK_BLACKLIST = %w[
     react-source
+    react-source-fb-cloned
   ].freeze
 
   def perform(permalink)
