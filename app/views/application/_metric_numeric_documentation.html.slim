@@ -1,42 +1,25 @@
 - page = Docs.new.find(params[:id])
 - key = "#{table.to_s.singularize}_#{column}"
 - i18n_scope = "metrics.#{key}"
-- content_for(:title) { "Documentation: #{page.title}" }
 
-.hero
-  section.section: .container: .columns
-    .column
-    .column.is-three-quarters-desktop.has-text-centered
-      h2= page.title
+= documentation_page page.title do
+  = numeric_metric_chart percentiles(table, column)
 
-section.section: .container: .columns
-  .column
-    aside.menu
-      - Docs.new.sections.each do |title, pages|
-        p.menu-label= title
+  article.blog-post
+    p= t("description", scope: i18n_scope)
 
-        ul.menu-list
-          - pages.each do |page|
-            li= link_to page.title, page_path(page), class: (page.active?(params[:id]) ? "is-active" : "")
-
-  .column.is-three-quarters-desktop
-    = numeric_metric_chart percentiles(table, column)
-
-    article.blog-post
-      p= t("description", scope: i18n_scope)
-
-      h3.has-text-centered= "Top Projects by #{page.title}"
-      - Project.includes_associations.with_bugfix_forks(false).order("#{table}.#{column} DESC NULLS LAST").limit(150).each do |project|
-          .level.is-mobile
-            .level-left
-              .level-item
-                = link_to project do
-                  strong= project.permalink
-            .level-right
-              - if table == :rubygems
-                .level-item: small= project_link project.rubygem_name, project.rubygem_url, icon: :diamond
-              - elsif table == :github_repos
-                .level-item: small= project_link project.github_repo_path, project.github_repo_url, icon: :github
-              .level-item
-                span.icon: i.fa class=metric_icon(key)
-                strong= pretty_metric_value project.public_send(key)
+    h3.has-text-centered= "Top Projects by #{page.title}"
+    - Project.includes_associations.with_bugfix_forks(false).order("#{table}.#{column} DESC NULLS LAST").limit(150).each do |project|
+        .level.is-mobile
+          .level-left
+            .level-item
+              = link_to project do
+                strong= project.permalink
+          .level-right
+            - if table == :rubygems
+              .level-item: small= project_link project.rubygem_name, project.rubygem_url, icon: :diamond
+            - elsif table == :github_repos
+              .level-item: small= project_link project.github_repo_path, project.github_repo_url, icon: :github
+            .level-item
+              span.icon: i.fa class=metric_icon(key)
+              strong= pretty_metric_value project.public_send(key)

@@ -1,0 +1,13 @@
+.hero
+  section.section: .container
+    p.heading= link_to "Ruby Toolbox UI Components Styleguide", "/pages/components"
+    h2= current_page.split("/").last.humanize
+
+- categories = Category.limit(8).includes(:projects)
+
+= documentation_page "Example Title" do
+  = bar_chart 20 => 30
+
+  article.blog-post
+    markdown:
+      Example content goes here
