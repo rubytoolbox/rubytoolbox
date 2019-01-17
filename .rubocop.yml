@@ -18,6 +18,7 @@ Metrics/BlockLength:
     - 'Guardfile'
     - 'spec/**/*_examples.rb'
     - 'spec/**/*_spec.rb'
+    - 'spec/rails_helper.rb'
 
 # Big screens are common :)
 Metrics/LineLength:
