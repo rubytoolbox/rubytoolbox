@@ -40,35 +40,6 @@ class GithubRepo < ApplicationRecord
     File.join(url, "wiki") if has_wiki?
   end
 
-  def total_issues_count_deprecated
-    return if !has_issues? || [open_issues_count, closed_issues_count].any?(&:nil?)
-
-    closed_issues_count + open_issues_count
-  end
-
-  def issue_closure_rate_deprecated
-    return if !has_issues? || total_issues_count_deprecated.nil? || total_issues_count_deprecated.zero?
-
-    (closed_issues_count * 100.0) / (open_issues_count + closed_issues_count)
-  end
-
-  def pull_request_acceptance_rate_deprecated
-    return if total_pull_requests_count_deprecated.nil? || total_pull_requests_count_deprecated.zero?
-
-    (merged_pull_requests_count * 100.0) / total_pull_requests_count_deprecated
-  end
-
-  def total_pull_requests_count_deprecated
-    collection = [
-      open_pull_requests_count,
-      merged_pull_requests_count,
-      closed_pull_requests_count,
-    ]
-    return if collection.any?(&:nil?)
-
-    collection.sum
-  end
-
   def sibling_gem_with_most_downloads
     rubygems.order(downloads: :desc).first
   end
