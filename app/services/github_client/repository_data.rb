@@ -2,7 +2,7 @@
 
 class GithubClient
   # Please write unit tests for me...
-  class RepositoryData
+  class RepositoryData # rubocop:disable Metrics/ClassLength
     attr_accessor :raw_data
     private :raw_data=
 
@@ -82,6 +82,28 @@ class GithubClient
       count "closedPullRequests"
     end
 
+    def total_issues_count
+      return unless issues?
+
+      sum open_issues_count, closed_issues_count
+    end
+
+    def issue_closure_rate
+      return if !issues? || total_issues_count.nil? || total_issues_count.zero?
+
+      (closed_issues_count * 100.0) / (open_issues_count + closed_issues_count)
+    end
+
+    def total_pull_requests_count
+      sum open_pull_requests_count, merged_pull_requests_count, closed_pull_requests_count
+    end
+
+    def pull_request_acceptance_rate
+      return if total_pull_requests_count.nil? || total_pull_requests_count.zero?
+
+      (merged_pull_requests_count * 100.0) / total_pull_requests_count
+    end
+
     def default_branch
       raw_data.dig("defaultBranchRef", "name").presence
     end
@@ -128,6 +150,12 @@ class GithubClient
 
     def flag(key)
       !!raw_data.dig(key)
+    end
+
+    def sum(*values)
+      return if values.any?(&:nil?)
+
+      values.sum
     end
 
     def time(key)

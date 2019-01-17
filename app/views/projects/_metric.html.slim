@@ -5,7 +5,7 @@
         i.fa class=icon
       span= label
     strong
-      - if value.kind_of? Float
+      - if value.kind_of? Float or value.kind_of? BigDecimal
         = number_with_delimiter value.floor
         | %
       - elsif value.kind_of? Integer
