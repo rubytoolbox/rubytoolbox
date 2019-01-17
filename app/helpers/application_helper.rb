@@ -35,7 +35,9 @@ module ApplicationHelper
     end.inject(&:+)
   end
 
-  def pretty_metric_value(value) # rubocop:disable Metrics/MethodLength
+  # This should be refactored...
+  # rubocop:disable Metrics/MethodLength, Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+  def pretty_metric_value(value)
     if value.is_a?(Float) || value.is_a?(BigDecimal)
       number_with_delimiter(value.floor) + "%"
     elsif value.is_a? Integer
@@ -48,6 +50,7 @@ module ApplicationHelper
       value
     end
   end
+  # rubocop:enable Metrics/MethodLength, Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
 
   def link_to_page_if_exists(page, &block)
     content = capture(&block)

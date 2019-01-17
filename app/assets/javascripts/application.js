@@ -47,7 +47,7 @@ document.addEventListener("turbolinks:load", function () {
   Chart.defaults.global.defaultFontFamily = 'Lato, "Helvetica Neue", Helvetica, Arial, sans-serif';
   Chart.defaults.global.defaultFontSize = 12;
   Chart.defaults.global.defaultFontStyle = "bold";
-  Chart.defaults.global.animation = 20;
+  Chart.defaults.global.animation = 0;
 
 
   document.querySelectorAll("form.search-form").forEach(function(form) {

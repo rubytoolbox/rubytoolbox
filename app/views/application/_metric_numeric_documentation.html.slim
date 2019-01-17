@@ -4,21 +4,52 @@
 - content_for(:title) { "Documentation: #{metric_label}" }
 
 .hero
-  section.section: .container.has-text-centered
-    h2= metric_label
-
-    = render "metric_line_chart", table: table, column: column
+  section.section: .container: .columns
+    .column
+    .column.is-three-quarters-desktop.has-text-centered
+      h2= metric_label
 
 section.section: .container: .columns
-  article.blog-post
-    p= t("description", scope: i18n_scope)
+  .column
+    aside.menu
+      p.menu-label
+        | General
+      ul.menu-list
+        li
+          a Foo
+        li
+          a Bar
+      p.menu-label
+        | Features
+      ul.menu-list
+        li
+          a href="#"  Bugfix Forks
+      p.menu-label
+        | Metrics
+      ul.menu-list
+        - HighVoltage.page_ids.sort.select {|p| p.start_with? "docs/metrics" }.each do |page_id|
+          li
+            = link_to t(:long_label, scope: "metrics.#{File.basename(page_id)}" ), page_path(page_id), class: (params[:id] == page_id ? "is-active" : "")
 
-    h3.has-text-centered= "Top Projects by #{metric_label}"
-    - Project.includes_associations.with_bugfix_forks(false).order("#{table}.#{column} DESC NULLS LAST").limit(150).each do |project|
-      .box
-        .columns
-          .column
-            strong= link_to project.permalink, project
-          .column.has-text-right
-            span.icon: i.fa class=metric_icon(key)
-            strong= pretty_metric_value project.public_send(key)
+
+  .column.is-three-quarters-desktop
+    = render "metric_line_chart", table: table, column: column
+
+    article.blog-post
+      p= t("description", scope: i18n_scope)
+
+      h3.has-text-centered= "Top Projects by #{metric_label}"
+      - Project.includes_associations.with_bugfix_forks(false).order("#{table}.#{column} DESC NULLS LAST").limit(150).each do |project|
+          .level.is-mobile
+            .level-left
+              .level-item
+                = link_to project do
+                  strong= project.permalink
+            .level-right
+              - if table == :rubygems
+                .level-item: small= project_link project.rubygem_name, project.rubygem_url, icon: :diamond
+              - elsif table == :github_repos
+                .level-item: small= project_link project.github_repo_path, project.github_repo_url, icon: :github
+              .level-item
+                span.icon: i.fa class=metric_icon(key)
+                strong= pretty_metric_value project.public_send(key)
