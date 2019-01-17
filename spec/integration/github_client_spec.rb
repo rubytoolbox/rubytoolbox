@@ -26,6 +26,7 @@ RSpec.describe GithubClient, :real_http do
         mirror?:                     false,
         open_issues_count:           a_value > 10,
         open_pull_requests_count:    a_value > 50,
+        total_pull_requests_count:   a_value > 100,
         path:                        "rails/rails",
         primary_language:            "Ruby",
         pushed_at:                   a_value >= Time.zone.parse("2018-03-12T19:56:09Z"),

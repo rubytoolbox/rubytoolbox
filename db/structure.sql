@@ -226,7 +226,11 @@ CREATE TABLE public.github_repos (
     average_recent_committed_at timestamp without time zone,
     code_of_conduct_url character varying,
     code_of_conduct_name character varying,
-    topics character varying[] DEFAULT '{}'::character varying[] NOT NULL
+    topics character varying[] DEFAULT '{}'::character varying[] NOT NULL,
+    total_issues_count integer,
+    total_pull_requests_count integer,
+    issue_closure_rate numeric(5,2) DEFAULT NULL::numeric,
+    pull_request_acceptance_rate numeric(5,2) DEFAULT NULL::numeric
 );
 
 
@@ -528,6 +532,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20181205134522'),
 ('20181210092238'),
 ('20181213102703'),
-('20190110202221');
+('20190110202221'),
+('20190117100816'),
+('20190117101723');
 
 
