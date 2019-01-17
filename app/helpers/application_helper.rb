@@ -25,6 +25,19 @@ module ApplicationHelper
                      .to_h
   end
 
+  def date_groups(table, column)
+    query = <<~SQL
+      SELECT date_trunc('year', #{column}) AS year, count(*) as events
+        FROM #{table}
+      GROUP BY year
+      ORDER BY year ASC
+    SQL
+
+    ApplicationRecord.connection.execute(query)
+                     .map { |row| [Date.parse(row["year"]).year, row["events"]] }
+                     .to_h
+  end
+
   def project_metrics(project, *metrics)
     metrics.map do |metric|
       render partial: "projects/metric", locals: {
@@ -155,6 +168,12 @@ module ApplicationHelper
   def numeric_metric_chart(data)
     render "components/numeric_metric_chart",
            keys:   data.keys.map { |i| "#{i}%" },
+           values: data.values
+  end
+
+  def bar_chart(data)
+    render "components/bar_chart",
+           keys:   data.keys,
            values: data.values
   end
 

@@ -1,0 +1,8 @@
+.hero
+  section.section: .container
+    p.heading= link_to "Ruby Toolbox UI Components Styleguide", "/pages/components"
+    h2= current_page.split("/").last.humanize
+
+
+= component_example "A Bar Chart" do
+  .chart= bar_chart 2014 => 2123, 2015 => 3501, 2016 => 2012
