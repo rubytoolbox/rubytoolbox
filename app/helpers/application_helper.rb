@@ -29,6 +29,7 @@ module ApplicationHelper
     query = <<~SQL
       SELECT date_trunc('year', #{column}) AS year, count(*) as events
         FROM #{table}
+      WHERE #{column} IS NOT NULL
       GROUP BY year
       ORDER BY year ASC
     SQL

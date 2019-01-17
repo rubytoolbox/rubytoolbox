@@ -65,14 +65,19 @@ RSpec.describe ApplicationHelper, type: :helper do
   end
 
   describe "#date_groups" do
-    it "returns counts grouped by year in given column" do
+    before do
+      # Null values must not cause problems...
+      Rubygem.create! name: "foo", downloads: 1, current_version: 1
+
       [2014, 2014, 2016, 2016, 2016].each_with_index do |year, i|
         Rubygem.create! name:             i,
                         downloads:        i,
                         current_version:  i,
                         first_release_on: Date.new(year)
       end
+    end
 
+    it "returns counts grouped by year in given column" do
       expect(helper.date_groups(:rubygems, :first_release_on)).to be == {
         2014 => 2,
         2016 => 3,

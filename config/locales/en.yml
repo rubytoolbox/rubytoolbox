@@ -58,6 +58,7 @@ en:
   docs:
     titles:
       bugfix_forks: Bugfix Forks
+      github_repo_average_recent_committed_at: GitHub Average date of last 50 commits
       github_repo_closed_issues_count: GitHub Closed Issues
       github_repo_closed_pull_requests_count: GitHub Closed Pull Requests
       github_repo_forks_count: Github Forks
@@ -70,6 +71,8 @@ en:
       github_repo_total_issues_count: GitHub Total Issues
       github_repo_watchers_count: GitHub Watchers
       rubygem_downloads: Rubygem Downloads
+      rubygem_first_release_on: Rubygem First Release
+      rubygem_latest_release_on: Rubygem Latest Release
       rubygem_releases_count: Rubygem Total Releases
       rubygem_reverse_dependencies_count: Rubygem Reverse Dependencies
 
