@@ -1,0 +1,9 @@
+- element = "numeric-metric-chart-#{SecureRandom.hex(8)}"
+canvas class=element width="400" height="150"
+
+javascript:
+  numericMetricChart(
+    ".#{element}",
+    #{Oj.dump(keys).html_safe},
+    #{Oj.dump(values).html_safe}
+  )

@@ -148,6 +148,12 @@ module ApplicationHelper
     render "components/project_order_dropdown", order: order
   end
 
+  def numeric_metric_chart(data)
+    render "components/numeric_metric_chart",
+           keys:   data.keys.map { |i| "#{i}%" },
+           values: data.values
+  end
+
   def landing_hero(title:, image:, &block)
     render "components/landing_hero", title: title, image: image, &block
   end
