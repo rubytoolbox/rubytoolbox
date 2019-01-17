@@ -55,6 +55,15 @@ en:
       label: GitHub repo
       icon: github
 
+  docs:
+    titles:
+      bugfix_forks: Bugfix Forks
+      github_repo_forks_count: Github Forks
+      github_repo_open_issues_count: GitHub Open Issues
+      github_repo_stargazers_count: GitHub Stars
+      rubygem_downloads: Rubygem Downloads
+      rubygem_reverse_dependencies_count: Rubygem Reverse Dependencies
+
   metrics:
     rank:
       label: Project Search Rank
@@ -64,17 +73,14 @@ en:
       icon: flask
     rubygem_downloads:
       label: Downloads
-      long_label: Rubygem Downloads
       description: Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       icon: download
     github_repo_stargazers_count:
       label: Stars
-      long_label: GitHub Stars
       description: Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       icon: star
     github_repo_forks_count:
       label: Forks
-      long_label: Github Forks
       description: Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       icon: code-fork
     github_repo_watchers_count:
@@ -94,7 +100,6 @@ en:
       icon: file-text-o
     github_repo_open_issues_count:
       label: Open Issues
-      long_label: GitHub Open Issues
       description: Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       icon: bug
     github_repo_closed_issues_count:
@@ -123,7 +128,6 @@ en:
       icon: code
     rubygem_reverse_dependencies_count:
       label: Reverse Dependencies
-      long_label: Rubygem Reverse Dependencies
       description: Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       icon: compress
     rubygem_licenses:
