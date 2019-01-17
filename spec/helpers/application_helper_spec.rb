@@ -64,6 +64,18 @@ RSpec.describe ApplicationHelper, type: :helper do
     end
   end
 
+  describe "#link_to_docs_if_exists" do
+    it "is a link when given a valid docs page path" do
+      link = helper.link_to_docs_if_exists("docs/features/bugfix_forks") { "foo" }
+      expect(link).to be == '<a href="/pages/docs/features/bugfix_forks">foo</a>'
+    end
+
+    it "is just the content of the block when not given a valid docs path" do
+      link = helper.link_to_docs_if_exists("foo") { "foo" }
+      expect(link).to be == "foo"
+    end
+  end
+
   describe "#title" do
     it "is the site name and tagline by default" do
       expect(helper.title).to be == [helper.site_name, helper.tagline].join(" - ")

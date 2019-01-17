@@ -52,10 +52,14 @@ module ApplicationHelper
   end
   # rubocop:enable Metrics/MethodLength, Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
 
-  def link_to_page_if_exists(page, &block)
+  def docs
+    @docs ||= Docs.new
+  end
+
+  def link_to_docs_if_exists(page, &block)
     content = capture(&block)
 
-    if HighVoltage.page_ids.include? page
+    if docs.find page
       link_to content, page_path(page)
     else
       content

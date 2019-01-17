@@ -58,10 +58,19 @@ en:
   docs:
     titles:
       bugfix_forks: Bugfix Forks
+      github_repo_closed_issues_count: GitHub Closed Issues
+      github_repo_closed_pull_requests_count: GitHub Closed Pull Requests
       github_repo_forks_count: Github Forks
+      github_repo_issue_closure_rate: Github Issue Closure Rate
+      github_repo_merged_pull_requests_count: GitHub Merged Pull Requests
       github_repo_open_issues_count: GitHub Open Issues
+      github_repo_open_pull_requests_count: GitHub Open Pull Requests
+      github_repo_pull_request_acceptance_rate: GitHub Pull Request Acceptance Rate
       github_repo_stargazers_count: GitHub Stars
+      github_repo_total_issues_count: GitHub Total Issues
+      github_repo_watchers_count: GitHub Watchers
       rubygem_downloads: Rubygem Downloads
+      rubygem_releases_count: Rubygem Total Releases
       rubygem_reverse_dependencies_count: Rubygem Reverse Dependencies
 
   metrics:
