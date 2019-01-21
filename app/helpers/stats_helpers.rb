@@ -23,7 +23,7 @@ module StatsHelpers
   #
   # Fetches counts of occurences per year for given table/column combination
   #
-  def date_groups(table, column)
+  def date_groups(table, column) # rubocop:disable Metrics/MethodLength
     query = <<~SQL
       SELECT date_trunc('year', #{column}) AS year, count(*) as events
         FROM #{table}
@@ -34,6 +34,7 @@ module StatsHelpers
 
     ApplicationRecord.connection.execute(query)
                      .map { |row| [Date.parse(row["year"]).year, row["events"]] }
+                     .select { |row| (2004..Time.current.year).cover? row.first }
                      .to_h
   end
 end

@@ -17,7 +17,7 @@ RSpec.describe StatsHelpers, type: :helper do
       # Null values must not cause problems...
       Rubygem.create! name: "foo", downloads: 1, current_version: 1
 
-      [2014, 2014, 2016, 2016, 2016].each_with_index do |year, i|
+      [2003, 2014, 2014, 2016, 2016, 2016, Time.current.year + 1].each_with_index do |year, i|
         Rubygem.create! name:             i,
                         downloads:        i,
                         current_version:  i,
