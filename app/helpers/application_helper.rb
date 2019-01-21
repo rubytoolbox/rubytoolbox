@@ -121,25 +121,6 @@ module ApplicationHelper
     content_for(:description).presence || t(:description)
   end
 
-  DISTANCES = {
-    1.week   => "within last week",
-    2.weeks  => "within last two weeks",
-    1.month  => "within last month",
-    3.months => "within last 3 months",
-    1.year   => "within last year",
-    2.years  => "within last 2 years",
-  }.freeze
-
-  def recent_distance_in_words(time)
-    return if time.blank?
-
-    matching_distance = DISTANCES.find do |distance, _label|
-      time >= distance.ago
-    end
-
-    matching_distance&.last || "more than 2 years ago"
-  end
-
   def active_when(controller:)
     "is-active" if controller_name == controller.to_s
   end
