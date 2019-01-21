@@ -42,7 +42,7 @@ GEM
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
-    addressable (2.5.2)
+    addressable (2.6.0)
       public_suffix (>= 2.0.2, < 4.0)
     appsignal (2.8.1)
       rack
@@ -141,7 +141,7 @@ GEM
       ruby_parser (~> 3.10)
     hashdiff (0.3.7)
     high_voltage (3.1.0)
-    http (4.0.0)
+    http (4.0.3)
       addressable (~> 2.3)
       http-cookie (~> 1.0)
       http-form_data (~> 2.0)
