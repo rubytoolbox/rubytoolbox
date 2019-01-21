@@ -23,9 +23,9 @@
 
 
   .columns: .links.column
-    = render partial: "projects/links", locals: { project: @project }
+    = project_links @project
 
   .columns: .description.column= @project.description
 
 section.section: .container: .project
-  = render partial: "projects/metrics", locals: { project: @project, expanded_view: true }
+  = project_metrics @project, expanded_view: true

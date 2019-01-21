@@ -1,0 +1,45 @@
+.hero
+  section.section: .container
+    p.heading= link_to "Ruby Toolbox UI Components Styleguide", "/pages/components"
+    h2= current_page.split("/").last.humanize
+
+- full = Project.for_display.joins(:categories, :github_repo, :rubygem).order(score: :desc).limit(25)
+- github = Project.for_display.joins(:categories, :github_repo).order(score: :desc).where(rubygem_name: nil).limit(25).sample
+
+= component_example "Project box" do
+  .notification: .content
+    markdown:
+      A box to display an individual project's data in an overview
+
+  = render_project full.sample
+
+  .notification: .content
+    markdown:
+      Includes links to referenced categories when given `show_categories: true`
+  = render_project full.sample, show_categories: true
+
+
+= component_example "Project links" do
+  .notification: .content
+    markdown:
+      Display an inline list of all available links for this project
+
+  - 3.times do
+    = project_links full.sample
+
+= component_example "Project metrics" do
+  .notification: .content
+    markdown:
+      Renders a subset of project metrics and a link to the project page by default
+  = project_metrics full.sample
+
+  .notification: .content
+    markdown:
+      With `expanded_view: true`, used for full individual project display
+  = project_metrics full.sample, expanded_view: true
+
+  - if github
+    .notification: .content
+      markdown:
+        Hides unavailable metrics automatically
+    = project_metrics github

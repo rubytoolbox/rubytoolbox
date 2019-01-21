@@ -3,31 +3,31 @@
 require "rails_helper"
 
 RSpec.describe ApplicationHelper, type: :helper do
-  describe "#project_metrics" do
+  describe "#metrics_row" do
     let(:project) { instance_double(Project, rubygem_downloads: 22_123_122) }
-    let(:project_metrics) { helper.project_metrics(project, :rubygem_downloads) }
+    let(:metrics_row) { helper.metrics_row(project, :rubygem_downloads) }
 
     it "renders the expected label" do
-      expect(project_metrics).to include("<span>Downloads</span>")
+      expect(metrics_row).to include("<span>Downloads</span>")
     end
 
     it "renders the given icon" do
-      expect(project_metrics).to include("<i class=\"fa fa-download\"></i>")
+      expect(metrics_row).to include("<i class=\"fa fa-download\"></i>")
     end
 
     it "renders integers pretty-printed" do
-      expect(project_metrics).to include("<strong>22,123,122</strong>")
+      expect(metrics_row).to include("<strong>22,123,122</strong>")
     end
 
     it "renders floats floored and pretty-printed as a percentage" do
       allow(project).to receive(:rubygem_downloads).and_return(1297.7)
-      expect(project_metrics).to include("<strong>1,297%</strong>")
+      expect(metrics_row).to include("<strong>1,297%</strong>")
     end
 
     it "renders dates pretty-printed" do
       allow(project).to receive(:rubygem_downloads).and_return(Date.new(2014, 7, 4))
       Timecop.travel Date.new(2015, 7, 4) do
-        expect(project_metrics).to include("<time datetime=\"2014-07-04\" title=\"2014-07-04\">about 1 year ago</time>")
+        expect(metrics_row).to include("<time datetime=\"2014-07-04\" title=\"2014-07-04\">about 1 year ago</time>")
       end
     end
 
@@ -35,23 +35,23 @@ RSpec.describe ApplicationHelper, type: :helper do
       allow(project).to receive(:rubygem_downloads).and_return(Time.utc(2014, 7, 4, 13, 13, 0))
       Timecop.travel Date.new(2015, 7, 4) do
         expected = '<time datetime="2014-07-04T13:13:00Z" title="Fri, 04 Jul 2014 13:13:00 +0000">12 months ago</time>'
-        expect(project_metrics).to include(expected)
+        expect(metrics_row).to include(expected)
       end
     end
 
     it "renders strings as-is" do
       allow(project).to receive(:rubygem_downloads).and_return("Hello")
-      expect(project_metrics).to include "<strong>Hello</strong>"
+      expect(metrics_row).to include "<strong>Hello</strong>"
     end
 
     it "renders arrays as sentences" do
       allow(project).to receive(:rubygem_downloads).and_return(%w[Hello World])
-      expect(project_metrics).to include "<strong>Hello and World</strong>"
+      expect(metrics_row).to include "<strong>Hello and World</strong>"
     end
 
     it "renders only the container when the value is blank" do
       allow(project).to receive(:rubygem_downloads)
-      expect(project_metrics).to be == "<div class=\"metric\" data-metric-name=\"rubygem_downloads\"></div>"
+      expect(metrics_row).to be == "<div class=\"metric\" data-metric-name=\"rubygem_downloads\"></div>"
     end
   end
 

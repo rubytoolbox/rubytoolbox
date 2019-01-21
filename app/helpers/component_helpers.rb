@@ -11,7 +11,33 @@ module ComponentHelpers
       compact:       compact,
       extra_classes: extra_classes,
     }
-    render partial: "components/category_card", locals: locals
+    render "components/category_card", locals
+  end
+
+  def render_project(project, show_categories: false)
+    render "components/project", project: project, show_categories: show_categories
+  end
+
+  def project_links(project)
+    render "components/project/links", project: project
+  end
+
+  def project_metrics(project, expanded_view: false)
+    render "components/project/metrics", project: project, expanded_view: expanded_view
+  end
+
+  def metrics_row(project, *metrics)
+    metrics.map do |metric|
+      render partial: "components/project/metric", locals: {
+        key:   metric,
+        value: project.public_send(metric),
+        icon:  metric_icon(metric),
+      }
+    end.inject(&:+)
+  end
+
+  def project_link(label, url, icon:)
+    render "components/project/link", label: label, url: url, icon: icon
   end
 
   def project_health_tags(project)

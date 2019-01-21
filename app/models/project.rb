@@ -29,9 +29,17 @@ class Project < ApplicationRecord
     includes(:github_repo, :rubygem, :categories)
       .left_outer_joins(:github_repo, :rubygem, :categories)
   }
+
   scope :with_score, -> { where.not(score: nil) }
+
   def self.with_bugfix_forks(include_forks)
     include_forks ? self : where(is_bugfix_fork: false)
+  end
+
+  def self.for_display(forks: false)
+    includes_associations
+      .with_bugfix_forks(forks)
+      .with_score
   end
 
   include PgSearch

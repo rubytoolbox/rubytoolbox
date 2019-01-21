@@ -61,7 +61,7 @@
         .columns: .column= paginate @projects
 
         - @projects.each do |project|
-          = render project, show_categories: true
+          = render_project project, show_categories: true
 
         .columns: .column= paginate @projects
 

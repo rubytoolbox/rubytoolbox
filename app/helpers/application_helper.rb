@@ -12,16 +12,6 @@ module ApplicationHelper
     t(:label, scope: "metrics.#{metric}")
   end
 
-  def project_metrics(project, *metrics)
-    metrics.map do |metric|
-      render partial: "projects/metric", locals: {
-        key:   metric,
-        value: project.public_send(metric),
-        icon:  metric_icon(metric),
-      }
-    end.inject(&:+)
-  end
-
   # This should be refactored...
   # rubocop:disable Metrics/MethodLength, Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
   def pretty_metric_value(value)
@@ -51,10 +41,6 @@ module ApplicationHelper
     else
       content
     end
-  end
-
-  def project_link(label, url, icon:)
-    render partial: "projects/link", locals: { label: label, url: url, icon: icon }
   end
 
   # why
