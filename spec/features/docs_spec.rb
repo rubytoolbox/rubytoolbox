@@ -7,7 +7,7 @@ RSpec.describe "Documentation Display", type: :feature, js: true do
     visit "/"
 
     within "header.main .navbar" do
-      click_on "Docs"
+      click_on "Documentation"
     end
     expect(page).to have_text "Welcome to the Ruby Toolbox documentation"
 
