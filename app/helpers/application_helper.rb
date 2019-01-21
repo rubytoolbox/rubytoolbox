@@ -2,6 +2,7 @@
 
 module ApplicationHelper
   include ComponentHelpers
+  include StatsHelpers
 
   def metric_icon(metric)
     "fa-" + t(:icon, scope: "metrics.#{metric}")
@@ -9,35 +10,6 @@ module ApplicationHelper
 
   def metric_label(metric)
     t(:label, scope: "metrics.#{metric}")
-  end
-
-  def percentiles(table, column)
-    groups = (0..100).map { |n| n / 100.0 }
-
-    query = <<~SQL
-      SELECT unnest(percentile_disc(array[#{groups.join(',')}])
-        WITHIN GROUP (ORDER BY #{column} ASC))
-      FROM #{table}
-    SQL
-
-    ApplicationRecord.connection.execute(query)
-                     .each_with_index
-                     .map { |result, i| ["#{i}%", result["unnest"]] }
-                     .to_h
-  end
-
-  def date_groups(table, column)
-    query = <<~SQL
-      SELECT date_trunc('year', #{column}) AS year, count(*) as events
-        FROM #{table}
-      WHERE #{column} IS NOT NULL
-      GROUP BY year
-      ORDER BY year ASC
-    SQL
-
-    ApplicationRecord.connection.execute(query)
-                     .map { |row| [Date.parse(row["year"]).year, row["events"]] }
-                     .to_h
   end
 
   def project_metrics(project, *metrics)
