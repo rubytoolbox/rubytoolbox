@@ -3,7 +3,7 @@
 - i18n_scope = "metrics.#{key}"
 
 = documentation_page page.title do
-  = numeric_metric_chart percentiles(table, column)
+  = line_chart percentiles(table, column)
 
   article.blog-post
     p= t("description", scope: i18n_scope)

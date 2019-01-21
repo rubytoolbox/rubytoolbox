@@ -21,7 +21,7 @@ module ApplicationHelper
 
     ApplicationRecord.connection.execute(query)
                      .each_with_index
-                     .map { |result, i| [i, result["unnest"]] }
+                     .map { |result, i| ["#{i}%", result["unnest"]] }
                      .to_h
   end
 
@@ -166,9 +166,9 @@ module ApplicationHelper
     render "components/project_order_dropdown", order: order
   end
 
-  def numeric_metric_chart(data)
-    render "components/numeric_metric_chart",
-           keys:   data.keys.map { |i| "#{i}%" },
+  def line_chart(data)
+    render "components/line_chart",
+           keys:   data.keys,
            values: data.values
   end
 

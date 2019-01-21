@@ -59,7 +59,7 @@ RSpec.describe ApplicationHelper, type: :helper do
     it "returns a hash of number distribution percentiles" do
       Factories.project "example"
       expect(helper.percentiles(:rubygems, :downloads)).to be_a(Hash)
-        .and(satisfy { |h| h.keys == (0..100).to_a })
+        .and(satisfy { |h| h.keys == (0..100).to_a.map { |n| "#{n}%" } })
         .and(satisfy { |h| h.values.all? { |v| v.is_a? Numeric } })
     end
   end

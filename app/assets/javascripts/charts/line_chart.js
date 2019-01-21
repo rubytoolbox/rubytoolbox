@@ -1,4 +1,4 @@
-var numericMetricChart = function(selector, labels, values) {
+var lineChart = function(selector, labels, values) {
   var ctx = document.querySelector(selector)
                     .getContext('2d');
 
