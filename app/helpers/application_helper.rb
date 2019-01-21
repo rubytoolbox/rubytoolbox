@@ -43,6 +43,16 @@ module ApplicationHelper
     end
   end
 
+  # Render given text as markdown. Do not use this with unsafe
+  # inputs as it does not use any blacklisting or sanitization!
+  def markdown(text)
+    Redcarpet::Markdown.new(
+      Redcarpet::Render::HTML,
+      autolink: true,
+      tables:   true
+    ).render(text).html_safe # rubocop:disable Rails/OutputSafety
+  end
+
   # why
   # https://rails.lighthouseapp.com/projects/8994/tickets/4334-to_param-and-resource_path-escapes-forward-slashes
   # https://github.com/rails/rails/issues/16058

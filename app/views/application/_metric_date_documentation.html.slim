@@ -6,7 +6,7 @@
   = bar_chart date_groups(table, column)
 
   article.blog-post
-    p= t("description", scope: i18n_scope)
+    p= markdown t("description", scope: i18n_scope)
 
     h3.has-text-centered= "Oldest Projects"
     - Project.includes_associations.with_bugfix_forks(false).order("#{table}.#{column} ASC NULLS LAST").limit(150).each do |project|

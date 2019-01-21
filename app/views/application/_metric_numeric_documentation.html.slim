@@ -6,7 +6,7 @@
   = line_chart percentiles(table, column)
 
   article.blog-post
-    p= t("description", scope: i18n_scope)
+    p= markdown t("description", scope: i18n_scope)
 
     h3.has-text-centered= "Top Projects by #{page.title}"
     - Project.includes_associations.with_bugfix_forks(false).order("#{table}.#{column} DESC NULLS LAST").limit(150).each do |project|
