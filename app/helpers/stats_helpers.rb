@@ -37,4 +37,16 @@ module StatsHelpers
                      .select { |row| (2004..Time.current.year).cover? row.first }
                      .to_h
   end
+
+  #
+  # For a given hash this crops all but the last leading keys
+  # that has a value of 0. This is helpful for removing "padding"
+  # from a collection of percentiles where the first batch of them
+  # might be 0
+  #
+  def crop_zero_values(hash)
+    array = hash.to_a.reverse
+    last_zero_value = array.find_index { |el| el.last.to_i.zero? }
+    array[0..last_zero_value].reverse.to_h
+  end
 end

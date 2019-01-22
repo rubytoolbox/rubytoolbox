@@ -10,6 +10,7 @@ var lineChart = function(selector, labels, values) {
         {
           data: values,
           fill: true,
+          lineTension: 0.2,
           borderWidth: 5,
           pointRadius: 1,
           backgroundColor: "rgba(200,200,200,0.2)",

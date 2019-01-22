@@ -32,4 +32,18 @@ RSpec.describe StatsHelpers, type: :helper do
       }
     end
   end
+
+  describe "#crop_zero_values" do
+    it "excludes all keys with zero values except last one from given hash" do
+      input = {
+        1 => 0, 3 => "0", 12 => 0, 13 => 1, 14 => 2, 15 => 5
+      }
+      expect(helper.crop_zero_values(input)).to be == {
+        12 => 0,
+        13 => 1,
+        14 => 2,
+        15 => 5,
+      }
+    end
+  end
 end

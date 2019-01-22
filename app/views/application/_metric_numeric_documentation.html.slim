@@ -3,7 +3,7 @@
 - i18n_scope = "metrics.#{key}"
 
 = documentation_page page.title do
-  = line_chart percentiles(table, column)
+  = line_chart crop_zero_values(percentiles(table, column))
 
   article.blog-post
     p= markdown t("description", scope: i18n_scope)
