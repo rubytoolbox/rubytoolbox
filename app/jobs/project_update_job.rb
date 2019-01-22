@@ -13,6 +13,18 @@ class ProjectUpdateJob < ApplicationJob
   REPO_LINK_BLACKLIST = %w[
     react-source
     react-source-fb-cloned
+    ruby-watchman
+  ].freeze
+
+  #
+  # Some gems reference an upstream code generator or similar tool
+  # that are technically unrelated but have a lot of github stars etc,
+  # leading to inflated popularity scores.
+  #
+  # This blacklist prevents references to those github repos.
+  #
+  TEMPLATE_REPO_BLACKLIST = %w[
+    swagger-api/swagger-codegen
   ].freeze
 
   def perform(permalink)
@@ -35,9 +47,10 @@ class ProjectUpdateJob < ApplicationJob
       return unless project.rubygem
       return if REPO_LINK_BLACKLIST.include? project.rubygem_name
 
-      Github.detect_repo_name project.rubygem.homepage_url,
-                              project.rubygem.source_code_url,
-                              project.rubygem.bug_tracker_url
+      name = Github.detect_repo_name project.rubygem.homepage_url,
+                                     project.rubygem.source_code_url,
+                                     project.rubygem.bug_tracker_url
+      name unless TEMPLATE_REPO_BLACKLIST.include? name
     end
   end
 

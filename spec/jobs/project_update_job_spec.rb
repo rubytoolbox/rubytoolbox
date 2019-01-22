@@ -47,6 +47,13 @@ RSpec.describe ProjectUpdateJob, type: :job do
         expect { do_perform }.to change { project.reload.github_repo_path }.to(nil)
       end
 
+      it "assigns nil github_repo_path when found github repo path is blacklisted" do
+        project.update! github_repo_path: "foo/bar"
+        allow(Github).to receive(:detect_repo_name).and_return("foo/bar")
+        stub_const "#{described_class}::TEMPLATE_REPO_BLACKLIST", %w[foo/bar]
+        expect { do_perform }.to change { project.reload.github_repo_path }.to(nil)
+      end
+
       it "enqueues a GithubRepoUpdateJob if the github repo is missing" do
         expect(GithubRepoUpdateJob).to receive(:perform_async).with("rspec/rspec")
         do_perform
