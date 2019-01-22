@@ -40,6 +40,13 @@ module ComponentHelpers
     render "components/project/link", label: label, url: url, icon: icon
   end
 
+  def project_list(projects, title:, metrics: [], description: nil)
+    render "components/project/list", projects:    projects,
+                                      title:       title,
+                                      metrics:     metrics,
+                                      description: description
+  end
+
   def project_health_tags(project)
     render "components/project_health_tags", project: project
   end
