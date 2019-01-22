@@ -2,14 +2,17 @@
 
 .hero
   section.section: .container: .columns
-    .column
-    .column.is-three-quarters-desktop.has-text-centered
-      .heading= link_to "Documentation", page_path("docs/index")
-      h2= title
+    .column.is-three-quarters-desktop.is-offset-one-quarter-desktop
+      .has-text-centered
+        .heading= link_to "Documentation", page_path("docs/index")
+        h2= title
 
-section.section: .container: .columns.documentation
-  .column
-    aside.menu
+section.section: .container: .documentation
+  aside
+    button.toggle
+      span.icon: i.fa.fa-life-ring
+      span Browse documentation topics
+    .menu
       - Docs.new.sections.each do |title, pages|
         p.menu-label= title
 
@@ -17,5 +20,5 @@ section.section: .container: .columns.documentation
           - pages.each do |page|
             li= link_to page.title, page_path(page), class: (page.active?(params[:id]) ? "is-active" : "")
 
-  .column.is-three-quarters-desktop
+  .column.is-full.is-three-quarters-desktop
     = yield

@@ -44,6 +44,13 @@ document.addEventListener("turbolinks:load", function () {
       });
     });
   }
+
+  document.querySelectorAll('.documentation aside .toggle').forEach(function(toggle) {
+    toggle.addEventListener("click", function() {
+      this.parentNode.classList.toggle('is-active');
+    })
+  });
+
   Chart.defaults.global.defaultFontFamily = 'Lato, "Helvetica Neue", Helvetica, Arial, sans-serif';
   Chart.defaults.global.defaultFontSize = 12;
   Chart.defaults.global.defaultFontStyle = "bold";
