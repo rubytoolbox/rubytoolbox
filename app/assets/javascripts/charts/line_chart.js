@@ -1,4 +1,4 @@
-var lineChart = function(selector, labels, values) {
+var lineChart = function(selector, labels, values, scale = "logarithmic") {
   var ctx = document.querySelector(selector)
                     .getContext('2d');
 
@@ -37,7 +37,7 @@ var lineChart = function(selector, labels, values) {
         ],
         yAxes: [
           {
-            type: "logarithmic",
+            type: scale,
             ticks: {
               beginAtZero: true,
               callback: function(value, index) {

@@ -3,7 +3,8 @@
 - i18n_scope = "metrics.#{key}"
 
 = documentation_page page.title do
-  = line_chart crop_zero_values(percentiles(table, column))
+  - chart_scale = defined?(scale) ? scale : "logarithmic"
+  = line_chart crop_zero_values(percentiles(table, column)), scale: chart_scale
 
   article.blog-post
     p= markdown t("description", scope: i18n_scope)

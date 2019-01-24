@@ -63,10 +63,11 @@ module ComponentHelpers
     render "components/section_heading", title: title, description: description, &block
   end
 
-  def line_chart(data)
+  def line_chart(data, scale: "logarithmic")
     render "components/line_chart",
            keys:   data.keys,
-           values: data.values
+           values: data.values,
+           scale:  scale
   end
 
   def bar_chart(data)

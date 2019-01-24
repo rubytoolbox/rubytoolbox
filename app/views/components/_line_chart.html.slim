@@ -1,9 +1,15 @@
 - element = "line-chart-#{SecureRandom.hex(8)}"
 canvas class=element width="400" height="150"
+- if scale == "logarithmic"
+  .content.has-text-right.has-text-grey: small
+    span.icon: i.fa.fa-info-circle
+    |
+      Due to the high range of values this graph uses a <a href="https://en.wikipedia.org/wiki/Logarithmic_scale">logarithmic scale</a>
 
 javascript:
   lineChart(
     ".#{element}",
     #{Oj.dump(keys).html_safe},
-    #{Oj.dump(values).html_safe}
+    #{Oj.dump(values).html_safe},
+    #{scale.inspect.html_safe}
   )
