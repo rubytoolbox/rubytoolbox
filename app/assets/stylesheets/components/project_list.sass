@@ -1,8 +1,18 @@
 .project-list
-  section
-    > .level
-      padding: 0.5rem
+  header
+    margin-bottom: 1.5rem
+
+    .level
       margin: 0
 
-      &:nth-child(even)
-        background: #fafafa
+    .content, .content strong
+      color: $grey-dark
+
+  section
+    > .level
+      padding: 0.5rem 0
+      margin: 0
+      border-bottom: 1px solid $white-ter
+
+      &:last-child
+        border: none

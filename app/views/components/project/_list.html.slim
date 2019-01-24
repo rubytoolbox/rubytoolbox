@@ -1,5 +1,5 @@
 .project-list
-  heading
+  header
     .level
       .level-left
         .level-item
@@ -7,7 +7,7 @@
             span= title
 
     - if description.present?
-      .columns: .column.content: strong= description
+      .content: strong= description
 
   section
     - projects.each do |project|

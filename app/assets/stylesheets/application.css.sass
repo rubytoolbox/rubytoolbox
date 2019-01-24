@@ -148,8 +148,12 @@ footer.footer
     @extend .is-size-4
     padding: 0.75rem 0
 
-article.blog-post
+
+.narrow-column
   @extend .column, .content, .is-three-fifths-desktop, .is-offset-one-fifth-desktop
+
+article.blog-post
+  @extend .narrow-column
   font-size: 110%
   line-height: 1.7
   table, blockquote
