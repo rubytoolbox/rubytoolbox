@@ -17,12 +17,6 @@
             = link_to project do
               strong= project.permalink
         .level-right
-          - if project.github_repo
-            .level-item
-              a href=project.github_repo_url
-                span.icon: i.fa.fa-github
-                span= project.github_repo_path
-
           - metrics.each do |metric|
             .level-item
               span.icon: i.fa class=metric_icon(metric)

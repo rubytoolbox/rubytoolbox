@@ -1,1 +1,3 @@
-= render "metric_numeric_documentation", table: :github_repos, column: :closed_pull_requests_count
+= render "metric_numeric_documentation", table: :github_repos, column: :closed_pull_requests_count do
+  = project_ranking "Most closed Pull Requests", table: :github_repos, column: :closed_pull_requests_count
+

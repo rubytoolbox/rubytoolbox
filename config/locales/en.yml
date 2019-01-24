@@ -145,7 +145,10 @@ en:
       label: Current version
       description:
         |
-          The **latest stable version number** of this library that was **published on Rubygems.org**
+          The **latest stable version number** of this library that was **published on Rubygems.org**.
+
+          Many **projects in the Ruby community follow [Semantic Versioning](https://semver.org/)**, which establishes
+          a software versioning scheme that **limits breaking changes to major release numbers**.
       icon: diamond
     rubygem_releases_count:
       label: Total releases

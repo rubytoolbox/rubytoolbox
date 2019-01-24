@@ -1,1 +1,9 @@
-= render "metric_date_documentation", table: :rubygems, column: :first_release_on
+= render "metric_date_documentation", table: :rubygems, column: :first_release_on do
+  / There are some awkward incorrect past / future dates for some gems on rubygems.org
+  - scope = Project.for_display.where("rubygems.first_release_on >= ? AND rubygems.first_release_on <= ?", Date.new(2004), Time.current)
+  .columns
+    .column
+      = project_ranking "Oldest Rubygems", table: :rubygems, column: :first_release_on, direction: "ASC", scope: scope
+    .column
+      = project_ranking "Newest Rubygems", table: :rubygems, column: :first_release_on, scope: scope
+

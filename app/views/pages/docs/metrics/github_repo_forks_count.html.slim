@@ -1,1 +1,2 @@
-= render "metric_numeric_documentation", table: :github_repos, column: :forks_count
+= render "metric_numeric_documentation", table: :github_repos, column: :forks_count do
+  = project_ranking "Most forks", table: :github_repos, column: :forks_count

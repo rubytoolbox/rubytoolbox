@@ -8,18 +8,4 @@
   article.blog-post
     p= markdown t("description", scope: i18n_scope)
 
-    h3.has-text-centered= "Top Projects by #{page.title}"
-    - Project.includes_associations.with_bugfix_forks(false).order("#{table}.#{column} DESC NULLS LAST").limit(150).each do |project|
-        .level.is-mobile
-          .level-left
-            .level-item
-              = link_to project do
-                strong= project.permalink
-          .level-right
-            - if table == :rubygems
-              .level-item: small= project_link project.rubygem_name, project.rubygem_url, icon: :diamond
-            - elsif table == :github_repos
-              .level-item: small= project_link project.github_repo_path, project.github_repo_url, icon: :github
-            .level-item
-              span.icon: i.fa class=metric_icon(key)
-              strong= pretty_metric_value project.public_send(key)
+  = yield
