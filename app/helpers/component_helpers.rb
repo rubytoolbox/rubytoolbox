@@ -67,6 +67,10 @@ module ComponentHelpers
     render "components/section_heading", title: title, description: description, &block
   end
 
+  def project_display_picker
+    render "components/project_display_picker"
+  end
+
   def line_chart(data, scale: "logarithmic")
     render "components/line_chart",
            keys:   data.keys,

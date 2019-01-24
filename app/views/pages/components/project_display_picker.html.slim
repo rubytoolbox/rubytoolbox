@@ -1,0 +1,7 @@
+.hero
+  section.section: .container
+    p.heading= link_to "Ruby Toolbox UI Components Styleguide", "/pages/components"
+    h2= current_page.split("/").last.humanize
+
+= component_example "Project Display Picker" do
+  = project_display_picker
