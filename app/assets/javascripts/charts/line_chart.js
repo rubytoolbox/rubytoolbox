@@ -1,4 +1,4 @@
-var lineChart = function(selector, labels, values, scale = "logarithmic") {
+var lineChart = function(selector, labels, values, scale) {
   var ctx = document.querySelector(selector)
                     .getContext('2d');
 
