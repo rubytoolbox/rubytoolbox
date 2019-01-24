@@ -1,16 +1,12 @@
 .project-display-picker
-  p.control
-    a.button.is-active
-      span.icon.is-small
-        i.fa.fa-square
-      span Detailed
-  p.control
-    a.button
-      span.icon.is-small
-        i.fa.fa-th-large
-      span Compact
-  p.control
-    a.button
-      span.icon.is-small
-        i.fa.fa-table
-      span Table
+  - display_mode.available.each do |mode|
+    p.control
+      a.button class=(display_mode.current == mode ? "is-active" : "")
+        span.icon.is-small
+          - if mode == "table"
+            i.fa.fa-table
+          - elsif mode == "compact"
+            i.fa.fa-th-large
+          - else
+            i.fa.fa-square
+        span= mode.humanize

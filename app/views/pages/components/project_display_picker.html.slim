@@ -4,4 +4,6 @@
     h2= current_page.split("/").last.humanize
 
 = component_example "Project Display Picker" do
-  = project_display_picker
+  = project_display_picker DisplayMode.new
+  = project_display_picker DisplayMode.new(:compact)
+  = project_display_picker DisplayMode.new(default: "table")
