@@ -1,0 +1,16 @@
+.hero
+  section.section: .container
+    p.heading= link_to "Ruby Toolbox UI Components Styleguide", "/pages/components"
+    h2= current_page.split("/").last.humanize
+
+- projects = Project.for_display.order(score: :desc).limit(5)
+
+= component_example "Project list" do
+  = project_list projects, metrics: %w[rubygem_downloads], title: "Some List Title", description: "Some optional list description"
+
+= component_example "Description is optional" do
+  = project_list projects, metrics: %w[rubygem_downloads], title: "Some title"
+
+= component_example "Metrics display" do
+  = project_list projects, metrics: %w[rubygem_downloads github_repo_stargazers_count], title: "Arbitrary number of metrics"
+  = project_list projects, title: "Metrics are optional"

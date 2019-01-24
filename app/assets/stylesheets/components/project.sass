@@ -1,0 +1,40 @@
+.project
+  header
+    .score
+      @extend .is-size-5, .has-text-right
+
+  .description
+    @extend .has-text-grey
+    padding: 0.75rem
+
+.metrics
+  @extend .columns, .is-multiline
+  display: flex
+  strong
+    @extend .is-size-5
+
+  .label
+    @extend .column, .is-2-tablet, .is-12-mobile
+    align-self: flex-end
+    margin-bottom: 0
+
+  .metric
+    @extend .column, .is-3-tablet, .is-6-mobile
+    // Align content to bottom
+    align-self: flex-end
+    strong
+      // Compensate for default icon padding in heading above
+      margin-left: 5px
+      a
+        color: $black-ter
+
+    .heading
+      a
+        color: $grey-darker
+
+.project-links
+  a.button
+    transition: color 100ms linear
+
+    &:hover
+      color: $primary

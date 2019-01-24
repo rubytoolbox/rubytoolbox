@@ -55,6 +55,28 @@ en:
       label: GitHub repo
       icon: github
 
+  docs:
+    titles:
+      bugfix_forks: Bugfix Forks
+      github_repo_average_recent_committed_at: GitHub Average date of last 50 commits
+      github_repo_closed_issues_count: GitHub Closed Issues
+      github_repo_closed_pull_requests_count: GitHub Closed Pull Requests
+      github_repo_forks_count: Github Forks
+      github_repo_issue_closure_rate: Github Issue Closure Rate
+      github_repo_merged_pull_requests_count: GitHub Merged Pull Requests
+      github_repo_open_issues_count: GitHub Open Issues
+      github_repo_open_pull_requests_count: GitHub Open Pull Requests
+      github_repo_pull_request_acceptance_rate: GitHub Pull Request Acceptance Rate
+      github_repo_stargazers_count: GitHub Stars
+      github_repo_total_issues_count: GitHub Total Issues
+      github_repo_watchers_count: GitHub Watchers
+      rubygem_current_version: Rubygem Current Version
+      rubygem_downloads: Rubygem Downloads
+      rubygem_first_release_on: Rubygem First Release
+      rubygem_latest_release_on: Rubygem Latest Release
+      rubygem_releases_count: Rubygem Total Releases
+      rubygem_reverse_dependencies_count: Rubygem Reverse Dependencies
+
   metrics:
     rank:
       label: Project Search Rank
@@ -64,63 +86,241 @@ en:
       icon: flask
     rubygem_downloads:
       label: Downloads
+      description:
+        |
+          This metric tracks the **total number of times a library has been downloaded from Rubygems.org**.
+
+          A **high number of downloads** indicates a **high popularity of the library** within the Ruby community.
+
       icon: download
     github_repo_stargazers_count:
       label: Stars
+      description:
+        |
+          This metric shows how many users have **starred this library's source code repository on GitHub**.
+
+          Starring is [GitHub's way of bookmarking source code repositories](https://help.github.com/articles/about-stars/).
+          A **high number of stars** indicates that **a lot of users are interested in this library**.
+
       icon: star
     github_repo_forks_count:
       label: Forks
+      description:
+        |
+          This metric shows **how often the source code repository has been forked on GitHub**.
+
+          > A fork is a copy of a repository. Forking a repository allows you to freely experiment
+          > with changes without affecting the original project.
+          >
+          > Most commonly, forks are used to either propose changes to someone else's project or to
+          > use someone else's project as a starting point for your own idea.
+          >
+          > <small>**Source: [GitHub Documentation](https://help.github.com/articles/fork-a-repo/)**</small>
+
+          A **high number of forks** can **indicate an active development community around a library**.
+
+          However if **a library becomes unmaintained** users of a library might have continued maintaining their
+          own patched variants of a library via forks. This **can lead to [community-owned forks](https://www.ruby-toolbox.com/projects/cancancan)**
+          or, in worse cases, a **fragmented development landscape** and a library fading away.
+
+          A **high number of forks** in combination with **a lot of unanswered pull requests** often means that a library
+          is **not actively maintained** at the moment.
+
       icon: code-fork
     github_repo_watchers_count:
       label: Watchers
+      description:
+        |
+          This metric shows the **number of watchers** on this libraries GitHub source code repository.
+
+          > You can watch a repository to receive notifications for new pull requests and issues that are created.
+          >
+          > <small>**Source: [GitHub Documentation](https://help.github.com/articles/watching-and-unwatching-repositories/)**</small>
+
+          A **high number of watchers** can indicate that **a lot of developers** are **interested or actively engaged** in the
+          development of the given library, **increasing the likeliness** of the library **remaining maintained** in the long term.
+
       icon: eye
     rubygem_current_version:
       label: Current version
+      description:
+        |
+          The **latest stable version number** of this library that was **published on Rubygems.org**.
+
+          Many **projects in the Ruby community follow [Semantic Versioning](https://semver.org/)**, which establishes
+          a software versioning scheme that **limits breaking changes to major release numbers**.
       icon: diamond
     rubygem_releases_count:
       label: Total releases
+      description:
+        |
+          The **total number of package releases** of this library on Rubygems.org.
+
+          A **high number of releases** over a **long timespan** often means that this library is **in a continuously maintained state**.
+
+          However, if libraries issue **a lot of releases in bulk** it can also indicate that **releases are not always stable** and **need
+          bugfix releases to keep backwards compatibility.**
+
       icon: archive
     rubygem_first_release_on:
       label: First release
+      description:
+        |
+          The **date of first release** of this library on Rubygems.org.
+
+          **Long-lived libraries** that are **still actively maintained** are often stable and reliable.
+
       icon: file-o
     rubygem_latest_release_on:
       label: Latest release
+      description:
+        |
+          The **date of the latest release** of this library on Rubygems.org
+
+          A library that **has not seen any releases in a long time** is **likely not under active development** and **often also not being
+          actively maintained**.
+
+          There are also **libraries that are simply "finished"** and therefore are **not touched again** for a while,
+          but **often at least minor maintenance releases are required** every now and then to keep up with new Ruby
+          versions or modified dependencies.
+
       icon: file-text-o
     github_repo_open_issues_count:
       label: Open Issues
+      description:
+        |
+          The **total number of currently open issues** for this library's source code repository on GitHub.
+
+          A **high number of open issues** can indicate that the **library is unmaintained**.
+          However, it **can also mean that the library is so popular** that the maintainers are simply
+          **not able to keep up with all incoming requests**. This might be a **good opportunity to help out** and
+          **get active within the library's community**.
+
       icon: bug
     github_repo_closed_issues_count:
       label: Closed Issues
+      description:
+        |
+          The **total number of closed issues** for this library's source code repository on GitHub.
+
+          A **high number of closed issues** often indicates that a **library is well-maintained** and
+          **has a large user base**. Having **resolved a lot of bugs** also **increases the likeliness**
+          of the **library being robust and stable**
+
+          However, it can of course simply mean that the library has a ton of bugs ;)
+
       icon: check
     github_repo_total_issues_count:
       label: Total Issues
+      description:
+        |
+          The **total number of issues** for this library's source code repository on GitHub.
+
+          A **high number of issues** often indicates that a library **has a large user base**, so it's **more
+          likely that edge-cases and uncommon usage scenarios have been identified and resolved.**
+
       icon: bug
     github_repo_issue_closure_rate:
       label: Issue Closure Rate
+      description:
+        |
+          The **percentage of issues closed** for this library's source code repository on GitHub.
+
+          A **high percentage** indicates that reported issues are being handled, often indicating that the project
+          is maintained.
+
+          If the **percentage is low** the library might be unmaintained, or the **library is so popular** that the
+          maintainers are **overwhelmed by the amount of incoming requests**. This might be a **good opportunity to help out** and
+          **get active within the library's community**.
+
       icon: percent
     github_repo_open_pull_requests_count:
       label: Open Pull Requests
+      description:
+        |
+          The **total number of open pull requests** for this library's source code repository on GitHub.
+
+          A **large amount of open pull requests** can indicate a **vibrant development community** around
+          the library. However, **if open pull requests go unanswered for a long time** the library **might
+          not be maintained** anymore.
+
       icon: code-fork
     github_repo_closed_pull_requests_count:
       label: Closed Pull Requests
+      description:
+        |
+          The **total number of rejected pull requests** for this library's source code repository on GitHub.
+
+          **Closing a pull request without merging** the associated source code changes can have **many reasons**:
+
+            * the proposed change might have been **solved in a different PR**
+            * the project maintainers considered a proposed change **out of scope** for the library
+            * the submitter of the PR may have **lost interest** and the PR has become stale
+            * the proposed change may **not have met the quality standards** of the project
+
+          In general, a **high number of closed pull requests** often indicates that a library has **a large community**
+          and **incoming change proposals** are **considered and responded to by the maintainers**.
+
       icon: times
     github_repo_merged_pull_requests_count:
       label: Merged Pull Requests
+      description:
+        |
+          The **total number of accepted pull requests** for this library's source code repository on GitHub.
+
+          A **high number of accepted pull requests** often means that the library has a **large community**
+          that is **actively engaged in creating improvements**.
+
       icon: check
     github_repo_pull_request_acceptance_rate:
       label: Pull Request Acceptance Rate
+      description:
+        |
+          The **percentage of accepted pull requests** for this library's source code repository on GitHub.
+
       icon: percent
     github_repo_primary_language:
       label: Primary Language
       icon: code
     rubygem_reverse_dependencies_count:
       label: Reverse Dependencies
+      description:
+        |
+          The **total number of Rubygems that declare this library as a direct dependency**.
+
+          A **high number of reverse dependencies** often indicates **stable and robust libraries**.
+
       icon: compress
     rubygem_licenses:
       label: Licenses
+      description:
+        |
+          The **software license this library is released under**.
+
+          You can **find out more about open source licenses** here:
+
+            * https://en.wikipedia.org/wiki/Open-source_license
+            * https://choosealicense.com
+            * https://opensource.org/licenses
+
       icon: legal
     github_repo_average_recent_committed_at:
       label: Average date of last 50 commits
+      description:
+        |
+          The **average date of the latest (up to) 50 commits** to this library's source code repository
+          default branch on GitHub.
+
+          A **recent date** often is a good indication that the **project is actively maintained**.
+
+          However, **direct comparisons of this metric across libraries** are usually **not very helpful** as
+          development flows can have **huge variance** - for example some maintainers might be making **lots of
+          small commits**, others might make **single large ones** or **squash them when merging a pull request**,
+          which has a very direct influence on this metric.
+
+          Additionally, a library that is seeing **a lot of commits** might be **undergoing larger
+          changes**, which could potentially **decrease backwards-compatibility**.
+
       icon: link
   startpage:
     title: Find actively maintained & popular open source software libraries for the Ruby programming language

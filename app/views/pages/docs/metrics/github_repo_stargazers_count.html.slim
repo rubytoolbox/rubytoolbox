@@ -1,0 +1,4 @@
+= render "metric_numeric_documentation", table: :github_repos, column: :stargazers_count do
+  .columns
+    .column= project_ranking "Most stars", table: :github_repos, column: :stargazers_count, description: "&nbsp;".html_safe
+    .column= project_ranking "Most stars for new projects", table: :github_repos, column: :stargazers_count, description: "Projects released first within last year", scope: Project.for_display.where("rubygems.first_release_on > ?", 1.year.ago)

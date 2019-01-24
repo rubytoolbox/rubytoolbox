@@ -1,0 +1,9 @@
+- element = "bar-chart-#{SecureRandom.hex(8)}"
+canvas class=element width="400" height="150"
+
+javascript:
+  barChart(
+    ".#{element}",
+    #{Oj.dump(keys).html_safe},
+    #{Oj.dump(values).html_safe}
+  );

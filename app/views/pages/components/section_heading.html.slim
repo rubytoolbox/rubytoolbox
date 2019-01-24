@@ -1,0 +1,17 @@
+.hero
+  section.section: .container
+    p.heading= link_to "Ruby Toolbox UI Components Styleguide", "/pages/components"
+    h2= current_page.split("/").last.humanize
+
+= component_example "Section Headings" do
+  = section_heading "Some title"
+  = section_heading "Some title", description: "Some optional description"
+  = section_heading "Some title", description: "Some optional description" do
+    a.button href="#"
+      span.icon: i.fa.fa-diamond
+      span Space for other content
+  .content
+    markdown:
+      Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+

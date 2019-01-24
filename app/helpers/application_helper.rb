@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
+  include ComponentHelpers
+  include StatsHelpers
+
   def metric_icon(metric)
     "fa-" + t(:icon, scope: "metrics.#{metric}")
   end
@@ -9,18 +12,62 @@ module ApplicationHelper
     t(:label, scope: "metrics.#{metric}")
   end
 
-  def project_metrics(project, *metrics)
-    metrics.map do |metric|
-      render partial: "projects/metric", locals: {
-        label: metric_label(metric),
-        value: project.public_send(metric),
-        icon:  metric_icon(metric),
-      }
-    end.inject(&:+)
+  # This should be refactored...
+  # rubocop:disable Metrics/MethodLength, Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+  def pretty_metric_value(value)
+    if value.is_a?(Float) || value.is_a?(BigDecimal)
+      number_with_delimiter(value.floor) + "%"
+    elsif value.is_a? Integer
+      number_with_delimiter value
+    elsif value.is_a?(Date) || value.is_a?(Time)
+      content_tag "time", "#{time_ago_in_words(value)} ago", datetime: value.iso8601, title: l(value)
+    elsif value.is_a? Array
+      value.to_sentence
+    else
+      value
+    end
+  end
+  # rubocop:enable Metrics/MethodLength, Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+
+  #
+  # A little utility method for displaying project rankings like most downloaded gems
+  # in metrics docs pages without too much repetition of in-view logic
+  #
+  # rubocop:disable Metrics/ParameterLists It's not great but I'm ok with it here
+  def project_ranking(title, scope: Project.for_display, table:, column:, direction: "DESC", description: nil)
+    projects = scope.order("#{table}.#{column} #{direction} NULLS LAST").limit(100)
+    metrics = if table == :github_repos
+                ["github_repo_stargazers_count", "github_repo_#{column}"].uniq
+              else
+                ["rubygem_downloads", "rubygem_#{column}"].uniq
+              end
+
+    project_list projects, title: title, metrics: metrics, description: description
+  end
+  # rubocop:enable Metrics/ParameterLists
+
+  def docs
+    @docs ||= Docs.new
   end
 
-  def project_link(label, url, icon:)
-    render partial: "projects/link", locals: { label: label, url: url, icon: icon }
+  def link_to_docs_if_exists(page, &block)
+    content = capture(&block)
+
+    if docs.find page
+      link_to content, page_path(page)
+    else
+      content
+    end
+  end
+
+  # Render given text as markdown. Do not use this with unsafe
+  # inputs as it does not use any blacklisting or sanitization!
+  def markdown(text)
+    Redcarpet::Markdown.new(
+      Redcarpet::Render::HTML,
+      autolink: true,
+      tables:   true
+    ).render(text).html_safe # rubocop:disable Rails/OutputSafety
   end
 
   # why
@@ -60,60 +107,7 @@ module ApplicationHelper
     content_for(:description).presence || t(:description)
   end
 
-  DISTANCES = {
-    1.week   => "within last week",
-    2.weeks  => "within last two weeks",
-    1.month  => "within last month",
-    3.months => "within last 3 months",
-    1.year   => "within last year",
-    2.years  => "within last 2 years",
-  }.freeze
-
-  def recent_distance_in_words(time)
-    return if time.blank?
-
-    matching_distance = DISTANCES.find do |distance, _label|
-      time >= distance.ago
-    end
-
-    matching_distance&.last || "more than 2 years ago"
-  end
-
   def active_when(controller:)
     "is-active" if controller_name == controller.to_s
-  end
-
-  def category_card(category, compact: false, inline: false)
-    extra_classes = inline ? %w[inline] : []
-    locals = {
-      category:      category,
-      compact:       compact,
-      extra_classes: extra_classes,
-    }
-    render partial: "components/category_card", locals: locals
-  end
-
-  def project_health_tags(project)
-    render "components/project_health_tags", project: project
-  end
-
-  def project_health_tag(health_status)
-    render "components/project_health_tag", status: health_status
-  end
-
-  def project_order_dropdown(order)
-    render "components/project_order_dropdown", order: order
-  end
-
-  def landing_hero(title:, image:, &block)
-    render "components/landing_hero", title: title, image: image, &block
-  end
-
-  def landing_feature(title:, image:, &block)
-    render "components/landing_feature", title: title, image: image, &block
-  end
-
-  def component_example(heading, &block)
-    render "components/component_example", heading: heading, &block
   end
 end

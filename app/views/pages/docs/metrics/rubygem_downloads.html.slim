@@ -1,0 +1,4 @@
+= render "metric_numeric_documentation", table: :rubygems, column: :downloads do
+  .columns
+    .column= project_ranking "Most downloads", table: :rubygems, column: :downloads, description: "&nbsp;".html_safe
+    .column= project_ranking "Most downloads for new projects", table: :rubygems, column: :downloads, description: "Projects released first within last year", scope: Project.for_display.where("rubygems.first_release_on > ?", 1.year.ago)

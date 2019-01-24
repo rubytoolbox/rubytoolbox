@@ -1,0 +1,11 @@
+- page = Docs.new.find(params[:id])
+- key = "#{table.to_s.singularize}_#{column}"
+- i18n_scope = "metrics.#{key}"
+
+= documentation_page page.title do
+  = bar_chart date_groups(table, column)
+
+  article.blog-post
+    p= markdown t("description", scope: i18n_scope)
+
+  = yield

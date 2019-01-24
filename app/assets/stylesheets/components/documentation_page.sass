@@ -1,0 +1,15 @@
+.documentation
+  @extend .columns, .is-multiline
+  aside
+    @extend .column, .is-one-quarter-desktop, .is-full
+    .toggle
+      @extend .is-hidden-desktop, .button, .is-fullwidth
+      margin-bottom: 20px
+    .menu
+      @extend .is-hidden-touch
+
+    &.is-active
+      .menu
+        @extend .is-block-touch
+      .toggle
+        @extend .is-outlined, .is-primary

@@ -76,6 +76,24 @@ RSpec.configure do |config|
     Capybara.current_session.current_window.resize_to 450, 900
   end
 
+  # Fail js capybara tests when the browser log has JS errors.
+  # Snippet courtesy of:
+  # https://medium.com/@coorasse/catch-javascript-errors-in-your-system-tests-89c2fe6773b1
+  config.after :each, type: :feature, js: true do
+    errors = page.driver.browser.manage.logs.get(:browser)
+    if errors.present?
+      aggregate_failures "javascript errrors" do
+        errors.each do |error|
+          expect(error.level).not_to eq("SEVERE"), error.message
+          next unless error.level == "WARNING"
+
+          STDERR.puts "WARN: javascript warning"
+          STDERR.puts error.message
+        end
+      end
+    end
+  end
+
   config.include FeatureSpecHelpers, type: :feature
 
   config.around do |example|

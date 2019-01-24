@@ -24,10 +24,9 @@
       - project.categories.each do |category|
         = category_card category, compact: true, inline: true
 
-
   .columns: .links.column
-    = render partial: "projects/links", locals: { project: project }
+    = project_links project
 
   .columns: .description.column= project.description
 
-  = render partial: "projects/metrics", locals: { project: project }
+  = project_metrics project

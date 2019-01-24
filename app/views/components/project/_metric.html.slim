@@ -1,0 +1,11 @@
+.metric data-metric-name=key
+  - if value.present?
+    - docs_page = File.join("docs", "metrics", key.to_s)
+    .heading
+      = link_to_docs_if_exists docs_page do
+        span.icon
+          i.fa class=icon
+        span= metric_label key
+    strong
+      = link_to_docs_if_exists docs_page do
+        = pretty_metric_value value

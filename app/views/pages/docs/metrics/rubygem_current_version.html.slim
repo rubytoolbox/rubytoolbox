@@ -1,0 +1,6 @@
+- page = Docs.new.find(params[:id])
+
+= documentation_page page.title do
+  article.blog-post
+    p= markdown t("description", scope: "metrics.rubygem_current_version")
+

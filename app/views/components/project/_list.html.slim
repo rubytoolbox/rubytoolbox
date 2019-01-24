@@ -1,0 +1,15 @@
+.project-list
+  = section_heading title, description: description
+
+  section
+    - projects.each do |project|
+      .level.is-mobile
+        .level-left
+          .level-item
+            = link_to project do
+              strong= project.permalink
+        .level-right
+          - metrics.each do |metric|
+            .level-item
+              span.icon: i.fa class=metric_icon(metric)
+              strong= pretty_metric_value project.public_send(metric)

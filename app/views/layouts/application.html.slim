@@ -68,6 +68,11 @@ html.has-navbar-fixed-top lang="en"
                 span.icon: i.fa.fa-bars
                 span Categories
 
+            a.navbar-item href=page_path("docs/index") class=active_when(controller: :pages)
+              .wrap
+                span.icon: i.fa.fa-life-ring
+                span Documentation
+
             a.navbar-item href=blog_index_path class=active_when(controller: :blog)
               .wrap
                 span.icon: i.fa.fa-rss-square
@@ -87,6 +92,7 @@ html.has-navbar-fixed-top lang="en"
             ul
               li= link_to "Home", root_path
               li= link_to "Categories", categories_path
+              li= link_to "Documentation", page_path("docs/index")
               li= link_to "News", blog_index_path
               li= link_to "Search", search_path
 
