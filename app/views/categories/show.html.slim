@@ -22,8 +22,13 @@
 section.section: .container
   .level.is-mobile
     .level-left
-    .level-right: .level-item= project_order_dropdown current_order
+    .level-right
+      .level-item= project_display_picker display_mode
+      .level-item= project_order_dropdown current_order
 
   .columns: .column.projects
-    - @category.projects.each do |project|
-      = render_project project
+    - if display_mode.current == "table"
+      = project_comparison @category.projects
+    - else
+      - @category.projects.each do |project|
+        = render_project project

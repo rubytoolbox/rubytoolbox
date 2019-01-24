@@ -21,6 +21,6 @@
               strong= t(:label, scope: "labels.#{group}")
 
         - directions.map(&:key).each do |direction|
-          a href="#{request.path}?order=#{direction}&q=#{@search&.query}&show_forks=#{@search&.show_forks}" class=(order.is?(direction) ? "is-active" : "")
+          a href="#{request.path}?order=#{direction}&q=#{@search&.query}&show_forks=#{@search&.show_forks}&display={display_mode.current}" class=(order.is?(direction) ? "is-active" : "")
             span.icon: i.fa class=metric_icon(direction)
             = metric_label direction

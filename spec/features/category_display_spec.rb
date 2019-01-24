@@ -16,6 +16,12 @@ RSpec.describe "Categories Display", type: :feature, js: true do
     within ".projects" do
       expect(page).to have_text "acme"
     end
+    expect(page).to have_selector(".project", count: 3)
+
+    within ".project-display-picker" do
+      click_on "Table"
+    end
+    expect(page).to have_selector(".project-comparison", count: 1)
   end
 
   it "can apply a custom order to the list of projects" do
