@@ -7,4 +7,5 @@
           i.fa class=icon
         span= metric_label key
     strong
-      = pretty_metric_value value
+      = link_to_docs_if_exists docs_page do
+        = pretty_metric_value value

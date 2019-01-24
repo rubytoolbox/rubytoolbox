@@ -16,12 +16,12 @@ RSpec.describe ApplicationHelper, type: :helper do
     end
 
     it "renders integers pretty-printed" do
-      expect(metrics_row).to include("<strong>22,123,122</strong>")
+      expect(metrics_row).to include("22,123,122")
     end
 
     it "renders floats floored and pretty-printed as a percentage" do
       allow(project).to receive(:rubygem_downloads).and_return(1297.7)
-      expect(metrics_row).to include("<strong>1,297%</strong>")
+      expect(metrics_row).to include("1,297%")
     end
 
     it "renders dates pretty-printed" do
@@ -41,12 +41,12 @@ RSpec.describe ApplicationHelper, type: :helper do
 
     it "renders strings as-is" do
       allow(project).to receive(:rubygem_downloads).and_return("Hello")
-      expect(metrics_row).to include "<strong>Hello</strong>"
+      expect(metrics_row).to include "Hello"
     end
 
     it "renders arrays as sentences" do
       allow(project).to receive(:rubygem_downloads).and_return(%w[Hello World])
-      expect(metrics_row).to include "<strong>Hello and World</strong>"
+      expect(metrics_row).to include "Hello and World"
     end
 
     it "renders only the container when the value is blank" do
