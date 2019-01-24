@@ -59,6 +59,10 @@ module ComponentHelpers
     render "components/project_order_dropdown", order: order
   end
 
+  def project_comparison(projects)
+    render "components/project_comparison", projects: projects
+  end
+
   def section_heading(title, description: nil, &block)
     render "components/section_heading", title: title, description: description, &block
   end
