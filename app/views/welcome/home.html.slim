@@ -62,19 +62,11 @@ section.section: .container: .landing-features
 
 - if @featured_categories.any?
   section.section: .container
-    .level
-      .level-left
-        .level-item
-          h3.is-size-4
-            span Popular Categories
-      .level-right
-        .level-item
-          a.button.is-primary href=categories_path
-            span.icon: i.fa.fa-bars
-            span Browse all categories
-
-    .columns: .column.content: strong
-      = t(:stats, scope: :startpage, projects_with_categories: @stats.projects_with_categories_count, categories: @stats.categories_count, rubygems: @stats.rubygems_count)
+    - description = t(:stats, scope: :startpage, projects_with_categories: @stats.projects_with_categories_count, categories: @stats.categories_count, rubygems: @stats.rubygems_count)
+    = section_heading "Popular Categories", description: description do
+      a.button href=categories_path
+        span.icon: i.fa.fa-bars
+        span Browse all categories
 
     .columns.is-multiline
       - @featured_categories.each do |category|

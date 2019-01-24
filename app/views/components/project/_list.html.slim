@@ -1,13 +1,5 @@
 .project-list
-  header
-    .level
-      .level-left
-        .level-item
-          h3.is-size-4
-            span= title
-
-    - if description.present?
-      .content: strong= description
+  = section_heading title, description: description
 
   section
     - projects.each do |project|

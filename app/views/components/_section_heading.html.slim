@@ -1,0 +1,11 @@
+.section-heading
+  .level
+    .level-left
+      .level-item
+        h3.is-size-4
+          span= title
+    .level-right
+      .level-item= yield
+
+  - if description.present?
+    .content: strong= description
