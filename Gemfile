@@ -47,6 +47,8 @@ gem "forgery"
 gem "rack-canonical-host"
 gem "rack-ssl-enforcer"
 
+gem "browser"
+
 gem "github_webhook"
 
 gem "high_voltage"

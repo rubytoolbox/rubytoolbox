@@ -20,14 +20,14 @@
       = bar_chart @category.projects.first(10).map {|p| [p.permalink, p.score]}.to_h, small: true
 
 section.section: .container
-  .level.is-mobile
+  .level
     .level-left
     .level-right
-      .level-item= project_display_picker display_mode
+      .level-item= project_display_picker @display_mode
       .level-item= project_order_dropdown current_order
 
   .columns: .column.projects
-    - if display_mode.current == "table"
+    - if @display_mode.current == "table"
       = project_comparison @category.projects
     - else
       - @category.projects.each do |project|
