@@ -22,6 +22,7 @@ RSpec.describe "Categories Display", type: :feature, js: true do
     visit "/categories/widgets"
 
     expect(listed_project_names).to be == %w[acme toolkit widget]
+    expect(page).to have_selector(".hero canvas.bar-chart")
 
     within ".project-order-dropdown" do
       expect(page).to have_text "Order by Project Score"
@@ -34,6 +35,7 @@ RSpec.describe "Categories Display", type: :feature, js: true do
         expect(page).to have_text "Order by #{button_label}"
       end
       expect(listed_project_names).to be == %w[widget acme toolkit]
+      expect(page).not_to have_selector(".hero canvas.bar-chart")
     end
 
     within ".project-order-dropdown" do
