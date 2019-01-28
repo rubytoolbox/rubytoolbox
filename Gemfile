@@ -30,6 +30,8 @@ gem "webpacker", require: false
 
 gem "font-awesome-rails", "~> 4.7"
 
+gem "addressable"
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

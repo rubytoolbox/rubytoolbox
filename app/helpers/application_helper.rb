@@ -70,6 +70,30 @@ module ApplicationHelper
     ).render(text).html_safe # rubocop:disable Rails/OutputSafety
   end
 
+  #
+  # Creates a link to the current page respecting all display mode & search query
+  # url arguments available in project listings (mode, order, search query, bugfix forks)
+  #
+  # This logic depends on too much implicit state by gathering bits & pieces
+  # from various assumed assigned variables, maybe extraction to some wrapping
+  # object might make sense...
+  #
+  def link_with_preserved_display_settings(**args)
+    addressable = Addressable::URI.new.tap do |uri|
+      uri.query_values = default_display_settings.merge(args).compact
+    end
+    "#{request.path}?#{addressable.query}"
+  end
+
+  def default_display_settings
+    {
+      order:      try(:current_order)&.ordered_by,
+      q:          @search&.query,
+      show_forks: @search&.show_forks,
+      display:    @display_mode&.current,
+    }
+  end
+
   # why
   # https://rails.lighthouseapp.com/projects/8994/tickets/4334-to_param-and-resource_path-escapes-forward-slashes
   # https://github.com/rails/rails/issues/16058

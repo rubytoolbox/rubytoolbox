@@ -1,7 +1,7 @@
 .project-display-picker
   - display_mode.available.each do |mode|
     p.control
-      a.button class=(display_mode.current == mode ? "is-active" : "") href="#{request.path}?display=#{mode}"
+      a.button class=(display_mode.current == mode ? "is-active" : "") href=link_with_preserved_display_settings(display: mode)
         span.icon.is-small
           - if mode == "table"
             i.fa.fa-table
