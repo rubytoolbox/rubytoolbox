@@ -6,3 +6,6 @@
 
 = component_example "A Bar Chart" do
   .chart= bar_chart 2014 => 2123, 2015 => 3501, 2016 => 2012
+
+= component_example "A small bar Chart" do
+  .chart= bar_chart({ 2014 => 2123, 2015 => 3501, 2016 => 2012 }, small: true)

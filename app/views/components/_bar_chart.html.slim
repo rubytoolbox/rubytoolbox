@@ -1,5 +1,5 @@
 - element = "bar-chart-#{SecureRandom.hex(8)}"
-canvas class=element width="400" height="150"
+canvas class=element width="400" height=(small ? 60 : 150)
 
 javascript:
   barChart(

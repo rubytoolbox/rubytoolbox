@@ -70,10 +70,11 @@ module ComponentHelpers
            scale:  scale
   end
 
-  def bar_chart(data)
+  def bar_chart(data, small: false)
     render "components/bar_chart",
            keys:   data.keys,
-           values: data.values
+           values: data.values,
+           small:  small
   end
 
   def landing_hero(title:, image:, &block)
