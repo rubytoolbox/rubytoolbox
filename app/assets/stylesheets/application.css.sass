@@ -172,3 +172,11 @@ article.blog-post
   .search-form
     .button, .input
       @extend .is-medium
+
+// See https://www.chartjs.org/docs/latest/general/responsive.html#configuration-options
+// and https://github.com/chartjs/Chart.js/issues/2958#issuecomment-261949718
+.chart-container
+  position: relative
+  height: 350px
+  &.small
+    height: 180px
