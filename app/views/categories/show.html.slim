@@ -16,6 +16,9 @@
       - else
         em This category does not have a description yet. You can <strong><a href="#{@category.catalog_edit_url}">add one on github</a></strong>!
 
+    - if current_order.default_direction?
+      = bar_chart @category.projects.first(10).map {|p| [p.permalink, p.score]}.to_h, small: true
+
 section.section: .container
   .level.is-mobile
     .level-left
