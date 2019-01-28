@@ -19,6 +19,8 @@ var barChart = function(selector, labels, values) {
       legend: {
         display: false
       },
+      responsive: true,
+      maintainAspectRatio: false,
       tooltips: {
         mode: "index",
         intersect: false,
