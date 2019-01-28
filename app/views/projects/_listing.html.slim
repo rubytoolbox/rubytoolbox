@@ -1,0 +1,9 @@
+.columns: .column.projects
+  - if display_mode.current == "table"
+    = project_comparison projects
+  - elsif display_mode.current == "compact"
+    - projects.each do |project|
+      = render_project project, show_categories: show_categories
+  - else
+    - projects.each do |project|
+      = render_project project, show_categories: show_categories

@@ -37,6 +37,7 @@
         .level-left: .level-item
           h2.subtitle.is-4 Projects
         .level-right
+          .level-item= project_display_picker @display_mode
           .level-item
             .field.has-addons
               .control
@@ -60,8 +61,7 @@
       - if @projects.any?
         .columns: .column= paginate @projects
 
-        - @projects.each do |project|
-          = render_project project, show_categories: true
+        = render "projects/listing", projects: @projects, show_categories: true, display_mode: @display_mode
 
         .columns: .column= paginate @projects
 
