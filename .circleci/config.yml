@@ -116,6 +116,7 @@ jobs:
 
 workflows:
   version: 2
+
   build_test_and_deploy:
     jobs:
       - prepare
@@ -132,3 +133,23 @@ workflows:
           filters:
             branches:
               only: master
+
+  # Make sure master is green every day
+  daily:
+    triggers:
+      - schedule:
+          cron: "15 9 * * *"
+          filters:
+            branches:
+              only:
+                - master
+
+    jobs:
+      - prepare
+      - test:
+          requires:
+            - prepare
+      - rubocop:
+          requires:
+            - prepare
+
