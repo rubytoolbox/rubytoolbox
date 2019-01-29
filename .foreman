@@ -1,0 +1,3 @@
+# Ensure that heroku release phase hook does not get run by foreman locally
+# See https://github.com/ddollar/foreman/issues/634#issuecomment-318235030
+formation: release=0,web=1,worker=1

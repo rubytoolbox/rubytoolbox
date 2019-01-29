@@ -1,0 +1,155 @@
+version: 2.1
+
+orbs:
+  heroku: circleci/heroku@0.0.4
+
+# See https://circleci.com/docs/2.0/reusing-config
+commands:
+  install_dependencies:
+    description: "Ensure that all dependencies are installed"
+    steps:
+      - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
+      - run: yarn install
+
+  prepare_repo:
+    description: "Fetch prepared repo checkout with installed dependencies"
+    steps:
+      - restore_cache:
+          keys:
+          - checkout-{{ .Environment.CIRCLE_SHA1 }}
+      - install_dependencies
+
+  prepare_database:
+    description: "Install Postgres client and load db structure"
+    steps:
+      - run: sudo apt install -y postgresql-client || true
+      - run: bundle exec rake db:structure:load
+
+jobs:
+  # Checkout the repo and ensure that all dependencies are installed.
+  # Afterwards the entire checkout with up-to-date dependencies is stored
+  # in the cache under the current commit SHA to avoid re-running on
+  # subsequent jobs
+  prepare:
+    working_directory: ~/repo
+    docker:
+       - image: circleci/ruby:2.6.0-node-browsers
+
+    steps:
+      - checkout
+
+      # The dependencies cache stores yarn and bundle packages across
+      # branches / commits to speed up the initial dependency install
+      # step
+      - restore_cache:
+          keys:
+          - dependencies-{{ checksum "Gemfile.lock" }}
+          # fallback to using the latest cache if no exact match is found
+          - dependencies-
+
+      - install_dependencies
+
+      - save_cache:
+          paths:
+            - ./vendor/bundle
+            - ./node_modules
+          key: dependencies-{{ checksum "Gemfile.lock" }}
+
+      # Store the entire checkout with dependencies for folluwp jobs
+      - save_cache:
+          paths: ~/repo
+          key: checkout-{{ .Environment.CIRCLE_SHA1 }}
+
+  test:
+    working_directory: ~/repo
+
+    docker:
+       - image: circleci/ruby:2.6.0-node-browsers
+       - image: circleci/postgres:10.6-alpine-ram
+         environment:
+           # Required by the postgres image to setup the appropriate database and user on launch
+           POSTGRES_USER: postgres
+           POSTGRES_DB: test
+       - image: circleci/redis:latest
+
+    environment:
+      DATABASE_URL: "postgresql://postgres@localhost/test"
+      RAILS_ENV: test
+
+    steps:
+      - prepare_repo
+      - prepare_database
+
+      - run: mkdir -p /tmp/rspec/test-results
+      - run:
+          name: "Run RSpec"
+          command:
+            bundle exec rspec --format RspecJunitFormatter --out /tmp/test-results/rspec/results.xml --format documentation
+
+      - store_test_results:
+          path: /tmp/test-results
+
+      - store_artifacts:
+          path: /tmp/test-results
+          destination: test-results
+
+      - store_artifacts:
+          path: ./coverage
+          destination: coverage
+
+  rubocop:
+    working_directory: ~/repo
+
+    docker:
+       - image: circleci/ruby:2.6.0-node-browsers
+
+    steps:
+      - prepare_repo
+      - run: bundle exec rubocop
+
+  deploy:
+    executor: heroku/default
+    steps:
+      - checkout
+      - heroku/install
+      - heroku/deploy-via-git
+
+workflows:
+  version: 2
+
+  build_test_and_deploy:
+    jobs:
+      - prepare
+      - test:
+          requires:
+            - prepare
+      - rubocop:
+          requires:
+            - prepare
+      - deploy:
+          requires:
+            - test
+            - rubocop
+          filters:
+            branches:
+              only: master
+
+  # Make sure master is green every day
+  daily:
+    triggers:
+      - schedule:
+          cron: "15 9 * * *"
+          filters:
+            branches:
+              only:
+                - master
+
+    jobs:
+      - prepare
+      - test:
+          requires:
+            - prepare
+      - rubocop:
+          requires:
+            - prepare
+

@@ -102,6 +102,7 @@ group :test do
   gem "timecop"
 
   gem "rspec-retry"
+  gem "rspec_junit_formatter"
 
   gem "rails-controller-testing"
   gem "simplecov", require: false

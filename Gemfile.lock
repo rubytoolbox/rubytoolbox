@@ -297,6 +297,8 @@ GEM
     rspec-retry (0.6.1)
       rspec-core (> 3.3)
     rspec-support (3.8.0)
+    rspec_junit_formatter (0.4.1)
+      rspec-core (>= 2, < 4, != 2.12.0)
     rubocop (0.63.0)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
@@ -440,6 +442,7 @@ DEPENDENCIES
   retriable
   rspec-rails
   rspec-retry
+  rspec_junit_formatter
   rubocop
   rubocop-rspec
   sass-rails (~> 5.0)
