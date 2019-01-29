@@ -1,10 +1,28 @@
-# Ruby CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-ruby/ for more details
-#
-version: 2
+version: 2.1
+
+# See https://circleci.com/docs/2.0/reusing-config
+commands:
+  install_dependencies:
+    description: "Ensure that all dependencies are installed"
+    steps:
+      - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
+      - run: yarn install
+
+  prepare_repo:
+    steps:
+      - restore_cache:
+          keys:
+          - checkout-{{ .Environment.CIRCLE_SHA1 }}
+      - install_dependencies
+
+  prepare_database:
+    description: "Install Postgres client and load db structure"
+    steps:
+      - run: sudo apt install -y postgresql-client || true
+      - run: bundle exec rake db:structure:load
+
 jobs:
-  build:
+  prepare:
     working_directory: ~/repo
     docker:
        - image: circleci/ruby:2.6.0-node-browsers
@@ -12,19 +30,14 @@ jobs:
     steps:
       - checkout
 
-      # Download and cache dependencies
       - restore_cache:
           keys:
           - dependencies-{{ checksum "Gemfile.lock" }}
           # fallback to using the latest cache if no exact match is found
           - dependencies-
 
-      - run:
-          name: install dependencies
-          command: |
-            bundle install --jobs=4 --retry=3 --path vendor/bundle && yarn install
+      - install_dependencies
 
-      # Save build cache
       - save_cache:
           paths:
             - ./vendor/bundle
@@ -51,13 +64,9 @@ jobs:
       RAILS_ENV: test
 
     steps:
-      - restore_cache:
-          keys:
-          - checkout-{{ .Environment.CIRCLE_SHA1 }}
+      - prepare_repo
+      - prepare_database
 
-      - run: sudo apt install -y postgresql-client || true
-      - run: bundle install --jobs=4 --retry=3 --path vendor/bundle && yarn install
-      - run: bundle exec rake db:structure:load
       - run:
           name: run tests
           command: |
@@ -77,11 +86,24 @@ jobs:
           path: ./coverage
           destination: coverage
 
+  rubocop:
+    working_directory: ~/repo
+
+    docker:
+       - image: circleci/ruby:2.6.0-node-browsers
+
+    steps:
+      - prepare_repo
+      - run: bundle exec rubocop
+
 workflows:
   version: 2
   test:
     jobs:
-      - build
+      - prepare
       - test:
           requires:
-            - build
+            - prepare
+      - rubocop:
+          requires:
+            - prepare
