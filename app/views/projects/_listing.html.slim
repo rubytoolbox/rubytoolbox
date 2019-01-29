@@ -2,8 +2,9 @@
   - if display_mode.current == "table"
     = project_comparison projects
   - elsif display_mode.current == "compact"
-    - projects.each do |project|
-      = render_project project, show_categories: show_categories
+    .columns.is-multiline.is-flex
+      - projects.each do |project|
+        .column.is-half= render_project project, show_categories: show_categories, compact: true
   - else
     - projects.each do |project|
       = render_project project, show_categories: show_categories

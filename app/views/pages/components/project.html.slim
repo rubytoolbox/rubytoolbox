@@ -43,3 +43,9 @@
       markdown:
         Hides unavailable metrics automatically
     = project_metrics github
+
+
+= component_example "Compact card" do
+  .columns.is-multiline.is-flex
+    - 4.times do
+      .column.is-half= render_project full.sample, compact: true
