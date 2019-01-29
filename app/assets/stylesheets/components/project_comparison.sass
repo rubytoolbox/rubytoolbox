@@ -1,5 +1,7 @@
 .project-comparison
   overflow: auto
+  table
+    @extend .table, .is-fullwidth
   .heading
     @extend .is-size-7
     white-space: nowrap
@@ -11,9 +13,28 @@
   tbody
     td
       @extend .has-text-right
-
-    td
       font-weight: bold
+
+    th.sticky
+      position: sticky
+      left: 0
+      // Black magic... https://stackoverflow.com/a/45042852
+      &:after
+        content: ""
+        position: absolute
+        right: 0
+        top: 0
+        bottom: 0
+        border-right: 1px solid #dbdbdb
+
+    // Bulma sets the striped background on the tr by default,
+    // which conflicts with the sticky project cells column on the left
+    tr
+      td, th
+        background: white
+    tr:nth-child(even)
+      td, th
+        background: #fafafa
 
   tbody td, thead th
     a

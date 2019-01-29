@@ -3,6 +3,8 @@
   table.table.is-striped.is-hoverable.is-fullwidth
     thead
       th
+      th
+      th
       - metrics.each do |key|
         th: .heading
           - docs_page = File.join("docs", "metrics", key.to_s)
@@ -15,11 +17,26 @@
     tbody
       - projects.each do |project|
         tr
-          th
+          th.sticky
             a href="/projects/#{project.permalink}"= project.permalink
+
+          td
+            - if project.rubygem_url
+              a href=project.rubygem_url
+                span.icon: i.fa.fa-diamond
+
+          td
+            - if project.github_repo_url
+              a href=project.github_repo_url
+                span.icon: i.fa.fa-github
 
           - metrics.each do |key|
             - docs_page = File.join("docs", "metrics", key.to_s)
             td
               = link_to_docs_if_exists docs_page do
-                = pretty_metric_value project.public_send(key)
+                // The helper prints decimals as percentages by default,
+                // this is the ugly workaround...
+                - if key == :score
+                  = "%.2f" % project.score
+                - else
+                  = pretty_metric_value project.public_send(key)
