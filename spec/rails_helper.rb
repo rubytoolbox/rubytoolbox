@@ -94,6 +94,12 @@ RSpec.configure do |config|
     end
   end
 
+  # Working around some test flakiness in CI
+  # See https://github.com/NoRedInk/rspec-retry
+  config.around :each, :js do |ex|
+    ex.run_with_retry retry: 3, verbose_retry: true
+  end
+
   config.include FeatureSpecHelpers, type: :feature
 
   config.around do |example|

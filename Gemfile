@@ -28,6 +28,8 @@ gem "uglifier", ">= 1.3.0"
 # Heroku ruby buildpack installs yarn only when webpacker gem is detected...
 gem "webpacker", require: false
 
+gem "font-awesome-rails", "~> 4.7"
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
@@ -98,6 +100,8 @@ group :test do
   gem "db-query-matchers"
 
   gem "timecop"
+
+  gem "rspec-retry"
 
   gem "rails-controller-testing"
   gem "simplecov", require: false

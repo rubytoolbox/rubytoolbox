@@ -13,8 +13,8 @@
  *= require_self
  */
 
-@import url('https://fonts.googleapis.com/css?family=Lato:400,700')
-@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+@import "font-awesome"
+@import "lato"
 
 // Default bulma font stack, plus Lato webfont as priority
 $family-sans-serif: "Lato", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif
@@ -172,6 +172,12 @@ article.blog-post
   .search-form
     .button, .input
       @extend .is-medium
+
+.search-form
+  .button i.fa
+    // For some reason after converting to locally hosted font awesome and lato
+    // fonts this got a little out of line
+    margin-top: -2px
 
 // See https://www.chartjs.org/docs/latest/general/responsive.html#configuration-options
 // and https://github.com/chartjs/Chart.js/issues/2958#issuecomment-261949718
