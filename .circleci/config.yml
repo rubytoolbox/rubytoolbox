@@ -9,6 +9,7 @@ commands:
       - run: yarn install
 
   prepare_repo:
+    description: "Fetch prepared repo checkout with installed dependencies"
     steps:
       - restore_cache:
           keys:
@@ -22,6 +23,10 @@ commands:
       - run: bundle exec rake db:structure:load
 
 jobs:
+  # Checkout the repo and ensure that all dependencies are installed.
+  # Afterwards the entire checkout with up-to-date dependencies is stored
+  # in the cache under the current commit SHA to avoid re-running on
+  # subsequent jobs
   prepare:
     working_directory: ~/repo
     docker:
@@ -30,6 +35,9 @@ jobs:
     steps:
       - checkout
 
+      # The dependencies cache stores yarn and bundle packages across
+      # branches / commits to speed up the initial dependency install
+      # step
       - restore_cache:
           keys:
           - dependencies-{{ checksum "Gemfile.lock" }}
@@ -44,6 +52,7 @@ jobs:
             - ./node_modules
           key: dependencies-{{ checksum "Gemfile.lock" }}
 
+      # Store the entire checkout with dependencies for folluwp jobs
       - save_cache:
           paths: ~/repo
           key: checkout-{{ .Environment.CIRCLE_SHA1 }}
@@ -55,25 +64,24 @@ jobs:
        - image: circleci/ruby:2.6.0-node-browsers
        - image: circleci/postgres:10.6-alpine-ram
          environment:
-           POSTGRES_USER: root
+           # Required by the postgres image to setup the appropriate database and user on launch
+           POSTGRES_USER: postgres
            POSTGRES_DB: test
        - image: circleci/redis:latest
 
     environment:
-      DATABASE_URL: "postgresql://root@localhost/test"
+      DATABASE_URL: "postgresql://postgres@localhost/test"
       RAILS_ENV: test
 
     steps:
       - prepare_repo
       - prepare_database
 
+      - run: mkdir -p /tmp/rspec/test-results
       - run:
-          name: run tests
-          command: |
-            mkdir -p /tmp/rspec/test-results
-            bundle exec rspec --format RspecJunitFormatter \
-                              --out /tmp/test-results/rspec/results.xml \
-                              --format documentation
+          name: "Run RSpec"
+          command:
+            bundle exec rspec --format RspecJunitFormatter --out /tmp/test-results/rspec/results.xml --format documentation
 
       - store_test_results:
           path: /tmp/test-results
