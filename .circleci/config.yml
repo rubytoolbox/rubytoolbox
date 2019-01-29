@@ -5,13 +5,41 @@
 version: 2
 jobs:
   build:
+    working_directory: ~/repo
     docker:
-      # specify the version you desire here
        - image: circleci/ruby:2.6.0-node-browsers
 
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - dependencies-{{ checksum "Gemfile.lock" }}
+          # fallback to using the latest cache if no exact match is found
+          - dependencies-
+
+      - run:
+          name: install dependencies
+          command: |
+            bundle install --jobs=4 --retry=3 --path vendor/bundle && yarn install
+
+      # Save build cache
+      - save_cache:
+          paths:
+            - ./vendor/bundle
+            - ./node_modules
+          key: dependencies-{{ checksum "Gemfile.lock" }}
+
+      - save_cache:
+          paths: ~/repo
+          key: checkout-{{ .Environment.CIRCLE_SHA1 }}
+
+  test:
+    working_directory: ~/repo
+
+    docker:
+       - image: circleci/ruby:2.6.0-node-browsers
        - image: circleci/postgres:10.6-alpine-ram
          environment:
            POSTGRES_USER: root
@@ -22,49 +50,38 @@ jobs:
       DATABASE_URL: "postgresql://root@localhost/test"
       RAILS_ENV: test
 
-    working_directory: ~/repo
-
     steps:
-      - checkout
-
-      # Download and cache dependencies
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "Gemfile.lock" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-
-      - run:
-          name: install dependencies
-          command: |
-            bundle install --jobs=4 --retry=3 --path vendor/bundle && yarn install && ls -la
+          - checkout-{{ .Environment.CIRCLE_SHA1 }}
 
       - run: sudo apt install -y postgresql-client || true
-
-      - save_cache:
-          paths:
-            - ./vendor/bundle
-            - ./node_modules
-          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
-
-      # Database setup
+      - run: bundle install --jobs=4 --retry=3 --path vendor/bundle && yarn install
       - run: bundle exec rake db:structure:load
-
-      # run tests!
       - run:
           name: run tests
           command: |
-            mkdir /tmp/test-results
+            mkdir -p /tmp/rspec/test-results
             bundle exec rspec --format RspecJunitFormatter \
-                              --out /tmp/test-results/rspec.xml \
+                              --out /tmp/test-results/rspec/results.xml \
                               --format documentation
 
-      # collect reports
       - store_test_results:
           path: /tmp/test-results
+
       - store_artifacts:
           path: /tmp/test-results
           destination: test-results
+
       - store_artifacts:
           path: ./coverage
           destination: coverage
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
