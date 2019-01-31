@@ -1,5 +1,6 @@
 = form_tag search_path, method: :get, class: "search-form" do
-  - if @display_mode
+  // Keep chosen display mode across searches, regardless of search form location within page
+  - if @display_mode and controller_name == "searches"
     input type="hidden" name="display" value=@display_mode.current
 
   .field.has-addons.has-addons-centered

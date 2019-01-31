@@ -161,6 +161,18 @@ RSpec.describe "Search", type: :feature, js: true do
     expect(page).to have_selector(".search-form .button.is-loading", count: 2)
   end
 
+  it "keeps the chosen search display mode across searches" do
+    search_for "widget"
+    change_display_mode "Table"
+    search_for "widget", visit_home_first: false
+    expect_display_mode "Table"
+
+    visit "/categories/widgets"
+    change_display_mode "Table"
+    search_for "widget", visit_home_first: false
+    expect_display_mode "Compact"
+  end
+
   private
 
   #
@@ -173,8 +185,8 @@ RSpec.describe "Search", type: :feature, js: true do
     });
   JS
 
-  def search_for(query, container: ".navbar", halt: false)
-    visit "/"
+  def search_for(query, container: ".navbar", halt: false, visit_home_first: true)
+    visit "/" if visit_home_first
 
     page.evaluate_script HALT_FORM_SUBMISSION_JS if halt
 
