@@ -24,19 +24,14 @@ RSpec.describe ApplicationHelper, type: :helper do
       expect(metrics_row).to include("1,297%")
     end
 
-    it "renders dates pretty-printed" do
+    it "renders dates regularly" do
       allow(project).to receive(:rubygem_downloads).and_return(Date.new(2014, 7, 4))
-      Timecop.travel Date.new(2015, 7, 4) do
-        expect(metrics_row).to include("<time datetime=\"2014-07-04\" title=\"2014-07-04\">about 1 year ago</time>")
-      end
+      expect(metrics_row).to include("2014-07-04")
     end
 
-    it "renders times pretty-printed" do
+    it "renders times as dates" do
       allow(project).to receive(:rubygem_downloads).and_return(Time.utc(2014, 7, 4, 13, 13, 0))
-      Timecop.travel Date.new(2015, 7, 4) do
-        expected = '<time datetime="2014-07-04T13:13:00Z" title="Fri, 04 Jul 2014 13:13:00 +0000">12 months ago</time>'
-        expect(metrics_row).to include(expected)
-      end
+      expect(metrics_row).to include("2014-07-04")
     end
 
     it "renders strings as-is" do
