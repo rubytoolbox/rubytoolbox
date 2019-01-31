@@ -22,4 +22,31 @@ module FeatureSpecHelpers
   def active_element
     page.evaluate_script "document.activeElement"
   end
+
+  def order_by(button_label, expect_navigation: true)
+    within ".project-order-dropdown" do
+      page.find("button").hover
+      click_on button_label
+      expect(page).to have_text "Order by #{button_label}" if expect_navigation
+    end
+  end
+
+  def expect_display_mode(label) # rubocop:disable Metrics/AbcSize It's good enough :)
+    within(".project-display-picker .is-active") do
+      expect(page).to have_text(label)
+    end
+    case label.downcase.to_sym
+    when :table
+      expect(page).to have_selector(".project-comparison", count: 1)
+    when :compact
+      expect(page).to have_selector(".project-compact-cards", count: 1)
+    end
+  end
+
+  def change_display_mode(label)
+    within ".project-display-picker" do
+      click_on label
+    end
+    expect_display_mode label
+  end
 end

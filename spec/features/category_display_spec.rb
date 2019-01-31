@@ -16,17 +16,11 @@ RSpec.describe "Categories Display", type: :feature, js: true do
     within ".projects" do
       expect(page).to have_text "acme"
     end
+
     expect(page).to have_selector(".project", count: 3)
-
-    within ".project-display-picker" do
-      click_on "Table"
-    end
-    expect(page).to have_selector(".project-comparison", count: 1)
-
-    within ".project-display-picker" do
-      click_on "Compact"
-    end
-    expect(page).to have_selector(".project-compact-cards", count: 1)
+    expect_display_mode "Full"
+    change_display_mode "Table"
+    change_display_mode "Compact"
   end
 
   it "can apply a custom order to the list of projects" do
@@ -40,23 +34,12 @@ RSpec.describe "Categories Display", type: :feature, js: true do
     end
 
     %w[Downloads Stars Forks].each do |button_label|
-      within ".project-order-dropdown" do
-        page.find("button").hover
-        click_on button_label
-        expect(page).to have_text "Order by #{button_label}"
-      end
+      order_by button_label
       expect(listed_project_names).to be == %w[widget acme toolkit]
       expect(page).not_to have_selector(".hero canvas.bar-chart")
     end
 
-    within ".project-order-dropdown" do
-      page.find("button").hover
-      click_on "First release"
-    end
-
-    within ".project-order-dropdown" do
-      expect(page).to have_text "Order by First release"
-    end
+    order_by "First release"
     expect(listed_project_names).to be == %w[toolkit acme widget]
   end
 
