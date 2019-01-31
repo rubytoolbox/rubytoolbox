@@ -30,13 +30,18 @@
               a href=project.github_repo_url
                 span.icon: i.fa.fa-github
 
+          // This should be less messy...
           - metrics.each do |key|
             - docs_page = File.join("docs", "metrics", key.to_s)
+            - value = project.public_send key
+            - better = (key == :rubygem_first_released_on ? :min : :max)
             td
+              - if value == projects.map {|p| p.public_send(key) }.compact.public_send(better)
+                span.icon: i.fa.fa-star
               = link_to_docs_if_exists docs_page do
                 // The helper prints decimals as percentages by default,
                 // this is the ugly workaround...
                 - if key == :score
-                  = "%.2f" % project.score
+                  = "%.2f" % value
                 - else
-                  = pretty_metric_value project.public_send(key)
+                  = pretty_metric_value value
