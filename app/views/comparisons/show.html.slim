@@ -1,0 +1,38 @@
+- content_for :title, "Compare Projects"
+
+.hero
+  section.section: .container
+    h2
+      a href=comparison_path("")
+        span Compare projects
+
+    .columns: .column
+      .tags
+        - @expected_ids.split(",").each do |permalink|
+          span.tag.is-primary.is-medium
+            span= permalink
+            a.delete.is-small href=comparison_path((@expected_ids.split(",") - [permalink]).join(","))
+
+      = form_tag link_with_preserved_display_settings, method: :get, autocomplete: "off" do
+        .field.has-addons.has-addons-centered
+          .control.is-expanded
+            input.input placeholder="Type a gem name to add it to the comparison" type="text" name="add" value=""
+          .control
+            button.button type="submit"
+              span.icon: i.fa.fa-plus
+              span Add to comparison
+
+
+- if @projects.any?
+  section.section: .container
+    .level
+      .level-left
+      .level-right
+        .level-item= project_display_picker @display_mode
+        .level-item= project_order_dropdown current_order
+
+    = render "projects/listing", projects: @projects, show_categories: false, display_mode: @display_mode
+
+- else
+  article.blog-post
+    h3 About project comparisons

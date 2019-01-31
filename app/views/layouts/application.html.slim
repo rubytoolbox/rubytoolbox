@@ -68,6 +68,11 @@ html.has-navbar-fixed-top lang="en"
                 span.icon: i.fa.fa-bars
                 span Categories
 
+            a.navbar-item href=comparison_path class=active_when(controller: :comparisons)
+              .wrap
+                span.icon: i.fa.fa-arrows-h
+                span Compare
+
             a.navbar-item href=page_path("docs/index") class=active_when(controller: :pages)
               .wrap
                 span.icon: i.fa.fa-life-ring
