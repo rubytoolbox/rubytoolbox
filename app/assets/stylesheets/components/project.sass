@@ -48,6 +48,18 @@
 .project-compact-cards
   @extend .columns, .is-multiline
   .item
-    @extend .column, .is-full, .is-half-tablet, .is-flex
+    @extend .column, .is-full, .is-half-tablet
+    // When displayed next to each other, the wrapping box should
+    // stretch to equal height to its row sibling
+    display: flex
     .project
       width: 100%
+      // When displayed in a row next to each other the description
+      // row should stretch to the full height so metrics in equal-
+      // height siblings are bottom-aligned
+      display: flex
+      flex-direction: column
+      align-items: stretch
+      align-content: stretch
+      .stretch
+        flex: 1

@@ -28,7 +28,7 @@
   .columns: .links.column
     = project_links project, compact: compact
 
-  .columns: .description.column
+  .columns.stretch: .description.column
     - if local_assigns[:compact]
       = truncate project.description, length: 300
     - else
