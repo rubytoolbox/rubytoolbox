@@ -18,9 +18,6 @@
     align-self: flex-end
     margin-bottom: 0
 
-  &.compact
-    .metric
-      width: 33%
 
   .metric
     @extend .column, .is-3-tablet, .is-6-mobile
@@ -36,6 +33,10 @@
       font-weight: bold
       a
         color: $grey-darker
+
+  &.compact
+    .metric
+      @extend .is-half, .is-one-third-desktop
 
 .project-links
   a.button

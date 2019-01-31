@@ -41,7 +41,7 @@
               = link_to_docs_if_exists docs_page do
                 // The helper prints decimals as percentages by default,
                 // this is the ugly workaround...
-                - if key == :score
+                - if key == :score and value.present?
                   = "%.2f" % value
                 - else
                   = pretty_metric_value value
