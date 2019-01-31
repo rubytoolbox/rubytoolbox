@@ -46,6 +46,6 @@
 
 
 = component_example "Compact card" do
-  .columns.is-multiline.is-flex
+  .project-compact-cards
     - 4.times do
-      .column.is-half= render_project full.sample, compact: true
+      .column= render_project full.sample, compact: true

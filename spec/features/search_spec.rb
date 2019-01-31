@@ -21,6 +21,15 @@ RSpec.describe "Search", type: :feature, js: true do
 
     expect(listed_project_names).to be == ["more widgets", "widgets"]
 
+    within(".project-display-picker .is-active") do
+      expect(page).to have_text("Compact")
+    end
+
+    within ".project-display-picker" do
+      click_on "Table"
+    end
+    expect(page).to have_selector(".project-comparison", count: 1)
+
     within ".category-card" do
       expect(page).to have_text "Widgets"
       expect(page).not_to have_text "No matching categories were found"

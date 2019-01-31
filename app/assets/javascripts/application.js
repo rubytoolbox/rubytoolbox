@@ -76,6 +76,13 @@ document.addEventListener("turbolinks:load", function () {
     });
   });
 
+  document.querySelectorAll(".project-display-picker .button").forEach(function(button) {
+    button.classList.remove("is-loading");
+    button.addEventListener("click", function() {
+      button.classList.add("is-loading");
+    });
+  });
+
   // See above, just for the custom project order dropdown
   document.querySelectorAll(".project-order-dropdown .dropdown-content a").forEach(function(button) {
     document.querySelectorAll(".project-order-dropdown button").forEach(function(dropdown) {

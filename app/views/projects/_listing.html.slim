@@ -3,9 +3,9 @@
     = project_comparison projects
 
   - elsif display_mode.current == "compact"
-    .columns.is-multiline
+    .project-compact-cards
       - projects.each do |project|
-        .column.is-full.is-half-tablet= render_project project, show_categories: show_categories, compact: true
+        .item= render_project project, show_categories: show_categories, compact: true
   - else
     - projects.each do |project|
       = render_project project, show_categories: show_categories
