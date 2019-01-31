@@ -5,13 +5,18 @@ class SearchesController < ApplicationController
     @query = params[:q].presence
     return unless @query
 
-    @search = Search.new(@query, order: current_order, show_forks: show_forks?)
-    @projects = @search.projects.page(params[:page])
+    perform_search
 
     redirect_to_search_with_forks_included if should_redirect_to_included_forks?
   end
 
   private
+
+  def perform_search
+    @search = Search.new @query, order: current_order, show_forks: show_forks?
+    @projects = @search.projects.page params[:page]
+    @display_mode = DisplayMode.new params[:display], default: "compact"
+  end
 
   # If a user searches for some query but that search does not
   # yield any project results we automatically redirect to the

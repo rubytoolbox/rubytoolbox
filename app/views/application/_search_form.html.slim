@@ -1,4 +1,7 @@
 = form_tag search_path, method: :get, class: "search-form" do
+  - if @display_mode
+    input type="hidden" name="display" value=@display_mode.current
+
   .field.has-addons.has-addons-centered
     .control.is-expanded
       input.input placeholder="Search for libraries" type="text" name="q" value=@query

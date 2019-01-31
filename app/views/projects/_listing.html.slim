@@ -1,0 +1,11 @@
+.columns: .column.projects
+  - if display_mode.current == "table"
+    = project_comparison projects
+
+  - elsif display_mode.current == "compact"
+    .project-compact-cards
+      - projects.each do |project|
+        .item= render_project project, show_categories: show_categories, compact: true
+  - else
+    - projects.each do |project|
+      = render_project project, show_categories: show_categories

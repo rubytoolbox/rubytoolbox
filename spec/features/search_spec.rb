@@ -21,6 +21,10 @@ RSpec.describe "Search", type: :feature, js: true do
 
     expect(listed_project_names).to be == ["more widgets", "widgets"]
 
+    expect_display_mode "Compact"
+    change_display_mode "Table"
+    change_display_mode "Full"
+
     within ".category-card" do
       expect(page).to have_text "Widgets"
       expect(page).not_to have_text "No matching categories were found"
@@ -177,14 +181,6 @@ RSpec.describe "Search", type: :feature, js: true do
     within container do
       fill_in "q", with: query
       click_button "Search"
-    end
-  end
-
-  def order_by(button_label, expect_navigation: true)
-    within ".project-order-dropdown" do
-      page.find("button").hover
-      click_on button_label
-      expect(page).to have_text "Order by #{button_label}" if expect_navigation
     end
   end
 end

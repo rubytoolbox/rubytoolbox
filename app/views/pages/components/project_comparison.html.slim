@@ -1,0 +1,9 @@
+.hero
+  section.section: .container
+    p.heading= link_to "Ruby Toolbox UI Components Styleguide", "/pages/components"
+    h2= current_page.split("/").last.humanize
+
+- projects = Project.for_display.order(score: :desc).limit(100).sample(15)
+
+= component_example "Project Comparison" do
+  = project_comparison projects

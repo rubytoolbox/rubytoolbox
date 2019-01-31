@@ -8,7 +8,7 @@
             = project.permalink
 
     .level-right
-      - if local_assigns[:show_categories] and project.categories.any?
+      - if show_categories and project.categories.any? and not compact
         .level-item.categories.is-hidden-touch
           - project.categories.each do |category|
             = category_card category, compact: true, inline: true
@@ -17,16 +17,31 @@
           i.fa class=metric_icon(:score)
         span= project.score
 
+  - if show_categories and project.categories.any?
+    .columns class=(compact ? "" : "is-hidden-desktop")
+      .column
+        - project.categories.each do |category|
+          = category_card category, compact: true, inline: true
+
   .columns: .column= project_health_tags project
 
-  - if local_assigns[:show_categories] and project.categories.any?
-    .columns.is-hidden-desktop: .column
-      - project.categories.each do |category|
-        = category_card category, compact: true, inline: true
-
   .columns: .links.column
-    = project_links project
+    = project_links project, compact: compact
 
-  .columns: .description.column= project.description
+  .columns.stretch: .description.column
+    - if local_assigns[:compact]
+      = truncate project.description, length: 300
+    - else
+      = project.description
 
-  = project_metrics project
+
+  - if local_assigns[:compact]
+    .metrics.compact= metrics_row project, :rubygem_downloads, :github_repo_stargazers_count, :rubygem_current_version, :rubygem_releases_count, :rubygem_first_release_on, :rubygem_latest_release_on
+
+    .columns: .column.has-text-right
+      a.button.is-outlined href="/projects/#{project.permalink}"
+        span.icon: i.fa.fa-plus
+        span Show more project details
+
+  - else
+    = project_metrics project, compact: compact

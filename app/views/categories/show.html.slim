@@ -20,10 +20,10 @@
       = bar_chart @category.projects.first(10).map {|p| [p.permalink, p.score]}.to_h, small: true
 
 section.section: .container
-  .level.is-mobile
+  .level
     .level-left
-    .level-right: .level-item= project_order_dropdown current_order
+    .level-right
+      .level-item= project_display_picker @display_mode
+      .level-item= project_order_dropdown current_order
 
-  .columns: .column.projects
-    - @category.projects.each do |project|
-      = render_project project
+  = render "projects/listing", projects: @category.projects, show_categories: false, display_mode: @display_mode

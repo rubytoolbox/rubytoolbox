@@ -30,6 +30,8 @@ gem "webpacker", require: false
 
 gem "font-awesome-rails", "~> 4.7"
 
+gem "addressable"
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
@@ -46,6 +48,8 @@ gem "forgery"
 
 gem "rack-canonical-host"
 gem "rack-ssl-enforcer"
+
+gem "browser"
 
 gem "github_webhook"
 

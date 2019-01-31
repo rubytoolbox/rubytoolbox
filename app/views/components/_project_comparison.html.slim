@@ -1,0 +1,47 @@
+.project-comparison
+  - metrics = %i[score rubygem_downloads github_repo_stargazers_count github_repo_forks_count rubygem_first_release_on rubygem_latest_release_on rubygem_reverse_dependencies_count]
+  table.table.is-striped.is-hoverable.is-fullwidth
+    thead
+      th
+      th
+      th
+      - metrics.each do |key|
+        th: .heading
+          - docs_page = File.join("docs", "metrics", key.to_s)
+
+          = link_to_docs_if_exists docs_page do
+            span.icon
+              i.fa class=metric_icon(key)
+            span= metric_label key
+
+    tbody
+      - projects.each do |project|
+        tr
+          th.sticky
+            a href="/projects/#{project.permalink}"= project.permalink
+
+          td
+            - if project.rubygem_url
+              a href=project.rubygem_url
+                span.icon: i.fa.fa-diamond
+
+          td
+            - if project.github_repo_url
+              a href=project.github_repo_url
+                span.icon: i.fa.fa-github
+
+          // This should be less messy...
+          - metrics.each do |key|
+            - docs_page = File.join("docs", "metrics", key.to_s)
+            - value = project.public_send key
+            - better = (key == :rubygem_first_released_on ? :min : :max)
+            td
+              - if value == projects.map {|p| p.public_send(key) }.compact.public_send(better)
+                span.icon: i.fa.fa-star
+              = link_to_docs_if_exists docs_page do
+                // The helper prints decimals as percentages by default,
+                // this is the ugly workaround...
+                - if key == :score and value.present?
+                  = "%.2f" % value
+                - else
+                  = pretty_metric_value value

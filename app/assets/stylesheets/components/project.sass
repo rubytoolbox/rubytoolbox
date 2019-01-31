@@ -18,6 +18,7 @@
     align-self: flex-end
     margin-bottom: 0
 
+
   .metric
     @extend .column, .is-3-tablet, .is-6-mobile
     // Align content to bottom
@@ -29,8 +30,13 @@
         color: $black-ter
 
     .heading
+      font-weight: bold
       a
         color: $grey-darker
+
+  &.compact
+    .metric
+      @extend .is-half, .is-one-third-desktop
 
 .project-links
   a.button
@@ -38,3 +44,23 @@
 
     &:hover
       color: $primary
+
+
+.project-compact-cards
+  @extend .columns, .is-multiline
+  .item
+    @extend .column, .is-full, .is-half-tablet
+    // When displayed next to each other, the wrapping box should
+    // stretch to equal height to its row sibling
+    display: flex
+    .project
+      width: 100%
+      // When displayed in a row next to each other the description
+      // row should stretch to the full height so metrics in equal-
+      // height siblings are bottom-aligned
+      display: flex
+      flex-direction: column
+      align-items: stretch
+      align-content: stretch
+      .stretch
+        flex: 1

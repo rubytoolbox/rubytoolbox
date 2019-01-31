@@ -31,7 +31,9 @@ RSpec.describe CategoriesController, type: :controller do
     end
 
     describe "for known category" do
-      let(:do_request) { get :show, params: { id: category.permalink } }
+      def do_request(display: nil)
+        get :show, params: { id: category.permalink, display: display }
+      end
 
       let(:category) do
         Category.create! permalink:      "category",
@@ -68,6 +70,8 @@ RSpec.describe CategoriesController, type: :controller do
           end
         end
       end
+
+      it_behaves_like "pickable project display listing", default: "full"
     end
   end
 end

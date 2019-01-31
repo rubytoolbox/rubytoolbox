@@ -4,9 +4,11 @@ require "rails_helper"
 
 RSpec.describe SearchesController, type: :controller do
   describe "GET #show" do
-    def do_request(query: nil, order: nil, show_forks: nil)
-      get :show, params: { q: query, order: order, show_forks: show_forks }
+    def do_request(query: "foobar", order: nil, show_forks: nil, display: nil)
+      get :show, params: { q: query, order: order, show_forks: show_forks, display: display }
     end
+
+    it_behaves_like "pickable project display listing", default: "compact"
 
     it "returns http success" do
       Factories.project "foobar"

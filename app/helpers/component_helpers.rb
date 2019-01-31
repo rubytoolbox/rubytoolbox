@@ -14,16 +14,16 @@ module ComponentHelpers
     render "components/category_card", locals
   end
 
-  def render_project(project, show_categories: false)
-    render "components/project", project: project, show_categories: show_categories
+  def render_project(project, show_categories: false, compact: false)
+    render "components/project", project: project, show_categories: show_categories, compact: compact
   end
 
-  def project_links(project)
-    render "components/project/links", project: project
+  def project_links(project, compact: false)
+    render "components/project/links", project: project, compact: compact
   end
 
-  def project_metrics(project, expanded_view: false)
-    render "components/project/metrics", project: project, expanded_view: expanded_view
+  def project_metrics(project, expanded_view: false, compact: false)
+    render "components/project/metrics", project: project, expanded_view: expanded_view, compact: compact
   end
 
   def metrics_row(project, *metrics)
@@ -59,8 +59,16 @@ module ComponentHelpers
     render "components/project_order_dropdown", order: order
   end
 
+  def project_comparison(projects)
+    render "components/project_comparison", projects: projects
+  end
+
   def section_heading(title, description: nil, &block)
     render "components/section_heading", title: title, description: description, &block
+  end
+
+  def project_display_picker(display_mode)
+    render "components/project_display_picker", display_mode: display_mode
   end
 
   def line_chart(data, scale: "logarithmic")

@@ -13,21 +13,21 @@ module ApplicationHelper
   end
 
   # This should be refactored...
-  # rubocop:disable Metrics/MethodLength, Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+  # rubocop:disable Metrics/MethodLength, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
   def pretty_metric_value(value)
     if value.is_a?(Float) || value.is_a?(BigDecimal)
       number_with_delimiter(value.floor) + "%"
     elsif value.is_a? Integer
       number_with_delimiter value
     elsif value.is_a?(Date) || value.is_a?(Time)
-      content_tag "time", "#{time_ago_in_words(value)} ago", datetime: value.iso8601, title: l(value)
+      l value.to_date
     elsif value.is_a? Array
       value.to_sentence
     else
       value
     end
   end
-  # rubocop:enable Metrics/MethodLength, Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+  # rubocop:enable Metrics/MethodLength, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
 
   #
   # A little utility method for displaying project rankings like most downloaded gems
@@ -68,6 +68,30 @@ module ApplicationHelper
       autolink: true,
       tables:   true
     ).render(text).html_safe # rubocop:disable Rails/OutputSafety
+  end
+
+  #
+  # Creates a link to the current page respecting all display mode & search query
+  # url arguments available in project listings (mode, order, search query, bugfix forks)
+  #
+  # This logic depends on too much implicit state by gathering bits & pieces
+  # from various assumed assigned variables, maybe extraction to some wrapping
+  # object might make sense...
+  #
+  def link_with_preserved_display_settings(**args)
+    addressable = Addressable::URI.new.tap do |uri|
+      uri.query_values = default_display_settings.merge(args).compact
+    end
+    "#{request.path}?#{addressable.query}"
+  end
+
+  def default_display_settings
+    {
+      order:      try(:current_order)&.ordered_by,
+      q:          @search&.query,
+      show_forks: @search&.show_forks,
+      display:    @display_mode&.current,
+    }
   end
 
   # why
