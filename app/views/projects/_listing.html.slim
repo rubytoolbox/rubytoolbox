@@ -1,10 +1,11 @@
 .columns: .column.projects
   - if display_mode.current == "table"
     = project_comparison projects
+
   - elsif display_mode.current == "compact"
-    .columns.is-multiline.is-flex
+    .columns.is-multiline
       - projects.each do |project|
-        .column.is-half= render_project project, show_categories: show_categories, compact: true
+        .column.is-full.is-half-tablet= render_project project, show_categories: show_categories, compact: true
   - else
     - projects.each do |project|
       = render_project project, show_categories: show_categories
