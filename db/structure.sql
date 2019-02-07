@@ -256,6 +256,39 @@ CREATE TABLE public.projects (
 
 
 --
+-- Name: rubygem_download_stats; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.rubygem_download_stats (
+    id bigint NOT NULL,
+    rubygem_name character varying NOT NULL,
+    date date NOT NULL,
+    total_downloads integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: rubygem_download_stats_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.rubygem_download_stats_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: rubygem_download_stats_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.rubygem_download_stats_id_seq OWNED BY public.rubygem_download_stats.id;
+
+
+--
 -- Name: rubygems; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -299,6 +332,13 @@ ALTER TABLE ONLY public.categorizations ALTER COLUMN id SET DEFAULT nextval('pub
 
 
 --
+-- Name: rubygem_download_stats id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.rubygem_download_stats ALTER COLUMN id SET DEFAULT nextval('public.rubygem_download_stats_id_seq'::regclass);
+
+
+--
 -- Name: ar_internal_metadata ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -312,6 +352,14 @@ ALTER TABLE ONLY public.ar_internal_metadata
 
 ALTER TABLE ONLY public.categorizations
     ADD CONSTRAINT categorizations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: rubygem_download_stats rubygem_download_stats_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.rubygem_download_stats
+    ADD CONSTRAINT rubygem_download_stats_pkey PRIMARY KEY (id);
 
 
 --
@@ -435,6 +483,13 @@ CREATE UNIQUE INDEX index_projects_on_rubygem_name ON public.projects USING btre
 
 
 --
+-- Name: index_rubygem_download_stats_on_rubygem_name_and_date; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_rubygem_download_stats_on_rubygem_name_and_date ON public.rubygem_download_stats USING btree (rubygem_name, date);
+
+
+--
 -- Name: index_rubygems_on_name; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -494,6 +549,14 @@ ALTER TABLE ONLY public.categories
 
 
 --
+-- Name: rubygem_download_stats fk_rails_c4eb80d594; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.rubygem_download_stats
+    ADD CONSTRAINT fk_rails_c4eb80d594 FOREIGN KEY (rubygem_name) REFERENCES public.rubygems(name);
+
+
+--
 -- Name: projects fk_rails_ddb4eb0108; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -535,6 +598,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190110202221'),
 ('20190117100816'),
 ('20190117101723'),
-('20190121165354');
+('20190121165354'),
+('20190204132920');
 
 

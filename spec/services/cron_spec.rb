@@ -19,6 +19,11 @@ RSpec.describe Cron, type: :service do
     cron.run time: time_at(rand(24))
   end
 
+  it "queues RubygemDownloadsPersistenceJob every hour" do
+    expect(RubygemDownloadsPersistenceJob).to receive(:perform_async)
+    cron.run time: time_at(rand(24))
+  end
+
   it "invokes GithubIgnore.expire every hour" do
     expect(GithubIgnore).to receive(:expire!)
     cron.run time: time_at(rand(24))
