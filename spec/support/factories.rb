@@ -8,12 +8,9 @@ module Factories
                 downloads: 5000,
                 first_release: 1.year.ago,
                 description: nil)
-      rubygem = Rubygem.create!(
-        name:             name,
-        current_version:  "1.0",
-        downloads:        downloads,
-        first_release_on: first_release
-      )
+
+      rubygem = self.rubygem name, downloads: downloads, first_release: first_release
+
       github_repo = GithubRepo.create!(
         path:             "#{name}/#{name}",
         stargazers_count: downloads,
@@ -25,6 +22,15 @@ module Factories
                       rubygem:     rubygem,
                       github_repo: github_repo,
                       description: description
+    end
+
+    def rubygem(name, downloads: 5000, first_release: 1.year.ago)
+      Rubygem.create!(
+        name:             name,
+        current_version:  "1.0",
+        downloads:        downloads,
+        first_release_on: first_release
+      )
     end
   end
   # rubocop:enable Metrics/MethodLength

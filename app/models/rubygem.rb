@@ -9,6 +9,13 @@ class Rubygem < ApplicationRecord
           inverse_of:  :rubygem,
           dependent:   :destroy
 
+  has_many :download_stats, -> { order(date: :asc) },
+           class_name:  "RubygemDownloadStat",
+           primary_key: :name,
+           foreign_key: :rubygem_name,
+           inverse_of:  :rubygem,
+           dependent:   :destroy
+
   def self.update_batch
     where("updated_at < ? ", 24.hours.ago.utc)
       .order(updated_at: :asc)
