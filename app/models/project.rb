@@ -46,7 +46,7 @@ class Project < ApplicationRecord
     return [] if name.blank?
 
     Project
-      .where("permalink ILIKE ?", "#{name}%")
+      .where("permalink ILIKE ?", "#{sanitize_sql_like(name)}%")
       .order("score DESC NULLS LAST")
       .limit(25)
       .pluck(:permalink)

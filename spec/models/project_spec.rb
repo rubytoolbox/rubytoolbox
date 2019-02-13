@@ -57,6 +57,16 @@ RSpec.describe Project, type: :model do
       Factories.project "foofoo", score: nil
       expect(described_class.suggest("fo")).to be == %w[foobar foo foofoo]
     end
+
+    it "is case-insensitive" do
+      Factories.project "DeMo"
+      expect(described_class.suggest("dem")).to be == %w[DeMo]
+    end
+
+    it "sanitizes user-provided special chars" do
+      Factories.project "foof"
+      expect(described_class.suggest("%oof")).to be == %w[]
+    end
   end
 
   describe ".search" do
