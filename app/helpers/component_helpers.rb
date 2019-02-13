@@ -59,6 +59,10 @@ module ComponentHelpers
     render "components/small_health_indicator", project: project
   end
 
+  def project_details_buttons(project)
+    render "components/project/details_buttons", project: project
+  end
+
   def project_order_dropdown(order)
     render "components/project_order_dropdown", order: order
   end

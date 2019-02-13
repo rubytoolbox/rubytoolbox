@@ -1,0 +1,8 @@
+.columns: .column
+  .buttons.is-right
+    a.button.is-outlined href="/projects/#{project.permalink}"
+      span.icon: i.fa.fa-plus
+      span Show more project details
+    a.button.is-outlined href=comparison_path(project.permalink)
+      span.icon: i.fa.fa-arrows-h
+      span Compare
