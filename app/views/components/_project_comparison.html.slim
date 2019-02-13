@@ -2,9 +2,8 @@
   - metrics = %i[score rubygem_downloads github_repo_stargazers_count github_repo_forks_count rubygem_first_release_on rubygem_latest_release_on rubygem_reverse_dependencies_count]
   table.table.is-striped.is-hoverable.is-fullwidth
     thead
-      th
-      th
-      th
+      - 4.times do
+        th
       - metrics.each do |key|
         th: .heading
           - docs_page = File.join("docs", "metrics", key.to_s)
@@ -29,6 +28,9 @@
             - if project.github_repo_url
               a href=project.github_repo_url
                 span.icon: i.fa.fa-github
+
+          td
+            = hoverable_health_indicator project
 
           // This should be less messy...
           - metrics.each do |key|
