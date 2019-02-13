@@ -4,7 +4,8 @@
   "dependencies": {
     "bulma": "^0.7.0",
     "chart.js": "^2.7.3",
-    "headroom.js": "^0.9.4"
+    "headroom.js": "^0.9.4",
+    "javascript-autocomplete": "^1.0.3"
   },
   "version": "1.0.0",
   "main": "index.js",

@@ -5,6 +5,10 @@
     h2
       a href=comparison_path("")
         span Compare projects
+    - if @projects.empty?
+      .description
+        markdown:
+          Project comparisons enable you to view any selection of projects side by side just like they're shown on regular categories or in search results. **[You can try out an example](/compare/hanami,merb,rails,sinatra)** or start yourself by adding a library to the comparison via the input below.
 
     .columns: .column
       .tags
@@ -13,14 +17,31 @@
             span= permalink
             a.delete.is-small href=comparison_path((@expected_ids.split(",") - [permalink]).join(","))
 
-      = form_tag link_with_preserved_display_settings, method: :get, autocomplete: "off" do
+      = form_tag link_with_preserved_display_settings, method: :get, autocomplete: "off", class: "autocomplete-form" do
         .field.has-addons.has-addons-centered
           .control.is-expanded
-            input.input placeholder="Type a gem name to add it to the comparison" type="text" name="add" value=""
+            input.input.autocomplete-comparison autofocus="autofocus" placeholder="Type a project name to add it to the comparison" type="text" name="add" value=""
           .control
             button.button type="submit"
               span.icon: i.fa.fa-plus
               span Add to comparison
+
+        javascript:
+          new autoComplete({
+            minChars: 1,
+            selector: "input.autocomplete-comparison",
+            source: function(term, callback) {
+              fetch("/search/by_name?q=" + term)
+                .then(function(response) {
+                  response.json().then(function(data) {
+                    callback(data);
+                  });
+                });
+            },
+            onSelect: function() {
+              document.querySelector("form.autocomplete-form").submit()
+            }
+          });
 
 
 - if @projects.any?
@@ -32,7 +53,3 @@
         .level-item= project_order_dropdown current_order
 
     = render "projects/listing", projects: @projects, show_categories: false, display_mode: @display_mode
-
-- else
-  article.blog-post
-    h3 About project comparisons

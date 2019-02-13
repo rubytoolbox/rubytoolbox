@@ -14,11 +14,11 @@ RSpec.describe "Project Comparisons", type: :feature, js: true do
     within ".navbar" do
       click_on "Compare"
     end
-    expect(page).to have_selector("article.blog-post")
+    expect(page).to have_text("view any selection of projects")
 
     fill_in :add, with: "acme"
     click_button "Add to comparison"
-    expect(page).not_to have_selector("article.blog-post")
+    expect(page).not_to have_text("view any selection of projects")
     expect(listed_project_names).to be == %w[acme]
     expect(comparison_project_tags.map(&:text)).to be == %w[acme]
 
@@ -33,10 +33,40 @@ RSpec.describe "Project Comparisons", type: :feature, js: true do
     end
   end
 
+  it "supports custom sorting and display modes" do
+    visit "/compare/acme,toolkit,widget"
+    expect(listed_project_names).to be == %w[acme toolkit widget]
+    order_by "Downloads"
+    expect(listed_project_names).to be == %w[widget acme toolkit]
+
+    expect_display_mode "Table"
+    change_display_mode "Full"
+    # Custom order should remain across display mode switches
+    expect(listed_project_names).to be == %w[widget acme toolkit]
+    change_display_mode "Compact"
+    expect(listed_project_names).to be == %w[widget acme toolkit]
+  end
+
+  it "has working autocompletion for project addition form" do
+    visit "/compare"
+
+    add_using_autocomplete "widget"
+    wait_for do
+      expect(listed_project_names).to be == %w[widget]
+    end
+
+    add_using_autocomplete "toolkit"
+    wait_for do
+      expect(listed_project_names).to be == %w[toolkit widget]
+    end
+  end
+
   private
 
-  def listed_project_names
-    page.find_all(".project-comparison tbody th").map(&:text)
+  def add_using_autocomplete(name)
+    page.find("input.autocomplete-comparison").send_keys name[0..2]
+    expect(page).to have_selector(".autocomplete-suggestions")
+    page.find("input.autocomplete-comparison").send_keys :down, :enter
   end
 
   def comparison_project_tags

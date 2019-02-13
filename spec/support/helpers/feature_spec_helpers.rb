@@ -2,7 +2,11 @@
 
 module FeatureSpecHelpers
   def listed_project_names
-    page.find_all(".project h3").map(&:text)
+    if current_display_mode == "Table"
+      page.find_all(".project-comparison tbody th").map(&:text)
+    else
+      page.find_all(".project h3").map(&:text)
+    end
   end
 
   #
@@ -31,10 +35,15 @@ module FeatureSpecHelpers
     end
   end
 
+  def current_display_mode
+    page.find(".project-display-picker .is-active").text
+  end
+
   def expect_display_mode(label) # rubocop:disable Metrics/AbcSize It's good enough :)
     within(".project-display-picker .is-active") do
       expect(page).to have_text(label)
     end
+
     case label.downcase.to_sym
     when :table
       expect(page).to have_selector(".project-comparison", count: 1)

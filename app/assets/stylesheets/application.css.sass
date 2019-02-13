@@ -11,6 +11,7 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_self
+ *= require javascript-autocomplete/auto-complete.css
  */
 
 @import "font-awesome"
@@ -186,3 +187,15 @@ article.blog-post
   height: 350px
   &.small
     height: 180px
+
+.autocomplete-suggestions
+  .autocomplete-suggestion
+    padding: 10px 8px
+    &.selected
+      background: $primary
+      color: white
+      b
+        color: white
+    b
+      color: black
+      font-weight: bold
