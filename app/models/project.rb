@@ -42,6 +42,16 @@ class Project < ApplicationRecord
       .with_score
   end
 
+  def self.suggest(name)
+    return [] if name.blank?
+
+    Project
+      .where("permalink ILIKE ?", "#{name}%")
+      .order("score DESC NULLS LAST")
+      .limit(25)
+      .pluck(:permalink)
+  end
+
   include PgSearch
   pg_search_scope :search_scope,
                   # This is unfortunately not used when using explicit tsvector columns,

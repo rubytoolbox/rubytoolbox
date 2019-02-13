@@ -10,7 +10,11 @@ Rails.application.routes.draw do
   end
   get "compare(/:id)", to: "comparisons#show", constraints: { id: /.*/ }, as: :comparison
 
-  resource  :search, only: %i[show]
+  resource :search, only: %i[show] do
+    collection do
+      get :by_name
+    end
+  end
   resources :blog, only: %i[index show], constraints: { id: /[^\.]+/ }
 
   namespace :webhooks do
