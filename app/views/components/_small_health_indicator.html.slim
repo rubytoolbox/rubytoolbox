@@ -1,0 +1,5 @@
+.project-health-tag class="level-#{project.health.overall_level}"
+  a href="/projects/#{project.permalink}" title=project.health.status.map(&:label).join(", ")
+    .tags.has-addons
+      span.tag
+        span.icon: i.fa class="fa-heartbeat"
