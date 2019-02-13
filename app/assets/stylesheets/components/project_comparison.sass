@@ -19,6 +19,7 @@
     th.sticky
       position: sticky
       left: 0
+      z-index: 999 // make sure content with a high z-index within adjacent columns doesn't overlap
       // Black magic... https://stackoverflow.com/a/45042852
       &:after
         content: ""
