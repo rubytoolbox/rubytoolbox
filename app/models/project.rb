@@ -150,5 +150,9 @@ class Project < ApplicationRecord
   def bug_tracker_url
     rubygem_bug_tracker_url || github_repo_issues_url
   end
+
+  def health
+    @health ||= Project::Health.new(self)
+  end
 end
 # rubocop:enable Metrics/ClassLength

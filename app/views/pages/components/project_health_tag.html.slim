@@ -24,3 +24,16 @@
       suspected originating gem.
 
   = project_health_tags Project.new(bugfix_fork_of: "rails")
+
+= component_example "Tiny tag list with hover dropdown"
+  .content
+    markdown:
+      When available space is very limited, the "worst" status health indicator can be shown, featuring
+      a dropdown that shows the detailed health stats on hover.
+
+
+  - Project.for_display.order(score: :desc).limit(10).each do |project|
+    = hoverable_health_indicator project
+
+  - Project.for_display.where("rubygems.latest_release_on < ?", 5.years.ago).order(score: :desc).limit(10).each do |project|
+    = hoverable_health_indicator project

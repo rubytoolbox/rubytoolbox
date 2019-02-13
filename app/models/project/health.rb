@@ -45,4 +45,11 @@ class Project::Health
   def status
     @status ||= checks.select { |check| check.applies? project }.presence || [HEALTHY_STATUS]
   end
+
+  def overall_level
+    return :red if status.any? { |status| status.level == :red }
+    return :yellow if status.any? { |status| status.level == :yellow }
+
+    :green
+  end
 end

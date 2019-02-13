@@ -7,5 +7,5 @@
       a.tag.is-primary href=project_path(project.bugfix_fork_of)
         = project.bugfix_fork_of
 
-  - Project::Health.new(project).status.each do |status|
+  - project.health.status.each do |status|
     = project_health_tag status
