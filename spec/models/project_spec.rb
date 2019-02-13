@@ -204,4 +204,23 @@ RSpec.describe Project, type: :model do
       expect(Project.new(permalink: "FoOBaR").permalink).to be == "FoOBaR"
     end
   end
+
+  describe "#health" do
+    let(:project) { described_class.new }
+
+    it "passes itself to Project Health" do
+      expect(Project::Health).to receive(:new).with(project)
+      project.health
+    end
+
+    it "returns a project health instance" do
+      health = instance_double Project::Health
+      allow(Project::Health).to receive(:new).and_return(health)
+      expect(project.health).to be == health
+    end
+
+    it "memoizes the instance" do
+      expect(project.health.object_id).to be == project.health.object_id
+    end
+  end
 end

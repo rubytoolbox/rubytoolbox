@@ -68,4 +68,33 @@ RSpec.describe Project::Health, type: :model do
       expect(health.status).to be == [described_class::HEALTHY_STATUS]
     end
   end
+
+  describe "overall_level" do
+    before do
+      health.checks.each { |check| allow(check).to receive(:applies?) }
+    end
+
+    it "returns the red if a matching check is red" do
+      health.checks.each { |check| allow(check).to receive(:applies?).and_return(true) }
+      expect(health.overall_level).to be == :red
+    end
+
+    it "returns yellow if worst matching check is yellow" do
+      health.checks.each do |check|
+        next unless %i[yellow green].include? check.level
+
+        allow(check).to receive(:applies?).and_return(true)
+      end
+      expect(health.overall_level).to be == :yellow
+    end
+
+    it "returns green if worst matching check is green" do
+      health.checks.each do |check|
+        next unless check.level == :green
+
+        allow(check).to receive(:applies?).and_return(true)
+      end
+      expect(health.overall_level).to be == :green
+    end
+  end
 end

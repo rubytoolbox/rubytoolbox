@@ -55,6 +55,10 @@ module ComponentHelpers
     render "components/project_health_tag", status: health_status
   end
 
+  def hoverable_health_indicator(project)
+    render "components/hoverable_health_indicator", project: project
+  end
+
   def project_order_dropdown(order)
     render "components/project_order_dropdown", order: order
   end
