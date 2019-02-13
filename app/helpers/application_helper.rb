@@ -79,13 +79,17 @@ module ApplicationHelper
   # object might make sense...
   #
   def link_with_preserved_display_settings(**args)
-    addressable = Addressable::URI.new.tap do |uri|
-      uri.query_values = default_display_settings.merge(args).compact
-    end
-    "#{request.path}?#{addressable.query}"
+    "#{request.path}?#{current_display_settings_query_string(**args)}"
   end
 
-  def default_display_settings
+  def current_display_settings_query_string(**args)
+    addressable = Addressable::URI.new.tap do |uri|
+      uri.query_values = current_display_settings.merge(args).compact
+    end
+    addressable.query
+  end
+
+  def current_display_settings
     {
       order:      try(:current_order)&.ordered_by,
       q:          @search&.query,

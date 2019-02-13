@@ -18,12 +18,13 @@ RSpec.describe "Project Comparisons", type: :feature, js: true do
 
     fill_in :add, with: "acme"
     click_button "Add to comparison"
-    expect(page).not_to have_text("view any selection of projects")
+    expect(page).to have_text("view any selection of projects")
     expect(listed_project_names).to be == %w[acme]
     expect(comparison_project_tags.map(&:text)).to be == %w[acme]
 
     fill_in :add, with: "widget"
     click_button "Add to comparison"
+    expect(page).not_to have_text("view any selection of projects")
     expect(listed_project_names).to be == %w[acme widget]
     expect(comparison_project_tags.map(&:text)).to be == %w[acme widget]
 
@@ -45,6 +46,19 @@ RSpec.describe "Project Comparisons", type: :feature, js: true do
     expect(listed_project_names).to be == %w[widget acme toolkit]
     change_display_mode "Compact"
     expect(listed_project_names).to be == %w[widget acme toolkit]
+
+    # It should keep current display settings on add
+    fill_in :add, with: "irrelevant"
+    click_button "Add to comparison"
+    expect_display_mode "Compact"
+    expect(listed_project_names).to be == %w[widget acme toolkit]
+
+    # It should keep current display settings on remove
+    comparison_project_tags.first.find(".delete").click
+    wait_for do
+      expect(listed_project_names).to be == %w[widget toolkit]
+    end
+    expect_display_mode "Compact"
   end
 
   it "has working autocompletion for project addition form" do
