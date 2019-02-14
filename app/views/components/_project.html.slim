@@ -25,6 +25,14 @@
 
   .columns: .column= project_health_tags project
 
+  - if project.github_repo_topics.present?
+    .columns: .column
+      .tags
+        - project.github_repo_topics.each do |topic|
+          a.tag href="https://github.com/topics/#{topic}"
+            span.icon: i.fa.fa-tag
+            span= topic
+
   .columns: .links.column
     = project_links project, compact: compact
 
