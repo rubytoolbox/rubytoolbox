@@ -41,6 +41,14 @@ $navbar-item-hover-background-color: transparent
 $navbar-item-active-background-color: transparent
 $navbar-tab-hover-background-color: transparent
 $navbar-tab-active-background-color: transparent
+// Need to set these variables despite them being bulma defaults
+// so we can customize the navbar breakpoint to the
+// default bulma widescreen breakpoint before importing bulma itself
+$gap: 64px
+$widescreen: 1152px + (2 * $gap)
+// Navbar burger toggles on desktop <-> widescreen (default: tablet <-> desktop)
+// since we have too many menu items
+$navbar-breakpoint: $widescreen
 
 @import "bulma/bulma"
 @import "components/**/*"
@@ -76,8 +84,10 @@ header.main
         .wrap
           border-color: $primary
 
-    // Do not show red active border on mobile nav
     .navbar-menu.is-active
+      // Do not show box shadow, it looks funny on desktop
+      box-shadow: none
+      // Do not show red active border on mobile nav
       .navbar-item.is-active
         .wrap
           border-color: transparent
@@ -98,7 +108,7 @@ header.main
     // navbar burger and ensure it's nicely aligned
     .mobile-search
       margin-left: auto
-      @extend .is-hidden-desktop
+      @extend .is-hidden-widescreen
       height: $navbar-height
       width: $navbar-height
       .icon
