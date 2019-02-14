@@ -15,7 +15,7 @@ class ComparisonsController < ApplicationController
 
   def enforce_canonical_query
     @expected_ids = @projects.map(&:permalink).sort.join(",")
-    query_string = Rack::Utils.parse_nested_query(request.query_string).except("add").to_query
+    query_string = Rack::Utils.parse_nested_query(request.query_string).slice("display", "order").to_query
     destination = if query_string.present?
                     comparison_path(@expected_ids) + "?#{query_string}"
                   else

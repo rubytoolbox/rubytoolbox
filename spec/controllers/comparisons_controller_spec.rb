@@ -34,6 +34,11 @@ RSpec.describe ComparisonsController, type: :controller do
         expect(response).to redirect_to("/compare/a,b,c")
       end
 
+      it "keeps display parameters around when given" do
+        get :show, params: { id: "b,c,a", display: "compact", order: "downloads", foo: "bar" }
+        expect(response).to redirect_to("/compare/a,b,c?display=compact&order=downloads")
+      end
+
       it "redirects to distinct ids when querying duplicates" do
         get :show, params: { id: "b,c,a,c,b" }
         expect(response).to redirect_to("/compare/a,b,c")
