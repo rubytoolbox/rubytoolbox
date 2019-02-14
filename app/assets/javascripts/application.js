@@ -14,6 +14,7 @@
 //= require turbolinks
 //= require chart.js/dist/Chart.bundle.js
 //= require headroom.js/dist/headroom
+//= require javascript-autocomplete/auto-complete.js
 //= require_tree .
 
 document.addEventListener("turbolinks:load", function () {

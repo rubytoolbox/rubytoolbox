@@ -51,7 +51,4 @@
     .column: .metrics
       = metrics_row project, :github_repo_issue_closure_rate, :github_repo_pull_request_acceptance_rate, :github_repo_average_recent_committed_at, :rubygem_reverse_dependencies_count
 
-  .columns: .column.has-text-right
-    a.button.is-outlined href="/projects/#{project.permalink}"
-      span.icon: i.fa.fa-plus
-      span Show more project details
+  = project_details_buttons project

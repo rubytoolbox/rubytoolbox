@@ -58,7 +58,7 @@ html.has-navbar-fixed-top lang="en"
 
         .navbar-menu#mainMenu
           .navbar-end
-            a.navbar-item href="/" class=active_when(controller: :welcome)
+            a.navbar-item.is-hidden-widescreen-only href="/" class=active_when(controller: :welcome)
               .wrap
                 span.icon: i.fa.fa-home
                 span Home
@@ -67,6 +67,11 @@ html.has-navbar-fixed-top lang="en"
               .wrap
                 span.icon: i.fa.fa-bars
                 span Categories
+
+            a.navbar-item href=comparison_path class=active_when(controller: :comparisons)
+              .wrap
+                span.icon: i.fa.fa-arrows-h
+                span Compare
 
             a.navbar-item href=page_path("docs/index") class=active_when(controller: :pages)
               .wrap

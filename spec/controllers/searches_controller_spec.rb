@@ -69,4 +69,17 @@ RSpec.describe SearchesController, type: :controller do
       expect(response).to have_http_status(:success)
     end
   end
+
+  describe "GET by_name" do
+    it "requests list of matching project names to Project.suggest" do
+      expect(Project).to receive(:suggest).with("foobar").and_return([])
+      get :by_name, params: { q: "foobar" }
+    end
+
+    it "returns list of matching project names as json" do
+      allow(Project).to receive(:suggest).with("foobar").and_return(%w[a b c])
+      get :by_name, params: { q: "foobar" }
+      expect(Oj.load(response.body)).to be == %w[a b c]
+    end
+  end
 end

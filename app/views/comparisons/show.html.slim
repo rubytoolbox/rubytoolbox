@@ -1,0 +1,68 @@
+- content_for :title, "Compare Projects"
+
+.hero
+  section.section: .container
+    .columns: .column
+      h2
+        a href=comparison_path("")
+          span Compare projects
+      - if @projects.size < 2
+        .description
+          markdown:
+            Project comparisons allow you to view any selection of projects side by side just like they're shown on regular categories or in search results. **[You can try out an example](/compare/hanami,merb,rails,sinatra)** or start yourself by adding a library to the comparison via the input below.
+
+    .columns: .column
+      .tags
+        - @expected_ids.split(",").each do |permalink|
+          span.tag.is-primary.is-medium
+            span= permalink
+            a.delete.is-small href=(comparison_path((@expected_ids.split(",") - [permalink]).join(",")) + "?#{current_display_settings_query_string}")
+
+      = form_tag request.path, method: :get, autocomplete: "off", class: "autocomplete-form" do
+        .field.has-addons.has-addons-centered
+          // Persist display settings across submissions
+          - current_display_settings.compact.each do |name, value|
+            input type="hidden" name=name value=value
+
+          .control.is-expanded
+            input.input.autocomplete-comparison autofocus="autofocus" placeholder="Type a project name to add it to the comparison" type="text" name="add" value=""
+          .control
+            button.button type="submit"
+              span.icon: i.fa.fa-plus
+              span Add to comparison
+
+        / Our autocomplete library interferes with the enter key on the input field -
+        / it should be possible to just type a name and hit enter without interacting
+        / with the autocompletion in any way.
+        javascript:
+          (function() {
+            var submitComparisonForm = function() { document.querySelector("form.autocomplete-form").submit() }
+            document.querySelector("input.autocomplete-comparison").addEventListener("keydown", function(event) {
+              if (event.key === "Enter") { submitComparisonForm(); }
+            });
+
+            new autoComplete({
+              minChars: 1,
+              selector: "input.autocomplete-comparison",
+              source: function(term, callback) {
+                fetch("/search/by_name?q=" + term)
+                  .then(function(response) {
+                    response.json().then(function(data) {
+                      callback(data);
+                    });
+                  });
+              },
+              onSelect: submitComparisonForm
+            });
+          })();
+
+
+- if @projects.any?
+  section.section: .container
+    .level
+      .level-left
+      .level-right
+        .level-item= project_display_picker @display_mode
+        .level-item= project_order_dropdown current_order
+
+    = render "projects/listing", projects: @projects, show_categories: false, display_mode: @display_mode

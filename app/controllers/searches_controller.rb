@@ -10,6 +10,10 @@ class SearchesController < ApplicationController
     redirect_to_search_with_forks_included if should_redirect_to_included_forks?
   end
 
+  def by_name
+    render json: Project.suggest(params[:q])
+  end
+
   private
 
   def perform_search

@@ -41,6 +41,34 @@ RSpec.describe Project, type: :model do
     end
   end
 
+  describe ".suggest" do
+    it "does not make any database query for empty param" do
+      expect { described_class.suggest(" ") }.not_to make_database_queries
+    end
+
+    it "returns empty array for empty param" do
+      expect(described_class.suggest(" ")).to be == []
+    end
+
+    it "fetches projects from database that match given name ordered by score" do
+      Factories.project "demofoo"
+      Factories.project "foobar", score: 10
+      Factories.project "foo", score: 5
+      Factories.project "foofoo", score: nil
+      expect(described_class.suggest("fo")).to be == %w[foobar foo foofoo]
+    end
+
+    it "is case-insensitive" do
+      Factories.project "DeMo"
+      expect(described_class.suggest("dem")).to be == %w[DeMo]
+    end
+
+    it "sanitizes user-provided special chars" do
+      Factories.project "foof"
+      expect(described_class.suggest("%oof")).to be == %w[]
+    end
+  end
+
   describe ".search" do
     it "can find a matching project" do
       expected = Project.create! permalink: "widgets", score: 1

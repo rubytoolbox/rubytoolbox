@@ -38,10 +38,7 @@
   - if local_assigns[:compact]
     .metrics.compact= metrics_row project, :rubygem_downloads, :github_repo_stargazers_count, :rubygem_current_version, :rubygem_releases_count, :rubygem_first_release_on, :rubygem_latest_release_on
 
-    .columns: .column.has-text-right
-      a.button.is-outlined href="/projects/#{project.permalink}"
-        span.icon: i.fa.fa-plus
-        span Show more project details
+    = project_details_buttons project
 
   - else
     = project_metrics project, compact: compact
