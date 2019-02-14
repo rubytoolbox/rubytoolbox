@@ -31,22 +31,30 @@
               span.icon: i.fa.fa-plus
               span Add to comparison
 
+        / Our autocomplete library interferes with the enter key on the input field -
+        / it should be possible to just type a name and hit enter without interacting
+        / with the autocompletion in any way.
         javascript:
-          new autoComplete({
-            minChars: 1,
-            selector: "input.autocomplete-comparison",
-            source: function(term, callback) {
-              fetch("/search/by_name?q=" + term)
-                .then(function(response) {
-                  response.json().then(function(data) {
-                    callback(data);
+          (function() {
+            var submitComparisonForm = function() { document.querySelector("form.autocomplete-form").submit() }
+            document.querySelector("input.autocomplete-comparison").addEventListener("keydown", function(event) {
+              if (event.key === "Enter") { submitComparisonForm(); }
+            });
+
+            new autoComplete({
+              minChars: 1,
+              selector: "input.autocomplete-comparison",
+              source: function(term, callback) {
+                fetch("/search/by_name?q=" + term)
+                  .then(function(response) {
+                    response.json().then(function(data) {
+                      callback(data);
+                    });
                   });
-                });
-            },
-            onSelect: function() {
-              document.querySelector("form.autocomplete-form").submit()
-            }
-          });
+              },
+              onSelect: submitComparisonForm
+            });
+          })();
 
 
 - if @projects.any?
