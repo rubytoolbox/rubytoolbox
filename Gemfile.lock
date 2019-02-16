@@ -144,7 +144,7 @@ GEM
       ruby_parser (~> 3.10)
     hashdiff (0.3.7)
     high_voltage (3.1.0)
-    http (4.0.4)
+    http (4.0.5)
       addressable (~> 2.3)
       http-cookie (~> 1.0)
       http-form_data (~> 2.0)
