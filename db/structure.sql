@@ -263,9 +263,7 @@ CREATE TABLE public.rubygem_download_stats (
     id bigint NOT NULL,
     rubygem_name character varying NOT NULL,
     date date NOT NULL,
-    total_downloads integer NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    total_downloads integer NOT NULL
 );
 
 
@@ -599,6 +597,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190117100816'),
 ('20190117101723'),
 ('20190121165354'),
-('20190204132920');
+('20190204132920'),
+('20190218131324');
 
 
