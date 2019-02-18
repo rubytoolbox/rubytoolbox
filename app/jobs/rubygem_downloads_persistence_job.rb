@@ -16,13 +16,11 @@ class RubygemDownloadsPersistenceJob < ApplicationJob
 
     upsert_sql = <<~SQL
       INSERT INTO
-        rubygem_download_stats (rubygem_name, total_downloads, date, created_at, updated_at)
+        rubygem_download_stats (rubygem_name, total_downloads, date)
         SELECT
           name AS rubygem_name,
           downloads AS total_downloads,
-          DATE '#{date}' as date,
-          current_timestamp as created_at,
-          current_timestamp as updated_at
+          DATE '#{date}' as date
         FROM   rubygems
 
       ON CONFLICT (rubygem_name, date) DO UPDATE
