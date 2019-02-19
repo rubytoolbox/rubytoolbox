@@ -115,8 +115,9 @@ CREATE FUNCTION public.rubygem_stats_calculation_month() RETURNS trigger
     AS $$
 DECLARE
     previous_downloads int;
+    previous_relative_change decimal;
 BEGIN
-    SELECT total_downloads INTO previous_downloads
+    SELECT total_downloads, relative_change_month INTO previous_downloads, previous_relative_change
       FROM rubygem_download_stats
       WHERE
         rubygem_name = NEW.rubygem_name AND date = NEW.date - 28;
@@ -125,6 +126,10 @@ BEGIN
       NEW.absolute_change_month := NEW.total_downloads - previous_downloads;
       IF previous_downloads > 0 THEN
         NEW.relative_change_month := ROUND((NEW.absolute_change_month * 100.0) / previous_downloads, 2);
+    
+        IF previous_relative_change IS NOT NULL THEN
+          NEW.growth_change_month := NEW.relative_change_month - previous_relative_change;
+        END IF;
       END IF;
     END IF;
     RETURN NEW;
@@ -141,8 +146,9 @@ CREATE FUNCTION public.rubygem_stats_calculation_week() RETURNS trigger
     AS $$
 DECLARE
     previous_downloads int;
+    previous_relative_change decimal;
 BEGIN
-    SELECT total_downloads INTO previous_downloads
+    SELECT total_downloads, relative_change_week INTO previous_downloads, previous_relative_change
       FROM rubygem_download_stats
       WHERE
         rubygem_name = NEW.rubygem_name AND date = NEW.date - 7;
@@ -151,6 +157,10 @@ BEGIN
       NEW.absolute_change_week := NEW.total_downloads - previous_downloads;
       IF previous_downloads > 0 THEN
         NEW.relative_change_week := ROUND((NEW.absolute_change_week * 100.0) / previous_downloads, 2);
+    
+        IF previous_relative_change IS NOT NULL THEN
+          NEW.growth_change_week := NEW.relative_change_week - previous_relative_change;
+        END IF;
       END IF;
     END IF;
     RETURN NEW;
@@ -167,8 +177,9 @@ CREATE FUNCTION public.rubygem_stats_calculation_year() RETURNS trigger
     AS $$
 DECLARE
     previous_downloads int;
+    previous_relative_change decimal;
 BEGIN
-    SELECT total_downloads INTO previous_downloads
+    SELECT total_downloads, relative_change_year INTO previous_downloads, previous_relative_change
       FROM rubygem_download_stats
       WHERE
         rubygem_name = NEW.rubygem_name AND date = NEW.date - 364;
@@ -177,6 +188,10 @@ BEGIN
       NEW.absolute_change_year := NEW.total_downloads - previous_downloads;
       IF previous_downloads > 0 THEN
         NEW.relative_change_year := ROUND((NEW.absolute_change_year * 100.0) / previous_downloads, 2);
+    
+        IF previous_relative_change IS NOT NULL THEN
+          NEW.growth_change_year := NEW.relative_change_year - previous_relative_change;
+        END IF;
       END IF;
     END IF;
     RETURN NEW;
@@ -344,10 +359,13 @@ CREATE TABLE public.rubygem_download_stats (
     total_downloads integer NOT NULL,
     absolute_change_week integer,
     relative_change_week numeric,
+    growth_change_week numeric,
     absolute_change_month integer,
     relative_change_month numeric,
+    growth_change_month numeric,
     absolute_change_year integer,
-    relative_change_year numeric
+    relative_change_year numeric,
+    growth_change_year numeric
 );
 
 
@@ -590,6 +608,27 @@ CREATE INDEX index_rubygem_download_stats_on_absolute_change_year ON public.ruby
 --
 
 CREATE INDEX index_rubygem_download_stats_on_date ON public.rubygem_download_stats USING btree (date);
+
+
+--
+-- Name: index_rubygem_download_stats_on_growth_change_month; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_rubygem_download_stats_on_growth_change_month ON public.rubygem_download_stats USING btree (growth_change_month DESC NULLS LAST);
+
+
+--
+-- Name: index_rubygem_download_stats_on_growth_change_week; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_rubygem_download_stats_on_growth_change_week ON public.rubygem_download_stats USING btree (growth_change_week DESC NULLS LAST);
+
+
+--
+-- Name: index_rubygem_download_stats_on_growth_change_year; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_rubygem_download_stats_on_growth_change_year ON public.rubygem_download_stats USING btree (growth_change_year DESC NULLS LAST);
 
 
 --
