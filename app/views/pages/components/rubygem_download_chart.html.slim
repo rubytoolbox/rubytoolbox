@@ -1,0 +1,13 @@
+.hero
+  section.section: .container
+    p.heading= link_to "Ruby Toolbox UI Components Styleguide", "/pages/components"
+    h2= current_page.split("/").last.humanize
+
+
+= component_example "Rubygem Download Stats Chart" do
+  = rubygem_download_chart "devise"
+  = rubygem_download_chart "rails"
+  = rubygem_download_chart "rake"
+  = rubygem_download_chart "rspec"
+  = rubygem_download_chart "simplecov"
+  = rubygem_download_chart "sinatra"

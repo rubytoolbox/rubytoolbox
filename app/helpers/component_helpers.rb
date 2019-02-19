@@ -79,6 +79,13 @@ module ComponentHelpers
     render "components/project_display_picker", display_mode: display_mode
   end
 
+  def rubygem_download_chart(name)
+    return if name.blank?
+
+    stats = RubygemDownloadStat::Timeseries.fetch name, :total_downloads, :absolute_change_month
+    render "components/rubygem_download_chart", stats: stats
+  end
+
   def line_chart(data, scale: "logarithmic")
     render "components/line_chart",
            keys:   data.keys,
