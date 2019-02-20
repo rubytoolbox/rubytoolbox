@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     )
   end
   mount Sidekiq::Web, at: "/ops/sidekiq"
+  mount PgHero::Engine, at: "/ops/pghero" if Rails.env.development?
 
   root "welcome#home"
 end

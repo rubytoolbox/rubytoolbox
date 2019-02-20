@@ -216,6 +216,8 @@ GEM
     pg_search (2.1.4)
       activerecord (>= 4.2)
       activesupport (>= 4.2)
+    pghero (2.2.0)
+      activerecord
     powerpack (0.1.2)
     pry (0.12.2)
       coderay (~> 1.1.0)
@@ -434,6 +436,7 @@ DEPENDENCIES
   overcommit
   pg (~> 0.18)
   pg_search
+  pghero
   pry-rails
   puma (~> 3.11)
   rack-canonical-host
