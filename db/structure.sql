@@ -137,68 +137,6 @@ END;
 $$;
 
 
---
--- Name: rubygem_stats_calculation_week(); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION public.rubygem_stats_calculation_week() RETURNS trigger
-    LANGUAGE plpgsql
-    AS $$
-DECLARE
-    previous_downloads int;
-    previous_relative_change decimal;
-BEGIN
-    SELECT total_downloads, relative_change_week INTO previous_downloads, previous_relative_change
-      FROM rubygem_download_stats
-      WHERE
-        rubygem_name = NEW.rubygem_name AND date = NEW.date - 7;
-    
-    IF previous_downloads IS NOT NULL THEN
-      NEW.absolute_change_week := NEW.total_downloads - previous_downloads;
-      IF previous_downloads > 0 THEN
-        NEW.relative_change_week := ROUND((NEW.absolute_change_week * 100.0) / previous_downloads, 2);
-    
-        IF previous_relative_change IS NOT NULL THEN
-          NEW.growth_change_week := NEW.relative_change_week - previous_relative_change;
-        END IF;
-      END IF;
-    END IF;
-    RETURN NEW;
-END;
-$$;
-
-
---
--- Name: rubygem_stats_calculation_year(); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION public.rubygem_stats_calculation_year() RETURNS trigger
-    LANGUAGE plpgsql
-    AS $$
-DECLARE
-    previous_downloads int;
-    previous_relative_change decimal;
-BEGIN
-    SELECT total_downloads, relative_change_year INTO previous_downloads, previous_relative_change
-      FROM rubygem_download_stats
-      WHERE
-        rubygem_name = NEW.rubygem_name AND date = NEW.date - 364;
-    
-    IF previous_downloads IS NOT NULL THEN
-      NEW.absolute_change_year := NEW.total_downloads - previous_downloads;
-      IF previous_downloads > 0 THEN
-        NEW.relative_change_year := ROUND((NEW.absolute_change_year * 100.0) / previous_downloads, 2);
-    
-        IF previous_relative_change IS NOT NULL THEN
-          NEW.growth_change_year := NEW.relative_change_year - previous_relative_change;
-        END IF;
-      END IF;
-    END IF;
-    RETURN NEW;
-END;
-$$;
-
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -357,15 +295,9 @@ CREATE TABLE public.rubygem_download_stats (
     rubygem_name character varying NOT NULL,
     date date NOT NULL,
     total_downloads integer NOT NULL,
-    absolute_change_week integer,
-    relative_change_week numeric,
-    growth_change_week numeric,
     absolute_change_month integer,
     relative_change_month numeric,
-    growth_change_month numeric,
-    absolute_change_year integer,
-    relative_change_year numeric,
-    growth_change_year numeric
+    growth_change_month numeric
 );
 
 
@@ -590,20 +522,6 @@ CREATE INDEX index_rubygem_download_stats_on_absolute_change_month ON public.rub
 
 
 --
--- Name: index_rubygem_download_stats_on_absolute_change_week; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_rubygem_download_stats_on_absolute_change_week ON public.rubygem_download_stats USING btree (absolute_change_week DESC NULLS LAST);
-
-
---
--- Name: index_rubygem_download_stats_on_absolute_change_year; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_rubygem_download_stats_on_absolute_change_year ON public.rubygem_download_stats USING btree (absolute_change_year DESC NULLS LAST);
-
-
---
 -- Name: index_rubygem_download_stats_on_date; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -618,38 +536,10 @@ CREATE INDEX index_rubygem_download_stats_on_growth_change_month ON public.rubyg
 
 
 --
--- Name: index_rubygem_download_stats_on_growth_change_week; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_rubygem_download_stats_on_growth_change_week ON public.rubygem_download_stats USING btree (growth_change_week DESC NULLS LAST);
-
-
---
--- Name: index_rubygem_download_stats_on_growth_change_year; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_rubygem_download_stats_on_growth_change_year ON public.rubygem_download_stats USING btree (growth_change_year DESC NULLS LAST);
-
-
---
 -- Name: index_rubygem_download_stats_on_relative_change_month; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_rubygem_download_stats_on_relative_change_month ON public.rubygem_download_stats USING btree (relative_change_month DESC NULLS LAST);
-
-
---
--- Name: index_rubygem_download_stats_on_relative_change_week; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_rubygem_download_stats_on_relative_change_week ON public.rubygem_download_stats USING btree (relative_change_week DESC NULLS LAST);
-
-
---
--- Name: index_rubygem_download_stats_on_relative_change_year; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_rubygem_download_stats_on_relative_change_year ON public.rubygem_download_stats USING btree (relative_change_year DESC NULLS LAST);
 
 
 --
@@ -706,20 +596,6 @@ CREATE TRIGGER projects_update_permalink_tsvector_trigger BEFORE INSERT OR UPDAT
 --
 
 CREATE TRIGGER rubygem_stats_calculation_month BEFORE INSERT OR UPDATE ON public.rubygem_download_stats FOR EACH ROW EXECUTE PROCEDURE public.rubygem_stats_calculation_month();
-
-
---
--- Name: rubygem_download_stats rubygem_stats_calculation_week; Type: TRIGGER; Schema: public; Owner: -
---
-
-CREATE TRIGGER rubygem_stats_calculation_week BEFORE INSERT OR UPDATE ON public.rubygem_download_stats FOR EACH ROW EXECUTE PROCEDURE public.rubygem_stats_calculation_week();
-
-
---
--- Name: rubygem_download_stats rubygem_stats_calculation_year; Type: TRIGGER; Schema: public; Owner: -
---
-
-CREATE TRIGGER rubygem_stats_calculation_year BEFORE INSERT OR UPDATE ON public.rubygem_download_stats FOR EACH ROW EXECUTE PROCEDURE public.rubygem_stats_calculation_year();
 
 
 --
@@ -800,6 +676,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190204132920'),
 ('20190207133425'),
 ('20190211104231'),
-('20190218131324');
+('20190218131324'),
+('20190220133053');
 
 
