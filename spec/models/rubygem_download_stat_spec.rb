@@ -20,15 +20,9 @@ RSpec.describe RubygemDownloadStat, type: :model do
     it "does not calculate any stats when there is no previous record" do
       stat = rubygem.download_stats.create! date: Time.zone.today, total_downloads: 5000
       expect(stat.reload).to have_attributes(
-        absolute_change_week:  nil,
-        relative_change_week:  nil,
-        growth_change_week:    nil,
         absolute_change_month: nil,
         relative_change_month: nil,
-        growth_change_month:   nil,
-        absolute_change_year:  nil,
-        relative_change_year:  nil,
-        growth_change_year:    nil
+        growth_change_month:   nil
       )
     end
 
@@ -47,24 +41,18 @@ RSpec.describe RubygemDownloadStat, type: :model do
       current_stat = rubygem.download_stats.create! date: Time.zone.today, total_downloads: 6000
 
       expect(current_stat.reload).to have_attributes(
-        absolute_change_week:  1000,
-        relative_change_week:  20.0,
-        growth_change_week:    -46.67,
         absolute_change_month: 3000,
         relative_change_month: 100.0,
-        growth_change_month:   80.0,
-        absolute_change_year:  5000,
-        relative_change_year:  500.0,
-        growth_change_year:    400.0
+        growth_change_month:   80.0
       )
     end
 
     it "does not calculate relative changes when the previous downloads were 0" do
-      rubygem.download_stats.create! date: 7.days.ago, total_downloads: 0
+      rubygem.download_stats.create! date: 4.weeks.ago, total_downloads: 0
       stat = rubygem.download_stats.create! date: Time.zone.today, total_downloads: 1000
       expect(stat.reload).to have_attributes(
-        absolute_change_week: 1000,
-        relative_change_week: nil
+        absolute_change_month: 1000,
+        relative_change_month: nil
       )
     end
   end
