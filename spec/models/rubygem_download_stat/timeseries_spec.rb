@@ -30,18 +30,21 @@ RSpec.describe RubygemDownloadStat::Timeseries, type: :model do
     it "returns a hash containing expected data" do
       expect(timeseries.stats).to be == {
         total_downloads:       [
+          { x: Date.new(2010, 10, 1), y: nil },
           { x: 12.weeks.ago.to_date, y: 1000 },
           { x: 8.weeks.ago.to_date, y: 2000 },
           { x: 4.weeks.ago.to_date, y: 3000 },
           { x: Time.current.to_date, y: 4000 },
         ],
         absolute_change_month: [
+          { x: Date.new(2010, 10, 1), y: nil },
           { x: 12.weeks.ago.to_date, y: nil },
           { x: 8.weeks.ago.to_date, y: 1000 },
           { x: 4.weeks.ago.to_date, y: 1000 },
           { x: Time.current.to_date, y: 1000 },
         ],
         absolute_change_week:  [
+          { x: Date.new(2010, 10, 1), y: nil },
           { x: 12.weeks.ago.to_date, y: nil },
           { x: 8.weeks.ago.to_date, y: nil },
           { x: 4.weeks.ago.to_date, y: nil },

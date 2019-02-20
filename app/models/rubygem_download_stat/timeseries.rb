@@ -28,7 +28,8 @@ class RubygemDownloadStat::Timeseries
     @stats ||= {}.tap do |stats|
       base_query.pluck(:date, *requested_stats).each do |(date, *data)|
         requested_stats.each.with_index do |stat_name, index|
-          stats[stat_name] ||= []
+          # We include a baseline data collection date so the x-axis has always the same start date
+          stats[stat_name] ||= [{ x: Date.new(2010, 10, 1), y: nil }]
           stats[stat_name] << { x: date, y: data[index] }
         end
       end

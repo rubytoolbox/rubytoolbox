@@ -5,9 +5,6 @@
 
 
 = component_example "Rubygem Download Stats Chart" do
-  = rubygem_download_chart "devise"
-  = rubygem_download_chart "rails"
-  = rubygem_download_chart "rake"
-  = rubygem_download_chart "rspec"
-  = rubygem_download_chart "simplecov"
-  = rubygem_download_chart "sinatra"
+  - %w[devise hanami rails rake rspec simplecov sinatra http concurrent-ruby].each do |gem_name|
+    h3.title= gem_name
+    = rubygem_download_chart gem_name
