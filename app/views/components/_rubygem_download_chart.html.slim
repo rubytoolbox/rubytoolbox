@@ -1,0 +1,9 @@
+.rubygem_download_chart
+  - uuid = SecureRandom.uuid
+  canvas class="download-chart-#{uuid}" width="400" height="150"
+
+javascript:
+  rubygemDownloadChart(".download-chart-#{uuid}",
+    #{Oj.dump(stats[:total_downloads], mode: :compat).html_safe},
+    #{Oj.dump(stats[:absolute_change_month], mode: :compat).html_safe},
+  );

@@ -27,5 +27,11 @@
 
   .columns: .description.column= @project.description
 
+  - if @project.rubygem
+    .columns: .download-chart.column
+      = rubygem_download_chart @project.rubygem_name
+
 section.section: .container: .project
   = project_metrics @project, expanded_view: true
+
+section.section: .container

@@ -2,6 +2,7 @@
 
 require "rails_helper"
 
+# rubocop:disable RSpec/ExampleLength Data-heavy stuff, and I prefer readability over brevity on those
 RSpec.describe RubygemDownloadStat, type: :model do
   let(:rubygem) { Factories.rubygem "example" }
 
@@ -15,7 +16,24 @@ RSpec.describe RubygemDownloadStat, type: :model do
     expect(&do_create).to raise_error(ActiveRecord::RecordNotUnique)
   end
 
-  # rubocop:disable RSpec/ExampleLength data-heavy examples...
+  describe ".monthly" do
+    before do
+      { 12 => 1, 8 => 2, 6 => 3, 4 => 4, 1 => 5, 0 => 6 }.each do |time, downloads|
+        rubygem.download_stats.create! date: time.weeks.ago, total_downloads: downloads
+      end
+    end
+
+    it "fetches historical stats in 4-week increments" do
+      values = rubygem.download_stats.monthly.pluck(:total_downloads)
+      expect(values).to be == [1, 2, 4, 6]
+    end
+
+    it "optionally accepts a base end date" do
+      values = rubygem.download_stats.monthly(base_date: 4.weeks.ago).pluck(:total_downloads)
+      expect(values).to be == [1, 2, 4]
+    end
+  end
+
   describe "stats calculation" do
     it "does not calculate any stats when there is no previous record" do
       stat = rubygem.download_stats.create! date: Time.zone.today, total_downloads: 5000
@@ -56,5 +74,5 @@ RSpec.describe RubygemDownloadStat, type: :model do
       )
     end
   end
-  # rubocop:enable RSpec/ExampleLength data-heavy examples...
 end
+# rubocop:enable RSpec/ExampleLength

@@ -1,0 +1,10 @@
+.hero
+  section.section: .container
+    p.heading= link_to "Ruby Toolbox UI Components Styleguide", "/pages/components"
+    h2= current_page.split("/").last.humanize
+
+
+= component_example "Rubygem Download Stats Chart" do
+  - %w[devise hanami rails rake rspec simplecov sinatra http concurrent-ruby].each do |gem_name|
+    h3.title= gem_name
+    = rubygem_download_chart gem_name

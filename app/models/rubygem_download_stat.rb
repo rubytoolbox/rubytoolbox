@@ -34,4 +34,9 @@ class RubygemDownloadStat < ApplicationRecord
              primary_key: :name,
              foreign_key: :rubygem_name,
              inverse_of:  :download_stats
+
+  def self.monthly(base_date: RubygemDownloadStat.maximum(:date))
+    where("(#{table_name}.date <= ?)", base_date)
+      .where("(#{table_name}.date - ?) % 28 = 0", base_date)
+  end
 end
