@@ -24,7 +24,7 @@ RSpec.describe RubygemDownloadStat::Timeseries, type: :model do
 
   describe "#stats" do
     let(:timeseries) do
-      described_class.new(rubygem.name, :total_downloads, :absolute_change_month, :absolute_change_week)
+      described_class.new(rubygem.name, :total_downloads, :absolute_change_month)
     end
 
     it "returns a hash containing expected data" do
@@ -42,13 +42,6 @@ RSpec.describe RubygemDownloadStat::Timeseries, type: :model do
           { x: 8.weeks.ago.to_date, y: 1000 },
           { x: 4.weeks.ago.to_date, y: 1000 },
           { x: Time.current.to_date, y: 1000 },
-        ],
-        absolute_change_week:  [
-          { x: Date.new(2010, 10, 1), y: nil },
-          { x: 12.weeks.ago.to_date, y: nil },
-          { x: 8.weeks.ago.to_date, y: nil },
-          { x: 4.weeks.ago.to_date, y: nil },
-          { x: Time.current.to_date, y: 250 },
         ],
       }
     end
