@@ -12,6 +12,14 @@ AllCops:
     # Apparently needed for Travis CI since it bundles into this directory
     - 'vendor/bundle/**/*'
 
+Rails:
+  Enabled: true
+
+# Reads best in my humble opinion
+Layout/AlignHash:
+  EnforcedColonStyle: table
+  EnforcedHashRocketStyle: table
+
 Metrics/BlockLength:
   Exclude:
     # The default guard-rspec config fails this, but it's ok.
@@ -28,14 +36,6 @@ Metrics/MethodLength:
   Exclude:
     - 'db/migrate/**/*'
 
-# Reads best in my humble opinion
-Layout/AlignHash:
-  EnforcedColonStyle: table
-  EnforcedHashRocketStyle: table
-
-Rails:
-  Enabled: true
-
 # We use RSpec as a format linter, so no specific classes under test neccessarily :)
 RSpec/DescribeClass:
   Enabled: false
@@ -47,14 +47,18 @@ RSpec/ExampleLength:
     # Not efficient for acceptance tests
     - 'spec/features/**/*'
 
-RSpec/MultipleExpectations:
+RSpec/FilePath:
   Exclude:
-    # Not efficient for acceptance tests
-    - 'spec/features/**/*'
+    - 'spec/integration/*'
 
 # Prefer to use the up-front message expectations
 RSpec/MessageSpies:
   Enabled: false
+
+RSpec/MultipleExpectations:
+  Exclude:
+    # Not efficient for acceptance tests
+    - 'spec/features/**/*'
 
 # Prefer structure over small indentation
 RSpec/NestedGroups:
@@ -63,6 +67,10 @@ RSpec/NestedGroups:
 # See https://github.com/rubocop-hq/rubocop/issues/5953#issuecomment-399973424
 # Making attr_accessor & friends private inline is more concise
 Style/AccessModifierDeclarations:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  # Against rails conventions
   Enabled: false
 
 Style/Documentation:
@@ -83,11 +91,3 @@ Style/TrailingCommaInArrayLiteral:
   EnforcedStyleForMultiline: comma
 Style/TrailingCommaInHashLiteral:
   EnforcedStyleForMultiline: comma
-
-Style/ClassAndModuleChildren:
-  # Against rails conventions
-  Enabled: false
-
-RSpec/FilePath:
-  Exclude:
-    - 'spec/integration/*'
