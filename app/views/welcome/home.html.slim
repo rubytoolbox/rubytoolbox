@@ -62,8 +62,8 @@ section.section: .container: .landing-features
 
 - if @featured_categories.any?
   section.section: .container
-    - description = t(:stats, scope: :startpage, projects_with_categories: @stats.projects_with_categories_count, categories: @stats.categories_count, rubygems: @stats.rubygems_count)
-    = section_heading "Popular Categories", description: description do
+    / - description = t(:stats, scope: :startpage, projects_with_categories: @stats.projects_with_categories_count, categories: @stats.categories_count, rubygems: @stats.rubygems_count)
+    = section_heading "Popular Categories" do
       a.button href=categories_path
         span.icon: i.fa.fa-bars
         span Browse all categories
