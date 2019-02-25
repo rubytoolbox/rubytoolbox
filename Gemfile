@@ -103,6 +103,8 @@ group :test do
 
   gem "db-query-matchers"
 
+  gem "timecop"
+
   gem "rspec-retry"
   gem "rspec_junit_formatter"
 
