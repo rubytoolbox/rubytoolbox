@@ -35,8 +35,24 @@ class RubygemDownloadStat < ApplicationRecord
              foreign_key: :rubygem_name,
              inverse_of:  :download_stats
 
+  has_one :project, through: :rubygem
+
   def self.monthly(base_date: RubygemDownloadStat.maximum(:date))
     where("(#{table_name}.date <= ?)", base_date)
       .where("(#{table_name}.date - ?) % 28 = 0", base_date)
+  end
+
+  def self.with_associations
+    includes(:rubygem, :project)
+      .joins(:rubygem, :project)
+  end
+
+  def self.trending
+    where.not(relative_change_month: nil, growth_change_month: nil) # Stats need to be present xD
+         .where("relative_change_month < ?", 1000) # "Too high" growth happens usually with very new gems
+         .where("absolute_change_month > ?", 10_000) # Baseline minimum downloads to be considered "trending"
+         .where("growth_change_month > ?", 0) # Month-over-month growth must be positive to be trending
+         .where("rubygems.latest_release_on > ?", 6.months.ago) # Must have had a recent release
+         .order("growth_change_month DESC NULLS LAST")
   end
 end
