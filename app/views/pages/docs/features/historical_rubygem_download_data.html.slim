@@ -1,0 +1,48 @@
+= documentation_page "Historical Rubygem Download Data" do
+  article.blog-post
+    markdown:
+      Historical Rubygem download data is used **to display download charts on [project pages](/projects/rake)**
+      as well as for the upcoming **calculation of [trending projects](https://github.com/rubytoolbox/rubytoolbox/pull/440)**.
+
+      To keep the usage of database resources at bay we [persist only weekly stats, the cutoff day being
+      Sunday](https://github.com/rubytoolbox/rubytoolbox/blob/master/app/jobs/rubygem_downloads_persistence_job.rb).
+
+      The download data is being synced from the [Rubygems.org API](https://guides.rubygems.org/rubygems-org-api/)
+      throughout each day, so the numbers do not have an equal cutoff date - they'll always be slightly skewed. For example one project
+      gets it's stats updated early in the day, another towards the end of the day, meaning the number of downloads
+      for the latter has effectively accumulated downloads from another day. As incorrect as this may be for the purposes of illustrating
+      historical trends in gem downloads we consider this "good enough" ;)
+
+      <div class="notification is-info">
+        <span class="icon"><i class="fa fa-info"></i></span>
+        For several gems that have been around long before the <a href="https://web.archive.org/web/20110725141426/http://update.gemcutter.org/2009/10/26/transition.html">Rubyforge to Gemcutter transition</a>
+        there is a <a href="/projects/rails">massive spike in download numbers
+        in November 2012</a>. It does not seem to be an issue with our dataset, the numbers just
+        increased significantly at that point day over day.
+
+        If you know how what happened then <a href="https://github.com/rubytoolbox/rubytoolbox/issues">please get in touch with us!</a> :)
+      </div>
+
+      #### Where does the data come from?
+
+      The historical data has been assembled from two sources:
+
+      * Ruby Toolbox database backups (for the period from late 2010 up to 2013)
+      * The [Bestgems.org](http://bestgems.org) API (from 2013 onwards). Thanks a lot to the project's creator [xmisao](https://github.com/xmisao) for assembling and providing this data!
+
+      If you have access to even older historical gem download data [please get in touch with us!](https://github.com/rubytoolbox/rubytoolbox/issues)
+
+      While the [Bestgems.org](http://bestgems.org) dataset has mostly daily stats available for their entire history, the Ruby Toolbox's
+      historical data was quite patchy. The site only used to sync download data every few days for categorized projects, and only once in
+      two weeks for uncategorized projects.
+
+      To get a continuous weekly number we interpolated the missing values from the surrounding present ones, assuming linear day-to-day
+      growth on multi-day gaps. Finally to reduce storage requirements the dataset was reduced to only keep one value per week (on sundays).
+
+      If you'd like to run additional analytics on top of the dataset we recommend to use our **[production database exports](/pages/docs/features/production_database_exports)**.
+
+      #### See also:
+
+      * [Feature Announcement Blog Post](/blog/2019-02-25/historical-gem-download-charts)
+      * [rubytoolbox#412](https://github.com/rubytoolbox/rubytoolbox/pull/412)
+      * [rubytoolbox#424](https://github.com/rubytoolbox/rubytoolbox/pull/424)
