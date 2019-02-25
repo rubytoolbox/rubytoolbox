@@ -30,6 +30,7 @@ class Docs
 
   def sections
     @sections ||= {
+      "Guides"   => pages_in(:guides),
       "Features" => pages_in(:features),
       "Metrics"  => pages_in(:metrics),
     }
