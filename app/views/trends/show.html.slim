@@ -21,12 +21,15 @@ section.section: .container
             small.content: strong= stat.project.description
 
           footer.card-footer
-            .card-footer-item: small
-              span.icon: i.fa.fa-download
-              strong= number_with_delimiter stat.absolute_change_month
-            .card-footer-item: small: strong
-              span.icon: i.fa.fa-arrow-up
-              strong= number_with_delimiter(stat.relative_change_month) + "%"
-            .card-footer-item: small: strong
-              span.icon: i.fa.fa-line-chart
-              strong= number_with_delimiter(stat.growth_change_month) + "%"
+            .card-footer-item.tooltip.is-tooltip-bottom data-tooltip="Total downloads in past 4 weeks"
+              small
+                span.icon: i.fa.fa-download
+                strong= number_with_delimiter stat.absolute_change_month
+            .card-footer-item.tooltip.is-tooltip-bottom data-tooltip="Increase relative to all time downloads in past 4 weeks"
+              small
+                span.icon: i.fa.fa-arrow-up
+                strong= number_with_delimiter(stat.relative_change_month) + "%"
+            .card-footer-item.tooltip.is-tooltip-bottom data-tooltip="Month-over-month change in relative downloads growth rate"
+              small
+                span.icon: i.fa.fa-line-chart
+                strong= number_with_delimiter(stat.growth_change_month) + "%"
