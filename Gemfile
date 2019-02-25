@@ -62,8 +62,6 @@ gem "sidekiq"
 gem "redcarpet"
 gem "slim-rails"
 
-gem "retriable"
-
 # Shorter request logs
 gem "lograge"
 # Needed for logstash json_event formatter for lograge
@@ -102,6 +100,8 @@ group :test do
   gem "feedjira"
 
   gem "db-query-matchers"
+
+  gem "retriable"
 
   gem "timecop"
 
