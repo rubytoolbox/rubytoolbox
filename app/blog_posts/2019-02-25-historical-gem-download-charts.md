@@ -2,7 +2,7 @@
 
 Today I'm happy to announce the **[launch of historical Rubygem download charts][PR]**.
 
-On [each](/projects/rake) [Rubygem's](/projects/rspec) [page](/projects/simplecov) you can now find **a chart displaying both the total number of downloads** as well as **the downloads per month**:
+On [each](/projects/rake) [Rubygem's](/projects/rspec) [page](/projects/simplecov) you can now find **a chart displaying both the total number of downloads** as well as **the downloads per month**, starting in late 2010.
 
 <a href="https://github.com/rubytoolbox/rubytoolbox/pull/428"><img src="https://user-images.githubusercontent.com/13972/53082732-c5b73800-34fd-11e9-8534-b3f116fd2005.png"></a>
 
