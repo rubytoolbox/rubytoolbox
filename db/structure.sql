@@ -417,6 +417,13 @@ CREATE INDEX index_categories_on_category_group_permalink ON public.categories U
 
 
 --
+-- Name: index_categories_on_created_at; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_categories_on_created_at ON public.categories USING btree (created_at);
+
+
+--
 -- Name: index_categories_on_description_tsvector; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -677,6 +684,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190207133425'),
 ('20190211104231'),
 ('20190218131324'),
-('20190220133053');
+('20190220133053'),
+('20190226090240');
 
 
