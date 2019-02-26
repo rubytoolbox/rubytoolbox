@@ -4,6 +4,10 @@
       .level-item
         h3.is-size-4
           span= title
+      - if help_page
+        .level_item
+          a.button href=page_path(help_page.id) title=help_page.title
+            span.icon: i.fa.fa-question-circle
     .level-right
       .level-item= yield
 
