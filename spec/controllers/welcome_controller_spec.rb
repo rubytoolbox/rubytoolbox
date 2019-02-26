@@ -23,6 +23,13 @@ RSpec.describe WelcomeController, type: :controller do
       expect(assigns(:featured_categories)).to be collection
     end
 
+    it "assigns new categories" do
+      collection = Category.limit(3)
+      allow(Category).to receive(:recently_added).and_return(collection)
+      do_request
+      expect(assigns(:new_categories)).to be collection
+    end
+
     it "assigns a Stats instance" do
       stats = instance_double Stats
       allow(Stats).to receive(:new).and_return(stats)
