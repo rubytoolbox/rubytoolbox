@@ -56,6 +56,15 @@ RSpec.describe Category, type: :model do
     end
   end
 
+  describe ".recently_added" do
+    it "returns 4 newest categories" do
+      5.times do |i|
+        Category.create! permalink: (i + 1).to_s, name: (i + 1).to_s, category_group: group, created_at: i.days.ago
+      end
+      expect(Category.recently_added.pluck(:permalink)).to be == %w[1 2 3 4]
+    end
+  end
+
   describe "#catalog_show_url" do
     it "is the url where the category definition can be seen on github" do
       expected = "https://github.com/rubytoolbox/catalog/tree/master/catalog/unimportant/mocking.yml"

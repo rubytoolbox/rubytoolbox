@@ -19,6 +19,7 @@ class Category < ApplicationRecord
 
   scope :by_rank, -> { where.not(rank: nil).order(rank: :asc) }
   scope :featured, -> { by_rank.limit(16).includes(:projects) }
+  scope :recently_added, -> { order(created_at: :desc).limit(4).includes(:projects) }
 
   include PgSearch
   pg_search_scope :search_scope,
