@@ -1,8 +1,26 @@
-- content_for :title, "Trending Rubygems for #{l @date, format: :long}"
+- content_for :title, "Trending Rubygems for #{l @navigation.date, format: :long}"
 
 .hero
   section.section: .container
     h2= content_for :title
+
+section.section: .container
+  .level
+    .level-left
+      - %i[previous_year previous_month previous_week].each do |timeframe|
+        .level-item
+          - if @navigation.public_send(timeframe)
+            = link_to trend_path(@navigation.public_send(timeframe)), class: "button" do
+              span.icon: i.fa.fa-angle-left
+              span= timeframe.to_s.humanize
+
+    .level-right
+      - %i[next_week next_month next_year].each do |timeframe|
+        .level-item
+          - if @navigation.public_send(timeframe)
+            = link_to trend_path(@navigation.public_send(timeframe)), class: "button" do
+              span= timeframe.to_s.humanize
+              span.icon: i.fa.fa-angle-right
 
 section.section: .container
   .columns.is-multiline
@@ -18,7 +36,7 @@ section.section: .container
             .card-header-icon= small_health_indicator stat.project
 
           .card-content
-            small.content: strong= stat.project.description
+            small.content: strong= truncate stat.project.description, length: 400
 
           footer.card-footer
             .card-footer-item.tooltip.is-tooltip-bottom data-tooltip="Total downloads in past 4 weeks"

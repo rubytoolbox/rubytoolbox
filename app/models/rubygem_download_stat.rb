@@ -53,6 +53,7 @@ class RubygemDownloadStat < ApplicationRecord
          .where("absolute_change_month > ?", 10_000) # Baseline minimum downloads to be considered "trending"
          .where("growth_change_month > ?", 0) # Month-over-month growth must be positive to be trending
          .where("rubygems.latest_release_on > ?", 6.months.ago) # Must have had a recent release
+         .merge(Project.with_bugfix_forks(false))
          .order("growth_change_month DESC NULLS LAST")
   end
 end

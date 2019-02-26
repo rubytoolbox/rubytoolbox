@@ -20,6 +20,16 @@ RSpec.describe TrendsController, type: :controller do
   end
 
   describe "GET show" do
+    before do
+      Factories.rubygem "foo"
+      RubygemDownloadStat.create! rubygem_name:          "foo",
+                                  date:                  "2019-02-24",
+                                  total_downloads:       5000,
+                                  absolute_change_month: 3000,
+                                  relative_change_month: 50.4,
+                                  growth_change_month:   23.3
+    end
+
     def do_request
       get :show, params: { id: "2019-02-24" }
     end

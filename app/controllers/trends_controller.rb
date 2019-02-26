@@ -12,10 +12,10 @@ class TrendsController < ApplicationController
   end
 
   def show
-    @date = Date.parse(params[:id]) # parse & validate it! redirect to next matching
+    @navigation = RubygemDownloadStat::Navigation.find(params[:id])
 
     @trends = RubygemDownloadStat
-              .where(date: @date)
+              .where(date: @navigation.date)
               .with_associations
               .trending
               .limit(48)

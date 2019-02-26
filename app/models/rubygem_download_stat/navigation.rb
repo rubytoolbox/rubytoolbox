@@ -23,6 +23,7 @@ class RubygemDownloadStat::Navigation
       matching_date = scope.pluck(:date).first
       return new(matching_date) if matching_date
     end
+    nil
   end
 
   def self.valid_date(date)
