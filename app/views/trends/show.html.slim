@@ -1,0 +1,35 @@
+- content_for :title, "Trending Rubygems for #{l @date, format: :long}"
+
+.hero
+  section.section: .container
+    h2= content_for :title
+
+section.section: .container
+  .columns.is-multiline
+    - @trends.each do |stat|
+      .category-cards.three
+        .category-card
+          header.card-header
+            a.card-header-icon href=File.join("/projects", stat.project.permalink)
+              span.icon: i.fa.fa-diamond
+            p.card-header-title
+              a href=File.join("/projects", stat.project.permalink)
+                = stat.project.permalink
+            .card-header-icon= small_health_indicator stat.project
+
+          .card-content
+            small.content: strong= stat.project.description
+
+          footer.card-footer
+            .card-footer-item.tooltip.is-tooltip-bottom data-tooltip="Total downloads in past 4 weeks"
+              small
+                span.icon: i.fa.fa-download
+                strong= number_with_delimiter stat.absolute_change_month
+            .card-footer-item.tooltip.is-tooltip-bottom data-tooltip="Increase relative to all time downloads in past 4 weeks"
+              small
+                span.icon: i.fa.fa-arrow-up
+                strong= number_with_delimiter(stat.relative_change_month) + "%"
+            .card-footer-item.tooltip.is-tooltip-bottom data-tooltip="Month-over-month change in relative downloads growth rate"
+              small
+                span.icon: i.fa.fa-line-chart
+                strong= number_with_delimiter(stat.growth_change_month) + "%"
