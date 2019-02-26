@@ -38,12 +38,12 @@ RSpec.describe RubygemDownloadStat::Navigation, type: :model do
     {
       previous_year:  56.weeks.ago.to_date,
       previous_month: 8.weeks.ago.to_date,
-      previous_week:  nil,
+      previous_week:  5.weeks.ago.to_date,
       next_week:      3.weeks.ago.to_date,
       next_month:     Time.current.to_date,
       next_year:      nil,
     }.each do |method_name, expected_date|
-      it "has #{expected_date} for #{method_name}" do
+      it "has #{expected_date.inspect} for #{method_name}" do
         expect(navigation.public_send(method_name)).to be == expected_date
       end
     end
@@ -56,11 +56,11 @@ RSpec.describe RubygemDownloadStat::Navigation, type: :model do
       previous_year:  nil,
       previous_month: nil,
       previous_week:  nil,
-      next_week:      nil,
-      next_month:     nil,
+      next_week:      55.weeks.ago.to_date,
+      next_month:     52.weeks.ago.to_date,
       next_year:      4.weeks.ago.to_date,
     }.each do |method_name, expected_date|
-      it "has #{expected_date} for #{method_name}" do
+      it "has #{expected_date.inspect} for #{method_name}" do
         expect(navigation.public_send(method_name)).to be == expected_date
       end
     end

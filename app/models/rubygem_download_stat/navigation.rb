@@ -66,14 +66,14 @@ class RubygemDownloadStat::Navigation
 
   def matching_date(distance)
     expected_date = date + distance
-    return expected_date if present_dates.include? expected_date
+    return expected_date if (minimum_available_date..maximum_available_date).cover? expected_date
   end
 
-  def present_dates
-    @present_dates ||= RubygemDownloadStat.where(date: requested_dates).distinct.pluck(:date)
+  def maximum_available_date
+    @maximum_available_date ||= RubygemDownloadStat.maximum(:date)
   end
 
-  def requested_dates
-    @requested_dates ||= [-52, -4, -1, 1, 4, 52].map { |distance| date - distance.weeks }
+  def minimum_available_date
+    @minimum_available_date ||= RubygemDownloadStat.minimum(:date)
   end
 end
