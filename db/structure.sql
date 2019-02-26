@@ -445,6 +445,13 @@ CREATE UNIQUE INDEX index_categories_on_permalink ON public.categories USING btr
 
 
 --
+-- Name: index_categories_on_rank; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_categories_on_rank ON public.categories USING btree (rank);
+
+
+--
 -- Name: index_categorizations_on_category_permalink; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -685,6 +692,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190211104231'),
 ('20190218131324'),
 ('20190220133053'),
-('20190226090240');
+('20190226090240'),
+('20190226090403');
 
 
