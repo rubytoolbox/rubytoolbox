@@ -61,26 +61,14 @@ section.section: .container: .landing-features
         This gives you a quick overview of the health of a project.
 
 - if @featured_categories.any?
-  section.section.popular-categories: .container
+  section.section: .container
     / - description = t(:stats, scope: :startpage, projects_with_categories: @stats.projects_with_categories_count, categories: @stats.categories_count, rubygems: @stats.rubygems_count)
-    = section_heading "Popular Categories", help_path: "docs/features/categories" do
+    = section_heading "Popular Categories" do
       a.button href=categories_path
         span.icon: i.fa.fa-bars
         span Browse all categories
 
     .columns.is-multiline
       - @featured_categories.each do |category|
-        .category-cards.four
-          = category_card category
-
-- if @new_categories.any?
-  section.section.recently-added-categories: .container
-    = section_heading "Recently Added Categories", help_path: "docs/features/categories"
-      a.button href=categories_path
-        span.icon: i.fa.fa-bars
-        span Browse all categories
-
-    .columns.is-multiline
-      - @new_categories.each do |category|
         .category-cards.four
           = category_card category
