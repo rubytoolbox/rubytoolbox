@@ -71,9 +71,8 @@ module ComponentHelpers
     render "components/project_comparison", projects: projects
   end
 
-  def section_heading(title, description: nil, help_path: nil, &block)
-    help_page = docs.find help_path
-    render "components/section_heading", title: title, description: description, help_page: help_page, &block
+  def section_heading(title, description: nil, &block)
+    render "components/section_heading", title: title, description: description, &block
   end
 
   def project_display_picker(display_mode)
