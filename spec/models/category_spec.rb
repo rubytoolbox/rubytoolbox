@@ -57,11 +57,20 @@ RSpec.describe Category, type: :model do
   end
 
   describe ".recently_added" do
-    it "returns 4 newest categories" do
+    before do
       5.times do |i|
         Category.create! permalink: (i + 1).to_s, name: (i + 1).to_s, category_group: group, created_at: i.days.ago
       end
+    end
+
+    it "returns 4 newest categories" do
       expect(Category.recently_added.pluck(:permalink)).to be == %w[1 2 3 4]
+    end
+
+    it "eager-loads projects" do
+      query = -> { Category.recently_added.flat_map { |category| category.projects.map(&:permalink) } }
+      query.call # warm-up, so activerecord doesn't sprinkle in db schema meta queries
+      expect(&query).to make_database_queries(count: 2)
     end
   end
 
