@@ -22,9 +22,9 @@ RSpec.describe TrendsController, type: :controller do
   describe "GET show" do
     before do
       Factories.rubygem "foo"
-      RubygemDownloadStat.create! rubygem_name:    "foo",
-                                  date:            "2019-02-24",
-                                  total_downloads: 5000
+      Factories.rubygem_trend "foo",
+                              date:     "2019-02-24",
+                              position: 1
     end
 
     def do_request
@@ -43,6 +43,15 @@ RSpec.describe TrendsController, type: :controller do
 
       do_request
       expect(assigns(:navigation)).to be navigation
+    end
+
+    it "assigns trends for requested date" do
+      collection = []
+      allow(Rubygem::Trend).to receive(:for_date)
+        .with(Date.new(2019, 2, 24))
+        .and_return(collection)
+      do_request
+      expect(assigns(:trends)).to be collection
     end
 
     it "redirects to next available date on invalid date" do

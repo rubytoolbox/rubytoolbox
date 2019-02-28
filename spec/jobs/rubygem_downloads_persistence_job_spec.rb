@@ -55,6 +55,11 @@ RSpec.describe RubygemDownloadsPersistenceJob, type: :job do
               { date: Time.zone.today, rubygem_name: "c", total_downloads: 300 },
             ])
     end
+
+    it "enqueues a RubygemTrendsJob" do
+      expect(RubygemTrendsJob).to receive(:perform_async).with(Time.current.utc.to_date)
+      do_perform
+    end
   end
 
   describe "when previous stats do exist" do
@@ -76,6 +81,11 @@ RSpec.describe RubygemDownloadsPersistenceJob, type: :job do
               { date: Time.zone.today, rubygem_name: "b", total_downloads: 200 },
               { date: Time.zone.today, rubygem_name: "c", total_downloads: 300 },
             ])
+    end
+
+    it "enqueues a RubygemTrendsJob" do
+      expect(RubygemTrendsJob).to receive(:perform_async).with(Time.current.utc.to_date)
+      do_perform
     end
   end
 end

@@ -16,9 +16,9 @@ class RubygemDownloadStat::Navigation
     parsed_date = valid_date(date)
 
     [
-      RubygemDownloadStat.where(date: parsed_date).limit(1),
-      RubygemDownloadStat.where("date > ?", parsed_date).order(date: :asc).limit(1),
-      RubygemDownloadStat.where("date < ?", parsed_date).order(date: :desc).limit(1),
+      Rubygem::Trend.where(date: parsed_date).limit(1),
+      Rubygem::Trend.where("date > ?", parsed_date).order(date: :asc).limit(1),
+      Rubygem::Trend.where("date < ?", parsed_date).order(date: :desc).limit(1),
     ].each do |scope|
       matching_date = scope.pluck(:date).first
       return new(matching_date) if matching_date
@@ -33,7 +33,7 @@ class RubygemDownloadStat::Navigation
   end
 
   def self.latest_date
-    RubygemDownloadStat.maximum(:date)
+    Rubygem::Trend.maximum(:date)
   end
 
   attr_accessor :date
@@ -91,6 +91,6 @@ class RubygemDownloadStat::Navigation
   end
 
   def minimum_available_date
-    @minimum_available_date ||= RubygemDownloadStat.minimum(:date)
+    @minimum_available_date ||= Rubygem::Trend.minimum(:date)
   end
 end

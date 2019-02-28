@@ -15,10 +15,6 @@ class TrendsController < ApplicationController
     @navigation = RubygemDownloadStat::Navigation.find(params[:id])
     redirect_to id: @navigation.date unless @navigation.exact_match?(params[:id])
 
-    @trends = RubygemDownloadStat
-              .where(date: @navigation.date)
-              .with_associations
-              .trending
-              .limit(48)
+    @trends = Rubygem::Trend.for_date(@navigation.date)
   end
 end

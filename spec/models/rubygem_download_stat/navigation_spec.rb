@@ -6,12 +6,12 @@ RSpec.describe RubygemDownloadStat::Navigation, type: :model do
   let(:rubygem) { Factories.rubygem "example" }
 
   before do
-    rubygem.download_stats.create! date: 56.weeks.ago, total_downloads: 1000
-    rubygem.download_stats.create! date: 8.weeks.ago, total_downloads: 2000
-    rubygem.download_stats.create! date: 4.weeks.ago, total_downloads: 3000
-    rubygem.download_stats.create! date: 3.weeks.ago, total_downloads: 3250
-    rubygem.download_stats.create! date: 1.week.ago, total_downloads: 3750
-    rubygem.download_stats.create! date: Time.current, total_downloads: 4000
+    Factories.rubygem_trend rubygem.name, date: 56.weeks.ago, position: 1
+    Factories.rubygem_trend rubygem.name, date: 8.weeks.ago, position: 1
+    Factories.rubygem_trend rubygem.name, date: 4.weeks.ago, position: 1
+    Factories.rubygem_trend rubygem.name, date: 3.weeks.ago, position: 1
+    Factories.rubygem_trend rubygem.name, date: 1.week.ago, position: 1
+    Factories.rubygem_trend rubygem.name, date: Time.current, position: 1
   end
 
   describe ".find" do
@@ -34,7 +34,7 @@ RSpec.describe RubygemDownloadStat::Navigation, type: :model do
 
   describe ".latest_date" do
     it "is the latest available date" do
-      allow(RubygemDownloadStat).to receive(:maximum).and_return(Date.new(2019, 2, 24))
+      allow(Rubygem::Trend).to receive(:maximum).and_return(Date.new(2019, 2, 24))
       expect(described_class.latest_date).to be == Date.new(2019, 2, 24)
     end
   end
