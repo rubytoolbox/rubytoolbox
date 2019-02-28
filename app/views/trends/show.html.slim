@@ -2,7 +2,11 @@
 
 .hero
   section.section: .container
-    h2= content_for :title
+    .columns: .column
+      h2= content_for :title
+      .description
+        markdown:
+          Discover libraries that are gaining popularity within the Ruby community. You can [find an overview of how we calculate these in our documentation](/pages/docs/features/trending_projects).
 
 section.section: .container
   .columns.is-multiline

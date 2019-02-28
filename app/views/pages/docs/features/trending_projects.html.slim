@@ -1,0 +1,27 @@
+= documentation_page "Trending Projects" do
+  article.blog-post
+    markdown:
+      To allow **discovery of still relatively unknown libraries** that are **gaining popularity in the community**
+      we provide an overview of **[Trending Projects](/trends)** every week, based on Rubygem downloads.
+
+      On a high level, here's **what makes a project "trending"**:
+
+        * The project had **more than 10000 Rubygem downloads in the previous 4 weeks**
+        * The project's relative downloads (percentage of downloads within the given time period against all time downloads) **growth must have increased over the previous 4 week time period** to spot libraries that have seen sustained growth over at least the last 5 weeks to reduce "false positives" caused by brief spikes
+        * The project must have had **a release in the last 6 months**
+        * The project **must not be a [bugfix fork][forks_docs]**
+
+      Finally, projects are **sorted by the relative number of downloads related to their total downloads**.
+
+      For more details into the exact query used you can of course also take a look at the [database query used][code] directly in the code.
+
+
+      #### See also:
+
+      * [Feature Announcement Blog Post](/blog/2019-02-28/trending-projects)
+      * [Historical Rubygem Download Data Docs][history_docs]
+      * [rubytoolbox#449](https://github.com/rubytoolbox/rubytoolbox/pull/449)
+
+      [forks_docs]: /pages/docs/features/bugfix_forks
+      [history_docs]: /pages/docs/features/historical_rubygem_download_data
+      [code]: https://github.com/rubytoolbox/rubytoolbox/blob/master/app/jobs/rubygem_trends_job.rb
