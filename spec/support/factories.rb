@@ -40,11 +40,16 @@ module Factories
                                   total_downloads: total_downloads
     end
 
-    def rubygem_trend(name, date:, position:)
+    def rubygem_trend(name, date:, position:, with_stats: false)
+      date = Date.parse(date.to_s)
+      if with_stats
+        rubygem_download_stat name, date: date - 8.weeks, total_downloads: 500
+        rubygem_download_stat name, date: date - 4.weeks, total_downloads: 2000
+      end
       Rubygem::Trend.create! rubygem_name:          name,
                              position:              position,
                              date:                  date,
-                             rubygem_download_stat: rubygem_download_stat(name, date: date)
+                             rubygem_download_stat: rubygem_download_stat(name, date: date, total_downloads: 15_000)
     end
   end
   # rubocop:enable Metrics/MethodLength

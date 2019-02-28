@@ -1,4 +1,4 @@
-- content_for :title, "Trending Projects from #{l @navigation.date, format: :long}"
+- content_for :title, "Trending Projects for #{l @navigation.date, format: :long}"
 
 .hero
   section.section: .container
@@ -9,7 +9,7 @@ section.section: .container
     .column.is-one-third-desktop
       .buttons.has-addons
         - %w[year month week].each do |timeframe|
-          = link_to trend_path(@navigation.public_send("previous_#{timeframe}") || "#"), class: "button", disabled: !@navigation.public_send("previous_#{timeframe}") do
+          = link_to trend_path(@navigation.public_send("previous_#{timeframe}") || "#"), class: "button previous_#{timeframe}", disabled: !@navigation.public_send("previous_#{timeframe}") do
             span.icon: i.fa.fa-caret-left
             span= "1 #{timeframe}"
 
@@ -22,7 +22,7 @@ section.section: .container
     .column.is-one-third-desktop
       .buttons.has-addons.is-right
         - %w[week month year].each do |timeframe|
-          = link_to trend_path(@navigation.public_send("next_#{timeframe}") || "#"), class: "button", disabled: !@navigation.public_send("next_#{timeframe}")
+          = link_to trend_path(@navigation.public_send("next_#{timeframe}") || "#"), class: "button next_#{timeframe}", disabled: !@navigation.public_send("next_#{timeframe}")
             span= "1 #{timeframe}"
             span.icon: i.fa.fa-caret-right
 
