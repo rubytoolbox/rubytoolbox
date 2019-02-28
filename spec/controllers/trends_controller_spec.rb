@@ -7,7 +7,7 @@ RSpec.describe TrendsController, type: :controller do
 
   describe "GET index" do
     it "redirects to show for maximum available stat date" do
-      allow(Rubygem::DownloadStat::Navigation).to receive(:latest_date).and_return(Date.new(2019, 1, 2))
+      allow(Rubygem::Trend::Navigation).to receive(:latest_date).and_return(Date.new(2019, 1, 2))
       get :index
       expect(response).to redirect_to(action: :show, id: "2019-01-02")
     end
@@ -36,8 +36,8 @@ RSpec.describe TrendsController, type: :controller do
     end
 
     it "assigns a navigation instance" do
-      navigation = Rubygem::DownloadStat::Navigation.new(Date.new(2019, 2, 24))
-      allow(Rubygem::DownloadStat::Navigation).to receive(:find)
+      navigation = Rubygem::Trend::Navigation.new(Date.new(2019, 2, 24))
+      allow(Rubygem::Trend::Navigation).to receive(:find)
         .with("2019-02-24")
         .and_return(navigation)
 

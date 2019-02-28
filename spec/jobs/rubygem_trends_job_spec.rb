@@ -9,6 +9,8 @@ RSpec.describe RubygemTrendsJob, type: :job do
 
   describe "#perform" do
     it "cleans the database for given date" do
+      Rubygem::Trend.delete_all
+
       Factories.rubygem "a"
       Factories.rubygem_trend "a", date: Time.current, position: 1
       Factories.rubygem_trend "a", date: 1.week.ago, position: 1

@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe Rubygem::DownloadStat::Navigation, type: :model do
+RSpec.describe Rubygem::Trend::Navigation, type: :model do
   let(:rubygem) { Factories.rubygem "example" }
 
   before do

@@ -6,7 +6,7 @@
 # the closest present date for any given one and provides helpers
 # for timeframe navigation (next year, previous year, previous month etc)
 #
-class Rubygem::DownloadStat::Navigation
+class Rubygem::Trend::Navigation
   #
   # Find the closest matching date in the rubygem download stats dataset
   # (we only have weekly records, so if no exact match is found we will
