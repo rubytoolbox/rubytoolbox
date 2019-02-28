@@ -7,6 +7,8 @@
 # calculation changes down the road)
 #
 class RubygemTrendsJob < ApplicationJob
+  sidekiq_options queue: :priority
+
   def perform(date)
     Rubygem::Trend.transaction do
       Rubygem::Trend.where(date: date).destroy_all
