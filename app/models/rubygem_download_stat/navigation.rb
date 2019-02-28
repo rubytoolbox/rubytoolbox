@@ -72,7 +72,11 @@ class RubygemDownloadStat::Navigation
   end
 
   def latest?
-    date == maximum_available_date
+    date == latest_date
+  end
+
+  def latest_date
+    maximum_available_date
   end
 
   private

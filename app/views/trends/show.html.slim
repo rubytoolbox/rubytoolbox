@@ -5,22 +5,26 @@
     h2= content_for :title
 
 section.section: .container
-  .level
-    .level-left
-      - %i[previous_year previous_month previous_week].each do |timeframe|
-        .level-item
-          - if @navigation.public_send(timeframe)
-            = link_to trend_path(@navigation.public_send(timeframe)), class: "button" do
-              span.icon: i.fa.fa-angle-left
-              span= timeframe.to_s.humanize
+  .columns.is-multiline
+    .column.is-one-third-desktop
+      .buttons.has-addons
+        - %w[year month week].each do |timeframe|
+          = link_to trend_path(@navigation.public_send("previous_#{timeframe}") || "#"), class: "button", disabled: !@navigation.public_send("previous_#{timeframe}") do
+            span.icon: i.fa.fa-caret-left
+            span= "1 #{timeframe}"
 
-    .level-right
-      - %i[next_week next_month next_year].each do |timeframe|
-        .level-item
-          - if @navigation.public_send(timeframe)
-            = link_to trend_path(@navigation.public_send(timeframe)), class: "button" do
-              span= timeframe.to_s.humanize
-              span.icon: i.fa.fa-angle-right
+    .column.is-one-third-desktop.has-text-centered
+      - unless @navigation.latest?
+        = link_to trend_path(@navigation.latest_date), class: "button" do
+          span.icon: i.fa.fa-calendar-o
+          strong Go to latest
+
+    .column.is-one-third-desktop
+      .buttons.has-addons.is-right
+        - %w[week month year].each do |timeframe|
+          = link_to trend_path(@navigation.public_send("next_#{timeframe}") || "#"), class: "button", disabled: !@navigation.public_send("next_#{timeframe}")
+            span= "1 #{timeframe}"
+            span.icon: i.fa.fa-caret-right
 
 section.section: .container
   .columns.is-multiline
