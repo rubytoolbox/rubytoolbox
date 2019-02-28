@@ -87,7 +87,7 @@ module ComponentHelpers
   def rubygem_download_chart(name)
     return if name.blank?
 
-    stats = RubygemDownloadStat::Timeseries.fetch name, :total_downloads, :absolute_change_month
+    stats = Rubygem::DownloadStat::Timeseries.fetch name, :total_downloads, :absolute_change_month
     render "components/rubygem_download_chart", stats: stats
   end
 

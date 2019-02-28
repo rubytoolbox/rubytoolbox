@@ -7,7 +7,7 @@ RSpec.describe RubygemDownloadsPersistenceJob, type: :job do
   let(:do_perform) { job.perform }
 
   before do
-    RubygemDownloadStat.delete_all
+    Rubygem::DownloadStat.delete_all
 
     Factories.rubygem "a", downloads: 100
     Factories.rubygem "b", downloads: 200
@@ -15,7 +15,7 @@ RSpec.describe RubygemDownloadsPersistenceJob, type: :job do
   end
 
   def stats
-    RubygemDownloadStat.order(rubygem_name: :asc, date: :asc).map do |stat|
+    Rubygem::DownloadStat.order(rubygem_name: :asc, date: :asc).map do |stat|
       stat.attributes.symbolize_keys.slice(:rubygem_name, :date, :total_downloads)
     end
   end
@@ -38,7 +38,7 @@ RSpec.describe RubygemDownloadsPersistenceJob, type: :job do
 
   it "does not do anything if RubygemDownloadsPersistenceJob.should_run? is false" do
     allow(job).to receive(:should_run?)
-    expect { do_perform }.not_to change(RubygemDownloadStat, :count).from(0)
+    expect { do_perform }.not_to change(Rubygem::DownloadStat, :count).from(0)
   end
 
   describe "when no previous download stats exist" do

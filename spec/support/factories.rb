@@ -35,9 +35,9 @@ module Factories
     end
 
     def rubygem_download_stat(name, date:, total_downloads: 5000)
-      RubygemDownloadStat.create! rubygem_name:    name,
-                                  date:            date,
-                                  total_downloads: total_downloads
+      Rubygem::DownloadStat.create! rubygem_name:    name,
+                                    date:            date,
+                                    total_downloads: total_downloads
     end
 
     def rubygem_trend(name, date:, position:, with_stats: false)

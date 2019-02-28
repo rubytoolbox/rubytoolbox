@@ -2,7 +2,7 @@
 
 #
 # This job detects trending projects for a given date
-# based on RubygemDownloadStats and persists them in the Rubygem::Trend
+# based on Rubygem::DownloadStats and persists them in the Rubygem::Trend
 # model for easier querying and stable results over time (if the
 # calculation changes down the road)
 #
@@ -24,7 +24,7 @@ class RubygemTrendsJob < ApplicationJob
   private
 
   def trending_stats_for(date)
-    RubygemDownloadStat
+    Rubygem::DownloadStat
       .merge(trending_scope)
       .where(date: date)
       .with_associations
@@ -32,7 +32,7 @@ class RubygemTrendsJob < ApplicationJob
   end
 
   def trending_scope
-    RubygemDownloadStat
+    Rubygem::DownloadStat
       .where.not(relative_change_month: nil, growth_change_month: nil) # Stats need to be present xD
       .where("absolute_change_month > ?", 10_000) # Baseline minimum downloads to be considered "trending"
       .where("growth_change_month > ?", 0) # Month-over-month growth must be positive to be trending

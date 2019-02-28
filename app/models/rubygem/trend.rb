@@ -6,7 +6,8 @@ class Rubygem::Trend < ApplicationRecord
              foreign_key: :rubygem_name,
              inverse_of:  :trends
 
-  belongs_to :rubygem_download_stat
+  belongs_to :rubygem_download_stat,
+             class_name: "Rubygem::DownloadStat"
 
   has_one :project, through: :rubygem
   has_one :github_repo, through: :project

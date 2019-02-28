@@ -10,7 +10,7 @@ class Rubygem < ApplicationRecord
           dependent:   :destroy
 
   has_many :download_stats, -> { order(date: :asc) },
-           class_name:  "RubygemDownloadStat",
+           class_name:  "Rubygem::DownloadStat",
            primary_key: :name,
            foreign_key: :rubygem_name,
            inverse_of:  :rubygem,
