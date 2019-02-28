@@ -21,6 +21,10 @@ class Rubygem::Trend < ApplicationRecord
       .joins(:rubygem_download_stat, project: %i[rubygem github_repo])
   end
 
+  def self.latest
+    for_date maximum(:date)
+  end
+
   def self.for_date(date)
     where(date: date)
       .with_associations

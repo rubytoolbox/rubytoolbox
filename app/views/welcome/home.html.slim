@@ -73,6 +73,19 @@ section.section: .container: .landing-features
         .category-cards.four
           = category_card category
 
+- if @trending_projects.any?
+  section.section.trending_projects: .container
+    = section_heading "Trending Projects"
+      a.button href=trends_path
+        span.icon: i.fa.fa-bars
+        span See all trending projects
+
+    .columns.is-multiline
+      - @trending_projects.each do |trend|
+        .category-cards.four
+          = trending_project_card trend
+
+
 - if @new_categories.any?
   section.section.recently-added-categories: .container
     = section_heading "Recently Added Categories", help_path: "docs/features/categories"
