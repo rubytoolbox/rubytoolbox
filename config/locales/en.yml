@@ -61,6 +61,7 @@ en:
       categories: Categories
       guide_for_library_maintainers: Guide for library maintainers
       production_database_exports: Production Database Exports
+      trending_projects: Trending Projects
       historical_rubygem_download_data: Historical Rubygem Download Data
       github_repo_average_recent_committed_at: GitHub Average date of last 50 commits
       github_repo_closed_issues_count: GitHub Closed Issues
