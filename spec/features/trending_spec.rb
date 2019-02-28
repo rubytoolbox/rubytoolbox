@@ -15,6 +15,12 @@ RSpec.describe "Trending Projects", type: :feature, js: true do
 
   it "allows users to look at trending projects" do
     visit "/"
+    within ".trending-projects" do
+      expect(page).to have_selector(".category-card", count: 2)
+      expect(page).to have_text("foobar")
+      expect(page).to have_text("widget")
+    end
+
     within(".footer") { click_on "Trends" }
     within ".hero" do
       expect(page).to have_text("Trending Projects for #{I18n.l(Time.current.to_date, format: :long)}")
