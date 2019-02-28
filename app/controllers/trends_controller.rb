@@ -2,7 +2,7 @@
 
 class TrendsController < ApplicationController
   def index
-    latest_date = RubygemDownloadStat.maximum(:date)
+    latest_date = RubygemDownloadStat::Navigation.latest_date
     if latest_date
       redirect_to action: :show, id: latest_date
     else
@@ -13,6 +13,7 @@ class TrendsController < ApplicationController
 
   def show
     @navigation = RubygemDownloadStat::Navigation.find(params[:id])
+    redirect_to id: @navigation.date unless @navigation.exact_match?(params[:id])
 
     @trends = RubygemDownloadStat
               .where(date: @navigation.date)

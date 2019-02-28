@@ -32,6 +32,13 @@ RSpec.describe RubygemDownloadStat::Navigation, type: :model do
     end
   end
 
+  describe ".latest_date" do
+    it "is the latest available date" do
+      allow(RubygemDownloadStat).to receive(:maximum).and_return(Date.new(2019, 2, 24))
+      expect(described_class.latest_date).to be == Date.new(2019, 2, 24)
+    end
+  end
+
   describe "for date 4 weeks ago" do
     let(:navigation) { described_class.new 4.weeks.ago.to_date }
 
@@ -63,6 +70,36 @@ RSpec.describe RubygemDownloadStat::Navigation, type: :model do
       it "has #{expected_date.inspect} for #{method_name}" do
         expect(navigation.public_send(method_name)).to be == expected_date
       end
+    end
+  end
+
+  describe "#exact_match?" do
+    {
+      "2019-02-13"          => true,
+      Date.new(2019, 2, 13) => true,
+      Date.new(2018, 2, 13) => false,
+      nil                   => false,
+      "foo"                 => false,
+      "🤣😂"                  => false,
+    }.each do |requested_date, expected_result|
+      it "is #{expected_result.inspect} when date is 2019-02-13 and requested_date is #{requested_date}" do
+        result = described_class.new(Date.new(2019, 2, 13)).exact_match?(requested_date)
+        expect(result).to be expected_result
+      end
+    end
+  end
+
+  describe "#latest?" do
+    let(:navigation) { described_class.new(Date.new(2019, 2, 20)) }
+
+    it "is true when date is the latest_date" do
+      allow(described_class).to receive(:latest_date).and_return(Date.new(2019, 2, 20))
+      expect(navigation.latest?).to be true
+    end
+
+    it "is false when date is not the latest_date" do
+      allow(described_class).to receive(:latest_date).and_return(Date.new(2019, 3, 20))
+      expect(navigation.latest?).to be false
     end
   end
 end

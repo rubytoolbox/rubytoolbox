@@ -7,7 +7,7 @@ RSpec.describe TrendsController, type: :controller do
 
   describe "GET index" do
     it "redirects to show for maximum available stat date" do
-      allow(RubygemDownloadStat).to receive(:maximum).with(:date).and_return(Date.new(2019, 1, 2))
+      allow(RubygemDownloadStat::Navigation).to receive(:latest_date).and_return(Date.new(2019, 1, 2))
       get :index
       expect(response).to redirect_to(action: :show, id: "2019-01-02")
     end
@@ -22,12 +22,9 @@ RSpec.describe TrendsController, type: :controller do
   describe "GET show" do
     before do
       Factories.rubygem "foo"
-      RubygemDownloadStat.create! rubygem_name:          "foo",
-                                  date:                  "2019-02-24",
-                                  total_downloads:       5000,
-                                  absolute_change_month: 3000,
-                                  relative_change_month: 50.4,
-                                  growth_change_month:   23.3
+      RubygemDownloadStat.create! rubygem_name:    "foo",
+                                  date:            "2019-02-24",
+                                  total_downloads: 5000
     end
 
     def do_request
@@ -36,6 +33,21 @@ RSpec.describe TrendsController, type: :controller do
 
     it "renders show template" do
       expect(do_request).to render_template :show
+    end
+
+    it "assigns a navigation instance" do
+      navigation = RubygemDownloadStat::Navigation.new(Date.new(2019, 2, 24))
+      allow(RubygemDownloadStat::Navigation).to receive(:find)
+        .with("2019-02-24")
+        .and_return(navigation)
+
+      do_request
+      expect(assigns(:navigation)).to be navigation
+    end
+
+    it "redirects to next available date on invalid date" do
+      get :show, params: { id: "2019-01-28" }
+      expect(response).to redirect_to(action: :show, id: "2019-02-24")
     end
   end
 end

@@ -29,6 +29,10 @@ class RubygemDownloadStat::Navigation
   def self.valid_date(date)
     Date.parse date.to_s
   rescue ArgumentError
+    latest_date
+  end
+
+  def self.latest_date
     RubygemDownloadStat.maximum(:date)
   end
 
@@ -63,6 +67,14 @@ class RubygemDownloadStat::Navigation
     matching_date(+52.weeks)
   end
 
+  def exact_match?(requested_date)
+    date == self.class.valid_date(requested_date)
+  end
+
+  def latest?
+    date == maximum_available_date
+  end
+
   private
 
   def matching_date(distance)
@@ -71,7 +83,7 @@ class RubygemDownloadStat::Navigation
   end
 
   def maximum_available_date
-    @maximum_available_date ||= RubygemDownloadStat.maximum(:date)
+    @maximum_available_date ||= self.class.latest_date
   end
 
   def minimum_available_date
