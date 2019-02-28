@@ -321,6 +321,40 @@ ALTER SEQUENCE public.rubygem_download_stats_id_seq OWNED BY public.rubygem_down
 
 
 --
+-- Name: rubygem_trends; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.rubygem_trends (
+    id bigint NOT NULL,
+    date date NOT NULL,
+    rubygem_name character varying NOT NULL,
+    "position" integer NOT NULL,
+    rubygem_download_stat_id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: rubygem_trends_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.rubygem_trends_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: rubygem_trends_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.rubygem_trends_id_seq OWNED BY public.rubygem_trends.id;
+
+
+--
 -- Name: rubygems; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -371,6 +405,13 @@ ALTER TABLE ONLY public.rubygem_download_stats ALTER COLUMN id SET DEFAULT nextv
 
 
 --
+-- Name: rubygem_trends id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.rubygem_trends ALTER COLUMN id SET DEFAULT nextval('public.rubygem_trends_id_seq'::regclass);
+
+
+--
 -- Name: ar_internal_metadata ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -392,6 +433,14 @@ ALTER TABLE ONLY public.categorizations
 
 ALTER TABLE ONLY public.rubygem_download_stats
     ADD CONSTRAINT rubygem_download_stats_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: rubygem_trends rubygem_trends_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.rubygem_trends
+    ADD CONSTRAINT rubygem_trends_pkey PRIMARY KEY (id);
 
 
 --
@@ -571,6 +620,27 @@ CREATE INDEX index_rubygem_download_stats_on_total_downloads ON public.rubygem_d
 
 
 --
+-- Name: index_rubygem_trends_on_date; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_rubygem_trends_on_date ON public.rubygem_trends USING btree (date);
+
+
+--
+-- Name: index_rubygem_trends_on_date_and_position; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_rubygem_trends_on_date_and_position ON public.rubygem_trends USING btree (date, "position");
+
+
+--
+-- Name: index_rubygem_trends_on_position; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_rubygem_trends_on_position ON public.rubygem_trends USING btree ("position");
+
+
+--
 -- Name: index_rubygems_on_name; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -637,6 +707,22 @@ ALTER TABLE ONLY public.categories
 
 
 --
+-- Name: rubygem_trends fk_rails_8a29c552ee; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.rubygem_trends
+    ADD CONSTRAINT fk_rails_8a29c552ee FOREIGN KEY (rubygem_name) REFERENCES public.rubygems(name);
+
+
+--
+-- Name: rubygem_trends fk_rails_ac818cf2a2; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.rubygem_trends
+    ADD CONSTRAINT fk_rails_ac818cf2a2 FOREIGN KEY (rubygem_download_stat_id) REFERENCES public.rubygem_download_stats(id);
+
+
+--
 -- Name: rubygem_download_stats fk_rails_c4eb80d594; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -693,6 +779,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190218131324'),
 ('20190220133053'),
 ('20190226090240'),
-('20190226090403');
+('20190226090403'),
+('20190228101125'),
+('20190228102103');
 
 

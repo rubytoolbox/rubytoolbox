@@ -6,9 +6,9 @@
 # chart.js chart.
 #
 # To reduce the number of datapoints and keep in-browser display performance sane
-# only stats every 4 weeks are fetched, using the `RubygemDownloadStat.monthly` scope.
+# only stats every 4 weeks are fetched, using the `Rubygem::DownloadStat.monthly` scope.
 #
-class RubygemDownloadStat::Timeseries
+class Rubygem::DownloadStat::Timeseries
   #
   # Just a shorthand for `new(*args).stats`
   #
@@ -39,6 +39,6 @@ class RubygemDownloadStat::Timeseries
   private
 
   def base_query
-    RubygemDownloadStat.where(rubygem_name: rubygem_name).order(date: :asc).monthly
+    Rubygem::DownloadStat.where(rubygem_name: rubygem_name).order(date: :asc).monthly
   end
 end

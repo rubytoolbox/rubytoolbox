@@ -11,6 +11,8 @@
 #   to put in place some complex persistent logic that actually keeps track of that.
 #
 class RubygemDownloadsPersistenceJob < ApplicationJob
+  sidekiq_options queue: :priority
+
   def perform # rubocop:disable Metrics/MethodLength It's a simple method, the SQL code is just lengthy
     return unless should_run?
 
@@ -30,6 +32,9 @@ class RubygemDownloadsPersistenceJob < ApplicationJob
 
     result = ActiveRecord::Base.connection.execute upsert_sql
     Rails.logger.info "Processed #{result.cmd_tuples} gem stats records"
+
+    RubygemTrendsJob.perform_async date
+
     result.cmd_tuples == Rubygem.count
   end
 

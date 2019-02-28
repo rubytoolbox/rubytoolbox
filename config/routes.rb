@@ -5,17 +5,18 @@ require "sidekiq/web"
 
 # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 Rails.application.routes.draw do
+  resources :blog, only: %i[index show], constraints: { id: /[^\.]+/ }
   resources :categories, only: %i[index show]
-  resources :projects, only: %i[show], constraints: { id: Patterns::ROUTE_PATTERN } do
-  end
+
+  resources :projects, only: %i[show], constraints: { id: Patterns::ROUTE_PATTERN }
   get "compare(/:id)", to: "comparisons#show", constraints: { id: /.*/ }, as: :comparison
+  resources :trends, only: %i[index show]
 
   resource :search, only: %i[show] do
     collection do
       get :by_name
     end
   end
-  resources :blog, only: %i[index show], constraints: { id: /[^\.]+/ }
 
   namespace :webhooks do
     post "github", to: "github#create", defaults: { formats: :json }

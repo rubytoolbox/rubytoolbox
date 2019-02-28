@@ -29,14 +29,21 @@
 # If you change historical numbers, be sure to trigger a re-calculation of all related stats by
 # issuing `UPDATE rubygem_download_stats SET id = id (WHERE rubygem_name = 'foo')".
 #
-class RubygemDownloadStat < ApplicationRecord
+class Rubygem::DownloadStat < ApplicationRecord
   belongs_to :rubygem,
              primary_key: :name,
              foreign_key: :rubygem_name,
              inverse_of:  :download_stats
 
-  def self.monthly(base_date: RubygemDownloadStat.maximum(:date))
+  has_one :project, through: :rubygem
+
+  def self.monthly(base_date: Rubygem::DownloadStat.maximum(:date))
     where("(#{table_name}.date <= ?)", base_date)
       .where("(#{table_name}.date - ?) % 28 = 0", base_date)
+  end
+
+  def self.with_associations
+    includes(:rubygem, :project)
+      .joins(:rubygem, :project)
   end
 end

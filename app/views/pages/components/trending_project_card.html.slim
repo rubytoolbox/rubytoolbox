@@ -1,0 +1,17 @@
+.hero
+  section.section: .container
+    p.heading= link_to "Ruby Toolbox UI Components Styleguide", "/pages/components"
+    h2= current_page.split("/").last.humanize
+
+- trending = Rubygem::Trend.order(date: :desc, position: :asc).limit(9)
+
+= component_example "Cards for trending project" do
+  .columns.is-multiline
+    - trending.each do |trend|
+      .category-cards.three
+        = trending_project_card trend
+
+  .columns.is-multiline
+    - trending.each do |trend|
+      .category-cards.four
+        = trending_project_card trend

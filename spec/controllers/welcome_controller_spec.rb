@@ -36,5 +36,13 @@ RSpec.describe WelcomeController, type: :controller do
       do_request
       expect(assigns(:stats)).to be stats
     end
+
+    it "assigns trending_projects" do
+      array = []
+      scope = class_double Rubygem::Trend, limit: array
+      allow(Rubygem::Trend).to receive(:latest).and_return(scope)
+      do_request
+      expect(assigns(:trending_projects)).to be array
+    end
   end
 end
