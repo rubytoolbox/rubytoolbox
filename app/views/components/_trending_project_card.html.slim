@@ -1,0 +1,21 @@
+.category-card
+  header.card-header
+    a.card-header-icon href=File.join("/projects", trend.project.permalink)
+      span.icon: i.fa.fa-diamond
+    p.card-header-title
+      a href=File.join("/projects", trend.project.permalink)
+        = trend.project.permalink
+    .card-header-icon= small_health_indicator trend.project
+
+  .card-content
+    small.content: strong= truncate trend.project.description, length: 400
+
+  footer.card-footer
+    .card-footer-item.tooltip.is-tooltip-bottom data-tooltip="Total downloads in past 4 weeks"
+      small
+        span.icon: i.fa.fa-download
+        strong= number_with_delimiter trend.absolute_change_month
+    .card-footer-item.tooltip.is-tooltip-bottom data-tooltip="Increase relative to all time downloads in past 4 weeks"
+      small
+        span.icon: i.fa.fa-arrow-up
+        strong= number_with_delimiter(trend.relative_change_month) + "%"

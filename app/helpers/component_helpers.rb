@@ -71,6 +71,10 @@ module ComponentHelpers
     render "components/project_comparison", projects: projects
   end
 
+  def trending_project_card(trend)
+    render "components/trending_project_card", trend: trend
+  end
+
   def section_heading(title, description: nil, help_path: nil, &block)
     help_page = docs.find help_path
     render "components/section_heading", title: title, description: description, help_page: help_page, &block
