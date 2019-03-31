@@ -16,7 +16,7 @@ RSpec.describe RubygemTrendsJob, type: :job do
       Factories.rubygem_trend "a", date: 1.week.ago, position: 1
 
       expect { do_perform }
-        .to change { Rubygem::Trend.select(:date).distinct.pluck(:date) }
+        .to change { Rubygem::Trend.select(:date).distinct.order(date: :desc).pluck(:date) }
         .from([Time.current.to_date, 1.week.ago.to_date])
         .to([1.week.ago.to_date])
     end

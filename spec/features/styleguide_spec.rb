@@ -12,12 +12,13 @@ RSpec.describe "Styleguide Display", type: :feature do
     expect(page).to have_text "Ruby Toolbox UI Components Styleguide"
     expect(page).to have_text "Components Overview"
 
-    page_links = page.find_all(".component-list a")
+    page_links = page.find_all(".component-list a").map { |a| [a["href"], a.text] }.to_h
     expect(page_links.size).to be > 0
 
-    page_links.each do |link|
-      visit link["href"]
-      expect(page).to have_text link.text
+    page_links.each do |href, text|
+      visit "/pages/components"
+      visit href
+      expect(page).to have_text text
     end
   end
 end
