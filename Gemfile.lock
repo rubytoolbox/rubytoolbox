@@ -337,7 +337,7 @@ GEM
       rubyzip (~> 1.2, >= 1.2.2)
     sexp_processor (4.11.0)
     shellany (0.0.1)
-    sidekiq (5.2.5)
+    sidekiq (5.2.7)
       connection_pool (~> 2.2, >= 2.2.2)
       rack (>= 1.5.0)
       rack-protection (>= 1.5.0)
