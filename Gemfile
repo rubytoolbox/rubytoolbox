@@ -94,8 +94,8 @@ group :test do
   gem "capybara", ">= 2.15", "< 4.0"
   gem "launchy"
   gem "selenium-webdriver"
-  # Easy installation and use of chromedriver to run system tests with Chrome
-  gem "chromedriver-helper"
+  # Easy installation and use of selenium webdriver browsers to run system tests
+  gem "webdrivers"
 
   gem "feedjira"
 

@@ -38,7 +38,14 @@ Dir[Rails.root.join("spec", "support", "**", "*.rb")].each { |f| require f }
 ActiveRecord::Migration.maintain_test_schema!
 
 VCR.configure do |c|
-  c.ignore_hosts "localhost", "127.0.0.1"
+  c.ignore_hosts "localhost",
+                 "127.0.0.1",
+                 # as per https://github.com/titusfortner/webdrivers/wiki/Using-with-VCR-or-WebMock
+                 "chromedriver.storage.googleapis.com",
+                 "github.com/mozilla/geckodriver/releases",
+                 "selenium-release.storage.googleapis.com",
+                 "developer.microsoft.com/en-us/microsoft-edge/tools/webdriver"
+
   c.cassette_library_dir = Rails.root.join("spec", "cassettes")
   c.default_cassette_options = { record: :new_episodes }
   c.hook_into :webmock
