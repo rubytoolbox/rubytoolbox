@@ -200,7 +200,7 @@ GEM
       nenv (~> 0.1)
       shellany (~> 0.0)
     oj (3.7.12)
-    overcommit (0.47.0)
+    overcommit (0.48.0)
       childprocess (~> 0.6, >= 0.6.3)
       iniparse (~> 1.4)
     parallel (1.16.2)
