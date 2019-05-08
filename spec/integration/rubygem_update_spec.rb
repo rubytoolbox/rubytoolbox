@@ -18,7 +18,8 @@ RSpec.describe RubygemUpdateJob, :real_http do
           first_release_on:           (a_value > Date.new(2012, 4, 25)),
           latest_release_on:          (a_value > Date.new(2017, 2, 21)),
           reverse_dependencies_count: (a_value > 50),
-          releases_count:             (a_value > 20)
+          releases_count:             (a_value > 20),
+          fetched_at:                 be_within(5.seconds).of(Time.current)
         )
       end
     end

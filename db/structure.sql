@@ -261,7 +261,8 @@ CREATE TABLE public.github_repos (
     total_issues_count integer,
     total_pull_requests_count integer,
     issue_closure_rate numeric(5,2) DEFAULT NULL::numeric,
-    pull_request_acceptance_rate numeric(5,2) DEFAULT NULL::numeric
+    pull_request_acceptance_rate numeric(5,2) DEFAULT NULL::numeric,
+    fetched_at timestamp without time zone
 );
 
 
@@ -377,7 +378,8 @@ CREATE TABLE public.rubygems (
     first_release_on date,
     latest_release_on date,
     releases_count integer,
-    reverse_dependencies_count integer
+    reverse_dependencies_count integer,
+    fetched_at timestamp without time zone
 );
 
 
@@ -781,6 +783,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190226090240'),
 ('20190226090403'),
 ('20190228101125'),
-('20190228102103');
+('20190228102103'),
+('20190508190527');
 
 
