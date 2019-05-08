@@ -16,8 +16,8 @@ class Cron
     RemoteUpdateSchedulerJob.perform_async
     CatalogImportJob.perform_async
     GithubIgnore.expire!
-  rescue StandardError => err
-    Appsignal.set_error err
-    raise err
+  rescue StandardError => e
+    Appsignal.set_error e
+    raise e
   end
 end
