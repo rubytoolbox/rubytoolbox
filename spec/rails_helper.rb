@@ -53,6 +53,8 @@ VCR.configure do |c|
   c.filter_sensitive_data("<GITHUB_TOKEN>") { ENV["GITHUB_TOKEN"] }
 end
 
+Webdrivers.cache_time = 300
+
 # To clean up test output, comment this line to
 Capybara.server = :puma, { Silent: true }
 
