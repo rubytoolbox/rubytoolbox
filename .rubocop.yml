@@ -3,8 +3,10 @@
 #
 # See http://rubocop.readthedocs.io/en/latest/ for detailed configuration options documentation
 
-# Additional cops for working with RSpec. See https://github.com/backus/rubocop-rspec
-require: rubocop-rspec
+require:
+  - rubocop-performance
+  # Additional cops for working with RSpec. See https://github.com/backus/rubocop-rspec
+  - rubocop-rspec
 
 AllCops:
   Exclude:

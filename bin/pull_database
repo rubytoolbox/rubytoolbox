@@ -39,7 +39,7 @@ Dir.mktmpdir do |dir|
   if result
     puts "Database successfully imported"
   else
-    STDERR.puts "Database import failed :("
+    warn "Database import failed :("
     exit 1
   end
 end
