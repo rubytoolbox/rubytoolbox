@@ -22,6 +22,7 @@ commands:
   prepare_database:
     description: "Install Postgres client and load db structure"
     steps:
+      - run: sudo apt update
       - run: sudo apt install -y postgresql-client || true
       - run: bundle exec rake db:structure:load
 
