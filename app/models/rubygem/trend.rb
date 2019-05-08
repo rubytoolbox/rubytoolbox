@@ -7,7 +7,8 @@ class Rubygem::Trend < ApplicationRecord
              inverse_of:  :trends
 
   belongs_to :rubygem_download_stat,
-             class_name: "Rubygem::DownloadStat"
+             class_name: "Rubygem::DownloadStat",
+             inverse_of: :trends
 
   has_one :project, through: :rubygem
   has_one :github_repo, through: :project
