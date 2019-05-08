@@ -37,6 +37,11 @@ class Rubygem::DownloadStat < ApplicationRecord
 
   has_one :project, through: :rubygem
 
+  has_many :trends, class_name:  "Rubygem::Trend",
+                    foreign_key: :rubygem_download_stat_id,
+                    inverse_of:  :rubygem_download_stat,
+                    dependent:   :destroy
+
   def self.monthly(base_date: Rubygem::DownloadStat.maximum(:date))
     where("(#{table_name}.date <= ?)", base_date)
       .where("(#{table_name}.date - ?) % 28 = 0", base_date)

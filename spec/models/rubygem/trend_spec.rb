@@ -25,5 +25,9 @@ RSpec.describe Rubygem::Trend, type: :model do
 
       expect(&query).to make_database_queries(count: 1)
     end
+
+    it "allows cascading deletion of a rubygem when it's gone" do
+      expect(Rubygem.find("a").destroy).to be_truthy
+    end
   end
 end
