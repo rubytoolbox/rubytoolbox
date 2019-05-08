@@ -56,7 +56,7 @@ class GithubRepoUpdateJob < ApplicationJob
   def store_repo(path:, info:)
     GithubRepo.find_or_initialize_by(path: path.downcase).tap do |repo|
       # Set updated at to ensure we flag what we've pulled
-      repo.updated_at = Time.current.utc
+      repo.updated_at = repo.fetched_at = Time.current.utc
       repo.update! mapped_attributes(info)
       trigger_project_updates repo.projects.pluck(:permalink)
     end
