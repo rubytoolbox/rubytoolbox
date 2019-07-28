@@ -138,7 +138,7 @@ GEM
       ruby2ruby (~> 2.4)
       ruby_parser (~> 3.10)
     hashdiff (0.3.9)
-    high_voltage (3.1.0)
+    high_voltage (3.1.2)
     http (4.1.1)
       addressable (~> 2.3)
       http-cookie (~> 1.0)
