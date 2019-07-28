@@ -5,6 +5,7 @@
 
 require:
   - rubocop-performance
+  - rubocop-rails
   # Additional cops for working with RSpec. See https://github.com/backus/rubocop-rspec
   - rubocop-rspec
 

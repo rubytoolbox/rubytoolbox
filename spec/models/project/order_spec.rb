@@ -56,26 +56,26 @@ RSpec.describe Project::Order, type: :model do
     end
   end
 
-  DEFAULT_DIRECTION = described_class::DEFAULT_DIRECTIONS.first
+  default_direction = described_class::DEFAULT_DIRECTIONS.first
 
   describe "for invalid order" do
     let(:order) { described_class.new(order: "lol") }
 
-    it "has ordered_by #{DEFAULT_DIRECTION.key}" do
-      expect(order.ordered_by).to be == DEFAULT_DIRECTION.key
+    it "has ordered_by #{default_direction.key}" do
+      expect(order.ordered_by).to be == default_direction.key
     end
 
     it "has sql based on direction sql" do
-      allow(DEFAULT_DIRECTION).to receive(:sql).and_return("this sql")
+      allow(default_direction).to receive(:sql).and_return("this sql")
       expect(order.sql).to be == "this sql"
     end
   end
 
   describe "#available_groups" do
-    EXPECTED_GROUPS = described_class::DEFAULT_DIRECTIONS.map(&:group).uniq
+    expected_groups = described_class::DEFAULT_DIRECTIONS.map(&:group).uniq
 
-    it "has expected groups: #{EXPECTED_GROUPS.to_sentence}" do
-      expect(described_class.new(order: nil).available_groups.keys).to be == EXPECTED_GROUPS
+    it "has expected groups: #{expected_groups.to_sentence}" do
+      expect(described_class.new(order: nil).available_groups.keys).to be == expected_groups
     end
   end
 
