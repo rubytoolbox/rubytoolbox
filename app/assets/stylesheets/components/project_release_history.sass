@@ -1,0 +1,26 @@
+.project-release-history
+  display: grid
+  grid-column-gap: 2px
+  grid-row-gap: 8px
+  grid-template-columns: repeat( auto-fit, minmax(70px, 1fr) )
+
+  .label
+    @extend .is-size-7, .has-text-grey
+
+  ul
+    display: grid
+    grid-gap: 2px
+    grid-template-columns: repeat(4, 1fr)
+
+    li
+      background: #eee
+      display: block
+      height: 10px
+      width: 100%
+
+      &.high
+        background: $red
+      &.medium
+        background: rgba($red, 0.5)
+      &.low
+        background: rgba($red, 0.2)

@@ -71,6 +71,10 @@ module ComponentHelpers
     render "components/project_comparison", projects: projects
   end
 
+  def project_release_history(project)
+    render "components/project_release_history", project: project
+  end
+
   def trending_project_card(trend)
     render "components/trending_project_card", trend: trend
   end

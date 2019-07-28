@@ -1,0 +1,9 @@
+.hero
+  section.section: .container
+    p.heading= link_to "Ruby Toolbox UI Components Styleguide", "/pages/components"
+    h2= current_page.split("/").last.humanize
+
+- project = Project.find("rspec")
+
+= component_example "Project box" do
+  = project_release_history project
