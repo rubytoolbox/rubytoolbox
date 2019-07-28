@@ -4,7 +4,7 @@ require "rails_helper"
 
 RSpec.describe Project, type: :model do
   it "does not allow mismatches between permalink and rubygem name" do
-    project = Project.create! permalink: "simplecov"
+    project = described_class.create! permalink: "simplecov"
     expect { project.update! rubygem_name: "rails" }.to raise_error(
       ActiveRecord::StatementInvalid,
       /check_project_permalink_and_rubygem_name_parity/
@@ -21,7 +21,7 @@ RSpec.describe Project, type: :model do
 
       # Sometimes activerecord sprinkles in a `SELECT a.attname, format_type(a.atttypid, a.atttypmod),`
       # here for good measure. Actually it's supposed to be 4 queries.
-      expect { Project.includes_associations.map(&nested_accessor) }
+      expect { described_class.includes_associations.map(&nested_accessor) }
         .to make_database_queries(count: 4..5)
     end
   end
@@ -33,11 +33,12 @@ RSpec.describe Project, type: :model do
     end
 
     it "omits bugfix_forks when given false" do
-      expect(Project.with_bugfix_forks(false).pluck(:permalink)).to be == %w[regular]
+      expect(described_class.with_bugfix_forks(false).pluck(:permalink)).to be == %w[regular]
     end
 
     it "includes bugfix_forks when given true" do
-      expect(Project.with_bugfix_forks(true).order(permalink: :asc).pluck(:permalink)).to be == %w[forked regular]
+      scope = described_class.with_bugfix_forks(true).order(permalink: :asc)
+      expect(scope.pluck(:permalink)).to be == %w[forked regular]
     end
   end
 
@@ -71,34 +72,34 @@ RSpec.describe Project, type: :model do
 
   describe ".search" do
     it "can find a matching project" do
-      expected = Project.create! permalink: "widgets", score: 1
-      Project.create! permalink: "airplanes", score: 1
-      Project.create! permalink: "rockets", score: 1
+      expected = described_class.create! permalink: "widgets", score: 1
+      described_class.create! permalink: "airplanes", score: 1
+      described_class.create! permalink: "rockets", score: 1
 
-      expect(Project.search("widget")).to be == [expected]
+      expect(described_class.search("widget")).to be == [expected]
     end
 
     it "does not return projects without a score" do
-      expected = Project.create! permalink: "somethingelse", score: 1, description: "Provides amazing widgets"
-      Project.create! permalink: "widgets"
-      expect(Project.search("widget")).to be == [expected]
+      expected = described_class.create! permalink: "somethingelse", score: 1, description: "Provides amazing widgets"
+      described_class.create! permalink: "widgets"
+      expect(described_class.search("widget")).to be == [expected]
     end
 
     describe "for projects flagged as bugfix forks" do
       let(:expected) do
-        Project.create! permalink: "somethingelse", score: 10, description: "Provides amazing widgets"
+        described_class.create! permalink: "somethingelse", score: 10, description: "Provides amazing widgets"
       end
 
       before do
-        Project.create! permalink: "widgets", is_bugfix_fork: true, score: 1
+        described_class.create! permalink: "widgets", is_bugfix_fork: true, score: 1
       end
 
       it "does not include them by default" do
-        expect(Project.search("widget")).to be == [expected]
+        expect(described_class.search("widget")).to be == [expected]
       end
 
       it "includes them when called with show_forks true" do
-        expect(Project.search("widget", show_forks: true)).to be == [expected, Project.find("widgets")]
+        expect(described_class.search("widget", show_forks: true)).to be == [expected, described_class.find("widgets")]
       end
     end
 
@@ -106,37 +107,37 @@ RSpec.describe Project, type: :model do
       before do
         (1..3).each do |i|
           rubygem = Rubygem.create! name: "widgets#{i}", downloads: 10 - i, current_version: "1.0"
-          Project.create! permalink: rubygem.name, score: 10 + i, rubygem: rubygem
+          described_class.create! permalink: rubygem.name, score: 10 + i, rubygem: rubygem
         end
       end
 
       it "sorts results by the search result rank by default" do
-        Project.find("widgets2").update! description: "widgets widgets!"
+        described_class.find("widgets2").update! description: "widgets widgets!"
         expected = %w[widgets2 widgets3 widgets1]
-        expect(Project.search("widget").pluck(:permalink)).to be == expected
+        expect(described_class.search("widget").pluck(:permalink)).to be == expected
       end
 
       it "allows to pass a custom order instance" do
         order = Project::Order.new(order: "rubygem_downloads")
         expected = %w[widgets1 widgets2 widgets3]
-        expect(Project.search("widget", order: order).pluck(:permalink)).to be == expected
+        expect(described_class.search("widget", order: order).pluck(:permalink)).to be == expected
       end
     end
   end
 
   describe "#github_only?" do
     it "is false when no / is present in permalink" do
-      expect(Project.new(permalink: "foobar")).not_to be_github_only
+      expect(described_class.new(permalink: "foobar")).not_to be_github_only
     end
 
     it "is true when a / is present in permalink" do
-      expect(Project.new(permalink: "foo/bar")).to be_github_only
+      expect(described_class.new(permalink: "foo/bar")).to be_github_only
     end
   end
 
   describe "#github_repo_path=" do
     it "normalizes the path to the stripped, downcase variant" do
-      expect(Project.new(github_repo_path: " FoO/BaR ").github_repo_path).to be == "foo/bar"
+      expect(described_class.new(github_repo_path: " FoO/BaR ").github_repo_path).to be == "foo/bar"
     end
   end
 
@@ -144,7 +145,7 @@ RSpec.describe Project, type: :model do
     %i[changelog_url documentation_url mailing_list_url].each do |url|
       describe "##{url}" do
         it "is fetched from the rubygem" do
-          project = Project.new(rubygem: Rubygem.new(url => "foobar"))
+          project = described_class.new(rubygem: Rubygem.new(url => "foobar"))
           expect(project.send(url)).to be == "foobar"
         end
       end
@@ -225,11 +226,11 @@ RSpec.describe Project, type: :model do
 
   describe "permalink=" do
     it "normalizes the permalink to the stripped, downcase variant for github repo" do
-      expect(Project.new(permalink: " FoO/BaR ").permalink).to be == "foo/bar"
+      expect(described_class.new(permalink: " FoO/BaR ").permalink).to be == "foo/bar"
     end
 
     it "does not normalize the permalink for non-github project" do
-      expect(Project.new(permalink: "FoOBaR").permalink).to be == "FoOBaR"
+      expect(described_class.new(permalink: "FoOBaR").permalink).to be == "FoOBaR"
     end
   end
 

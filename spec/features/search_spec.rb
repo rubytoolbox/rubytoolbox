@@ -16,6 +16,14 @@ RSpec.describe "Search", type: :feature, js: true do
     Factories.project "other", score: 22, downloads: 10_000, first_release: 5.years.ago
   end
 
+  let(:halt_form_submission_js) do
+    <<~JS
+      document.querySelectorAll(".search-form").forEach(function(form) {
+        form.addEventListener("submit", function(e) { e.preventDefault(); })
+      });
+    JS
+  end
+
   it "allows users to search for projects and categories" do
     search_for "widget"
 
@@ -179,16 +187,11 @@ RSpec.describe "Search", type: :feature, js: true do
   # To test onSubmit loading state change we need to prevent the form from actually
   # submitting itself
   #
-  HALT_FORM_SUBMISSION_JS = <<~JS
-    document.querySelectorAll(".search-form").forEach(function(form) {
-      form.addEventListener("submit", function(e) { e.preventDefault(); })
-    });
-  JS
 
   def search_for(query, container: ".navbar", halt: false, visit_home_first: true)
     visit "/" if visit_home_first
 
-    page.evaluate_script HALT_FORM_SUBMISSION_JS if halt
+    page.evaluate_script halt_form_submission_js if halt
 
     within container do
       fill_in "q", with: query

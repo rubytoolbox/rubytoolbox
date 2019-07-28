@@ -21,7 +21,7 @@ RSpec.describe Blog, type: :model do
       end
 
       it "has expected post permalinks" do
-        expect(blog.posts.map(&:permalink)).to be == ["another-post", "example-post"]
+        expect(blog.posts.map(&:permalink)).to be == %w[another-post example-post]
       end
 
       it "has expected post titles" do

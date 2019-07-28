@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable Rails/HelperInstanceVariable
 module ApplicationHelper
   include ComponentHelpers
   include StatsHelpers
@@ -139,3 +140,4 @@ module ApplicationHelper
     "is-active" if controller_name == controller.to_s
   end
 end
+# rubocop:enable Rails/HelperInstanceVariable

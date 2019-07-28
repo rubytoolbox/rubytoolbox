@@ -18,7 +18,7 @@ RSpec.describe Github, type: :model do
       ["foobar", "http://github.com/rails/rails"]            => "rails/rails",
     }.each do |args, expected_name|
       it "is #{expected_name.inspect} when given #{args.inspect}" do
-        expect(Github.detect_repo_name(*args)).to be == expected_name
+        expect(described_class.detect_repo_name(*args)).to be == expected_name
       end
     end
   end
@@ -35,7 +35,7 @@ RSpec.describe Github, type: :model do
       "FooBar"    => "FooBar",
     }.each do |path, expected_normalized|
       it "is #{expected_normalized.inspect} when given #{path.inspect}" do
-        expect(Github.normalize_path(path)).to be == expected_normalized
+        expect(described_class.normalize_path(path)).to be == expected_normalized
       end
     end
   end

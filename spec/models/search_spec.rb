@@ -67,7 +67,7 @@ RSpec.describe Search, type: :model do
         .with(directions: Project::Order::SEARCH_DIRECTIONS)
         .and_return(order)
 
-      expect(Search.new("q").order).to be order
+      expect(described_class.new("q").order).to be order
     end
   end
 end
