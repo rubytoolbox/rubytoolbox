@@ -31,6 +31,10 @@
     .columns: .download-chart.column
       = rubygem_download_chart @project.rubygem_name
 
+    .columns: .quarterly-releases.column
+      = project_release_history @project.rubygem_quarterly_release_counts
+
+
 section.section: .container: .project
   = project_metrics @project, expanded_view: true
 

@@ -2,7 +2,7 @@
 
 #
 # Shorthand methods for displaying UI components. See /pages/components
-#
+# rubocop:disable Metrics/ModuleLength
 module ComponentHelpers
   def category_card(category, compact: false, inline: false)
     extra_classes = inline ? %w[inline] : []
@@ -71,6 +71,28 @@ module ComponentHelpers
     render "components/project_comparison", projects: projects
   end
 
+  def project_release_history(quarterly_release_counts, compact: false)
+    return unless quarterly_release_counts.is_a?(Hash) && quarterly_release_counts.any?
+
+    render "components/project_release_history", release_counts: quarterly_release_counts, compact: compact
+  end
+
+  RELEASE_INDICATOR_RANKS = {
+    0 => "none",
+    1 => "low",
+    3 => "medium",
+  }.freeze
+
+  def quarterly_release_indicator(release_counts, year:, quarter:)
+    count = release_counts["#{year}-#{quarter}"] || 0
+    rank = RELEASE_INDICATOR_RANKS.find { |limit, _| count <= limit }&.last || "high"
+
+    tooltip = "#{quarter.ordinalize} quarter #{year}: #{count} #{'release'.pluralize(count)}"
+
+    content_tag "li", class: "tooltip is-tooltip-bottom #{rank}", "data-tooltip" => tooltip do
+    end
+  end
+
   def trending_project_card(trend)
     render "components/trending_project_card", trend: trend
   end
@@ -121,3 +143,4 @@ module ComponentHelpers
     render "components/component_example", heading: heading, &block
   end
 end
+# rubocop:enable Metrics/ModuleLength

@@ -1,0 +1,8 @@
+.project-release-history
+  - starts_in = compact ? Time.current.year - 5 : 2005
+  - (starts_in..Time.current.year).each do |year|
+    .year
+      .label= year
+      ul
+        - (1..4).each do |quarter|
+          = quarterly_release_indicator release_counts, year: year, quarter: quarter

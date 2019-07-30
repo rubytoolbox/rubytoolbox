@@ -45,6 +45,12 @@ RSpec.describe RubygemUpdateJob, type: :job do
       do_perform
     end
 
+    it "stores quarterly release counts" do
+      do_perform
+      expected = { "2005-3" => 1, "2017-2" => 1, "2017-4" => 1 }
+      expect(Rubygem.find(gem_name).quarterly_release_counts).to be == expected
+    end
+
     describe "when rubygems.org is down" do
       let(:gem_name) { "thisisdowninmock" }
 

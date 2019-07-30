@@ -34,9 +34,11 @@
     - else
       = project.description
 
+  .columns: .column= project_release_history project.rubygem_quarterly_release_counts, compact: local_assigns[:compact]
 
   - if local_assigns[:compact]
     .metrics.compact= metrics_row project, :rubygem_downloads, :github_repo_stargazers_count, :rubygem_current_version, :rubygem_releases_count, :rubygem_first_release_on, :rubygem_latest_release_on
+
 
     = project_details_buttons project
 
