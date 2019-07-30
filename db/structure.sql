@@ -5,6 +5,7 @@ SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
+SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
@@ -379,7 +380,8 @@ CREATE TABLE public.rubygems (
     latest_release_on date,
     releases_count integer,
     reverse_dependencies_count integer,
-    fetched_at timestamp without time zone
+    fetched_at timestamp without time zone,
+    quarterly_release_counts jsonb DEFAULT '{}'::jsonb NOT NULL
 );
 
 
@@ -784,6 +786,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190226090403'),
 ('20190228101125'),
 ('20190228102103'),
-('20190508190527');
+('20190508190527'),
+('20190730194020');
 
 

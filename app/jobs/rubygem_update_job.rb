@@ -17,11 +17,8 @@ class RubygemUpdateJob < ApplicationJob
     self.name = name
 
     if info
-      Rubygem.find_or_initialize_by(name: name).tap do |gem|
-        # Set updated at to ensure we flag what we've pulled
-        gem.updated_at = gem.fetched_at = Time.current.utc
-        gem.update! mapped_info.merge(extra_attributes)
-      end
+      update_gem_data!
+
       ProjectUpdateJob.perform_async name
     else
       Rubygem.where(name: name).destroy_all
@@ -29,6 +26,15 @@ class RubygemUpdateJob < ApplicationJob
   end
 
   private
+
+  def update_gem_data!
+    Rubygem.find_or_initialize_by(name: name).tap do |gem|
+      # Set updated at to ensure we flag what we've pulled
+      gem.updated_at = gem.fetched_at = Time.current.utc
+      gem.quarterly_release_counts = quarterly_releases
+      gem.update! mapped_info.merge(extra_attributes)
+    end
+  end
 
   ATTRIBUTE_MAPPING = {
     authors:           :authors,
@@ -65,6 +71,17 @@ class RubygemUpdateJob < ApplicationJob
 
   def releases
     @releases ||= fetch_gem_api_response("versions/#{name}.json").sort_by { |v| v["built_at"] }
+  end
+
+  def quarterly_releases
+    grouped_by_quarter = releases.uniq { |r| r["number"] }.group_by do |r|
+      built = Time.zone.parse(r["built_at"])
+      "#{built.year}-#{(built.month / 3.0).ceil}"
+    end
+
+    grouped_by_quarter.map do |quarter, releases|
+      [quarter, releases.count]
+    end.to_h
   end
 
   def info
