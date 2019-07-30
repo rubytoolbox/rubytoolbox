@@ -4,6 +4,14 @@
     h2= current_page.split("/").last.humanize
 
 - project = Project.find("rspec")
+- data = { "2018-3" => 1, "2018-4" => 3, "2019-1" => 12 }
 
-= component_example "Project box" do
-  = project_release_history project
+= component_example "Quarterly release counts for a project" do
+  = project_release_history project.rubygem_quarterly_release_counts
+
+
+= component_example "It expects a quarterly mapped counts input" do
+  = project_release_history data
+
+= component_example "Compact view only shows last 6 years" do
+  = project_release_history data, compact: true

@@ -91,6 +91,7 @@ class Project < ApplicationRecord
            :licenses,
            :url,
            :reverse_dependencies_count,
+           :quarterly_release_counts,
            to:        :rubygem,
            allow_nil: true,
            prefix:    :rubygem

@@ -1,9 +1,8 @@
 .project-release-history
-  - (2004..Time.current.year).each do |year|
+  - starts_in = compact ? Time.current.year - 5 : 2005
+  - (starts_in..Time.current.year).each do |year|
     .year
       .label= year
       ul
-        li.q1.high.tooltip.is-tooltip-bottom data-tooltip="Q1 #{year}: 12 releases"
-        li.q2.low.tooltip.is-tooltip-bottom data-tooltip="Q1 #{year}: 12 releases"
-        li.q3.none.tooltip.is-tooltip-bottom data-tooltip="Q1 #{year}: 12 releases"
-        li.q2.medium.tooltip.is-tooltip-bottom data-tooltip="Q1 #{year}: 12 releases"
+        - (1..4).each do |quarter|
+          = quarterly_release_indicator release_counts, year: year, quarter: quarter
