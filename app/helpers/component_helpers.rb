@@ -87,7 +87,7 @@ module ComponentHelpers
     count = release_counts["#{year}-#{quarter}"] || 0
     rank = RELEASE_INDICATOR_RANKS.find { |limit, _| count <= limit }&.last || "high"
 
-    tooltip = "#{quarter.ordinalize} quarter #{year}: #{count} releases"
+    tooltip = "#{quarter.ordinalize} quarter #{year}: #{count} #{'release'.pluralize(count)}"
 
     content_tag "li", class: "tooltip is-tooltip-bottom #{rank}", "data-tooltip" => tooltip do
     end
