@@ -10,20 +10,6 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: -
---
-
-CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
-
-
---
--- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: -
---
-
-COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
-
-
---
 -- Name: citext; Type: EXTENSION; Schema: -; Owner: -
 --
 
@@ -140,7 +126,7 @@ $$;
 
 SET default_tablespace = '';
 
-SET default_with_oids = false;
+SET default_table_access_method = heap;
 
 --
 -- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: -
@@ -655,35 +641,35 @@ CREATE UNIQUE INDEX index_rubygems_on_name ON public.rubygems USING btree (name)
 -- Name: categories categories_update_description_tsvector_trigger; Type: TRIGGER; Schema: public; Owner: -
 --
 
-CREATE TRIGGER categories_update_description_tsvector_trigger BEFORE INSERT OR UPDATE ON public.categories FOR EACH ROW EXECUTE PROCEDURE public.categories_update_description_tsvector_trigger();
+CREATE TRIGGER categories_update_description_tsvector_trigger BEFORE INSERT OR UPDATE ON public.categories FOR EACH ROW EXECUTE FUNCTION public.categories_update_description_tsvector_trigger();
 
 
 --
 -- Name: categories categories_update_name_tsvector_trigger; Type: TRIGGER; Schema: public; Owner: -
 --
 
-CREATE TRIGGER categories_update_name_tsvector_trigger BEFORE INSERT OR UPDATE ON public.categories FOR EACH ROW EXECUTE PROCEDURE public.categories_update_name_tsvector_trigger();
+CREATE TRIGGER categories_update_name_tsvector_trigger BEFORE INSERT OR UPDATE ON public.categories FOR EACH ROW EXECUTE FUNCTION public.categories_update_name_tsvector_trigger();
 
 
 --
 -- Name: projects projects_update_description_tsvector_trigger; Type: TRIGGER; Schema: public; Owner: -
 --
 
-CREATE TRIGGER projects_update_description_tsvector_trigger BEFORE INSERT OR UPDATE ON public.projects FOR EACH ROW EXECUTE PROCEDURE public.projects_update_description_tsvector_trigger();
+CREATE TRIGGER projects_update_description_tsvector_trigger BEFORE INSERT OR UPDATE ON public.projects FOR EACH ROW EXECUTE FUNCTION public.projects_update_description_tsvector_trigger();
 
 
 --
 -- Name: projects projects_update_permalink_tsvector_trigger; Type: TRIGGER; Schema: public; Owner: -
 --
 
-CREATE TRIGGER projects_update_permalink_tsvector_trigger BEFORE INSERT OR UPDATE ON public.projects FOR EACH ROW EXECUTE PROCEDURE public.projects_update_permalink_tsvector_trigger();
+CREATE TRIGGER projects_update_permalink_tsvector_trigger BEFORE INSERT OR UPDATE ON public.projects FOR EACH ROW EXECUTE FUNCTION public.projects_update_permalink_tsvector_trigger();
 
 
 --
 -- Name: rubygem_download_stats rubygem_stats_calculation_month; Type: TRIGGER; Schema: public; Owner: -
 --
 
-CREATE TRIGGER rubygem_stats_calculation_month BEFORE INSERT OR UPDATE ON public.rubygem_download_stats FOR EACH ROW EXECUTE PROCEDURE public.rubygem_stats_calculation_month();
+CREATE TRIGGER rubygem_stats_calculation_month BEFORE INSERT OR UPDATE ON public.rubygem_download_stats FOR EACH ROW EXECUTE FUNCTION public.rubygem_stats_calculation_month();
 
 
 --
