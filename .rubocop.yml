@@ -18,8 +18,12 @@ AllCops:
 Rails:
   Enabled: true
 
+Rails/FilePath:
+  # This used to be the default, so here it stays the default...
+  EnforcedStyle: arguments
+
 # Reads best in my humble opinion
-Layout/AlignHash:
+Layout/HashAlignment:
   EnforcedColonStyle: table
   EnforcedHashRocketStyle: table
 
@@ -32,7 +36,7 @@ Metrics/BlockLength:
     - 'spec/rails_helper.rb'
 
 # Big screens are common :)
-Metrics/LineLength:
+Layout/LineLength:
   Max: 120
 
 Metrics/MethodLength:

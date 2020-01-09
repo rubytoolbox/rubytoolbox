@@ -46,7 +46,7 @@ RSpec.describe "Mobile Navigation", type: :feature, js: true, viewport: :mobile 
 
   private
 
-  def scroll_by(y) # rubocop:disable Naming/UncommunicativeMethodParamName
+  def scroll_by(y) # rubocop:disable Naming/MethodParameterName it's fine rubocop...
     # Perform the actual scroll
     page.execute_script "window.scrollBy(0, #{y})"
     # Dispatch a scroll event - this does not seem to happen in headless chrome using scrollBy
