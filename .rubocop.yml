@@ -30,6 +30,7 @@ Layout/HashAlignment:
 Metrics/BlockLength:
   Exclude:
     # The default guard-rspec config fails this, but it's ok.
+    - config/routes.rb
     - 'Guardfile'
     - 'spec/**/*_examples.rb'
     - 'spec/**/*_spec.rb'

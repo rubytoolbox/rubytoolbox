@@ -32,6 +32,8 @@ gem "font-awesome-rails", "~> 4.7"
 
 gem "addressable"
 
+gem "blueprinter"
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

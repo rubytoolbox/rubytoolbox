@@ -15,7 +15,8 @@ module Factories
         path:             "#{name}/#{name}",
         stargazers_count: downloads,
         forks_count:      downloads,
-        watchers_count:   downloads
+        watchers_count:   downloads,
+        has_issues:       true
       )
       Project.create! permalink:   name,
                       score:       score,
