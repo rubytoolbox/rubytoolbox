@@ -38,7 +38,7 @@ RSpec.describe "Project Comparison API", type: :request do
 
     before do
       Factories.project "rake"
-      Factories.project "rspec"
+      Factories.project "rspec", score: 26
     end
 
     it "responds with expected projects" do

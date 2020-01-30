@@ -9,6 +9,7 @@ class ProjectBlueprint < ApplicationBlueprint
   fields :description,
          :score
 
+  association :categories, blueprint: CategoryBlueprint
   association :rubygem, blueprint: RubygemBlueprint
   association :github_repo, blueprint: GithubRepoBlueprint
   association :health, blueprint: Project::HealthBlueprint
