@@ -14,8 +14,9 @@ class ProjectBlueprint < ApplicationBlueprint
   association :github_repo, blueprint: GithubRepoBlueprint
   association :health, blueprint: Project::HealthBlueprint
 
-  field :urls do |project|
+  field :urls do |project, options|
     {
+      toolbox_url:       Rails.application.routes.url_helpers.project_url(project, host: options[:root_url]),
       homepage_url:      project.homepage_url,
       source_code_url:   project.source_code_url,
       wiki_url:          project.wiki_url,
