@@ -16,6 +16,7 @@ RSpec.describe Github, type: :model do
       ["http://github.com/rails/rails.git"]                  => "rails/rails",
       ["http://github.com/rails/rails.allowed"]              => "rails/rails.allowed",
       ["foobar", "http://github.com/rails/rails"]            => "rails/rails",
+      ["foobar", "http://github.com/rails/rails?wat"]        => "rails/rails",
     }.each do |args, expected_name|
       it "is #{expected_name.inspect} when given #{args.inspect}" do
         expect(described_class.detect_repo_name(*args)).to be == expected_name
