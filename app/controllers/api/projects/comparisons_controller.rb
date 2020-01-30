@@ -5,6 +5,7 @@ class Api::Projects::ComparisonsController < ActionController::API
     projects = Project.where(permalink: requested_project_permalinks)
                       .for_display(forks: true)
                       .includes_associations
+                      .order(permalink: :asc)
                       .limit(100)
 
     render json: ProjectBlueprint.render(projects, root: :projects, root_url: request_root_url)

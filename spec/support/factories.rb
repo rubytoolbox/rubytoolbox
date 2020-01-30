@@ -52,6 +52,12 @@ module Factories
                              date:                  date,
                              rubygem_download_stat: rubygem_download_stat(name, date: date, total_downloads: 15_000)
     end
+
+    def category(name)
+      Category.create! permalink:      name.underscore,
+                       name:           name,
+                       category_group: CategoryGroup.create!(name: "Group", permalink: "group")
+    end
   end
   # rubocop:enable Metrics/MethodLength
 end

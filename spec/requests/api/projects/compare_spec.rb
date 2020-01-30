@@ -37,8 +37,8 @@ RSpec.describe "Project Comparison API", type: :request do
     let(:query) { "rake,rspec" }
 
     before do
-      Factories.project "rake"
-      Factories.project "rspec", score: 26
+      Factories.project("rake").tap { |rake| rake.update! categories: [Factories.category("Foo")] }
+      Factories.project "rspec"
     end
 
     it "responds with expected projects" do
@@ -46,8 +46,8 @@ RSpec.describe "Project Comparison API", type: :request do
 
       expect(Oj.load(response.body)).to match(
         "projects" => [
-          ProjectBlueprint.render_as_json(Project.find("rspec")),
-          ProjectBlueprint.render_as_json(Project.find("rake")),
+          ProjectBlueprint.render_as_json(Project.find("rake"), root_url: "http://www.example.com"),
+          ProjectBlueprint.render_as_json(Project.find("rspec"), root_url: "http://www.example.com"),
         ]
       )
     end
