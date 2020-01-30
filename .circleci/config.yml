@@ -8,6 +8,7 @@ commands:
   install_dependencies:
     description: "Ensure that all dependencies are installed"
     steps:
+      - run: gem install bundler
       - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
       - run: yarn install
 
