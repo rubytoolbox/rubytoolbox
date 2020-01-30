@@ -81,6 +81,7 @@ en:
       rubygem_latest_release_on: Rubygem Latest Release
       rubygem_releases_count: Rubygem Total Releases
       rubygem_reverse_dependencies_count: Rubygem Reverse Dependencies
+      projects: Projects API
 
   metrics:
     rank:

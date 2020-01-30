@@ -64,6 +64,8 @@ gem "sidekiq"
 gem "redcarpet"
 gem "slim-rails"
 
+gem "rouge"
+
 # Shorter request logs
 gem "lograge"
 # Needed for logstash json_event formatter for lograge

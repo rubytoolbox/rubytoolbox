@@ -54,7 +54,7 @@ RSpec.describe Docs do
 
   describe "#sections" do
     it "has expected sections" do
-      expect(docs.sections.keys).to be == %w[Guides Features Metrics]
+      expect(docs.sections.keys).to be == %w[Guides Features API Metrics]
     end
 
     it "has pages" do

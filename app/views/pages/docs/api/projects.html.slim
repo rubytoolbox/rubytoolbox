@@ -1,0 +1,22 @@
+= documentation_page "Projects API" do
+  article.blog-post
+    markdown:
+      Like it's HTML counterpart [project comparisons](/compare) the projects
+      API allows to query the data for an arbitrary selection of projects.
+
+      This allows you to programatically retrieve data for gems and their
+      GitHub source repositories in a single place, as well as additional
+      metrics specific to the Ruby Toolbox like popularity scores and
+      project health status.
+
+  h5.is-size-5
+    strong GET&nbsp;
+    code
+      | /api/projects/compare/rubocop,rspec-expectations,oj
+
+  hr
+
+  style= Rouge::Themes::Github.render(scope: '.highlight')
+
+  .highlight: pre
+    == highlight_json JSON.pretty_generate(comparisons_api_sample_response(:rubocop, "rspec-expectations", :oj))
