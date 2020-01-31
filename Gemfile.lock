@@ -44,7 +44,7 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
-    appsignal (2.10.0)
+    appsignal (2.10.2)
       rack
     arel (9.0.0)
     ast (2.4.0)
@@ -219,7 +219,7 @@ GEM
       pry (>= 0.10.4)
     public_suffix (4.0.3)
     puma (3.12.2)
-    rack (2.0.8)
+    rack (2.1.2)
     rack-canonical-host (0.2.3)
       addressable (> 0, < 3)
       rack (>= 1.0.0, < 3)
