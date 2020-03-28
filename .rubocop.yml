@@ -98,3 +98,11 @@ Style/TrailingCommaInArrayLiteral:
   EnforcedStyleForMultiline: comma
 Style/TrailingCommaInHashLiteral:
   EnforcedStyleForMultiline: comma
+
+# Opt-in-cops from Rubocop 0.80
+Style/HashEachMethods:
+  Enabled: true
+Style/HashTransformKeys:
+  Enabled: true
+Style/HashTransformValues:
+  Enabled: true
