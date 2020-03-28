@@ -79,9 +79,7 @@ class RubygemUpdateJob < ApplicationJob
       "#{built.year}-#{(built.month / 3.0).ceil}"
     end
 
-    grouped_by_quarter.map do |quarter, releases|
-      [quarter, releases.count]
-    end.to_h
+    grouped_by_quarter.transform_values(&:count)
   end
 
   def info
