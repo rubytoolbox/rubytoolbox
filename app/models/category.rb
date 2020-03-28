@@ -21,7 +21,7 @@ class Category < ApplicationRecord
   scope :featured, -> { by_rank.limit(16).includes(:projects) }
   scope :recently_added, -> { order(created_at: :desc).limit(4).includes(:projects) }
 
-  include PgSearch
+  include PgSearch::Model
   pg_search_scope :search_scope,
                   against:   %i[name_tsvector description_tsvector],
                   using:     {
