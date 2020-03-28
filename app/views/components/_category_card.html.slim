@@ -16,6 +16,6 @@
           = link_to project, class: "project" do
             strong= project.permalink
 
-        - if category.projects.count > limit
+        - if category.projects.length > limit
           = link_to category, class: "other" do
-            = "and #{category.projects.count - limit} more"
+            = "and #{category.projects.length - limit} more"
