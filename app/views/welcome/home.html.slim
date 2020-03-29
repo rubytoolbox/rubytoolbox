@@ -1,99 +1,100 @@
-= landing_hero title: t(:title, scope: :startpage), image: "startpage/main.png" do
-  markdown:
-    The Ruby Toolbox is a catalog of all [Rubygems](https://www.rubygems.org) that keeps track of popularity and health metrics to help you choose a reliable library
+- cache "welcome" do
+  = landing_hero title: t(:title, scope: :startpage), image: "startpage/main.png" do
+    markdown:
+      The Ruby Toolbox is a catalog of all [Rubygems](https://www.rubygems.org) that keeps track of popularity and health metrics to help you choose a reliable library
 
-  .columns
-    .column
-      a.button.is-primary.is-fullwidth href=categories_path
-        span.icon: i.fa.fa-bars
-        span Browse by category
+    .columns
+      .column
+        a.button.is-primary.is-fullwidth href=categories_path
+          span.icon: i.fa.fa-bars
+          span Browse by category
 
-    .column
-      = render partial: "search_form"
+      .column
+        = render partial: "search_form"
 
-  - if @recent_posts
-    .recent-news
-      .heading
-        span.icon: i.fa.fa-rss-square
-        strong= link_to "Recent News", blog_index_path
-      ul
-        - @recent_posts.each do |post|
-          li
-            a href=blog_post_path(post)
-              span.date= l post.published_on, format: :long
-              | &nbsp;
-              strong= post.title
-
-
-section.section: .container: .landing-features
-  = landing_feature title: "Categories", image: "startpage/box.png" do
-    article
-      markdown:
-        To give you an overview of what open source libraries are available for a given task we group projects for common problems into categories.
-
-        The catalog itself is available for contributions on [GitHub](https://github.com/rubytoolbox/catalog).
-
-    footer
-      a href=categories_path Browse all categories
-
-  = landing_feature title: "Search", image: "startpage/search.png" do
-    article
-      markdown:
-        With our search you can find Ruby open source libraries beyond what is listed in our categories.
-
-        We index all Rubygems published on [Rubygems.org](https://rubygems.org).
-
-    footer
-      a href=search_path(q: "http") Try our search
-
-  = landing_feature title: "Project Popularity", image: "startpage/rocket.png" do
-    article
-      markdown:
-        We sort projects based on their popularity in the Ruby community - Rubygem downloads as well as popularity of the source code repository on GitHub.
-
-        This helps to identify projects that have a big user base, which is an indicator of project stability, maturity and maintenance.
-
-  = landing_feature title: "Project Health", image: "startpage/ruby.png" do
-    article
-      markdown:
-        We assess the maintenance status of projects based on recent activity like package releases, commit activity or open issue counts and display colored indicators based on that.
-
-        This gives you a quick overview of the health of a project.
-
-- if @featured_categories.any?
-  section.section.popular-categories: .container
-    / - description = t(:stats, scope: :startpage, projects_with_categories: @stats.projects_with_categories_count, categories: @stats.categories_count, rubygems: @stats.rubygems_count)
-    = section_heading "Popular Categories", help_path: "docs/features/categories" do
-      a.button href=categories_path
-        span.icon: i.fa.fa-bars
-        span Browse all categories
-
-    .columns.is-multiline
-      - @featured_categories.each do |category|
-        .category-cards.four
-          = category_card category
-
-- if @trending_projects.any?
-  section.section.trending-projects: .container
-    = section_heading "Trending Projects"
-      a.button href=trends_path
-        span.icon: i.fa.fa-bars
-        span See all trending projects
-
-    .columns.is-multiline
-      - @trending_projects.each do |trend|
-        .category-cards.four
-          = trending_project_card trend
+    - if @recent_posts
+      .recent-news
+        .heading
+          span.icon: i.fa.fa-rss-square
+          strong= link_to "Recent News", blog_index_path
+        ul
+          - @recent_posts.each do |post|
+            li
+              a href=blog_post_path(post)
+                span.date= l post.published_on, format: :long
+                | &nbsp;
+                strong= post.title
 
 
-- if @new_categories.any?
-  section.section.recently-added-categories: .container
-    = section_heading "Recently Added Categories", help_path: "docs/features/categories"
-      a.button href=categories_path
-        span.icon: i.fa.fa-bars
-        span Browse all categories
+  section.section: .container: .landing-features
+    = landing_feature title: "Categories", image: "startpage/box.png" do
+      article
+        markdown:
+          To give you an overview of what open source libraries are available for a given task we group projects for common problems into categories.
 
-    .columns.is-multiline
-      - @new_categories.each do |category|
-        .category-cards.four
-          = category_card category
+          The catalog itself is available for contributions on [GitHub](https://github.com/rubytoolbox/catalog).
+
+      footer
+        a href=categories_path Browse all categories
+
+    = landing_feature title: "Search", image: "startpage/search.png" do
+      article
+        markdown:
+          With our search you can find Ruby open source libraries beyond what is listed in our categories.
+
+          We index all Rubygems published on [Rubygems.org](https://rubygems.org).
+
+      footer
+        a href=search_path(q: "http") Try our search
+
+    = landing_feature title: "Project Popularity", image: "startpage/rocket.png" do
+      article
+        markdown:
+          We sort projects based on their popularity in the Ruby community - Rubygem downloads as well as popularity of the source code repository on GitHub.
+
+          This helps to identify projects that have a big user base, which is an indicator of project stability, maturity and maintenance.
+
+    = landing_feature title: "Project Health", image: "startpage/ruby.png" do
+      article
+        markdown:
+          We assess the maintenance status of projects based on recent activity like package releases, commit activity or open issue counts and display colored indicators based on that.
+
+          This gives you a quick overview of the health of a project.
+
+  - if @featured_categories.any?
+    section.section.popular-categories: .container
+      / - description = t(:stats, scope: :startpage, projects_with_categories: @stats.projects_with_categories_count, categories: @stats.categories_count, rubygems: @stats.rubygems_count)
+      = section_heading "Popular Categories", help_path: "docs/features/categories" do
+        a.button href=categories_path
+          span.icon: i.fa.fa-bars
+          span Browse all categories
+
+      .columns.is-multiline
+        - @featured_categories.each do |category|
+          .category-cards.four
+            = category_card category
+
+  - if @trending_projects.any?
+    section.section.trending-projects: .container
+      = section_heading "Trending Projects"
+        a.button href=trends_path
+          span.icon: i.fa.fa-bars
+          span See all trending projects
+
+      .columns.is-multiline
+        - @trending_projects.each do |trend|
+          .category-cards.four
+            = trending_project_card trend
+
+
+  - if @new_categories.any?
+    section.section.recently-added-categories: .container
+      = section_heading "Recently Added Categories", help_path: "docs/features/categories"
+        a.button href=categories_path
+          span.icon: i.fa.fa-bars
+          span Browse all categories
+
+      .columns.is-multiline
+        - @new_categories.each do |category|
+          .category-cards.four
+            = category_card category

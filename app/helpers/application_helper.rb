@@ -5,6 +5,12 @@ module ApplicationHelper
   include ComponentHelpers
   include StatsHelpers
 
+  def expiring_cache(label, expiration: 10.minutes, &block)
+    key = [label, ENV["HEROKU_RELEASE_VERSION"], (Time.current.to_i / expiration).to_s].join("-")
+
+    cache(key, &block)
+  end
+
   def metric_icon(metric)
     "fa-" + t(:icon, scope: "metrics.#{metric}")
   end

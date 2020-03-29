@@ -3,6 +3,17 @@
 require "rails_helper"
 
 RSpec.describe ApplicationHelper, type: :helper do
+  describe "#expiring_cache" do
+    it "builds a cache key based on given label, time, and release version" do
+      allow(ENV).to receive(:[]).with("HEROKU_RELEASE_VERSION").and_return("v42")
+      timestamp = Time.current.to_i / 10.minutes
+
+      expect(helper).to receive(:cache).with("test-v42-#{timestamp}")
+
+      helper.expiring_cache :test
+    end
+  end
+
   describe "#metrics_row" do
     let(:project) { instance_double(Project, rubygem_downloads: 22_123_122) }
     let(:metrics_row) { helper.metrics_row(project, :rubygem_downloads) }
