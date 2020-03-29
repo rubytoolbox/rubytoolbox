@@ -35,7 +35,7 @@ RSpec.describe BlogController, type: :controller do
       it_behaves_like "a blog index response"
 
       describe "rendered feed" do
-        let(:feed) { Feedjira::Feed.parse do_request.body }
+        let(:feed) { Feedjira.parse do_request.body }
 
         it "has the site title" do
           expect(feed.title).to be == I18n.t(:name)
