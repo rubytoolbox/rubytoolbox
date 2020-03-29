@@ -5,6 +5,12 @@ require "sidekiq/web"
 
 # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 Rails.application.routes.draw do
+  namespace :api do
+    namespace :projects do
+      get "compare(/:id)", to: "comparisons#show", constraints: { id: /.*/ }
+    end
+  end
+
   resources :blog, only: %i[index show], constraints: { id: /[^\.]+/ }
   resources :categories, only: %i[index show]
 

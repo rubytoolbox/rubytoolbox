@@ -15,7 +15,8 @@ module Factories
         path:             "#{name}/#{name}",
         stargazers_count: downloads,
         forks_count:      downloads,
-        watchers_count:   downloads
+        watchers_count:   downloads,
+        has_issues:       true
       )
       Project.create! permalink:   name,
                       score:       score,
@@ -50,6 +51,12 @@ module Factories
                              position:              position,
                              date:                  date,
                              rubygem_download_stat: rubygem_download_stat(name, date: date, total_downloads: 15_000)
+    end
+
+    def category(name)
+      Category.create! permalink:      name.underscore,
+                       name:           name,
+                       category_group: CategoryGroup.create!(name: "Group", permalink: "group")
     end
   end
   # rubocop:enable Metrics/MethodLength

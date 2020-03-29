@@ -36,6 +36,10 @@ class GithubRepo < ApplicationRecord
     File.join(url, "issues") if has_issues?
   end
 
+  def pull_requests_url
+    File.join(url, "pulls")
+  end
+
   def wiki_url
     File.join(url, "wiki") if has_wiki?
   end
