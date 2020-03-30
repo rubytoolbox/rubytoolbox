@@ -135,7 +135,7 @@ GEM
       ruby_parser (~> 3.10)
     hashdiff (1.0.1)
     high_voltage (3.1.2)
-    http (4.4.0)
+    http (4.4.1)
       addressable (~> 2.3)
       http-cookie (~> 1.0)
       http-form_data (~> 2.2)
@@ -375,7 +375,7 @@ GEM
       execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.7.6)
+    unf_ext (0.0.7.7)
     unicode-display_width (1.6.1)
     vcr (5.1.0)
     web-console (3.7.0)
