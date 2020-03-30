@@ -9,10 +9,19 @@
       metrics specific to the Ruby Toolbox like popularity scores and
       project health status.
 
+      The API has currently no rate-limiting policy, however please use it
+      reasonably. If you need larger scale access to data for analysis please
+      use our [production database exports](#{page_path("docs/features/production_database_exports")}) instead.
+
   h5.is-size-5
     strong GET&nbsp;
     code
       | /api/projects/compare/rubocop,rspec-expectations,oj
+
+  markdown:
+    This endpoint is limited to #{Api::Projects::ComparisonsController::LIMIT}
+    projects per request. If you request more than that you will receive an
+    error. Please batch requests in groups to retrieve more projects.
 
   hr
 

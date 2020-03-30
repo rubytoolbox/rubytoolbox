@@ -57,4 +57,24 @@ RSpec.describe "Project Comparison API", type: :request do
       expect(response).to have_http_status(:success)
     end
   end
+
+  describe "when more projects than limit are requested" do
+    let(:limit) { Api::Projects::ComparisonsController::LIMIT }
+    let(:query) { ("aa".."zz").first(limit + 1).join(",") }
+
+    it "responds with a 400 error" do
+      do_request
+      expect(response.status).to be == 400
+    end
+
+    it "responds with an informative error message" do
+      do_request
+      body = Oj.load(response.body).deep_symbolize_keys
+
+      expect(body).to be == {
+        error_code: "too_many_projects_requested",
+        message:    "Please request no more than #{limit} projects per API call",
+      }
+    end
+  end
 end
