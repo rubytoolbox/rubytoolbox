@@ -52,6 +52,7 @@ GEM
     blueprinter (0.22.0)
       msgpack (~> 1.0)
     bootsnap (1.4.6)
+      msgpack (~> 1.0)
     browser (4.0.0)
     builder (3.2.4)
     byebug (11.1.1)
