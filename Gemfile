@@ -2,7 +2,13 @@
 
 source "https://rubygems.org"
 
-ruby File.read(File.join(__dir__, ".ruby-version")).strip
+# Hack around issue that circleci ruby docker image for 2.6.6 is not available
+# yet we want to deploy with that to include ruby security fix.
+if ENV["CI"]
+  ruby "2.6.5"
+else
+  ruby File.read(File.join(__dir__, ".ruby-version")).strip
+end
 
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
