@@ -1,0 +1,90 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.github.com/graphql
+    body:
+      encoding: UTF-8
+      string: '{"query":"query RepositoryDataQuery($owner: String!, $name: String!)
+        {\n\n  repository(owner: $owner, name: $name) {\n    nameWithOwner\n    forks
+        {\n      totalCount\n    }\n    stargazers {\n      totalCount\n    }\n    watchers
+        {\n      totalCount\n    }\n    createdAt\n    defaultBranchRef {\n      name\n      target
+        {\n        ... on Commit {\n          history(first: 50) {\n            edges
+        {\n              node {\n                authoredDate\n              }\n            }\n          }\n        }\n      }\n    }\n    description\n    hasIssuesEnabled\n    hasWikiEnabled\n    homepageUrl\n    isArchived\n    isFork\n    isMirror\n    licenseInfo
+        {\n      key\n    }\n    primaryLanguage {\n      name\n    }\n    pushedAt\n    closedIssues:
+        issues(states: CLOSED) {\n      totalCount\n    }\n    openIssues: issues(states:
+        OPEN) {\n      totalCount\n    }\n    closedPullRequests: pullRequests(states:
+        CLOSED) {\n      totalCount\n    }\n    openPullRequests: pullRequests(states:
+        OPEN) {\n      totalCount\n    }\n    mergedPullRequests: pullRequests(states:
+        MERGED) {\n      totalCount\n    }\n    repositoryTopics(first: 100) {\n      nodes
+        {\n        topic {\n          name\n        }\n      }\n    }\n    codeOfConduct
+        {\n      name\n      url\n    }\n  }\n  rateLimit {\n    limit\n    cost\n    remaining\n    resetAt\n  }\n}\n","variables":{"owner":"jnicklas","name":"carrierwave"}}'
+    headers:
+      Authorization:
+      - bearer <GITHUB_TOKEN>
+      User-Agent:
+      - ruby-toolbox.com API client
+      Connection:
+      - close
+      Host:
+      - api.github.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 18 Apr 2020 19:53:30 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '3394'
+      Connection:
+      - close
+      Server:
+      - GitHub.com
+      Status:
+      - 200 OK
+      Cache-Control:
+      - no-cache
+      X-Oauth-Scopes:
+      - ''
+      X-Accepted-Oauth-Scopes:
+      - repo
+      X-Github-Media-Type:
+      - github.v4; format=json
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4992'
+      X-Ratelimit-Reset:
+      - '1587242742'
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type, Deprecation, Sunset
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      Vary:
+      - Accept-Encoding, Accept, X-Requested-With
+      X-Github-Request-Id:
+      - A3AE:509C:13E663A:17268C2:5E9B5ABA
+    body:
+      encoding: UTF-8
+      string: '{"data":{"repository":{"nameWithOwner":"carrierwaveuploader/carrierwave","forks":{"totalCount":1473},"stargazers":{"totalCount":8483},"watchers":{"totalCount":149},"createdAt":"2008-08-28T18:39:49Z","defaultBranchRef":{"name":"master","target":{"history":{"edges":[{"node":{"authoredDate":"2020-02-24T09:31:06Z"}},{"node":{"authoredDate":"2020-02-18T10:33:16Z"}},{"node":{"authoredDate":"2020-02-16T09:07:08Z"}},{"node":{"authoredDate":"2020-02-16T08:04:46Z"}},{"node":{"authoredDate":"2019-12-27T03:58:41Z"}},{"node":{"authoredDate":"2019-12-25T17:45:42Z"}},{"node":{"authoredDate":"2019-12-24T19:26:45Z"}},{"node":{"authoredDate":"2019-12-24T05:20:29Z"}},{"node":{"authoredDate":"2019-12-24T05:02:05Z"}},{"node":{"authoredDate":"2019-12-13T04:26:27Z"}},{"node":{"authoredDate":"2019-11-25T12:12:07Z"}},{"node":{"authoredDate":"2019-11-18T20:38:47Z"}},{"node":{"authoredDate":"2019-11-15T20:52:00Z"}},{"node":{"authoredDate":"2019-09-28T05:09:48Z"}},{"node":{"authoredDate":"2019-09-10T05:34:24Z"}},{"node":{"authoredDate":"2019-09-10T06:28:19Z"}},{"node":{"authoredDate":"2019-09-10T04:08:00Z"}},{"node":{"authoredDate":"2019-09-10T03:41:49Z"}},{"node":{"authoredDate":"2019-08-31T03:40:41Z"}},{"node":{"authoredDate":"2019-08-25T07:32:53Z"}},{"node":{"authoredDate":"2019-08-18T03:42:05Z"}},{"node":{"authoredDate":"2019-06-23T08:10:56Z"}},{"node":{"authoredDate":"2019-06-23T03:38:18Z"}},{"node":{"authoredDate":"2019-06-23T03:25:01Z"}},{"node":{"authoredDate":"2019-06-22T09:55:16Z"}},{"node":{"authoredDate":"2019-06-22T06:59:28Z"}},{"node":{"authoredDate":"2019-06-21T12:56:13Z"}},{"node":{"authoredDate":"2019-06-21T09:51:16Z"}},{"node":{"authoredDate":"2019-06-21T07:08:47Z"}},{"node":{"authoredDate":"2019-06-20T02:46:42Z"}},{"node":{"authoredDate":"2019-06-19T06:58:45Z"}},{"node":{"authoredDate":"2019-06-19T06:20:15Z"}},{"node":{"authoredDate":"2019-06-19T05:53:18Z"}},{"node":{"authoredDate":"2019-06-18T10:29:04Z"}},{"node":{"authoredDate":"2019-06-18T09:31:22Z"}},{"node":{"authoredDate":"2019-06-18T07:40:08Z"}},{"node":{"authoredDate":"2019-06-18T07:25:32Z"}},{"node":{"authoredDate":"2019-06-18T04:06:18Z"}},{"node":{"authoredDate":"2019-05-19T03:36:30Z"}},{"node":{"authoredDate":"2019-06-16T10:36:12Z"}},{"node":{"authoredDate":"2019-06-15T03:02:31Z"}},{"node":{"authoredDate":"2019-06-11T09:58:47Z"}},{"node":{"authoredDate":"2019-06-11T08:37:32Z"}},{"node":{"authoredDate":"2019-06-07T08:20:00Z"}},{"node":{"authoredDate":"2019-06-03T14:18:13Z"}},{"node":{"authoredDate":"2019-05-23T09:06:00Z"}},{"node":{"authoredDate":"2019-05-22T07:05:51Z"}},{"node":{"authoredDate":"2019-05-19T02:39:37Z"}},{"node":{"authoredDate":"2019-05-16T07:15:10Z"}},{"node":{"authoredDate":"2019-05-16T06:40:58Z"}}]}}},"description":"Classier
+        solution for file uploads for Rails, Sinatra and other Ruby web frameworks","hasIssuesEnabled":true,"hasWikiEnabled":true,"homepageUrl":"https://github.com/carrierwaveuploader/carrierwave","isArchived":false,"isFork":false,"isMirror":false,"licenseInfo":null,"primaryLanguage":{"name":"Ruby"},"pushedAt":"2020-04-18T15:20:46Z","closedIssues":{"totalCount":1573},"openIssues":{"totalCount":141},"closedPullRequests":{"totalCount":252},"openPullRequests":{"totalCount":8},"mergedPullRequests":{"totalCount":496},"repositoryTopics":{"nodes":[]},"codeOfConduct":null},"rateLimit":{"limit":5000,"cost":1,"remaining":4992,"resetAt":"2020-04-18T20:45:42Z"}}}'
+    http_version: null
+  recorded_at: Sat, 18 Apr 2020 19:53:30 GMT
+recorded_with: VCR 5.1.0
