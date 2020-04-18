@@ -70,6 +70,93 @@ http_interactions:
     body:
       encoding: UTF-8
       string: ''
-    http_version: 
+    http_version: null
   recorded_at: Wed, 05 Dec 2018 12:14:33 GMT
-recorded_with: VCR 4.0.0
+- request:
+    method: post
+    uri: https://api.github.com/graphql
+    body:
+      encoding: UTF-8
+      string: '{"query":"query RepositoryDataQuery($owner: String!, $name: String!)
+        {\n\n  repository(owner: $owner, name: $name) {\n    nameWithOwner\n    forks
+        {\n      totalCount\n    }\n    stargazers {\n      totalCount\n    }\n    watchers
+        {\n      totalCount\n    }\n    createdAt\n    defaultBranchRef {\n      name\n      target
+        {\n        ... on Commit {\n          history(first: 50) {\n            edges
+        {\n              node {\n                authoredDate\n              }\n            }\n          }\n        }\n      }\n    }\n    description\n    hasIssuesEnabled\n    hasWikiEnabled\n    homepageUrl\n    isArchived\n    isFork\n    isMirror\n    licenseInfo
+        {\n      key\n    }\n    primaryLanguage {\n      name\n    }\n    pushedAt\n    closedIssues:
+        issues(states: CLOSED) {\n      totalCount\n    }\n    openIssues: issues(states:
+        OPEN) {\n      totalCount\n    }\n    closedPullRequests: pullRequests(states:
+        CLOSED) {\n      totalCount\n    }\n    openPullRequests: pullRequests(states:
+        OPEN) {\n      totalCount\n    }\n    mergedPullRequests: pullRequests(states:
+        MERGED) {\n      totalCount\n    }\n    repositoryTopics(first: 100) {\n      nodes
+        {\n        topic {\n          name\n        }\n      }\n    }\n    codeOfConduct
+        {\n      name\n      url\n    }\n  }\n  rateLimit {\n    limit\n    cost\n    remaining\n    resetAt\n  }\n}\n","variables":{"owner":"orgs","name":"acdcorp"}}'
+    headers:
+      Authorization:
+      - bearer <GITHUB_TOKEN>
+      User-Agent:
+      - ruby-toolbox.com API client
+      Connection:
+      - close
+      Host:
+      - api.github.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 18 Apr 2020 19:53:30 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '270'
+      Connection:
+      - close
+      Server:
+      - GitHub.com
+      Status:
+      - 200 OK
+      Cache-Control:
+      - no-cache
+      X-Oauth-Scopes:
+      - ''
+      X-Accepted-Oauth-Scopes:
+      - repo
+      X-Github-Media-Type:
+      - github.v4; format=json
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4993'
+      X-Ratelimit-Reset:
+      - '1587242742'
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type, Deprecation, Sunset
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      Vary:
+      - Accept-Encoding, Accept, X-Requested-With
+      X-Github-Request-Id:
+      - A3AC:2E332:26CFCFE:2D8137F:5E9B5AB9
+    body:
+      encoding: UTF-8
+      string: '{"data":{"repository":null,"rateLimit":{"limit":5000,"cost":1,"remaining":4993,"resetAt":"2020-04-18T20:45:42Z"}},"errors":[{"type":"NOT_FOUND","path":["repository"],"locations":[{"line":3,"column":3}],"message":"Could
+        not resolve to a User with the username ''orgs''."}]}'
+    http_version: null
+  recorded_at: Sat, 18 Apr 2020 19:53:30 GMT
+recorded_with: VCR 5.1.0
