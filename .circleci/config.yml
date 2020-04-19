@@ -84,9 +84,9 @@ jobs:
 
       - run: mkdir -p /tmp/rspec/test-results
       - run:
-          name: "Run RSpec"
+          name: "Run RSpec (with Percy snapshots"
           command:
-            bundle exec rspec --format RspecJunitFormatter --out /tmp/test-results/rspec/results.xml --format documentation
+            npx percy exec -- bundle exec rspec --format RspecJunitFormatter --out /tmp/test-results/rspec/results.xml --format documentation
 
       - store_test_results:
           path: /tmp/test-results

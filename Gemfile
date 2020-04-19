@@ -107,6 +107,8 @@ group :test do
   # Easy installation and use of selenium webdriver browsers to run system tests
   gem "webdrivers"
 
+  gem "percy-capybara", require: "percy"
+
   gem "feedjira"
 
   gem "db-query-matchers"

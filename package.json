@@ -12,5 +12,8 @@
   "main": "index.js",
   "repository": "git@github.com:rubytoolbox/rubytoolbox.git",
   "author": "Christoph Olszowka <christoph@olszowka.de>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@percy/agent": "^0.26.2"
+  }
 }
