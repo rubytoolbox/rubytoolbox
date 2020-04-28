@@ -5,6 +5,7 @@ require "rails_helper"
 RSpec.describe "Documentation Display", type: :feature, js: true do
   it "can display all documentation pages" do
     visit_docs
+    take_snapshots! "Documentation"
 
     each_page do |doc|
       expect_can_visit doc.title

@@ -2,14 +2,14 @@
 
 require "rails_helper"
 
-RSpec.describe "Styleguide Display", type: :feature do
+RSpec.describe "Styleguide Display", type: :feature, js: true do
   it "can display all pages of the styleguide" do
     group = CategoryGroup.create! permalink: "group1", name: "Group"
     category = Category.create! permalink: "widgets", name: "Widgets", category_group: group
     category.projects << Factories.project("rspec", score: 25)
 
     visit "/pages/components"
-    expect(page).to have_text "Ruby Toolbox UI Components Styleguide"
+    expect(page).to have_text "Ruby Toolbox UI Components Styleguide".upcase
     expect(page).to have_text "Components Overview"
 
     page_links = page.find_all(".component-list a").map { |a| [a["href"], a.text] }.to_h
@@ -19,6 +19,8 @@ RSpec.describe "Styleguide Display", type: :feature do
       visit "/pages/components"
       visit href
       expect(page).to have_text text
+
+      take_snapshots! "Components: #{text}"
     end
   end
 end

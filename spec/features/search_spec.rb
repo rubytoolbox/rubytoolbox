@@ -29,6 +29,8 @@ RSpec.describe "Search", type: :feature, js: true do
 
     expect(listed_project_names).to be == ["more widgets", "widgets"]
 
+    take_snapshots! "Search: Default View"
+
     expect_display_mode "Compact"
     change_display_mode "Table"
     change_display_mode "Full"

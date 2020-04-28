@@ -22,6 +22,9 @@ RSpec.describe "Trending Projects", type: :feature, js: true do
     end
 
     within(".footer") { click_on "Trends" }
+
+    take_snapshots! "Trending Projects: Default View"
+
     within ".hero" do
       expect(page).to have_text("Trending Projects for #{I18n.l(Time.current.to_date, format: :long)}")
     end

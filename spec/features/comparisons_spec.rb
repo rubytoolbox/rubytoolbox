@@ -28,6 +28,8 @@ RSpec.describe "Project Comparisons", type: :feature, js: true do
     expect(listed_project_names).to be == %w[acme widget]
     expect(comparison_project_tags.map(&:text)).to be == %w[acme widget]
 
+    take_snapshots! "Compare Projects: Default View"
+
     comparison_project_tags.first.find(".delete").click
     wait_for do
       expect(listed_project_names).to be == %w[widget]

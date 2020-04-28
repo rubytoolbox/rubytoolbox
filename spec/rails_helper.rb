@@ -103,6 +103,26 @@ RSpec.configure do |config|
     end
   end
 
+  #
+  # This method allows to submit visual regression testing screenshots
+  # to percy.io. To do this
+  #
+  def take_snapshots!(snapshot_name)
+    return unless ENV["PERCY_TOKEN"]
+
+    begin
+      # Ensure viewport-size specific capybara specs do not get messed up
+      # by percy adjusting the screen size
+      @previous_window_size = Capybara.current_session.current_window.size
+      Percy.snapshot page,
+                     name:   snapshot_name.to_s,
+                     widths: [400, 800, 1100, 1300]
+    ensure
+      Capybara.current_session.current_window.resize_to(*@previous_window_size)
+      @previous_window_size = nil
+    end
+  end
+
   # Working around some test flakiness in CI
   # See https://github.com/NoRedInk/rspec-retry
   config.around :each, :js do |ex|

@@ -19,8 +19,13 @@ RSpec.describe "Categories Display", type: :feature, js: true do
 
     expect(page).to have_selector(".project", count: 3)
     expect_display_mode "Full"
+    take_snapshots! "Category Display: Full"
+
     change_display_mode "Table"
+    take_snapshots! "Category Display: Table"
+
     change_display_mode "Compact"
+    take_snapshots! "Category Display: Compact"
   end
 
   it "can apply a custom order to the list of projects" do
@@ -41,6 +46,8 @@ RSpec.describe "Categories Display", type: :feature, js: true do
 
     order_by "First release"
     expect(listed_project_names).to be == %w[toolkit acme widget]
+
+    take_snapshots! "Category Display: Custom Order"
   end
 
   private

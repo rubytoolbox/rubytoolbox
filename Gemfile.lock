@@ -201,6 +201,7 @@ GEM
     parallel (1.19.1)
     parser (2.7.1.1)
       ast (~> 2.4.0)
+    percy-capybara (4.2.0)
     pg (0.21.0)
     pg_search (2.3.2)
       activerecord (>= 5.2)
@@ -434,6 +435,7 @@ DEPENDENCIES
   logstash-event
   oj
   overcommit
+  percy-capybara
   pg (~> 0.18)
   pg_search
   pghero
