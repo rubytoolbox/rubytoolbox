@@ -3,8 +3,12 @@
 
   [![Build Status](https://circleci.com/gh/rubytoolbox/rubytoolbox/tree/master.svg?style=svg)](https://circleci.com/gh/rubytoolbox/rubytoolbox/tree/master) [![Depfu](https://badges.depfu.com/badges/84ab24dbd83e15c8dfd36144e10d14f2/overview.svg)](https://depfu.com/github/rubytoolbox/rubytoolbox) [![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/rubytoolbox/rubytoolbox)
 
-  **Explore and compare open source Ruby libraries**
+  **Find actively maintained & popular open source software libraries for the Ruby programming language**
 </div>
+
+The Ruby Toolbox is a catalog of all Rubygems that keeps track of popularity and health metrics to help you choose a reliable library.
+
+**This is the source code for the site you can visit at https://www.ruby-toolbox.com/**
 
 ## Development
 
