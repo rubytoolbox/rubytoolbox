@@ -44,7 +44,7 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
-    appsignal (2.10.4)
+    appsignal (2.10.5)
       rack
     arel (9.0.0)
     ast (2.4.0)
