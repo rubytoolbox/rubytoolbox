@@ -1,0 +1,117 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 2,
+      "fingerprint": "23cd32092623ef25b4bb35fcbbf1b909627100d506bef0b6bde96192ffc1afae",
+      "check_name": "CrossSiteScripting",
+      "message": "Unescaped model attribute",
+      "file": "app/views/blog/show.html.slim",
+      "line": 18,
+      "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
+      "code": "Blog.new(:root => Rails.root.join(\"app\", \"blog_posts\"), :cache => Rails.env.production?).find(params[:id]).body_html",
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "BlogController",
+          "method": "show",
+          "line": 16,
+          "file": "app/controllers/blog_controller.rb",
+          "rendered": {
+            "name": "blog/show",
+            "file": "app/views/blog/show.html.slim"
+          }
+        }
+      ],
+      "location": {
+        "type": "template",
+        "template": "blog/show"
+      },
+      "user_input": null,
+      "confidence": "High",
+      "note": "The content injected unescaped here is from markdown blog posts hosted in the repo itself"
+    },
+    {
+      "warning_type": "SQL Injection",
+      "warning_code": 0,
+      "fingerprint": "8bd210047c33be0b52621fdc5efcb3b8e410d877bdd874c8ee343d2c4d4bec03",
+      "check_name": "SQL",
+      "message": "Possible SQL injection",
+      "file": "app/helpers/application_helper.rb",
+      "line": 45,
+      "link": "https://brakemanscanner.org/docs/warning_types/sql_injection/",
+      "code": "scope.order(\"#{table}.#{column} #{direction} NULLS LAST\")",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "ApplicationHelper",
+        "method": "project_ranking"
+      },
+      "user_input": "table",
+      "confidence": "Weak",
+      "note": "The variables do not come from user input, just hardwired in views"
+    },
+    {
+      "warning_type": "Redirect",
+      "warning_code": 18,
+      "fingerprint": "cda1b712fdb49d265db5723c680071fbf1e39be9485da99692e1b834bb51c035",
+      "check_name": "Redirect",
+      "message": "Possible unprotected redirect",
+      "file": "app/controllers/projects_controller.rb",
+      "line": 6,
+      "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
+      "code": "redirect_to(\"/projects/#{Project.find_for_show!(params[:id]).permalink}\")",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "ProjectsController",
+        "method": "show"
+      },
+      "user_input": "Project.find_for_show!(params[:id]).permalink",
+      "confidence": "High",
+      "note": "It's shielded by projects in the db, not random user input"
+    },
+    {
+      "warning_type": "SQL Injection",
+      "warning_code": 0,
+      "fingerprint": "d91c64245c5fed804126a55490545b37d426f06510bfabfc788db5b2c7f4b3d7",
+      "check_name": "SQL",
+      "message": "Possible SQL injection",
+      "file": "app/jobs/rubygem_downloads_persistence_job.rb",
+      "line": 33,
+      "link": "https://brakemanscanner.org/docs/warning_types/sql_injection/",
+      "code": "ActiveRecord::Base.connection.execute(\"      INSERT INTO\\n        rubygem_download_stats (rubygem_name, total_downloads, date)\\n        SELECT\\n          name AS rubygem_name,\\n          downloads AS total_downloads,\\n          DATE '#{date}' as date\\n        FROM   rubygems\\n\\n      ON CONFLICT (rubygem_name, date) DO UPDATE\\n      SET\\n        total_downloads = excluded.total_downloads\\n\")",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "RubygemDownloadsPersistenceJob",
+        "method": "perform"
+      },
+      "user_input": "date",
+      "confidence": "Medium",
+      "note": "The variable is sourced from time current, not from user input"
+    },
+    {
+      "warning_type": "Redirect",
+      "warning_code": 18,
+      "fingerprint": "d97a1e1c0d455e1c36c99d03c57ebb2864e179204eb85027acbe366f39767e40",
+      "check_name": "Redirect",
+      "message": "Possible unprotected redirect",
+      "file": "app/controllers/categories_controller.rb",
+      "line": 11,
+      "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
+      "code": "redirect_to(Category.find_for_show!(params[:id], :order => current_order))",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "CategoriesController",
+        "method": "show"
+      },
+      "user_input": "Category.find_for_show!(params[:id], :order => current_order)",
+      "confidence": "High",
+      "note": "It's shielded by categories in the db, not random user input"
+    }
+  ],
+  "updated": "2020-04-28 22:32:19 +0200",
+  "brakeman_version": "4.8.1"
+}

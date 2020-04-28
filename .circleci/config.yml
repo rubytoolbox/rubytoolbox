@@ -109,6 +109,26 @@ jobs:
       - prepare_repo
       - run: bundle exec rubocop
 
+  bundle-audit:
+    working_directory: ~/repo
+
+    docker:
+       - image: circleci/ruby:2.6.6-node-browsers
+
+    steps:
+      - prepare_repo
+      - run: bundle exec bundle audit --update
+
+  brakeman:
+    working_directory: ~/repo
+
+    docker:
+       - image: circleci/ruby:2.6.6-node-browsers
+
+    steps:
+      - prepare_repo
+      - run: bundle exec brakeman
+
   deploy:
     executor: heroku/default
     steps:
@@ -126,6 +146,12 @@ workflows:
           requires:
             - prepare
       - rubocop:
+          requires:
+            - prepare
+      - brakeman:
+          requires:
+            - prepare
+      - bundle-audit:
           requires:
             - prepare
       - deploy:
