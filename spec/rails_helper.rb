@@ -116,7 +116,7 @@ RSpec.configure do |config|
       @previous_window_size = Capybara.current_session.current_window.size
       Percy.snapshot page,
                      name:   snapshot_name.to_s,
-                     widths: [400, 800, 1100, 1300]
+                     widths: [400, 1100]
     ensure
       Capybara.current_session.current_window.resize_to(*@previous_window_size)
       @previous_window_size = nil
