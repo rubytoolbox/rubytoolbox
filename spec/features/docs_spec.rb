@@ -15,7 +15,6 @@ RSpec.describe "Documentation Display", type: :feature, js: true do
   it "has a foldable mobile navigation menu", viewport: :mobile do
     visit_docs
 
-
     # Mobile nav is collapsible
     expect(page).not_to have_selector("aside .menu")
     click_on "Browse documentation topics"
