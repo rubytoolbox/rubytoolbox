@@ -34,7 +34,7 @@ RSpec.describe Category, type: :model do
       end
 
       scope = described_class.search("widgets")
-      expect { scope.flat_map { |category| category.projects.map(&:permalink) } } .to make_database_queries(count: 3)
+      expect { scope.flat_map { |category| category.projects.map(&:permalink) } }.to make_database_queries(count: 3)
     end
   end
 

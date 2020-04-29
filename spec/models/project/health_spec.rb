@@ -16,7 +16,7 @@ RSpec.describe Project::Health, type: :model do
     end
 
     it "raises an error when for an unknown i18n key" do
-      expect { status(key: :foobar) } .to raise_error I18n::MissingTranslation, /translation missing/
+      expect { status(key: :foobar) }.to raise_error I18n::MissingTranslation, /translation missing/
     end
 
     describe "#label" do
