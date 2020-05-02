@@ -77,4 +77,22 @@ RSpec.describe "Project Comparison API", type: :request do
       }
     end
   end
+
+  describe "when being requested cross-origin" do
+    def do_request
+      get "/api/projects/compare/foo", headers: { "HTTP_ORIGIN" => "foo.com" }
+    end
+
+    it "responds with an appropriate CORS origin header" do
+      do_request
+
+      expect(response.headers).to have_key("Access-Control-Allow-Origin")
+    end
+
+    it "responds with an appropriate CORS methods header" do
+      do_request
+
+      expect(response.headers).to have_key("Access-Control-Allow-Methods")
+    end
+  end
 end

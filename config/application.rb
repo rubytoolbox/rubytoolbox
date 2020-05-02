@@ -46,5 +46,12 @@ module Rubytoolbox
     end
 
     config.http_connect = true
+
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins "*"
+        resource "/api/*", headers: :any, methods: :get
+      end
+    end
   end
 end
