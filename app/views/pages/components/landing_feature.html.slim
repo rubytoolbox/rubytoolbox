@@ -6,13 +6,12 @@
 
 .container
   .landing-features
-    - 4.times do
+    - 4.times do |i|
       = landing_feature title: "Hello World", image: "startpage/ruby.png" do
         article
-          - if rand(10) < 8
-            p Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat.
+          p Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat.
 
-          - if rand(10) < 5
+          - if i.even?
             p Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
 
         footer

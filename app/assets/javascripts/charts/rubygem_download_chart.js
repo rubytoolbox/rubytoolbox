@@ -27,6 +27,7 @@ var rubygemDownloadChart = function(selector, totalDownloads, monthlyDownloads) 
       ]
     },
     options: {
+      animation: false,
       tooltips: {
         mode: "index",
         intersect: false,
