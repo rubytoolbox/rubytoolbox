@@ -7,6 +7,7 @@
 class Project::Health
   class Status
     attr_accessor :key, :level, :icon, :check_block
+
     def initialize(key, level, icon, &check_block)
       self.key = key
       self.level = level

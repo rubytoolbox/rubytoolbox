@@ -115,3 +115,9 @@ Lint/StructNewOverride:
   Enabled: true
 Style/ExponentialNotation:
   Enabled: true
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: true
+Lint/DeprecatedOpenSSLConstant:
+  Enabled: true
+Style/SlicingWithRange:
+  Enabled: true
