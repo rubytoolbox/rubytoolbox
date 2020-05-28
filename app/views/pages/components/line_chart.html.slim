@@ -15,7 +15,7 @@
 
 
 = component_example "Can be included multiple times per page" do
-  .chart= line_chart 0 => rand(500), 5 => rand(500), 20 => rand(500)
+  .chart= line_chart 0 => 500, 5 => 300, 20 => 400
 
 = component_example "Defaults to logarithmic scale, can use linear scale" do
   .columns
@@ -27,6 +27,6 @@
 = component_example "Fits itself into the wrapping container" do
   .columns
     .column.is-half
-      = line_chart 0 => rand(500), 5 => rand(500), 20 => rand(500)
+      = line_chart 0 => 500, 5 => 300, 20 => 400
     .column &nbsp;
 
