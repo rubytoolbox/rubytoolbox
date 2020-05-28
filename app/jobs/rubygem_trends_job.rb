@@ -33,7 +33,8 @@ class RubygemTrendsJob < ApplicationJob
 
   def trending_scope
     Rubygem::DownloadStat
-      .where.not(relative_change_month: nil, growth_change_month: nil) # Stats need to be present xD
+      .where.not(relative_change_month: nil) # Stats need to be present xD
+      .where.not(growth_change_month: nil)
       .where("absolute_change_month > ?", 10_000) # Baseline minimum downloads to be considered "trending"
       .where("growth_change_month > ?", 0) # Month-over-month growth must be positive to be trending
       .where("rubygems.latest_release_on > ?", 6.months.ago) # Must have had a recent release

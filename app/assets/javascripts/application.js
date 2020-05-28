@@ -10,7 +10,7 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require rails-ujs
+//= require @rails/ujs/lib/assets/compiled/rails-ujs.js
 //= require turbolinks
 //= require chart.js/dist/Chart.bundle.js
 //= require headroom.js/dist/headroom

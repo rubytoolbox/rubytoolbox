@@ -22,7 +22,7 @@ RSpec.describe Project, type: :model do
       # Sometimes activerecord sprinkles in a `SELECT a.attname, format_type(a.atttypid, a.atttypmod),`
       # here for good measure. Actually it's supposed to be 4 queries.
       expect { described_class.includes_associations.map(&nested_accessor) }
-        .to make_database_queries(count: 4..5)
+        .to make_database_queries(count: 4..6)
     end
   end
 
