@@ -16,6 +16,7 @@ var barChart = function(selector, labels, values) {
       ]
     },
     options: {
+      animation: false,
       legend: {
         display: false
       },

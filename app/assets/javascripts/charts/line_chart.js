@@ -19,6 +19,7 @@ var lineChart = function(selector, labels, values, scale) {
       ]
     },
     options: {
+      animation: false,
       legend: {
         display: false
       },
