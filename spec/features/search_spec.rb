@@ -133,7 +133,7 @@ RSpec.describe "Search", type: :feature, js: true do
       click_on "Bugfix forks are shown"
     end
 
-    wait_for { !listed_project_names.include? "more widgets" }
+    wait_for { listed_project_names.exclude?("more widgets") }
     expect(listed_project_names).to be == ["widgets"]
 
     # When there are no results from projects search without

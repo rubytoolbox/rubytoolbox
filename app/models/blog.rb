@@ -57,7 +57,7 @@ class Blog
     private
 
     def path_data
-      @path_data ||= File.basename(path).match(/(\d{4}\-\d{2}\-\d{2})\-([^\.]+)/)
+      @path_data ||= File.basename(path).match(/(\d{4}-\d{2}-\d{2})-([^.]+)/)
     end
 
     def html_content

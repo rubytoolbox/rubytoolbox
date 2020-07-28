@@ -41,7 +41,7 @@ RSpec.describe Docs do
   it "has titles for all existing docs pages" do
     titles = docs.sections.map(&:last).flatten.map(&:title)
     expect(titles).to all(be_present)
-      .and(all(satisfy { |title| !title.include? "missing" }))
+      .and(all(satisfy { |title| title.exclude?("missing") }))
   end
 
   describe "#find(id)" do

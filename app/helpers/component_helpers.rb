@@ -89,7 +89,7 @@ module ComponentHelpers
 
     tooltip = "#{quarter.ordinalize} quarter #{year}: #{count} #{'release'.pluralize(count)}"
 
-    content_tag "li", class: "tooltip is-tooltip-bottom #{rank}", "data-tooltip" => tooltip do
+    tag.li(class: "tooltip is-tooltip-bottom #{rank}", "data-tooltip" => tooltip) do
     end
   end
 
