@@ -20,21 +20,22 @@ module ApplicationHelper
   end
 
   # This should be refactored...
-  # rubocop:disable Metrics/MethodLength, Metrics/PerceivedComplexity
+  # rubocop:disable Metrics/MethodLength
   def pretty_metric_value(value)
-    if value.is_a?(Float) || value.is_a?(BigDecimal)
+    case value
+    when Float, BigDecimal
       number_with_delimiter(value.floor) + "%"
-    elsif value.is_a? Integer
+    when Integer
       number_with_delimiter value
-    elsif value.is_a?(Date) || value.is_a?(Time)
+    when Date, Time
       l value.to_date
-    elsif value.is_a? Array
+    when Array
       value.to_sentence
     else
       value
     end
   end
-  # rubocop:enable Metrics/MethodLength, Metrics/PerceivedComplexity
+  # rubocop:enable Metrics/MethodLength
 
   #
   # A little utility method for displaying project rankings like most downloaded gems

@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :blog, only: %i[index show], constraints: { id: /[^\.]+/ }
+  resources :blog, only: %i[index show], constraints: { id: /[^.]+/ }
   resources :categories, only: %i[index show]
 
   resources :projects, only: %i[show], constraints: { id: Patterns::ROUTE_PATTERN }
