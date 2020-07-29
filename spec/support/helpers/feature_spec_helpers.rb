@@ -17,7 +17,7 @@ module FeatureSpecHelpers
   #
   # rubocop:disable Performance/RedundantBlockCall
   def wait_for(&block)
-    Retriable.retriable tries: 15, base_interval: 0.05 do
+    Retriable.retriable tries: 15, base_interval: 0.05, max_interval: 1.second do
       raise "Exceeded max retries while waiting for block to pass" unless block.call
     end
   end
