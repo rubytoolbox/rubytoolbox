@@ -32,7 +32,7 @@ RSpec.describe "Project Comparisons", type: :feature, js: true do
 
     comparison_project_tags.first.find(".delete").click
     wait_for do
-      expect(listed_project_names).to be == %w[widget]
+      listed_project_names == %w[widget]
     end
   end
 
@@ -58,7 +58,7 @@ RSpec.describe "Project Comparisons", type: :feature, js: true do
     # It should keep current display settings on remove
     comparison_project_tags.first.find(".delete").click
     wait_for do
-      expect(listed_project_names).to be == %w[widget toolkit]
+      listed_project_names == %w[widget toolkit]
     end
     expect_display_mode "Compact"
   end
@@ -68,12 +68,12 @@ RSpec.describe "Project Comparisons", type: :feature, js: true do
 
     add_using_autocomplete "widget"
     wait_for do
-      expect(listed_project_names).to be == %w[widget]
+      listed_project_names == %w[widget]
     end
 
     add_using_autocomplete "toolkit"
     wait_for do
-      expect(listed_project_names).to be == %w[toolkit widget]
+      listed_project_names == %w[toolkit widget]
     end
 
     # Our autocomplete library interferes with the enter key on the input field -
@@ -81,7 +81,7 @@ RSpec.describe "Project Comparisons", type: :feature, js: true do
     # with the autocompletion in any way.
     page.find("input.autocomplete-comparison").send_keys "acme", :enter
     wait_for do
-      expect(listed_project_names).to be == %w[acme toolkit widget]
+      listed_project_names == %w[acme toolkit widget]
     end
   end
 
