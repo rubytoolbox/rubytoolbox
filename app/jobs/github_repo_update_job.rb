@@ -5,6 +5,7 @@ class GithubRepoUpdateJob < ApplicationJob
   private :client=
 
   def initialize(client: GithubClient.new)
+    super()
     self.client = client
   end
 

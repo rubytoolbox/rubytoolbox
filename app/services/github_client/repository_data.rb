@@ -145,11 +145,11 @@ class GithubClient
     end
 
     def value(key)
-      raw_data.dig(key).presence
+      raw_data[key].presence
     end
 
     def flag(key)
-      !!raw_data.dig(key)
+      !!raw_data[key]
     end
 
     def sum(*values)
@@ -159,7 +159,7 @@ class GithubClient
     end
 
     def time(key)
-      value = raw_data.dig(key.to_s).presence
+      value = raw_data[key.to_s].presence
       return unless value
 
       Time.zone.parse value

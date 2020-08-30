@@ -6,17 +6,21 @@ RSpec.describe Webhooks::GithubController, type: :controller do
   describe "POST create" do
     let(:state) { :success }
     let(:branch) { "master" }
-    let(:request_body) do
+
+    let(:event_name) { "status" }
+    let(:secret) { ENV.fetch("GITHUB_WEBHOOK_SECRET") }
+
+    def signature
+      OpenSSL::HMAC.hexdigest OpenSSL::Digest.new("sha1"), secret, request_body.to_json
+    end
+
+    def request_body
       {
         state:      state,
         branches:   [{ name: branch }],
         repository: { default_branch: "master" },
       }
     end
-
-    let(:event_name) { "status" }
-    let(:secret) { ENV.fetch("GITHUB_WEBHOOK_SECRET") }
-    let(:signature) { OpenSSL::HMAC.hexdigest OpenSSL::Digest.new("sha1"), secret, request_body.to_json }
 
     def do_request
       request.headers["X-GitHub-Event"] = event_name

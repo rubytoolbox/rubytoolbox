@@ -12,7 +12,7 @@ module ApplicationHelper
   end
 
   def metric_icon(metric)
-    "fa-" + t(:icon, scope: "metrics.#{metric}")
+    "fa-#{t(:icon, scope: "metrics.#{metric}")}"
   end
 
   def metric_label(metric)
@@ -24,7 +24,7 @@ module ApplicationHelper
   def pretty_metric_value(value)
     case value
     when Float, BigDecimal
-      number_with_delimiter(value.floor) + "%"
+      "#{number_with_delimiter(value.floor)}%"
     when Integer
       number_with_delimiter value
     when Date, Time

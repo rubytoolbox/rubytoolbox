@@ -12,8 +12,11 @@ RSpec.describe GithubRepoUpdateJob, type: :job do
   end
 
   let(:job) { described_class.new client: faked_github_client }
-  let(:do_perform) { job.perform repo_path }
   let(:repo_path) { "rails/rails" }
+
+  def do_perform
+    job.perform repo_path
+  end
 
   describe "#perform" do
     let(:expected_attributes) do

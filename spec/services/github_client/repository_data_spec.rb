@@ -36,7 +36,7 @@ RSpec.describe GithubClient::RepositoryData, type: :service do
       repo = data openIssues:       { totalCount: 5 },
                   closedIssues:     { totalCount: 10 },
                   hasIssuesEnabled: true
-      expect(repo.issue_closure_rate).to be == (10 * 100.0 / 15)
+      expect(repo.issue_closure_rate).to be_within(0.00001).of(10 * 100.0 / 15)
     end
   end
 
@@ -58,7 +58,7 @@ RSpec.describe GithubClient::RepositoryData, type: :service do
                   mergedPullRequests: { totalCount: 11 },
                   closedPullRequests: { totalCount: 3 }
 
-      expect(repo.pull_request_acceptance_rate).to be == (11 * 100.0) / (7 + 11 + 3)
+      expect(repo.pull_request_acceptance_rate).to be_within(0.00001).of((11 * 100.0) / (7 + 11 + 3))
     end
   end
 

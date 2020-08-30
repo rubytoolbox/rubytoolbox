@@ -10,6 +10,7 @@ require:
   - rubocop-rspec
 
 AllCops:
+  NewCops: enable
   Exclude:
     - 'tmp/**/*.rb'
     # Apparently needed for Travis CI since it bundles into this directory
@@ -99,91 +100,3 @@ Style/TrailingCommaInArrayLiteral:
   EnforcedStyleForMultiline: comma
 Style/TrailingCommaInHashLiteral:
   EnforcedStyleForMultiline: comma
-
-# Opt-in-cops from Rubocop 0.80+
-Style/HashEachMethods:
-  Enabled: true
-Style/HashTransformKeys:
-  Enabled: true
-Style/HashTransformValues:
-  Enabled: true
-Layout/SpaceAroundMethodCallOperator:
-  Enabled: true
-Lint/RaiseException:
-  Enabled: true
-Lint/StructNewOverride:
-  Enabled: true
-Style/ExponentialNotation:
-  Enabled: true
-Layout/EmptyLinesAroundAttributeAccessor:
-  Enabled: true
-Lint/DeprecatedOpenSSLConstant:
-  Enabled: true
-Style/SlicingWithRange:
-  Enabled: true
-Lint/DuplicateElsifCondition:
-  Enabled: true
-Lint/MixedRegexpCaptureTypes:
-  Enabled: true
-Style/AccessorGrouping:
-  Enabled: true
-Style/ArrayCoercion:
-  Enabled: true
-Style/BisectedAttrAccessor:
-  Enabled: true
-Style/CaseLikeIf:
-  Enabled: true
-Style/HashAsLastArrayItem:
-  Enabled: true
-Style/HashLikeCase:
-  Enabled: true
-Style/RedundantAssignment:
-  Enabled: true
-Style/RedundantFetchBlock:
-  Enabled: true
-Style/RedundantFileExtensionInRequire:
-  Enabled: true
-Style/RedundantRegexpCharacterClass:
-  Enabled: true
-Style/RedundantRegexpEscape:
-  Enabled: true
-Performance/AncestorsInclude:
-  Enabled: true
-Performance/BigDecimalWithNumericArgument:
-  Enabled: true
-Performance/RedundantSortBlock:
-  Enabled: true
-Performance/RedundantStringChars:
-  Enabled: true
-Performance/ReverseFirst:
-  Enabled: true
-Performance/SortReverse:
-  Enabled: true
-Performance/Squeeze:
-  Enabled: true
-Performance/StringInclude:
-  Enabled: true
-Rails/ActiveRecordCallbacksOrder:
-  Enabled: true
-Rails/FindById:
-  Enabled: true
-Rails/Inquiry:
-  Enabled: true
-Rails/MailerName:
-  Enabled: true
-Rails/MatchRoute:
-  Enabled: true
-Rails/NegateInclude:
-  Enabled: true
-Rails/Pluck:
-  Enabled: true
-Rails/PluckInWhere:
-  Enabled: true
-Rails/RenderInline:
-  Enabled: true
-Rails/RenderPlainText:
-  Enabled: true
-Rails/ShortI18n:
-  Enabled: true
-Rails/WhereExists:
-  Enabled: true
