@@ -24,20 +24,6 @@ COMMENT ON EXTENSION citext IS 'data type for case-insensitive character strings
 
 
 --
--- Name: pg_stat_statements; Type: EXTENSION; Schema: -; Owner: -
---
-
-CREATE EXTENSION IF NOT EXISTS pg_stat_statements WITH SCHEMA public;
-
-
---
--- Name: EXTENSION pg_stat_statements; Type: COMMENT; Schema: -; Owner: -
---
-
-COMMENT ON EXTENSION pg_stat_statements IS 'track execution statistics of all SQL statements executed';
-
-
---
 -- Name: categories_update_description_tsvector_trigger(); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -135,8 +121,8 @@ SET default_table_access_method = heap;
 CREATE TABLE public.ar_internal_metadata (
     key character varying NOT NULL,
     value character varying,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
 );
 
 
@@ -210,6 +196,19 @@ CREATE TABLE public.github_ignores (
     path character varying NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: github_readmes; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.github_readmes (
+    path character varying NOT NULL,
+    html text NOT NULL,
+    etag character varying NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
 );
 
 
@@ -519,6 +518,13 @@ CREATE UNIQUE INDEX index_github_ignores_on_path ON public.github_ignores USING 
 
 
 --
+-- Name: index_github_readmes_on_path; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_github_readmes_on_path ON public.github_readmes USING btree (path);
+
+
+--
 -- Name: index_github_repos_on_path; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -773,6 +779,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190228101125'),
 ('20190228102103'),
 ('20190508190527'),
-('20190730194020');
+('20190730194020'),
+('20200830205823');
 
 

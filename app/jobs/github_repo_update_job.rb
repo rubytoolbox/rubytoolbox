@@ -59,6 +59,9 @@ class GithubRepoUpdateJob < ApplicationJob
       # Set updated at to ensure we flag what we've pulled
       repo.updated_at = repo.fetched_at = Time.current.utc
       repo.update! mapped_attributes(info)
+
+      update_readme_for_repo repo
+
       trigger_project_updates repo.projects.pluck(:permalink)
     end
   end
@@ -76,6 +79,19 @@ class GithubRepoUpdateJob < ApplicationJob
   rescue GithubClient::UnknownRepoError
     GithubIgnore.track! path
     nil
+  end
+
+  def update_readme_for_repo(repo)
+    readme = client.fetch_readme repo.path, etag: repo.readme_etag
+
+    if readme
+      Github::Readme.find_or_initialize_by(path: repo.path).update!(
+        html: readme.html,
+        etag: readme.etag
+      )
+    else
+      Github::Readme.where(path: repo.path).destroy_all
+    end
   end
 
   def trigger_project_updates(project_permalinks)

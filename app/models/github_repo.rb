@@ -12,6 +12,19 @@ class GithubRepo < ApplicationRecord
   has_many :rubygems,
            through: :projects
 
+  has_one :readme,
+          primary_key: :path,
+          foreign_key: :path,
+          inverse_of:  :github_repo,
+          class_name:  "Github::Readme",
+          dependent:   :destroy
+
+  delegate :html,
+           :etag,
+           to:        :readme,
+           allow_nil: true,
+           prefix:    :readme
+
   def self.update_batch
     where("updated_at < ? ", 24.hours.ago.utc)
       .order(updated_at: :asc)

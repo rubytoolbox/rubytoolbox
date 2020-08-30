@@ -1,0 +1,796 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/repos/colszowka/simplecov/readme
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Authorization:
+      - bearer <GITHUB_TOKEN>
+      User-Agent:
+      - ruby-toolbox.com API client
+      Accept:
+      - application/vnd.github.v3.html
+      Connection:
+      - close
+      Host:
+      - api.github.com
+  response:
+    status:
+      code: 301
+      message: Moved Permanently
+    headers:
+      Date:
+      - Sun, 30 Aug 2020 20:42:44 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '154'
+      Connection:
+      - close
+      Server:
+      - GitHub.com
+      Status:
+      - 301 Moved Permanently
+      X-Oauth-Scopes:
+      - ''
+      X-Accepted-Oauth-Scopes:
+      - admin:repo_hook, delete_repo, read:repo_hook, repo, repo:status, repo_deployment,
+        security_events, write:repo_hook
+      Location:
+      - https://api.github.com/repositories/839336/readme
+      X-Github-Media-Type:
+      - github.v3; param=html
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4969'
+      X-Ratelimit-Reset:
+      - '1598823521'
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type, Deprecation, Sunset
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding, Accept, X-Requested-With
+      X-Github-Request-Id:
+      - 8702:B39D:565674:67771B:5F4C0F44
+    body:
+      encoding: UTF-8
+      string: '{"message":"Moved Permanently","url":"https://api.github.com/repositories/839336/readme","documentation_url":"https://docs.github.com/v3/#http-redirects"}'
+  recorded_at: Sun, 30 Aug 2020 20:42:44 GMT
+- request:
+    method: get
+    uri: https://api.github.com/repositories/839336/readme
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Authorization:
+      - bearer <GITHUB_TOKEN>
+      User-Agent:
+      - ruby-toolbox.com API client
+      Accept:
+      - application/vnd.github.v3.html
+      Connection:
+      - close
+      Host:
+      - api.github.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 30 Aug 2020 20:42:44 GMT
+      Content-Type:
+      - application/vnd.github.v3.html; charset=utf-8
+      Content-Length:
+      - '85661'
+      Connection:
+      - close
+      Server:
+      - GitHub.com
+      Status:
+      - 200 OK
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding
+      - Accept-Encoding, Accept, X-Requested-With
+      Etag:
+      - '"07afeb8ac0e2e67c4aea452694168fb4"'
+      Last-Modified:
+      - Sun, 16 Aug 2020 18:46:53 GMT
+      X-Oauth-Scopes:
+      - ''
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; param=html
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4968'
+      X-Ratelimit-Reset:
+      - '1598823521'
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type, Deprecation, Sunset
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Github-Request-Id:
+      - 8704:DA25:D6E1D0F:10434756:5F4C0F44
+    body:
+      encoding: UTF-8
+      string: |-
+        <div id="readme" class="md" data-path="README.md"><article class="markdown-body entry-content container-lg" itemprop="text"><h1><a id="user-content-simplecov----" class="anchor" aria-hidden="true" href="#simplecov----"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>SimpleCov <a href="https://badge.fury.io/rb/simplecov" rel="nofollow"><img src="https://camo.githubusercontent.com/ea14b2a0db244718ff130d0836cc953de6304616/68747470733a2f2f62616467652e667572792e696f2f72622f73696d706c65636f762e737667" alt="Gem Version" data-canonical-src="https://badge.fury.io/rb/simplecov.svg" style="max-width:100%;"></a> <a href="https://github.com/simplecov-ruby/simplecov/actions?query=workflow%3Astable" title="SimpleCov is built around the clock by github.com"><img src="https://github.com/simplecov-ruby/simplecov/workflows/stable/badge.svg?branch=main" alt="Build Status" style="max-width:100%;"></a> <a href="https://codeclimate.com/github/simplecov-ruby/simplecov/maintainability" rel="nofollow"><img src="https://camo.githubusercontent.com/579bc5c99b24dde77420ca34e586d81b13758c97/68747470733a2f2f6170692e636f6465636c696d6174652e636f6d2f76312f6261646765732f63303731643139376436313935336137653438322f6d61696e7461696e6162696c697479" alt="Maintainability" data-canonical-src="https://api.codeclimate.com/v1/badges/c071d197d61953a7e482/maintainability" style="max-width:100%;"></a> <a href="http://inch-ci.org/github/simplecov-ruby/simplecov" rel="nofollow"><img src="https://camo.githubusercontent.com/eee16189ee2344a301875f7fbeca9f84578d6aaa/687474703a2f2f696e63682d63692e6f72672f6769746875622f73696d706c65636f762d727562792f73696d706c65636f762e7376673f6272616e63683d6d61696e" alt="Inline docs" data-canonical-src="http://inch-ci.org/github/simplecov-ruby/simplecov.svg?branch=main" style="max-width:100%;"></a></h1>
+        <p><strong>Code coverage for Ruby</strong></p>
+        <ul>
+        <li><a href="https://github.com/simplecov-ruby/simplecov" title="Source Code @ GitHub">Source Code</a></li>
+        <li><a href="http://rubydoc.info/gems/simplecov/frames" title="RDoc API Documentation at Rubydoc.info" rel="nofollow">API documentation</a></li>
+        <li><a href="https://github.com/simplecov-ruby/simplecov/blob/main/CHANGELOG.md" title="Project Changelog">Changelog</a></li>
+        <li><a href="http://rubygems.org/gems/simplecov" title="SimpleCov @ rubygems.org" rel="nofollow">Rubygem</a></li>
+        <li><a href="https://github.com/simplecov-ruby/simplecov/actions?query=workflow%3Astable" title="SimpleCov is built around the clock by github.com">Continuous Integration</a></li>
+        </ul>
+        <p>SimpleCov is a code coverage analysis tool for Ruby. It uses <a href="https://ruby-doc.org/stdlib/libdoc/coverage/rdoc/Coverage.html" title="API doc for Ruby's Coverage library" rel="nofollow">Ruby's built-in Coverage</a> library to gather code
+        coverage data, but makes processing its results much easier by providing a clean API to filter, group, merge, format,
+        and display those results, giving you a complete code coverage suite that can be set up with just a couple lines of
+        code.
+        SimpleCov/Coverage track covered ruby code, gathering coverage for common templating solutions like erb, slim and haml is not supported.</p>
+        <p>In most cases, you'll want overall coverage results for your projects, including all types of tests, Cucumber features,
+        etc. SimpleCov automatically takes care of this by caching and merging results when generating reports, so your
+        report actually includes coverage across your test suites and thereby gives you a better picture of blank spots.</p>
+        <p>The official formatter of SimpleCov is packaged as a separate gem called <a href="https://github.com/simplecov-ruby/simplecov-html" title="SimpleCov HTML Formatter Source Code @ GitHub">simplecov-html</a>, but will be installed and
+        configured automatically when you launch SimpleCov. If you're curious, you can find it <a href="https://github.com/simplecov-ruby/simplecov-html" title="SimpleCov HTML Formatter Source Code @ GitHub">on GitHub, too</a>.</p>
+        <h2><a id="user-content-contact" class="anchor" aria-hidden="true" href="#contact"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Contact</h2>
+        <p><em>Code and Bug Reports</em></p>
+        <ul>
+        <li><a href="https://github.com/simplecov-ruby/simplecov/issues">Issue Tracker</a></li>
+        <li>See <a href="https://github.com/simplecov-ruby/simplecov/blob/main/CONTRIBUTING.md">CONTRIBUTING</a> for how to contribute along
+        with some common problems to check out before creating an issue.</li>
+        </ul>
+        <p><em>Questions, Problems, Suggestions, etc.</em></p>
+        <ul>
+        <li><a href="https://groups.google.com/forum/#!forum/simplecov" rel="nofollow">Mailing List</a> "Open mailing list for discussion and announcements
+        on Google Groups"</li>
+        </ul>
+        <h2><a id="user-content-getting-started" class="anchor" aria-hidden="true" href="#getting-started"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Getting started</h2>
+        <ol>
+        <li>
+        <p>Add SimpleCov to your <code>Gemfile</code> and <code>bundle install</code>:</p>
+        <div class="highlight highlight-source-ruby"><pre><span class="pl-en">gem</span> <span class="pl-s">'simplecov'</span><span class="pl-kos">,</span> <span class="pl-pds">require</span>: <span class="pl-c1">false</span><span class="pl-kos">,</span> <span class="pl-pds">group</span>: <span class="pl-pds">:test</span></pre></div>
+        </li>
+        <li>
+        <p>Load and launch SimpleCov <strong>at the very top</strong> of your <code>test/test_helper.rb</code>
+        (<em>or <code>spec_helper.rb</code>, <code>rails_helper</code>, cucumber <code>env.rb</code>, or whatever your preferred test
+        framework uses</em>):</p>
+        <div class="highlight highlight-source-ruby"><pre><span class="pl-en">require</span> <span class="pl-s">'simplecov'</span>
+        <span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">start</span>
+
+        <span class="pl-c"># Previous content of test helper now starts here</span></pre></div>
+        <p><strong>Note:</strong> If SimpleCov starts after your application code is already loaded
+        (via <code>require</code>), it won't be able to track your files and their coverage!
+        The <code>SimpleCov.start</code> <strong>must</strong> be issued <strong>before any of your application
+        code is required!</strong></p>
+        <p>SimpleCov must be running in the process that you want the code coverage
+        analysis to happen on. When testing a server process (e.g. a JSON API
+        endpoint) via a separate test process (e.g. when using Selenium) where you
+        want to see all code executed by the <code>rails server</code>, and not just code
+        executed in your actual test files, you'll want to add something like this
+        to the top of <code>bin/rails</code>, but below the "shebang" line (<code>#! /usr/bin/env ruby</code>):</p>
+        <div class="highlight highlight-source-ruby"><pre><span class="pl-k">if</span> <span class="pl-c1">ENV</span><span class="pl-kos">[</span><span class="pl-s">'RAILS_ENV'</span><span class="pl-kos">]</span> == <span class="pl-s">'test'</span>
+          <span class="pl-en">require</span> <span class="pl-s">'simplecov'</span>
+          <span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">start</span> <span class="pl-s">'rails'</span>
+          <span class="pl-en">puts</span> <span class="pl-s">"required simplecov"</span>
+        <span class="pl-k">end</span></pre></div>
+        </li>
+        <li>
+        <p>Run your full test suite to see the percent coverage that your application has.</p>
+        </li>
+        <li>
+        <p>After running your tests, open <code>coverage/index.html</code> in the browser of your choice. For example, in a Mac Terminal,
+        run the following command from your application's root directory:</p>
+        <pre><code>open coverage/index.html
+        </code></pre>
+        <p>in a debian/ubuntu Terminal,</p>
+        <pre><code>xdg-open coverage/index.html
+        </code></pre>
+        <p><strong>Note:</strong> <a href="https://dwheeler.com/essays/open-files-urls.html" rel="nofollow">This guide</a> can help if you're unsure which command your particular
+        operating system requires.</p>
+        </li>
+        <li>
+        <p>Add the following to your <code>.gitignore</code> file to ensure that coverage results
+        are not tracked by Git (optional):</p>
+        <pre><code>echo "coverage" &gt;&gt; .gitignore
+        </code></pre>
+        <p>Or if you use Windows:</p>
+        <pre><code>echo coverage &gt;&gt; .gitignore
+        </code></pre>
+        <p>If you're making a Rails application, SimpleCov comes with built-in configurations (see below for information on
+        profiles) that will get you started with groups for your Controllers, Models and Helpers. To use it, the
+        first two lines of your test_helper should be like this:</p>
+        <div class="highlight highlight-source-ruby"><pre><span class="pl-en">require</span> <span class="pl-s">'simplecov'</span>
+        <span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">start</span> <span class="pl-s">'rails'</span></pre></div>
+        </li>
+        </ol>
+        <h2><a id="user-content-example-output" class="anchor" aria-hidden="true" href="#example-output"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Example output</h2>
+        <p><strong>Coverage results report, fully browsable locally with sorting and much more:</strong></p>
+        <p><a target="_blank" rel="noopener noreferrer" href="https://cloud.githubusercontent.com/assets/137793/17071162/db6f253e-502d-11e6-9d84-e40c3d75f333.png"><img src="https://cloud.githubusercontent.com/assets/137793/17071162/db6f253e-502d-11e6-9d84-e40c3d75f333.png" alt="SimpleCov coverage report" style="max-width:100%;"></a></p>
+        <p><strong>Source file coverage details view:</strong></p>
+        <p><a target="_blank" rel="noopener noreferrer" href="https://cloud.githubusercontent.com/assets/137793/17071163/db6f9f0a-502d-11e6-816c-edb2c66fad8d.png"><img src="https://cloud.githubusercontent.com/assets/137793/17071163/db6f9f0a-502d-11e6-816c-edb2c66fad8d.png" alt="SimpleCov source file detail view" style="max-width:100%;"></a></p>
+        <h2><a id="user-content-use-it-with-any-framework" class="anchor" aria-hidden="true" href="#use-it-with-any-framework"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Use it with any framework!</h2>
+        <p>Similarly to the usage with Test::Unit described above, the only thing you have to do is to add the SimpleCov
+        config to the very top of your Cucumber/RSpec/whatever setup file.</p>
+        <p>Add the setup code to the <strong>top</strong> of <code>features/support/env.rb</code> (for Cucumber) or <code>spec/spec_helper.rb</code> (for RSpec).
+        Other test frameworks should work accordingly, whatever their setup file may be:</p>
+        <div class="highlight highlight-source-ruby"><pre><span class="pl-en">require</span> <span class="pl-s">'simplecov'</span>
+        <span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">start</span> <span class="pl-s">'rails'</span></pre></div>
+        <p>You could even track what kind of code your UI testers are touching if you want to go overboard with things. SimpleCov
+        does not care what kind of framework it is running in; it just looks at what code is being executed and generates a
+        report about it.</p>
+        <h3><a id="user-content-notes-on-specific-frameworks-and-test-utilities" class="anchor" aria-hidden="true" href="#notes-on-specific-frameworks-and-test-utilities"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Notes on specific frameworks and test utilities</h3>
+        <p>For some frameworks and testing tools there are quirks and problems you might want to know about if you want
+        to use SimpleCov with them. Here's an overview of the known ones:</p>
+        <table>
+          <tbody><tr><th>Framework</th><th>Notes</th><th>Issue</th></tr>
+          <tr>
+            <th>
+              parallel_tests
+            </th>
+            <td>
+              As of 0.8.0, SimpleCov should correctly recognize parallel_tests and
+              supplement your test suite names with their corresponding test env
+              numbers. SimpleCov locks the resultset cache while merging, ensuring no
+              race conditions occur when results are merged.
+            </td>
+            <td>
+              <a href="https://github.com/simplecov-ruby/simplecov/issues/64">#64</a> &amp;
+              <a href="https://github.com/simplecov-ruby/simplecov/pull/185">#185</a>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              knapsack_pro
+            </th>
+            <td>
+              To make SimpleCov work with Knapsack Pro Queue Mode to split tests in parallel on CI jobs you need to provide CI node index number to the <code>SimpleCov.command_name</code> in <code>KnapsackPro::Hooks::Queue.before_queue</code> hook.
+            </td>
+            <td>
+              <a href="https://knapsackpro.com/faq/question/how-to-use-simplecov-in-queue-mode" rel="nofollow">Tip</a>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              RubyMine
+            </th>
+            <td>
+              The <a href="https://www.jetbrains.com/ruby/" rel="nofollow">RubyMine IDE</a> has
+              built-in support for SimpleCov's coverage reports, though you might need
+              to explicitly set the output root using `SimpleCov.root('foo/bar/baz')`
+            </td>
+            <td>
+              <a href="https://github.com/simplecov-ruby/simplecov/issues/95">#95</a>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              Spork
+            </th>
+            <td>
+              Because of how Spork works internally (using preforking), there used to
+              be trouble when using SimpleCov with it, but that has apparently been
+              resolved with a specific configuration strategy. See <a href="https://github.com/simplecov-ruby/simplecov/issues/42#issuecomment-4440284">this</a>
+              comment.
+            </td>
+            <td>
+              <a href="https://github.com/simplecov-ruby/simplecov/issues/42#issuecomment-4440284">#42</a>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              Spring
+            </th>
+            <td>
+              <a href="#want-to-use-spring-with-simplecov">See section below.</a>
+            </td>
+            <td>
+              <a href="https://github.com/simplecov-ruby/simplecov/issues/381">#381</a>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              Test/Unit
+            </th>
+            <td>
+              Test Unit 2 used to mess with ARGV, leading to a failure to detect the
+              test process name in SimpleCov. <code>test-unit</code> releases 2.4.3+
+              (Dec 11th, 2011) should have this problem resolved.
+            </td>
+            <td>
+              <a href="https://github.com/simplecov-ruby/simplecov/issues/45">#45</a> &amp;
+              <a href="https://github.com/test-unit/test-unit/pull/12">test-unit/test-unit#12</a>
+            </td>
+          </tr>
+        </tbody></table>
+        <h2><a id="user-content-configuring-simplecov" class="anchor" aria-hidden="true" href="#configuring-simplecov"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Configuring SimpleCov</h2>
+        <p><a href="http://rubydoc.info/gems/simplecov/SimpleCov/Configuration" title="Configuration options API documentation" rel="nofollow">Configuration</a> settings can be applied in three formats, which are completely equivalent:</p>
+        <ul>
+        <li>
+        <p>The most common way is to configure it directly in your start block:</p>
+        <div class="highlight highlight-source-ruby"><pre><span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">start</span> <span class="pl-k">do</span>
+          <span class="pl-en">some_config_option</span> <span class="pl-s">'foo'</span>
+        <span class="pl-k">end</span></pre></div>
+        </li>
+        <li>
+        <p>You can also set all configuration options directly:</p>
+        <div class="highlight highlight-source-ruby"><pre><span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">some_config_option</span> <span class="pl-s">'foo'</span></pre></div>
+        </li>
+        <li>
+        <p>If you do not want to start coverage immediately after launch or want to add additional configuration later on in a
+        concise way, use:</p>
+        <div class="highlight highlight-source-ruby"><pre><span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">configure</span> <span class="pl-k">do</span>
+          <span class="pl-en">some_config_option</span> <span class="pl-s">'foo'</span>
+        <span class="pl-k">end</span></pre></div>
+        </li>
+        </ul>
+        <p>Please check out the <a href="http://rubydoc.info/gems/simplecov/SimpleCov/Configuration" title="Configuration options API documentation" rel="nofollow">Configuration</a> API documentation to find out what you can customize.</p>
+        <h2><a id="user-content-using-simplecov-for-centralized-config" class="anchor" aria-hidden="true" href="#using-simplecov-for-centralized-config"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Using .simplecov for centralized config</h2>
+        <p>If you use SimpleCov to merge multiple test suite results (e.g. Test/Unit and Cucumber) into a single report, you'd
+        normally have to set up all your config options twice, once in <code>test_helper.rb</code> and once in <code>env.rb</code>.</p>
+        <p>To avoid this, you can place a file called <code>.simplecov</code> in your project root. You can then just leave the
+        <code>require 'simplecov'</code> in each test setup helper (<strong>at the top</strong>) and move the <code>SimpleCov.start</code> code with all your
+        custom config options into <code>.simplecov</code>:</p>
+        <div class="highlight highlight-source-ruby"><pre><span class="pl-c"># test/test_helper.rb</span>
+        <span class="pl-en">require</span> <span class="pl-s">'simplecov'</span>
+
+        <span class="pl-c"># features/support/env.rb</span>
+        <span class="pl-en">require</span> <span class="pl-s">'simplecov'</span>
+
+        <span class="pl-c"># .simplecov</span>
+        <span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">start</span> <span class="pl-s">'rails'</span> <span class="pl-k">do</span>
+          <span class="pl-c"># any custom configs like groups and filters can be here at a central place</span>
+        <span class="pl-k">end</span></pre></div>
+        <p>Using <code>.simplecov</code> rather than separately requiring SimpleCov multiple times is recommended if you are merging multiple
+        test frameworks like Cucumber and RSpec that rely on each other, as invoking SimpleCov multiple times can cause coverage
+        information to be lost.</p>
+        <h2><a id="user-content-branch-coverage-ruby--25" class="anchor" aria-hidden="true" href="#branch-coverage-ruby--25"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Branch coverage (ruby "~&gt; 2.5")</h2>
+        <p>Add branch coverage measurement statistics to your results. Supported in CRuby versions 2.5+.</p>
+        <div class="highlight highlight-source-ruby"><pre><span class="pl-c"># or in configure or just SimpleCov.enable_coverage :branch</span>
+        <span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">start</span> <span class="pl-k">do</span>
+          <span class="pl-en">enable_coverage</span> <span class="pl-pds">:branch</span>
+        <span class="pl-k">end</span></pre></div>
+        <p>Branch coverage is a feature introduced in Ruby 2.5 concerning itself with whether a
+        particular branch of a condition had been executed. Line coverage on the other hand
+        is only interested in whether a line of code has been executed.</p>
+        <p>This comes in handy for instance for one line conditionals:</p>
+        <div class="highlight highlight-source-ruby"><pre><span class="pl-en">number</span><span class="pl-kos">.</span><span class="pl-en">odd?</span> ? <span class="pl-s">"odd"</span> : <span class="pl-s">"even"</span></pre></div>
+        <p>In line coverage this line would always be marked as executed but you'd never know if both
+        conditions were met. Guard clauses have a similar story:</p>
+        <div class="highlight highlight-source-ruby"><pre><span class="pl-k">return</span> <span class="pl-k">if</span> <span class="pl-en">number</span><span class="pl-kos">.</span><span class="pl-en">odd?</span>
+
+        <span class="pl-c"># more code</span></pre></div>
+        <p>If all the code in that method was covered you'd never know if the guard clause was ever
+        triggered! With line coverage as just evaluating the condition marks it as covered.</p>
+        <p>In the HTML report the lines of code will be annotated like <code>branch_type: hit_count</code>:</p>
+        <ul>
+        <li><code>then: 2</code> - the then branch (of an <code>if</code>) was executed twice</li>
+        <li><code>else: 0</code> - the else branch (of an <code>if</code> or <code>case</code>) was never executed</li>
+        </ul>
+        <p>Not that even if you don't declare an <code>else</code> branch it will still show up in the coverage
+        reports meaning that the condition of the <code>if</code> was not hit or that no <code>when</code> of <code>case</code>
+        was hit during the test runs.</p>
+        <p><strong>Is branch coverage strictly better?</strong> No. Branch coverage really only concerns itself with
+        conditionals - meaning coverage of sequential code is of no interest to it. A file without
+        conditional logic will have no branch coverage data and SimpleCov will report 0 of 0
+        branches covered as 100% (as everything that can be covered was covered).</p>
+        <p>Hence, we recommend looking at both metrics together. Branch coverage might also be a good
+        overall metric to look at - while you might be missing only 10% of your lines that might
+        account for 50% of your branches for instance.</p>
+        <h2><a id="user-content-filters" class="anchor" aria-hidden="true" href="#filters"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Filters</h2>
+        <p>Filters can be used to remove selected files from your coverage data. By default, a filter is applied that removes all
+        files OUTSIDE of your project's root directory - otherwise you'd end up with billions of coverage reports for source
+        files in the gems you are using.</p>
+        <p>You can define your own to remove things like configuration files, tests or whatever you don't need in your coverage
+        report.</p>
+        <h3><a id="user-content-defining-custom-filters" class="anchor" aria-hidden="true" href="#defining-custom-filters"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Defining custom filters</h3>
+        <p>You can currently define a filter using either a String or Regexp (that will then be Regexp-matched against each source
+        file's path), a block or by passing in your own Filter class.</p>
+        <h4><a id="user-content-string-filter" class="anchor" aria-hidden="true" href="#string-filter"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>String filter</h4>
+        <div class="highlight highlight-source-ruby"><pre><span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">start</span> <span class="pl-k">do</span>
+          <span class="pl-en">add_filter</span> <span class="pl-s">"/test/"</span>
+        <span class="pl-k">end</span></pre></div>
+        <p>This simple string filter will remove all files that match "/test/" in their path.</p>
+        <h4><a id="user-content-regex-filter" class="anchor" aria-hidden="true" href="#regex-filter"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Regex filter</h4>
+        <div class="highlight highlight-source-ruby"><pre><span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">start</span> <span class="pl-k">do</span>
+          <span class="pl-en">add_filter</span> <span class="pl-pds">%r{^/test/}</span>
+        <span class="pl-k">end</span></pre></div>
+        <p>This simple regex filter will remove all files that start with /test/ in their path.</p>
+        <h4><a id="user-content-block-filter" class="anchor" aria-hidden="true" href="#block-filter"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Block filter</h4>
+        <div class="highlight highlight-source-ruby"><pre><span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">start</span> <span class="pl-k">do</span>
+          <span class="pl-en">add_filter</span> <span class="pl-k">do</span> |<span class="pl-s1">source_file</span>|
+            <span class="pl-s1">source_file</span><span class="pl-kos">.</span><span class="pl-en">lines</span><span class="pl-kos">.</span><span class="pl-en">count</span> &lt; <span class="pl-c1">5</span>
+          <span class="pl-k">end</span>
+        <span class="pl-k">end</span></pre></div>
+        <p>Block filters receive a SimpleCov::SourceFile instance and expect your block to return either true (if the file is to be
+        removed from the result) or false (if the result should be kept). Please check out the RDoc for SimpleCov::SourceFile to
+        learn about the methods available to you. In the above example, the filter will remove all files that have less than 5
+        lines of code.</p>
+        <h4><a id="user-content-custom-filter-class" class="anchor" aria-hidden="true" href="#custom-filter-class"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Custom filter class</h4>
+        <div class="highlight highlight-source-ruby"><pre><span class="pl-k">class</span> <span class="pl-v">LineFilter</span> &lt; <span class="pl-v">SimpleCov</span>::<span class="pl-v">Filter</span>
+          <span class="pl-k">def</span> <span class="pl-en">matches?</span><span class="pl-kos">(</span><span class="pl-s1">source_file</span><span class="pl-kos">)</span>
+            <span class="pl-s1">source_file</span><span class="pl-kos">.</span><span class="pl-en">lines</span><span class="pl-kos">.</span><span class="pl-en">count</span> &lt; <span class="pl-en">filter_argument</span>
+          <span class="pl-k">end</span>
+        <span class="pl-k">end</span>
+
+        <span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">add_filter</span> <span class="pl-v">LineFilter</span><span class="pl-kos">.</span><span class="pl-en">new</span><span class="pl-kos">(</span><span class="pl-c1">5</span><span class="pl-kos">)</span></pre></div>
+        <p>Defining your own filters is pretty easy: Just inherit from SimpleCov::Filter and define a method
+        'matches?(source_file)'. When running the filter, a true return value from this method will result in the removal of the
+        given source_file. The filter_argument method is being set in the SimpleCov::Filter initialize method and thus is set to
+        5 in this example.</p>
+        <h4><a id="user-content-array-filter" class="anchor" aria-hidden="true" href="#array-filter"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Array filter</h4>
+        <div class="highlight highlight-source-ruby"><pre><span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">start</span> <span class="pl-k">do</span>
+          <span class="pl-s1">proc</span> <span class="pl-c1">=</span> <span class="pl-v">Proc</span><span class="pl-kos">.</span><span class="pl-en">new</span> <span class="pl-kos">{</span> |<span class="pl-s1">source_file</span>| <span class="pl-c1">false</span> <span class="pl-kos">}</span>
+          <span class="pl-en">add_filter</span> <span class="pl-kos">[</span><span class="pl-s">"string"</span><span class="pl-kos">,</span> <span class="pl-pds">/regex/</span><span class="pl-kos">,</span> <span class="pl-s1">proc</span><span class="pl-kos">,</span> <span class="pl-v">LineFilter</span><span class="pl-kos">.</span><span class="pl-en">new</span><span class="pl-kos">(</span><span class="pl-c1">5</span><span class="pl-kos">)</span><span class="pl-kos">]</span>
+        <span class="pl-k">end</span></pre></div>
+        <p>You can pass in an array containing any of the other filter types.</p>
+        <h4><a id="user-content-ignoringskipping-code" class="anchor" aria-hidden="true" href="#ignoringskipping-code"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Ignoring/skipping code</h4>
+        <p>You can exclude code from the coverage report by wrapping it in <code># :nocov:</code>.</p>
+        <div class="highlight highlight-source-ruby"><pre><span class="pl-c"># :nocov:</span>
+        <span class="pl-k">def</span> <span class="pl-en">skip_this_method</span>
+          <span class="pl-en">never_reached</span>
+        <span class="pl-k">end</span>
+        <span class="pl-c"># :nocov:</span></pre></div>
+        <p>The name of the token can be changed to your liking. <a href="https://github.com/simplecov-ruby/simplecov/blob/main/features/config_nocov_token.feature">Learn more about the nocov feature.</a></p>
+        <p><strong>Note:</strong> You shouldn't have to use the nocov token to skip private methods that are being included in your coverage. If
+        you appropriately test the public interface of your classes and objects you should automatically get full coverage of
+        your private methods.</p>
+        <h2><a id="user-content-default-root-filter-and-coverage-for-things-outside-of-it" class="anchor" aria-hidden="true" href="#default-root-filter-and-coverage-for-things-outside-of-it"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Default root filter and coverage for things outside of it</h2>
+        <p>By default, SimpleCov filters everything outside of the <code>SimpleCov.root</code> directory. However, sometimes you may want
+        to include coverage reports for things you include as a gem, for example a Rails Engine.</p>
+        <p>Here's an example by <a href="https://github.com/lsaffie">@lsaffie</a> from <a href="https://github.com/simplecov-ruby/simplecov/issues/221">#221</a>
+        that shows how you can achieve just that:</p>
+        <div class="highlight highlight-source-ruby"><pre><span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">start</span> <span class="pl-pds">:rails</span> <span class="pl-k">do</span>
+          <span class="pl-en">filters</span><span class="pl-kos">.</span><span class="pl-en">clear</span> <span class="pl-c"># This will remove the :root_filter and :bundler_filter that come via simplecov's defaults</span>
+          <span class="pl-en">add_filter</span> <span class="pl-k">do</span> |<span class="pl-s1">src</span>|
+            !<span class="pl-kos">(</span><span class="pl-s1">src</span><span class="pl-kos">.</span><span class="pl-en">filename</span> =~ <span class="pl-pds">/^<span class="pl-s1"><span class="pl-kos">#{</span><span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">root</span><span class="pl-kos">}</span></span>/</span><span class="pl-kos">)</span> <span class="pl-k">unless</span> <span class="pl-s1">src</span><span class="pl-kos">.</span><span class="pl-en">filename</span> =~ <span class="pl-pds">/my_engine/</span>
+          <span class="pl-k">end</span>
+        <span class="pl-k">end</span></pre></div>
+        <h2><a id="user-content-groups" class="anchor" aria-hidden="true" href="#groups"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Groups</h2>
+        <p>You can separate your source files into groups. For example, in a Rails app, you'll want to have separate listings for
+        Models, Controllers, Helpers, and Libs. Group definition works similarly to Filters (and also accepts custom
+        filter classes), but source files end up in a group when the filter passes (returns true), as opposed to filtering
+        results, which exclude files from results when the filter results in a true value.</p>
+        <p>Add your groups with:</p>
+        <div class="highlight highlight-source-ruby"><pre><span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">start</span> <span class="pl-k">do</span>
+          <span class="pl-en">add_group</span> <span class="pl-s">"Models"</span><span class="pl-kos">,</span> <span class="pl-s">"app/models"</span>
+          <span class="pl-en">add_group</span> <span class="pl-s">"Controllers"</span><span class="pl-kos">,</span> <span class="pl-s">"app/controllers"</span>
+          <span class="pl-en">add_group</span> <span class="pl-s">"Long files"</span> <span class="pl-k">do</span> |<span class="pl-s1">src_file</span>|
+            <span class="pl-s1">src_file</span><span class="pl-kos">.</span><span class="pl-en">lines</span><span class="pl-kos">.</span><span class="pl-en">count</span> &gt; <span class="pl-c1">100</span>
+          <span class="pl-k">end</span>
+          <span class="pl-en">add_group</span> <span class="pl-s">"Multiple Files"</span><span class="pl-kos">,</span> <span class="pl-kos">[</span><span class="pl-s">"app/models"</span><span class="pl-kos">,</span> <span class="pl-s">"app/controllers"</span><span class="pl-kos">]</span> <span class="pl-c"># You can also pass in an array</span>
+          <span class="pl-en">add_group</span> <span class="pl-s">"Short files"</span><span class="pl-kos">,</span> <span class="pl-v">LineFilter</span><span class="pl-kos">.</span><span class="pl-en">new</span><span class="pl-kos">(</span><span class="pl-c1">5</span><span class="pl-kos">)</span> <span class="pl-c"># Using the LineFilter class defined in Filters section above</span>
+        <span class="pl-k">end</span></pre></div>
+        <h2><a id="user-content-merging-results" class="anchor" aria-hidden="true" href="#merging-results"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Merging results</h2>
+        <p>You normally want to have your coverage analyzed across ALL of your test suites, right?</p>
+        <p>Simplecov automatically caches coverage results in your
+        (coverage_path)/.resultset.json, and will merge or override those with
+        subsequent runs, depending on whether simplecov considers those subsequent runs
+        as different test suites or as the same test suite as the cached results. To
+        make this distinction, simplecov has the concept of "test suite names".</p>
+        <h3><a id="user-content-test-suite-names" class="anchor" aria-hidden="true" href="#test-suite-names"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Test suite names</h3>
+        <p>SimpleCov tries to guess the name of the currently running test suite based upon the shell command the tests
+        are running on. This should work fine for Unit Tests, RSpec, and Cucumber. If it fails, it will use the shell
+        command that invoked the test suite as a command name.</p>
+        <p>If you have some non-standard setup and still want nicely labeled test suites, you have to give Simplecov a
+        cue as to what the name of the currently running test suite is. You can do so by specifying
+        <code>SimpleCov.command_name</code> in one test file that is part of your specific suite.</p>
+        <p>To customize the suite names on a Rails app (yeah, sorry for being Rails-biased, but everyone knows what
+        the structure of those projects is. You can apply this accordingly to the RSpecs in your
+        Outlook-WebDAV-Calendar-Sync gem), you could do something like this:</p>
+        <div class="highlight highlight-source-ruby"><pre><span class="pl-c"># test/unit/some_test.rb</span>
+        <span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">command_name</span> <span class="pl-s">'test:units'</span>
+
+        <span class="pl-c"># test/functionals/some_controller_test.rb</span>
+        <span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">command_name</span> <span class="pl-s">"test:functionals"</span>
+
+        <span class="pl-c"># test/integration/some_integration_test.rb</span>
+        <span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">command_name</span> <span class="pl-s">"test:integration"</span>
+
+        <span class="pl-c"># features/support/env.rb</span>
+        <span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">command_name</span> <span class="pl-s">"features"</span></pre></div>
+        <p>Note that this only has to be invoked ONCE PER TEST SUITE, so even if you have 200 unit test files,
+        specifying it in <code>some_test.rb</code> is enough.</p>
+        <p>Last but not least <strong>if multiple suites resolve to the same <code>command_name</code></strong> be aware that the coverage results <strong>will
+        clobber each other instead of being merged</strong>.  SimpleCov is smart enough to detect unique names for the most common
+        setups, but if you have more than one test suite that doesn't follow a common pattern then you will want to manually
+        ensure that each suite gets a unique <code>command_name</code>.</p>
+        <p>If you are running tests in parallel each process has the potential to clobber results from the other test processes.
+        If you are relying on the default <code>command_name</code> then SimpleCov will attempt to detect and avoid parallel test suite
+        <code>command_name</code> collisions based on the presence of <code>ENV['PARALLEL_TEST_GROUPS']</code> and <code>ENV['TEST_ENV_NUMBER']</code>.  If your
+        parallel test runner does not set one or both of these then <em>you must</em> set a <code>command_name</code> and ensure that it is unique
+        per process (eg. <code>command_name "Unit Tests PID #{$$}"</code>).</p>
+        <p>If you are using parallel_tests, you must incorporate <code>TEST_ENV_NUMBER</code> into the command name yourself, in
+        order for SimpleCov to merge the results correctly. For example:</p>
+        <div class="highlight highlight-source-ruby"><pre><span class="pl-c"># spec/spec_helper.rb</span>
+        <span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">command_name</span> <span class="pl-s">"features"</span> + <span class="pl-kos">(</span><span class="pl-c1">ENV</span><span class="pl-kos">[</span><span class="pl-s">'TEST_ENV_NUMBER'</span><span class="pl-kos">]</span> || <span class="pl-s">''</span><span class="pl-kos">)</span></pre></div>
+        <p><a href="https://github.com/simplecov-ruby/simplecov-html" title="SimpleCov HTML Formatter Source Code @ GitHub">simplecov-html</a> prints the used test suites in the footer of the generated coverage report.</p>
+        <h3><a id="user-content-merging-test-runs-under-the-same-execution-environment" class="anchor" aria-hidden="true" href="#merging-test-runs-under-the-same-execution-environment"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Merging test runs under the same execution environment</h3>
+        <p>Test results are automatically merged with previous runs in the same execution
+        environment when generating the result, so when coverage is set up properly for
+        Cucumber and your unit / functional / integration tests, all of those test
+        suites will be taken into account when building the coverage report.</p>
+        <h4><a id="user-content-timeout-for-merge" class="anchor" aria-hidden="true" href="#timeout-for-merge"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Timeout for merge</h4>
+        <p>Of course, your cached coverage data is likely to become invalid at some point. Thus, when automatically merging
+        subsequent test runs, result sets that are older than <code>SimpleCov.merge_timeout</code> will not be used any more. By default,
+        the timeout is 600 seconds (10 minutes), and you can raise (or lower) it by specifying <code>SimpleCov.merge_timeout 3600</code>
+        (1 hour), or, inside a configure/start block, with just <code>merge_timeout 3600</code>.</p>
+        <p>You can deactivate this automatic merging altogether with <code>SimpleCov.use_merging false</code>.</p>
+        <h3><a id="user-content-merging-test-runs-under-different-execution-environments" class="anchor" aria-hidden="true" href="#merging-test-runs-under-different-execution-environments"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Merging test runs under different execution environments</h3>
+        <p>If your tests are done in parallel across multiple build machines, you can fetch them all and merge them into a single
+        result set using the <code>SimpleCov.collate</code> method. This can be added to a Rakefile or script file, having downloaded a set of
+        <code>.resultset.json</code> files from each parallel test run.</p>
+        <div class="highlight highlight-source-ruby"><pre><span class="pl-c"># lib/tasks/coverage_report.rake</span>
+        <span class="pl-en">namespace</span> <span class="pl-pds">:coverage</span> <span class="pl-k">do</span>
+          <span class="pl-en">desc</span> <span class="pl-s">"Collates all result sets generated by the different test runners"</span>
+          <span class="pl-en">task</span> <span class="pl-pds">:report</span> <span class="pl-k">do</span>
+            <span class="pl-en">require</span> <span class="pl-s">'simplecov'</span>
+
+            <span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">collate</span> <span class="pl-v">Dir</span><span class="pl-kos">[</span><span class="pl-s">"simplecov-resultset-*/.resultset.json"</span><span class="pl-kos">]</span>
+          <span class="pl-k">end</span>
+        <span class="pl-k">end</span></pre></div>
+        <p><code>SimpleCov.collate</code> also takes an optional simplecov profile and an optional
+        block for configuration, just the same as <code>SimpleCov.start</code> or
+        <code>SimpleCov.configure</code>.  This means you can configure a separate formatter for
+        the collated output. For instance, you can make the formatter in
+        <code>SimpleCov.start</code> the <code>SimpleCov::Formatter::SimpleFormatter</code>, and only use more
+        complex formatters in the final <code>SimpleCov.collate</code> run.</p>
+        <div class="highlight highlight-source-ruby"><pre><span class="pl-c"># spec/spec_helper.rb</span>
+        <span class="pl-en">require</span> <span class="pl-s">'simplecov'</span>
+
+        <span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">start</span> <span class="pl-s">'rails'</span> <span class="pl-k">do</span>
+          <span class="pl-c"># Disambiguates individual test runs</span>
+          <span class="pl-en">command_name</span> <span class="pl-s">"Job <span class="pl-s1"><span class="pl-kos">#{</span><span class="pl-c1">ENV</span><span class="pl-kos">[</span><span class="pl-s">"TEST_ENV_NUMBER"</span><span class="pl-kos">]</span><span class="pl-kos">}</span></span>"</span> <span class="pl-k">if</span> <span class="pl-c1">ENV</span><span class="pl-kos">[</span><span class="pl-s">"TEST_ENV_NUMBER"</span><span class="pl-kos">]</span>
+
+          <span class="pl-k">if</span> <span class="pl-c1">ENV</span><span class="pl-kos">[</span><span class="pl-s">'CI'</span><span class="pl-kos">]</span>
+            <span class="pl-en">formatter</span> <span class="pl-v">SimpleCov</span>::<span class="pl-v">Formatter</span>::<span class="pl-v">SimpleFormatter</span>
+          <span class="pl-k">else</span>
+            <span class="pl-en">formatter</span> <span class="pl-v">SimpleCov</span>::<span class="pl-v">Formatter</span>::<span class="pl-v">MultiFormatter</span><span class="pl-kos">.</span><span class="pl-en">new</span><span class="pl-kos">(</span><span class="pl-kos">[</span>
+              <span class="pl-v">SimpleCov</span>::<span class="pl-v">Formatter</span>::<span class="pl-v">SimpleFormatter</span><span class="pl-kos">,</span>
+              <span class="pl-v">SimpleCov</span>::<span class="pl-v">Formatter</span>::<span class="pl-v">HTMLFormatter</span>
+            <span class="pl-kos">]</span><span class="pl-kos">)</span>
+          <span class="pl-k">end</span>
+
+          <span class="pl-en">track_files</span> <span class="pl-s">"**/*.rb"</span>
+        <span class="pl-k">end</span></pre></div>
+        <div class="highlight highlight-source-ruby"><pre><span class="pl-c"># lib/tasks/coverage_report.rake</span>
+        <span class="pl-en">namespace</span> <span class="pl-pds">:coverage</span> <span class="pl-k">do</span>
+          <span class="pl-en">task</span> <span class="pl-pds">:report</span> <span class="pl-k">do</span>
+            <span class="pl-en">require</span> <span class="pl-s">'simplecov'</span>
+
+            <span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">collate</span> <span class="pl-v">Dir</span><span class="pl-kos">[</span><span class="pl-s">"simplecov-resultset-*/.resultset.json"</span><span class="pl-kos">]</span><span class="pl-kos">,</span> <span class="pl-s">'rails'</span> <span class="pl-k">do</span>
+              <span class="pl-en">formatter</span> <span class="pl-v">SimpleCov</span>::<span class="pl-v">Formatter</span>::<span class="pl-v">MultiFormatter</span><span class="pl-kos">.</span><span class="pl-en">new</span><span class="pl-kos">(</span><span class="pl-kos">[</span>
+                <span class="pl-v">SimpleCov</span>::<span class="pl-v">Formatter</span>::<span class="pl-v">SimpleFormatter</span><span class="pl-kos">,</span>
+                <span class="pl-v">SimpleCov</span>::<span class="pl-v">Formatter</span>::<span class="pl-v">HTMLFormatter</span>
+              <span class="pl-kos">]</span><span class="pl-kos">)</span>
+            <span class="pl-k">end</span>
+          <span class="pl-k">end</span>
+        <span class="pl-k">end</span></pre></div>
+        <h2><a id="user-content-running-simplecov-against-subprocesses" class="anchor" aria-hidden="true" href="#running-simplecov-against-subprocesses"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Running simplecov against subprocesses</h2>
+        <p><code>SimpleCov.enable_for_subprocesses</code> will allow SimpleCov to observe subprocesses starting using <code>Process.fork</code>.
+        This modifies ruby's core Process.fork method so that SimpleCov can see into it, appending <code>" (subprocess #{pid})"</code>
+        to the <code>SimpleCov.command_name</code>, with results that can be merged together using SimpleCov's merging feature.</p>
+        <p>To configure this, use <code>.at_fork</code>.</p>
+        <div class="highlight highlight-source-ruby"><pre><span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">enable_for_subprocesses</span> <span class="pl-c1">true</span>
+        <span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">at_fork</span> <span class="pl-k">do</span> |<span class="pl-s1">pid</span>|
+          <span class="pl-c"># This needs a unique name so it won't be ovewritten</span>
+          <span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">command_name</span> <span class="pl-s">"<span class="pl-s1"><span class="pl-kos">#{</span><span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">command_name</span><span class="pl-kos">}</span></span> (subprocess: <span class="pl-s1"><span class="pl-kos">#{</span><span class="pl-s1">pid</span><span class="pl-kos">}</span></span>)"</span>
+          <span class="pl-c"># be quiet, the parent process will be in charge of output and checking coverage totals</span>
+          <span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">print_error_status</span> <span class="pl-c1">=</span> <span class="pl-c1">false</span>
+          <span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">formatter</span> <span class="pl-v">SimpleCov</span>::<span class="pl-v">Formatter</span>::<span class="pl-v">SimpleFormatter</span>
+          <span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">minimum_coverage</span> <span class="pl-c1">0</span>
+          <span class="pl-c"># start</span>
+          <span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">start</span>
+        <span class="pl-k">end</span></pre></div>
+        <p>NOTE: SimpleCov must have already been started before <code>Process.fork</code> was called.</p>
+        <h3><a id="user-content-running-simplecov-against-spawned-subprocesses" class="anchor" aria-hidden="true" href="#running-simplecov-against-spawned-subprocesses"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Running simplecov against spawned subprocesses</h3>
+        <p>Perhaps you're testing a ruby script with <code>PTY.spawn</code> or <code>Open3.popen</code>, or <code>Process.spawn</code> or etc.
+        SimpleCov can cover this too.</p>
+        <p>Add a .simplecov_spawn.rb file to your project root</p>
+        <div class="highlight highlight-source-ruby"><pre><span class="pl-c"># .simplecov_spawn.rb</span>
+        <span class="pl-en">require</span> <span class="pl-s">'simplecov'</span> <span class="pl-c"># this will also pick up whatever config is in .simplecov</span>
+                            <span class="pl-c"># so ensure it just contains configuration, and doesn't call SimpleCov.start.</span>
+        <span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">command_name</span> <span class="pl-s">'spawn'</span> <span class="pl-c"># As this is not for a test runner directly, script doesn't have a pre-defined base command_name</span>
+        <span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">at_fork</span><span class="pl-kos">.</span><span class="pl-en">call</span><span class="pl-kos">(</span><span class="pl-v">Process</span><span class="pl-kos">.</span><span class="pl-en">pid</span><span class="pl-kos">)</span> <span class="pl-c"># Use the per-process setup described previously</span>
+        <span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">start</span> <span class="pl-c"># only now can we start.</span></pre></div>
+        <p>Then, instead of calling your script directly, like:</p>
+        <div class="highlight highlight-source-ruby"><pre><span class="pl-c1">PTY</span><span class="pl-kos">.</span><span class="pl-en">spawn</span><span class="pl-kos">(</span><span class="pl-s">'my_script.rb'</span><span class="pl-kos">)</span> <span class="pl-k">do</span> <span class="pl-c"># ...</span><span class="pl-k"></span></pre></div>
+        <p>Use bin/ruby to require the new .simplecov_spawn file, then your script</p>
+        <div class="highlight highlight-source-ruby"><pre><span class="pl-c1">PTY</span><span class="pl-kos">.</span><span class="pl-en">spawn</span><span class="pl-kos">(</span><span class="pl-s">'ruby -r./.simplecov_spawn my_script.rb'</span><span class="pl-kos">)</span> <span class="pl-k">do</span> <span class="pl-c"># ...</span><span class="pl-k"></span></pre></div>
+        <h2><a id="user-content-running-coverage-only-on-demand" class="anchor" aria-hidden="true" href="#running-coverage-only-on-demand"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Running coverage only on demand</h2>
+        <p>The Ruby STDLIB Coverage library that SimpleCov builds upon is <em>very</em> fast (on a ~10 min Rails test suite, the speed
+        drop was only a couple seconds for me), and therefore it's SimpleCov's policy to just generate coverage every time you
+        run your tests because it doesn't do your test speed any harm and you're always equipped with the latest and greatest
+        coverage results.</p>
+        <p>Because of this, SimpleCov has no explicit built-in mechanism to run coverage only on demand.</p>
+        <p>However, you can still accomplish this very easily by introducing an ENV variable conditional into your SimpleCov setup
+        block, like this:</p>
+        <div class="highlight highlight-source-ruby"><pre><span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">start</span> <span class="pl-k">if</span> <span class="pl-c1">ENV</span><span class="pl-kos">[</span><span class="pl-s">"COVERAGE"</span><span class="pl-kos">]</span></pre></div>
+        <p>Then, SimpleCov will only run if you execute your tests like this:</p>
+        <div class="highlight highlight-source-shell"><pre>COVERAGE=true rake <span class="pl-c1">test</span></pre></div>
+        <h2><a id="user-content-errors-and-exit-statuses" class="anchor" aria-hidden="true" href="#errors-and-exit-statuses"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Errors and exit statuses</h2>
+        <p>To aid in debugging issues, if an error is raised, SimpleCov will print a message to <code>STDERR</code>
+        with the exit status of the error, like:</p>
+        <pre><code>SimpleCov failed with exit 1
+        </code></pre>
+        <p>This <code>STDERR</code> message can be disabled with:</p>
+        <pre><code>SimpleCov.print_error_status = false
+        </code></pre>
+        <h2><a id="user-content-profiles" class="anchor" aria-hidden="true" href="#profiles"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Profiles</h2>
+        <p>By default, SimpleCov's only config assumption is that you only want coverage reports for files inside your project
+        root. To save yourself from repetitive configuration, you can use predefined blocks of configuration, called 'profiles',
+        or define your own.</p>
+        <p>You can then pass the name of the profile to be used as the first argument to SimpleCov.start. For example, simplecov
+        comes bundled with a 'rails' profile. It looks somewhat like this:</p>
+        <div class="highlight highlight-source-ruby"><pre><span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">profiles</span><span class="pl-kos">.</span><span class="pl-en">define</span> <span class="pl-s">'rails'</span> <span class="pl-k">do</span>
+          <span class="pl-en">add_filter</span> <span class="pl-s">'/test/'</span>
+          <span class="pl-en">add_filter</span> <span class="pl-s">'/config/'</span>
+
+          <span class="pl-en">add_group</span> <span class="pl-s">'Controllers'</span><span class="pl-kos">,</span> <span class="pl-s">'app/controllers'</span>
+          <span class="pl-en">add_group</span> <span class="pl-s">'Models'</span><span class="pl-kos">,</span> <span class="pl-s">'app/models'</span>
+          <span class="pl-en">add_group</span> <span class="pl-s">'Helpers'</span><span class="pl-kos">,</span> <span class="pl-s">'app/helpers'</span>
+          <span class="pl-en">add_group</span> <span class="pl-s">'Libraries'</span><span class="pl-kos">,</span> <span class="pl-s">'lib'</span>
+        <span class="pl-k">end</span></pre></div>
+        <p>As you can see, it's just a SimpleCov.configure block. In your test_helper.rb, launch SimpleCov with:</p>
+        <div class="highlight highlight-source-ruby"><pre><span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">start</span> <span class="pl-s">'rails'</span></pre></div>
+        <p>or</p>
+        <div class="highlight highlight-source-ruby"><pre><span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">start</span> <span class="pl-s">'rails'</span> <span class="pl-k">do</span>
+          <span class="pl-c"># additional config here</span>
+        <span class="pl-k">end</span></pre></div>
+        <h3><a id="user-content-custom-profiles" class="anchor" aria-hidden="true" href="#custom-profiles"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Custom profiles</h3>
+        <p>You can load additional profiles with the SimpleCov.load_profile('xyz') method. This allows you to build upon an
+        existing profile and customize it so you can reuse it in unit tests and Cucumber features. For example:</p>
+        <div class="highlight highlight-source-ruby"><pre><span class="pl-c"># lib/simplecov_custom_profile.rb</span>
+        <span class="pl-en">require</span> <span class="pl-s">'simplecov'</span>
+        <span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">profiles</span><span class="pl-kos">.</span><span class="pl-en">define</span> <span class="pl-s">'myprofile'</span> <span class="pl-k">do</span>
+          <span class="pl-en">load_profile</span> <span class="pl-s">'rails'</span>
+          <span class="pl-en">add_filter</span> <span class="pl-s">'vendor'</span> <span class="pl-c"># Don't include vendored stuff</span>
+        <span class="pl-k">end</span>
+
+        <span class="pl-c"># features/support/env.rb</span>
+        <span class="pl-en">require</span> <span class="pl-s">'simplecov_custom_profile'</span>
+        <span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">start</span> <span class="pl-s">'myprofile'</span>
+
+        <span class="pl-c"># test/test_helper.rb</span>
+        <span class="pl-en">require</span> <span class="pl-s">'simplecov_custom_profile'</span>
+        <span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">start</span> <span class="pl-s">'myprofile'</span></pre></div>
+        <h2><a id="user-content-customizing-exit-behaviour" class="anchor" aria-hidden="true" href="#customizing-exit-behaviour"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Customizing exit behaviour</h2>
+        <p>You can define what SimpleCov should do when your test suite finishes by customizing the at_exit hook:</p>
+        <div class="highlight highlight-source-ruby"><pre><span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">at_exit</span> <span class="pl-k">do</span>
+          <span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">result</span><span class="pl-kos">.</span><span class="pl-en">format!</span>
+        <span class="pl-k">end</span></pre></div>
+        <p>Above is the default behaviour. Do whatever you like instead!</p>
+        <h3><a id="user-content-minimum-coverage" class="anchor" aria-hidden="true" href="#minimum-coverage"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Minimum coverage</h3>
+        <p>You can define the minimum coverage percentage expected. SimpleCov will return non-zero if unmet.</p>
+        <div class="highlight highlight-source-ruby"><pre><span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">minimum_coverage</span> <span class="pl-c1">90</span>
+        <span class="pl-c"># same as above (the default is to check line coverage)</span>
+        <span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">minimum_coverage</span> <span class="pl-pds">line</span>: <span class="pl-c1">90</span>
+        <span class="pl-c"># check for a minimum line coverage of 90% and minimum 80% branch coverage</span>
+        <span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">minimum_coverage</span> <span class="pl-pds">line</span>: <span class="pl-c1">90</span><span class="pl-kos">,</span> <span class="pl-pds">branch</span>: <span class="pl-c1">80</span></pre></div>
+        <h3><a id="user-content-minimum-coverage-by-file" class="anchor" aria-hidden="true" href="#minimum-coverage-by-file"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Minimum coverage by file</h3>
+        <p>You can define the minimum coverage by file percentage expected. SimpleCov will return non-zero if unmet. This is useful
+        to help ensure coverage is relatively consistent, rather than being skewed by particularly good or bad areas of the code.</p>
+        <div class="highlight highlight-source-ruby"><pre><span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">minimum_coverage_by_file</span> <span class="pl-c1">80</span></pre></div>
+        <p>(not yet supported for branch coverage)</p>
+        <h3><a id="user-content-maximum-coverage-drop" class="anchor" aria-hidden="true" href="#maximum-coverage-drop"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Maximum coverage drop</h3>
+        <p>You can define the maximum coverage drop percentage at once. SimpleCov will return non-zero if exceeded.</p>
+        <div class="highlight highlight-source-ruby"><pre><span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">maximum_coverage_drop</span> <span class="pl-c1">5</span></pre></div>
+        <p>(not yet supported for branch coverage)</p>
+        <h3><a id="user-content-refuse-dropping-coverage" class="anchor" aria-hidden="true" href="#refuse-dropping-coverage"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Refuse dropping coverage</h3>
+        <p>You can also entirely refuse dropping coverage between test runs:</p>
+        <div class="highlight highlight-source-ruby"><pre><span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">refuse_coverage_drop</span></pre></div>
+        <p>(not yet supported for branch coverage)</p>
+        <h2><a id="user-content-using-your-own-formatter" class="anchor" aria-hidden="true" href="#using-your-own-formatter"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Using your own formatter</h2>
+        <p>You can use your own formatter with:</p>
+        <div class="highlight highlight-source-ruby"><pre><span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">formatter</span> <span class="pl-c1">=</span> <span class="pl-v">SimpleCov</span>::<span class="pl-v">Formatter</span>::<span class="pl-v">HTMLFormatter</span></pre></div>
+        <p>When calling SimpleCov.result.format!, it will be invoked with SimpleCov::Formatter::YourFormatter.new.format(result),
+        "result" being an instance of SimpleCov::Result. Do whatever your wish with that!</p>
+        <h2><a id="user-content-using-multiple-formatters" class="anchor" aria-hidden="true" href="#using-multiple-formatters"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Using multiple formatters</h2>
+        <p>As of SimpleCov 0.9, you can specify multiple result formats:</p>
+        <div class="highlight highlight-source-ruby"><pre><span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">formatters</span> <span class="pl-c1">=</span> <span class="pl-v">SimpleCov</span>::<span class="pl-v">Formatter</span>::<span class="pl-v">MultiFormatter</span><span class="pl-kos">.</span><span class="pl-en">new</span><span class="pl-kos">(</span><span class="pl-kos">[</span>
+          <span class="pl-v">SimpleCov</span>::<span class="pl-v">Formatter</span>::<span class="pl-v">HTMLFormatter</span><span class="pl-kos">,</span>
+          <span class="pl-v">SimpleCov</span>::<span class="pl-v">Formatter</span>::<span class="pl-v">CSVFormatter</span><span class="pl-kos">,</span>
+        <span class="pl-kos">]</span><span class="pl-kos">)</span></pre></div>
+        <h2><a id="user-content-available-formatters-editor-integrations-and-hosted-services" class="anchor" aria-hidden="true" href="#available-formatters-editor-integrations-and-hosted-services"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Available formatters, editor integrations and hosted services</h2>
+        <ul>
+        <li><a href="doc/alternate-formatters.md">Open Source formatter and integration plugins for SimpleCov</a></li>
+        <li><a href="doc/editor-integration.md">Editor Integration</a></li>
+        <li><a href="doc/commercial-services.md">Hosted (commercial) services</a></li>
+        </ul>
+        <h2><a id="user-content-ruby-version-compatibility" class="anchor" aria-hidden="true" href="#ruby-version-compatibility"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Ruby version compatibility</h2>
+        <p>SimpleCov is built in <a href="https://github.com/simplecov-ruby/simplecov/actions?query=workflow%3Astable" title="SimpleCov is built around the clock by github.com">Continuous Integration</a> on Ruby 2.5+ as well as JRuby 9.2+.</p>
+        <p>Note for JRuby =&gt; You need to pass JRUBY_OPTS="--debug" or create .jrubyrc and add debug.fullTrace=true</p>
+        <h2><a id="user-content-want-to-find-dead-code-in-production" class="anchor" aria-hidden="true" href="#want-to-find-dead-code-in-production"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Want to find dead code in production?</h2>
+        <p>Try <a href="https://github.com/danmayer/coverband">Coverband</a>.</p>
+        <h2><a id="user-content-want-to-use-spring-with-simplecov" class="anchor" aria-hidden="true" href="#want-to-use-spring-with-simplecov"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Want to use Spring with SimpleCov?</h2>
+        <p>If you're using <a href="https://github.com/rails/spring">Spring</a> to speed up test suite runs and want to run SimpleCov along
+        with them, you'll find that it often misreports coverage with the default config due to some sort of eager loading
+        issue. Don't despair!</p>
+        <p>One solution is to <a href="https://github.com/simplecov-ruby/simplecov/issues/381#issuecomment-347651728">explicitly call eager
+        load</a>
+        in your <code>test_helper.rb</code> / <code>spec_helper.rb</code> after calling <code>SimpleCov.start</code>.</p>
+        <div class="highlight highlight-source-ruby"><pre><span class="pl-en">require</span> <span class="pl-s">'simplecov'</span>
+        <span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">start</span> <span class="pl-s">'rails'</span>
+        <span class="pl-v">Rails</span><span class="pl-kos">.</span><span class="pl-en">application</span><span class="pl-kos">.</span><span class="pl-en">eager_load!</span></pre></div>
+        <p>Alternatively, you could disable Spring while running SimpleCov:</p>
+        <pre><code>DISABLE_SPRING=1 rake test
+        </code></pre>
+        <p>Or you could remove <code>gem 'spring'</code> from your <code>Gemfile</code>.</p>
+        <h2><a id="user-content-troubleshooting" class="anchor" aria-hidden="true" href="#troubleshooting"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Troubleshooting</h2>
+        <p>The <strong>most common problem is that simplecov isn't required and started before everything else</strong>. In order to track
+        coverage for your whole application <strong>simplecov needs to be the first one</strong> so that it (and the underlying coverage
+        library) can subsequently track loaded files and their usage.</p>
+        <p>If you are missing coverage for some code a simple trick is to put a puts statement in there and right after
+        <code>SimpleCov.start</code> so you can see if the file really was loaded after simplecov was started.</p>
+        <div class="highlight highlight-source-ruby"><pre><span class="pl-c"># my_code.rb</span>
+        <span class="pl-k">class</span> <span class="pl-v">MyCode</span>
+
+          <span class="pl-en">puts</span> <span class="pl-s">"MyCode is being loaded!"</span>
+
+          <span class="pl-k">def</span> <span class="pl-en">my_method</span>
+            <span class="pl-c"># ...</span>
+          <span class="pl-k">end</span>
+        <span class="pl-k">end</span>
+
+        <span class="pl-c"># spec_helper.rb/rails_helper.rb/test_helper.rb/.simplecov whatever</span>
+
+        <span class="pl-v">SimpleCov</span><span class="pl-kos">.</span><span class="pl-en">start</span>
+        <span class="pl-en">puts</span> <span class="pl-s">"SimpleCov started successfully!"</span></pre></div>
+        <p>Now when you run your test suite and you see:</p>
+        <pre><code>SimpleCov started successfully!
+        MyCode is being loaded!
+        </code></pre>
+        <p>then it's good otherwise you likely have a problem :)</p>
+        <h2><a id="user-content-code-of-conduct" class="anchor" aria-hidden="true" href="#code-of-conduct"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Code of Conduct</h2>
+        <p>Everyone participating in this project's development, issue trackers and other channels is expected to follow our
+        <a href="./CODE_OF_CONDUCT.md">Code of Conduct</a></p>
+        <h2><a id="user-content-contributing" class="anchor" aria-hidden="true" href="#contributing"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Contributing</h2>
+        <p>See the <a href="https://github.com/simplecov-ruby/simplecov/blob/main/CONTRIBUTING.md">contributing guide</a>.</p>
+        <h2><a id="user-content-kudos" class="anchor" aria-hidden="true" href="#kudos"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Kudos</h2>
+        <p>Thanks to Aaron Patterson for the original idea for this!</p>
+        <h2><a id="user-content-copyright" class="anchor" aria-hidden="true" href="#copyright"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Copyright</h2>
+        <p>Copyright (c) 2010-2017 Christoph Olszowka. See MIT-LICENSE for details.</p>
+        </article></div>
+  recorded_at: Sun, 30 Aug 2020 20:42:44 GMT
+recorded_with: VCR 6.0.0

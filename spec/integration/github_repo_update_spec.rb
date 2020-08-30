@@ -19,6 +19,17 @@ RSpec.describe GithubRepoUpdateJob, :real_http do
           fetched_at:       be_within(5.seconds).of(Time.current)
         )
       end
+
+      it "stores the README contents" do
+        do_perform
+
+        expect(GithubRepo.find(repo_path).readme)
+          .to be_present
+          .and have_attributes(
+            html: kind_of(String),
+            etag: kind_of(String)
+          )
+      end
     end
 
     describe "which exists locally" do
