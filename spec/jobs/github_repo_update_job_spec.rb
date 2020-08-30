@@ -2,13 +2,17 @@
 
 require "rails_helper"
 
+# rubocop:disable RSpec/MultipleMemoizedHelpers
 RSpec.describe GithubRepoUpdateJob, type: :job do
   let(:repo_data) do
     json = Rails.root.join("spec", "fixtures", "graphql_responses", "github", "rails.json").read
     GithubClient::RepositoryData.new Oj.load(json)
   end
+  let(:readme_data) do
+    GithubClient::ReadmeData.new("<strong>Hello World</strong>", "ab1234")
+  end
   let(:faked_github_client) do
-    instance_double(GithubClient, fetch_repository: repo_data)
+    instance_double(GithubClient, fetch_repository: repo_data, fetch_readme: readme_data)
   end
 
   let(:job) { described_class.new client: faked_github_client }
@@ -87,5 +91,32 @@ RSpec.describe GithubRepoUpdateJob, type: :job do
         .from(0)
         .to(1)
     end
+
+    it "creates readme record" do
+      do_perform
+
+      expect(GithubRepo.find(repo_path).readme)
+        .to be_a(Github::Readme)
+        .and have_attributes(
+          html: readme_data.html,
+          etag: readme_data.etag
+        )
+    end
+
+    describe "when no readme is returned" do
+      let(:readme_data) { nil }
+
+      it "does not create readme record" do
+        expect { do_perform }.not_to change { Github::Readme.find_by(path: repo_path) }.from(nil)
+      end
+
+      it "drops existing readme record if gone" do
+        do_perform
+        Github::Readme.create! path: repo_path, html: "123", etag: "123"
+
+        expect { do_perform }.to change { Github::Readme.find_by(path: repo_path) }.to(nil)
+      end
+    end
   end
 end
+# rubocop:enable RSpec/MultipleMemoizedHelpers

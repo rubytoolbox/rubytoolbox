@@ -94,7 +94,6 @@ http_interactions:
         to make thread-safe programming in Ruby easier","licenses":["Apache-2.0"],"metadata":{},"sha":"9ed7072821b51c57e8d6b7011a8e282e25aeea3a4065eab326e43f66f063b05a","project_uri":"https://rubygems.org/gems/thread_safe","gem_uri":"https://rubygems.org/gems/thread_safe-0.3.6.gem","homepage_uri":"https://github.com/ruby-concurrency/thread_safe","wiki_uri":"","documentation_uri":"http://ruby-concurrency.github.io/thread_safe/frames.html","mailing_list_uri":"https://groups.google.com/forum/#!forum/concurrent-ruby","source_code_uri":"https://github.com/ruby-concurrency/thread_safe","bug_tracker_uri":"https://github.com/ruby-concurrency/thread_safe/issues","changelog_uri":null,"dependencies":{"development":[{"name":"atomic","requirements":"=
         1.1.16"},{"name":"rake","requirements":"\u003c 12.0"},{"name":"rspec","requirements":"~\u003e
         3.2"}],"runtime":[]}}'
-    http_version: 
   recorded_at: Wed, 05 Dec 2018 14:33:47 GMT
 - request:
     method: get
@@ -288,7 +287,6 @@ http_interactions:
         collections and utilities for Ruby","downloads_count":1895,"metadata":{},"number":"0.0.1","summary":"A
         collection of data structures and utilities to make thread-safe programming
         in Ruby easier","platform":"ruby","rubygems_version":"\u003e= 0","ruby_version":null,"prerelease":false,"licenses":null,"requirements":null,"sha":"b1f7dfeb8bc765e421a90836c6a7e7dbe587abe238b2f660a89c6ad6e8e4975d"}]'
-    http_version: 
   recorded_at: Wed, 05 Dec 2018 14:33:48 GMT
 - request:
     method: get
@@ -374,7 +372,6 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '["killbill-paypal-express","killbill-stripe","killbill-litle","killbill-payment-test","killbill","sportweb","killbill-cybersource","datashift","logstash-input-syslog","asciidoctor-epub3","tzinfo","asciidoctor-revealjs","easy_translate","killbill-chartmogul","killbill-securenet","killbill-firstdata_e4","killbill-payu-latam","rohbau","slack-cli","rester","neo4j_legacy","sliday_backup","asciidoctor-html5s","logstash-input-beats","lines-engine","metanorma-m3d","metanorma-csand","isodoc","gooddata","gooddata","splitclient-rb","splitclient-rb","killbill-orbital","logstash-core","protobuf","asciidoctor-rfc","asciidoctor-doctest","ldclient-rb","html2doc","peastash","sequent","hu","asciidoctor-m3d","asciidoctor-csand","iplan-appsignal","fluent-plugin-multiline-parser","asciidoctor-bespoke","asciidoctor-pdf","gooddata-edge","nexpose_pxgrid","wechat_client","killbill-braintree_blue","protobuffy","docli","backup-ssh","asciidoctor-instant-articles","asciidoctor-accelerated-mobile-pages","mixture","asciidoctor-htmlbook","shuttle_cli","elastics","s3reamer","pg_helper","turbot-ruby-gems","dry-data","ruby-dovado","collectr","zapnito-cli","logstash-filter-throttle","logstash-filter-metrics","fleck","arkency-command_bus","wet-command_bus","rom-generated_id","persie","prepor-protobuf","stapfen","hexx-storage","pd-blender","vigilem-core","hermann","hermann","colossus","aws_student_accounts","deviseOne","thread_hazardous","whisperer","mock_dns_server","venet-backup","devision","postamt","brainsome_devise","multi_connection","backup_zh","email_crawler","ruby_storm","persistent_excon","faraday_persistent_excon","smelter","pagseguro-transparente","ruby_nsq","r4s","cache_digests","tickr_client","racing-sprockets","clasp","gemerald_beanstalk","ruby_skynet","autodeps","dskiplist","barker","memoizable","descendants_tracker","axiom-types","devise-bootstrap","devbootsrap","axiom-memory-adapter","mongoid_connection_pool","cap_proxy","jirabas","gene_pool","metrics_logger"]'
-    http_version: 
   recorded_at: Wed, 05 Dec 2018 14:33:48 GMT
 - request:
     method: head
@@ -442,7 +439,6 @@ http_interactions:
     body:
       encoding: UTF-8
       string: ''
-    http_version: 
   recorded_at: Wed, 05 Dec 2018 14:33:49 GMT
 - request:
     method: post
@@ -527,6 +523,130 @@ http_interactions:
       encoding: UTF-8
       string: '{"data":{"repository":{"nameWithOwner":"ruby-concurrency/thread_safe","forks":{"totalCount":15},"stargazers":{"totalCount":188},"watchers":{"totalCount":13},"createdAt":"2014-06-06T22:13:43Z","defaultBranchRef":{"name":"master","target":{"history":{"edges":[{"node":{"authoredDate":"2017-07-23T14:05:43Z"}},{"node":{"authoredDate":"2017-07-03T16:42:54Z"}},{"node":{"authoredDate":"2017-02-22T19:45:05Z"}},{"node":{"authoredDate":"2017-01-28T23:20:05Z"}},{"node":{"authoredDate":"2017-01-22T18:38:37Z"}},{"node":{"authoredDate":"2017-01-06T13:23:43Z"}},{"node":{"authoredDate":"2016-06-07T13:16:04Z"}},{"node":{"authoredDate":"2016-06-06T12:06:31Z"}},{"node":{"authoredDate":"2015-04-28T02:01:09Z"}},{"node":{"authoredDate":"2015-04-28T01:49:03Z"}},{"node":{"authoredDate":"2015-04-28T01:36:49Z"}},{"node":{"authoredDate":"2015-04-27T20:59:17Z"}},{"node":{"authoredDate":"2015-04-26T20:21:05Z"}},{"node":{"authoredDate":"2015-04-26T19:05:43Z"}},{"node":{"authoredDate":"2015-04-19T13:37:09Z"}},{"node":{"authoredDate":"2015-04-16T22:52:02Z"}},{"node":{"authoredDate":"2015-03-27T21:41:27Z"}},{"node":{"authoredDate":"2015-03-25T23:52:19Z"}},{"node":{"authoredDate":"2015-03-25T22:44:54Z"}},{"node":{"authoredDate":"2015-03-25T22:43:58Z"}},{"node":{"authoredDate":"2015-03-24T22:38:37Z"}},{"node":{"authoredDate":"2015-03-24T20:51:16Z"}},{"node":{"authoredDate":"2015-03-11T14:53:29Z"}},{"node":{"authoredDate":"2015-03-11T13:06:08Z"}},{"node":{"authoredDate":"2015-03-10T02:53:22Z"}},{"node":{"authoredDate":"2015-03-10T01:57:54Z"}},{"node":{"authoredDate":"2015-03-09T15:32:09Z"}},{"node":{"authoredDate":"2015-03-09T14:58:58Z"}},{"node":{"authoredDate":"2015-03-09T14:46:32Z"}},{"node":{"authoredDate":"2015-03-09T14:45:27Z"}},{"node":{"authoredDate":"2015-03-09T14:45:07Z"}},{"node":{"authoredDate":"2015-03-09T14:44:32Z"}},{"node":{"authoredDate":"2015-03-09T13:43:43Z"}},{"node":{"authoredDate":"2015-03-09T03:12:17Z"}},{"node":{"authoredDate":"2015-03-08T22:10:06Z"}},{"node":{"authoredDate":"2015-03-08T22:03:48Z"}},{"node":{"authoredDate":"2015-03-08T21:50:50Z"}},{"node":{"authoredDate":"2015-03-08T20:02:49Z"}},{"node":{"authoredDate":"2015-03-08T19:47:17Z"}},{"node":{"authoredDate":"2015-03-06T12:22:37Z"}},{"node":{"authoredDate":"2015-03-06T12:15:26Z"}},{"node":{"authoredDate":"2015-02-15T13:43:02Z"}},{"node":{"authoredDate":"2015-02-15T00:19:11Z"}},{"node":{"authoredDate":"2014-05-27T19:48:23Z"}},{"node":{"authoredDate":"2014-05-27T19:54:14Z"}},{"node":{"authoredDate":"2014-05-27T19:47:37Z"}},{"node":{"authoredDate":"2014-05-27T19:45:13Z"}},{"node":{"authoredDate":"2014-04-12T17:48:35Z"}},{"node":{"authoredDate":"2014-04-12T17:47:24Z"}},{"node":{"authoredDate":"2014-04-12T17:46:44Z"}}]}}},"description":"[DEPRECATED]
         Thread-safe collections for Ruby (merged with concurrent-ruby)","hasIssuesEnabled":true,"hasWikiEnabled":true,"homepageUrl":"http://concurrent-ruby.com","isArchived":false,"isFork":false,"isMirror":false,"licenseInfo":{"key":"apache-2.0"},"primaryLanguage":{"name":"Java"},"pushedAt":"2018-01-29T06:45:29Z","closedIssues":{"totalCount":12},"openIssues":{"totalCount":1},"closedPullRequests":{"totalCount":3},"openPullRequests":{"totalCount":0},"mergedPullRequests":{"totalCount":16},"repositoryTopics":{"nodes":[]},"codeOfConduct":null},"rateLimit":{"limit":5000,"cost":1,"remaining":2436,"resetAt":"2018-12-05T14:55:35Z"}}}'
-    http_version: 
   recorded_at: Wed, 05 Dec 2018 14:33:50 GMT
-recorded_with: VCR 4.0.0
+- request:
+    method: get
+    uri: https://api.github.com/repos/ruby-concurrency/thread_safe/readme
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Authorization:
+      - bearer <GITHUB_TOKEN>
+      User-Agent:
+      - ruby-toolbox.com API client
+      Accept:
+      - application/vnd.github.v3.html
+      Connection:
+      - close
+      Host:
+      - api.github.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 30 Aug 2020 21:40:33 GMT
+      Content-Type:
+      - application/vnd.github.v3.html; charset=utf-8
+      Content-Length:
+      - '8412'
+      Connection:
+      - close
+      Server:
+      - GitHub.com
+      Status:
+      - 200 OK
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding
+      - Accept-Encoding, Accept, X-Requested-With
+      Etag:
+      - '"9989bcf5eab45cb8f347e0a9ae3b9c9b"'
+      Last-Modified:
+      - Sun, 23 Jul 2017 14:05:43 GMT
+      X-Oauth-Scopes:
+      - ''
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; param=html
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4966'
+      X-Ratelimit-Reset:
+      - '1598827195'
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type, Deprecation, Sunset
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Github-Request-Id:
+      - 893C:59C6:D3D46AE:FFEA768:5F4C1CD1
+    body:
+      encoding: UTF-8
+      string: |-
+        <div id="readme" class="md" data-path="README.md"><article class="markdown-body entry-content container-lg" itemprop="text"><h1><a id="user-content-threadsafe-inactive-code-moved-to-concurrent-ruby-gem-and-repo" class="anchor" aria-hidden="true" href="#threadsafe-inactive-code-moved-to-concurrent-ruby-gem-and-repo"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Threadsafe (Inactive, code moved to concurrent-ruby gem and repo.)</h1>
+        <p><a href="http://badge.fury.io/rb/thread_safe" rel="nofollow"><img src="https://camo.githubusercontent.com/a603c1f6213d1519feeef38afdd85b01da126ef8/68747470733a2f2f62616467652e667572792e696f2f72622f7468726561645f736166652e737667" alt="Gem Version" data-canonical-src="https://badge.fury.io/rb/thread_safe.svg" style="max-width:100%;"></a> <a href="https://travis-ci.org/ruby-concurrency/thread_safe" rel="nofollow"><img src="https://camo.githubusercontent.com/a374999c8acfadc2da1ec4cc56a56706201edd70/68747470733a2f2f7472617669732d63692e6f72672f727562792d636f6e63757272656e63792f7468726561645f736166652e7376673f6272616e63683d6d6173746572" alt="Build Status" data-canonical-src="https://travis-ci.org/ruby-concurrency/thread_safe.svg?branch=master" style="max-width:100%;"></a> <a href="https://coveralls.io/r/ruby-concurrency/thread_safe" rel="nofollow"><img src="https://camo.githubusercontent.com/eb717218d847c138070156abaada1402c499be47/68747470733a2f2f696d672e736869656c64732e696f2f636f766572616c6c732f727562792d636f6e63757272656e63792f7468726561645f736166652f6d61737465722e737667" alt="Coverage Status" data-canonical-src="https://img.shields.io/coveralls/ruby-concurrency/thread_safe/master.svg" style="max-width:100%;"></a> <a href="https://codeclimate.com/github/ruby-concurrency/thread_safe" rel="nofollow"><img src="https://camo.githubusercontent.com/fad29936ff5bf3caa355314766c61c4dde995162/68747470733a2f2f636f6465636c696d6174652e636f6d2f6769746875622f727562792d636f6e63757272656e63792f7468726561645f736166652e737667" alt="Code Climate" data-canonical-src="https://codeclimate.com/github/ruby-concurrency/thread_safe.svg" style="max-width:100%;"></a> <a href="https://gemnasium.com/ruby-concurrency/thread_safe" rel="nofollow"><img src="https://camo.githubusercontent.com/66aa77014e2dd696094dff1182237a040e6a7cd1/68747470733a2f2f67656d6e617369756d2e636f6d2f727562792d636f6e63757272656e63792f7468726561645f736166652e737667" alt="Dependency Status" data-canonical-src="https://gemnasium.com/ruby-concurrency/thread_safe.svg" style="max-width:100%;"></a> <a href="http://opensource.org/licenses/MIT" rel="nofollow"><img src="https://camo.githubusercontent.com/7b3fba2a0efa6c0702424028a9adfd40edd15206/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6c6963656e73652d6170616368652d677265656e2e737667" alt="License" data-canonical-src="https://img.shields.io/badge/license-apache-green.svg" style="max-width:100%;"></a> <a href="https://gitter.im/ruby-concurrency/concurrent-ruby" rel="nofollow"><img src="https://camo.githubusercontent.com/0565e65837c81ceeaf29bc0c23c9a2225ce35991/687474703a2f2f696d672e736869656c64732e696f2f62616467652f6769747465722d6a6f696e253230636861742532302545322538362539322d627269676874677265656e2e737667" alt="Gitter chat" data-canonical-src="http://img.shields.io/badge/gitter-join%20chat%20%E2%86%92-brightgreen.svg" style="max-width:100%;"></a></p>
+        <p>A collection of thread-safe versions of common core Ruby classes.</p>
+        <p><strong>This code base is now part of the concurrent-ruby gem
+        at <a href="https://github.com/ruby-concurrency/concurrent-ruby">https://github.com/ruby-concurrency/concurrent-ruby</a>.
+        The code in this repository is no longer maintained.</strong></p>
+        <h2><a id="user-content-installation" class="anchor" aria-hidden="true" href="#installation"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Installation</h2>
+        <p>Add this line to your application's Gemfile:</p>
+        <pre><code>gem 'thread_safe'
+        </code></pre>
+        <p>And then execute:</p>
+        <pre><code>$ bundle
+        </code></pre>
+        <p>Or install it yourself as:</p>
+        <pre><code>$ gem install thread_safe
+        </code></pre>
+        <h2><a id="user-content-usage" class="anchor" aria-hidden="true" href="#usage"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Usage</h2>
+        <div class="highlight highlight-source-ruby"><pre><span class="pl-en">require</span> <span class="pl-s">'thread_safe'</span>
+
+        <span class="pl-s1">sa</span> <span class="pl-c1">=</span> <span class="pl-v">ThreadSafe</span>::<span class="pl-v">Array</span><span class="pl-kos">.</span><span class="pl-en">new</span> <span class="pl-c"># supports standard Array.new forms</span>
+        <span class="pl-s1">sh</span> <span class="pl-c1">=</span> <span class="pl-v">ThreadSafe</span>::<span class="pl-v">Hash</span><span class="pl-kos">.</span><span class="pl-en">new</span> <span class="pl-c"># supports standard Hash.new forms</span></pre></div>
+        <p><code>ThreadSafe::Cache</code> also exists, as a hash-like object, and should have
+        much better performance characteristics esp. under high concurrency than
+        <code>ThreadSafe::Hash</code>. However, <code>ThreadSafe::Cache</code> is not strictly semantically
+        equivalent to a ruby <code>Hash</code> -- for instance, it does not necessarily retain
+        ordering by insertion time as <code>Hash</code> does. For most uses it should do fine
+        though, and we recommend you consider <code>ThreadSafe::Cache</code> instead of
+        <code>ThreadSafe::Hash</code> for your concurrency-safe hash needs. It understands some
+        options when created (depending on your ruby platform) that control some of the
+        internals - when unsure just leave them out:</p>
+        <div class="highlight highlight-source-ruby"><pre><span class="pl-en">require</span> <span class="pl-s">'thread_safe'</span>
+
+        <span class="pl-s1">cache</span> <span class="pl-c1">=</span> <span class="pl-v">ThreadSafe</span>::<span class="pl-v">Cache</span><span class="pl-kos">.</span><span class="pl-en">new</span></pre></div>
+        <h2><a id="user-content-contributing" class="anchor" aria-hidden="true" href="#contributing"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Contributing</h2>
+        <ol>
+        <li>Fork it</li>
+        <li>Clone it (<code>git clone git@github.com:you/thread_safe.git</code>)</li>
+        <li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
+        <li>Build the jar (<code>rake jar</code>) NOTE: Requires JRuby</li>
+        <li>Install dependencies (<code>bundle install</code>)</li>
+        <li>Commit your changes (<code>git commit -am 'Added some feature'</code>)</li>
+        <li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+        <li>Create new Pull Request</li>
+        </ol>
+        </article></div>
+  recorded_at: Sun, 30 Aug 2020 21:40:34 GMT
+recorded_with: VCR 6.0.0

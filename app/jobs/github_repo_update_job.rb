@@ -83,12 +83,15 @@ class GithubRepoUpdateJob < ApplicationJob
 
   def update_readme_for_repo(repo)
     readme = client.fetch_readme repo.path, etag: repo.readme_etag
-    return unless readme
 
-    Github::Readme.find_or_initialize_by(path: repo.path).update!(
-      html: readme.html,
-      etag: readme.etag
-    )
+    if readme
+      Github::Readme.find_or_initialize_by(path: repo.path).update!(
+        html: readme.html,
+        etag: readme.etag
+      )
+    else
+      Github::Readme.where(path: repo.path).destroy_all
+    end
   end
 
   def trigger_project_updates(project_permalinks)
