@@ -5,6 +5,9 @@ class GithubClient
   class InvalidResponseStatus < StandardError; end
   class UnknownRepoError < StandardError; end
 
+  # Object for holding readme API data responses
+  ReadmeData = Struct.new(:html, :etag)
+
   DEFAULT_TIMEOUT = 15.seconds
   REPOSITORY_DATA_QUERY = Rails.root.join("app", "graphql-queries", "github", "repo.graphql").read
 
@@ -28,10 +31,32 @@ class GithubClient
     handle_repo_response response
   end
 
+  def fetch_readme(path, etag: nil)
+    response = authenticated_client.headers(
+      # We want pre-parsed html here to be as close to canonical rendering as possible
+      accept: "application/vnd.github.v3.html",
+      # Cache hits don't count against rate limits
+      "If-None-Match" => etag
+    ).follow.get("https://api.github.com/repos/#{path}/readme")
+
+    # Ignore cache hits and missing readmes
+    return if [304, 404].include? response.status
+
+    ensure_success! response.status
+
+    ReadmeData.new response.body.to_s, response.headers["Etag"]
+  end
+
   private
 
+  def ensure_success!(status)
+    return true if status == 200
+
+    raise InvalidResponseStatus, "status=#{status}"
+  end
+
   def handle_repo_response(response)
-    raise InvalidResponseStatus, "status=#{response.status}" unless response.status == 200
+    ensure_success! response.status
 
     parsed_body = Oj.load(response.body)
     handle_errors! parsed_body["errors"]
