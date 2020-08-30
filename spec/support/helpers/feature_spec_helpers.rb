@@ -39,7 +39,7 @@ module FeatureSpecHelpers
     page.find(".project-display-picker .is-active").text
   end
 
-  def expect_display_mode(label) # rubocop:disable Metrics/AbcSize It's good enough :)
+  def expect_display_mode(label)
     within(".project-display-picker .is-active") do
       expect(page).to have_text(label)
     end
