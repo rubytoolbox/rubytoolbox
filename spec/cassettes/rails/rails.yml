@@ -66,7 +66,6 @@ http_interactions:
     body:
       encoding: UTF-8
       string: ''
-    http_version: 
   recorded_at: Wed, 05 Dec 2018 13:43:50 GMT
 - request:
     method: post
@@ -151,6 +150,175 @@ http_interactions:
       encoding: UTF-8
       string: '{"data":{"repository":{"nameWithOwner":"rails/rails","forks":{"totalCount":16273},"stargazers":{"totalCount":41549},"watchers":{"totalCount":2652},"createdAt":"2008-04-11T02:19:47Z","defaultBranchRef":{"name":"master","target":{"history":{"edges":[{"node":{"authoredDate":"2018-12-05T04:30:43Z"}},{"node":{"authoredDate":"2018-12-05T04:24:20Z"}},{"node":{"authoredDate":"2018-12-05T00:55:22Z"}},{"node":{"authoredDate":"2018-12-05T00:03:27Z"}},{"node":{"authoredDate":"2018-12-04T23:48:35Z"}},{"node":{"authoredDate":"2018-11-29T03:40:41Z"}},{"node":{"authoredDate":"2018-12-04T21:50:44Z"}},{"node":{"authoredDate":"2018-12-04T19:05:36Z"}},{"node":{"authoredDate":"2018-12-04T19:04:04Z"}},{"node":{"authoredDate":"2018-12-04T18:45:45Z"}},{"node":{"authoredDate":"2018-12-04T18:40:05Z"}},{"node":{"authoredDate":"2018-12-04T18:34:44Z"}},{"node":{"authoredDate":"2018-12-04T18:05:53Z"}},{"node":{"authoredDate":"2018-12-04T16:48:40Z"}},{"node":{"authoredDate":"2018-12-04T12:46:00Z"}},{"node":{"authoredDate":"2018-12-03T09:52:59Z"}},{"node":{"authoredDate":"2018-12-04T06:48:22Z"}},{"node":{"authoredDate":"2018-12-04T06:47:00Z"}},{"node":{"authoredDate":"2018-12-04T05:33:31Z"}},{"node":{"authoredDate":"2018-12-03T22:24:29Z"}},{"node":{"authoredDate":"2018-12-04T00:40:46Z"}},{"node":{"authoredDate":"2018-12-03T16:02:18Z"}},{"node":{"authoredDate":"2018-12-03T15:47:50Z"}},{"node":{"authoredDate":"2018-12-03T11:41:13Z"}},{"node":{"authoredDate":"2018-12-03T08:58:10Z"}},{"node":{"authoredDate":"2018-12-03T10:57:27Z"}},{"node":{"authoredDate":"2018-12-02T20:50:00Z"}},{"node":{"authoredDate":"2018-12-03T09:12:14Z"}},{"node":{"authoredDate":"2018-12-03T02:39:54Z"}},{"node":{"authoredDate":"2018-12-03T02:13:39Z"}},{"node":{"authoredDate":"2018-12-03T01:16:02Z"}},{"node":{"authoredDate":"2018-12-03T00:36:01Z"}},{"node":{"authoredDate":"2018-12-02T23:29:57Z"}},{"node":{"authoredDate":"2018-12-02T20:01:28Z"}},{"node":{"authoredDate":"2018-12-02T19:50:05Z"}},{"node":{"authoredDate":"2018-12-02T19:47:36Z"}},{"node":{"authoredDate":"2018-12-01T19:59:16Z"}},{"node":{"authoredDate":"2018-12-02T17:10:03Z"}},{"node":{"authoredDate":"2018-12-01T22:48:24Z"}},{"node":{"authoredDate":"2018-12-01T21:25:02Z"}},{"node":{"authoredDate":"2018-12-01T17:47:54Z"}},{"node":{"authoredDate":"2018-12-01T09:06:52Z"}},{"node":{"authoredDate":"2018-12-01T08:44:28Z"}},{"node":{"authoredDate":"2018-12-01T06:18:32Z"}},{"node":{"authoredDate":"2018-12-01T00:12:55Z"}},{"node":{"authoredDate":"2018-11-30T22:37:00Z"}},{"node":{"authoredDate":"2018-11-30T18:40:27Z"}},{"node":{"authoredDate":"2018-11-30T18:17:33Z"}},{"node":{"authoredDate":"2018-11-30T16:42:44Z"}},{"node":{"authoredDate":"2018-11-30T16:39:12Z"}}]}}},"description":"Ruby
         on Rails","hasIssuesEnabled":true,"hasWikiEnabled":false,"homepageUrl":"https://rubyonrails.org","isArchived":false,"isFork":false,"isMirror":false,"licenseInfo":{"key":"mit"},"primaryLanguage":{"name":"Ruby"},"pushedAt":"2018-12-05T13:18:39Z","closedIssues":{"totalCount":11757},"openIssues":{"totalCount":329},"closedPullRequests":{"totalCount":7023},"openPullRequests":{"totalCount":686},"mergedPullRequests":{"totalCount":14730},"repositoryTopics":{"nodes":[{"topic":{"name":"rails"}},{"topic":{"name":"mvc"}},{"topic":{"name":"html"}},{"topic":{"name":"activerecord"}},{"topic":{"name":"activejob"}},{"topic":{"name":"ruby"}},{"topic":{"name":"framework"}}]},"codeOfConduct":{"name":"Other","url":"https://github.com/rails/rails/blob/master/CODE_OF_CONDUCT.md"}},"rateLimit":{"limit":5000,"cost":1,"remaining":1205,"resetAt":"2018-12-05T13:55:34Z"}}}'
-    http_version: 
   recorded_at: Wed, 05 Dec 2018 13:43:52 GMT
-recorded_with: VCR 4.0.0
+- request:
+    method: get
+    uri: https://api.github.com/repos/rails/rails/readme
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Authorization:
+      - bearer <GITHUB_TOKEN>
+      User-Agent:
+      - ruby-toolbox.com API client
+      Accept:
+      - application/vnd.github.v3.html
+      Connection:
+      - close
+      Host:
+      - api.github.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 30 Aug 2020 21:08:30 GMT
+      Content-Type:
+      - application/vnd.github.v3.html; charset=utf-8
+      Content-Length:
+      - '12610'
+      Connection:
+      - close
+      Server:
+      - GitHub.com
+      Status:
+      - 200 OK
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding
+      - Accept-Encoding, Accept, X-Requested-With
+      Etag:
+      - '"7151ed3021cfe8ec2cdb0f16765c127a"'
+      Last-Modified:
+      - Sun, 30 Aug 2020 12:58:39 GMT
+      X-Oauth-Scopes:
+      - ''
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; param=html
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4866'
+      X-Ratelimit-Reset:
+      - '1598823521'
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type, Deprecation, Sunset
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Github-Request-Id:
+      - 87A8:3477:7494946:8D50FFB:5F4C154E
+    body:
+      encoding: UTF-8
+      string: |-
+        <div id="readme" class="md" data-path="README.md"><article class="markdown-body entry-content container-lg" itemprop="text"><h1><a id="user-content-welcome-to-rails" class="anchor" aria-hidden="true" href="#welcome-to-rails"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Welcome to Rails</h1>
+        <h2><a id="user-content-whats-rails" class="anchor" aria-hidden="true" href="#whats-rails"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>What's Rails?</h2>
+        <p>Rails is a web-application framework that includes everything needed to
+        create database-backed web applications according to the
+        <a href="https://en.wikipedia.org/wiki/Model-view-controller" rel="nofollow">Model-View-Controller (MVC)</a>
+        pattern.</p>
+        <p>Understanding the MVC pattern is key to understanding Rails. MVC divides your
+        application into three layers: Model, View, and Controller, each with a specific responsibility.</p>
+        <h2><a id="user-content-model-layer" class="anchor" aria-hidden="true" href="#model-layer"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Model layer</h2>
+        <p>The <em><strong>Model layer</strong></em> represents the domain model (such as Account, Product,
+        Person, Post, etc.) and encapsulates the business logic specific to
+        your application. In Rails, database-backed model classes are derived from
+        <code>ActiveRecord::Base</code>. <a href="activerecord/README.rdoc">Active Record</a> allows you to present the data from
+        database rows as objects and embellish these data objects with business logic
+        methods.
+        Although most Rails models are backed by a database, models can also be ordinary
+        Ruby classes, or Ruby classes that implement a set of interfaces as provided by
+        the <a href="activemodel/README.rdoc">Active Model</a> module.</p>
+        <h2><a id="user-content-controller-layer" class="anchor" aria-hidden="true" href="#controller-layer"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Controller layer</h2>
+        <p>The <em><strong>Controller layer</strong></em> is responsible for handling incoming HTTP requests and
+        providing a suitable response. Usually, this means returning HTML, but Rails controllers
+        can also generate XML, JSON, PDFs, mobile-specific views, and more. Controllers load and
+        manipulate models, and render view templates in order to generate the appropriate HTTP response.
+        In Rails, incoming requests are routed by Action Dispatch to an appropriate controller, and
+        controller classes are derived from <code>ActionController::Base</code>. Action Dispatch and Action Controller
+        are bundled together in <a href="actionpack/README.rdoc">Action Pack</a>.</p>
+        <h2><a id="user-content-view-layer" class="anchor" aria-hidden="true" href="#view-layer"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>View layer</h2>
+        <p>The <em><strong>View layer</strong></em> is composed of "templates" that are responsible for providing
+        appropriate representations of your application's resources. Templates can
+        come in a variety of formats, but most view templates are HTML with embedded
+        Ruby code (ERB files). Views are typically rendered to generate a controller response
+        or to generate the body of an email. In Rails, View generation is handled by <a href="actionview/README.rdoc">Action View</a>.</p>
+        <h2><a id="user-content-frameworks-and-libraries" class="anchor" aria-hidden="true" href="#frameworks-and-libraries"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Frameworks and libraries</h2>
+        <p><a href="activerecord/README.rdoc">Active Record</a>, <a href="activemodel/README.rdoc">Active Model</a>, <a href="actionpack/README.rdoc">Action Pack</a>, and <a href="actionview/README.rdoc">Action View</a> can each be used independently outside Rails.
+        In addition to that, Rails also comes with <a href="actionmailer/README.rdoc">Action Mailer</a>, a library
+        to generate and send emails; <a href="actionmailbox/README.md">Action Mailbox</a>, a library to receive emails within a Rails application;
+        <a href="activejob/README.md">Active Job</a>, a framework for declaring jobs and making them run on a variety of queuing
+        backends; <a href="actioncable/README.md">Action Cable</a>, a framework to
+        integrate WebSockets with a Rails application; <a href="activestorage/README.md">Active Storage</a>, a library to attach cloud
+        and local files to Rails applications; <a href="actiontext/README.md">Action Text</a>, a library to handle rich text content;
+        and <a href="activesupport/README.rdoc">Active Support</a>, a collection
+        of utility classes and standard library extensions that are useful for Rails,
+        and may also be used independently outside Rails.</p>
+        <h2><a id="user-content-getting-started" class="anchor" aria-hidden="true" href="#getting-started"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Getting Started</h2>
+        <ol>
+        <li>
+        <p>Install Rails at the command prompt if you haven't yet:</p>
+        <pre><code> $ gem install rails
+        </code></pre>
+        </li>
+        <li>
+        <p>At the command prompt, create a new Rails application:</p>
+        <pre><code> $ rails new myapp
+        </code></pre>
+        <p>where "myapp" is the application name.</p>
+        </li>
+        <li>
+        <p>Change directory to <code>myapp</code> and start the web server:</p>
+        <pre><code> $ cd myapp
+         $ bin/rails server
+        </code></pre>
+        <p>Run with <code>--help</code> or <code>-h</code> for options.</p>
+        </li>
+        <li>
+        <p>Go to <code>http://localhost:3000</code> and you'll see:
+        "Yay! You’re on Rails!"</p>
+        </li>
+        <li>
+        <p>Follow the guidelines to start developing your application. You may find
+        the following resources handy:</p>
+        <ul>
+        <li><a href="https://guides.rubyonrails.org/getting_started.html" rel="nofollow">Getting Started with Rails</a></li>
+        <li><a href="https://guides.rubyonrails.org" rel="nofollow">Ruby on Rails Guides</a></li>
+        <li><a href="https://api.rubyonrails.org" rel="nofollow">The API Documentation</a></li>
+        </ul>
+        </li>
+        </ol>
+        <h2><a id="user-content-contributing" class="anchor" aria-hidden="true" href="#contributing"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Contributing</h2>
+        <p><a href="https://www.codetriage.com/rails/rails" rel="nofollow"><img src="https://camo.githubusercontent.com/04e058bfae9e9bbed506f71739e106f703bf41bc/68747470733a2f2f7777772e636f64657472696167652e636f6d2f7261696c732f7261696c732f6261646765732f75736572732e737667" alt="Code Triage Badge" data-canonical-src="https://www.codetriage.com/rails/rails/badges/users.svg" style="max-width:100%;"></a></p>
+        <p>We encourage you to contribute to Ruby on Rails! Please check out the
+        <a href="https://edgeguides.rubyonrails.org/contributing_to_ruby_on_rails.html" rel="nofollow">Contributing to Ruby on Rails guide</a> for guidelines about how to proceed. <a href="https://contributors.rubyonrails.org" rel="nofollow">Join us!</a></p>
+        <p>Trying to report a possible security vulnerability in Rails? Please
+        check out our <a href="https://rubyonrails.org/security/" rel="nofollow">security policy</a> for
+        guidelines about how to proceed.</p>
+        <p>Everyone interacting in Rails and its sub-projects' codebases, issue trackers, chat rooms, and mailing lists is expected to follow the Rails <a href="https://rubyonrails.org/conduct/" rel="nofollow">code of conduct</a>.</p>
+        <h2><a id="user-content-code-status" class="anchor" aria-hidden="true" href="#code-status"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Code Status</h2>
+        <p><a href="https://buildkite.com/rails/rails" rel="nofollow"><img src="https://camo.githubusercontent.com/3bf8e396f8d45a3ead95ff55e0ca1f1c14040211/68747470733a2f2f62616467652e6275696c646b6974652e636f6d2f61623131353262366131663661363164336561346563356233656563653864346332623833303939383435396337353335322e7376673f6272616e63683d6d6173746572" alt="Build Status" data-canonical-src="https://badge.buildkite.com/ab1152b6a1f6a61d3ea4ec5b3eece8d4c2b830998459c75352.svg?branch=master" style="max-width:100%;"></a></p>
+        <h2><a id="user-content-license" class="anchor" aria-hidden="true" href="#license"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>License</h2>
+        <p>Ruby on Rails is released under the <a href="https://opensource.org/licenses/MIT" rel="nofollow">MIT License</a>.</p>
+        </article></div>
+  recorded_at: Sun, 30 Aug 2020 21:08:31 GMT
+recorded_with: VCR 6.0.0
