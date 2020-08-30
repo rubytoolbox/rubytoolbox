@@ -5,7 +5,7 @@ class GithubClient
   class InvalidResponseStatus < StandardError; end
   class UnknownRepoError < StandardError; end
 
-  DEFAULT_TIMEOUT = 5.seconds
+  DEFAULT_TIMEOUT = 15.seconds
   REPOSITORY_DATA_QUERY = Rails.root.join("app", "graphql-queries", "github", "repo.graphql").read
 
   attr_accessor :token, :http_client
@@ -25,12 +25,12 @@ class GithubClient
     owner, name = path.split("/")
     body = { query: REPOSITORY_DATA_QUERY, variables: { owner: owner, name: name } }
     response = authenticated_client.post "https://api.github.com/graphql", body: Oj.dump(body, mode: :compat)
-    handle_response response
+    handle_repo_response response
   end
 
   private
 
-  def handle_response(response)
+  def handle_repo_response(response)
     raise InvalidResponseStatus, "status=#{response.status}" unless response.status == 200
 
     parsed_body = Oj.load(response.body)
