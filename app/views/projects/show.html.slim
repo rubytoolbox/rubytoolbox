@@ -21,7 +21,6 @@
 
   .columns: .column= project_health_tags @project
 
-
   .columns: .links.column
     = project_links @project
 
@@ -38,4 +37,4 @@
 section.section: .container: .project
   = project_metrics @project, expanded_view: true
 
-section.section: .container
+= project_readme @project.github_repo_readme
