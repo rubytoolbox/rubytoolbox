@@ -144,6 +144,7 @@ GEM
       ruby_parser (~> 3.10)
     hashdiff (1.0.1)
     high_voltage (3.1.2)
+    htmlentities (4.3.4)
     http (4.4.1)
       addressable (~> 2.3)
       http-cookie (~> 1.0)
@@ -199,6 +200,8 @@ GEM
     nio4r (2.5.3)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
+    nokogumbo (2.0.2)
+      nokogiri (~> 1.8, >= 1.8.4)
     notiffany (0.1.3)
       nenv (~> 0.1)
       shellany (~> 0.0)
@@ -330,6 +333,10 @@ GEM
     ruby_parser (3.14.1)
       sexp_processor (~> 4.9)
     rubyzip (2.3.0)
+    sanitize (5.2.1)
+      crass (~> 1.0.2)
+      nokogiri (>= 1.8.0)
+      nokogumbo (~> 2.0)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -379,6 +386,9 @@ GEM
     thread_safe (0.3.6)
     tilt (2.0.10)
     timecop (0.9.1)
+    truncato (0.7.11)
+      htmlentities (~> 4.3.1)
+      nokogiri (>= 1.7.0, <= 2.0)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
@@ -470,6 +480,7 @@ DEPENDENCIES
   rubocop-performance
   rubocop-rails
   rubocop-rspec
+  sanitize
   sass-rails (~> 5.0)
   selenium-webdriver
   sidekiq
@@ -478,6 +489,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   timecop
+  truncato
   turbolinks (~> 5)
   tzinfo-data
   uglifier (>= 1.3.0)
