@@ -210,7 +210,7 @@ GEM
     parallel (1.19.2)
     parser (2.7.1.4)
       ast (~> 2.4.1)
-    percy-capybara (4.2.0)
+    percy-capybara (4.3.2)
     pg (0.21.0)
     pg_search (2.3.2)
       activerecord (>= 5.2)
