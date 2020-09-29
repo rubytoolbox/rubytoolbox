@@ -16,7 +16,7 @@ class RubygemDownloadsPersistenceJob < ApplicationJob
   def perform # rubocop:disable Metrics/MethodLength It's a simple method, the SQL code is just lengthy
     return unless should_run?
 
-    upsert_sql = <<~SQL
+    upsert_sql = <<~SQL.squish
       INSERT INTO
         rubygem_download_stats (rubygem_name, total_downloads, date)
         SELECT

@@ -33,7 +33,7 @@ module ComponentHelpers
         value: project.public_send(metric),
         icon:  metric_icon(metric),
       }
-    end.inject(&:+)
+    end.sum
   end
 
   def project_link(label, url, icon:)

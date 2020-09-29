@@ -66,11 +66,14 @@ class GithubRepoUpdateJob < ApplicationJob
     end
   end
 
+  # Put it in a constant so we don't have to re-initialize the array all the time
+  FALSY_VALUES = [false, []]
+
   def mapped_attributes(info)
     ATTRIBUTE_MAPPING.each_with_object({}) do |(remote_name, local_name), mapped|
       value = info.public_send remote_name
       # Ensure we keep true falses and empty arrays around
-      mapped[local_name] = [false, []].include?(value) ? value : value.presence
+      mapped[local_name] = FALSY_VALUES.include?(value) ? value : value.presence
     end
   end
 

@@ -55,7 +55,7 @@ class CreateGemTrendsColumnsAndCalculationTrigger < ActiveRecord::Migration[5.2]
 
   def difference_to_previous_trigger_sql(name, distance_in_days)
     lambda do
-      <<~SQL
+      <<~SQL.squish
         SELECT total_downloads, relative_change_#{name} INTO previous_downloads, previous_relative_change
           FROM rubygem_download_stats
           WHERE

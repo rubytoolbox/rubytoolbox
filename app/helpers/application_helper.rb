@@ -42,7 +42,7 @@ module ApplicationHelper
   # in metrics docs pages without too much repetition of in-view logic
   #
   # rubocop:disable Metrics/ParameterLists It's not great but I'm ok with it here
-  def project_ranking(title, scope: Project.for_display, table:, column:, direction: "DESC", description: nil)
+  def project_ranking(title, table:, column:, scope: Project.for_display, direction: "DESC", description: nil)
     projects = scope.order("#{table}.#{column} #{direction} NULLS LAST").limit(100)
     metrics = if table == :github_repos
                 ["github_repo_stargazers_count", "github_repo_#{column}"].uniq
