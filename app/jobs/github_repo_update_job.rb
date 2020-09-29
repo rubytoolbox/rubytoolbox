@@ -67,7 +67,7 @@ class GithubRepoUpdateJob < ApplicationJob
   end
 
   # Put it in a constant so we don't have to re-initialize the array all the time
-  FALSY_VALUES = [false, []]
+  FALSY_VALUES = [false, []].freeze
 
   def mapped_attributes(info)
     ATTRIBUTE_MAPPING.each_with_object({}) do |(remote_name, local_name), mapped|
