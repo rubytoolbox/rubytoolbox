@@ -34,11 +34,31 @@
     {
       "warning_type": "SQL Injection",
       "warning_code": 0,
+      "fingerprint": "3b30c684464ba27e92f7cfaddc9fb2e37ed5d1f0be6e8d7e3adf5ed48b4cf537",
+      "check_name": "SQL",
+      "message": "Possible SQL injection",
+      "file": "app/jobs/rubygem_downloads_persistence_job.rb",
+      "line": 33,
+      "link": "https://brakemanscanner.org/docs/warning_types/sql_injection/",
+      "code": "ActiveRecord::Base.connection.execute(\"      INSERT INTO\\n        rubygem_download_stats (rubygem_name, total_downloads, date)\\n        SELECT\\n          name AS rubygem_name,\\n          downloads AS total_downloads,\\n          DATE '#{date}' as date\\n        FROM   rubygems\\n\\n      ON CONFLICT (rubygem_name, date) DO UPDATE\\n      SET\\n        total_downloads = excluded.total_downloads\\n\".squish)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "RubygemDownloadsPersistenceJob",
+        "method": "perform"
+      },
+      "user_input": "date",
+      "confidence": "Medium",
+      "note": ""
+    },
+    {
+      "warning_type": "SQL Injection",
+      "warning_code": 0,
       "fingerprint": "8bd210047c33be0b52621fdc5efcb3b8e410d877bdd874c8ee343d2c4d4bec03",
       "check_name": "SQL",
       "message": "Possible SQL injection",
       "file": "app/helpers/application_helper.rb",
-      "line": 45,
+      "line": 46,
       "link": "https://brakemanscanner.org/docs/warning_types/sql_injection/",
       "code": "scope.order(\"#{table}.#{column} #{direction} NULLS LAST\")",
       "render_path": null,
@@ -72,26 +92,6 @@
       "note": "It's shielded by projects in the db, not random user input"
     },
     {
-      "warning_type": "SQL Injection",
-      "warning_code": 0,
-      "fingerprint": "d91c64245c5fed804126a55490545b37d426f06510bfabfc788db5b2c7f4b3d7",
-      "check_name": "SQL",
-      "message": "Possible SQL injection",
-      "file": "app/jobs/rubygem_downloads_persistence_job.rb",
-      "line": 33,
-      "link": "https://brakemanscanner.org/docs/warning_types/sql_injection/",
-      "code": "ActiveRecord::Base.connection.execute(\"      INSERT INTO\\n        rubygem_download_stats (rubygem_name, total_downloads, date)\\n        SELECT\\n          name AS rubygem_name,\\n          downloads AS total_downloads,\\n          DATE '#{date}' as date\\n        FROM   rubygems\\n\\n      ON CONFLICT (rubygem_name, date) DO UPDATE\\n      SET\\n        total_downloads = excluded.total_downloads\\n\")",
-      "render_path": null,
-      "location": {
-        "type": "method",
-        "class": "RubygemDownloadsPersistenceJob",
-        "method": "perform"
-      },
-      "user_input": "date",
-      "confidence": "Medium",
-      "note": "The variable is sourced from time current, not from user input"
-    },
-    {
       "warning_type": "Redirect",
       "warning_code": 18,
       "fingerprint": "d97a1e1c0d455e1c36c99d03c57ebb2864e179204eb85027acbe366f39767e40",
@@ -112,6 +112,6 @@
       "note": "It's shielded by categories in the db, not random user input"
     }
   ],
-  "updated": "2020-04-28 22:32:19 +0200",
-  "brakeman_version": "4.8.1"
+  "updated": "2020-09-29 21:00:22 +0200",
+  "brakeman_version": "4.9.1"
 }

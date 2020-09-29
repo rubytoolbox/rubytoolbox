@@ -2,7 +2,7 @@
 
 class AddCheckConstraintOnProjectGemReference < ActiveRecord::Migration[5.1]
   def self.up
-    execute <<~SQL
+    execute <<~SQL.squish
       ALTER TABLE
         projects
       ADD CONSTRAINT

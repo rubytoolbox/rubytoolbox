@@ -80,8 +80,9 @@ RSpec.describe Project::Health, type: :model do
     end
 
     it "returns yellow if worst matching check is yellow" do
+      relevant_levels = %i[yellow green]
       health.checks.each do |check|
-        next unless %i[yellow green].include? check.level
+        next unless relevant_levels.include? check.level
 
         allow(check).to receive(:applies?).and_return(true)
       end
