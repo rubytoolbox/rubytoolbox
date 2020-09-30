@@ -26,6 +26,19 @@ RSpec.describe Project, type: :model do
     end
   end
 
+  describe ".find_for_show!" do
+    let(:project) do
+      Factories.project "sample"
+    end
+
+    it "eager-loads readme if present" do
+      project.github_repo.create_readme! html: "hello world", etag: "1234"
+
+      found_instance = described_class.find_for_show!(project.permalink)
+      expect { found_instance.github_repo_readme }.not_to make_database_queries
+    end
+  end
+
   describe ".with_bugfix_forks" do
     before do
       Factories.project "regular"

@@ -1,0 +1,12 @@
+.hero
+  section.section: .container
+    p.heading= link_to "Ruby Toolbox UI Components Styleguide", "/pages/components"
+    h2= current_page.split("/").last.humanize
+
+- readme = Github::Readme.new(html: "<h1>Hello World!</h1><p>Hello World</p>")
+
+= component_example "Project README" do
+  = project_readme readme
+
+= component_example "Project README is not present" do
+  = project_readme nil

@@ -55,6 +55,10 @@ module ComponentHelpers
     render "components/project_health_tag", status: health_status
   end
 
+  def project_readme(readme)
+    render "components/project/readme", readme: readme
+  end
+
   def small_health_indicator(project)
     render "components/small_health_indicator", project: project
   end

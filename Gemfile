@@ -61,6 +61,9 @@ gem "http"
 
 gem "sidekiq"
 
+gem "sanitize"
+gem "truncato"
+
 gem "redcarpet"
 gem "slim-rails"
 
