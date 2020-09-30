@@ -55,15 +55,13 @@ class Github::Readme < ApplicationRecord
              foreign_key: :path,
              inverse_of:  :readme
 
-  def sanitized_html
-    return if html.blank?
-
-    Sanitize.fragment(html, Sanitize::Config::RELAXED).html_safe # rubocop:disable Rails/OutputSafety
+  def html=(html)
+    super Scrubber.scrub(html, base_url: github_repo&.blob_url)
   end
 
   def truncated_html(limit: 2000)
     return if html.blank?
 
-    Truncato.truncate(sanitized_html, max_length: limit).html_safe # rubocop:disable Rails/OutputSafety
+    Truncato.truncate(html, max_length: limit)
   end
 end

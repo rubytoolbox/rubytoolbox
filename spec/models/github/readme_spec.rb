@@ -3,27 +3,32 @@
 require "rails_helper"
 
 RSpec.describe Github::Readme, type: :model do
-  let(:model) do
-    described_class.new(
-      html: "<p>Hello World</p>",
-      etag: "123123"
+  let(:repo) do
+    GithubRepo.new(
+      path:           "foo/bar",
+      default_branch: "main"
     )
   end
 
-  describe "#sanitized_html" do
-    it "is nil when html is empty" do
-      model.html = " "
-      expect(model.sanitized_html).to be nil
-    end
+  let(:model) do
+    described_class.new(
+      html:        "<p>Hello World</p>",
+      etag:        "123123",
+      github_repo: repo
+    )
+  end
 
-    it "cleans weird html content" do
-      model.html = %q{<a href="/" onclick="alert('lol');">Hello</a>}
-      expect(model.sanitized_html).to be == '<a href="/">Hello</a>'
-    end
+  describe "html=" do
+    it "passes the input through the scrubber" do
+      base_url = "https://example.com/foo"
+      allow(model.github_repo).to receive(:blob_url).and_return(base_url)
+      allow(Github::Readme::Scrubber).to receive(:scrub)
+        .with("input html", base_url: base_url)
+        .and_return("scrubbed")
 
-    it "returns html_safe string" do
-      model.html = "<em>Foo</em>"
-      expect(model.sanitized_html).to be_html_safe
+      model.html = "input html"
+
+      expect(model.html).to be == "scrubbed"
     end
   end
 
@@ -33,14 +38,9 @@ RSpec.describe Github::Readme, type: :model do
       expect(model.truncated_html).to be nil
     end
 
-    it "returns sanitized, truncated html" do
-      model.html = %q{<a href="/" onclick="alert('lol');">Hello</a><p>More</p>}
-      expect(model.truncated_html(limit: 20)).to be == "<a href='/'>Hello</a>..."
-    end
-
-    it "returns html_safe string" do
-      model.html = "<em>Foo</em>"
-      expect(model.truncated_html).to be_html_safe
+    it "returns truncated html" do
+      model.html = '<a href="https://example.com">Hello</a><p>More</p>'
+      expect(model.truncated_html(limit: 40)).to be == "<a href='https://example.com'>Hello</a><p>...</p>"
     end
   end
 
