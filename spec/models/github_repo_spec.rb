@@ -55,6 +55,16 @@ RSpec.describe GithubRepo, type: :model do
     end
   end
 
+  describe "#blob_url" do
+    it "is derived from the repo path and default_branch" do
+      expect(described_class.new(path: "foo/bar", default_branch: "main").blob_url).to be == "https://github.com/foo/bar/blob/main"
+    end
+
+    it "is nil when there is no default_branch" do
+      expect(described_class.new(path: "foo/bar", default_branch: nil).blob_url).to be nil
+    end
+  end
+
   describe "#wiki_url" do
     it "is nil when has_wiki is false" do
       expect(described_class.new(has_wiki: false).wiki_url).to be_nil

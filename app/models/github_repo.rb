@@ -45,6 +45,12 @@ class GithubRepo < ApplicationRecord
     File.join "https://github.com", path
   end
 
+  def blob_url
+    return unless default_branch
+
+    File.join url, "blob", default_branch
+  end
+
   def issues_url
     File.join(url, "issues") if has_issues?
   end
