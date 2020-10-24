@@ -31,14 +31,14 @@ RSpec.describe "Trending Projects", type: :feature, js: true do
     expect(page).to have_selector(".category-card", count: 2)
     expect(visible_project_names).to be == %w[widget foobar]
 
-    within '.top-navigation' do
+    within ".top-navigation" do
       page.find(".button.previous_week").click
     end
 
     expect(page).to have_selector(".category-card", count: 1)
     expect(visible_project_names).to be == %w[other]
 
-    within '.top-navigation' do
+    within ".top-navigation" do
       click_on "Go to latest"
     end
 
