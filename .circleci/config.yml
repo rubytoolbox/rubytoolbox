@@ -35,7 +35,7 @@ jobs:
   prepare:
     working_directory: ~/repo
     docker:
-       - image: circleci/ruby:2.7.1-node-browsers
+       - image: circleci/ruby:2.7.2-node-browsers
 
     steps:
       - checkout
@@ -66,7 +66,7 @@ jobs:
     working_directory: ~/repo
 
     docker:
-       - image: circleci/ruby:2.7.1-node-browsers
+       - image: circleci/ruby:2.7.2-node-browsers
        - image: circleci/postgres:12.1-alpine-ram
          environment:
            # Required by the postgres image to setup the appropriate database and user on launch
@@ -103,7 +103,7 @@ jobs:
     working_directory: ~/repo
 
     docker:
-       - image: circleci/ruby:2.7.1-node-browsers
+       - image: circleci/ruby:2.7.2-node-browsers
 
     steps:
       - prepare_repo
@@ -113,7 +113,7 @@ jobs:
     working_directory: ~/repo
 
     docker:
-       - image: circleci/ruby:2.7.1-node-browsers
+       - image: circleci/ruby:2.7.2-node-browsers
 
     steps:
       - prepare_repo
@@ -123,7 +123,7 @@ jobs:
     working_directory: ~/repo
 
     docker:
-       - image: circleci/ruby:2.7.1-node-browsers
+       - image: circleci/ruby:2.7.2-node-browsers
 
     steps:
       - prepare_repo
