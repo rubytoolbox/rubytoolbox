@@ -94,10 +94,10 @@ RSpec.describe GithubClient, :real_http do
     describe "for existing repo", vcr: { cassette_name: "github/readme/existing" } do
       it_behaves_like "a readme response", "rspec/rspec"
 
-      it "returns nil on etag cache hit" do
+      it "raises CacheHit on etag cache hit" do
         etag = client.fetch_readme("rspec/rspec").etag
 
-        expect(client.fetch_readme("rspec/rspec", etag: etag)).to be nil
+        expect { client.fetch_readme("rspec/rspec", etag: etag) }.to raise_error(described_class::CacheHit)
       end
     end
 
