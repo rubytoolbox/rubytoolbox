@@ -9,7 +9,7 @@
           Discover libraries that are gaining popularity within the Ruby community. You can [find an overview of how we calculate these in our documentation](/pages/docs/features/trending_projects).
 
 section.section: .container
-  .columns.is-multiline
+  .top-navigation.columns.is-multiline
     .column.is-one-third-desktop
       .buttons.has-addons
         - %w[year month week].each do |timeframe|
@@ -35,3 +35,25 @@ section.section: .container
     - @trends.each do |trend|
       .category-cards.three
         = trending_project_card trend
+
+section.section: .container
+  .bottom-navigation.columns.is-multiline
+    .column.is-one-third-desktop
+      .buttons.has-addons
+        - %w[year month week].each do |timeframe|
+          = link_to trend_path(@navigation.public_send("previous_#{timeframe}") || "#"), class: "button previous_#{timeframe}", disabled: !@navigation.public_send("previous_#{timeframe}") do
+            span.icon: i.fa.fa-caret-left
+            span= "1 #{timeframe}"
+
+    .column.is-one-third-desktop.has-text-centered
+      - unless @navigation.latest?
+        = link_to trend_path(@navigation.latest_date), class: "button" do
+          span.icon: i.fa.fa-calendar-o
+          strong Go to latest
+
+    .column.is-one-third-desktop
+      .buttons.has-addons.is-right
+        - %w[week month year].each do |timeframe|
+          = link_to trend_path(@navigation.public_send("next_#{timeframe}") || "#"), class: "button next_#{timeframe}", disabled: !@navigation.public_send("next_#{timeframe}")
+            span= "1 #{timeframe}"
+            span.icon: i.fa.fa-caret-right
