@@ -117,6 +117,19 @@ RSpec.describe GithubRepoUpdateJob, type: :job do
         expect { do_perform }.to change { Github::Readme.find_by(path: repo_path) }.to(nil)
       end
     end
+
+    describe "when cache is hit" do
+      before do
+        allow(faked_github_client).to receive(:fetch_readme).and_raise GithubClient::CacheHit
+      end
+
+      it "keeps around existing readme record" do
+        do_perform
+        readme = Github::Readme.create! path: repo_path, html: "123", etag: "123"
+
+        expect { do_perform }.not_to change { Github::Readme.find_by(path: repo_path) }.from(readme)
+      end
+    end
   end
 end
 # rubocop:enable RSpec/MultipleMemoizedHelpers

@@ -84,7 +84,7 @@ class GithubRepoUpdateJob < ApplicationJob
     nil
   end
 
-  def update_readme_for_repo(repo)
+  def update_readme_for_repo(repo) # rubocop:disable Metrics/MethodLength
     readme = client.fetch_readme repo.path, etag: repo.readme_etag
 
     if readme
@@ -95,6 +95,8 @@ class GithubRepoUpdateJob < ApplicationJob
     else
       Github::Readme.where(path: repo.path).destroy_all
     end
+  rescue GithubClient::CacheHit
+    Rails.logger.info "Hit cache for #{repo.path} README, nothing to do"
   end
 
   def trigger_project_updates(project_permalinks)

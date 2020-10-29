@@ -4,6 +4,7 @@ class GithubClient
   class InvalidResponse < StandardError; end
   class InvalidResponseStatus < StandardError; end
   class UnknownRepoError < StandardError; end
+  class CacheHit < StandardError; end
 
   # Object for holding readme API data responses
   ReadmeData = Struct.new(:html, :etag)
@@ -39,8 +40,9 @@ class GithubClient
       "If-None-Match" => etag
     ).follow.get("https://api.github.com/repos/#{path}/readme")
 
-    # Ignore cache hits and missing readmes
-    return if [304, 404].include? response.status
+    raise CacheHit if response.status == 304
+    # Ignore missing readmes
+    return if response.status == 404
 
     ensure_success! response.status
 
