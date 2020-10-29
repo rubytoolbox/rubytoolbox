@@ -214,7 +214,7 @@ GEM
       ast (~> 2.4.1)
     percy-capybara (4.3.3)
     pg (0.21.0)
-    pg_search (2.3.3)
+    pg_search (2.3.4)
       activerecord (>= 5.2)
       activesupport (>= 5.2)
     pghero (2.7.2)
