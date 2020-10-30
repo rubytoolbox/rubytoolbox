@@ -6,6 +6,7 @@
     "bulma": "^0.7.0",
     "bulma-tooltip": "^2.0.2",
     "chart.js": "^2.7.3",
+    "github-syntax-light": "^0.5.0",
     "headroom.js": "^0.9.4",
     "javascript-autocomplete": "^1.0.3"
   },
