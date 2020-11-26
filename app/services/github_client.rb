@@ -2,8 +2,11 @@
 
 class GithubClient
   class InvalidResponse < StandardError; end
+
   class InvalidResponseStatus < StandardError; end
+
   class UnknownRepoError < StandardError; end
+
   class CacheHit < StandardError; end
 
   # Object for holding readme API data responses
