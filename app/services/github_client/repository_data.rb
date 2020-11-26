@@ -122,7 +122,7 @@ class GithubClient
       return unless edges
 
       dates = edges.map { |edge| Time.zone.parse edge.dig("node", "authoredDate") }
-      Time.zone.at dates.map(&:to_i).sum / dates.count
+      Time.zone.at dates.sum(&:to_i) / dates.count
     end
 
     def topics

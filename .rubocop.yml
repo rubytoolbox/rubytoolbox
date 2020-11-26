@@ -23,6 +23,10 @@ Rails/FilePath:
   # This used to be the default, so here it stays the default...
   EnforcedStyle: arguments
 
+Rails/HttpStatus:
+  # This is more clear to me at a glance
+  EnforcedStyle: numeric
+
 # Reads best in my humble opinion
 Layout/HashAlignment:
   EnforcedColonStyle: table
@@ -72,6 +76,10 @@ RSpec/MultipleExpectations:
 # Prefer structure over small indentation
 RSpec/NestedGroups:
   Max: 5
+
+# This can lead to more verbose specs without a tangible benefit
+RSpec/StubbedMock:
+  Enabled: false
 
 # See https://github.com/rubocop-hq/rubocop/issues/5953#issuecomment-399973424
 # Making attr_accessor & friends private inline is more concise

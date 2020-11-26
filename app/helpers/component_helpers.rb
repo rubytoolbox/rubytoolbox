@@ -27,13 +27,13 @@ module ComponentHelpers
   end
 
   def metrics_row(project, *metrics)
-    metrics.map do |metric|
+    metrics.sum do |metric|
       render partial: "components/project/metric", locals: {
         key:   metric,
         value: project.public_send(metric),
         icon:  metric_icon(metric),
       }
-    end.sum
+    end
   end
 
   def project_link(label, url, icon:)
@@ -93,8 +93,7 @@ module ComponentHelpers
 
     tooltip = "#{quarter.ordinalize} quarter #{year}: #{count} #{'release'.pluralize(count)}"
 
-    tag.li(class: "tooltip is-tooltip-bottom #{rank}", "data-tooltip" => tooltip) do
-    end
+    tag.li class: "tooltip is-tooltip-bottom #{rank}", "data-tooltip" => tooltip
   end
 
   def trending_project_card(trend)
