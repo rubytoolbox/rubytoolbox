@@ -58,7 +58,7 @@ RSpec.describe CategoriesController, type: :controller do
       it "passes a project order instance to Category.find_for_show!" do
         order = Project::Order.new(order: "rubygem_downloads")
         allow(Project::Order).to receive(:new).with(order: "rubygem_downloads").and_return(order)
-        expect(Category).to receive(:find_for_show!).with(category.id, order: order).and_call_original
+        expect(Category).to receive(:find_for_show!).with(category.id, order: order).and_return(Category.first)
         get :show, params: { id: category.id, order: "rubygem_downloads" }
       end
 
@@ -71,7 +71,7 @@ RSpec.describe CategoriesController, type: :controller do
         end
       end
 
-      it_behaves_like "pickable project display listing", default: "full"
+      it_behaves_like "pickable project display listing", "full"
     end
   end
 end

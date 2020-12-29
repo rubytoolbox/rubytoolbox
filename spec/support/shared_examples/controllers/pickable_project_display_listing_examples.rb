@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.shared_examples_for "pickable project display listing" do |default:|
+RSpec.shared_examples_for "pickable project display listing" do |default|
   describe "display_mode" do
     it "assigns '#{default}' by default" do
       do_request
