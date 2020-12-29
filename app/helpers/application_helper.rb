@@ -144,7 +144,7 @@ module ApplicationHelper
   end
 
   def active_when(controller:)
-    "is-active" if controller_name == controller.to_s
+    "is-active" if controller_name.to_s == controller.to_s
   end
 end
 # rubocop:enable Rails/HelperInstanceVariable

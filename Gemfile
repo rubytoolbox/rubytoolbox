@@ -11,7 +11,7 @@ gem "rails", "~> 6.1.0"
 
 # Use postgresql as the database for Active Record
 gem "hairtrigger"
-gem "pg", "~> 0.18"
+gem "pg"
 gem "pg_search"
 
 gem "kaminari"
