@@ -101,6 +101,10 @@ RSpec.describe ApplicationHelper, type: :helper do
   end
 
   describe "#active_when" do
+    before do
+      allow(helper).to receive(:controller_name).and_return("test")
+    end
+
     it "is 'is-active' when given controller matches current controller name" do
       expect(helper.active_when(controller: "test")).to be == "is-active"
     end

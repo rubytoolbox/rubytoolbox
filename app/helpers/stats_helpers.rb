@@ -33,7 +33,7 @@ module StatsHelpers
     SQL
 
     ApplicationRecord.connection.execute(query)
-                     .map { |row| [Date.parse(row["year"]).year, row["events"]] }
+                     .map { |row| [row["year"].year, row["events"]] }
                      .select { |row| (2004..Time.current.year).cover? row.first }
                      .to_h
   end
