@@ -7,7 +7,7 @@ ruby File.read(File.join(__dir__, ".ruby-version")).strip
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem "rails", "~> 6.0.2"
+gem "rails", "~> 6.1.0"
 
 # Use postgresql as the database for Active Record
 gem "hairtrigger"
@@ -28,7 +28,7 @@ gem "uglifier", ">= 1.3.0"
 # Heroku ruby buildpack installs yarn only when webpacker gem is detected...
 gem "webpacker", require: false
 
-gem "font-awesome-rails", "~> 4.7"
+gem "font-awesome-rails", ">= 4.7", github: "bokmann/font-awesome-rails", branch: "master"
 
 gem "addressable"
 
