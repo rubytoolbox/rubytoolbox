@@ -45,7 +45,7 @@ gem "foreman", require: false
 gem "dotenv-rails"
 
 # https://github.com/appsignal/appsignal-ruby/issues/673
-# gem "appsignal"
+gem "appsignal"
 
 gem "forgery"
 
