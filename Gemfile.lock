@@ -74,7 +74,7 @@ GEM
       rack
     ast (2.4.1)
     bindex (0.8.1)
-    blueprinter (0.25.1)
+    blueprinter (0.25.2)
     bootsnap (1.5.1)
       msgpack (~> 1.0)
     brakeman (4.10.1)
