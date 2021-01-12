@@ -8,14 +8,10 @@ on:
 jobs:
   bundler-audit:
     runs-on: ubuntu-latest
-    container: circleci/ruby:3.0.0-node-browsers
     strategy:
       fail-fast: false
 
     steps:
-    # See https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/migrating-from-circleci-to-github-actions
-    - name: Setup file system permissions
-      run: sudo chmod -R 777 $GITHUB_WORKSPACE /github /__w/_temp
     - uses: actions/checkout@v2
     - name: Restore dependency cache
       uses: actions/cache@v2
@@ -37,14 +33,10 @@ jobs:
 
   brakeman:
     runs-on: ubuntu-latest
-    container: circleci/ruby:3.0.0-node-browsers
     strategy:
       fail-fast: false
 
     steps:
-    # See https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/migrating-from-circleci-to-github-actions
-    - name: Setup file system permissions
-      run: sudo chmod -R 777 $GITHUB_WORKSPACE /github /__w/_temp
     - uses: actions/checkout@v2
     - name: Restore dependency cache
       uses: actions/cache@v2
@@ -66,14 +58,10 @@ jobs:
 
   rubocop:
     runs-on: ubuntu-latest
-    container: circleci/ruby:3.0.0-node-browsers
     strategy:
       fail-fast: false
 
     steps:
-    # See https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/migrating-from-circleci-to-github-actions
-    - name: Setup file system permissions
-      run: sudo chmod -R 777 $GITHUB_WORKSPACE /github /__w/_temp
     - uses: actions/checkout@v2
     - name: Restore dependency cache
       uses: actions/cache@v2
@@ -95,14 +83,10 @@ jobs:
 
   rspec:
     runs-on: ubuntu-latest
-    container: circleci/ruby:3.0.0-node-browsers
     strategy:
       fail-fast: false
 
     steps:
-    # See https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/migrating-from-circleci-to-github-actions
-    - name: Setup file system permissions
-      run: sudo chmod -R 777 $GITHUB_WORKSPACE /github /__w/_temp
     - uses: actions/checkout@v2
     - name: Restore dependency cache
       uses: actions/cache@v2
