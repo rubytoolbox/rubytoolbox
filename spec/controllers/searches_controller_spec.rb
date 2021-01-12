@@ -8,7 +8,7 @@ RSpec.describe SearchesController, type: :controller do
       get :show, params: { q: query, order: order, show_forks: show_forks, display: display }
     end
 
-    it_behaves_like "pickable project display listing", default: "compact"
+    it_behaves_like "pickable project display listing", "compact"
 
     it "returns http success" do
       Factories.project "foobar"
@@ -40,11 +40,13 @@ RSpec.describe SearchesController, type: :controller do
     end
 
     it "passes query, a project order instance and show_forks status to Search.new" do
+      search = Search.new("hello world")
       order = Project::Order.new(order: "rubygem_downloads")
       allow(Project::Order).to receive(:new)
         .with(order: "rubygem_downloads", directions: Project::Order::SEARCH_DIRECTIONS)
         .and_return(order)
-      expect(Search).to receive(:new).with("hello world", order: order, show_forks: false).and_call_original
+      expect(Search).to receive(:new).with("hello world", order: order, show_forks: false)
+                                     .and_return(search)
       do_request query: "hello world", order: "rubygem_downloads"
     end
 
@@ -55,7 +57,7 @@ RSpec.describe SearchesController, type: :controller do
           order:      kind_of(Project::Order),
           show_forks: true
         )
-        .and_call_original
+        .and_return(Search.new("hello world"))
       do_request query: "hello world", order: "rubygem_downloads", show_forks: true
     end
 

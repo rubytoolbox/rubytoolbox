@@ -6,7 +6,7 @@
 - categories = Category.limit(8).includes(:projects)
 
 = documentation_page "Example Title" do
-  = bar_chart 20 => 30
+  = bar_chart({20 => 30})
 
   article.blog-post
     markdown:

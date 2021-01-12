@@ -64,14 +64,16 @@ RSpec.describe Blog, type: :model do
 
     describe "caching behaviour" do
       it "reloads posts every time by default" do
-        expect(described_class::PostLoader).to receive(:new).exactly(4).times.and_call_original
+        loader = described_class::PostLoader.new(path: Dir[root.join("*.md")].first)
+        expect(described_class::PostLoader).to receive(:new).exactly(4).times.and_return(loader)
         blog.posts
         blog.posts
       end
 
       it "does not reload posts in caching mode" do
+        loader = described_class::PostLoader.new(path: Dir[root.join("*.md")].first)
         blog = described_class.new root: root, cache: true
-        expect(described_class::PostLoader).to receive(:new).twice.and_call_original
+        expect(described_class::PostLoader).to receive(:new).twice.and_return(loader)
         blog.posts
         blog.posts
       end
