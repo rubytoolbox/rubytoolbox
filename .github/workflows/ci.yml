@@ -86,6 +86,20 @@ jobs:
     strategy:
       fail-fast: false
 
+    # https://docs.github.com/en/free-pro-team@latest/actions/guides/about-service-containers#creating-service-containers
+    services:
+      redis:
+        image: circleci/redis:latest
+        ports:
+          - 6379:6379
+      postgres:
+        image: circleci/postgres:12.1-alpine-ram
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_DB: test
+
     steps:
     - uses: actions/checkout@v2
     - name: Restore dependency cache
@@ -99,11 +113,15 @@ jobs:
           ${{ runner.os }}-dependencies
     - uses: ruby/setup-ruby@v1
     - name: Install dependencies and run RSpec
+      env:
+        DATABASE_URL: "postgresql://postgres@localhost/test"
+        RAILS_ENV: test
       run: |
         gem install bundler
         bundle config set path 'vendor/bundle'
         bundle install --jobs 4 --retry 3
         yarn install
+        bundle exec rake db:structure:load
         bundle exec rspec
 
     - uses: actions/upload-artifact@v2
