@@ -116,6 +116,7 @@ jobs:
       env:
         DATABASE_URL: "postgresql://postgres@localhost/test"
         RAILS_ENV: test
+        PERCY_TOKEN: ${{secrets.PERCY_TOKEN}}
       run: |
         gem install bundler
         bundle config set path 'vendor/bundle'
