@@ -1,0 +1,116 @@
+name: CI
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  bundler-audit:
+    runs-on: ubuntu-latest
+    container: circleci/ruby:3.0.0-node-browsers
+    strategy:
+      fail-fast: false
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Restore dependency cache
+      uses: actions/cache@v2
+      with:
+        path: |
+          vendor/bundle
+          node_modules
+        key: ${{ runner.os }}-dependencies
+        restore-keys: |
+          ${{ runner.os }}-dependencies
+    - uses: ruby/setup-ruby@v1
+    - name: Install dependencies and run bundler-audit
+      run: |
+        gem install bundler
+        bundle config set path 'vendor/bundle'
+        bundle install --jobs 4 --retry 3
+        yarn install
+        bundle exec bundler-audit --update
+
+  brakeman:
+    runs-on: ubuntu-latest
+    container: circleci/ruby:3.0.0-node-browsers
+    strategy:
+      fail-fast: false
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Restore dependency cache
+      uses: actions/cache@v2
+      with:
+        path: |
+          vendor/bundle
+          node_modules
+        key: ${{ runner.os }}-dependencies
+        restore-keys: |
+          ${{ runner.os }}-dependencies
+    - uses: ruby/setup-ruby@v1
+    - name: Install dependencies and run bundler-audit
+      run: |
+        gem install bundler
+        bundle config set path 'vendor/bundle'
+        bundle install --jobs 4 --retry 3
+        yarn install
+        bundle exec brakeman
+
+  rubocop:
+    runs-on: ubuntu-latest
+    container: circleci/ruby:3.0.0-node-browsers
+    strategy:
+      fail-fast: false
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Restore dependency cache
+      uses: actions/cache@v2
+      with:
+        path: |
+          vendor/bundle
+          node_modules
+        key: ${{ runner.os }}-dependencies
+        restore-keys: |
+          ${{ runner.os }}-dependencies
+    - uses: ruby/setup-ruby@v1
+    - name: Install dependencies and run rubocop
+      run: |
+        gem install bundler
+        bundle config set path 'vendor/bundle'
+        bundle install --jobs 4 --retry 3
+        yarn install
+        bundle exec rubocop
+
+  rspec:
+    runs-on: ubuntu-latest
+    container: circleci/ruby:3.0.0-node-browsers
+    strategy:
+      fail-fast: false
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Restore dependency cache
+      uses: actions/cache@v2
+      with:
+        path: |
+          vendor/bundle
+          node_modules
+        key: ${{ runner.os }}-dependencies
+        restore-keys: |
+          ${{ runner.os }}-dependencies
+    - uses: ruby/setup-ruby@v1
+    - name: Install dependencies and run RSpec
+      run: |
+        gem install bundler
+        bundle config set path 'vendor/bundle'
+        bundle install --jobs 4 --retry 3
+        yarn install
+        bundle exec rspec
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: "Test Coverage"
+        path: coverage/
