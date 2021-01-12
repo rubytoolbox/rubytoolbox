@@ -121,7 +121,7 @@ jobs:
         bundle config set path 'vendor/bundle'
         bundle install --jobs 4 --retry 3
         yarn install
-        bundle exec rake db:structure:load
+        bundle exec rake db:schema:load
         bundle exec rspec
 
     - uses: actions/upload-artifact@v2
