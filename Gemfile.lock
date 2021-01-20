@@ -70,7 +70,7 @@ GEM
       zeitwerk (~> 2.3)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
-    appsignal (2.11.2)
+    appsignal (2.11.3)
       rack
     ast (2.4.1)
     bindex (0.8.1)
