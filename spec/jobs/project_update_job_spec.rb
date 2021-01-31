@@ -25,9 +25,11 @@ RSpec.describe ProjectUpdateJob, type: :job do
       expect { do_perform }.to change { project.reload.rubygem }.from(nil).to(rubygem)
     end
 
-    it "enqueues a ProjectScoreJob" do
-      expect(ProjectScoreJob).to receive(:perform_async).with(permalink)
-      do_perform
+    [ProjectScoreJob, ProjectSearchIndexJob].each do |job_type|
+      it "enqueues a #{job_type}" do
+        expect(job_type).to receive(:perform_async).with(permalink)
+        do_perform
+      end
     end
 
     describe "github repo detection" do
