@@ -35,6 +35,10 @@ class MeiliSearch
     settings(index).fetch("searchableAttributes")
   end
 
+  def displayed_attributes(index)
+    settings(index).fetch("displayedAttributes")
+  end
+
   def store_documents(index, documents)
     queue_index_update index, :documents, documents
   end
@@ -45,6 +49,10 @@ class MeiliSearch
 
   def update_searchable_attributes(index, attributes)
     queue_index_update index, "settings/searchable-attributes", attributes
+  end
+
+  def update_displayed_attributes(index, attributes)
+    queue_index_update index, "settings/displayed-attributes", attributes
   end
 
   private

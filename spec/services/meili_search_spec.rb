@@ -66,6 +66,7 @@ RSpec.describe MeiliSearch, type: :service do
         .to_return(status: 200, body: {
           rankingRules:         %w[hello world],
           searchableAttributes: %w[foo bar],
+          displayedAttributes:  %w[one two],
         }.to_json)
     end
 
@@ -75,6 +76,10 @@ RSpec.describe MeiliSearch, type: :service do
 
     it "returns searchable attributes as reported by server" do
       expect(search.searchable_attributes("my_index")).to be == %w[foo bar]
+    end
+
+    it "returns displayed attributes as reported by server" do
+      expect(search.displayed_attributes("my_index")).to be == %w[one two]
     end
   end
 
@@ -111,4 +116,8 @@ RSpec.describe MeiliSearch, type: :service do
   it_behaves_like "queued index update",
                   :update_ranking_rules,
                   "settings/ranking-rules"
+
+  it_behaves_like "queued index update",
+                  :update_displayed_attributes,
+                  "settings/displayed-attributes"
 end
