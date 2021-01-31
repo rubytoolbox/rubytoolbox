@@ -10,10 +10,20 @@ class MeiliSearch
     end
   end
 
+  #
+  # Returns an instance configured from MEILI_SEARCH_URL
+  # environment variable, or nil if that is not set.
+  #
+  def self.client
+    return if ENV["MEILI_SEARCH_URL"].blank?
+
+    new url: ENV["MEILI_SEARCH_URL"].presence
+  end
+
   attr_accessor :http
   private :http=
 
-  def initialize(url: ENV["MEILI_SEARCH_URL"])
+  def initialize(url:)
     self.http = prepare_http_client URI.parse(url)
   end
 

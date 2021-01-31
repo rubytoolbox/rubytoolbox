@@ -34,6 +34,7 @@ class ProjectUpdateJob < ApplicationJob
       project.description = project.rubygem_description || project.github_repo_description
       project.save!
       ProjectScoreJob.perform_async permalink
+      ProjectSearchIndexJob.perform_async permalink
       enqueue_github_repo_sync project.github_repo_path
     end
   end

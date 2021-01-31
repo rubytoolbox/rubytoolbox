@@ -7,6 +7,38 @@ RSpec.describe MeiliSearch, type: :service do
     described_class.new(url: "https://example.com")
   end
 
+  describe ".client" do
+    around do |example|
+      original_value = ENV["MEILI_SEARCH_URL"]
+      ENV["MEILI_SEARCH_URL"] = configured_url
+      example.run
+    ensure
+      ENV["MEILI_SEARCH_URL"] = original_value
+    end
+
+    describe "when MEILI_SEARCH_URL is not configured" do
+      let(:configured_url) { nil }
+
+      it "returns nil" do
+        expect(described_class.client).to be nil
+      end
+    end
+
+    describe "when MEILI_SEARCH_URL is configured" do
+      let(:configured_url) { "https://search.ruby-toolbox.com" }
+
+      it "returns client instance configured with the URL" do
+        the_instance = instance_double described_class
+
+        allow(described_class).to receive(:new)
+          .with(url: configured_url)
+          .and_return(the_instance)
+
+        expect(described_class.client).to be the_instance
+      end
+    end
+  end
+
   describe "initialize" do
     it "configures HTTP client for basic_auth when configured" do
       search = described_class.new(url: "https://foo:bar@example.com")
