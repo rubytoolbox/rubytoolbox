@@ -13,16 +13,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Restore dependency cache
-      uses: actions/cache@v2
-      with:
-        path: |
-          vendor/bundle
-          node_modules
-        key: ${{ runner.os }}-dependencies
-        restore-keys: |
-          ${{ runner.os }}-dependencies
     - uses: ruby/setup-ruby@v1
+      with:
+        # See https://github.com/actions/cache/blob/main/examples.md#ruby---bundler
+        bundler-cache: true
     - name: Install dependencies and run bundler-audit
       run: |
         gem install bundler
@@ -38,16 +32,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Restore dependency cache
-      uses: actions/cache@v2
-      with:
-        path: |
-          vendor/bundle
-          node_modules
-        key: ${{ runner.os }}-dependencies
-        restore-keys: |
-          ${{ runner.os }}-dependencies
     - uses: ruby/setup-ruby@v1
+      with:
+        bundler-cache: true
     - name: Install dependencies and run bundler-audit
       run: |
         gem install bundler
@@ -63,16 +50,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Restore dependency cache
-      uses: actions/cache@v2
-      with:
-        path: |
-          vendor/bundle
-          node_modules
-        key: ${{ runner.os }}-dependencies
-        restore-keys: |
-          ${{ runner.os }}-dependencies
     - uses: ruby/setup-ruby@v1
+      with:
+        bundler-cache: true
     - name: Install dependencies and run rubocop
       run: |
         gem install bundler
@@ -102,16 +82,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Restore dependency cache
-      uses: actions/cache@v2
-      with:
-        path: |
-          vendor/bundle
-          node_modules
-        key: ${{ runner.os }}-dependencies
-        restore-keys: |
-          ${{ runner.os }}-dependencies
     - uses: ruby/setup-ruby@v1
+      with:
+        bundler-cache: true
     - name: Install dependencies and run RSpec
       env:
         DATABASE_URL: "postgresql://postgres@localhost/test"
