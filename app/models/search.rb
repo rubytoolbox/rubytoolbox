@@ -36,6 +36,23 @@ class Search
       .with_score
       .with_bugfix_forks(show_forks)
       .includes_associations
-      .order(Arel.sql("array_position(ARRAY[#{permalinks.map { "'#{_1}'" }.join(',')}], projects.permalink::text)"))
+      .order(meili_order_sql(permalinks))
+  end
+
+  def meili_order_sql(permalinks)
+    #
+    # When we want to order by search index result rank we give postgres
+    # a custom sorting based on the array position of permalink in search results
+    #
+    # This is a temporary solution while the new meili search index is still
+    # experimental, later on this should then be somehow included in the order
+    # class properly as pg search itself gets removed from the codebase.
+    #
+    if order.sql == Project::Order::PG_SEARCH_RANK_DIRECTION.sql
+      mapped = permalinks.map { "'#{_1}'" }.join(",")
+      Arel.sql("array_position(ARRAY[#{mapped}], projects.permalink::text)")
+    else
+      order.sql
+    end
   end
 end

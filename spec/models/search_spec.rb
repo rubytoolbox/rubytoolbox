@@ -72,7 +72,20 @@ RSpec.describe Search, type: :model do
         ]
         Factories.project("not-returned")
 
-        expect(described_class.new("hello world").projects).to be == expected
+        expect(described_class.new("hello world").projects.to_a).to be == expected
+      end
+
+      it "respects custom order when given" do
+        expected = [
+          Factories.project("project", score: 40),
+          Factories.project("world", score: 30),
+          Factories.project("hello", score: 20),
+        ]
+        Factories.project("not-returned")
+
+        order = Project::Order.new order: "score", directions: Project::Order::SEARCH_DIRECTIONS
+
+        expect(described_class.new("hello world", order: order).projects.to_a).to be == expected
       end
     end
   end
