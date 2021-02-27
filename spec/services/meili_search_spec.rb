@@ -120,4 +120,26 @@ RSpec.describe MeiliSearch, type: :service do
   it_behaves_like "queued index update",
                   :update_displayed_attributes,
                   "settings/displayed-attributes"
+
+  describe "#search" do
+    before do
+      stub_request(:post, "https://example.com/indexes/my_index/search")
+        .with(
+          body: { q: "my query", limit: 1000 }.to_json
+        )
+        .to_return(
+          status: 200,
+          body:   {
+            hits: [
+              { permalink: "one" },
+              { permalink: "two" },
+            ],
+          }.to_json
+        )
+    end
+
+    it "returns matching permalinks for given index and query" do
+      expect(search.search(:my_index, "my query")).to be == %w[one two]
+    end
+  end
 end

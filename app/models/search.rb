@@ -15,10 +15,44 @@ class Search
   end
 
   def projects
-    @projects ||= Project.search(query, order: order, show_forks: show_forks)
+    @projects ||= if ENV["NEW_SEARCH"]
+                    meili_search_results
+                  else
+                    Project.search(query, order: order, show_forks: show_forks)
+                  end
   end
 
   def categories
     @categories ||= Category.search(query)
+  end
+
+  private
+
+  def meili_search_results
+    permalinks = MeiliSearch.client.search :projects, query
+
+    Project
+      .where(permalink: permalinks)
+      .with_score
+      .with_bugfix_forks(show_forks)
+      .includes_associations
+      .order(meili_order_sql(permalinks))
+  end
+
+  def meili_order_sql(permalinks)
+    #
+    # When we want to order by search index result rank we give postgres
+    # a custom sorting based on the array position of permalink in search results
+    #
+    # This is a temporary solution while the new meili search index is still
+    # experimental, later on this should then be somehow included in the order
+    # class properly as pg search itself gets removed from the codebase.
+    #
+    if order.sql == Project::Order::PG_SEARCH_RANK_DIRECTION.sql
+      mapped = permalinks.map { Project.connection.quote _1 }.join(",")
+      Arel.sql("array_position(ARRAY[#{mapped}], projects.permalink::text)")
+    else
+      order.sql
+    end
   end
 end
