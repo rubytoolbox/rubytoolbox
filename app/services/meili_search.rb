@@ -27,6 +27,13 @@ class MeiliSearch
     self.http = prepare_http_client URI.parse(url)
   end
 
+  def search(index, query)
+    response = http.post "/indexes/#{index}/search", json: { q: query, limit: 1000 }
+    raise UnknownResponseStatus, response unless response.status == 200
+
+    Oj.load(response).fetch("hits").map { _1.fetch("permalink") }
+  end
+
   def ranking_rules(index)
     settings(index).fetch("rankingRules")
   end
