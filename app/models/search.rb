@@ -49,7 +49,7 @@ class Search
     # class properly as pg search itself gets removed from the codebase.
     #
     if order.sql == Project::Order::PG_SEARCH_RANK_DIRECTION.sql
-      mapped = permalinks.map { "'#{_1}'" }.join(",")
+      mapped = permalinks.map { Project.connection.quote _1 }.join(",")
       Arel.sql("array_position(ARRAY[#{mapped}], projects.permalink::text)")
     else
       order.sql

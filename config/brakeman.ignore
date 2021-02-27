@@ -1,37 +1,6 @@
 {
   "ignored_warnings": [
     {
-      "warning_type": "Cross-Site Scripting",
-      "warning_code": 2,
-      "fingerprint": "23cd32092623ef25b4bb35fcbbf1b909627100d506bef0b6bde96192ffc1afae",
-      "check_name": "CrossSiteScripting",
-      "message": "Unescaped model attribute",
-      "file": "app/views/blog/show.html.slim",
-      "line": 18,
-      "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
-      "code": "Blog.new(:root => Rails.root.join(\"app\", \"blog_posts\"), :cache => Rails.env.production?).find(params[:id]).body_html",
-      "render_path": [
-        {
-          "type": "controller",
-          "class": "BlogController",
-          "method": "show",
-          "line": 16,
-          "file": "app/controllers/blog_controller.rb",
-          "rendered": {
-            "name": "blog/show",
-            "file": "app/views/blog/show.html.slim"
-          }
-        }
-      ],
-      "location": {
-        "type": "template",
-        "template": "blog/show"
-      },
-      "user_input": null,
-      "confidence": "High",
-      "note": "The content injected unescaped here is from markdown blog posts hosted in the repo itself"
-    },
-    {
       "warning_type": "SQL Injection",
       "warning_code": 0,
       "fingerprint": "3b30c684464ba27e92f7cfaddc9fb2e37ed5d1f0be6e8d7e3adf5ed48b4cf537",
@@ -49,6 +18,26 @@
       },
       "user_input": "date",
       "confidence": "Medium",
+      "note": ""
+    },
+    {
+      "warning_type": "SQL Injection",
+      "warning_code": 0,
+      "fingerprint": "5064a7c6abdc26594864aa9e12af582c0d859b3c6222624bd22ed7f3d893eeb1",
+      "check_name": "SQL",
+      "message": "Possible SQL injection",
+      "file": "app/models/search.rb",
+      "line": 53,
+      "link": "https://brakemanscanner.org/docs/warning_types/sql_injection/",
+      "code": "Arel.sql(\"array_position(ARRAY[#{permalinks.map do\n Project.connection.quote(_1)\n end.join(\",\")}], projects.permalink::text)\")",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Search",
+        "method": "meili_order_sql"
+      },
+      "user_input": "Project.connection.quote(_1)",
+      "confidence": "High",
       "note": ""
     },
     {
@@ -112,6 +101,6 @@
       "note": "It's shielded by categories in the db, not random user input"
     }
   ],
-  "updated": "2020-09-29 21:00:22 +0200",
-  "brakeman_version": "4.9.1"
+  "updated": "2021-02-27 22:30:21 +0100",
+  "brakeman_version": "5.0.0"
 }
