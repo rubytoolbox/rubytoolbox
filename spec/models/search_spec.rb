@@ -45,6 +45,36 @@ RSpec.describe Search, type: :model do
                                         .and_return(collection)
       expect(described_class.new("my query").projects).to be == collection
     end
+
+    describe "when NEW_SEARCH is enabled" do
+      let(:client) { instance_double MeiliSearch }
+
+      # Temporary feature toggle
+      around do |example|
+        original_value = ENV["NEW_SEARCH"]
+        ENV["NEW_SEARCH"] = "true"
+        example.run
+      ensure
+        ENV["NEW_SEARCH"] = original_value
+      end
+
+      before do
+        allow(MeiliSearch).to receive(:client).and_return(client)
+        allow(client).to receive(:search).with(:projects, "hello world")
+                                         .and_return(%w[hello world project])
+      end
+
+      it "returns projects with matching names in expected order" do
+        expected = [
+          Factories.project("hello"),
+          Factories.project("world"),
+          Factories.project("project"),
+        ]
+        Factories.project("not-returned")
+
+        expect(described_class.new("hello world").projects).to be == expected
+      end
+    end
   end
 
   describe "#categories" do

@@ -15,10 +15,27 @@ class Search
   end
 
   def projects
-    @projects ||= Project.search(query, order: order, show_forks: show_forks)
+    @projects ||= if ENV["NEW_SEARCH"]
+                    meili_search_results
+                  else
+                    Project.search(query, order: order, show_forks: show_forks)
+                  end
   end
 
   def categories
     @categories ||= Category.search(query)
+  end
+
+  private
+
+  def meili_search_results
+    permalinks = MeiliSearch.client.search :projects, query
+
+    Project
+      .where(permalink: permalinks)
+      .with_score
+      .with_bugfix_forks(show_forks)
+      .includes_associations
+      .order(Arel.sql("array_position(ARRAY[#{permalinks.map { "'#{_1}'" }.join(',')}], projects.permalink::text)"))
   end
 end
