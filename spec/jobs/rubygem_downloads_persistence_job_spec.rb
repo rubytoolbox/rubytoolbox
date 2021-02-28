@@ -29,7 +29,7 @@ RSpec.describe RubygemDownloadsPersistenceJob, type: :job do
 
     it "is false on other days of the week" do
       # Any weekday other than sunday this week
-      date = (Time.zone.today.beginning_of_week(:monday)..Time.zone.today.end_of_week(:sunday)).to_a.sample
+      date = (Time.zone.today.beginning_of_week(:monday)...Time.zone.today.end_of_week(:sunday)).to_a.sample
       Timecop.freeze date do
         expect(job.should_run?).to be false
       end
