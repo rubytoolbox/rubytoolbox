@@ -33,7 +33,7 @@ class Project < ApplicationRecord
   scope :with_score, -> { where.not(score: nil) }
 
   def self.with_bugfix_forks(include_forks)
-    include_forks ? self : where(is_bugfix_fork: false)
+    include_forks ? all : where(is_bugfix_fork: false)
   end
 
   def self.for_display(forks: false)
