@@ -25,9 +25,10 @@ RSpec.describe RubygemTrendsJob, type: :job do
     # It's not perfect this way but at least all of the trends logic is
     # in a single place
     it "persists entries for trending projects" do
-      Factories.project "a"
-      Factories.project "b"
-      Factories.project "c"
+      # Make sure we have a recent release, otherwise it will be ignored
+      %w[a b c].each do |name|
+        Factories.project(name)
+      end
 
       Factories.rubygem_download_stat "a", date: 8.weeks.ago, total_downloads: 10_000
       Factories.rubygem_download_stat "a", date: 4.weeks.ago, total_downloads: 30_000

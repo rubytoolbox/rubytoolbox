@@ -25,7 +25,7 @@ module Factories
                       description: description
     end
 
-    def rubygem(name, downloads: 5000, first_release: 1.year.ago, latest_release: 3.months.ago)
+    def rubygem(name, downloads: 5000, first_release: Date.new(2018, 2, 28), latest_release: Date.new(2021, 1, 2))
       Rubygem.create!(
         name:              name,
         current_version:   "1.0",
