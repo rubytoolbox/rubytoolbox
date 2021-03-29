@@ -51,6 +51,33 @@ RSpec.describe RubygemUpdateJob, type: :job do
       expect(Rubygem.find(gem_name).quarterly_release_counts).to be == expected
     end
 
+    describe "dependencies" do
+      it "persists rubygem dependencies" do
+        do_perform
+        dependencies = Rubygem.find(gem_name)
+                              .rubygem_dependencies
+                              .pluck(:dependency_name, :type, :requirements)
+
+        expect(dependencies).to be == [
+          ["rspec-core", "runtime", "~> 3.7.0"],
+          ["rspec-expectations", "runtime", "~> 3.7.0"],
+          ["rspec-mocks", "runtime", "~> 3.7.0"],
+        ]
+      end
+
+      it "drops obsolete dependencies" do
+        described_class.new.perform gem_name
+        RubygemDependency.create! rubygem_name:    gem_name,
+                                  dependency_name: "old",
+                                  requirements:    ">= 0.1.0",
+                                  type:            "development"
+
+        expect { do_perform }.to change { Rubygem.find(gem_name).rubygem_dependencies.pluck(:dependency_name) }
+          .from(%w[old rspec-core rspec-expectations rspec-mocks])
+          .to(%w[rspec-core rspec-expectations rspec-mocks])
+      end
+    end
+
     describe "when rubygems.org is down" do
       let(:gem_name) { "thisisdowninmock" }
 

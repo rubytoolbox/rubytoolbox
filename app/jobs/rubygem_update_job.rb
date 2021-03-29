@@ -17,7 +17,10 @@ class RubygemUpdateJob < ApplicationJob
     self.name = name
 
     if info
-      update_gem_data!
+      Rubygem.transaction do
+        update_gem_data!
+        sync_dependencies!
+      end
 
       ProjectUpdateJob.perform_async name
     else
@@ -80,6 +83,27 @@ class RubygemUpdateJob < ApplicationJob
     end
 
     grouped_by_quarter.transform_values(&:count)
+  end
+
+  def sync_dependencies!
+    return unless info["dependencies"]
+
+    known = []
+    info["dependencies"].each do |type, dependencies|
+      known += dependencies.map do
+        sync_dependency! dependency_name: _1.fetch("name"),
+                         type:            type,
+                         requirements:    _1.fetch("requirements")
+      end
+    end
+
+    RubygemDependency.where(rubygem_name: name).where.not(id: known).delete_all
+  end
+
+  def sync_dependency!(dependency_name:, type:, requirements:)
+    RubygemDependency.find_or_initialize_by(rubygem_name: name, dependency_name: dependency_name, type: type).tap do
+        _1.update!(requirements: requirements)
+      end
   end
 
   def info

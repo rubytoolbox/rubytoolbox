@@ -23,6 +23,10 @@ class Rubygem < ApplicationRecord
            inverse_of:  :rubygem,
            dependent:   :destroy
 
+  has_many :rubygem_dependencies, -> { order(dependency_name: :asc) },
+           foreign_key: :rubygem_name,
+           inverse_of:  :rubygem
+
   def self.update_batch
     where("updated_at < ? ", 24.hours.ago.utc)
       .order(updated_at: :asc)

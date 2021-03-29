@@ -10,20 +10,6 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: -
---
-
-CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
-
-
---
--- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: -
---
-
-COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
-
-
---
 -- Name: citext; Type: EXTENSION; Schema: -; Owner: -
 --
 
@@ -302,6 +288,40 @@ CREATE TABLE public.projects (
 
 
 --
+-- Name: rubygem_dependencies; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.rubygem_dependencies (
+    id bigint NOT NULL,
+    rubygem_name character varying NOT NULL,
+    dependency_name character varying NOT NULL,
+    type character varying NOT NULL,
+    requirements character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: rubygem_dependencies_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.rubygem_dependencies_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: rubygem_dependencies_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.rubygem_dependencies_id_seq OWNED BY public.rubygem_dependencies.id;
+
+
+--
 -- Name: rubygem_download_stats; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -415,6 +435,13 @@ ALTER TABLE ONLY public.categorizations ALTER COLUMN id SET DEFAULT nextval('pub
 
 
 --
+-- Name: rubygem_dependencies id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.rubygem_dependencies ALTER COLUMN id SET DEFAULT nextval('public.rubygem_dependencies_id_seq'::regclass);
+
+
+--
 -- Name: rubygem_download_stats id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -442,6 +469,14 @@ ALTER TABLE ONLY public.ar_internal_metadata
 
 ALTER TABLE ONLY public.categorizations
     ADD CONSTRAINT categorizations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: rubygem_dependencies rubygem_dependencies_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.rubygem_dependencies
+    ADD CONSTRAINT rubygem_dependencies_pkey PRIMARY KEY (id);
 
 
 --
@@ -731,6 +766,14 @@ ALTER TABLE ONLY public.categories
 
 
 --
+-- Name: rubygem_dependencies fk_rails_7b157253c8; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.rubygem_dependencies
+    ADD CONSTRAINT fk_rails_7b157253c8 FOREIGN KEY (rubygem_name) REFERENCES public.rubygems(name);
+
+
+--
 -- Name: rubygem_trends fk_rails_8a29c552ee; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -808,6 +851,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190228102103'),
 ('20190508190527'),
 ('20190730194020'),
-('20200830205823');
+('20200830205823'),
+('20210228234343');
 
 
