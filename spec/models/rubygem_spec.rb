@@ -6,6 +6,8 @@ RSpec.describe Rubygem, type: :model do
   subject(:model) { described_class.new }
 
   describe "associations" do
+    it { is_expected.to have_one(:project) }
+    it { is_expected.to have_many(:download_stats).order(date: :asc) }
     it { is_expected.to have_many(:trends).order(date: :asc) }
     it { is_expected.to have_many(:rubygem_dependencies).order(dependency_name: :asc).dependent(:destroy) }
 
