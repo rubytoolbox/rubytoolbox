@@ -8,7 +8,7 @@ RSpec.describe StatsHelpers, type: :helper do
       Factories.project "example"
       expect(helper.percentiles(:rubygems, :downloads)).to be_a(Hash)
         .and(satisfy { |h| h.keys == (0..100).to_a.map { |n| "#{n}%" } })
-        .and(satisfy { |h| h.values.all? { |v| v.is_a? Numeric } })
+        .and(satisfy { |h| h.values.all?(Numeric) })
     end
   end
 
