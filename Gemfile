@@ -112,6 +112,7 @@ group :test do
   gem "feedjira"
 
   gem "db-query-matchers"
+  gem "shoulda-matchers"
 
   gem "retriable"
 

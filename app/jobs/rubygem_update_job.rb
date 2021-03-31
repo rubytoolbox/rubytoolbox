@@ -88,9 +88,8 @@ class RubygemUpdateJob < ApplicationJob
   def sync_dependencies!
     return unless info["dependencies"]
 
-    known = []
-    info["dependencies"].each do |type, dependencies|
-      known += dependencies.map do
+    known = info["dependencies"].flat_map do |type, dependencies|
+      dependencies.map do
         sync_dependency! dependency_name: _1.fetch("name"),
                          type:            type,
                          requirements:    _1.fetch("requirements")
