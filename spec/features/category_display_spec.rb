@@ -6,9 +6,9 @@ RSpec.describe "Categories Display", type: :feature, js: true do
   before do
     group = CategoryGroup.create! permalink: "group1", name: "Group"
     category = Category.create! permalink: "widgets", name: "Widgets", category_group: group
-    category.projects << Factories.project("acme", score: 25, downloads: 25_000, first_release: 3.years.ago)
-    category.projects << Factories.project("widget", score: 20, downloads: 50_000, first_release: 2.years.ago)
-    category.projects << Factories.project("toolkit", score: 22, downloads: 10_000, first_release: 5.years.ago)
+    category.projects << Factories.project("acme", score: 25, downloads: 25_000, first_release: Date.new(2018, 3, 1))
+    category.projects << Factories.project("widget", score: 20, downloads: 50_000, first_release: Date.new(2019, 3, 1))
+    category.projects << Factories.project("toolkit", score: 22, downloads: 10_000, first_release: Date.new(2016, 3, 1))
   end
 
   it "can display projects of a category" do

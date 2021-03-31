@@ -6,7 +6,7 @@ module Factories
     def project(name,
                 score: 25,
                 downloads: 5000,
-                first_release: 1.year.ago,
+                first_release: Date.new(2020, 3, 12),
                 description: nil)
 
       rubygem = self.rubygem name, downloads: downloads, first_release: first_release

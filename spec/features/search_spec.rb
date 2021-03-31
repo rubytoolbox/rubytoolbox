@@ -7,13 +7,13 @@ RSpec.describe "Search", type: :feature, js: true do
     group = CategoryGroup.create! permalink: "group1", name: "Group"
     Category.create! permalink: "widgets", name: "Widgets", category_group: group
 
-    Factories.project "widgets", score: 50, downloads: 125_000, first_release: 3.years.ago
+    Factories.project "widgets", score: 50, downloads: 125_000, first_release: Date.new(2018, 3, 1)
     Factories.project "more widgets",
                       score:         50,
                       description:   "widgets widgets",
                       downloads:     50_000,
                       first_release: 5.years.ago
-    Factories.project "other", score: 22, downloads: 10_000, first_release: 5.years.ago
+    Factories.project "other", score: 22, downloads: 10_000, first_release: Date.new(2016, 3, 1)
   end
 
   let(:halt_form_submission_js) do
