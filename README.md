@@ -16,7 +16,7 @@ The Ruby Toolbox is a catalog of all Rubygems that keeps track of popularity and
 
 The Ruby Toolbox depends on a few utilities which you will need to install before you begin.
 
-#### [PostgreSQL](https://www.postgresql.org/)
+#### [PostgreSQL](https://www.postgresql.org/) (Version 13)
 
 * **Linux:** Use the official postgres repositories for [Apt](https://wiki.postgresql.org/wiki/Apt) or [Yum](https://yum.postgresql.org/)
 * **Mac OS:** Use [HomeBrew](http://brewformulas.org/Postgresql) or [Postgres.app](https://postgresapp.com/)

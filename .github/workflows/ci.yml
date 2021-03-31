@@ -69,16 +69,17 @@ jobs:
     # https://docs.github.com/en/free-pro-team@latest/actions/guides/about-service-containers#creating-service-containers
     services:
       redis:
-        image: circleci/redis:latest
+        image: redis:latest
         ports:
           - 6379:6379
       postgres:
-        image: circleci/postgres:12.1-alpine-ram
+        image: postgres:13-alpine
         ports:
           - 5432:5432
         env:
           POSTGRES_USER: postgres
           POSTGRES_DB: test
+          POSTGRES_PASSWORD: secret
 
     steps:
     - uses: actions/checkout@v2
@@ -87,7 +88,7 @@ jobs:
         bundler-cache: true
     - name: Install dependencies and run RSpec
       env:
-        DATABASE_URL: "postgresql://postgres@localhost/test"
+        DATABASE_URL: "postgresql://postgres:secret@localhost/test"
         RAILS_ENV: test
         PERCY_TOKEN: ${{secrets.PERCY_TOKEN}}
       run: |
