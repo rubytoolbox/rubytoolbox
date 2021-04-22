@@ -75,7 +75,7 @@ GEM
     ast (2.4.2)
     bindex (0.8.1)
     blueprinter (0.25.3)
-    bootsnap (1.7.3)
+    bootsnap (1.7.4)
       msgpack (~> 1.0)
     brakeman (5.0.0)
     browser (5.3.1)
