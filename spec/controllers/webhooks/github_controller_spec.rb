@@ -7,7 +7,7 @@ RSpec.describe Webhooks::GithubController, type: :controller do
     let(:state) { :success }
     let(:branch) { "main" }
 
-    let(:event_name) { "status" }
+    let(:event_name) { "page_build" }
     let(:secret) { ENV.fetch("GITHUB_WEBHOOK_SECRET") }
 
     def signature

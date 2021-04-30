@@ -4,7 +4,7 @@ class Webhooks::GithubController < ApplicationController
   skip_before_action :verify_authenticity_token
   include GithubWebhook::Processor
 
-  def github_status(payload)
+  def github_page_build(payload)
     return unless build_deployed? payload
 
     CatalogImportJob.perform_in 30.seconds
