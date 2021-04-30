@@ -2,13 +2,13 @@
   "name": "rubytoolbox",
   "private": false,
   "dependencies": {
-    "@rails/ujs": "^6.0.2-2",
-    "bulma": "^0.7.0",
-    "bulma-tooltip": "^2.0.2",
+    "@rails/ujs": "^6.1",
+    "bulma": ">= 0.7.0",
+    "@creativebulma/bulma-tooltip": ">= 1.2.0",
     "chart.js": "^2.7.3",
-    "github-syntax-light": "^0.5.0",
-    "headroom.js": "^0.9.4",
-    "javascript-autocomplete": "^1.0.3"
+    "github-syntax-light": ">= 0.5.0",
+    "headroom.js": ">= 0.9.4",
+    "javascript-autocomplete": ">= 1.0.3"
   },
   "version": "1.0.0",
   "main": "index.js",
@@ -16,6 +16,6 @@
   "author": "Christoph Olszowka <christoph@olszowka.de>",
   "license": "MIT",
   "devDependencies": {
-    "@percy/agent": "^0.26.2"
+    "@percy/agent": ">= 0.26"
   }
 }
