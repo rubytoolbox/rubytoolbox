@@ -5,7 +5,7 @@ module Github
 
   # Tries to find a github repo name from the given urls
   def self.detect_repo_name(*urls)
-    urls.map(&:presence).compact.each do |url|
+    urls.filter_map(&:presence).each do |url|
       next unless ALLOWED_HOSTS.include? URI.parse(url).host
 
       match = url.match %r{github\.com/([^/]+/[^/\#?]+)}
