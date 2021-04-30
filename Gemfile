@@ -18,18 +18,18 @@ gem "pg_search"
 gem "kaminari"
 
 # Use Puma as the app server
-gem "puma", "~> 3.11"
+gem "puma"
 # Use SCSS for stylesheets
-gem "sass-rails", "~> 5.0"
+gem "sass-rails"
 # Use Uglifier as compressor for JavaScript assets
-gem "uglifier", ">= 1.3.0"
+gem "uglifier"
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
 # Heroku ruby buildpack installs yarn only when webpacker gem is detected...
 gem "webpacker", require: false
 
-gem "font-awesome-rails", ">= 4.7", github: "bokmann/font-awesome-rails", branch: "master"
+gem "font-awesome-rails"
 
 gem "addressable"
 
@@ -39,7 +39,7 @@ gem "blueprinter"
 # gem 'mini_magick', '~> 4.8'
 
 # Reduces boot times through caching; required in config/boot.rb
-gem "bootsnap", ">= 1.1.0", require: false
+gem "bootsnap", require: false
 
 gem "foreman", require: false
 
@@ -97,12 +97,12 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem "byebug", platforms: %i[mri mingw x64_mingw]
   gem "pry-rails"
-  gem "rspec-rails", ">= 4.0"
+  gem "rspec-rails"
 end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem "capybara", ">= 2.15", "< 4.0"
+  gem "capybara"
   gem "launchy"
   gem "selenium-webdriver"
   # Easy installation and use of selenium webdriver browsers to run system tests
@@ -135,12 +135,12 @@ group :development do
 
   gem "pghero"
 
+  gem "listen"
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-  gem "listen", ">= 3.0.5", "< 3.2"
-  gem "web-console", ">= 3.3.0"
+  gem "web-console"
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem "spring"
-  gem "spring-watcher-listen", "~> 2.0.0"
+  gem "spring-watcher-listen"
 
   gem "guard-bundler", require: false
   gem "guard-rspec", require: false
