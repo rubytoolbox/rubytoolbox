@@ -4,9 +4,9 @@ require "rails_helper"
 
 RSpec.describe "Project Comparisons", type: :feature, js: true do
   before do
-    Factories.project("acme", score: 25, downloads: 25_000, first_release: 3.years.ago)
-    Factories.project("widget", score: 20, downloads: 50_000, first_release: 2.years.ago)
-    Factories.project("toolkit", score: 22, downloads: 10_000, first_release: 5.years.ago)
+    Factories.project("acme", score: 25, downloads: 25_000, first_release: Date.new(2018, 5, 6))
+    Factories.project("widget", score: 20, downloads: 50_000, first_release: Date.new(2019, 5, 6))
+    Factories.project("toolkit", score: 22, downloads: 10_000, first_release: Date.new(2016, 5, 6))
   end
 
   it "allows to compare arbitrary projects" do
