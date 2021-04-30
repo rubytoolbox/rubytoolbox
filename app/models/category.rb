@@ -57,6 +57,6 @@ class Category < ApplicationRecord
 
   def catalog_github_url(edit: false)
     type = edit ? "edit" : "tree"
-    File.join CATALOG_GITHUB_BASE_URL, type, "master/catalog", category_group.permalink, "#{permalink}.yml"
+    File.join CATALOG_GITHUB_BASE_URL, type, "main/catalog", category_group.permalink, "#{permalink}.yml"
   end
 end

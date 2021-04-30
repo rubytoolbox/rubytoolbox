@@ -5,7 +5,7 @@ require "rails_helper"
 RSpec.describe Webhooks::GithubController, type: :controller do
   describe "POST create" do
     let(:state) { :success }
-    let(:branch) { "master" }
+    let(:branch) { "main" }
 
     let(:event_name) { "status" }
     let(:secret) { ENV.fetch("GITHUB_WEBHOOK_SECRET") }
@@ -18,7 +18,7 @@ RSpec.describe Webhooks::GithubController, type: :controller do
       {
         state:      state,
         branches:   [{ name: branch }],
-        repository: { default_branch: "master" },
+        repository: { default_branch: "main" },
       }
     end
 
