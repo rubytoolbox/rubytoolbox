@@ -30,7 +30,7 @@ class ComparisonsController < ApplicationController
   end
 
   def requested_project_permalinks
-    (params[:id].presence || "").split(",") + [params[:add]].map { |id| id.try(:strip).presence }.compact
+    (params[:id].presence || "").split(",") + [params[:add]].filter_map { |id| id.try(:strip).presence }
   end
 
   def display_mode
