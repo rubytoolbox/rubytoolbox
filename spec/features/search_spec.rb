@@ -12,7 +12,7 @@ RSpec.describe "Search", type: :feature, js: true do
                       score:         50,
                       description:   "widgets widgets",
                       downloads:     50_000,
-                      first_release: 5.years.ago
+                      first_release: Date.new(2016, 3, 1)
     Factories.project "other", score: 22, downloads: 10_000, first_release: Date.new(2016, 3, 1)
   end
 
