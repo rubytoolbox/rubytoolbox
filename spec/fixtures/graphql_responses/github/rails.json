@@ -13,7 +13,7 @@
       },
       "createdAt": "2008-04-11T02:19:47Z",
       "defaultBranchRef": {
-        "name": "master",
+        "name": "main",
         "target": {
           "history": {
             "edges": [
@@ -341,7 +341,7 @@
       },
       "codeOfConduct": {
         "name": "Other",
-        "url": "https://github.com/rails/rails/blob/master/CODE_OF_CONDUCT.md"
+        "url": "https://github.com/rails/rails/blob/main/CODE_OF_CONDUCT.md"
       }
     },
     "rateLimit": {

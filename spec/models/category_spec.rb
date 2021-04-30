@@ -83,14 +83,14 @@ RSpec.describe Category, type: :model do
 
   describe "#catalog_show_url" do
     it "is the url where the category definition can be seen on github" do
-      expected = "https://github.com/rubytoolbox/catalog/tree/master/catalog/unimportant/mocking.yml"
+      expected = "https://github.com/rubytoolbox/catalog/tree/main/catalog/unimportant/mocking.yml"
       expect(category.catalog_show_url).to be == expected
     end
   end
 
   describe "#catalog_edit_url" do
     it "is the url where the category definition can be edited on github" do
-      expected = "https://github.com/rubytoolbox/catalog/edit/master/catalog/unimportant/mocking.yml"
+      expected = "https://github.com/rubytoolbox/catalog/edit/main/catalog/unimportant/mocking.yml"
       expect(category.catalog_edit_url).to be == expected
     end
   end

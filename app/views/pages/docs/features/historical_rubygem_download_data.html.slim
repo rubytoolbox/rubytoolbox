@@ -5,7 +5,7 @@
       as well as for the upcoming **calculation of [trending projects](https://github.com/rubytoolbox/rubytoolbox/pull/440)**.
 
       To keep the usage of database resources at bay we [persist only weekly stats, the cutoff day being
-      Sunday](https://github.com/rubytoolbox/rubytoolbox/blob/master/app/jobs/rubygem_downloads_persistence_job.rb).
+      Sunday](https://github.com/rubytoolbox/rubytoolbox/blob/main/app/jobs/rubygem_downloads_persistence_job.rb).
 
       The download data is being synced from the [Rubygems.org API](https://guides.rubygems.org/rubygems-org-api/)
       throughout each day, so the numbers do not have an equal cutoff time - therefore they will always be slightly skewed.
