@@ -1,7 +1,7 @@
 <div align="center">
   <img src="./app/assets/images/logo/regular.svg" width="400px" alt="The Ruby Toolbox"/>
 
-  [![Build Status](https://circleci.com/gh/rubytoolbox/rubytoolbox/tree/master.svg?style=svg)](https://circleci.com/gh/rubytoolbox/rubytoolbox/tree/master) [![Depfu](https://badges.depfu.com/badges/84ab24dbd83e15c8dfd36144e10d14f2/overview.svg)](https://depfu.com/github/rubytoolbox/rubytoolbox) [![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/rubytoolbox/rubytoolbox)
+  [![CI](https://github.com/rubytoolbox/rubytoolbox/actions/workflows/ci.yml/badge.svg)](https://github.com/rubytoolbox/rubytoolbox/actions/workflows/ci.yml) [![Depfu](https://badges.depfu.com/badges/84ab24dbd83e15c8dfd36144e10d14f2/overview.svg)](https://depfu.com/github/rubytoolbox/rubytoolbox) [![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/rubytoolbox/rubytoolbox)
 
   **Find actively maintained & popular open source software libraries for the Ruby programming language**
 </div>

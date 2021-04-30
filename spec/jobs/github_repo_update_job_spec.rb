@@ -31,7 +31,7 @@ RSpec.describe GithubRepoUpdateJob, type: :job do
         closed_pull_requests_count:   a_value > 6000,
         code_of_conduct_name:         "Other",
         code_of_conduct_url:          a_string_including("CODE_OF_CONDUCT"),
-        default_branch:               "master",
+        default_branch:               "main",
         description:                  "Ruby on Rails",
         forks_count:                  a_value > 14_000,
         has_issues:                   true,
