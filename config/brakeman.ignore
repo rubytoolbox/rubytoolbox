@@ -63,26 +63,6 @@
     {
       "warning_type": "Redirect",
       "warning_code": 18,
-      "fingerprint": "cda1b712fdb49d265db5723c680071fbf1e39be9485da99692e1b834bb51c035",
-      "check_name": "Redirect",
-      "message": "Possible unprotected redirect",
-      "file": "app/controllers/projects_controller.rb",
-      "line": 6,
-      "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
-      "code": "redirect_to(\"/projects/#{Project.find_for_show!(params[:id]).permalink}\")",
-      "render_path": null,
-      "location": {
-        "type": "method",
-        "class": "ProjectsController",
-        "method": "show"
-      },
-      "user_input": "Project.find_for_show!(params[:id]).permalink",
-      "confidence": "High",
-      "note": "It's shielded by projects in the db, not random user input"
-    },
-    {
-      "warning_type": "Redirect",
-      "warning_code": 18,
       "fingerprint": "d97a1e1c0d455e1c36c99d03c57ebb2864e179204eb85027acbe366f39767e40",
       "check_name": "Redirect",
       "message": "Possible unprotected redirect",
@@ -99,8 +79,28 @@
       "user_input": "Category.find_for_show!(params[:id], :order => current_order)",
       "confidence": "High",
       "note": "It's shielded by categories in the db, not random user input"
+    },
+    {
+      "warning_type": "Redirect",
+      "warning_code": 18,
+      "fingerprint": "ed22db20a4f142a7a02c42d900289a3a66370249a1e438397eefe4e18119f656",
+      "check_name": "Redirect",
+      "message": "Possible unprotected redirect",
+      "file": "app/controllers/projects_controller.rb",
+      "line": 6,
+      "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
+      "code": "redirect_to(\"/projects/#{Project.strict_loading.find_for_show!(params[:id]).permalink}\")",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "ProjectsController",
+        "method": "show"
+      },
+      "user_input": "Project.strict_loading.find_for_show!(params[:id]).permalink",
+      "confidence": "High",
+      "note": ""
     }
   ],
-  "updated": "2021-02-27 22:30:21 +0100",
-  "brakeman_version": "5.0.0"
+  "updated": "2021-05-30 23:26:35 +0200",
+  "brakeman_version": "5.0.1"
 }

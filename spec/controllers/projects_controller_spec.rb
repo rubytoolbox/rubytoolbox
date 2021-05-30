@@ -32,6 +32,13 @@ RSpec.describe ProjectsController, type: :controller do
         do_request
         expect(assigns(:project)).to be == project
       end
+
+      it "assigns Rubygem Dependencies" do
+        allow(Project).to receive(:find_for_show!).and_return(project)
+        allow(RubygemDependency).to receive(:for_project).with(project).and_return("the value")
+        do_request
+        expect(assigns(:dependencies)).to be == "the value"
+      end
     end
 
     describe "for known github project" do

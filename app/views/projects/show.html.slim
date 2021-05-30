@@ -37,4 +37,26 @@
 section.section: .container: .project
   = project_metrics @project, expanded_view: true
 
+section.readme.section: .container: .columns.is-multiline
+  .label
+    div
+      i.fa.fa-link &nbsp;
+      strong Dependencies
+
+  .column
+    - RubygemDependency::TYPES.each do |type|
+      .columns: .column
+        h4.is-size-5: strong= type.humanize
+
+      .columns.is-multiline
+        - @dependencies.public_send(type).each do |dependency|
+          .column.is-one-quarter: .columns.is-mobile
+            .column
+              .dependency-name
+                = link_to project_path(dependency.dependency_project.permalink) do
+                  strong= dependency.dependency_project.permalink
+              .has-text-grey: small= "#{dependency.requirements}"
+            .column.is-narrow
+              = small_health_indicator dependency.dependency_project
+
 = project_readme @project.github_repo_readme
