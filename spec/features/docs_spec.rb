@@ -30,6 +30,12 @@ RSpec.describe "Documentation Display", type: :feature, js: true do
     end
   end
 
+  it "renders the default 404 when an unknown page is accessed", js: false do
+    visit "/pages/unknown"
+
+    expect(page).to have_text("The page you were looking for doesn't exist")
+  end
+
   private
 
   def expect_can_visit(doc_title)

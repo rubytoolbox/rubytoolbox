@@ -16,8 +16,13 @@ RSpec.describe ApplicationController, type: :controller do
       get :index, format: :json
     end
 
-    it "raises a routing error, which will show 404 page on production" do
-      expect { do_request }.to raise_error(ActionController::RoutingError, %r{Unknown path /anonymous.json})
+    it "renders 404 page" do
+      do_request
+
+      expect(response).to have_http_status(:not_found)
+        .and have_attributes(
+          body: Rails.root.join("public", "404.html").read
+        )
     end
   end
 end

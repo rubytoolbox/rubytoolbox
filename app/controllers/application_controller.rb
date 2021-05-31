@@ -7,6 +7,12 @@ class ApplicationController < ActionController::Base
   # investigation
   rescue_from ActionController::UnknownFormat do
     logger.info "Unknown path/format requested #{request.path} / #{request.format}"
-    raise ActionController::RoutingError, "Unknown path #{request.path} / format #{request.format}"
+    render_not_found
+  end
+
+  private
+
+  def render_not_found
+    render file: Rails.root.join("public", "404.html"), layout: false, status: 404
   end
 end
