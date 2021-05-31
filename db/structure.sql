@@ -637,6 +637,20 @@ CREATE UNIQUE INDEX index_projects_on_rubygem_name ON public.projects USING btre
 
 
 --
+-- Name: index_rubygem_dependencies_on_dependency_name; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_rubygem_dependencies_on_dependency_name ON public.rubygem_dependencies USING btree (dependency_name);
+
+
+--
+-- Name: index_rubygem_dependencies_on_rubygem_name; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_rubygem_dependencies_on_rubygem_name ON public.rubygem_dependencies USING btree (rubygem_name);
+
+
+--
 -- Name: index_rubygem_download_stats_on_absolute_change_month; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -852,6 +866,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190508190527'),
 ('20190730194020'),
 ('20200830205823'),
-('20210228234343');
+('20210228234343'),
+('20210531193907');
 
 
