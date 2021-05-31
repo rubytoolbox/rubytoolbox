@@ -45,18 +45,27 @@ section.readme.section: .container: .columns.is-multiline
 
   .column
     - RubygemDependency::TYPES.each do |type|
-      .columns: .column
-        h4.is-size-5: strong= type.humanize
+      - dependencies = @dependencies.public_send(type)
+      - if dependencies.present?
+        .columns: .column
+          h4.is-size-5: strong= type.humanize
 
-      .columns.is-multiline
-        - @dependencies.public_send(type).each do |dependency|
-          .column.is-one-quarter: .columns.is-mobile
-            .column
-              .dependency-name
-                = link_to project_path(dependency.dependency_project.permalink) do
-                  strong= dependency.dependency_project.permalink
-              .has-text-grey: small= "#{dependency.requirements}"
-            .column.is-narrow
-              = small_health_indicator dependency.dependency_project
+        .columns.is-multiline
+          - @dependencies.public_send(type).each do |dependency|
+            .column.is-one-quarter: .columns.is-mobile
+              .column
+                .dependency-name
+                  - if dependency.dependency_project
+                    = link_to project_path(dependency.dependency_project.permalink) do
+                      strong= dependency.dependency_project.permalink
+                  - else
+                    / This happens if a gem has all it's versions yanked (or never existed)
+                    strong= dependency.dependency_name
+                .has-text-grey: small= "#{dependency.requirements}"
+
+              - if dependency.dependency_project
+                .column.is-narrow
+                  = small_health_indicator dependency.dependency_project
+
 
 = project_readme @project.github_repo_readme
