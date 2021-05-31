@@ -52,8 +52,8 @@ RSpec.describe Category, type: :model do
     it "returns up to 16 ranked categories" do
       20.times do |i|
         described_class.create! permalink: (i + 1).to_s,
-          name: (i + 1).to_s,
-          category_group: group, rank: 16 - i
+                                name: (i + 1).to_s,
+                                category_group: group, rank: 16 - i
       end
       described_class.create! permalink: "A", name: "A", category_group: group
       expect(described_class.featured.pluck(:permalink)).to be == (5..20).to_a.map(&:to_s).reverse
