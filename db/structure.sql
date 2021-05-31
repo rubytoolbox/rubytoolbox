@@ -609,6 +609,13 @@ CREATE INDEX index_projects_on_description_tsvector ON public.projects USING gin
 
 
 --
+-- Name: index_projects_on_github_repo_path; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_projects_on_github_repo_path ON public.projects USING btree (github_repo_path);
+
+
+--
 -- Name: index_projects_on_is_bugfix_fork; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -867,6 +874,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190730194020'),
 ('20200830205823'),
 ('20210228234343'),
-('20210531193907');
+('20210531193907'),
+('20210531194507');
 
 
