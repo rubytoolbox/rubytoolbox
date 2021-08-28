@@ -29,12 +29,21 @@ class Rubygem < ApplicationRecord
            inverse_of:  :rubygem,
            dependent:   :destroy
 
+  # Reverse dependencies of this gem, so gems that use this one
+  # as a dependency
   has_many :reverse_dependencies,
            -> { order(rubygem_name: :asc) },
            class_name:  "RubygemDependency",
            foreign_key: :dependency_name,
            inverse_of:  :dependency,
            dependent:   :destroy
+
+  # The corresponding ruby toolbox project record for the corresponding
+  # reverse dependency rubygem
+  has_many :reverse_dependency_projects,
+           through:    :reverse_dependencies,
+           source:     :depending_project,
+           class_name: "Project"
 
   scope :update_batch, lambda {
     where("fetched_at < ? ", 24.hours.ago.utc)

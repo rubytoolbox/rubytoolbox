@@ -19,6 +19,13 @@ class Project < ApplicationRecord
              optional:    true,
              inverse_of:  :project
 
+  # Projects that are using this project as a dependency on the
+  # rubygem definition
+  has_many :reverse_dependencies,
+           -> { with_score.order(score: :desc) },
+           through: :rubygem,
+           source:  :reverse_dependency_projects
+
   belongs_to :github_repo,
              primary_key: :path,
              foreign_key: :github_repo_path,
