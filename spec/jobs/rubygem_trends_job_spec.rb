@@ -27,7 +27,7 @@ RSpec.describe RubygemTrendsJob, type: :job do
     it "persists entries for trending projects" do
       # Make sure we have a recent release, otherwise it will be ignored
       %w[a b c].each do |name|
-        Factories.project(name)
+        Factories.project(name, latest_release: 3.months.ago)
       end
 
       Factories.rubygem_download_stat "a", date: 8.weeks.ago, total_downloads: 10_000

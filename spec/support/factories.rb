@@ -2,14 +2,16 @@
 
 module Factories
   # rubocop:disable Metrics/MethodLength All-in-one-place is more relevant than short methods here
+  # rubocop:disable Metrics/ParameterLists Yeah we kinda need it here to customize the thing :/
   class << self
     def project(name,
                 score: 25,
                 downloads: 5000,
                 first_release: Date.new(2020, 3, 12),
+                latest_release: Date.new(2021, 1, 2),
                 description: nil)
 
-      rubygem = self.rubygem name, downloads: downloads, first_release: first_release
+      rubygem = self.rubygem name, downloads: downloads, first_release: first_release, latest_release: latest_release
 
       github_repo = GithubRepo.create!(
         path:             "#{name}/#{name}",
@@ -24,6 +26,7 @@ module Factories
                       github_repo: github_repo,
                       description: description
     end
+    # rubocop:enable Metrics/ParameterLists
 
     def rubygem(name, downloads: 5000, first_release: Date.new(2018, 2, 28), latest_release: Date.new(2021, 1, 2))
       Rubygem.create!(
