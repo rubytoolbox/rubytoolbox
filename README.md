@@ -41,7 +41,7 @@ Yarn is used to manage frontend dependencies for the project. It can be installe
 
 1. Start postgres and redis
 1. Install the project's dependencies and prepare the database with `bin/setup`
-1. *Optional but recommended*: Import a [production database dump](https://data.ruby-toolbox.com) using `bin/pull_database`
+1. *Optional but recommended*: Import a [production database dump](https://data.ruby-toolbox.com) using `bin/pull_database`. You can also load some test data quickly by running `rake db:fixtures:load`
 1. In order to access the GitHub GraphQL API for pulling repo data, you need to [create a OAuth token as per GitHub's documentation](https://developer.github.com/v4/guides/forming-calls/#authenticating-with-graphql). No auth scopes are needed. Place the token as `GITHUB_TOKEN=yourtoken` in `.env.local` and `.env.local.test`.
 1. Run the services with `foreman start`. You can access the site at `http://localhost:5000`
 
