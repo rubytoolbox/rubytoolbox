@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe BlogController, type: :controller do
+  fixtures :all
+
   render_views
 
   let(:posts) { described_class::BLOG.posts }

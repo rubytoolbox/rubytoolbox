@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe ComponentHelpers, type: :helper do
+  fixtures :all
+
   let(:group) do
     CategoryGroup.create! permalink: "unimportant", name: "unimportant"
   end

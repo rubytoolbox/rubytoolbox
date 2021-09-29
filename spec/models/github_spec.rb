@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe Github, type: :model do
+  fixtures :all
+
   describe ".detect_repo_name" do
     {
       [nil]                                                  => nil,

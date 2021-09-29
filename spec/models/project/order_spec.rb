@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe Project::Order, type: :model do
+  fixtures :all
+
   describe described_class::Direction do
     describe "#key" do
       it "is a composite of given group and attribute" do

@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe "Project Display", type: :feature do
+  fixtures :all
+
   let(:project) do
     Factories.project "widgets"
   end

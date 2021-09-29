@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe ApplicationController, type: :controller do
+  fixtures :all
+
   controller do
     def index
       respond_to do |f|

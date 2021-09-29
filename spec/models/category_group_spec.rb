@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe CategoryGroup, type: :model do
+  fixtures :all
+
   describe ".for_welcome_page" do
     subject(:scope) { described_class.for_welcome_page.to_sql }
 

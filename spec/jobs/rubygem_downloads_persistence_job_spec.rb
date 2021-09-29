@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe RubygemDownloadsPersistenceJob, :clean_database, type: :job do
+  fixtures :all
+
   let(:job) { described_class.new }
   let(:do_perform) { job.perform }
 

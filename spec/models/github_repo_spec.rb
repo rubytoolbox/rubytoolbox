@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe GithubRepo, type: :model do
+  fixtures :all
+
   def create_repo!(path:, updated_at: 1.day.ago)
     GithubRepo.create! path:             path,
                        updated_at:       updated_at,

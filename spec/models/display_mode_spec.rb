@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe DisplayMode, type: :model do
+  fixtures :all
+
   describe "#current" do
     it "is the default when none requested" do
       expect(described_class.new.current).to be == "full"

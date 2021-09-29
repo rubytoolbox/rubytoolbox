@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe GithubClient::RepositoryData, type: :service do
+  fixtures :all
+
   def data(fields = {})
     described_class.new("data" => { "repository" => fields.deep_stringify_keys })
   end

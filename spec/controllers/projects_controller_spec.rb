@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe ProjectsController, type: :controller do
+  fixtures :all
+
   describe "GET show" do
     describe "for unknown project" do
       let(:do_request) { get :show, params: { id: "foobar" } }

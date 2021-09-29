@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe Blog, type: :model do
+  fixtures :all
+
   describe "with posts from fixtures" do
     let(:root) { Rails.root.join("spec", "fixtures", "blog_posts") }
     let(:blog) { described_class.new root: root }

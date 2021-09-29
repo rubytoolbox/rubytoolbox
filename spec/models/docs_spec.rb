@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe Docs do
+  fixtures :all
+
   let(:docs) { described_class.new }
 
   describe described_class::Page do

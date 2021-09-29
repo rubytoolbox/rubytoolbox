@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe Search, type: :model do
+  fixtures :all
+
   describe "#query" do
     it "is the cleaned up search query" do
       expect(described_class.new(" foo bar ").query).to be == "foo bar"

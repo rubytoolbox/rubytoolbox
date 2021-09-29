@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe GithubRepoBlueprint, type: :blueprint do
+  fixtures :all
+
   let(:repo) do
     GithubRepo.new path: "foo/bar"
   end

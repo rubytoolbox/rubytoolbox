@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe HttpService do
+  fixtures :all
+
   describe ".client" do
     let(:client) { described_class.client }
 

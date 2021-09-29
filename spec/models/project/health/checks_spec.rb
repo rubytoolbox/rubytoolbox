@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe Project::Health::Checks, type: :model do
+  fixtures :all
+
   describe "GITHUB_REPO_ARCHIVED" do
     let(:check) { described_class::GITHUB_REPO_ARCHIVED }
 

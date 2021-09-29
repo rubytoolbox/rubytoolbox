@@ -4,6 +4,8 @@ require "rails_helper"
 
 # rubocop:disable RSpec/MultipleMemoizedHelpers
 RSpec.describe GithubRepoUpdateJob, type: :job do
+  fixtures :all
+
   let(:repo_data) do
     json = Rails.root.join("spec", "fixtures", "graphql_responses", "github", "rails.json").read
     GithubClient::RepositoryData.new Oj.load(json)

@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe CategoriesController, type: :controller do
+  fixtures :all
+
   describe "GET index" do
     let(:do_request) { get :index }
 

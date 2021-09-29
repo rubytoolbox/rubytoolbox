@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe Stats, type: :model do
+  fixtures :all
+
   let(:stats) { described_class.new }
   let(:count) { rand(20_000) }
 

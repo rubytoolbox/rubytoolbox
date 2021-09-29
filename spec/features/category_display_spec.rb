@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe "Categories Display", type: :feature, js: true do
+  fixtures :all
+
   before do
     group = CategoryGroup.create! permalink: "group1", name: "Group"
     category = Category.create! permalink: "widgets", name: "Widgets", category_group: group

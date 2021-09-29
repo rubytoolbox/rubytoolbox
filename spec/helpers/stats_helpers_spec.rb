@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe StatsHelpers, :clean_database, type: :helper do
+  fixtures :all
+
   describe "#percentiles" do
     it "returns a hash of number distribution percentiles" do
       Factories.project "example"
