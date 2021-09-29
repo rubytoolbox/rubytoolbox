@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe TrendsController, type: :controller do
+  fixtures :all
+
   render_views
 
   describe "GET index" do

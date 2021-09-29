@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe Webhooks::GithubController, type: :controller do
+  fixtures :all
+
   describe "POST create" do
     let(:state) { :success }
     let(:branch) { "main" }

@@ -3,20 +3,20 @@
     p.heading= link_to "Ruby Toolbox UI Components Styleguide", "/pages/components"
     h2= current_page.split("/").last.humanize
 
-- full = Project.for_display.joins(:categories, :github_repo, :rubygem).order(score: :desc).limit(25)
-- github = Project.for_display.joins(:categories, :github_repo).order(score: :desc).where(rubygem_name: nil).limit(25).sample
+- full = Project.find('simplecov')
+- github = Project.find('imathis/octopress')
 
 = component_example "Project box" do
   .notification: .content
     markdown:
       A box to display an individual project's data in an overview
 
-  = render_project full.sample
+  = render_project full
 
   .notification: .content
     markdown:
       Includes links to referenced categories when given `show_categories: true`
-  = render_project full.sample, show_categories: true
+  = render_project full, show_categories: true
 
 
 = component_example "Project links" do
@@ -24,19 +24,18 @@
     markdown:
       Display an inline list of all available links for this project
 
-  - 3.times do
-    = project_links full.sample
+  = project_links full
 
 = component_example "Project metrics" do
   .notification: .content
     markdown:
       Renders a subset of project metrics and a link to the project page by default
-  = project_metrics full.sample
+  = project_metrics full
 
   .notification: .content
     markdown:
       With `expanded_view: true`, used for full individual project display
-  = project_metrics full.sample, expanded_view: true
+  = project_metrics full, expanded_view: true
 
   - if github
     .notification: .content
@@ -48,4 +47,4 @@
 = component_example "Compact card" do
   .project-compact-cards
     - 4.times do
-      .column= render_project full.sample, compact: true
+      .column= render_project full, compact: true

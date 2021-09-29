@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe I18n do
+  fixtures :all
+
   describe "#metrics" do
     it "has a valid icon for each metric" do
       expect(described_class.t(:metrics).map { |_, t| t }).to all(satisfy { |t| t[:icon].present? })

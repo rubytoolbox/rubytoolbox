@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe "Trending Projects", type: :feature, js: true do
+  fixtures :all
+
   before do
     Factories.project "foobar"
     Factories.project "widget"

@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe RubygemsSyncJob, type: :job do
+  fixtures :all
+
   let(:job) { described_class.new }
 
   describe "remote spec fetching" do

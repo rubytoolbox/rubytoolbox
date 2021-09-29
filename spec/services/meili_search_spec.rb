@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe MeiliSearch, type: :service do
+  fixtures :all
+
   let(:search) do
     described_class.new(url: "https://example.com")
   end

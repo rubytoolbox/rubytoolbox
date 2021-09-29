@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe SearchesController, type: :controller do
+  fixtures :all
+
   describe "GET #show" do
     def do_request(query: "foobar", order: nil, show_forks: nil, display: nil)
       get :show, params: { q: query, order: order, show_forks: show_forks, display: display }

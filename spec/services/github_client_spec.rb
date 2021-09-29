@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe GithubClient do
+  fixtures :all
+
   let(:token) { "Hello World" }
   let(:client) { described_class.new token: token }
 

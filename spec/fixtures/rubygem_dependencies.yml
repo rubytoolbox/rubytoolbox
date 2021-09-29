@@ -1,0 +1,226 @@
+# Generated from realistic dataset using lib/make_fixtures.rb, please don't modify manually
+---
+nokogiri_bundler:
+  id: 464766
+  rubygem_name: nokogiri
+  dependency_name: bundler
+  type: development
+  requirements: "~> 2.2"
+  created_at: '2021-04-08T02:49:25.081Z'
+  updated_at: '2021-04-08T02:49:25.081Z'
+nokogiri_concourse:
+  id: 464776
+  rubygem_name: nokogiri
+  dependency_name: concourse
+  type: development
+  requirements: "~> 0.41"
+  created_at: '2021-04-08T02:49:26.559Z'
+  updated_at: '2021-04-08T02:49:26.559Z'
+nokogiri_hoe-markdown:
+  id: 464783
+  rubygem_name: nokogiri
+  dependency_name: hoe-markdown
+  type: development
+  requirements: "~> 1.4"
+  created_at: '2021-04-08T02:49:27.869Z'
+  updated_at: '2021-04-08T02:49:27.869Z'
+nokogiri_mini_portile2:
+  id: 464857
+  rubygem_name: nokogiri
+  dependency_name: mini_portile2
+  type: runtime
+  requirements: "~> 2.5.0"
+  created_at: '2021-04-08T02:49:40.333Z'
+  updated_at: '2021-04-08T02:49:40.333Z'
+nokogiri_minitest:
+  id: 464791
+  rubygem_name: nokogiri
+  dependency_name: minitest
+  type: development
+  requirements: "~> 5.8"
+  created_at: '2021-04-08T02:49:29.000Z'
+  updated_at: '2021-04-08T02:49:29.000Z'
+nokogiri_minitest-reporters:
+  id: 464798
+  rubygem_name: nokogiri
+  dependency_name: minitest-reporters
+  type: development
+  requirements: "~> 1.4"
+  created_at: '2021-04-08T02:49:30.023Z'
+  updated_at: '2021-04-08T02:49:30.023Z'
+nokogiri_racc:
+  id: 464863
+  rubygem_name: nokogiri
+  dependency_name: racc
+  type: runtime
+  requirements: "~> 1.4"
+  created_at: '2021-04-08T02:49:41.497Z'
+  updated_at: '2021-04-08T02:49:41.497Z'
+nokogiri_rake:
+  id: 464806
+  rubygem_name: nokogiri
+  dependency_name: rake
+  type: development
+  requirements: "~> 13.0"
+  created_at: '2021-04-08T02:49:31.478Z'
+  updated_at: '2021-04-08T02:49:31.478Z'
+nokogiri_rake-compiler:
+  id: 464814
+  rubygem_name: nokogiri
+  dependency_name: rake-compiler
+  type: development
+  requirements: "~> 1.1"
+  created_at: '2021-04-08T02:49:32.952Z'
+  updated_at: '2021-04-08T02:49:32.952Z'
+nokogiri_rake-compiler-dock:
+  id: 464821
+  rubygem_name: nokogiri
+  dependency_name: rake-compiler-dock
+  type: development
+  requirements: "~> 1.1"
+  created_at: '2021-04-08T02:49:34.160Z'
+  updated_at: '2021-04-08T02:49:34.160Z'
+nokogiri_rexical:
+  id: 464829
+  rubygem_name: nokogiri
+  dependency_name: rexical
+  type: development
+  requirements: "~> 1.0.5"
+  created_at: '2021-04-08T02:49:35.507Z'
+  updated_at: '2021-04-08T02:49:35.507Z'
+nokogiri_rubocop:
+  id: 464834
+  rubygem_name: nokogiri
+  dependency_name: rubocop
+  type: development
+  requirements: "~> 1.7"
+  created_at: '2021-04-08T02:49:36.512Z'
+  updated_at: '2021-04-08T02:49:36.512Z'
+nokogiri_simplecov:
+  id: 464842
+  rubygem_name: nokogiri
+  dependency_name: simplecov
+  type: development
+  requirements: "~> 0.20"
+  created_at: '2021-04-08T02:49:38.008Z'
+  updated_at: '2021-04-08T02:49:38.008Z'
+nokogiri_yard:
+  id: 464849
+  rubygem_name: nokogiri
+  dependency_name: yard
+  type: development
+  requirements: "~> 0.9"
+  created_at: '2021-04-08T02:49:39.262Z'
+  updated_at: '2021-04-08T02:49:39.262Z'
+simplecov_docile:
+  id: 451769
+  rubygem_name: simplecov
+  dependency_name: docile
+  type: runtime
+  requirements: "~> 1.1"
+  created_at: '2021-04-07T11:40:35.729Z'
+  updated_at: '2021-04-07T11:40:35.729Z'
+simplecov_simplecov-html:
+  id: 451773
+  rubygem_name: simplecov
+  dependency_name: simplecov-html
+  type: runtime
+  requirements: "~> 0.11"
+  created_at: '2021-04-07T11:40:35.840Z'
+  updated_at: '2021-04-07T11:40:35.840Z'
+simplecov_simplecov_json_formatter:
+  id: 451775
+  rubygem_name: simplecov
+  dependency_name: simplecov_json_formatter
+  type: runtime
+  requirements: "~> 0.1"
+  created_at: '2021-04-07T11:40:35.913Z'
+  updated_at: '2021-04-07T11:40:35.913Z'
+rubocop_bundler:
+  id: 453274
+  rubygem_name: rubocop
+  dependency_name: bundler
+  type: development
+  requirements: ">= 1.15.0, < 3.0"
+  created_at: '2021-04-07T11:43:38.768Z'
+  updated_at: '2021-04-07T11:43:38.768Z'
+rubocop_parallel:
+  id: 453280
+  rubygem_name: rubocop
+  dependency_name: parallel
+  type: runtime
+  requirements: "~> 1.10"
+  created_at: '2021-04-07T11:43:39.855Z'
+  updated_at: '2021-04-07T11:43:39.855Z'
+rubocop_parser:
+  id: 453288
+  rubygem_name: rubocop
+  dependency_name: parser
+  type: runtime
+  requirements: ">= 3.0.0.0"
+  created_at: '2021-04-07T11:43:40.942Z'
+  updated_at: '2021-04-07T11:43:40.942Z'
+rubocop_rainbow:
+  id: 453295
+  rubygem_name: rubocop
+  dependency_name: rainbow
+  type: runtime
+  requirements: ">= 2.2.2, < 4.0"
+  created_at: '2021-04-07T11:43:41.996Z'
+  updated_at: '2021-04-07T11:43:41.996Z'
+rubocop_regexp_parser:
+  id: 453302
+  rubygem_name: rubocop
+  dependency_name: regexp_parser
+  type: runtime
+  requirements: ">= 1.8, < 3.0"
+  created_at: '2021-04-07T11:43:43.172Z'
+  updated_at: '2021-04-07T11:43:43.172Z'
+rubocop_rexml:
+  id: 453309
+  rubygem_name: rubocop
+  dependency_name: rexml
+  type: runtime
+  requirements: ">= 0"
+  created_at: '2021-04-07T11:43:43.987Z'
+  updated_at: '2021-04-07T11:43:43.987Z'
+rubocop_rubocop-ast:
+  id: 453315
+  rubygem_name: rubocop
+  dependency_name: rubocop-ast
+  type: runtime
+  requirements: ">= 1.5.0, < 2.0"
+  created_at: '2021-04-07T11:43:45.221Z'
+  updated_at: '2021-05-23T01:06:58.071Z'
+rubocop_ruby-progressbar:
+  id: 453324
+  rubygem_name: rubocop
+  dependency_name: ruby-progressbar
+  type: runtime
+  requirements: "~> 1.7"
+  created_at: '2021-04-07T11:43:46.619Z'
+  updated_at: '2021-04-07T11:43:46.619Z'
+rubocop_unicode-display_width:
+  id: 453332
+  rubygem_name: rubocop
+  dependency_name: unicode-display_width
+  type: runtime
+  requirements: ">= 1.4.0, < 3.0"
+  created_at: '2021-04-07T11:43:47.929Z'
+  updated_at: '2021-04-07T11:43:47.929Z'
+minitest_hoe:
+  id: 488283
+  rubygem_name: minitest
+  dependency_name: hoe
+  type: development
+  requirements: "~> 3.22"
+  created_at: '2021-04-08T19:20:59.643Z'
+  updated_at: '2021-04-08T19:20:59.643Z'
+minitest_rdoc:
+  id: 488289
+  rubygem_name: minitest
+  dependency_name: rdoc
+  type: development
+  requirements: ">= 4.0, < 7"
+  created_at: '2021-04-08T19:21:00.307Z'
+  updated_at: '2021-04-08T19:21:00.307Z'

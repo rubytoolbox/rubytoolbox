@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe RubygemUpdateJob, :real_http do
+  fixtures :all
+
   let(:job) { described_class.new }
   let(:do_perform) { job.perform gem_name }
 

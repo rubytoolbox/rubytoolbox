@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe ComparisonsController, type: :controller do
+  fixtures :all
+
   before do
     Factories.project "a", score: 30, downloads: 5000
     Factories.project "b", score: 25, downloads: 40_000

@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe ApplicationHelper, type: :helper do
+  fixtures :all
+
   describe "#expiring_cache" do
     it "builds a cache key based on given label, time, and release version" do
       allow(ENV).to receive(:[]).with("HEROKU_RELEASE_VERSION").and_return("v42")

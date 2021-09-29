@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe Rubygem::Trend, type: :model do
+  fixtures :all
+
   describe ".for_date" do
     before do
       Factories.project "a"

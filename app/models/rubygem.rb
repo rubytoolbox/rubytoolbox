@@ -36,12 +36,11 @@ class Rubygem < ApplicationRecord
            inverse_of:  :dependency,
            dependent:   :destroy
 
-  def self.update_batch
-    where("updated_at < ? ", 24.hours.ago.utc)
-      .order(updated_at: :asc)
+  scope :update_batch, lambda {
+    where("fetched_at < ? ", 24.hours.ago.utc)
+      .order(fetched_at: :asc)
       .limit((count / 24.0).ceil)
-      .pluck(:name)
-  end
+  }
 
   def url
     File.join "https://rubygems.org/gems", name

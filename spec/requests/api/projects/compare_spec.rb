@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe "Project Comparison API", type: :request do
+  fixtures :all
+
   def do_request
     get "/api/projects/compare/#{query}"
   end

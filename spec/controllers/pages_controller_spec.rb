@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe PagesController, type: :controller do
+  fixtures :all
+
   describe "for valid page" do
     before do
       get :show, params: { id: "docs/index" }

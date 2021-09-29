@@ -1,0 +1,111 @@
+# Generated from realistic dataset using lib/make_fixtures.rb, please don't modify manually
+---
+nokogiri:
+  permalink: nokogiri
+  created_at: '2017-11-01T22:39:56.327Z'
+  updated_at: '2021-05-23T12:30:14.031Z'
+  rubygem_name: nokogiri
+  github_repo_path: sparklemotion/nokogiri
+  score: '34.52'
+  description: |
+    Nokogiri (鋸) makes it easy and painless to work with XML and HTML from Ruby. It provides a
+    sensible, easy-to-understand API for reading, writing, modifying, and querying documents. It is
+    fast and standards-compliant by relying on native parsers like libxml2 (C) and xerces (Java).
+bundler:
+  permalink: bundler
+  created_at: '2017-11-01T22:39:50.157Z'
+  updated_at: '2021-05-30T11:43:39.115Z'
+  rubygem_name: bundler
+  github_repo_path: rubygems/rubygems
+  score: '53.12'
+  description: Bundler manages an application's dependencies through its entire life,
+    across many machines, systematically and repeatably
+simplecov:
+  permalink: simplecov
+  created_at: '2017-11-01T22:39:42.944Z'
+  updated_at: '2021-05-23T02:37:43.291Z'
+  rubygem_name: simplecov
+  github_repo_path: simplecov-ruby/simplecov
+  score: '13.38'
+  description: Code coverage for Ruby with a powerful configuration library and automatic
+    merging of coverage across test suites
+rubocop:
+  permalink: rubocop
+  created_at: '2017-11-01T22:39:42.913Z'
+  updated_at: '2021-05-23T07:02:11.541Z'
+  rubygem_name: rubocop
+  github_repo_path: rubocop/rubocop
+  score: '21.05'
+  description: |2
+        RuboCop is a Ruby code style checking and code formatting tool.
+        It aims to enforce the community-driven Ruby Style Guide.
+minitest:
+  permalink: minitest
+  created_at: '2017-11-01T22:39:53.981Z'
+  updated_at: '2021-05-27T10:47:55.794Z'
+  rubygem_name: minitest
+  github_repo_path: seattlerb/minitest
+  score: '30.61'
+  description: |-
+    minitest provides a complete suite of testing facilities supporting
+    TDD, BDD, mocking, and benchmarking.
+
+        "I had a class with Jim Weirich on testing last week and we were
+         allowed to choose our testing frameworks. Kirk Haines and I were
+         paired up and we cracked open the code for a few test
+         frameworks...
+
+         I MUST say that minitest is *very* readable / understandable
+         compared to the 'other two' options we looked at. Nicely done and
+         thank you for helping us keep our mental sanity."
+
+        -- Wayne E. Seguin
+
+    minitest/test is a small and incredibly fast unit testing framework.
+    It provides a rich set of assertions to make your tests clean and
+    readable.
+
+    minitest/spec is a functionally complete spec engine. It hooks onto
+    minitest/test and seamlessly bridges test assertions over to spec
+    expectations.
+
+    minitest/benchmark is an awesome way to assert the performance of your
+    algorithms in a repeatable manner. Now you can assert that your newb
+    co-worker doesn't replace your linear algorithm with an exponential
+    one!
+
+    minitest/mock by Steven Baker, is a beautifully tiny mock (and stub)
+    object framework.
+
+    minitest/pride shows pride in testing and adds coloring to your test
+    output. I guess it is an example of how to write IO pipes too. :P
+
+    minitest/test is meant to have a clean implementation for language
+    implementors that need a minimal set of methods to bootstrap a working
+    test suite. For example, there is no magic involved for test-case
+    discovery.
+
+        "Again, I can't praise enough the idea of a testing/specing
+         framework that I can actually read in full in one sitting!"
+
+        -- Piotr Szotkowski
+
+    Comparing to rspec:
+
+        rspec is a testing DSL. minitest is ruby.
+
+        -- Adam Hawkins, "Bow Before MiniTest"
+
+    minitest doesn't reinvent anything that ruby already provides, like:
+    classes, modules, inheritance, methods. This means you only have to
+    learn ruby to use minitest and all of your regular OO practices like
+    extract-method refactorings still apply.
+imathis/octopress:
+  permalink: imathis/octopress
+  created_at: '2017-11-01T22:39:43.622Z'
+  updated_at: '2021-05-23T23:56:17.451Z'
+  rubygem_name:
+  github_repo_path: imathis/octopress
+  score: '15.85'
+  description: Octopress is an obsessively designed framework for Jekyll blogging.
+    It’s easy to configure and easy to deploy. Sweet huh?

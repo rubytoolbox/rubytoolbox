@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe Cron, type: :service do
+  fixtures :all
+
   let(:cron) { described_class.new }
 
   def time_at(hour)

@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe GithubIgnore, type: :model do
+  fixtures :all
+
   let(:path) { "foo/bar" }
 
   describe ".track!" do

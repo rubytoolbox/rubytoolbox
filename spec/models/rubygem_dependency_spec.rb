@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe RubygemDependency, type: :model do
+  fixtures :all
+
   subject(:model) { described_class.new }
 
   describe described_class::Collection do

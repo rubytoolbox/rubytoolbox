@@ -3,9 +3,11 @@
 require "rails_helper"
 
 RSpec.describe Project, type: :model do
+  fixtures :all
+
   it "does not allow mismatches between permalink and rubygem name" do
-    project = described_class.create! permalink: "simplecov"
-    expect { project.update! rubygem_name: "rails" }.to raise_error(
+    project = described_class.create! permalink: "somegem"
+    expect { project.update! rubygem_name: "othergem" }.to raise_error(
       ActiveRecord::StatementInvalid,
       /check_project_permalink_and_rubygem_name_parity/
     )
@@ -46,12 +48,12 @@ RSpec.describe Project, type: :model do
     end
 
     it "omits bugfix_forks when given false" do
-      expect(described_class.with_bugfix_forks(false).pluck(:permalink)).to be == %w[regular]
+      expect(described_class.with_bugfix_forks(false).pluck(:permalink)).not_to include("forked")
     end
 
     it "includes bugfix_forks when given true" do
       scope = described_class.with_bugfix_forks(true).order(permalink: :asc)
-      expect(scope.pluck(:permalink)).to be == %w[forked regular]
+      expect(scope.pluck(:permalink)).to include("forked", "regular")
     end
   end
 

@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe CatalogImport, type: :service do
+  fixtures :all
+
   describe ".perform" do
     let(:import) do
       instance_double(described_class, perform: nil)

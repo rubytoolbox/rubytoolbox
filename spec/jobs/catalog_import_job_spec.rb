@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe CatalogImportJob, type: :job do
+  fixtures :all
+
   let(:job) { described_class.new }
 
   describe "#perform" do

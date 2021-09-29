@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe "Sidekiq Web", type: :feature do
+  fixtures :all
+
   shared_examples_for "an unauthenticated response" do
     it "returns an empty body" do
       expect(page.body).to be_empty

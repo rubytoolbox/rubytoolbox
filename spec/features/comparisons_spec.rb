@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe "Project Comparisons", type: :feature, js: true do
+  fixtures :all
+
   before do
     Factories.project("acme", score: 25, downloads: 25_000, first_release: Date.new(2018, 5, 6))
     Factories.project("widget", score: 20, downloads: 50_000, first_release: Date.new(2019, 5, 6))

@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe Rubygem::Trend::Navigation, type: :model do
+  fixtures :all
+
   let(:rubygem) { Factories.rubygem "example" }
 
   before do

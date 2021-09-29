@@ -1,0 +1,38 @@
+# Generated from realistic dataset using lib/make_fixtures.rb, please don't modify manually
+---
+Web_Apps_Services_Interaction:
+  permalink: Web_Apps_Services_Interaction
+  name: Web Apps, Services & Interaction
+  description:
+  created_at: '2017-11-01T22:39:54.863Z'
+  updated_at: '2017-11-01T22:39:54.863Z'
+Package_Dependency_Management:
+  permalink: Package_Dependency_Management
+  name: Package & Dependency Management
+  description:
+  created_at: '2017-11-01T22:39:49.992Z'
+  updated_at: '2017-11-01T22:39:49.992Z'
+Developer_Tools:
+  permalink: Developer_Tools
+  name: Developer Tools
+  description:
+  created_at: '2017-11-01T22:39:44.856Z'
+  updated_at: '2017-11-01T22:39:44.856Z'
+Code_Quality:
+  permalink: Code_Quality
+  name: Code Quality
+  description:
+  created_at: '2017-11-01T22:39:42.728Z'
+  updated_at: '2017-11-01T22:39:42.728Z'
+Testing:
+  permalink: Testing
+  name: Testing
+  description:
+  created_at: '2017-11-01T22:39:52.719Z'
+  updated_at: '2017-11-01T22:39:52.719Z'
+Content_Management_Blogging:
+  permalink: Content_Management_Blogging
+  name: Content Management & Blogging
+  description:
+  created_at: '2017-11-01T22:39:43.591Z'
+  updated_at: '2017-11-01T22:39:43.591Z'

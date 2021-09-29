@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe GithubClient, :real_http do
+  fixtures :all
+
   let(:client) { described_class.new }
 
   describe "#fetch_repository" do
