@@ -1,3 +1,4 @@
+# Generated from realistic dataset using lib/make_fixtures.rb, please don't modify manually
 ---
 simplecov-ruby/simplecov:
   path: simplecov-ruby/simplecov

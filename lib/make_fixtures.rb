@@ -13,7 +13,6 @@ PROJECTS = %w[
   bundler
   simplecov
   rubocop
-  rspec
   minitest
   imathis/octopress
 ].freeze
@@ -59,5 +58,8 @@ PROJECTS.each do |project_name|
 end
 
 RESULTS.each do |name, data|
-  Rails.root.join("spec", "fixtures", "#{name}.yml").open("w+") { _1.puts data.to_yaml }
+  Rails.root.join("spec", "fixtures", "#{name}.yml").open("w+") do
+    _1.puts "# Generated from realistic dataset using lib/make_fixtures.rb, please don't modify manually"
+    _1.puts data.to_yaml
+  end
 end

@@ -14,11 +14,11 @@ class RemoteUpdateSchedulerJob < ApplicationJob
     # anymore
     GithubRepo.without_projects.destroy_all
 
-    Rubygem.update_batch.each do |name|
+    Rubygem.update_batch.pluck(:name).each do |name|
       RubygemUpdateJob.perform_async name
     end
 
-    GithubRepo.update_batch.each do |path|
+    GithubRepo.update_batch.pluck(:path).each do |path|
       GithubRepoUpdateJob.perform_async path
     end
   end

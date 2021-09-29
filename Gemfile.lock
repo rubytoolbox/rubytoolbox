@@ -91,6 +91,10 @@ GEM
     crack (0.4.5)
       rexml
     crass (1.0.6)
+    database_cleaner-active_record (2.0.1)
+      activerecord (>= 5.a)
+      database_cleaner-core (~> 2.0.0)
+    database_cleaner-core (2.0.1)
     db-query-matchers (0.10.0)
       activesupport (>= 4.0, < 7)
       rspec (~> 3.0)
@@ -446,6 +450,7 @@ DEPENDENCIES
   bundler-audit
   byebug
   capybara
+  database_cleaner-active_record
   db-query-matchers
   dotenv-rails
   feedjira

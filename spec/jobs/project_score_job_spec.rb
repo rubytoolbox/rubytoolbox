@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe ProjectScoreJob, type: :job do
+RSpec.describe ProjectScoreJob, :clean_database, type: :job do
   let(:job) { described_class.new }
 
   describe "#perform" do

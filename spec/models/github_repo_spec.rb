@@ -12,23 +12,22 @@ RSpec.describe GithubRepo, type: :model do
   end
 
   describe ".update_batch" do
-    before do
-      create_repo! path: "foo/up-to-date", updated_at: 23.hours.ago
-      create_repo! path: "foo/outdated1", updated_at: 27.hours.ago
-      create_repo! path: "foo/outdated2", updated_at: 26.hours.ago
+    subject(:scope) { described_class.update_batch.to_sql }
+
+    let(:expected_sql) do
+      described_class.where("fetched_at < ? ", 24.hours.ago.utc)
+                     .order(fetched_at: :asc)
+                     .limit((described_class.count / 24.0).ceil)
+                     .to_sql
     end
 
-    it "contains a subset of repos that should be updated" do
-      expect(described_class.update_batch).to match %w[foo/outdated1]
-    end
-
-    it "the subset grows with to the total count of repos" do
-      24.times do |i|
-        create_repo! path: "foo/outdated#{i + 3}", updated_at: 25.hours.ago
+    around do |example|
+      Timecop.freeze Time.current do
+        example.run
       end
-
-      expect(described_class.update_batch).to match %w[foo/outdated1 foo/outdated2]
     end
+
+    it { is_expected.to be == expected_sql }
   end
 
   describe ".without_projects" do

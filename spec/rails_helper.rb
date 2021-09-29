@@ -92,6 +92,13 @@ RSpec.configure do |config|
     Capybara.current_session.current_window.resize_to 450, 900
   end
 
+  # Some specs assume a clean database, which conflicts with some
+  # baseline data provided by fixtures. In this case, this annotation
+  # ensures the fixtures get purged before each example.
+  config.before clean_database: true do
+    DatabaseCleaner.clean_with :truncation
+  end
+
   # Fail js capybara tests when the browser log has JS errors.
   # Snippet courtesy of:
   # https://medium.com/@coorasse/catch-javascript-errors-in-your-system-tests-89c2fe6773b1

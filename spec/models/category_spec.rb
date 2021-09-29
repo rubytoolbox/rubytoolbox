@@ -39,7 +39,7 @@ RSpec.describe Category, type: :model do
   end
 
   describe ".by_rank" do
-    it "returns only ranked categories, ordered by rank" do
+    it "returns only ranked categories, ordered by rank", :clean_database do
       described_class.create! permalink: "A", name: "A", category_group: group
       described_class.create! permalink: "B", name: "B", category_group: group, rank: 2
       described_class.create! permalink: "C", name: "C", category_group: group, rank: 1
@@ -49,7 +49,7 @@ RSpec.describe Category, type: :model do
   end
 
   describe ".featured" do
-    it "returns up to 16 ranked categories" do
+    it "returns up to 16 ranked categories", :clean_database do
       20.times do |i|
         described_class.create! permalink: (i + 1).to_s,
                                 name: (i + 1).to_s,

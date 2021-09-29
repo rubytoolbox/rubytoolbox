@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe "Full Project Sync", :real_http, :sidekiq_inline do
+RSpec.describe "Full Project Sync", :clean_database, :real_http, :sidekiq_inline do
   describe "for Rubygem-based projects", vcr: { cassette_name: "full-project-sync-from-gem" } do
     let(:do_perform) { RubygemUpdateJob.perform_async "thread_safe" }
 

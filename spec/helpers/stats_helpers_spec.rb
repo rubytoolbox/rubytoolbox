@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe StatsHelpers, type: :helper do
+RSpec.describe StatsHelpers, :clean_database, type: :helper do
   describe "#percentiles" do
     it "returns a hash of number distribution percentiles" do
       Factories.project "example"

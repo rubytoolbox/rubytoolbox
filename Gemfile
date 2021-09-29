@@ -115,6 +115,8 @@ group :test do
   gem "db-query-matchers"
   gem "shoulda-matchers"
 
+  gem "database_cleaner-active_record"
+
   gem "retriable"
 
   gem "timecop"

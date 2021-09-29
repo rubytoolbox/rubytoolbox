@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe CatalogImport do
+RSpec.describe CatalogImport, :clean_database do
   let(:catalog_data) { Oj.load Rails.root.join("lib", "base-catalog.json").read }
 
   let(:category_data) { catalog_data["category_groups"].map { |g| g["categories"] }.flatten }

@@ -1,3 +1,4 @@
+# Generated from realistic dataset using lib/make_fixtures.rb, please don't modify manually
 ---
 nokogiri_bundler:
   id: 464766
@@ -207,30 +208,6 @@ rubocop_unicode-display_width:
   requirements: ">= 1.4.0, < 3.0"
   created_at: '2021-04-07T11:43:47.929Z'
   updated_at: '2021-04-07T11:43:47.929Z'
-rspec_rspec-core:
-  id: 527518
-  rubygem_name: rspec
-  dependency_name: rspec-core
-  type: runtime
-  requirements: "~> 3.10.0"
-  created_at: '2021-04-09T14:15:15.043Z'
-  updated_at: '2021-04-09T14:15:15.043Z'
-rspec_rspec-expectations:
-  id: 527519
-  rubygem_name: rspec
-  dependency_name: rspec-expectations
-  type: runtime
-  requirements: "~> 3.10.0"
-  created_at: '2021-04-09T14:15:15.120Z'
-  updated_at: '2021-04-09T14:15:15.120Z'
-rspec_rspec-mocks:
-  id: 527522
-  rubygem_name: rspec
-  dependency_name: rspec-mocks
-  type: runtime
-  requirements: "~> 3.10.0"
-  created_at: '2021-04-09T14:15:15.199Z'
-  updated_at: '2021-04-09T14:15:15.199Z'
 minitest_hoe:
   id: 488283
   rubygem_name: minitest
