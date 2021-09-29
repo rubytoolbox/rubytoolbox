@@ -1,0 +1,434 @@
+---
+nokogiri:
+  name: nokogiri
+  downloads: 398962784
+  current_version: 1.11.5
+  authors: Mike Dalessio, Aaron Patterson, Yoko Harada, Akinori MUSHA, John Shahid,
+    Karol Bucek, Lars Kanis, Sergio Arbeo, Timothy Elliott, Nobuyoshi Nakada
+  description: |
+    Nokogiri (鋸) makes it easy and painless to work with XML and HTML from Ruby. It provides a
+    sensible, easy-to-understand API for reading, writing, modifying, and querying documents. It is
+    fast and standards-compliant by relying on native parsers like libxml2 (C) and xerces (Java).
+  licenses:
+  - MIT
+  bug_tracker_url: https://github.com/sparklemotion/nokogiri/issues
+  changelog_url:
+  documentation_url: https://nokogiri.org/rdoc/index.html
+  homepage_url: https://nokogiri.org
+  mailing_list_url:
+  source_code_url: https://github.com/sparklemotion/nokogiri
+  wiki_url:
+  created_at: '2018-01-03T00:54:01.378Z'
+  updated_at: '2021-05-23T09:35:29.603Z'
+  first_release_on: '2008-10-30'
+  latest_release_on: '2021-05-20'
+  releases_count: 508
+  reverse_dependencies_count: 7166
+  quarterly_release_counts:
+    2008-4: 9
+    2009-1: 5
+    2009-2: 3
+    2009-3: 1
+    2009-4: 2
+    2010-2: 3
+    2010-3: 3
+    2010-4: 4
+    2011-1: 1
+    2011-2: 2
+    2011-3: 2
+    2012-1: 5
+    2012-2: 12
+    2012-3: 2
+    2012-4: 2
+    2013-1: 6
+    2013-2: 3
+    2013-4: 2
+    2014-2: 8
+    2014-3: 2
+    2014-4: 3
+    2015-1: 2
+    2015-3: 2
+    2015-4: 6
+    2016-1: 3
+    2016-2: 1
+    2016-4: 2
+    2017-1: 2
+    2017-2: 2
+    2017-3: 1
+    2018-1: 1
+    2018-2: 1
+    2018-3: 1
+    2018-4: 4
+    2019-1: 4
+    2019-2: 1
+    2019-3: 1
+    2019-4: 3
+    2020-1: 3
+    2020-2: 1
+    2020-3: 2
+    2020-4: 1
+    2021-1: 3
+    2021-2: 3
+bundler:
+  name: bundler
+  downloads: 661962459
+  current_version: 2.2.18
+  authors: André Arko, Samuel Giddins, Colby Swandale, Hiroshi Shibata, David Rodríguez,
+    Grey Baker, Stephanie Morillo, Chris Morris, James Wen, Tim Moore, André Medeiros,
+    Jessica Lynn Suttles, Terence Lee, Carl Lerche, Yehuda Katz
+  description: Bundler manages an application's dependencies through its entire life,
+    across many machines, systematically and repeatably
+  licenses:
+  - MIT
+  bug_tracker_url: https://github.com/rubygems/rubygems/issues?q=is%3Aopen+is%3Aissue+label%3ABundler
+  changelog_url:
+  documentation_url:
+  homepage_url: https://bundler.io/
+  mailing_list_url:
+  source_code_url: https://github.com/rubygems/rubygems/
+  wiki_url:
+  created_at: '2018-01-03T03:27:28.619Z'
+  updated_at: '2021-05-28T00:57:29.375Z'
+  first_release_on: '2009-07-29'
+  latest_release_on: '2021-05-25'
+  releases_count: 303
+  reverse_dependencies_count: 65406
+  quarterly_release_counts:
+    2009-3: 6
+    2009-4: 3
+    2010-1: 25
+    2010-2: 14
+    2010-3: 12
+    2010-4: 4
+    2011-1: 4
+    2011-2: 9
+    2011-3: 11
+    2011-4: 6
+    2012-1: 6
+    2012-2: 3
+    2012-3: 5
+    2012-4: 5
+    2013-1: 12
+    2013-2: 1
+    2013-3: 3
+    2013-4: 4
+    2014-1: 8
+    2014-2: 3
+    2014-3: 10
+    2014-4: 10
+    2015-1: 18
+    2015-2: 22
+    2015-3: 1
+    2015-4: 5
+    2016-1: 3
+    2016-2: 11
+    2016-3: 4
+    2016-4: 7
+    2017-1: 8
+    2017-2: 6
+    2017-3: 5
+    2017-4: 3
+    2018-2: 1
+    2018-3: 4
+    2018-4: 9
+    2019-1: 2
+    2019-2: 1
+    2019-3: 2
+    2019-4: 4
+    2020-1: 2
+    2020-3: 1
+    2020-4: 6
+    2021-1: 11
+    2021-2: 3
+simplecov:
+  name: simplecov
+  downloads: 141246376
+  current_version: 0.21.2
+  authors: Christoph Olszowka, Tobias Pfeiffer
+  description: Code coverage for Ruby with a powerful configuration library and automatic
+    merging of coverage across test suites
+  licenses:
+  - MIT
+  bug_tracker_url: https://github.com/simplecov-ruby/simplecov/issues
+  changelog_url:
+  documentation_url: https://www.rubydoc.info/gems/simplecov/0.21.2
+  homepage_url: https://github.com/simplecov-ruby/simplecov
+  mailing_list_url: https://groups.google.com/forum/#!forum/simplecov
+  source_code_url: https://github.com/simplecov-ruby/simplecov/tree/v0.21.2
+  wiki_url:
+  created_at: '2018-01-03T01:48:03.557Z'
+  updated_at: '2021-05-22T23:37:29.817Z'
+  first_release_on: '2010-08-21'
+  latest_release_on: '2021-01-09'
+  releases_count: 57
+  reverse_dependencies_count: 11202
+  quarterly_release_counts:
+    2010-3: 6
+    2010-4: 1
+    2011-1: 3
+    2011-2: 1
+    2011-3: 2
+    2011-4: 1
+    2012-1: 2
+    2012-2: 3
+    2012-4: 2
+    2013-2: 1
+    2013-3: 1
+    2013-4: 2
+    2014-3: 2
+    2015-1: 1
+    2015-2: 1
+    2015-4: 2
+    2016-1: 1
+    2016-3: 1
+    2017-1: 3
+    2017-3: 2
+    2018-1: 2
+    2019-3: 2
+    2020-1: 9
+    2020-3: 1
+    2020-4: 2
+    2021-1: 3
+rubocop:
+  name: rubocop
+  downloads: 159048832
+  current_version: 1.15.0
+  authors: Bozhidar Batsov, Jonas Arvidsson, Yuji Nakayama
+  description: |2
+        RuboCop is a Ruby code style checking and code formatting tool.
+        It aims to enforce the community-driven Ruby Style Guide.
+  licenses:
+  - MIT
+  bug_tracker_url: https://github.com/rubocop/rubocop/issues
+  changelog_url:
+  documentation_url: https://docs.rubocop.org/rubocop/1.15/
+  homepage_url: https://rubocop.org/
+  mailing_list_url:
+  source_code_url: https://github.com/rubocop/rubocop/
+  wiki_url:
+  created_at: '2018-01-03T01:34:12.800Z'
+  updated_at: '2021-05-23T01:06:42.080Z'
+  first_release_on: '2012-05-03'
+  latest_release_on: '2021-05-17'
+  releases_count: 177
+  reverse_dependencies_count: 9464
+  quarterly_release_counts:
+    2012-2: 1
+    2012-4: 1
+    2013-1: 4
+    2013-2: 18
+    2013-3: 8
+    2013-4: 4
+    2014-1: 5
+    2014-2: 6
+    2014-3: 4
+    2014-4: 3
+    2015-1: 2
+    2015-2: 5
+    2015-3: 4
+    2015-4: 2
+    2016-1: 6
+    2016-2: 3
+    2016-3: 3
+    2016-4: 4
+    2017-1: 3
+    2017-2: 3
+    2017-3: 1
+    2017-4: 3
+    2018-1: 2
+    2018-2: 5
+    2018-3: 6
+    2018-4: 3
+    2019-1: 6
+    2019-2: 9
+    2019-3: 3
+    2019-4: 4
+    2020-1: 3
+    2020-2: 7
+    2020-3: 9
+    2020-4: 16
+    2021-1: 7
+    2021-2: 4
+rspec:
+  name: rspec
+  downloads: 540209012
+  current_version: 3.10.0
+  authors: Steven Baker, David Chelimsky, Myron Marston
+  description: BDD for Ruby
+  licenses:
+  - MIT
+  bug_tracker_url: https://github.com/rspec/rspec/issues
+  changelog_url:
+  documentation_url: https://rspec.info/documentation/
+  homepage_url: http://github.com/rspec
+  mailing_list_url: https://groups.google.com/forum/#!forum/rspec
+  source_code_url: https://github.com/rspec/rspec
+  wiki_url:
+  created_at: '2018-01-03T01:32:39.960Z'
+  updated_at: '2021-05-25T16:52:58.302Z'
+  first_release_on: '2005-08-11'
+  latest_release_on: '2020-10-30'
+  releases_count: 167
+  reverse_dependencies_count: 55525
+  quarterly_release_counts:
+    2005-3: 9
+    2006-1: 4
+    2006-2: 14
+    2006-3: 7
+    2006-4: 7
+    2007-1: 4
+    2007-2: 11
+    2007-3: 3
+    2007-4: 2
+    2008-1: 2
+    2008-2: 1
+    2008-3: 2
+    2008-4: 6
+    2009-1: 4
+    2009-2: 5
+    2009-3: 1
+    2009-4: 1
+    2010-1: 14
+    2010-2: 11
+    2010-3: 6
+    2010-4: 8
+    2011-1: 2
+    2011-2: 5
+    2011-4: 4
+    2012-1: 3
+    2012-2: 1
+    2012-3: 1
+    2012-4: 1
+    2013-1: 1
+    2013-2: 1
+    2013-3: 2
+    2013-4: 2
+    2014-1: 2
+    2014-2: 4
+    2014-3: 1
+    2015-1: 1
+    2015-2: 1
+    2015-4: 1
+    2016-1: 2
+    2016-2: 2
+    2016-3: 1
+    2016-4: 2
+    2017-2: 1
+    2017-4: 1
+    2018-3: 1
+    2019-4: 1
+    2020-4: 1
+minitest:
+  name: minitest
+  downloads: 380211284
+  current_version: 5.14.4
+  authors: Ryan Davis
+  description: |-
+    minitest provides a complete suite of testing facilities supporting
+    TDD, BDD, mocking, and benchmarking.
+
+        "I had a class with Jim Weirich on testing last week and we were
+         allowed to choose our testing frameworks. Kirk Haines and I were
+         paired up and we cracked open the code for a few test
+         frameworks...
+
+         I MUST say that minitest is *very* readable / understandable
+         compared to the 'other two' options we looked at. Nicely done and
+         thank you for helping us keep our mental sanity."
+
+        -- Wayne E. Seguin
+
+    minitest/test is a small and incredibly fast unit testing framework.
+    It provides a rich set of assertions to make your tests clean and
+    readable.
+
+    minitest/spec is a functionally complete spec engine. It hooks onto
+    minitest/test and seamlessly bridges test assertions over to spec
+    expectations.
+
+    minitest/benchmark is an awesome way to assert the performance of your
+    algorithms in a repeatable manner. Now you can assert that your newb
+    co-worker doesn't replace your linear algorithm with an exponential
+    one!
+
+    minitest/mock by Steven Baker, is a beautifully tiny mock (and stub)
+    object framework.
+
+    minitest/pride shows pride in testing and adds coloring to your test
+    output. I guess it is an example of how to write IO pipes too. :P
+
+    minitest/test is meant to have a clean implementation for language
+    implementors that need a minimal set of methods to bootstrap a working
+    test suite. For example, there is no magic involved for test-case
+    discovery.
+
+        "Again, I can't praise enough the idea of a testing/specing
+         framework that I can actually read in full in one sitting!"
+
+        -- Piotr Szotkowski
+
+    Comparing to rspec:
+
+        rspec is a testing DSL. minitest is ruby.
+
+        -- Adam Hawkins, "Bow Before MiniTest"
+
+    minitest doesn't reinvent anything that ruby already provides, like:
+    classes, modules, inheritance, methods. This means you only have to
+    learn ruby to use minitest and all of your regular OO practices like
+    extract-method refactorings still apply.
+  licenses:
+  - MIT
+  bug_tracker_url: https://github.com/seattlerb/minitest/issues
+  changelog_url:
+  documentation_url:
+  homepage_url: https://github.com/seattlerb/minitest
+  mailing_list_url:
+  source_code_url:
+  wiki_url:
+  created_at: '2018-01-03T00:41:42.780Z'
+  updated_at: '2021-05-23T10:53:44.621Z'
+  first_release_on: '2008-10-09'
+  latest_release_on: '2021-02-24'
+  releases_count: 119
+  reverse_dependencies_count: 11539
+  quarterly_release_counts:
+    2008-4: 1
+    2009-1: 1
+    2009-2: 3
+    2010-1: 2
+    2010-3: 3
+    2010-4: 3
+    2011-2: 6
+    2011-3: 5
+    2011-4: 7
+    2012-1: 6
+    2012-2: 6
+    2012-3: 4
+    2012-4: 6
+    2013-1: 6
+    2013-2: 12
+    2013-3: 2
+    2013-4: 2
+    2014-1: 5
+    2014-2: 4
+    2014-3: 3
+    2014-4: 2
+    2015-1: 1
+    2015-2: 3
+    2015-3: 2
+    2015-4: 2
+    2016-1: 1
+    2016-2: 1
+    2016-3: 2
+    2016-4: 2
+    2017-2: 1
+    2017-3: 1
+    2017-4: 1
+    2018-1: 4
+    2019-3: 3
+    2019-4: 1
+    2020-1: 1
+    2020-2: 1
+    2020-3: 1
+    2021-1: 2
