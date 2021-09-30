@@ -32,7 +32,7 @@ def fixturify(model)
   model.attributes.as_json.except(*EXCLUDED_COLUMNS)
 end
 
-RESULTS = Hash.new { _1[_2] = {} }
+RESULTS = Hash.new { |hash, key| hash[key] = {} }
 PROJECTS.each do |project_name|
   project = Project.find project_name
 
@@ -58,8 +58,8 @@ PROJECTS.each do |project_name|
 end
 
 RESULTS.each do |name, data|
-  Rails.root.join("spec", "fixtures", "#{name}.yml").open("w+") do
-    _1.puts "# Generated from realistic dataset using lib/make_fixtures.rb, please don't modify manually"
-    _1.puts data.to_yaml
+  Rails.root.join("spec", "fixtures", "#{name}.yml").open("w+") do |f|
+    f.puts "# Generated from realistic dataset using lib/make_fixtures.rb, please don't modify manually"
+    f.puts data.to_yaml
   end
 end

@@ -52,9 +52,11 @@ RSpec.describe Rubygem::DownloadStat::Timeseries, type: :model do
       expect { timeseries.stats }.to make_database_queries(matching: "SELECT \"rubygem_download_stats\"", count: 1)
     end
 
+    # rubocop:disable RSpec/IdenticalEqualityAssertion
     it "memoizes the calculated stats" do
       expect(timeseries.stats.object_id).to be == timeseries.stats.object_id
     end
+    # rubocop:enable RSpec/IdenticalEqualityAssertion
   end
 end
 # rubocop:enable RSpec/ExampleLength

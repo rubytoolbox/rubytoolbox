@@ -34,7 +34,7 @@ Dir.mktmpdir do |dir|
   puts "", "== Running pg_restore against #{target_database}"
 
   result = system "pg_restore --clean --create --no-owner " \
-    "--dbname=#{Shellwords.escape(target_database)} #{Shellwords.escape(destination)}"
+                  "--dbname=#{Shellwords.escape(target_database)} #{Shellwords.escape(destination)}"
 
   if result
     puts "Database successfully imported"

@@ -307,8 +307,10 @@ RSpec.describe Project, type: :model do
       expect(project.health).to be == health
     end
 
+    # rubocop:disable RSpec/IdenticalEqualityAssertion
     it "memoizes the instance" do
       expect(project.health.object_id).to be == project.health.object_id
     end
+    # rubocop:enable RSpec/IdenticalEqualityAssertion
   end
 end

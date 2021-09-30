@@ -4,6 +4,6 @@ module Patterns
   # Ripped from https://github.com/rubygems/rubygems.org/blob/master/lib/patterns.rb and enhanced
   # to also allow slashes as per github
   SPECIAL_CHARACTERS    = ".-_/"
-  ALLOWED_CHARACTERS    = "[A-Za-z0-9#{Regexp.escape(SPECIAL_CHARACTERS)}]+"
+  ALLOWED_CHARACTERS    = "[A-Za-z0-9#{Regexp.escape(SPECIAL_CHARACTERS)}]+".freeze
   ROUTE_PATTERN         = /#{ALLOWED_CHARACTERS}/
 end
