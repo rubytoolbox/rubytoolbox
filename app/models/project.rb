@@ -19,6 +19,13 @@ class Project < ApplicationRecord
              optional:    true,
              inverse_of:  :project
 
+  # Projects that are using this project as a dependency on the
+  # rubygem definition
+  has_many :reverse_dependencies,
+           -> { with_score.order(score: :desc) },
+           through: :rubygem,
+           source:  :reverse_dependency_projects
+
   belongs_to :github_repo,
              primary_key: :path,
              foreign_key: :github_repo_path,
@@ -135,6 +142,13 @@ class Project < ApplicationRecord
 
   def permalink=(permalink)
     super Github.normalize_path(permalink)
+  end
+
+  # For now we just go with the permalink as the name. In the future
+  # this might support canonical human names (i.e. RSpec instead of rspec
+  # derived from the gem)
+  def name
+    permalink
   end
 
   def github_only?

@@ -18,7 +18,12 @@ Rails.application.routes.draw do
 
   resources :categories, only: %i[index show]
 
-  resources :projects, only: %i[show], constraints: { id: Patterns::ROUTE_PATTERN }
+  resources :projects, only: %i[show], constraints: { id: Patterns::ROUTE_PATTERN } do
+    member do
+      get :reverse_dependencies
+    end
+  end
+
   get "compare(/:id)", to: "comparisons#show", constraints: { id: /.*/ }, as: :comparison
   resources :trends, only: %i[index show]
 

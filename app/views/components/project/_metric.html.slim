@@ -6,6 +6,13 @@
         span.icon
           i.fa class=icon
         span= metric_label key
-    strong
-      = link_to_docs_if_exists docs_page do
-        = pretty_metric_value value
+    .level.is-mobile
+      .level-left: .level-item
+        strong= link_to_docs_if_exists docs_page do
+          = pretty_metric_value value
+      - if @project && key == :rubygem_reverse_dependencies_count
+        .level-right: .level-item
+          .field.has-addons
+            p.control
+              a.button.is-small.tooltip.is-tooltip-bottom href=reverse_dependencies_project_path(@project) data-tooltip="Browse gems that depend on this project"
+                span.icon: i.fa.fa-search

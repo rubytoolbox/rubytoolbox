@@ -5,6 +5,44 @@ require "rails_helper"
 RSpec.describe Project, type: :model do
   fixtures :all
 
+  describe "associations" do
+    subject(:model) { described_class.new }
+
+    it {
+      expect(model).to have_many(:categorizations)
+        .with_primary_key(:permalink)
+        .with_foreign_key(:project_permalink)
+        .validate(false)
+        .dependent(:destroy)
+        .inverse_of(:project)
+    }
+
+    it { is_expected.to have_many(:categories).through(:categorizations) }
+
+    it {
+      expect(model).to belong_to(:rubygem)
+        .with_primary_key(:name)
+        .with_foreign_key(:rubygem_name)
+        .inverse_of(:project)
+        .optional
+    }
+
+    it {
+      expect(model).to have_many(:reverse_dependencies)
+        .through(:rubygem)
+        .source(:reverse_dependency_projects)
+        .order(score: :desc)
+    }
+
+    it {
+      expect(model).to belong_to(:github_repo)
+        .with_primary_key(:path)
+        .with_foreign_key(:github_repo_path)
+        .inverse_of(:projects)
+        .optional
+    }
+  end
+
   it "does not allow mismatches between permalink and rubygem name" do
     project = described_class.create! permalink: "somegem"
     expect { project.update! rubygem_name: "othergem" }.to raise_error(
@@ -237,6 +275,12 @@ RSpec.describe Project, type: :model do
         expect(project.bug_tracker_url).to be == project.github_repo_issues_url
       end
     end
+  end
+
+  describe "#name" do
+    subject(:project) { described_class.new(permalink: SecureRandom.hex(10)) }
+
+    it { is_expected.to have_attributes(name: project.permalink) }
   end
 
   describe "permalink=" do

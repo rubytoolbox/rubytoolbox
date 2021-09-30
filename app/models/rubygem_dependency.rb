@@ -29,6 +29,13 @@ class RubygemDependency < ApplicationRecord
              # Optional because we might not know about this gem
              optional:    true
 
+  belongs_to :depending_project,
+             class_name:  "Project",
+             optional:    true,
+             foreign_key: :rubygem_name,
+             primary_key: :rubygem_name,
+             inverse_of:  false
+
   belongs_to :dependency_project,
              class_name:  "Project",
              optional:    true,
