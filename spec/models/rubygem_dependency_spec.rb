@@ -24,23 +24,37 @@ RSpec.describe RubygemDependency, type: :model do
   end
 
   describe "associations" do
-    it { is_expected.to belong_to(:rubygem) }
+    it {
+      expect(model).to belong_to(:rubygem)
+        .with_foreign_key(:rubygem_name)
+        .inverse_of(:rubygem_dependencies)
+    }
 
-    it "belongs to dependency optionally" do
+    it {
       expect(model).to belong_to(:dependency)
         .class_name("Rubygem")
         .with_foreign_key(:dependency_name)
         .optional
         .inverse_of(:reverse_dependencies)
-    end
+    }
 
-    it "belongs to dependency_project" do
+    it {
+      expect(model).to belong_to(:depending_project)
+        .class_name("Project")
+        .with_primary_key(:rubygem_name)
+        .with_foreign_key(:rubygem_name)
+        .inverse_of(false)
+        .optional
+    }
+
+    it {
       expect(model).to belong_to(:dependency_project)
         .class_name("Project")
+        .with_primary_key(:rubygem_name)
         .with_foreign_key(:dependency_name)
         .inverse_of(false)
         .optional
-    end
+    }
   end
 
   it { is_expected.to validate_inclusion_of(:type).in_array(described_class::TYPES) }
