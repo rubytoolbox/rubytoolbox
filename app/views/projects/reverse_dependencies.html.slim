@@ -1,0 +1,45 @@
+- content_for :title, "Reverse Dependencies of #{@project.permalink}"
+
+.hero: section.section: .container
+  .columns
+    .column
+      p.heading Project
+      h2
+        a href=reverse_dependencies_project_path(@project)
+          span Reverse Dependencies for&nbsp;
+          // Note that rails url helpers escape slashes (as seen in github-based projects) and this breaks.
+        strong: a href="/projects/#{@project.permalink}"
+          = @project.permalink
+      p.description
+        | The projects listed here declare #{@project.name} as a runtime or development dependency
+
+section.section: .container
+  .columns: .column.projects
+
+    .level.project-search-nav
+      .level-left: .level-item
+        span &nbsp;
+      .level-right
+        .level-item= project_display_picker @display_mode
+        .level-item
+          .field.has-addons
+            .control
+              - if show_forks?
+                a.button.bugfix-forks-toggle href=link_with_preserved_display_settings(show_forks: "false")
+                  span.icon: i.fa.fa-check-square
+                  span Bugfix forks are <strong>shown</strong>
+
+              - else
+                a.button.bugfix-forks-toggle href=link_with_preserved_display_settings(show_forks: "true")
+                  span.icon: i.fa.fa-square-o
+                  span Bugfix forks are <strong>hidden</strong>
+
+            .control
+              a.button.bugfix-forks-help href=page_path("docs/features/bugfix_forks")
+                span.icon: i.fa.fa-question-circle
+
+    .columns: .column= paginate @dependencies
+
+    = render "projects/listing", projects: @dependencies, show_categories: true, display_mode: @display_mode
+
+    .columns: .column= paginate @dependencies

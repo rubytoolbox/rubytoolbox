@@ -9,3 +9,6 @@
     strong
       = link_to_docs_if_exists docs_page do
         = pretty_metric_value value
+      - if @project && key == :rubygem_reverse_dependencies_count
+        a.button.is-small href=reverse_dependencies_project_path(@project)
+          span.icon: i.fa.fa-search

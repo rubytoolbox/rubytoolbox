@@ -5,11 +5,9 @@ require "rails_helper"
 RSpec.describe "Project Display", type: :feature do
   fixtures :all
 
-  let(:project) do
-    Factories.project "widgets"
-  end
-
   it "can display Project README" do
+    project = Factories.project "widgets"
+
     visit project_path(project)
     expect(page).not_to have_selector(".readme .content")
 
@@ -21,5 +19,31 @@ RSpec.describe "Project Display", type: :feature do
     within ".readme .content" do
       expect(page).to have_text("some content")
     end
+  end
+
+  it "can display a project's reverse dependencies", :js do
+    project = Project.find("bundler")
+
+    visit project_path(project)
+
+    within '.metric[data-metric-name="rubygem_reverse_dependencies_count"]' do
+      page.find("a.button").click
+    end
+
+    within ".hero" do
+      expect(page).to have_text "Reverse Dependencies for bundler"
+    end
+
+    expect_display_mode "Compact"
+    take_snapshots! "Reverse Dependencies: Compact View"
+
+    shown_dependencies = page.all(".project.box h3").map(&:text)
+
+    project.reverse_dependencies.then do |expected|
+      expect(shown_dependencies).to be == expected.map(&:name)
+    end
+
+    change_display_mode "Full"
+    change_display_mode "Table"
   end
 end

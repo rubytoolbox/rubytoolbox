@@ -144,6 +144,10 @@ class Project < ApplicationRecord
     super Github.normalize_path(permalink)
   end
 
+  def name
+    permalink
+  end
+
   def github_only?
     permalink.include? "/"
   end
