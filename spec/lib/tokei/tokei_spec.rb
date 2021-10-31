@@ -24,6 +24,6 @@ RSpec.describe Tokei do
   describe "#stats(target)" do
     subject(:stats) { described_class.new.stats(Rails.root.join("lib")) }
 
-    it { pp stats }
+    it { is_expected.to include("Ruby" => kind_of(Hash), "JSON" => kind_of(Hash)) }
   end
 end
