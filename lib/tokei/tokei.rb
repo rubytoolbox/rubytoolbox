@@ -40,4 +40,9 @@ class Tokei
   end
 
   delegate :path, :checksum_valid?, to: :platform
+
+  def stats(destination)
+    line = Terrapin::CommandLine.new(path, ":destination --exclude spec --exclude test --hidden --output json")
+    Oj.load line.run(destination: destination)
+  end
 end

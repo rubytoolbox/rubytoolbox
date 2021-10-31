@@ -20,4 +20,10 @@ RSpec.describe Tokei do
   context "when arch is unknown" do
     it { expect { described_class.new("wat").path }.to raise_error described_class::UnknownPlatformError }
   end
+
+  describe "#stats(target)" do
+    subject(:stats) { described_class.new.stats(Rails.root.join("lib")) }
+
+    it { pp stats }
+  end
 end
