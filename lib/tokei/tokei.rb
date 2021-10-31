@@ -15,10 +15,12 @@ class Tokei
   UnknownPlatformError = Class.new StandardError
 
   Platform = Struct.new(:arch, :executable, :sha256sum) do
+    # Path of pre-built tokei binary suitable for current platform
     def path
       BIN_BASE_PATH.join(executable)
     end
 
+    # Checks actual sha256 checksum against pre-defined one
     def checksum_valid?
       Digest::SHA256.file(path).hexdigest == sha256sum
     end
@@ -28,15 +30,14 @@ class Tokei
                  "886955aa9b634a75164255169311dd316f742774f8d76aede13d1e3ce83e9830"),
   ].freeze
 
-  def self.arch
-    RbConfig::CONFIG["arch"]
-  end
+  private attr_accessor :platform
 
-  # Path of pre-built tokei binary suitable for current platform
-  def self.path
+  def initialize(arch = RbConfig::CONFIG["arch"])
     match = PLATFORMS.find { _1.arch == arch }
     raise UnknownPlatformError unless match
 
-    match.path
+    self.platform = match
   end
+
+  delegate :path, :checksum_valid?, to: :platform
 end
