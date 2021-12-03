@@ -59,7 +59,7 @@ gem "github_webhook"
 
 gem "high_voltage"
 
-gem "http"
+gem "http", "~> 4.4"
 
 gem "sidekiq"
 
