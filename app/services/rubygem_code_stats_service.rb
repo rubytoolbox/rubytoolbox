@@ -94,7 +94,7 @@ class RubygemCodeStatsService
     response = HTTP.get source_url
     raise "Unknown response #{response.status}" unless response.status == 200
 
-    Pathname.new(to).open "w+" do |f|
+    Pathname.new(to).open "wb+" do |f|
       f.print response.body.to_s
     end
   end
