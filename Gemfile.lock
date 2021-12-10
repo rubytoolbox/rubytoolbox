@@ -201,6 +201,7 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.1)
     mini_portile2 (2.6.1)
+    minitar (0.9)
     minitest (5.14.4)
     msgpack (1.4.2)
     nenv (0.3.0)
@@ -471,6 +472,7 @@ DEPENDENCIES
   listen
   lograge
   logstash-event
+  minitar
   oj
   overcommit
   percy-capybara

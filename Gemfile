@@ -71,6 +71,7 @@ gem "slim-rails"
 
 gem "rouge"
 
+gem "minitar"
 gem "terrapin"
 
 # Shorter request logs
