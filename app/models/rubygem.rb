@@ -45,6 +45,13 @@ class Rubygem < ApplicationRecord
            source:     :depending_project,
            class_name: "Project"
 
+  has_many :code_statistics,
+           -> { order(language: :asc) },
+           class_name:  "Rubygem::CodeStatistic",
+           foreign_key: :rubygem_name,
+           inverse_of:  :rubygem,
+           dependent:   :destroy
+
   scope :update_batch, lambda {
     where("fetched_at < ? ", 24.hours.ago.utc)
       .order(fetched_at: :asc)

@@ -18,6 +18,13 @@ RSpec.describe Rubygem, type: :model do
         .order(rubygem_name: :asc)
         .dependent(:destroy)
     end
+
+    it do
+      expect(model).to have_many(:code_statistics)
+        .order(language: :asc)
+        .with_foreign_key(:rubygem_name)
+        .class_name("Rubygem::CodeStatistic")
+    end
   end
 
   describe ".update_batch" do

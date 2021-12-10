@@ -288,6 +288,22 @@ CREATE TABLE public.projects (
 
 
 --
+-- Name: rubygem_code_statistics; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.rubygem_code_statistics (
+    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    rubygem_name character varying NOT NULL,
+    language character varying NOT NULL,
+    code integer NOT NULL,
+    blanks integer NOT NULL,
+    comments integer NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
 -- Name: rubygem_dependencies; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -472,6 +488,14 @@ ALTER TABLE ONLY public.categorizations
 
 
 --
+-- Name: rubygem_code_statistics rubygem_code_statistics_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.rubygem_code_statistics
+    ADD CONSTRAINT rubygem_code_statistics_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: rubygem_dependencies rubygem_dependencies_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -641,6 +665,13 @@ CREATE INDEX index_projects_on_permalink_tsvector ON public.projects USING gin (
 --
 
 CREATE UNIQUE INDEX index_projects_on_rubygem_name ON public.projects USING btree (rubygem_name);
+
+
+--
+-- Name: index_rubygem_code_statistics_on_rubygem_name_and_language; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_rubygem_code_statistics_on_rubygem_name_and_language ON public.rubygem_code_statistics USING btree (rubygem_name, language);
 
 
 --
@@ -819,6 +850,14 @@ ALTER TABLE ONLY public.rubygem_download_stats
 
 
 --
+-- Name: rubygem_code_statistics fk_rails_d2e8b78455; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.rubygem_code_statistics
+    ADD CONSTRAINT fk_rails_d2e8b78455 FOREIGN KEY (rubygem_name) REFERENCES public.rubygems(name);
+
+
+--
 -- Name: projects fk_rails_ddb4eb0108; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -875,6 +914,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200830205823'),
 ('20210228234343'),
 ('20210531193907'),
-('20210531194507');
+('20210531194507'),
+('20211210110108');
 
 
