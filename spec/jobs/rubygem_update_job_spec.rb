@@ -42,9 +42,25 @@ RSpec.describe RubygemUpdateJob, type: :job do
       expect { do_perform }.to(change { Rubygem.find(gem_name).updated_at })
     end
 
-    it "enqueues a corresponding project update job" do
+    it do
       expect(ProjectUpdateJob).to receive(:perform_async).with(gem_name)
       do_perform
+    end
+
+    it do
+      expect(RubygemCodeStatsJob).to receive(:perform_async).with(gem_name)
+      do_perform
+    end
+
+    context "when current_version didn't change during update" do
+      before do
+        Factories.rubygem("rspec").tap { _1.update! current_version: expected_attributes.fetch(:current_version) }
+      end
+
+      it do
+        expect(RubygemCodeStatsJob).not_to receive(:perform_async)
+        do_perform
+      end
     end
 
     it "stores quarterly release counts" do

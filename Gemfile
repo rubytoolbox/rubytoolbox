@@ -71,6 +71,9 @@ gem "slim-rails"
 
 gem "rouge"
 
+gem "minitar"
+gem "terrapin"
+
 # Shorter request logs
 gem "lograge"
 # Needed for logstash json_event formatter for lograge

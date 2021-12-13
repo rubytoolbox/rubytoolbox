@@ -86,6 +86,7 @@ GEM
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
     childprocess (4.1.0)
+    climate_control (0.2.0)
     coderay (1.1.3)
     concurrent-ruby (1.1.9)
     connection_pool (2.2.5)
@@ -202,6 +203,7 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.2)
     mini_portile2 (2.6.1)
+    minitar (0.9)
     minitest (5.14.4)
     msgpack (1.4.2)
     nenv (0.3.0)
@@ -395,6 +397,8 @@ GEM
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     temple (0.8.2)
+    terrapin (0.6.0)
+      climate_control (>= 0.0.3, < 1.0)
     thor (1.1.0)
     tilt (2.0.10)
     timecop (0.9.4)
@@ -470,6 +474,7 @@ DEPENDENCIES
   listen
   lograge
   logstash-event
+  minitar
   oj
   overcommit
   percy-capybara
@@ -502,6 +507,7 @@ DEPENDENCIES
   slim-rails
   spring
   spring-watcher-listen
+  terrapin
   timecop
   truncato
   turbolinks (~> 5)
