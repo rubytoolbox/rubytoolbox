@@ -16,6 +16,6 @@
   "author": "Christoph Olszowka <christoph@olszowka.de>",
   "license": "MIT",
   "devDependencies": {
-    "@percy/agent": ">= 0.26"
+    "@percy/cli": "^1.0.0-beta.71"
   }
 }

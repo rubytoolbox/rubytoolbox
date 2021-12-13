@@ -128,9 +128,8 @@ RSpec.configure do |config|
       # Ensure viewport-size specific capybara specs do not get messed up
       # by percy adjusting the screen size
       @previous_window_size = Capybara.current_session.current_window.size
-      Percy.snapshot page,
-                     name:   snapshot_name.to_s,
-                     widths: [400, 1100]
+      page.percy_snapshot snapshot_name.to_s,
+                          widths: [400, 1100]
     ensure
       Capybara.current_session.current_window.resize_to(*@previous_window_size)
       @previous_window_size = nil

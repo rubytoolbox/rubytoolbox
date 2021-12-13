@@ -3,26 +3,6 @@
     {
       "warning_type": "SQL Injection",
       "warning_code": 0,
-      "fingerprint": "3b30c684464ba27e92f7cfaddc9fb2e37ed5d1f0be6e8d7e3adf5ed48b4cf537",
-      "check_name": "SQL",
-      "message": "Possible SQL injection",
-      "file": "app/jobs/rubygem_downloads_persistence_job.rb",
-      "line": 33,
-      "link": "https://brakemanscanner.org/docs/warning_types/sql_injection/",
-      "code": "ActiveRecord::Base.connection.execute(\"      INSERT INTO\\n        rubygem_download_stats (rubygem_name, total_downloads, date)\\n        SELECT\\n          name AS rubygem_name,\\n          downloads AS total_downloads,\\n          DATE '#{date}' as date\\n        FROM   rubygems\\n\\n      ON CONFLICT (rubygem_name, date) DO UPDATE\\n      SET\\n        total_downloads = excluded.total_downloads\\n\".squish)",
-      "render_path": null,
-      "location": {
-        "type": "method",
-        "class": "RubygemDownloadsPersistenceJob",
-        "method": "perform"
-      },
-      "user_input": "date",
-      "confidence": "Medium",
-      "note": ""
-    },
-    {
-      "warning_type": "SQL Injection",
-      "warning_code": 0,
       "fingerprint": "5064a7c6abdc26594864aa9e12af582c0d859b3c6222624bd22ed7f3d893eeb1",
       "check_name": "SQL",
       "message": "Possible SQL injection",
@@ -43,22 +23,22 @@
     {
       "warning_type": "SQL Injection",
       "warning_code": 0,
-      "fingerprint": "8bd210047c33be0b52621fdc5efcb3b8e410d877bdd874c8ee343d2c4d4bec03",
+      "fingerprint": "c0d4655aa243396315971c36cc69f4a3f6cf40a1071ca7d4b38214fc93aed196",
       "check_name": "SQL",
       "message": "Possible SQL injection",
-      "file": "app/helpers/application_helper.rb",
-      "line": 46,
+      "file": "app/jobs/rubygem_downloads_persistence_job.rb",
+      "line": 33,
       "link": "https://brakemanscanner.org/docs/warning_types/sql_injection/",
-      "code": "scope.order(\"#{table}.#{column} #{direction} NULLS LAST\")",
+      "code": "ActiveRecord::Base.connection.execute(\"INSERT INTO\\n  rubygem_download_stats (rubygem_name, total_downloads, date)\\n  SELECT\\n    name AS rubygem_name,\\n    downloads AS total_downloads,\\n    DATE '#{date}' as date\\n  FROM   rubygems\\n\\nON CONFLICT (rubygem_name, date) DO UPDATE\\nSET\\n  total_downloads = excluded.total_downloads\\n\".squish)",
       "render_path": null,
       "location": {
         "type": "method",
-        "class": "ApplicationHelper",
-        "method": "project_ranking"
+        "class": "RubygemDownloadsPersistenceJob",
+        "method": "perform"
       },
-      "user_input": "table",
-      "confidence": "Weak",
-      "note": "The variables do not come from user input, just hardwired in views"
+      "user_input": "date",
+      "confidence": "Medium",
+      "note": ""
     },
     {
       "warning_type": "Redirect",
@@ -87,7 +67,7 @@
       "check_name": "Redirect",
       "message": "Possible unprotected redirect",
       "file": "app/controllers/projects_controller.rb",
-      "line": 6,
+      "line": 7,
       "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
       "code": "redirect_to(\"/projects/#{Project.strict_loading.find_for_show!(params[:id]).permalink}\")",
       "render_path": null,
@@ -101,6 +81,6 @@
       "note": ""
     }
   ],
-  "updated": "2021-05-30 23:26:35 +0200",
-  "brakeman_version": "5.0.1"
+  "updated": "2021-12-03 10:29:05 +0100",
+  "brakeman_version": "5.1.2"
 }

@@ -97,7 +97,7 @@ jobs:
         bundle install --jobs 4 --retry 3
         yarn install
         bundle exec rake db:schema:load
-        npx percy exec -- bundle exec rspec
+        yarn percy exec -- bundle exec rspec
 
     - uses: actions/upload-artifact@v2
       with:
