@@ -17,12 +17,9 @@ class RubygemUpdateJob < ApplicationJob
     self.name = name
 
     if info
-      Rubygem.transaction do
-        update_gem_data!
-        sync_dependencies!
-      end
+      changes = perform_updates!
 
-      ProjectUpdateJob.perform_async name
+      queue_followups! changes
     else
       Rubygem.where(name: name).destroy_all
     end
@@ -30,12 +27,30 @@ class RubygemUpdateJob < ApplicationJob
 
   private
 
+  def perform_updates!
+    Rubygem.transaction do
+      changes = update_gem_data!
+      sync_dependencies!
+
+      changes
+    end
+  end
+
+  def queue_followups!(changes)
+    ProjectUpdateJob.perform_async name
+    # Since downloading the gem fully is a bit more involved we only want to do
+    # it whenever a new version was released
+    RubygemCodeStatsJob.perform_async name if changes.key?("current_version")
+  end
+
   def update_gem_data!
     Rubygem.find_or_initialize_by(name: name).tap do |gem|
       # Set updated at to ensure we flag what we've pulled
       gem.updated_at = gem.fetched_at = Time.current.utc
       gem.quarterly_release_counts = quarterly_releases
       gem.update! mapped_info.merge(extra_attributes)
+
+      return gem.previous_changes
     end
   end
 
