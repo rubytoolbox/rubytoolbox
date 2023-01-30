@@ -111,7 +111,7 @@ GEM
       railties (>= 3.2)
     erubi (1.12.0)
     execjs (2.8.1)
-    feedjira (3.2.1)
+    feedjira (3.2.2)
       loofah (>= 2.3.1)
       sax-machine (>= 1.0)
     ffi (1.15.5)
