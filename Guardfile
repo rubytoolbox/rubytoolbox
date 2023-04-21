@@ -87,7 +87,7 @@ rubocop_cli_args = []
 
 if ENV["AUTOCORRECT"]
   puts "*" * 80, "Rubocop auto-correct mode enabled", "*" * 80
-  rubocop_cli_args << "--auto-correct-all"
+  rubocop_cli_args << "--autocorrect-all"
 else
   puts "*" * 80
   puts "You can set Rubocop to auto-correct fixable offenses by setting ENV['AUTOCORRECT']"

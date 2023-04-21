@@ -27,7 +27,7 @@ module ComponentHelpers
   end
 
   def metrics_row(project, *metrics)
-    metrics.sum do |metric|
+    metrics.sum("".html_safe) do |metric|
       render partial: "components/project/metric", locals: {
         key:   metric,
         value: project.public_send(metric),

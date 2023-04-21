@@ -23,7 +23,7 @@ Bundler.require(*Rails.groups)
 
 module Rubytoolbox
   class Application < Rails::Application
-    config.load_defaults 6.0
+    config.load_defaults 7.0
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
@@ -39,7 +39,7 @@ module Rubytoolbox
 
     config.generators do |c|
       # Don't generate system test files.
-      c.system_tests = nil
+      c.system_tests = false
 
       c.helper       = false
       c.javascripts  = false
@@ -54,6 +54,8 @@ module Rubytoolbox
         resource "/api/*", headers: :any, methods: :get
       end
     end
+
+    config.active_support.cache_format_version = 7.0
   end
 end
 
