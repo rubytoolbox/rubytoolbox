@@ -39,7 +39,7 @@ module Rubytoolbox
 
     config.generators do |c|
       # Don't generate system test files.
-      c.system_tests = nil
+      c.system_tests = false
 
       c.helper       = false
       c.javascripts  = false

@@ -2,7 +2,7 @@
   "name": "rubytoolbox",
   "private": false,
   "dependencies": {
-    "@rails/ujs": "^6.1",
+    "@rails/ujs": "^7.0",
     "bulma": ">=0.9.4",
     "@creativebulma/bulma-tooltip": ">= 1.2.0",
     "chart.js": "^2.7.3",
