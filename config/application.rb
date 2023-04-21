@@ -54,6 +54,8 @@ module Rubytoolbox
         resource "/api/*", headers: :any, methods: :get
       end
     end
+
+    config.active_support.cache_format_version = 7.0
   end
 end
 
