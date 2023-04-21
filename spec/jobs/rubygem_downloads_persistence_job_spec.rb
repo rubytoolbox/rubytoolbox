@@ -59,7 +59,7 @@ RSpec.describe RubygemDownloadsPersistenceJob, :clean_database, type: :job do
     end
 
     it "enqueues a RubygemTrendsJob" do
-      expect(RubygemTrendsJob).to receive(:perform_async).with(Time.current.utc.to_date)
+      expect(RubygemTrendsJob).to receive(:perform_async).with(Time.current.utc.to_date.to_s)
       do_perform
     end
   end
@@ -86,7 +86,7 @@ RSpec.describe RubygemDownloadsPersistenceJob, :clean_database, type: :job do
     end
 
     it "enqueues a RubygemTrendsJob" do
-      expect(RubygemTrendsJob).to receive(:perform_async).with(Time.current.utc.to_date)
+      expect(RubygemTrendsJob).to receive(:perform_async).with(Time.current.utc.to_date.to_s)
       do_perform
     end
   end

@@ -6,7 +6,7 @@ RSpec.describe RubygemTrendsJob, type: :job do
   fixtures :all
 
   let(:job) { described_class.new }
-  let(:do_perform) { job.perform date }
+  let(:do_perform) { job.perform date.to_s }
   let(:date) { Time.current.to_date }
 
   describe "#perform" do

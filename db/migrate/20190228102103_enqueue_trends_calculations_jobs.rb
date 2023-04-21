@@ -3,7 +3,7 @@
 class EnqueueTrendsCalculationsJobs < ActiveRecord::Migration[5.2]
   def up
     Rubygem::DownloadStat.select(:date).distinct.order(date: :desc).pluck(:date).each do |date|
-      RubygemTrendsJob.perform_async date
+      RubygemTrendsJob.perform_async date.to_s
     end
   end
 

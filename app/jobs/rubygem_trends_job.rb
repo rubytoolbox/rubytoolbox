@@ -10,6 +10,8 @@ class RubygemTrendsJob < ApplicationJob
   sidekiq_options queue: :priority
 
   def perform(date)
+    date = Date.parse date
+
     Rubygem::Trend.transaction do
       Rubygem::Trend.where(date: date).destroy_all
       trending_stats_for(date).each.with_index do |stat, i|
