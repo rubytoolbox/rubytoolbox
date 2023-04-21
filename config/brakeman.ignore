@@ -18,6 +18,32 @@
       },
       "user_input": "Project.connection.quote(_1)",
       "confidence": "High",
+      "cwe_id": [
+        89
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "SQL Injection",
+      "warning_code": 0,
+      "fingerprint": "8ce3d328ef9ae789fff34d4b3efc5ebbb99dde545d2e5484048aa9d8fbea0e06",
+      "check_name": "SQL",
+      "message": "Possible SQL injection",
+      "file": "app/helpers/stats_helpers.rb",
+      "line": 18,
+      "link": "https://brakemanscanner.org/docs/warning_types/sql_injection/",
+      "code": "ApplicationRecord.connection.execute(\"SELECT unnest(percentile_disc(array[#{(0..100).map do\n (n / 100.0)\n end.join(\",\")}])\\n  WITHIN GROUP (ORDER BY #{column} ASC))\\nFROM #{table}\\nWHERE #{column} IS NOT NULL\\n\".squish)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "StatsHelpers",
+        "method": "percentiles"
+      },
+      "user_input": "(0..100).map do\n (n / 100.0)\n end.join(\",\")",
+      "confidence": "Medium",
+      "cwe_id": [
+        89
+      ],
       "note": ""
     },
     {
@@ -38,6 +64,9 @@
       },
       "user_input": "date",
       "confidence": "Medium",
+      "cwe_id": [
+        89
+      ],
       "note": ""
     },
     {
@@ -58,6 +87,9 @@
       },
       "user_input": "Category.find_for_show!(params[:id], :order => current_order)",
       "confidence": "High",
+      "cwe_id": [
+        601
+      ],
       "note": "It's shielded by categories in the db, not random user input"
     },
     {
@@ -78,9 +110,12 @@
       },
       "user_input": "Project.strict_loading.find_for_show!(params[:id]).permalink",
       "confidence": "High",
+      "cwe_id": [
+        601
+      ],
       "note": ""
     }
   ],
-  "updated": "2021-12-03 10:29:05 +0100",
-  "brakeman_version": "5.1.2"
+  "updated": "2023-04-21 11:05:15 +0200",
+  "brakeman_version": "5.4.1"
 }
