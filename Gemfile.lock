@@ -430,7 +430,7 @@ GEM
       unf_ext
     unf_ext (0.0.8)
     unicode-display_width (2.1.0)
-    vcr (6.0.0)
+    vcr (6.1.0)
     web-console (4.2.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -535,7 +535,7 @@ DEPENDENCIES
   webpacker
 
 RUBY VERSION
-   ruby 3.0.6p216
+   ruby 3.1.4p223
 
 BUNDLED WITH
    2.4.12
