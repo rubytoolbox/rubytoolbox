@@ -22,7 +22,7 @@ class GithubClient
   # and https://github.com/settings/tokens
   #
   # No OAuth scopes are needed at all.
-  def initialize(token: ENV["GITHUB_TOKEN"])
+  def initialize(token: ENV.fetch("GITHUB_TOKEN", nil))
     self.token = token
     self.http_client = HTTP
                        .timeout(connect: DEFAULT_TIMEOUT, write: DEFAULT_TIMEOUT, read: DEFAULT_TIMEOUT)
@@ -30,7 +30,7 @@ class GithubClient
 
   def fetch_repository(path)
     owner, name = path.split("/")
-    body = { query: REPOSITORY_DATA_QUERY, variables: { owner: owner, name: name } }
+    body = { query: REPOSITORY_DATA_QUERY, variables: { owner:, name: } }
     response = authenticated_client.post "https://api.github.com/graphql", body: Oj.dump(body, mode: :compat)
     handle_repo_response response
   end

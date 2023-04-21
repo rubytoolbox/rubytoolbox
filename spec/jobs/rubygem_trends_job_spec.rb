@@ -41,7 +41,7 @@ RSpec.describe RubygemTrendsJob, type: :job do
       Factories.rubygem_download_stat "c", date: Time.current, total_downloads: 50_000
 
       expect { do_perform }
-        .to change { Rubygem::Trend.where(date: date).order(position: :asc).pluck(:rubygem_name) }
+        .to change { Rubygem::Trend.where(date:).order(position: :asc).pluck(:rubygem_name) }
         .from([])
         .to(%w[c a])
     end

@@ -99,7 +99,7 @@ RSpec.describe GithubClient, :real_http do
       it "raises CacheHit on etag cache hit" do
         etag = client.fetch_readme("rspec/rspec").etag
 
-        expect { client.fetch_readme("rspec/rspec", etag: etag) }.to raise_error(described_class::CacheHit)
+        expect { client.fetch_readme("rspec/rspec", etag:) }.to raise_error(described_class::CacheHit)
       end
     end
 

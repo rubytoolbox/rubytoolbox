@@ -11,9 +11,9 @@ RSpec.describe RubygemsSyncJob, type: :job do
 
   describe "remote spec fetching" do
     def stub_gem_specs_fetch(type:, specs:)
-      source = instance_double(::Gem::Source)
+      source = instance_double(Gem::Source)
 
-      allow(::Gem::Source).to receive(:new)
+      allow(Gem::Source).to receive(:new)
         .with("https://rubygems.org")
         .and_return(source)
 
@@ -24,7 +24,7 @@ RSpec.describe RubygemsSyncJob, type: :job do
     describe "#published_gems" do
       it "acquires the latest rubygems specs and returns all gem names" do
         specs = [fake_gem.new("foo"), fake_gem.new("bar")]
-        stub_gem_specs_fetch type: :latest, specs: specs
+        stub_gem_specs_fetch(type: :latest, specs:)
 
         expect(job.published_gems).to be == %w[foo bar]
       end
@@ -33,7 +33,7 @@ RSpec.describe RubygemsSyncJob, type: :job do
     describe "#prerelease_gems" do
       it "acquires prerelease rubygems specs and returns all unique gem names" do
         specs = [fake_gem.new("foo"), fake_gem.new("bar"), fake_gem.new("bar")]
-        stub_gem_specs_fetch type: :prerelease, specs: specs
+        stub_gem_specs_fetch(type: :prerelease, specs:)
 
         expect(job.prerelease_gems).to be == %w[foo bar]
       end

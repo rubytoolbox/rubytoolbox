@@ -13,10 +13,10 @@ class RubygemTrendsJob < ApplicationJob
     date = Date.parse date
 
     Rubygem::Trend.transaction do
-      Rubygem::Trend.where(date: date).destroy_all
+      Rubygem::Trend.where(date:).destroy_all
       trending_stats_for(date).each.with_index do |stat, i|
         Rubygem::Trend.create! rubygem:               stat.rubygem,
-                               date:                  date,
+                               date:,
                                position:              i + 1,
                                rubygem_download_stat: stat
       end
@@ -28,7 +28,7 @@ class RubygemTrendsJob < ApplicationJob
   def trending_stats_for(date)
     Rubygem::DownloadStat
       .merge(trending_scope)
-      .where(date: date)
+      .where(date:)
       .with_associations
       .limit(48)
   end

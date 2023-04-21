@@ -39,6 +39,6 @@ class Rubygem::DownloadStat::Timeseries
   private
 
   def base_query
-    Rubygem::DownloadStat.where(rubygem_name: rubygem_name).order(date: :asc).monthly
+    Rubygem::DownloadStat.where(rubygem_name:).order(date: :asc).monthly
   end
 end

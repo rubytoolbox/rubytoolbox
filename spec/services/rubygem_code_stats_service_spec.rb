@@ -3,13 +3,13 @@
 require "rails_helper"
 
 RSpec.describe RubygemCodeStatsService, type: :service do
-  let(:service) { described_class.new(name: name, version: version) }
+  let(:service) { described_class.new(name:, version:) }
   let(:name) { "oj" }
   let(:version) { "3.13.9" }
   let(:gem_file) { file_fixture "#{name}-#{version}.gem" }
 
   describe ".statistics" do
-    subject(:statistics) { described_class.statistics name: name, version: version }
+    subject(:statistics) { described_class.statistics name:, version: }
 
     let(:instance) do
       instance_double described_class, statistics: SecureRandom.hex(5)
@@ -17,7 +17,7 @@ RSpec.describe RubygemCodeStatsService, type: :service do
 
     before do
       allow(described_class).to receive(:new)
-        .with(name: name, version: version)
+        .with(name:, version:)
         .and_return instance
     end
 

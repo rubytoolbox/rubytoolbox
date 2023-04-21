@@ -18,7 +18,7 @@ class Search
     @projects ||= if ENV["NEW_SEARCH"]
                     meili_search_results
                   else
-                    Project.search(query, order: order, show_forks: show_forks)
+                    Project.search(query, order:, show_forks:)
                   end
   end
 

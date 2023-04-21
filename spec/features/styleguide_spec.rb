@@ -10,7 +10,7 @@ RSpec.describe "Styleguide Display", type: :feature, js: true do
     expect(page).to have_text "Ruby Toolbox UI Components Styleguide".upcase
     expect(page).to have_text "Components Overview"
 
-    page_links = page.find_all(".component-list a").map { |a| [a["href"], a.text] }.to_h
+    page_links = page.find_all(".component-list a").to_h { |a| [a["href"], a.text] }
     expect(page_links.size).to be > 0
 
     page_links.each do |href, text|

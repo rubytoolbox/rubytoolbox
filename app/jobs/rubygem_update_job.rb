@@ -21,7 +21,7 @@ class RubygemUpdateJob < ApplicationJob
 
       queue_followups! changes
     else
-      Rubygem.where(name: name).destroy_all
+      Rubygem.where(name:).destroy_all
     end
   end
 
@@ -44,7 +44,7 @@ class RubygemUpdateJob < ApplicationJob
   end
 
   def update_gem_data!
-    Rubygem.find_or_initialize_by(name: name).tap do |gem|
+    Rubygem.find_or_initialize_by(name:).tap do |gem|
       # Set updated at to ensure we flag what we've pulled
       gem.updated_at = gem.fetched_at = Time.current.utc
       gem.quarterly_release_counts = quarterly_releases
@@ -106,7 +106,7 @@ class RubygemUpdateJob < ApplicationJob
     known = info["dependencies"].flat_map do |type, dependencies|
       dependencies.map do |dependency|
         sync_dependency! dependency_name: dependency.fetch("name"),
-                         type:            type,
+                         type:,
                          requirements:    dependency.fetch("requirements")
       end
     end
@@ -115,9 +115,9 @@ class RubygemUpdateJob < ApplicationJob
   end
 
   def sync_dependency!(dependency_name:, type:, requirements:)
-    RubygemDependency.find_or_initialize_by(rubygem_name: name, dependency_name: dependency_name,
-                                            type: type).tap do |dependency|
-      dependency.update!(requirements: requirements)
+    RubygemDependency.find_or_initialize_by(rubygem_name: name, dependency_name:,
+                                            type:).tap do |dependency|
+      dependency.update!(requirements:)
     end
   end
 

@@ -6,7 +6,7 @@ RSpec.describe GithubClient do
   fixtures :all
 
   let(:token) { "Hello World" }
-  let(:client) { described_class.new token: token }
+  let(:client) { described_class.new token: }
 
   it "raises an InvalidResponseStatus when the response has status 400" do
     stub_request(:post, "https://api.github.com/graphql")

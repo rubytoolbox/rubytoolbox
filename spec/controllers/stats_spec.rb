@@ -10,7 +10,7 @@ RSpec.describe Stats, type: :model do
 
   describe "#projects_with_categories_count" do
     it "queries the total number of categorized projects" do
-      relation = instance_double ActiveRecord::Relation, count: count
+      relation = instance_double(ActiveRecord::Relation, count:)
       allow(Project).to receive(:joins).with(:categories).and_return(relation)
       expect(stats.projects_with_categories_count).to be == count
     end

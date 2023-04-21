@@ -50,7 +50,7 @@ VCR.configure do |c|
   c.default_cassette_options = { record: :new_episodes }
   c.hook_into :webmock
   c.configure_rspec_metadata!
-  c.filter_sensitive_data("<GITHUB_TOKEN>") { ENV["GITHUB_TOKEN"] }
+  c.filter_sensitive_data("<GITHUB_TOKEN>") { ENV.fetch("GITHUB_TOKEN", nil) }
 end
 
 Webdrivers.cache_time = 300
@@ -70,7 +70,7 @@ end
 
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  config.fixture_path = Rails.root.join "spec", "fixtures"
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false

@@ -4,11 +4,11 @@ class GithubIgnore < ApplicationRecord
   self.primary_key = :path
 
   def self.track!(path)
-    find_or_create_by! path: path
+    find_or_create_by! path:
   end
 
   def self.ignored?(path)
-    !where(path: path).count.zero?
+    !where(path:).count.zero?
   end
 
   def self.expire!(timeframe: 14.days)

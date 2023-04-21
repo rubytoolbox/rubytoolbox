@@ -7,7 +7,7 @@ RSpec.describe ApplicationHelper, type: :helper do
 
   describe "#expiring_cache" do
     it "builds a cache key based on given label, time, and release version" do
-      allow(ENV).to receive(:[]).with("HEROKU_RELEASE_VERSION").and_return("v42")
+      allow(ENV).to receive(:fetch).with("HEROKU_RELEASE_VERSION", nil).and_return("v42")
       timestamp = Time.current.to_i / 10.minutes
 
       expect(helper).to receive(:cache).with("test-v42-#{timestamp}")

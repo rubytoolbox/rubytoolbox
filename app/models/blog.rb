@@ -31,10 +31,10 @@ class Blog
 
     def post
       Post.new(
-        published_on: published_on,
-        permalink:    permalink,
-        title:        title,
-        body_html:    body_html
+        published_on:,
+        permalink:,
+        title:,
+        body_html:
       )
     end
 
@@ -105,7 +105,7 @@ class Blog
   def load_posts
     posts = []
     Dir[root.join("*.md")].each do |path|
-      posts << PostLoader.new(path: path).post
+      posts << PostLoader.new(path:).post
     end
     posts.sort_by(&:title).reverse.sort_by(&:published_on).reverse
   end

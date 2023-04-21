@@ -13,7 +13,7 @@ class EnforceNormalizedRepoPathNames < ActiveRecord::Migration[5.1]
         categories = project.categories.to_a
         project.update! categories: []
         project.update! permalink: normalized_permalink
-        project.update! categories: categories
+        project.update! categories:
       end
     end
   end

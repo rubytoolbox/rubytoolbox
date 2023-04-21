@@ -6,7 +6,7 @@ module ApplicationHelper
   include StatsHelpers
 
   def expiring_cache(label, expiration: 10.minutes, &block)
-    key = [label, ENV["HEROKU_RELEASE_VERSION"], (Time.current.to_i / expiration).to_s].join("-")
+    key = [label, ENV.fetch("HEROKU_RELEASE_VERSION", nil), (Time.current.to_i / expiration).to_s].join("-")
 
     cache(key, &block)
   end
@@ -50,7 +50,7 @@ module ApplicationHelper
                 ["rubygem_downloads", "rubygem_#{column}"].uniq
               end
 
-    project_list projects, title: title, metrics: metrics, description: description
+    project_list projects, title:, metrics:, description:
   end
   # rubocop:enable Metrics/ParameterLists
 
@@ -58,8 +58,8 @@ module ApplicationHelper
     @docs ||= Docs.new
   end
 
-  def link_to_docs_if_exists(page, &block)
-    content = capture(&block)
+  def link_to_docs_if_exists(page, &)
+    content = capture(&)
 
     if docs.find page
       link_to content, page_path(page)

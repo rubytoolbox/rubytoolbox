@@ -11,17 +11,17 @@ RSpec.describe ProjectUpdateJob, type: :job do
 
   describe "#perform" do
     it "creates the project if not existent yet" do
-      expect { do_perform }.to change { Project.find_by(permalink: permalink) }
+      expect { do_perform }.to change { Project.find_by(permalink:) }
         .from(nil).to(kind_of(Project))
     end
 
     it "does not create another project if present" do
-      Project.create! permalink: permalink
+      Project.create!(permalink:)
       expect { do_perform }.not_to(change(Project, :count))
     end
 
     it "assigns an existing gem if matching" do
-      project = Project.create! permalink: permalink
+      project = Project.create!(permalink:)
       RubygemUpdateJob.new.perform(permalink)
       rubygem = Rubygem.find(permalink)
       expect { do_perform }.to change { project.reload.rubygem }.from(nil).to(rubygem)
@@ -35,7 +35,7 @@ RSpec.describe ProjectUpdateJob, type: :job do
     end
 
     describe "github repo detection" do
-      let(:project) { Project.create! permalink: permalink }
+      let(:project) { Project.create! permalink: }
 
       before do
         RubygemUpdateJob.new.perform(permalink)
@@ -80,7 +80,7 @@ RSpec.describe ProjectUpdateJob, type: :job do
       let(:permalink) { "rspec/rspec" }
 
       it "assigns permalink as the github_repo_path for github-only projects" do
-        project = Project.create! permalink: permalink
+        project = Project.create!(permalink:)
         expect { do_perform }.to change { project.reload.github_repo_path }.from(nil).to("rspec/rspec")
       end
     end

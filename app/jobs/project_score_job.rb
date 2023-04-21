@@ -9,8 +9,8 @@ class ProjectScoreJob < ApplicationJob
 
     project.update! score:                calculated_score,
                     is_bugfix_fork:       bugfix_fork?,
-                    bugfix_fork_of:       bugfix_fork_of,
-                    bugfix_fork_criteria: bugfix_fork_criteria
+                    bugfix_fork_of:,
+                    bugfix_fork_criteria:
   end
 
   private

@@ -28,7 +28,7 @@ class Rubygem::Trend < ApplicationRecord
   end
 
   def self.for_date(date)
-    where(date: date)
+    where(date:)
       .with_associations
       .order(position: :asc)
   end

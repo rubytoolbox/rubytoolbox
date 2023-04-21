@@ -34,7 +34,7 @@ RSpec.describe "Sidekiq Web", type: :feature do
 
   describe "with valid password" do
     before do
-      page.driver.browser.authorize "name", ENV["SIDEKIQ_PASSWORD"]
+      page.driver.browser.authorize "name", ENV.fetch("SIDEKIQ_PASSWORD", nil)
       visit "/ops/sidekiq"
     end
 
