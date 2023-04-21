@@ -185,7 +185,7 @@ GEM
     kaminari-core (1.2.2)
     launchy (2.5.2)
       addressable (~> 2.8)
-    listen (3.7.1)
+    listen (3.8.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     lograge (0.11.2)
