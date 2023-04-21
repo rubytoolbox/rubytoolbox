@@ -15,7 +15,7 @@ class CategoriesController < ApplicationController
 
   def display_mode
     default = browser.device.mobile? ? "compact" : "full"
-    DisplayMode.new params[:display], default: default
+    DisplayMode.new params[:display], default:
   end
 
   def current_order

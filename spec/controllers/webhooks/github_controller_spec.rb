@@ -18,7 +18,7 @@ RSpec.describe Webhooks::GithubController, type: :controller do
 
     def request_body
       {
-        state:      state,
+        state:,
         branches:   [{ name: branch }],
         repository: { default_branch: "main" },
       }

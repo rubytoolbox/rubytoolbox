@@ -7,7 +7,7 @@ RSpec.describe SearchesController, type: :controller do
 
   describe "GET #show" do
     def do_request(query: "foobar", order: nil, show_forks: nil, display: nil)
-      get :show, params: { q: query, order: order, show_forks: show_forks, display: display }
+      get :show, params: { q: query, order:, show_forks:, display: }
     end
 
     it_behaves_like "pickable project display listing", "compact"
@@ -47,7 +47,7 @@ RSpec.describe SearchesController, type: :controller do
       allow(Project::Order).to receive(:new)
         .with(order: "rubygem_downloads", directions: Project::Order::SEARCH_DIRECTIONS)
         .and_return(order)
-      expect(Search).to receive(:new).with("hello world", order: order, show_forks: false)
+      expect(Search).to receive(:new).with("hello world", order:, show_forks: false)
                                      .and_return(search)
       do_request query: "hello world", order: "rubygem_downloads"
     end

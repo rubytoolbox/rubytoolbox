@@ -10,6 +10,9 @@ A [PostgreSQL][postgresql] database is required to store data. It's recommended 
 
 A [Redis][redis] instance is needed for [sidekiq][sidekiq] background processing. It is recommended to configure it by providing a `REDIS_URL` environment variable.
 
+On Heroku, when using a different Redis provider it's possible to alias the provider-specific `REDISXYZ_URL` to the required `REDIS_URL`
+using `heroku addons:attach ADDON_NAME --as REDIS`
+
 ## Github API Client (**required**)
 
 The `GITHUB_TOKEN` is used by the GraphQL API client to fetch repository data.

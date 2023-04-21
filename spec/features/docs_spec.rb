@@ -50,8 +50,8 @@ RSpec.describe "Documentation Display", type: :feature, js: true do
     end
   end
 
-  def each_page(&block)
-    Docs.new.sections.map(&:last).flatten.each(&block)
+  def each_page(&)
+    Docs.new.sections.map(&:last).flatten.each(&)
   end
 
   def visit_docs

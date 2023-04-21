@@ -6,8 +6,8 @@ RSpec.describe GithubRepo, type: :model do
   fixtures :all
 
   def create_repo!(path:, updated_at: 1.day.ago)
-    GithubRepo.create! path:             path,
-                       updated_at:       updated_at,
+    GithubRepo.create! path:,
+                       updated_at:,
                        stargazers_count: 1,
                        watchers_count:   1,
                        forks_count:      1

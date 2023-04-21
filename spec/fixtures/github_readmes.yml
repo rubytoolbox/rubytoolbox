@@ -3,8 +3,7 @@
 simplecov-ruby/simplecov:
   path: simplecov-ruby/simplecov
   html: |-
-    <div id="readme" class="md"><article class="markdown-body entry-content container-lg"><h1>SimpleCov <a href="https://badge.fury.io/rb/simplecov" rel="nofollow"><img src="https://camo.githubusercontent.com/f7c89c24156a508194c9347b2d0847073a6bd4f280fb41c18767907391061664/68747470733a2f2f62616467652e667572792e696f2f72622f73696d706c65636f762e737667" alt="Gem Version" style="max-width:100%;"></a> <a href="https://github.com/simplecov-ruby/simplecov/actions?query=workflow%3Astable" title="SimpleCov is built around the clock by github.com"><img src="https://github.com/simplecov-ruby/simplecov/workflows/stable/badge.svg?branch=main" alt="Build Status" style="max-width:100%;"></a> <a href="https://codeclimate.com/github/simplecov-ruby/simplecov/maintainability" rel="nofollow"><img src="https://camo.githubusercontent.com/50f44caab1b05ca3d2db4b4ac345851b508fbf18cbb061c426c595b3b1f6d674/68747470733a2f2f6170692e636f6465636c696d6174652e636f6d2f76312f6261646765732f63303731643139376436313935336137653438322f6d61696e7461696e6162696c697479" alt="Maintainability" style="max-width:100%;"></a> <a href="http://inch-ci.org/github/simplecov-ruby/simplecov" rel="nofollow"><img src="https://camo.githubusercontent.com/96cf2d19902032c2f7d5f273e60b296ba6ecbd8c276c307fa2f2ab0599f075bf/687474703a2f2f696e63682d63692e6f72672f6769746875622f73696d706c65636f762d727562792f73696d706c65636f762e7376673f6272616e63683d6d61696e" alt="Inline docs" style="max-width:100%;"></a>
-    </h1>
+    <div id="readme" class="md"><article class="markdown-body entry-content container-lg"><h1>SimpleCov</h1>
     <p><strong>Code coverage for Ruby</strong></p>
     <ul>
     <li><a href="https://github.com/simplecov-ruby/simplecov" title="Source Code @ GitHub">Source Code</a></li>
@@ -98,9 +97,7 @@ simplecov-ruby/simplecov:
     </ol>
     <h2>Example output</h2>
     <p><strong>Coverage results report, fully browsable locally with sorting and much more:</strong></p>
-    <p><a rel="noopener noreferrer" href="https://cloud.githubusercontent.com/assets/137793/17071162/db6f253e-502d-11e6-9d84-e40c3d75f333.png"><img src="https://cloud.githubusercontent.com/assets/137793/17071162/db6f253e-502d-11e6-9d84-e40c3d75f333.png" alt="SimpleCov coverage report" style="max-width:100%;"></a></p>
     <p><strong>Source file coverage details view:</strong></p>
-    <p><a rel="noopener noreferrer" href="https://cloud.githubusercontent.com/assets/137793/17071163/db6f9f0a-502d-11e6-816c-edb2c66fad8d.png"><img src="https://cloud.githubusercontent.com/assets/137793/17071163/db6f9f0a-502d-11e6-816c-edb2c66fad8d.png" alt="SimpleCov source file detail view" style="max-width:100%;"></a></p>
     <h2>Use it with any framework!</h2>
     <p>Similarly to the usage with Test::Unit described above, the only thing you have to do is to add the SimpleCov
     config to the very top of your Cucumber/RSpec/whatever setup file.</p>

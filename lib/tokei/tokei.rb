@@ -45,6 +45,6 @@ class Tokei
     line = Terrapin::CommandLine.new path,
                                      ":destination --exclude spec --exclude test --hidden --output json"
 
-    Oj.load line.run(destination: destination)
+    Oj.load line.run(destination:)
   end
 end

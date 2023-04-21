@@ -160,7 +160,7 @@ RSpec.describe Project, type: :model do
       before do
         (1..3).each do |i|
           rubygem = Rubygem.create! name: "widgets#{i}", downloads: 10 - i, current_version: "1.0"
-          described_class.create! permalink: rubygem.name, score: 10 + i, rubygem: rubygem
+          described_class.create! permalink: rubygem.name, score: 10 + i, rubygem:
         end
       end
 
@@ -173,7 +173,7 @@ RSpec.describe Project, type: :model do
       it "allows to pass a custom order instance" do
         order = Project::Order.new(order: "rubygem_downloads")
         expected = %w[widgets1 widgets2 widgets3]
-        expect(described_class.search("widget", order: order).pluck(:permalink)).to be == expected
+        expect(described_class.search("widget", order:).pluck(:permalink)).to be == expected
       end
     end
   end

@@ -28,7 +28,7 @@ class ProjectUpdateJob < ApplicationJob
   ].freeze
 
   def perform(permalink)
-    Project.find_or_initialize_by(permalink: permalink).tap do |project|
+    Project.find_or_initialize_by(permalink:).tap do |project|
       project.rubygem = Rubygem.find_by(name: permalink)
       project.github_repo_path = detect_repo_path(project)
       project.description = project.rubygem_description || project.github_repo_description
@@ -56,7 +56,7 @@ class ProjectUpdateJob < ApplicationJob
   end
 
   def enqueue_github_repo_sync(path)
-    return if path.nil? || GithubRepo.find_by(path: path)
+    return if path.nil? || GithubRepo.find_by(path:)
 
     GithubRepoUpdateJob.perform_async path
   end

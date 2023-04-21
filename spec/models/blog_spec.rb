@@ -7,7 +7,7 @@ RSpec.describe Blog, type: :model do
 
   describe "with posts from fixtures" do
     let(:root) { Rails.root.join("spec", "fixtures", "blog_posts") }
-    let(:blog) { described_class.new root: root }
+    let(:blog) { described_class.new root: }
 
     describe "#posts" do
       it "has 2 entries" do
@@ -74,7 +74,7 @@ RSpec.describe Blog, type: :model do
 
       it "does not reload posts in caching mode" do
         loader = described_class::PostLoader.new(path: Dir[root.join("*.md")].first)
-        blog = described_class.new root: root, cache: true
+        blog = described_class.new root:, cache: true
         expect(described_class::PostLoader).to receive(:new).twice.and_return(loader)
         blog.posts
         blog.posts

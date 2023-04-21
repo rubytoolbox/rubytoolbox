@@ -13,7 +13,7 @@ class Github::Readme < ApplicationRecord
 
         sanitized = Sanitize.fragment(html, Sanitize::Config::RELAXED)
 
-        fix_links sanitized, base_url: base_url
+        fix_links sanitized, base_url:
       end
 
       private
@@ -22,7 +22,7 @@ class Github::Readme < ApplicationRecord
         doc = Nokogiri::HTML.fragment sanitized
 
         doc.css("a[href]").each do |a|
-          adjust_link a, base_url: base_url
+          adjust_link a, base_url:
         end
 
         doc.to_s

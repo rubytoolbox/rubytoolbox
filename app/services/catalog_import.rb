@@ -50,7 +50,7 @@ class CatalogImport
       group.update! name:        category_group_data["name"],
                     description: category_group_data["description"]
 
-      upsert_categories categories_data: category_group_data["categories"], group: group
+      upsert_categories categories_data: category_group_data["categories"], group:
     end
   end
 

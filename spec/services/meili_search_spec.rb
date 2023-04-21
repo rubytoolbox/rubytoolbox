@@ -11,7 +11,7 @@ RSpec.describe MeiliSearch, type: :service do
 
   describe ".client" do
     around do |example|
-      original_value = ENV["MEILI_SEARCH_URL"]
+      original_value = ENV.fetch("MEILI_SEARCH_URL", nil)
       ENV["MEILI_SEARCH_URL"] = configured_url
       example.run
     ensure

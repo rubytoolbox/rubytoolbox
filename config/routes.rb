@@ -39,8 +39,8 @@ Rails.application.routes.draw do
 
   Sidekiq::Web.use Rack::Auth::Basic do |_username, password|
     ActiveSupport::SecurityUtils.secure_compare(
-      ::Digest::SHA256.hexdigest(password),
-      ::Digest::SHA256.hexdigest(ENV["SIDEKIQ_PASSWORD"].presence || SecureRandom.hex(128))
+      Digest::SHA256.hexdigest(password),
+      Digest::SHA256.hexdigest(ENV["SIDEKIQ_PASSWORD"].presence || SecureRandom.hex(128))
     )
   end
   mount Sidekiq::Web, at: "/ops/sidekiq"

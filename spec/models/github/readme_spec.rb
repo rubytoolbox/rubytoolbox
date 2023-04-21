@@ -25,7 +25,7 @@ RSpec.describe Github::Readme, type: :model do
       base_url = "https://example.com/foo"
       allow(model.github_repo).to receive(:blob_url).and_return(base_url)
       allow(Github::Readme::Scrubber).to receive(:scrub)
-        .with("input html", base_url: base_url)
+        .with("input html", base_url:)
         .and_return("scrubbed")
 
       model.html = "input html"

@@ -53,7 +53,7 @@ RSpec.describe Search, type: :model do
 
       # Temporary feature toggle
       around do |example|
-        original_value = ENV["NEW_SEARCH"]
+        original_value = ENV.fetch("NEW_SEARCH", nil)
         ENV["NEW_SEARCH"] = "true"
         example.run
       ensure
@@ -87,7 +87,7 @@ RSpec.describe Search, type: :model do
 
         order = Project::Order.new order: "score", directions: Project::Order::SEARCH_DIRECTIONS
 
-        expect(described_class.new("hello world", order: order).projects.to_a).to be == expected
+        expect(described_class.new("hello world", order:).projects.to_a).to be == expected
       end
     end
   end

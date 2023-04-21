@@ -9,9 +9,9 @@ RSpec.describe CategoryRankingJob, :clean_database, type: :job do
 
   before do
     category_group = CategoryGroup.create! permalink: "group", name: "group"
-    Category.create! name: "A", permalink: "a", category_group: category_group
-    b = Category.create! name: "B", permalink: "b", category_group: category_group
-    c = Category.create! name: "C", permalink: "c", category_group: category_group
+    Category.create!(name: "A", permalink: "a", category_group:)
+    b = Category.create!(name: "B", permalink: "b", category_group:)
+    c = Category.create!(name: "C", permalink: "c", category_group:)
 
     Project.create! permalink: "C1", score: 20, categories: [c]
     Project.create! permalink: "C2", score: 10, categories: [c]

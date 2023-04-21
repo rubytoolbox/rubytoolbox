@@ -15,9 +15,9 @@ class GithubRepoUpdateJob < ApplicationJob
     info = fetch_repo_info path
 
     if info
-      store_repo path: path, info: info
+      store_repo(path:, info:)
     else
-      GithubRepo.where(path: path).destroy_all
+      GithubRepo.where(path:).destroy_all
     end
   end
 

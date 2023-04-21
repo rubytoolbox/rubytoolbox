@@ -50,7 +50,7 @@ VCR.configure do |c|
   c.default_cassette_options = { record: :new_episodes }
   c.hook_into :webmock
   c.configure_rspec_metadata!
-  c.filter_sensitive_data("<GITHUB_TOKEN>") { ENV["GITHUB_TOKEN"] }
+  c.filter_sensitive_data("<GITHUB_TOKEN>") { ENV.fetch("GITHUB_TOKEN", nil) }
 end
 
 Webdrivers.cache_time = 300
@@ -70,7 +70,7 @@ end
 
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  config.fixture_path = Rails.root.join "spec", "fixtures"
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
@@ -103,7 +103,8 @@ RSpec.configure do |config|
   # Snippet courtesy of:
   # https://medium.com/@coorasse/catch-javascript-errors-in-your-system-tests-89c2fe6773b1
   config.after :each, type: :feature, js: true do
-    errors = page.driver.browser.manage.logs.get(:browser)
+    # The latest magic incantation courtesy of https://stackoverflow.com/a/73879550
+    errors = page.driver.browser.logs.get(:browser)
     if errors.present?
       aggregate_failures "javascript errrors" do
         errors.each do |error|

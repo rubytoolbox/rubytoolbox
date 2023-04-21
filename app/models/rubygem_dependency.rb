@@ -46,7 +46,7 @@ class RubygemDependency < ApplicationRecord
   validates :type, inclusion: { in: TYPES }
 
   TYPES.each do |type|
-    scope type, -> { where(type: type) }
+    scope type, -> { where(type:) }
   end
 
   scope :preloaded_for_health_status, lambda {

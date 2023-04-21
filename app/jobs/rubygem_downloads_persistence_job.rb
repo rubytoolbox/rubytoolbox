@@ -33,7 +33,7 @@ class RubygemDownloadsPersistenceJob < ApplicationJob
     result = ActiveRecord::Base.connection.execute upsert_sql
     Rails.logger.info "Processed #{result.cmd_tuples} gem stats records"
 
-    RubygemTrendsJob.perform_async date
+    RubygemTrendsJob.perform_async date.to_s
 
     result.cmd_tuples == Rubygem.count
   end

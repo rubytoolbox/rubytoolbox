@@ -30,7 +30,7 @@ class RubygemCodeStatsService
   end
 
   def self.statistics(name:, version:)
-    new(name: name, version: version).statistics
+    new(name:, version:).statistics
   end
 
   delegate :logger, to: :Rails

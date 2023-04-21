@@ -12,7 +12,7 @@ RSpec.describe CatalogImportJob, type: :job do
 
     def stub_response(status: 200)
       response = HTTP::Response.new(
-        status:  status,
+        status:,
         body:    catalog_body,
         version: "1.1"
       )

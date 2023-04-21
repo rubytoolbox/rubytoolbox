@@ -11,7 +11,7 @@ module Factories
                 latest_release: Date.new(2021, 1, 2),
                 description: nil)
 
-      rubygem = self.rubygem name, downloads: downloads, first_release: first_release, latest_release: latest_release
+      rubygem = self.rubygem(name, downloads:, first_release:, latest_release:)
 
       github_repo = GithubRepo.create!(
         path:             "#{name}/#{name}",
@@ -21,18 +21,18 @@ module Factories
         has_issues:       true
       )
       Project.create! permalink:   name,
-                      score:       score,
-                      rubygem:     rubygem,
-                      github_repo: github_repo,
-                      description: description
+                      score:,
+                      rubygem:,
+                      github_repo:,
+                      description:
     end
     # rubocop:enable Metrics/ParameterLists
 
     def rubygem(name, downloads: 5000, first_release: Date.new(2018, 2, 28), latest_release: Date.new(2021, 1, 2))
       Rubygem.create!(
-        name:              name,
+        name:,
         current_version:   "1.0",
-        downloads:         downloads,
+        downloads:,
         first_release_on:  first_release,
         latest_release_on: latest_release
       )
@@ -40,8 +40,8 @@ module Factories
 
     def rubygem_download_stat(name, date:, total_downloads: 5000)
       Rubygem::DownloadStat.create! rubygem_name:    name,
-                                    date:            date,
-                                    total_downloads: total_downloads
+                                    date:,
+                                    total_downloads:
     end
 
     def rubygem_trend(name, date:, position:, with_stats: false)
@@ -51,14 +51,14 @@ module Factories
         rubygem_download_stat name, date: date - 4.weeks, total_downloads: 2000
       end
       Rubygem::Trend.create! rubygem_name:          name,
-                             position:              position,
-                             date:                  date,
-                             rubygem_download_stat: rubygem_download_stat(name, date: date, total_downloads: 15_000)
+                             position:,
+                             date:,
+                             rubygem_download_stat: rubygem_download_stat(name, date:, total_downloads: 15_000)
     end
 
     def category(name)
       Category.create! permalink:      name.underscore,
-                       name:           name,
+                       name:,
                        category_group: CategoryGroup.create!(name: "Group", permalink: "group")
     end
   end

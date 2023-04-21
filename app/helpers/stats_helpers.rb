@@ -16,8 +16,7 @@ module StatsHelpers
     SQL
 
     ApplicationRecord.connection.execute(query).each_with_index
-                     .map { |result, i| ["#{i}%", result["unnest"]] }
-                     .to_h
+                     .to_h { |result, i| ["#{i}%", result["unnest"]] }
   end
 
   #

@@ -10,7 +10,7 @@ RSpec.describe GithubIgnore, type: :model do
   describe ".track!" do
     it "creates a tracking record" do
       expect { described_class.track! path }
-        .to change { described_class.where(path: path).count }
+        .to change { described_class.where(path:).count }
         .from(0)
         .to(1)
     end
@@ -18,7 +18,7 @@ RSpec.describe GithubIgnore, type: :model do
     it "does not create a duplicate tracking record" do
       described_class.track! path
       expect { described_class.track! path }
-        .not_to change { described_class.where(path: path).count }
+        .not_to change { described_class.where(path:).count }
         .from(1)
     end
   end
