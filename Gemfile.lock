@@ -424,7 +424,7 @@ GEM
     tilt (2.0.11)
     timecop (0.9.4)
     timeout (0.3.2)
-    truncato (0.7.11)
+    truncato (0.7.12)
       htmlentities (~> 4.3.1)
       nokogiri (>= 1.7.0, <= 2.0)
     turbolinks (5.2.1)
