@@ -103,7 +103,8 @@ RSpec.configure do |config|
   # Snippet courtesy of:
   # https://medium.com/@coorasse/catch-javascript-errors-in-your-system-tests-89c2fe6773b1
   config.after :each, type: :feature, js: true do
-    errors = page.driver.browser.manage.logs.get(:browser)
+    # The latest magic incantation courtesy of https://stackoverflow.com/a/73879550
+    errors = page.driver.browser.logs.get(:browser)
     if errors.present?
       aggregate_failures "javascript errrors" do
         errors.each do |error|
