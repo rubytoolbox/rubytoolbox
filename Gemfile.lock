@@ -237,7 +237,7 @@ GEM
       ast (~> 2.4.1)
     percy-capybara (5.0.0)
       capybara (>= 3)
-    pg (1.2.3)
+    pg (1.4.6)
     pg_search (2.3.6)
       activerecord (>= 5.2)
       activesupport (>= 5.2)
@@ -298,7 +298,7 @@ GEM
     rb-fsevent (0.11.1)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
-    redcarpet (3.5.1)
+    redcarpet (3.6.0)
     redis (4.6.0)
     regexp_parser (2.8.0)
     request_store (1.5.0)
@@ -413,7 +413,7 @@ GEM
     terrapin (0.6.0)
       climate_control (>= 0.0.3, < 1.0)
     thor (1.2.1)
-    tilt (2.0.10)
+    tilt (2.0.11)
     timecop (0.9.4)
     timeout (0.3.2)
     truncato (0.7.11)
@@ -535,7 +535,7 @@ DEPENDENCIES
   webpacker
 
 RUBY VERSION
-   ruby 3.1.4p223
+   ruby 3.2.2p53
 
 BUNDLED WITH
    2.4.12
