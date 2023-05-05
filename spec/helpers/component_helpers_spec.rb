@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe ComponentHelpers, type: :helper do
+RSpec.describe ComponentHelpers do
   fixtures :all
 
   let(:group) do

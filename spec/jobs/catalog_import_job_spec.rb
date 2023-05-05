@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe CatalogImportJob, type: :job do
+RSpec.describe CatalogImportJob do
   fixtures :all
 
   let(:job) { described_class.new }

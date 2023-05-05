@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe ProjectSearchIndexJob, type: :job do
+RSpec.describe ProjectSearchIndexJob do
   fixtures :all
 
   let(:job) do

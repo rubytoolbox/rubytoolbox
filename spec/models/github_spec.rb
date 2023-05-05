@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe Github, type: :model do
+RSpec.describe Github do
   fixtures :all
 
   describe ".detect_repo_name" do

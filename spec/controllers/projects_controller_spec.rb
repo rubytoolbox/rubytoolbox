@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe ProjectsController, type: :controller do
+RSpec.describe ProjectsController do
   fixtures :all
 
   describe "GET show" do

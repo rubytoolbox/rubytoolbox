@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe ApplicationHelper, type: :helper do
+RSpec.describe ApplicationHelper do
   fixtures :all
 
   describe "#expiring_cache" do
@@ -116,7 +116,7 @@ RSpec.describe ApplicationHelper, type: :helper do
     end
 
     it "is nil when given controller name does not match current controller name" do
-      expect(helper.active_when(controller: "foo")).to be nil
+      expect(helper.active_when(controller: "foo")).to be_nil
     end
   end
 end

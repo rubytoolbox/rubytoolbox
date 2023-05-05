@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe CategoriesController, type: :controller do
+RSpec.describe CategoriesController do
   fixtures :all
 
   describe "GET index" do

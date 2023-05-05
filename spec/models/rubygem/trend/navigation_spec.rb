@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe Rubygem::Trend::Navigation, type: :model do
+RSpec.describe Rubygem::Trend::Navigation do
   fixtures :all
 
   let(:rubygem) { Factories.rubygem "example" }

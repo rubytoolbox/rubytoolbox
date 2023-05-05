@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe RubygemDependency, type: :model do
+RSpec.describe RubygemDependency do
   fixtures :all
 
   subject(:model) { described_class.new }

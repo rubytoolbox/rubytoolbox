@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe Webhooks::GithubController, type: :controller do
+RSpec.describe Webhooks::GithubController do
   fixtures :all
 
   describe "POST create" do

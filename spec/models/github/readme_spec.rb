@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe Github::Readme, type: :model do
+RSpec.describe Github::Readme do
   fixtures :all
 
   let(:repo) do
@@ -37,7 +37,7 @@ RSpec.describe Github::Readme, type: :model do
   describe "#truncated_html" do
     it "is nil when html is empty" do
       model.html = " "
-      expect(model.truncated_html).to be nil
+      expect(model.truncated_html).to be_nil
     end
 
     it "returns truncated html" do
@@ -49,7 +49,7 @@ RSpec.describe Github::Readme, type: :model do
   describe Github::Readme::Scrubber do
     describe ".scrub" do
       it "returns nil if html is blank" do
-        expect(described_class.scrub(" \n ")).to be nil
+        expect(described_class.scrub(" \n ")).to be_nil
       end
 
       it "cleans weird html content" do

@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe CategoryRankingJob, :clean_database, type: :job do
+RSpec.describe CategoryRankingJob, :clean_database do
   fixtures :all
 
   let(:job) { described_class.new }

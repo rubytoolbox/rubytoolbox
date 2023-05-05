@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe GithubIgnore, type: :model do
+RSpec.describe GithubIgnore do
   fixtures :all
 
   let(:path) { "foo/bar" }

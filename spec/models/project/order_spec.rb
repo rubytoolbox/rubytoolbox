@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe Project::Order, type: :model do
+RSpec.describe Project::Order do
   fixtures :all
 
   describe described_class::Direction do

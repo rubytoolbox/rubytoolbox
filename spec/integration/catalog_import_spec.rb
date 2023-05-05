@@ -7,7 +7,7 @@ RSpec.describe CatalogImport, :clean_database do
 
   let(:catalog_data) { Oj.load Rails.root.join("lib", "base-catalog.json").read }
 
-  let(:category_data) { catalog_data["category_groups"].map { |g| g["categories"] }.flatten }
+  let(:category_data) { catalog_data["category_groups"].pluck("categories").flatten }
 
   let(:project_permalinks) { %w[clockwork sidekiq swirrl/taskit willian/has_paginate] }
 
@@ -27,8 +27,8 @@ RSpec.describe CatalogImport, :clean_database do
     it "results in expected set of category groups" do
       import.perform
       actual = CategoryGroup.pluck(:permalink)
-      expected = catalog_data["category_groups"].map { |g| g["permalink"] }
-      expect(actual).to contain_exactly(*expected)
+      expected = catalog_data["category_groups"].pluck("permalink")
+      expect(actual).to match_array(expected)
     end
 
     it "applies expected attributes to imported category groups" do
@@ -51,8 +51,8 @@ RSpec.describe CatalogImport, :clean_database do
     it "results in expected set of categories" do
       import.perform
       actual = Category.pluck(:permalink)
-      expected = category_data.map { |c| c["permalink"] }
-      expect(actual).to contain_exactly(*expected)
+      expected = category_data.pluck("permalink")
+      expect(actual).to match_array(expected)
     end
 
     it "applies expected attributes to imported categories" do
@@ -78,7 +78,7 @@ RSpec.describe CatalogImport, :clean_database do
 
     it "results in expected set of projects" do
       import.perform
-      expect(Project.pluck(:permalink)).to contain_exactly(*project_permalinks)
+      expect(Project.pluck(:permalink)).to match_array(project_permalinks)
     end
 
     it "assigns projects to all of their categories" do

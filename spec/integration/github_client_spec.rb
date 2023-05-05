@@ -109,7 +109,7 @@ RSpec.describe GithubClient, :real_http do
 
     describe "for unknown repo", vcr: { cassette_name: "github/readme/unknown" } do
       it "gracefully returns nil" do
-        expect(client.fetch_readme("colszowka/nope")).to be nil
+        expect(client.fetch_readme("colszowka/nope")).to be_nil
       end
     end
   end

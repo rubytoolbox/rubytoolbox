@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe Project::Health, type: :model do
+RSpec.describe Project::Health do
   fixtures :all
 
   def status(key: :healthy, level: :green, icon: :heartbeat, &block)
@@ -23,7 +23,7 @@ RSpec.describe Project::Health, type: :model do
 
     describe "#label" do
       it "is the translated label for given key" do
-        expect(status.label).to be == I18n.t(:healthy, scope: :project_health)
+        expect(status.label).to be == I18n.t("project_health.healthy")
       end
     end
 

@@ -74,7 +74,7 @@ class GithubClient
 
     raise UnknownRepoError, errors.inspect if errors.any? { |e| e["type"] == "NOT_FOUND" }
 
-    raise InvalidResponse, errors.map { |e| e["message"] }.join(", ")
+    raise InvalidResponse, errors.pluck("message").join(", ")
   end
 
   def authenticated_client

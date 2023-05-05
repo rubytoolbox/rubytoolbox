@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe "Project Comparisons", type: :feature, js: true do
+RSpec.describe "Project Comparisons", js: true do
   fixtures :all
 
   before do

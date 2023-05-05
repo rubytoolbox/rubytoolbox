@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe "Mobile Navigation", type: :feature, js: true, viewport: :mobile do
+RSpec.describe "Mobile Navigation", js: true, viewport: :mobile do
   fixtures :all
 
   it "has a toggle-able hamburger navigation on mobile" do

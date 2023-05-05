@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe WelcomeController, type: :controller do
+RSpec.describe WelcomeController do
   fixtures :all
 
   render_views

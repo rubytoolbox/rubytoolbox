@@ -69,6 +69,8 @@ Shoulda::Matchers.configure do |config|
 end
 
 RSpec.configure do |config|
+  config.infer_spec_type_from_file_location!
+
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = Rails.root.join "spec", "fixtures"
 
@@ -102,7 +104,7 @@ RSpec.configure do |config|
   # Fail js capybara tests when the browser log has JS errors.
   # Snippet courtesy of:
   # https://medium.com/@coorasse/catch-javascript-errors-in-your-system-tests-89c2fe6773b1
-  config.after :each, type: :feature, js: true do
+  config.after :each, js: true, type: :feature do
     # The latest magic incantation courtesy of https://stackoverflow.com/a/73879550
     errors = page.driver.browser.logs.get(:browser)
     if errors.present?

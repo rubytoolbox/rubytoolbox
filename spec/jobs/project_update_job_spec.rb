@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe ProjectUpdateJob, type: :job do
+RSpec.describe ProjectUpdateJob do
   fixtures :all
 
   let(:job) { described_class.new }

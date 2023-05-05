@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe RemoteUpdateSchedulerJob, type: :job do
+RSpec.describe RemoteUpdateSchedulerJob do
   fixtures :all
 
   let(:job) { described_class.new }

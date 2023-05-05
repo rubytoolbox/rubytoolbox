@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe StatsHelpers, :clean_database, type: :helper do
+RSpec.describe StatsHelpers, :clean_database do
   fixtures :all
 
   describe "#percentiles" do

@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe Rubygem::Trend, type: :model do
+RSpec.describe Rubygem::Trend do
   fixtures :all
 
   describe ".for_date" do
