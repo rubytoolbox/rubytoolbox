@@ -20,6 +20,8 @@ RSpec.describe CatalogImportJob do
     end
 
     it "fetches the catalog" do
+      expect(job.http_client).to receive(:get).with(job.catalog_url)
+
       stub_response
       job.perform
     end
