@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe Search, type: :model do
+RSpec.describe Search do
   fixtures :all
 
   describe "#query" do

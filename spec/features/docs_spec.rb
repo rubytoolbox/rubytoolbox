@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe "Documentation Display", type: :feature, js: true do
+RSpec.describe "Documentation Display", js: true do
   fixtures :all
 
   it "can display all documentation pages" do

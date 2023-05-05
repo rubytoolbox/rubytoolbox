@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe Project::ForkDetector, type: :model do
+RSpec.describe Project::ForkDetector do
   fixtures :all
 
   let(:detector) { described_class.new(project) }

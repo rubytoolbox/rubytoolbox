@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe GithubRepo, type: :model do
+RSpec.describe GithubRepo do
   fixtures :all
 
   def create_repo!(path:, updated_at: 1.day.ago)
@@ -62,7 +62,7 @@ RSpec.describe GithubRepo, type: :model do
     end
 
     it "is nil when there is no default_branch" do
-      expect(described_class.new(path: "foo/bar", default_branch: nil).blob_url).to be nil
+      expect(described_class.new(path: "foo/bar", default_branch: nil).blob_url).to be_nil
     end
   end
 

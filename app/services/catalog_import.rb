@@ -30,7 +30,7 @@ class CatalogImport
 
   def category_data
     @category_data ||= begin
-      flattened = category_group_data.map { |g| g["categories"] }.flatten
+      flattened = category_group_data.pluck("categories").flatten
       # Since we compare the normalized github repos against the de-normalized
       # permalinks in the upstream catalog, we need to ensure those are matching.
       flattened.map do |category|
@@ -41,7 +41,7 @@ class CatalogImport
   end
 
   def project_data
-    @project_data ||= category_data.map { |c| c["projects"] }.flatten.uniq
+    @project_data ||= category_data.pluck("projects").flatten.uniq
   end
 
   def upsert_category_groups
@@ -55,7 +55,7 @@ class CatalogImport
   end
 
   def destroy_obsolete_category_groups
-    obsolete_groups = CategoryGroup.pluck(:permalink) - category_group_data.map { |g| g["permalink"] }
+    obsolete_groups = CategoryGroup.pluck(:permalink) - category_group_data.pluck("permalink")
     obsolete_groups.each { |permalink| CategoryGroup.find(permalink).destroy }
   end
 
@@ -71,7 +71,7 @@ class CatalogImport
   end
 
   def destroy_obsolete_categories
-    obsolete_categories = Category.pluck(:permalink) - category_data.map { |g| g["permalink"] }
+    obsolete_categories = Category.pluck(:permalink) - category_data.pluck("permalink")
     obsolete_categories.each { |permalink| Category.find(permalink).destroy }
   end
 
@@ -102,7 +102,7 @@ class CatalogImport
   def categories_for_project_permalink(project_permalink)
     relevant_category_permalinks = category_data
                                    .select { |c| c["projects"].include? project_permalink }
-                                   .map { |c| c["permalink"] }
+                                   .pluck("permalink")
     Category.where(permalink: relevant_category_permalinks)
   end
 

@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe CategoryGroup, type: :model do
+RSpec.describe CategoryGroup do
   fixtures :all
 
   describe ".for_welcome_page" do

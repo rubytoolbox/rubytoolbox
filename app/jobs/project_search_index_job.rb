@@ -23,7 +23,7 @@ class ProjectSearchIndexJob < ApplicationJob
 
   def perform(permalink)
     self.client = MeiliSearch.client
-    return unless client
+    return :not_configured unless client
 
     self.project = Project.includes_associations.find permalink
     return unless project.score

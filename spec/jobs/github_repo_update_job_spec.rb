@@ -3,7 +3,7 @@
 require "rails_helper"
 
 # rubocop:disable RSpec/MultipleMemoizedHelpers
-RSpec.describe GithubRepoUpdateJob, type: :job do
+RSpec.describe GithubRepoUpdateJob do
   fixtures :all
 
   let(:repo_data) do

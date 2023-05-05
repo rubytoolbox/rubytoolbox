@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe ApplicationController, type: :controller do
+RSpec.describe ApplicationController do
   fixtures :all
 
   controller do
@@ -23,7 +23,7 @@ RSpec.describe ApplicationController, type: :controller do
 
       expect(response).to have_http_status(:not_found)
         .and have_attributes(
-          body: Rails.root.join("public", "404.html").read
+          body: Rails.public_path.join("404.html").read
         )
     end
   end

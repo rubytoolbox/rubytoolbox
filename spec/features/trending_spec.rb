@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe "Trending Projects", type: :feature, js: true do
+RSpec.describe "Trending Projects", js: true do
   fixtures :all
 
   before do

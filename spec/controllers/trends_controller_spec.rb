@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe TrendsController, type: :controller do
+RSpec.describe TrendsController do
   fixtures :all
 
   render_views

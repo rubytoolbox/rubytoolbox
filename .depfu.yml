@@ -1,0 +1,25 @@
+#
+# This enables configures depfu to utilize automated merges and at the
+# same time employ the "reasonably up to date" strategy, which lets non-
+# security releases pending for a while until submitting the PR to allow
+# the dust to settle on new releases first.
+#
+# Depfu configuration reference:
+# https://docs.depfu.com/article/41-config-files
+# https://depfu.com/blog/configure-depfu-with-config-files
+bundler:
+  automerge_dev_strategy: minor
+  automerge_method: merge
+  automerge_strategy: minor
+  engine_update_strategy: minor
+  pull_request_limit: 7
+  reasonably_up_to_date: true
+  update_strategy: individual
+
+yarn:
+  automerge_dev_strategy: minor
+  automerge_method: merge
+  automerge_strategy: minor
+  pull_request_limit: 7
+  reasonably_up_to_date: true
+  update_strategy: individual

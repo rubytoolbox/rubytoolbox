@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe DisplayMode, type: :model do
+RSpec.describe DisplayMode do
   fixtures :all
 
   describe "#current" do

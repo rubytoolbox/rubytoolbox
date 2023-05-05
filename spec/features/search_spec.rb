@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe "Search", type: :feature, js: true do
+RSpec.describe "Search", js: true do
   fixtures :all
 
   before do

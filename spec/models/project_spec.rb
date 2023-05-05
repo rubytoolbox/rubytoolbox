@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe Project, type: :model do
+RSpec.describe Project do
   fixtures :all
 
   describe "associations" do

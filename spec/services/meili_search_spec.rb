@@ -22,7 +22,7 @@ RSpec.describe MeiliSearch, type: :service do
       let(:configured_url) { nil }
 
       it "returns nil" do
-        expect(described_class.client).to be nil
+        expect(described_class.client).to be_nil
       end
     end
 

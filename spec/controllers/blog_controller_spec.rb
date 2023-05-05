@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe BlogController, type: :controller do
+RSpec.describe BlogController do
   fixtures :all
 
   render_views

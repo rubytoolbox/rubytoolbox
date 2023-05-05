@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe SearchesController, type: :controller do
+RSpec.describe SearchesController do
   fixtures :all
 
   describe "GET #show" do

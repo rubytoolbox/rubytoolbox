@@ -61,7 +61,9 @@ gem "high_voltage"
 
 gem "http", "~> 4.4"
 
-gem "sidekiq"
+# We have to pin to 6 until our redis provider supports sidekiq 7 :(
+# See https://github.com/sidekiq/sidekiq/issues/5594
+gem "sidekiq", "~> 6.4"
 
 gem "sanitize"
 gem "truncato"

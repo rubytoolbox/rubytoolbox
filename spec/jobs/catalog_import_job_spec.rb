@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe CatalogImportJob, type: :job do
+RSpec.describe CatalogImportJob do
   fixtures :all
 
   let(:job) { described_class.new }
@@ -20,6 +20,8 @@ RSpec.describe CatalogImportJob, type: :job do
     end
 
     it "fetches the catalog" do
+      expect(job.http_client).to receive(:get).with(job.catalog_url)
+
       stub_response
       job.perform
     end

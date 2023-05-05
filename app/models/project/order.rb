@@ -67,9 +67,7 @@ class Project::Order
     ordered_by == order
   end
 
-  def sql
-    direction.sql
-  end
+  delegate :sql, to: :direction
 
   def available_groups
     directions.group_by(&:group)

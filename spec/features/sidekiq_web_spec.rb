@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe "Sidekiq Web", type: :feature do
+RSpec.describe "Sidekiq Web" do
   fixtures :all
 
   shared_examples_for "an unauthenticated response" do

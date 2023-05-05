@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe RubygemTrendsJob, type: :job do
+RSpec.describe RubygemTrendsJob do
   fixtures :all
 
   let(:job) { described_class.new }

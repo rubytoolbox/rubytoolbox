@@ -3,7 +3,7 @@
 require "rails_helper"
 
 # rubocop:disable RSpec/ExampleLength Data-heavy stuff, and I prefer readability over brevity on those
-RSpec.describe Rubygem::DownloadStat, type: :model do
+RSpec.describe Rubygem::DownloadStat do
   fixtures :all
 
   let(:rubygem) { Factories.rubygem "example" }

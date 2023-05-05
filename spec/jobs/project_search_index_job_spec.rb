@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe ProjectSearchIndexJob, type: :job do
+RSpec.describe ProjectSearchIndexJob do
   fixtures :all
 
   let(:job) do
@@ -44,7 +44,7 @@ RSpec.describe ProjectSearchIndexJob, type: :job do
     it "does not send data if the client is not configured" do
       allow(MeiliSearch).to receive(:client).and_return(nil)
 
-      job.perform project.permalink
+      expect(job.perform(project.permalink)).to be == :not_configured
     end
   end
 end

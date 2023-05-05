@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe "Project Display", type: :feature do
+RSpec.describe "Project Display" do
   fixtures :all
 
   it "can display Project README" do

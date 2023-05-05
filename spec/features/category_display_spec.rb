@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe "Categories Display", type: :feature, js: true do
+RSpec.describe "Categories Display", js: true do
   fixtures :all
 
   before do

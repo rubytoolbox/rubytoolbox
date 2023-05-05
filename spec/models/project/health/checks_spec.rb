@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe Project::Health::Checks, type: :model do
+RSpec.describe Project::Health::Checks do
   fixtures :all
 
   describe "GITHUB_REPO_ARCHIVED" do

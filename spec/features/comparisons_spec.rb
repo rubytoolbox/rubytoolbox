@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe "Project Comparisons", type: :feature, js: true do
+RSpec.describe "Project Comparisons", js: true do
   fixtures :all
 
   before do
@@ -65,7 +65,7 @@ RSpec.describe "Project Comparisons", type: :feature, js: true do
     expect_display_mode "Compact"
   end
 
-  it "has working autocompletion for project addition form" do
+  it "has working autocompletion for project addition form" do # rubocop:disable RSpec/NoExpectationExample wait_for would fail eventually
     visit "/compare"
 
     add_using_autocomplete "widget"

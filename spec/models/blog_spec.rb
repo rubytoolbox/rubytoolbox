@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe Blog, type: :model do
+RSpec.describe Blog do
   fixtures :all
 
   describe "with posts from fixtures" do

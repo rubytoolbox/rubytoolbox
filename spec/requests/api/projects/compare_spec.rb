@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe "Project Comparison API", type: :request do
+RSpec.describe "Project Comparison API" do
   fixtures :all
 
   def do_request

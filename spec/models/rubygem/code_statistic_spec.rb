@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe Rubygem::CodeStatistic, type: :model do
+RSpec.describe Rubygem::CodeStatistic do
   subject(:model) { described_class.new }
 
   describe "associations" do

@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe RubygemDownloadsPersistenceJob, :clean_database, type: :job do
+RSpec.describe RubygemDownloadsPersistenceJob, :clean_database do
   fixtures :all
 
   let(:job) { described_class.new }
