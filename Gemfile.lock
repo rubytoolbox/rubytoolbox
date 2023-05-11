@@ -129,7 +129,7 @@ GEM
     foreman (0.87.2)
     forgery (0.8.1)
     formatador (1.1.0)
-    github_webhook (1.2.0)
+    github_webhook (1.4.2)
       activesupport (>= 4)
       rack (>= 1.3)
       railties (>= 4)
