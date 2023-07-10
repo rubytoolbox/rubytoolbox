@@ -68,7 +68,7 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.4)
       public_suffix (>= 2.0.2, < 6.0)
-    appsignal (3.4.4)
+    appsignal (3.4.6)
       rack
     ast (2.4.2)
     bindex (0.8.1)
