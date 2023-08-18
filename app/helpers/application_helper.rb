@@ -86,8 +86,8 @@ module ApplicationHelper
   # from various assumed assigned variables, maybe extraction to some wrapping
   # object might make sense...
   #
-  def link_with_preserved_display_settings(**args)
-    "#{request.path}?#{current_display_settings_query_string(**args)}"
+  def link_with_preserved_display_settings(**)
+    "#{request.path}?#{current_display_settings_query_string(**)}"
   end
 
   def current_display_settings_query_string(**args)

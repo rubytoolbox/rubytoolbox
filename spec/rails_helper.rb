@@ -42,6 +42,8 @@ VCR.configure do |c|
                  "127.0.0.1",
                  # as per https://github.com/titusfortner/webdrivers/wiki/Using-with-VCR-or-WebMock
                  "chromedriver.storage.googleapis.com",
+                 "googlechromelabs.github.io",
+                 "edgedl.me.gvt1.com",
                  "github.com/mozilla/geckodriver/releases",
                  "selenium-release.storage.googleapis.com",
                  "developer.microsoft.com/en-us/microsoft-edge/tools/webdriver"
