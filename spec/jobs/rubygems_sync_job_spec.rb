@@ -41,8 +41,7 @@ RSpec.describe RubygemsSyncJob do
 
     describe "#remote_gems" do
       it "is the union of the published and prerelease gems" do
-        allow(job).to receive(:prerelease_gems).and_return(%w[a b c])
-        allow(job).to receive(:published_gems).and_return(%w[a d e f])
+        allow(job).to receive_messages(prerelease_gems: %w[a b c], published_gems: %w[a d e f])
         expect(job.remote_gems.sort).to be == %w[a b c d e f]
       end
     end
@@ -60,8 +59,7 @@ RSpec.describe RubygemsSyncJob do
     let(:remote_gems) { %w[rspec rails simplecov] }
 
     before do
-      allow(job).to receive(:local_gems).and_return(local_gems)
-      allow(job).to receive(:remote_gems).and_return(remote_gems)
+      allow(job).to receive_messages(local_gems:, remote_gems:)
     end
 
     it "triggers update jobs for all locally missing gems" do

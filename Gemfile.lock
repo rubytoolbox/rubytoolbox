@@ -529,6 +529,7 @@ DEPENDENCIES
   rspec-retry
   rspec_junit_formatter
   rubocop
+  rubocop-capybara
   rubocop-performance
   rubocop-rails
   rubocop-rspec
