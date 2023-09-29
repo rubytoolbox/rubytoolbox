@@ -32,14 +32,14 @@ RSpec.describe ProjectsController do
       it "assigns Project.find_for_show!" do
         allow(Project).to receive(:find_for_show!).and_return(project)
         do_request
-        expect(assigns(:project)).to be == project
+        expect(assigns(:project)).to eq project
       end
 
       it "assigns Rubygem Dependencies" do
         allow(Project).to receive(:find_for_show!).and_return(project)
         allow(RubygemDependency).to receive(:for_project).with(project).and_return("the value")
         do_request
-        expect(assigns(:dependencies)).to be == "the value"
+        expect(assigns(:dependencies)).to eq "the value"
       end
     end
 

@@ -83,7 +83,7 @@ RSpec.describe SearchesController do
     it "returns list of matching project names as json" do
       allow(Project).to receive(:suggest).with("foobar").and_return(%w[a b c])
       get :by_name, params: { q: "foobar" }
-      expect(Oj.load(response.body)).to be == %w[a b c]
+      expect(Oj.load(response.body)).to eq %w[a b c]
     end
   end
 end

@@ -11,7 +11,7 @@ RSpec.describe "Sidekiq Web" do
     end
 
     it "responds with status 401" do
-      expect(page.status_code).to be == 401
+      expect(page.status_code).to eq 401
     end
   end
 

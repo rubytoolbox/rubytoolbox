@@ -17,7 +17,7 @@ RSpec.describe TrendsController do
     it "renders a text message when no data is in the database" do
       allow(Rubygem::DownloadStat).to receive(:maximum).with(:date)
       get :index
-      expect(response.body).to be == "No stats data is available, please seed the database"
+      expect(response.body).to eq "No stats data is available, please seed the database"
     end
   end
 

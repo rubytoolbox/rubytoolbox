@@ -21,12 +21,12 @@ RSpec.describe Category do
       described_class.create! permalink: "foo", name: "Foo", category_group: group
       described_class.create! permalink: "bar", name: "Bar", category_group: group
 
-      expect(described_class.search("mock")).to be == [category]
+      expect(described_class.search("mock")).to eq [category]
     end
 
     it "can find a matching category by description" do
       category
-      expect(described_class.search("widget")).to be == [category]
+      expect(described_class.search("widget")).to eq [category]
     end
 
     it "eager-loads associated projects" do
@@ -46,7 +46,7 @@ RSpec.describe Category do
       described_class.create! permalink: "B", name: "B", category_group: group, rank: 2
       described_class.create! permalink: "C", name: "C", category_group: group, rank: 1
 
-      expect(described_class.by_rank.pluck(:permalink)).to be == %w[C B]
+      expect(described_class.by_rank.pluck(:permalink)).to eq %w[C B]
     end
   end
 
@@ -58,7 +58,7 @@ RSpec.describe Category do
                                 category_group: group, rank: 16 - i
       end
       described_class.create! permalink: "A", name: "A", category_group: group
-      expect(described_class.featured.pluck(:permalink)).to be == (5..20).to_a.map(&:to_s).reverse
+      expect(described_class.featured.pluck(:permalink)).to eq (5..20).to_a.map(&:to_s).reverse
     end
   end
 
@@ -73,7 +73,7 @@ RSpec.describe Category do
     end
 
     it "returns 4 newest categories" do
-      expect(described_class.recently_added.pluck(:permalink)).to be == %w[1 2 3 4]
+      expect(described_class.recently_added.pluck(:permalink)).to eq %w[1 2 3 4]
     end
 
     it "eager-loads projects" do
@@ -86,14 +86,14 @@ RSpec.describe Category do
   describe "#catalog_show_url" do
     it "is the url where the category definition can be seen on github" do
       expected = "https://github.com/rubytoolbox/catalog/tree/main/catalog/unimportant/mocking.yml"
-      expect(category.catalog_show_url).to be == expected
+      expect(category.catalog_show_url).to eq expected
     end
   end
 
   describe "#catalog_edit_url" do
     it "is the url where the category definition can be edited on github" do
       expected = "https://github.com/rubytoolbox/catalog/edit/main/catalog/unimportant/mocking.yml"
-      expect(category.catalog_edit_url).to be == expected
+      expect(category.catalog_edit_url).to eq expected
     end
   end
 end

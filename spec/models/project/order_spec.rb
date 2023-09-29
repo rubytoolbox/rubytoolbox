@@ -8,25 +8,25 @@ RSpec.describe Project::Order do
   describe described_class::Direction do
     describe "#key" do
       it "is a composite of given group and attribute" do
-        expect(described_class.new(:foo, :bar).key).to be == "foo_bar"
+        expect(described_class.new(:foo, :bar).key).to eq "foo_bar"
       end
 
       it "can be overriden by explicit key keyword argument" do
-        expect(described_class.new(:foo, :bar, key: "widgets!").key).to be == "widgets!"
+        expect(described_class.new(:foo, :bar, key: "widgets!").key).to eq "widgets!"
       end
     end
 
     describe "#sql" do
       it "is constructed from pluralized group, attribute and direction" do
-        expect(described_class.new(:foo, :bar).sql).to be == "foos.bar DESC NULLS LAST"
+        expect(described_class.new(:foo, :bar).sql).to eq "foos.bar DESC NULLS LAST"
       end
 
       it "uses custom direction when given" do
-        expect(described_class.new(:foo, :bar, direction: :asc).sql).to be == "foos.bar ASC NULLS LAST"
+        expect(described_class.new(:foo, :bar, direction: :asc).sql).to eq "foos.bar ASC NULLS LAST"
       end
 
       it "uses custom sql when given" do
-        expect(described_class.new(:foo, :bar, sql: "HELLO WORLD").sql).to be == "HELLO WORLD"
+        expect(described_class.new(:foo, :bar, sql: "HELLO WORLD").sql).to eq "HELLO WORLD"
       end
     end
   end
@@ -36,12 +36,12 @@ RSpec.describe Project::Order do
       let(:order) { described_class.new(order: direction.key) }
 
       it "has ordered_by #{direction.key}" do
-        expect(order.ordered_by).to be == direction.key
+        expect(order.ordered_by).to eq direction.key
       end
 
       it "has sql based on direction sql" do
         allow(direction).to receive(:sql).and_return("this sql")
-        expect(order.sql).to be == "this sql"
+        expect(order.sql).to eq "this sql"
       end
 
       it "returns true for is?(#{direction.key})" do
@@ -64,12 +64,12 @@ RSpec.describe Project::Order do
     let(:order) { described_class.new(order: "lol") }
 
     it "has ordered_by #{default_direction.key}" do
-      expect(order.ordered_by).to be == default_direction.key
+      expect(order.ordered_by).to eq default_direction.key
     end
 
     it "has sql based on direction sql" do
       allow(default_direction).to receive(:sql).and_return("this sql")
-      expect(order.sql).to be == "this sql"
+      expect(order.sql).to eq "this sql"
     end
   end
 
@@ -77,7 +77,7 @@ RSpec.describe Project::Order do
     expected_groups = described_class::DEFAULT_DIRECTIONS.map(&:group).uniq
 
     it "has expected groups: #{expected_groups.to_sentence}" do
-      expect(described_class.new(order: nil).available_groups.keys).to be == expected_groups
+      expect(described_class.new(order: nil).available_groups.keys).to eq expected_groups
     end
   end
 

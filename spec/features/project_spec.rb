@@ -40,7 +40,7 @@ RSpec.describe "Project Display" do
     shown_dependencies = page.all(".project.box h3").map(&:text)
 
     project.reverse_dependencies.then do |expected|
-      expect(shown_dependencies).to be == expected.map(&:name)
+      expect(shown_dependencies).to eq expected.map(&:name)
     end
 
     change_display_mode "Full"

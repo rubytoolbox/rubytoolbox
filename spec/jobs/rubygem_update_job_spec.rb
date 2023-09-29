@@ -66,7 +66,7 @@ RSpec.describe RubygemUpdateJob do
     it "stores quarterly release counts" do
       do_perform
       expected = { "2005-3" => 1, "2017-2" => 1, "2017-4" => 1 }
-      expect(Rubygem.find(gem_name).quarterly_release_counts).to be == expected
+      expect(Rubygem.find(gem_name).quarterly_release_counts).to eq expected
     end
 
     describe "dependencies" do
@@ -76,7 +76,7 @@ RSpec.describe RubygemUpdateJob do
                               .rubygem_dependencies
                               .pluck(:dependency_name, :type, :requirements)
 
-        expect(dependencies).to be == [
+        expect(dependencies).to eq [
           ["rspec-core", "runtime", "~> 3.7.0"],
           ["rspec-expectations", "runtime", "~> 3.7.0"],
           ["rspec-mocks", "runtime", "~> 3.7.0"],

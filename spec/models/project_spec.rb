@@ -101,7 +101,7 @@ RSpec.describe Project do
     end
 
     it "returns empty array for empty param" do
-      expect(described_class.suggest(" ")).to be == []
+      expect(described_class.suggest(" ")).to eq []
     end
 
     it "fetches projects from database that match given name ordered by score" do
@@ -109,17 +109,17 @@ RSpec.describe Project do
       Factories.project "foobar", score: 10
       Factories.project "foo", score: 5
       Factories.project "foofoo", score: nil
-      expect(described_class.suggest("fo")).to be == %w[foobar foo foofoo]
+      expect(described_class.suggest("fo")).to eq %w[foobar foo foofoo]
     end
 
     it "is case-insensitive" do
       Factories.project "DeMo"
-      expect(described_class.suggest("dem")).to be == %w[DeMo]
+      expect(described_class.suggest("dem")).to eq %w[DeMo]
     end
 
     it "sanitizes user-provided special chars" do
       Factories.project "foof"
-      expect(described_class.suggest("%oof")).to be == %w[]
+      expect(described_class.suggest("%oof")).to eq %w[]
     end
   end
 
@@ -129,13 +129,13 @@ RSpec.describe Project do
       described_class.create! permalink: "airplanes", score: 1
       described_class.create! permalink: "rockets", score: 1
 
-      expect(described_class.search("widget")).to be == [expected]
+      expect(described_class.search("widget")).to eq [expected]
     end
 
     it "does not return projects without a score" do
       expected = described_class.create! permalink: "somethingelse", score: 1, description: "Provides amazing widgets"
       described_class.create! permalink: "widgets"
-      expect(described_class.search("widget")).to be == [expected]
+      expect(described_class.search("widget")).to eq [expected]
     end
 
     describe "for projects flagged as bugfix forks" do
@@ -148,11 +148,11 @@ RSpec.describe Project do
       end
 
       it "does not include them by default" do
-        expect(described_class.search("widget")).to be == [expected]
+        expect(described_class.search("widget")).to eq [expected]
       end
 
       it "includes them when called with show_forks true" do
-        expect(described_class.search("widget", show_forks: true)).to be == [expected, described_class.find("widgets")]
+        expect(described_class.search("widget", show_forks: true)).to eq [expected, described_class.find("widgets")]
       end
     end
 
@@ -167,13 +167,13 @@ RSpec.describe Project do
       it "sorts results by the search result rank by default" do
         described_class.find("widgets2").update! description: "widgets widgets!"
         expected = %w[widgets2 widgets3 widgets1]
-        expect(described_class.search("widget").pluck(:permalink)).to be == expected
+        expect(described_class.search("widget").pluck(:permalink)).to eq expected
       end
 
       it "allows to pass a custom order instance" do
         order = Project::Order.new(order: "rubygem_downloads")
         expected = %w[widgets1 widgets2 widgets3]
-        expect(described_class.search("widget", order:).pluck(:permalink)).to be == expected
+        expect(described_class.search("widget", order:).pluck(:permalink)).to eq expected
       end
     end
   end
@@ -190,7 +190,7 @@ RSpec.describe Project do
 
   describe "#github_repo_path=" do
     it "normalizes the path to the stripped, downcase variant" do
-      expect(described_class.new(github_repo_path: " FoO/BaR ").github_repo_path).to be == "foo/bar"
+      expect(described_class.new(github_repo_path: " FoO/BaR ").github_repo_path).to eq "foo/bar"
     end
   end
 
@@ -199,7 +199,7 @@ RSpec.describe Project do
       describe "##{url}" do
         it "is fetched from the rubygem" do
           project = described_class.new(rubygem: Rubygem.new(url => "foobar"))
-          expect(project.send(url)).to be == "foobar"
+          expect(project.send(url)).to eq "foobar"
         end
       end
     end
@@ -213,12 +213,12 @@ RSpec.describe Project do
       end
 
       it "prefers the gem's source code url" do
-        expect(project.source_code_url).to be == project.rubygem_source_code_url
+        expect(project.source_code_url).to eq project.rubygem_source_code_url
       end
 
       it "falls back to github repo url if not given in gem" do
         project.rubygem.source_code_url = nil
-        expect(project.source_code_url).to be == project.github_repo_url
+        expect(project.source_code_url).to eq project.github_repo_url
       end
     end
 
@@ -231,12 +231,12 @@ RSpec.describe Project do
       end
 
       it "prefers the gem's homepage url" do
-        expect(project.homepage_url).to be == project.rubygem_homepage_url
+        expect(project.homepage_url).to eq project.rubygem_homepage_url
       end
 
       it "falls back to github repo homepage url if not given in gem" do
         project.rubygem.homepage_url = nil
-        expect(project.homepage_url).to be == project.github_repo_homepage_url
+        expect(project.homepage_url).to eq project.github_repo_homepage_url
       end
     end
 
@@ -249,12 +249,12 @@ RSpec.describe Project do
       end
 
       it "prefers the gem's wiki url" do
-        expect(project.wiki_url).to be == project.rubygem_wiki_url
+        expect(project.wiki_url).to eq project.rubygem_wiki_url
       end
 
       it "falls back to github repo wiki url if not given in gem" do
         project.rubygem.wiki_url = nil
-        expect(project.wiki_url).to be == project.github_repo_wiki_url
+        expect(project.wiki_url).to eq project.github_repo_wiki_url
       end
     end
 
@@ -267,12 +267,12 @@ RSpec.describe Project do
       end
 
       it "prefers the gem's bug_tracker_url url" do
-        expect(project.bug_tracker_url).to be == project.rubygem_bug_tracker_url
+        expect(project.bug_tracker_url).to eq project.rubygem_bug_tracker_url
       end
 
       it "falls back to github repo issues url if not given in gem" do
         project.rubygem.bug_tracker_url = nil
-        expect(project.bug_tracker_url).to be == project.github_repo_issues_url
+        expect(project.bug_tracker_url).to eq project.github_repo_issues_url
       end
     end
   end
@@ -285,11 +285,11 @@ RSpec.describe Project do
 
   describe "permalink=" do
     it "normalizes the permalink to the stripped, downcase variant for github repo" do
-      expect(described_class.new(permalink: " FoO/BaR ").permalink).to be == "foo/bar"
+      expect(described_class.new(permalink: " FoO/BaR ").permalink).to eq "foo/bar"
     end
 
     it "does not normalize the permalink for non-github project" do
-      expect(described_class.new(permalink: "FoOBaR").permalink).to be == "FoOBaR"
+      expect(described_class.new(permalink: "FoOBaR").permalink).to eq "FoOBaR"
     end
   end
 
@@ -304,12 +304,12 @@ RSpec.describe Project do
     it "returns a project health instance" do
       health = instance_double Project::Health
       allow(Project::Health).to receive(:new).and_return(health)
-      expect(project.health).to be == health
+      expect(project.health).to eq health
     end
 
     # rubocop:disable RSpec/IdenticalEqualityAssertion
     it "memoizes the instance" do
-      expect(project.health.object_id).to be == project.health.object_id
+      expect(project.health.object_id).to eq project.health.object_id
     end
     # rubocop:enable RSpec/IdenticalEqualityAssertion
   end

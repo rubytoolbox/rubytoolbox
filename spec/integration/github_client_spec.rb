@@ -76,7 +76,7 @@ RSpec.describe GithubClient, :real_http do
     describe "for a moved repo", vcr: { cassette_name: "jnicklas/carrierwave" } do
       it "resolves to the real repository path" do
         response = client.fetch_repository "jnicklas/carrierwave"
-        expect(response.path).to be == "carrierwaveuploader/carrierwave"
+        expect(response.path).to eq "carrierwaveuploader/carrierwave"
       end
     end
   end

@@ -29,7 +29,7 @@ RSpec.describe HttpService do
         end
 
         it "has the expected status code" do
-          expect(do_get.status).to be == 200
+          expect(do_get.status).to eq 200
         end
 
         it "has the expected body" do

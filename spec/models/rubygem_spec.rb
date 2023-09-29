@@ -43,24 +43,24 @@ RSpec.describe Rubygem do
       end
     end
 
-    it { is_expected.to be == expected_sql }
+    it { is_expected.to eq expected_sql }
   end
 
   describe "#url" do
     it "is derived from the gem name" do
-      expect(described_class.new(name: "foobar").url).to be == "https://rubygems.org/gems/foobar"
+      expect(described_class.new(name: "foobar").url).to eq "https://rubygems.org/gems/foobar"
     end
   end
 
   describe "#documentation_url" do
     it "is the gem's documentation_url if set" do
       url = "https://api.rubyonrails.org"
-      expect(described_class.new(documentation_url: url).documentation_url).to be == url
+      expect(described_class.new(documentation_url: url).documentation_url).to eq url
     end
 
     it "falls back to rubydoc.info if not set in gem metadata" do
       expected = "http://www.rubydoc.info/gems/rails/frames"
-      expect(described_class.new(name: "rails").documentation_url).to be == expected
+      expect(described_class.new(name: "rails").documentation_url).to eq expected
     end
   end
 end

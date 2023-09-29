@@ -20,7 +20,7 @@ RSpec.describe Rubygem::DownloadStat::Timeseries do
     it "is a shorthand for initialize and stats calls" do
       double = instance_double described_class, stats: "Hello World"
       allow(described_class).to receive(:new).with("foo", :bar, :baz).and_return(double)
-      expect(described_class.fetch("foo", :bar, :baz)).to be == double.stats
+      expect(described_class.fetch("foo", :bar, :baz)).to eq double.stats
     end
   end
 
@@ -30,7 +30,7 @@ RSpec.describe Rubygem::DownloadStat::Timeseries do
     end
 
     it "returns a hash containing expected data" do
-      expect(timeseries.stats).to be == {
+      expect(timeseries.stats).to eq(
         total_downloads:       [
           { x: Date.new(2010, 10, 1), y: nil },
           { x: 12.weeks.ago.to_date, y: 1000 },
@@ -44,8 +44,8 @@ RSpec.describe Rubygem::DownloadStat::Timeseries do
           { x: 8.weeks.ago.to_date, y: 1000 },
           { x: 4.weeks.ago.to_date, y: 1000 },
           { x: Time.current.to_date, y: 1000 },
-        ],
-      }
+        ]
+      )
     end
 
     it "makes a single database query" do
@@ -54,7 +54,7 @@ RSpec.describe Rubygem::DownloadStat::Timeseries do
 
     # rubocop:disable RSpec/IdenticalEqualityAssertion
     it "memoizes the calculated stats" do
-      expect(timeseries.stats.object_id).to be == timeseries.stats.object_id
+      expect(timeseries.stats.object_id).to eq timeseries.stats.object_id
     end
     # rubocop:enable RSpec/IdenticalEqualityAssertion
   end

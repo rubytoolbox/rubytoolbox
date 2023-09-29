@@ -28,10 +28,10 @@ RSpec.describe StatsHelpers, :clean_database do
     end
 
     it "returns counts grouped by year in given column" do
-      expect(helper.date_groups(:rubygems, :first_release_on)).to be == {
+      expect(helper.date_groups(:rubygems, :first_release_on)).to eq(
         2014 => 2,
-        2016 => 3,
-      }
+        2016 => 3
+      )
     end
   end
 
@@ -40,12 +40,12 @@ RSpec.describe StatsHelpers, :clean_database do
       input = {
         1 => 0, 3 => "0", 12 => 0, 13 => 1, 14 => 2, 15 => 5
       }
-      expect(helper.crop_zero_values(input)).to be == {
+      expect(helper.crop_zero_values(input)).to eq(
         12 => 0,
         13 => 1,
         14 => 2,
-        15 => 5,
-      }
+        15 => 5
+      )
     end
   end
 end

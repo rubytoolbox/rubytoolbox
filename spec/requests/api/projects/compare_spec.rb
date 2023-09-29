@@ -17,9 +17,7 @@ RSpec.describe "Project Comparison API" do
 
     it "is empty inside" do
       do_request
-      expect(Oj.load(response.body)).to be == {
-        "projects" => [],
-      }
+      expect(Oj.load(response.body)).to eq("projects" => [])
     end
   end
 
@@ -66,17 +64,17 @@ RSpec.describe "Project Comparison API" do
 
     it "responds with a 400 error" do
       do_request
-      expect(response.status).to be == 400
+      expect(response).to have_http_status :bad_request
     end
 
     it "responds with an informative error message" do
       do_request
       body = Oj.load(response.body).deep_symbolize_keys
 
-      expect(body).to be == {
+      expect(body).to eq(
         error_code: "too_many_projects_requested",
-        message:    "Please request no more than #{limit} projects per API call",
-      }
+        message:    "Please request no more than #{limit} projects per API call"
+      )
     end
   end
 

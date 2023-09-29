@@ -23,13 +23,13 @@ RSpec.describe Project::Health do
 
     describe "#label" do
       it "is the translated label for given key" do
-        expect(status.label).to be == I18n.t("project_health.healthy")
+        expect(status.label).to eq I18n.t("project_health.healthy")
       end
     end
 
     describe "#icon" do
       it "is set to the passed value" do
-        expect(status.icon).to be == :heartbeat
+        expect(status.icon).to eq :heartbeat
       end
     end
 
@@ -62,12 +62,12 @@ RSpec.describe Project::Health do
       health.checks.each { |check| allow(check).to receive(:applies?) }
       checks = health.checks.sample(3)
       checks.each { |check| allow(check).to receive(:applies?).and_return(true) }
-      expect(health.status.map(&:key).sort).to be == checks.map(&:key).sort
+      expect(health.status.map(&:key).sort).to eq checks.map(&:key).sort
     end
 
     it "contains HEALTHY_STATUS if no other checks apply" do
       health.checks.each { |check| allow(check).to receive(:applies?) }
-      expect(health.status).to be == [described_class::HEALTHY_STATUS]
+      expect(health.status).to eq [described_class::HEALTHY_STATUS]
     end
   end
 
@@ -78,7 +78,7 @@ RSpec.describe Project::Health do
 
     it "returns the red if a matching check is red" do
       health.checks.each { |check| allow(check).to receive(:applies?).and_return(true) }
-      expect(health.overall_level).to be == :red
+      expect(health.overall_level).to eq :red
     end
 
     it "returns yellow if worst matching check is yellow" do
@@ -88,7 +88,7 @@ RSpec.describe Project::Health do
 
         allow(check).to receive(:applies?).and_return(true)
       end
-      expect(health.overall_level).to be == :yellow
+      expect(health.overall_level).to eq :yellow
     end
 
     it "returns green if worst matching check is green" do
@@ -97,7 +97,7 @@ RSpec.describe Project::Health do
 
         allow(check).to receive(:applies?).and_return(true)
       end
-      expect(health.overall_level).to be == :green
+      expect(health.overall_level).to eq :green
     end
   end
 end
