@@ -1,0 +1,7 @@
+---
+ignore:
+  # See https://github.com/sidekiq/sidekiq/discussions/6039
+  # and https://github.com/sidekiq/sidekiq/issues/5594#issuecomment-1697001644
+  # The DoS vulnerability itself seems to only affect authenticated dashboard users
+  # in the first place though so it shouldn't pose that much of a problem for the time being
+  - CVE-2023-26141
