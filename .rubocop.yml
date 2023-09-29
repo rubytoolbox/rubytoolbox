@@ -61,7 +61,7 @@ RSpec/ExampleLength:
     # Not efficient for acceptance tests
     - 'spec/features/**/*'
 
-RSpec/FilePath:
+RSpec/SpecFilePathFormat:
   Exclude:
     - 'spec/integration/*'
 

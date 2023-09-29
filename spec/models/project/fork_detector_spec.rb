@@ -22,11 +22,11 @@ RSpec.describe Project::ForkDetector do
     end
 
     it "has github_sibling in fork_critera" do
-      expect(detector.fork_criteria).to be == %w[github_sibling]
+      expect(detector.fork_criteria).to eq %w[github_sibling]
     end
 
     it "references the expected rubygem as forked_from" do
-      expect(detector.forked_from).to be == "foo"
+      expect(detector.forked_from).to eq "foo"
     end
   end
 
@@ -44,11 +44,11 @@ RSpec.describe Project::ForkDetector do
     end
 
     it "has rubygem_sibling in fork_critera" do
-      expect(detector.fork_criteria).to be == %w[rubygem_sibling]
+      expect(detector.fork_criteria).to eq %w[rubygem_sibling]
     end
 
     it "references the expected rubygem as forked_from" do
-      expect(detector.forked_from).to be == "demo"
+      expect(detector.forked_from).to eq "demo"
     end
 
     it "isn't a fork when the inspected project has more than 50k downloads" do

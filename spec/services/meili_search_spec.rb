@@ -46,7 +46,7 @@ RSpec.describe MeiliSearch, type: :service do
       search = described_class.new(url: "https://foo:bar@example.com")
 
       authorization = search.http.default_options.headers["Authorization"]
-      expect(authorization).to be == "Basic Zm9vOmJhcg=="
+      expect(authorization).to eq "Basic Zm9vOmJhcg=="
     end
 
     it "skips basic_auth when not configured" do
@@ -58,7 +58,7 @@ RSpec.describe MeiliSearch, type: :service do
     it "configures persistent connection for host and scheme" do
       search = described_class.new(url: "https://example.com")
 
-      expect(search.http.default_options.persistent).to be == "https://example.com"
+      expect(search.http.default_options.persistent).to eq "https://example.com"
     end
   end
 
@@ -73,15 +73,15 @@ RSpec.describe MeiliSearch, type: :service do
     end
 
     it "returns ranking rules as reported by server" do
-      expect(search.ranking_rules("my_index")).to be == %w[hello world]
+      expect(search.ranking_rules("my_index")).to eq %w[hello world]
     end
 
     it "returns searchable attributes as reported by server" do
-      expect(search.searchable_attributes("my_index")).to be == %w[foo bar]
+      expect(search.searchable_attributes("my_index")).to eq %w[foo bar]
     end
 
     it "returns displayed attributes as reported by server" do
-      expect(search.displayed_attributes("my_index")).to be == %w[one two]
+      expect(search.displayed_attributes("my_index")).to eq %w[one two]
     end
   end
 
@@ -141,7 +141,7 @@ RSpec.describe MeiliSearch, type: :service do
     end
 
     it "returns matching permalinks for given index and query" do
-      expect(search.search(:my_index, "my query")).to be == %w[one two]
+      expect(search.search(:my_index, "my query")).to eq %w[one two]
     end
   end
 end

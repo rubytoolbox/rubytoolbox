@@ -19,7 +19,7 @@ RSpec.describe CategoriesController do
     it "assigns CategoryGroup.for_welcome_page" do
       allow(CategoryGroup).to receive(:for_welcome_page).and_return("The Groups")
       do_request
-      expect(assigns(:groups)).to be == "The Groups"
+      expect(assigns(:groups)).to eq "The Groups"
     end
   end
 
@@ -54,7 +54,7 @@ RSpec.describe CategoriesController do
       it "assigns Category.find_for_show!" do
         allow(Category).to receive(:find_for_show!).and_return(category)
         do_request
-        expect(assigns(:category)).to be == category
+        expect(assigns(:category)).to eq category
       end
 
       it "passes a project order instance to Category.find_for_show!" do

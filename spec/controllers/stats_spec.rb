@@ -12,21 +12,21 @@ RSpec.describe Stats, type: :model do
     it "queries the total number of categorized projects" do
       relation = instance_double(ActiveRecord::Relation, count:)
       allow(Project).to receive(:joins).with(:categories).and_return(relation)
-      expect(stats.projects_with_categories_count).to be == count
+      expect(stats.projects_with_categories_count).to eq count
     end
   end
 
   describe "#rubygems_count" do
     it "queries and returns the total number of gems" do
       allow(Rubygem).to receive(:count).and_return(count)
-      expect(stats.rubygems_count).to be == count
+      expect(stats.rubygems_count).to eq count
     end
   end
 
   describe "#categories_count" do
     it "queries and returns the total number of categories" do
       allow(Category).to receive(:count).and_return(count)
-      expect(stats.categories_count).to be == count
+      expect(stats.categories_count).to eq count
     end
   end
 end

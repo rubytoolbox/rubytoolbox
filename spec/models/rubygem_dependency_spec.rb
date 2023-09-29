@@ -85,12 +85,12 @@ RSpec.describe RubygemDependency do
 
       it "contains expected development dependencies query" do
         expect(described_class.for_project(project).development.to_sql)
-          .to be == base_scope.development.to_sql
+          .to eq base_scope.development.to_sql
       end
 
       it "contains expected runtime dependencies query" do
         expect(described_class.for_project(project).runtime.to_sql)
-          .to be == base_scope.runtime.to_sql
+          .to eq base_scope.runtime.to_sql
       end
     end
   end

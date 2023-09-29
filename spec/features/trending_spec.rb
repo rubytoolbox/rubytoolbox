@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe "Trending Projects", js: true do
+RSpec.describe "Trending Projects", :js do
   fixtures :all
 
   before do
@@ -31,21 +31,21 @@ RSpec.describe "Trending Projects", js: true do
       expect(page).to have_text("Trending Projects for #{I18n.l(Time.current.to_date, format: :long)}")
     end
     expect(page).to have_selector(".category-card", count: 2)
-    expect(visible_project_names).to be == %w[widget foobar]
+    expect(visible_project_names).to eq %w[widget foobar]
 
     within ".top-navigation" do
       page.find(".button.previous_week").click
     end
 
     expect(page).to have_selector(".category-card", count: 1)
-    expect(visible_project_names).to be == %w[other]
+    expect(visible_project_names).to eq %w[other]
 
     within ".top-navigation" do
       click_on "Go to latest"
     end
 
     expect(page).to have_selector(".category-card", count: 2)
-    expect(visible_project_names).to be == %w[widget foobar]
+    expect(visible_project_names).to eq %w[widget foobar]
   end
 
   private

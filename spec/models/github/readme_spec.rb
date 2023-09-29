@@ -30,7 +30,7 @@ RSpec.describe Github::Readme do
 
       model.html = "input html"
 
-      expect(model.html).to be == "scrubbed"
+      expect(model.html).to eq "scrubbed"
     end
   end
 
@@ -42,7 +42,7 @@ RSpec.describe Github::Readme do
 
     it "returns truncated html" do
       model.html = '<a href="https://example.com">Hello</a><p>More</p>'
-      expect(model.truncated_html(limit: 40)).to be == "<a href='https://example.com'>Hello</a><p>...</p>"
+      expect(model.truncated_html(limit: 40)).to eq "<a href='https://example.com'>Hello</a><p>...</p>"
     end
   end
 
@@ -54,12 +54,12 @@ RSpec.describe Github::Readme do
 
       it "cleans weird html content" do
         html = %q{<a href="/" onclick="alert('lol');">Hello</a>}
-        expect(described_class.scrub(html)).to be == '<a href="/">Hello</a>'
+        expect(described_class.scrub(html)).to eq '<a href="/">Hello</a>'
       end
 
       it "removes links to named anchors" do
         html = '<p><a href="#foobar">Hello</a></p>'
-        expect(described_class.scrub(html)).to be == "<p>Hello</p>"
+        expect(described_class.scrub(html)).to eq "<p>Hello</p>"
       end
 
       # rubocop:disable RSpec/ExampleLength
@@ -76,7 +76,7 @@ RSpec.describe Github::Readme do
           <p><a href="https://example.com/absolute">Changed too</a></p>
         HTML
 
-        expect(described_class.scrub(html, base_url: "https://example.com/subpath")).to be == expected
+        expect(described_class.scrub(html, base_url: "https://example.com/subpath")).to eq expected
       end
       # rubocop:enable RSpec/ExampleLength
     end

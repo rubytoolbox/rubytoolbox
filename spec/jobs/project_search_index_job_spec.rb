@@ -44,7 +44,7 @@ RSpec.describe ProjectSearchIndexJob do
     it "does not send data if the client is not configured" do
       allow(MeiliSearch).to receive(:client).and_return(nil)
 
-      expect(job.perform(project.permalink)).to be == :not_configured
+      expect(job.perform(project.permalink)).to eq :not_configured
     end
   end
 end

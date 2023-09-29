@@ -29,7 +29,7 @@ RSpec.describe GithubRepo do
       end
     end
 
-    it { is_expected.to be == expected_sql }
+    it { is_expected.to eq expected_sql }
   end
 
   describe ".without_projects" do
@@ -40,25 +40,25 @@ RSpec.describe GithubRepo do
     end
 
     it "contains records without associated projects" do
-      expect(described_class.without_projects.pluck(:path)).to be == %w[foo/orphaned]
+      expect(described_class.without_projects.pluck(:path)).to eq %w[foo/orphaned]
     end
   end
 
   describe "#path=" do
     it "normalizes the path to the stripped, downcase variant" do
-      expect(described_class.new(path: " FoO/BaR ").path).to be == "foo/bar"
+      expect(described_class.new(path: " FoO/BaR ").path).to eq "foo/bar"
     end
   end
 
   describe "#url" do
     it "is derived from the repo path" do
-      expect(described_class.new(path: "foo/bar").url).to be == "https://github.com/foo/bar"
+      expect(described_class.new(path: "foo/bar").url).to eq "https://github.com/foo/bar"
     end
   end
 
   describe "#blob_url" do
     it "is derived from the repo path and default_branch" do
-      expect(described_class.new(path: "foo/bar", default_branch: "main").blob_url).to be == "https://github.com/foo/bar/blob/main"
+      expect(described_class.new(path: "foo/bar", default_branch: "main").blob_url).to eq "https://github.com/foo/bar/blob/main"
     end
 
     it "is nil when there is no default_branch" do
@@ -73,7 +73,7 @@ RSpec.describe GithubRepo do
 
     it "is derived from repo path when has_wiki is true" do
       expected_url = "https://github.com/foo/bar/wiki"
-      expect(described_class.new(path: "foo/bar", has_wiki: true).wiki_url).to be == expected_url
+      expect(described_class.new(path: "foo/bar", has_wiki: true).wiki_url).to eq expected_url
     end
   end
 
@@ -84,7 +84,7 @@ RSpec.describe GithubRepo do
 
     it "is derived from repo path when has_issues is true" do
       expected_url = "https://github.com/foo/bar/issues"
-      expect(described_class.new(path: "foo/bar", has_issues: true).issues_url).to be == expected_url
+      expect(described_class.new(path: "foo/bar", has_issues: true).issues_url).to eq expected_url
     end
   end
 
@@ -94,7 +94,7 @@ RSpec.describe GithubRepo do
       other = Factories.project "other", downloads: 10_000
       other.update! github_repo: widget.github_repo
 
-      expect(other.github_repo.sibling_gem_with_most_downloads).to be == widget.rubygem
+      expect(other.github_repo.sibling_gem_with_most_downloads).to eq widget.rubygem
     end
   end
 end

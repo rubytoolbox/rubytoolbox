@@ -18,26 +18,26 @@ RSpec.describe Rubygem::Trend::Navigation do
 
   describe ".find" do
     it "returns an instance with given date when exact match exists" do
-      expect(described_class.find(Time.current.to_date).date).to be == Time.current.to_date
+      expect(described_class.find(Time.current.to_date).date).to eq Time.current.to_date
     end
 
     it "returns closest higher date when no exact match exists" do
-      expect(described_class.find(9.weeks.ago).date).to be == 8.weeks.ago.to_date
+      expect(described_class.find(9.weeks.ago).date).to eq 8.weeks.ago.to_date
     end
 
     it "returns closest lower date when no exact match or later date exists" do
-      expect(described_class.find(1.year.from_now).date).to be == Time.current.to_date
+      expect(described_class.find(1.year.from_now).date).to eq Time.current.to_date
     end
 
     it "returns highest available date for invalid value" do
-      expect(described_class.find("foobar").date).to be == Time.current.to_date
+      expect(described_class.find("foobar").date).to eq Time.current.to_date
     end
   end
 
   describe ".latest_date" do
     it "is the latest available date" do
       allow(Rubygem::Trend).to receive(:maximum).and_return(Date.new(2019, 2, 24))
-      expect(described_class.latest_date).to be == Date.new(2019, 2, 24)
+      expect(described_class.latest_date).to eq Date.new(2019, 2, 24)
     end
   end
 
@@ -53,7 +53,7 @@ RSpec.describe Rubygem::Trend::Navigation do
       next_year:      nil,
     }.each do |method_name, expected_date|
       it "has #{expected_date.inspect} for #{method_name}" do
-        expect(navigation.public_send(method_name)).to be == expected_date
+        expect(navigation.public_send(method_name)).to eq expected_date
       end
     end
   end
@@ -70,7 +70,7 @@ RSpec.describe Rubygem::Trend::Navigation do
       next_year:      4.weeks.ago.to_date,
     }.each do |method_name, expected_date|
       it "has #{expected_date.inspect} for #{method_name}" do
-        expect(navigation.public_send(method_name)).to be == expected_date
+        expect(navigation.public_send(method_name)).to eq expected_date
       end
     end
   end

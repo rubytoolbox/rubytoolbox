@@ -13,13 +13,13 @@ RSpec.describe Docs do
     describe "#title" do
       it "is fetched from I18n" do
         allow(I18n).to receive(:t).with("baz", scope: "docs.titles").and_return("Hello World")
-        expect(page.title).to be == "Hello World"
+        expect(page.title).to eq "Hello World"
       end
     end
 
     describe "#section" do
       it "is the parent directory name of given id" do
-        expect(page.section).to be == "bar"
+        expect(page.section).to eq "bar"
       end
     end
 
@@ -35,7 +35,7 @@ RSpec.describe Docs do
 
     describe "#to_param" do
       it "is an alias for the id" do
-        expect(page.to_param).to be == page.id
+        expect(page.to_param).to eq page.id
       end
     end
   end
@@ -56,7 +56,7 @@ RSpec.describe Docs do
 
   describe "#sections" do
     it "has expected sections" do
-      expect(docs.sections.keys).to be == %w[Guides Features API Metrics]
+      expect(docs.sections.keys).to eq %w[Guides Features API Metrics]
     end
 
     it "has pages" do

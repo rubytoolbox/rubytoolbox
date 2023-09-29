@@ -17,7 +17,7 @@ RSpec.describe Rubygem::Trend do
     end
 
     it "returns matching records for given date by position" do
-      expect(described_class.for_date(Time.current).pluck(:rubygem_name)).to be == %w[b a]
+      expect(described_class.for_date(Time.current).pluck(:rubygem_name)).to eq %w[b a]
     end
 
     it "deeply eager-loads associations" do

@@ -27,13 +27,13 @@ RSpec.describe GithubRepoBlueprint, type: :blueprint do
   ].each do |attribute|
     it "serializes #{attribute}" do
       allow(repo).to receive(attribute).and_return "fake value"
-      expect(json[attribute]).to be == "fake value"
+      expect(json[attribute]).to eq "fake value"
     end
   end
 
   it "serializes archived? as is_archived" do
     allow(repo).to receive(:archived?).and_return "fake value"
-    expect(json[:is_archived]).to be == "fake value"
+    expect(json[:is_archived]).to eq "fake value"
   end
 
   describe "stats" do
@@ -44,7 +44,7 @@ RSpec.describe GithubRepoBlueprint, type: :blueprint do
     ].each do |attribute|
       it "serializes #{attribute}" do
         allow(repo).to receive(attribute).and_return "fake value"
-        expect(json[:stats][attribute]).to be == "fake value"
+        expect(json[:stats][attribute]).to eq "fake value"
       end
     end
   end
@@ -60,7 +60,7 @@ RSpec.describe GithubRepoBlueprint, type: :blueprint do
     }.each do |name, source|
       it "serializes #{source} as #{name}" do
         allow(repo).to receive(source).and_return "fake value"
-        expect(json[:pull_requests][name]).to be == "fake value"
+        expect(json[:pull_requests][name]).to eq "fake value"
       end
     end
   end
@@ -76,7 +76,7 @@ RSpec.describe GithubRepoBlueprint, type: :blueprint do
       it "serializes #{source} as #{name}" do
         repo.has_issues = true
         allow(repo).to receive(source).and_return "fake value"
-        expect(json[:issues][name]).to be == "fake value"
+        expect(json[:issues][name]).to eq "fake value"
       end
     end
 

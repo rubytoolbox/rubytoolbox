@@ -26,7 +26,7 @@ RSpec.describe RubygemsSyncJob do
         specs = [fake_gem.new("foo"), fake_gem.new("bar")]
         stub_gem_specs_fetch(type: :latest, specs:)
 
-        expect(job.published_gems).to be == %w[foo bar]
+        expect(job.published_gems).to eq %w[foo bar]
       end
     end
 
@@ -35,14 +35,14 @@ RSpec.describe RubygemsSyncJob do
         specs = [fake_gem.new("foo"), fake_gem.new("bar"), fake_gem.new("bar")]
         stub_gem_specs_fetch(type: :prerelease, specs:)
 
-        expect(job.prerelease_gems).to be == %w[foo bar]
+        expect(job.prerelease_gems).to eq %w[foo bar]
       end
     end
 
     describe "#remote_gems" do
       it "is the union of the published and prerelease gems" do
         allow(job).to receive_messages(prerelease_gems: %w[a b c], published_gems: %w[a d e f])
-        expect(job.remote_gems.sort).to be == %w[a b c d e f]
+        expect(job.remote_gems.sort).to eq %w[a b c d e f]
       end
     end
   end
@@ -50,7 +50,7 @@ RSpec.describe RubygemsSyncJob do
   describe "#local_gems" do
     it "is a collection of names of local gems" do
       allow(Rubygem).to receive(:pluck).with(:name).and_return(%w[foo bar])
-      expect(job.local_gems).to be == %w[foo bar]
+      expect(job.local_gems).to eq %w[foo bar]
     end
   end
 

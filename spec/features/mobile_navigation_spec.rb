@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe "Mobile Navigation", js: true, viewport: :mobile do
+RSpec.describe "Mobile Navigation", :js, viewport: :mobile do
   fixtures :all
 
   it "has a toggle-able hamburger navigation on mobile" do
@@ -20,7 +20,7 @@ RSpec.describe "Mobile Navigation", js: true, viewport: :mobile do
 
         fill_in :q, with: "My Search"
         click_button "Search"
-        expect(page.title).to be == "Search results for 'My Search' - The Ruby Toolbox"
+        expect(page.title).to eq "Search results for 'My Search' - The Ruby Toolbox"
       end
     end
   end

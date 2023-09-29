@@ -83,7 +83,7 @@ class Rubygem::Trend::Navigation
 
   def matching_date(distance)
     expected_date = date + distance
-    return expected_date if (minimum_available_date..maximum_available_date).cover? expected_date
+    expected_date if (minimum_available_date..maximum_available_date).cover? expected_date
   end
 
   def maximum_available_date

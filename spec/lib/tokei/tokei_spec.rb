@@ -12,7 +12,7 @@ RSpec.describe Tokei do
       describe ".path" do
         subject(:path) { described_class.new(platform.arch).path }
 
-        it { is_expected.to be == described_class::BIN_BASE_PATH.join(platform.executable) }
+        it { is_expected.to eq described_class::BIN_BASE_PATH.join(platform.executable) }
       end
     end
   end

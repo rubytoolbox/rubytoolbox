@@ -7,7 +7,7 @@ RSpec.describe Search do
 
   describe "#query" do
     it "is the cleaned up search query" do
-      expect(described_class.new(" foo bar ").query).to be == "foo bar"
+      expect(described_class.new(" foo bar ").query).to eq "foo bar"
     end
 
     it "is nil for blank query" do
@@ -45,7 +45,7 @@ RSpec.describe Search do
       collection = %w[some projects]
       allow(Project).to receive(:search).with("my query", order: kind_of(Project::Order), show_forks: false)
                                         .and_return(collection)
-      expect(described_class.new("my query").projects).to be == collection
+      expect(described_class.new("my query").projects).to eq collection
     end
 
     describe "when NEW_SEARCH is enabled" do
@@ -74,7 +74,7 @@ RSpec.describe Search do
         ]
         Factories.project("not-returned")
 
-        expect(described_class.new("hello world").projects.to_a).to be == expected
+        expect(described_class.new("hello world").projects.to_a).to eq expected
       end
 
       it "respects custom order when given" do
@@ -87,7 +87,7 @@ RSpec.describe Search do
 
         order = Project::Order.new order: "score", directions: Project::Order::SEARCH_DIRECTIONS
 
-        expect(described_class.new("hello world", order:).projects.to_a).to be == expected
+        expect(described_class.new("hello world", order:).projects.to_a).to eq expected
       end
     end
   end
@@ -101,7 +101,7 @@ RSpec.describe Search do
     it "returns the resulting collection" do
       collection = %w[some projects]
       allow(Category).to receive(:search).with("my query").and_return(collection)
-      expect(described_class.new("my query").categories).to be == collection
+      expect(described_class.new("my query").categories).to eq collection
     end
   end
 

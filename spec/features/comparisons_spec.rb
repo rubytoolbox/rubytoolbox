@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe "Project Comparisons", js: true do
+RSpec.describe "Project Comparisons", :js do
   fixtures :all
 
   before do
@@ -21,14 +21,14 @@ RSpec.describe "Project Comparisons", js: true do
     fill_in :add, with: "acme"
     click_button "Add to comparison"
     expect(page).to have_text("view any selection of projects")
-    expect(listed_project_names).to be == %w[acme]
-    expect(comparison_project_tags.map(&:text)).to be == %w[acme]
+    expect(listed_project_names).to eq %w[acme]
+    expect(comparison_project_tags.map(&:text)).to eq %w[acme]
 
     fill_in :add, with: "widget"
     click_button "Add to comparison"
     expect(page).not_to have_text("view any selection of projects")
-    expect(listed_project_names).to be == %w[acme widget]
-    expect(comparison_project_tags.map(&:text)).to be == %w[acme widget]
+    expect(listed_project_names).to eq %w[acme widget]
+    expect(comparison_project_tags.map(&:text)).to eq %w[acme widget]
 
     take_snapshots! "Compare Projects: Default View"
 
@@ -40,22 +40,22 @@ RSpec.describe "Project Comparisons", js: true do
 
   it "supports custom sorting and display modes" do
     visit "/compare/acme,toolkit,widget"
-    expect(listed_project_names).to be == %w[acme toolkit widget]
+    expect(listed_project_names).to eq %w[acme toolkit widget]
     order_by "Downloads"
-    expect(listed_project_names).to be == %w[widget acme toolkit]
+    expect(listed_project_names).to eq %w[widget acme toolkit]
 
     expect_display_mode "Table"
     change_display_mode "Full"
     # Custom order should remain across display mode switches
-    expect(listed_project_names).to be == %w[widget acme toolkit]
+    expect(listed_project_names).to eq %w[widget acme toolkit]
     change_display_mode "Compact"
-    expect(listed_project_names).to be == %w[widget acme toolkit]
+    expect(listed_project_names).to eq %w[widget acme toolkit]
 
     # It should keep current display settings on add
     fill_in :add, with: "irrelevant"
     click_button "Add to comparison"
     expect_display_mode "Compact"
-    expect(listed_project_names).to be == %w[widget acme toolkit]
+    expect(listed_project_names).to eq %w[widget acme toolkit]
 
     # It should keep current display settings on remove
     comparison_project_tags.first.find(".delete").click

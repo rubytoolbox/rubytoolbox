@@ -21,7 +21,7 @@ RSpec.describe BlogController do
 
       it "assigns posts" do
         do_request
-        expect(assigns(:posts)).to be == posts
+        expect(assigns(:posts)).to eq posts
       end
     end
 
@@ -40,28 +40,28 @@ RSpec.describe BlogController do
         let(:feed) { Feedjira.parse do_request.body }
 
         it "has the site title" do
-          expect(feed.title).to be == I18n.t(:name)
+          expect(feed.title).to eq I18n.t(:name)
         end
 
         it "has the site description" do
-          expect(feed.description).to be == I18n.t(:description)
+          expect(feed.description).to eq I18n.t(:description)
         end
 
         it "has the post titles" do
-          expect(feed.entries.map(&:title)).to be == posts.map(&:title)
+          expect(feed.entries.map(&:title)).to eq posts.map(&:title)
         end
 
         it "has the post bodies" do
-          expect(feed.entries.map(&:summary)).to be == posts.map(&:body_html)
+          expect(feed.entries.map(&:summary)).to eq posts.map(&:body_html)
         end
 
         it "has the post publication dates" do
-          expect(feed.entries.map(&:published)).to be == posts.map(&:published_on)
+          expect(feed.entries.map(&:published)).to eq posts.map(&:published_on)
         end
 
         it "has correct post urls" do
           expected_urls = posts.map { |post| File.join request.base_url, "blog", post.slug }
-          expect(feed.entries.map(&:url)).to be == expected_urls
+          expect(feed.entries.map(&:url)).to eq expected_urls
         end
       end
     end
@@ -93,7 +93,7 @@ RSpec.describe BlogController do
 
       it "assigns expected post" do
         do_request
-        expect(assigns(:post)).to be == post
+        expect(assigns(:post)).to eq post
       end
     end
   end

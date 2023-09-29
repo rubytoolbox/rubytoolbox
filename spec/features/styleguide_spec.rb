@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe "Styleguide Display", js: true do
+RSpec.describe "Styleguide Display", :js do
   fixtures :all
 
   it "can display all pages of the styleguide" do

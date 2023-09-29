@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe "Categories Display", js: true do
+RSpec.describe "Categories Display", :js do
   fixtures :all
 
   before do
@@ -33,7 +33,7 @@ RSpec.describe "Categories Display", js: true do
   it "can apply a custom order to the list of projects" do
     visit "/categories/widgets"
 
-    expect(listed_project_names).to be == %w[acme toolkit widget]
+    expect(listed_project_names).to eq %w[acme toolkit widget]
     expect(page).to have_selector(".hero canvas.bar-chart")
 
     within ".project-order-dropdown" do
@@ -42,12 +42,12 @@ RSpec.describe "Categories Display", js: true do
 
     %w[Downloads Stars Forks].each do |button_label|
       order_by button_label
-      expect(listed_project_names).to be == %w[widget acme toolkit]
+      expect(listed_project_names).to eq %w[widget acme toolkit]
       expect(page).not_to have_selector(".hero canvas.bar-chart")
     end
 
     order_by "First release"
-    expect(listed_project_names).to be == %w[toolkit acme widget]
+    expect(listed_project_names).to eq %w[toolkit acme widget]
 
     take_snapshots! "Category Display: Custom Order"
   end

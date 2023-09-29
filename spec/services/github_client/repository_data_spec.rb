@@ -27,7 +27,7 @@ RSpec.describe GithubClient::RepositoryData, type: :service do
       repo = data openIssues:       { totalCount: 5 },
                   closedIssues:     { totalCount: 10 },
                   hasIssuesEnabled: true
-      expect(repo.total_issues_count).to be == 10 + 5
+      expect(repo.total_issues_count).to eq 10 + 5
     end
   end
 
@@ -74,7 +74,7 @@ RSpec.describe GithubClient::RepositoryData, type: :service do
                   mergedPullRequests: { totalCount: 11 },
                   closedPullRequests: { totalCount: 3 }
 
-      expect(repo.total_pull_requests_count).to be == 7 + 11 + 3
+      expect(repo.total_pull_requests_count).to eq 7 + 11 + 3
     end
   end
 end

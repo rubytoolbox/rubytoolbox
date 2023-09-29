@@ -106,7 +106,7 @@ RSpec.configure do |config|
   # Fail js capybara tests when the browser log has JS errors.
   # Snippet courtesy of:
   # https://medium.com/@coorasse/catch-javascript-errors-in-your-system-tests-89c2fe6773b1
-  config.after :each, js: true, type: :feature do
+  config.after :each, :js, type: :feature do
     # The latest magic incantation courtesy of https://stackoverflow.com/a/73879550
     errors = page.driver.browser.logs.get(:browser)
     if errors.present?

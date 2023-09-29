@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe "Search", js: true do
+RSpec.describe "Search", :js do
   fixtures :all
 
   before do
@@ -29,7 +29,7 @@ RSpec.describe "Search", js: true do
   it "allows users to search for projects and categories" do
     search_for "widget"
 
-    expect(listed_project_names).to be == ["more widgets", "widgets"]
+    expect(listed_project_names).to eq ["more widgets", "widgets"]
 
     take_snapshots! "Search: Default View"
 
@@ -48,19 +48,19 @@ RSpec.describe "Search", js: true do
 
     # Landing page search from within top hero
     search_for "widget", container: ".landing-hero"
-    expect(listed_project_names).to be == ["more widgets", "widgets"]
+    expect(listed_project_names).to eq ["more widgets", "widgets"]
   end
 
   it "can apply a custom project order" do
     search_for "widget"
 
-    expect(listed_project_names).to be == ["more widgets", "widgets"]
+    expect(listed_project_names).to eq ["more widgets", "widgets"]
 
     expect(page).to have_selector(".category-card", count: 1)
 
     %w[Downloads Stars Forks].each do |button_label|
       order_by button_label
-      expect(listed_project_names).to be == ["widgets", "more widgets"]
+      expect(listed_project_names).to eq ["widgets", "more widgets"]
 
       # When using a custom order, matching categories are not shown
       # since they are not affected by the order anyway, and if a user
@@ -71,7 +71,7 @@ RSpec.describe "Search", js: true do
     end
 
     order_by "First release"
-    expect(listed_project_names).to be == ["more widgets", "widgets"]
+    expect(listed_project_names).to eq ["more widgets", "widgets"]
 
     # Ensure the button is correctly put into loading state on click
     halt_js = <<~JS
@@ -91,7 +91,7 @@ RSpec.describe "Search", js: true do
 
     search_for "widgets"
 
-    expect(listed_project_names).to be == ["more widgets", "widgets", "widgets 1"]
+    expect(listed_project_names).to eq ["more widgets", "widgets", "widgets 1"]
     within(".search-results") { expect(page).to have_text "Categories" }
 
     within ".pagination", match: :first do
@@ -99,7 +99,7 @@ RSpec.describe "Search", js: true do
     end
 
     wait_for { listed_project_names.include? "widgets 2" }
-    expect(listed_project_names).to be == (2..4).map { |i| "widgets #{i}" }
+    expect(listed_project_names).to eq((2..4).map { |i| "widgets #{i}" })
     # Only project results are paginated, hence we hide the categories section entirely
     # when browsing project results
     within(".search-results") { expect(page).not_to have_text "Categories" }
@@ -109,7 +109,7 @@ RSpec.describe "Search", js: true do
     end
 
     wait_for { listed_project_names.include? "widgets 5" }
-    expect(listed_project_names).to be == (5..7).map { |i| "widgets #{i}" }
+    expect(listed_project_names).to eq((5..7).map { |i| "widgets #{i}" })
   end
 
   it "hides bugfix forks from results by default, but allows to toggle their display" do
@@ -117,18 +117,18 @@ RSpec.describe "Search", js: true do
 
     search_for "widget"
 
-    expect(listed_project_names).to be == ["widgets"]
+    expect(listed_project_names).to eq ["widgets"]
     within ".project-search-nav" do
       click_on "Bugfix forks are hidden"
     end
 
     wait_for { listed_project_names.include? "more widgets" }
-    expect(listed_project_names).to be == ["more widgets", "widgets"]
+    expect(listed_project_names).to eq ["more widgets", "widgets"]
     expect(page).to have_text "Bugfix forks are shown"
 
     # Re-ordering should retain show_forks status
     order_by "Downloads"
-    expect(listed_project_names).to be == ["widgets", "more widgets"]
+    expect(listed_project_names).to eq ["widgets", "more widgets"]
     expect(page).to have_text "Bugfix forks are shown"
 
     within ".project-search-nav" do
@@ -136,12 +136,12 @@ RSpec.describe "Search", js: true do
     end
 
     wait_for { listed_project_names.exclude?("more widgets") }
-    expect(listed_project_names).to be == ["widgets"]
+    expect(listed_project_names).to eq ["widgets"]
 
     # When there are no results from projects search without
     # forks we redirect to the page with included forks automatically
     search_for "more widgets"
-    expect(listed_project_names).to be == ["more widgets"]
+    expect(listed_project_names).to eq ["more widgets"]
 
     # Ensure the button is correctly put into loading state on click
     halt_js = <<~JS
@@ -165,7 +165,7 @@ RSpec.describe "Search", js: true do
     expect(active_element).to(satisfy { |e| e.tag_name == "input" && e["name"] == "q" })
 
     search_for "foo"
-    expect(active_element.tag_name).to be == "body"
+    expect(active_element.tag_name).to eq "body"
   end
 
   it "puts search submit buttons into loading state" do

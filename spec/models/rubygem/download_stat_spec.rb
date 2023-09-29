@@ -27,12 +27,12 @@ RSpec.describe Rubygem::DownloadStat do
 
     it "fetches historical stats in 4-week increments" do
       values = rubygem.download_stats.monthly.pluck(:total_downloads)
-      expect(values).to be == [1, 2, 4, 6]
+      expect(values).to eq [1, 2, 4, 6]
     end
 
     it "optionally accepts a base end date" do
       values = rubygem.download_stats.monthly(base_date: 4.weeks.ago).pluck(:total_downloads)
-      expect(values).to be == [1, 2, 4]
+      expect(values).to eq [1, 2, 4]
     end
   end
 
