@@ -12,8 +12,8 @@ class Rubygem::DownloadStat::Timeseries
   #
   # Just a shorthand for `new(*args).stats`
   #
-  def self.fetch(rubygem_name, *requested_stats)
-    new(rubygem_name, *requested_stats).stats
+  def self.fetch(rubygem_name, *)
+    new(rubygem_name, *).stats
   end
 
   attr_accessor :rubygem_name, :requested_stats

@@ -4,6 +4,7 @@
 # See http://rubocop.readthedocs.io/en/latest/ for detailed configuration options documentation
 
 require:
+  - rubocop-capybara
   - rubocop-performance
   - rubocop-rails
   # Additional cops for working with RSpec. See https://github.com/backus/rubocop-rspec
