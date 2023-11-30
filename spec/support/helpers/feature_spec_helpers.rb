@@ -30,7 +30,7 @@ module FeatureSpecHelpers
   def order_by(button_label, expect_navigation: true)
     within ".project-order-dropdown" do
       page.find("button").hover
-      click_on button_label
+      click_link button_label
       expect(page).to have_text "Order by #{button_label}" if expect_navigation
     end
   end
@@ -46,15 +46,15 @@ module FeatureSpecHelpers
 
     case label.downcase.to_sym
     when :table
-      expect(page).to have_selector(".project-comparison", count: 1)
+      expect(page).to have_css(".project-comparison", count: 1)
     when :compact
-      expect(page).to have_selector(".project-compact-cards", count: 1)
+      expect(page).to have_css(".project-compact-cards", count: 1)
     end
   end
 
   def change_display_mode(label)
     within ".project-display-picker" do
-      click_on label
+      click_link label
     end
     expect_display_mode label
   end

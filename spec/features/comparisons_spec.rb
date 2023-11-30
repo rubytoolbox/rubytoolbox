@@ -14,7 +14,7 @@ RSpec.describe "Project Comparisons", :js do
   it "allows to compare arbitrary projects" do
     visit "/"
     within ".navbar" do
-      click_on "Compare"
+      click_link "Compare"
     end
     expect(page).to have_text("view any selection of projects")
 
@@ -91,7 +91,7 @@ RSpec.describe "Project Comparisons", :js do
 
   def add_using_autocomplete(name)
     page.find("input.autocomplete-comparison").send_keys name[0..2]
-    expect(page).to have_selector(".autocomplete-suggestions")
+    expect(page).to have_css(".autocomplete-suggestions")
     page.find("input.autocomplete-comparison").send_keys :down, :enter
   end
 
