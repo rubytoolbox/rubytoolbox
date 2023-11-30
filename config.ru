@@ -5,7 +5,6 @@
 require_relative "config/environment"
 
 if ENV["CANONICAL_HOST"].present?
-  use Rack::SslEnforcer
   use Rack::CanonicalHost, ENV["CANONICAL_HOST"]
 end
 

@@ -51,7 +51,6 @@ gem "appsignal"
 gem "forgery"
 
 gem "rack-canonical-host"
-gem "rack-ssl-enforcer"
 
 gem "browser"
 
