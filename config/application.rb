@@ -67,5 +67,3 @@ module Rubytoolbox
     end
   end
 end
-
-require "tokei/tokei"
