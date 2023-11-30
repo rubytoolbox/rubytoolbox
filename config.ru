@@ -4,8 +4,6 @@
 
 require_relative "config/environment"
 
-if ENV["CANONICAL_HOST"].present?
-  use Rack::CanonicalHost, ENV["CANONICAL_HOST"]
-end
+use Rack::CanonicalHost, ENV["CANONICAL_HOST"] if ENV["CANONICAL_HOST"].present?
 
 run Rails.application
