@@ -18,9 +18,7 @@ jobs:
         # See https://github.com/actions/cache/blob/main/examples.md#ruby---bundler
         bundler-cache: true
     - name: Run bundler-audit
-      run: |
-        yarn install
-        bundle exec bundler-audit --update
+      run: bundle exec bundler-audit --update
 
   brakeman:
     runs-on: ubuntu-latest
@@ -32,13 +30,8 @@ jobs:
     - uses: ruby/setup-ruby@v1
       with:
         bundler-cache: true
-    - name: Install dependencies and run bundler-audit
-      run: |
-        gem install bundler
-        bundle config set path 'vendor/bundle'
-        bundle install --jobs 4 --retry 3
-        yarn install
-        bundle exec brakeman
+    - name: Run brakeman
+      run: bundle exec brakeman
 
   rubocop:
     runs-on: ubuntu-latest
@@ -50,13 +43,8 @@ jobs:
     - uses: ruby/setup-ruby@v1
       with:
         bundler-cache: true
-    - name: Install dependencies and run rubocop
-      run: |
-        gem install bundler
-        bundle config set path 'vendor/bundle'
-        bundle install --jobs 4 --retry 3
-        yarn install
-        bundle exec rubocop
+    - name: Run rubocop
+      run: bundle exec rubocop
 
   rspec:
     runs-on: ubuntu-latest
@@ -89,9 +77,6 @@ jobs:
         RAILS_ENV: test
         PERCY_TOKEN: ${{secrets.PERCY_TOKEN}}
       run: |
-        gem install bundler
-        bundle config set path 'vendor/bundle'
-        bundle install --jobs 4 --retry 3
         yarn install
         bundle exec rake db:schema:load
         yarn percy exec -- bundle exec rspec
