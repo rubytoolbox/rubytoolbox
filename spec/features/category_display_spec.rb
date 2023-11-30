@@ -19,7 +19,7 @@ RSpec.describe "Categories Display", :js do
       expect(page).to have_text "acme"
     end
 
-    expect(page).to have_selector(".project", count: 3)
+    expect(page).to have_css(".project", count: 3)
     expect_display_mode "Full"
     take_snapshots! "Category Display: Full"
 
@@ -34,7 +34,7 @@ RSpec.describe "Categories Display", :js do
     visit "/categories/widgets"
 
     expect(listed_project_names).to eq %w[acme toolkit widget]
-    expect(page).to have_selector(".hero canvas.bar-chart")
+    expect(page).to have_css(".hero canvas.bar-chart")
 
     within ".project-order-dropdown" do
       expect(page).to have_text "Order by Project Score"
@@ -43,7 +43,7 @@ RSpec.describe "Categories Display", :js do
     %w[Downloads Stars Forks].each do |button_label|
       order_by button_label
       expect(listed_project_names).to eq %w[widget acme toolkit]
-      expect(page).not_to have_selector(".hero canvas.bar-chart")
+      expect(page).not_to have_css(".hero canvas.bar-chart")
     end
 
     order_by "First release"

@@ -56,7 +56,7 @@ RSpec.describe "Search", :js do
 
     expect(listed_project_names).to eq ["more widgets", "widgets"]
 
-    expect(page).to have_selector(".category-card", count: 1)
+    expect(page).to have_css(".category-card", count: 1)
 
     %w[Downloads Stars Forks].each do |button_label|
       order_by button_label
@@ -66,7 +66,7 @@ RSpec.describe "Search", :js do
       # since they are not affected by the order anyway, and if a user
       # picks a custom project order it's reasonably safe to assume
       # they are looking for projects, not categories
-      expect(page).not_to have_selector(".category-card")
+      expect(page).not_to have_css(".category-card")
       expect(page).to have_text "Category results are hidden"
     end
 
@@ -81,7 +81,7 @@ RSpec.describe "Search", :js do
     JS
     page.evaluate_script halt_js
     order_by "Downloads", expect_navigation: false
-    expect(page).to have_selector(".project-order-dropdown button.is-loading")
+    expect(page).to have_css(".project-order-dropdown button.is-loading")
   end
 
   it "paginates large project collections" do
@@ -95,7 +95,7 @@ RSpec.describe "Search", :js do
     within(".search-results") { expect(page).to have_text "Categories" }
 
     within ".pagination", match: :first do
-      click_on "Next page"
+      click_link "Next page"
     end
 
     wait_for { listed_project_names.include? "widgets 2" }
@@ -105,7 +105,7 @@ RSpec.describe "Search", :js do
     within(".search-results") { expect(page).not_to have_text "Categories" }
 
     within ".pagination", match: :first do
-      click_on "3"
+      click_link "3"
     end
 
     wait_for { listed_project_names.include? "widgets 5" }
@@ -119,7 +119,7 @@ RSpec.describe "Search", :js do
 
     expect(listed_project_names).to eq ["widgets"]
     within ".project-search-nav" do
-      click_on "Bugfix forks are hidden"
+      click_link "Bugfix forks are hidden"
     end
 
     wait_for { listed_project_names.include? "more widgets" }
@@ -132,7 +132,7 @@ RSpec.describe "Search", :js do
     expect(page).to have_text "Bugfix forks are shown"
 
     within ".project-search-nav" do
-      click_on "Bugfix forks are shown"
+      click_link "Bugfix forks are shown"
     end
 
     wait_for { listed_project_names.exclude?("more widgets") }
@@ -150,8 +150,8 @@ RSpec.describe "Search", :js do
       });
     JS
     page.evaluate_script halt_js
-    click_on "Bugfix forks are shown"
-    expect(page).to have_selector("a.bugfix-forks-toggle.is-loading")
+    click_link "Bugfix forks are shown"
+    expect(page).to have_css("a.bugfix-forks-toggle.is-loading")
 
     # Ensure help page is accessible
     page.find(".project-search-nav a.bugfix-forks-help").click
@@ -170,7 +170,7 @@ RSpec.describe "Search", :js do
 
   it "puts search submit buttons into loading state" do
     search_for "foo", halt: true
-    expect(page).to have_selector(".search-form .button.is-loading", count: 2)
+    expect(page).to have_css(".search-form .button.is-loading", count: 2)
   end
 
   it "keeps the chosen search display mode across searches" do

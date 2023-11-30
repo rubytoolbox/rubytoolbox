@@ -18,15 +18,15 @@ RSpec.describe "Documentation Display", :js do
     visit_docs
 
     # Mobile nav is collapsible
-    expect(page).not_to have_selector("aside .menu")
-    click_on "Browse documentation topics"
-    expect(page).to have_selector("aside .menu")
-    click_on "Browse documentation topics"
-    expect(page).not_to have_selector("aside .menu")
+    expect(page).not_to have_css("aside .menu")
+    click_button "Browse documentation topics"
+    expect(page).to have_css("aside .menu")
+    click_button "Browse documentation topics"
+    expect(page).not_to have_css("aside .menu")
 
     each_page do |doc|
-      click_on "Browse documentation topics"
-      expect(page).to have_selector("aside .menu")
+      click_button "Browse documentation topics"
+      expect(page).to have_css("aside .menu")
 
       expect_can_visit doc.title
     end
@@ -42,7 +42,7 @@ RSpec.describe "Documentation Display", :js do
 
   def expect_can_visit(doc_title)
     within "aside .menu" do
-      click_on doc_title
+      click_link doc_title
     end
 
     within ".hero" do
@@ -58,7 +58,7 @@ RSpec.describe "Documentation Display", :js do
     visit "/"
 
     within "footer.footer" do
-      click_on "Documentation"
+      click_link "Documentation"
     end
     expect(page).to have_text "Welcome to the Ruby Toolbox documentation"
   end

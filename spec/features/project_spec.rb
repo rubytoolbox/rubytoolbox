@@ -9,12 +9,12 @@ RSpec.describe "Project Display" do
     project = Factories.project "widgets"
 
     visit project_path(project)
-    expect(page).not_to have_selector(".readme .content")
+    expect(page).not_to have_css(".readme .content")
 
     project.github_repo.create_readme! html: "<strong>some content</strong>", etag: "1234"
     visit project_path(project)
 
-    expect(page).to have_selector(".readme .content")
+    expect(page).to have_css(".readme .content")
 
     within ".readme .content" do
       expect(page).to have_text("some content")
