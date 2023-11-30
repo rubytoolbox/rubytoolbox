@@ -17,11 +17,8 @@ jobs:
       with:
         # See https://github.com/actions/cache/blob/main/examples.md#ruby---bundler
         bundler-cache: true
-    - name: Install dependencies and run bundler-audit
+    - name: Run bundler-audit
       run: |
-        gem install bundler
-        bundle config set path 'vendor/bundle'
-        bundle install --jobs 4 --retry 3
         yarn install
         bundle exec bundler-audit --update
 
