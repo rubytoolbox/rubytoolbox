@@ -74,7 +74,7 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = Rails.root.join "spec", "fixtures"
+  config.fixture_path = [Rails.root.join("spec", "fixtures")]
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
