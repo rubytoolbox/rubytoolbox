@@ -59,7 +59,7 @@ end
 
 RESULTS.each do |name, data|
   Rails.root.join("spec", "fixtures", "#{name}.yml").open("w+") do |f|
-    f.puts "# Generated from realistic dataset using lib/make_fixtures.rb, please don't modify manually"
+    f.puts "# Generated from realistic dataset using bin/make_fixtures.rb, please don't modify manually"
     f.puts data.to_yaml
   end
 end

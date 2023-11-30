@@ -1,4 +1,4 @@
-# Generated from realistic dataset using lib/make_fixtures.rb, please don't modify manually
+# Generated from realistic dataset using bin/make_fixtures.rb, please don't modify manually
 ---
 nokogiri:
   permalink: nokogiri
