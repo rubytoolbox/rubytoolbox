@@ -10,7 +10,7 @@
 # More on tokei: https://github.com/XAMPPRocky/tokei
 #
 class Tokei
-  BIN_BASE_PATH = Pathname.new(__dir__).expand_path.join("bin")
+  BIN_BASE_PATH = Pathname.new(__dir__).expand_path.join("tokei", "bin")
 
   UnknownPlatformError = Class.new StandardError
 
