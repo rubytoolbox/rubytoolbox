@@ -86,7 +86,7 @@ GEM
     blueprinter (0.30.0)
     bootsnap (1.17.0)
       msgpack (~> 1.2)
-    brakeman (6.0.1)
+    brakeman (6.1.0)
     browser (5.3.1)
     builder (3.2.4)
     bundler-audit (0.9.1)
