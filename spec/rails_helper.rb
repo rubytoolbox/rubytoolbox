@@ -60,6 +60,12 @@ Webdrivers.cache_time = 300
 # To clean up test output, comment this line to
 Capybara.server = :puma, { Silent: true }
 
+# Fixes a deprecation with Chrome 120+ - https://github.com/SeleniumHQ/selenium/issues/13112
+Capybara.register_driver :selenium_chrome_headless do |app|
+  Capybara::Selenium::Driver.new(app, browser: :chrome,
+                                      options: Selenium::WebDriver::Options.chrome(args: ["--headless=new"]))
+end
+
 Capybara.javascript_driver = :selenium_chrome_headless
 Capybara.javascript_driver = :selenium_chrome if ENV["CHROME_DEBUG"].present?
 
