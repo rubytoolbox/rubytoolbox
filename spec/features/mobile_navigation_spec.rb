@@ -9,7 +9,7 @@ RSpec.describe "Mobile Navigation", :js, viewport: :mobile do
     visit "/"
 
     within "header .navbar" do
-      expect(page).not_to have_css(".navbar-menu")
+      expect(page).to have_no_css(".navbar-menu")
 
       page.find("a.navbar-burger").click
 

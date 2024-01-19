@@ -141,7 +141,7 @@ class Project < ApplicationRecord
   end
 
   def permalink=(permalink)
-    super Github.normalize_path(permalink)
+    super(Github.normalize_path(permalink))
   end
 
   # For now we just go with the permalink as the name. In the future
@@ -156,7 +156,7 @@ class Project < ApplicationRecord
   end
 
   def github_repo_path=(github_repo_path)
-    super Github.normalize_path(github_repo_path)
+    super(Github.normalize_path(github_repo_path))
   end
 
   alias documentation_url rubygem_documentation_url

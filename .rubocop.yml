@@ -109,3 +109,9 @@ Style/TrailingCommaInArrayLiteral:
   EnforcedStyleForMultiline: comma
 Style/TrailingCommaInHashLiteral:
   EnforcedStyleForMultiline: comma
+
+# Strict became briefly the default, which was then rolled back to require to be lenient
+# again. Since the few occurences were in the meantime already converted to use the strict
+# click_link / click_button mode, let's just stick to the more specific approach
+Capybara/ClickLinkOrButtonStyle:
+  EnforcedStyle: strict

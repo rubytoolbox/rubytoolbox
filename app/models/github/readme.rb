@@ -56,7 +56,7 @@ class Github::Readme < ApplicationRecord
              inverse_of:  :readme
 
   def html=(html)
-    super Scrubber.scrub(html, base_url: github_repo&.blob_url)
+    super(Scrubber.scrub(html, base_url: github_repo&.blob_url))
   end
 
   def truncated_html(limit: 2000)

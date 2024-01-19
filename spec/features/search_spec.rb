@@ -39,7 +39,7 @@ RSpec.describe "Search", :js do
 
     within ".category-card" do
       expect(page).to have_text "Widgets"
-      expect(page).not_to have_text "No matching categories were found"
+      expect(page).to have_no_text "No matching categories were found"
     end
 
     search_for "bicycle"
@@ -66,7 +66,7 @@ RSpec.describe "Search", :js do
       # since they are not affected by the order anyway, and if a user
       # picks a custom project order it's reasonably safe to assume
       # they are looking for projects, not categories
-      expect(page).not_to have_css(".category-card")
+      expect(page).to have_no_css(".category-card")
       expect(page).to have_text "Category results are hidden"
     end
 
@@ -102,7 +102,7 @@ RSpec.describe "Search", :js do
     expect(listed_project_names).to eq((2..4).map { |i| "widgets #{i}" })
     # Only project results are paginated, hence we hide the categories section entirely
     # when browsing project results
-    within(".search-results") { expect(page).not_to have_text "Categories" }
+    within(".search-results") { expect(page).to have_no_text "Categories" }
 
     within ".pagination", match: :first do
       click_link "3"
