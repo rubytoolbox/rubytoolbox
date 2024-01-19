@@ -18,11 +18,11 @@ RSpec.describe "Documentation Display", :js do
     visit_docs
 
     # Mobile nav is collapsible
-    expect(page).not_to have_css("aside .menu")
+    expect(page).to have_no_css("aside .menu")
     click_button "Browse documentation topics"
     expect(page).to have_css("aside .menu")
     click_button "Browse documentation topics"
-    expect(page).not_to have_css("aside .menu")
+    expect(page).to have_no_css("aside .menu")
 
     each_page do |doc|
       click_button "Browse documentation topics"

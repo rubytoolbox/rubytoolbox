@@ -26,7 +26,7 @@ RSpec.describe "Project Comparisons", :js do
 
     fill_in :add, with: "widget"
     click_button "Add to comparison"
-    expect(page).not_to have_text("view any selection of projects")
+    expect(page).to have_no_text("view any selection of projects")
     expect(listed_project_names).to eq %w[acme widget]
     expect(comparison_project_tags.map(&:text)).to eq %w[acme widget]
 

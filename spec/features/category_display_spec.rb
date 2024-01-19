@@ -43,7 +43,7 @@ RSpec.describe "Categories Display", :js do
     %w[Downloads Stars Forks].each do |button_label|
       order_by button_label
       expect(listed_project_names).to eq %w[widget acme toolkit]
-      expect(page).not_to have_css(".hero canvas.bar-chart")
+      expect(page).to have_no_css(".hero canvas.bar-chart")
     end
 
     order_by "First release"
