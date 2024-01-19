@@ -20,7 +20,7 @@ class Webhooks::GithubController < ApplicationController
   #
   def build_deployed?(payload)
     default_branch = payload.dig("repository", "default_branch")
-    referenced_branches = payload["branches"]&.map { |branch| branch["name"] }
+    referenced_branches = payload["branches"]&.pluck("name")
     payload["state"] == "success" && referenced_branches&.include?(default_branch)
   end
 

@@ -6,7 +6,7 @@
 class MeiliSearch
   class UnknownResponseStatus < StandardError
     def initialize(response)
-      super "Received unexpected response status #{response.status}"
+      super("Received unexpected response status #{response.status}")
     end
   end
 

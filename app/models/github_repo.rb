@@ -37,7 +37,7 @@ class GithubRepo < ApplicationRecord
   end
 
   def path=(path)
-    super Github.normalize_path(path)
+    super(Github.normalize_path(path))
   end
 
   def url
