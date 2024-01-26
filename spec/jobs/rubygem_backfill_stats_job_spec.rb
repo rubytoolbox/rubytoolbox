@@ -94,7 +94,7 @@ RSpec.describe RubygemBackfillStatsJob do
     end
 
     it "causes the database triggers for relevant entries to fire" do
-      expect(touch_scope).to receive(:update_all).with name: rubygem.name
+      expect(touch_scope).to receive(:update_all).with rubygem_name: rubygem.name
 
       perform
     end
