@@ -1,0 +1,45 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://bestgems.org/api/v1/gems/%F0%9F%98%85/total_downloads.json
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Connection:
+      - close
+      Host:
+      - bestgems.org
+      User-Agent:
+      - http.rb/4.4.1
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '0'
+      Connection:
+      - close
+      Server:
+      - nginx
+      Date:
+      - Fri, 26 Jan 2024 11:30:23 GMT
+      X-Content-Type-Options:
+      - nosniff
+      X-Cache:
+      - Error from cloudfront
+      Via:
+      - 1.1 ca098aee4fd72030e464a2f263541478.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - WAW51-P2
+      X-Amz-Cf-Id:
+      - pvMO2X8icXMFDBKjYo_m7ogEuVpkmGYNJVwwWjhmJ0NHx9fT0Kd5Ng==
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+  recorded_at: Fri, 26 Jan 2024 11:30:23 GMT
+recorded_with: VCR 6.2.0
