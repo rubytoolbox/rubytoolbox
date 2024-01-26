@@ -61,6 +61,10 @@ RSpec/ExampleLength:
     # Not efficient for acceptance tests
     - 'spec/features/**/*'
 
+# Default of 5 is a bit too restrictive
+RSpec/MultipleMemoizedHelpers:
+  Max: 10
+
 RSpec/SpecFilePathFormat:
   Exclude:
     - 'spec/integration/*'

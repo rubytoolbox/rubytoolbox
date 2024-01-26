@@ -2,7 +2,6 @@
 
 require "rails_helper"
 
-# rubocop:disable RSpec/MultipleMemoizedHelpers
 RSpec.describe GithubRepoUpdateJob do
   fixtures :all
 
@@ -134,4 +133,3 @@ RSpec.describe GithubRepoUpdateJob do
     end
   end
 end
-# rubocop:enable RSpec/MultipleMemoizedHelpers
