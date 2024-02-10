@@ -17,9 +17,15 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  timeout: <%= ENV.fetch("PG_TIMEOUT_IN_SECONDS", 3).to_i.seconds %>
+  host: <%= ENV.fetch("PG_HOST", "localhost") %>
+  port: <%= ENV.fetch("PG_PORT", 5432) %>
+  username: <%= ENV.fetch("PG_USERNAME", "postgres") %>
+  password: <%= ENV.fetch("PG_PASSWORD", "") %>
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS", 5).to_i %>
+
 
 development:
   <<: *default

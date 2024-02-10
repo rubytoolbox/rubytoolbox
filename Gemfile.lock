@@ -565,6 +565,7 @@ DEPENDENCIES
   rubocop-performance
   rubocop-rails
   rubocop-rspec
+  ruby-progressbar
   sanitize
   sass-rails
   selenium-webdriver
