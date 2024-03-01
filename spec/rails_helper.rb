@@ -40,6 +40,7 @@ VCR.configure do |c|
                  # as per https://github.com/titusfortner/webdrivers/wiki/Using-with-VCR-or-WebMock
                  "chromedriver.storage.googleapis.com",
                  "googlechromelabs.github.io",
+                 "storage.googleapis.com",
                  "edgedl.me.gvt1.com",
                  "github.com/mozilla/geckodriver/releases",
                  "selenium-release.storage.googleapis.com",
