@@ -74,6 +74,7 @@ gem "rouge"
 
 gem "minitar"
 gem "terrapin"
+gem "zlib"
 
 # Shorter request logs
 gem "lograge"
