@@ -509,6 +509,7 @@ GEM
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.6.13)
+    zlib (3.1.0)
 
 PLATFORMS
   ruby
@@ -586,6 +587,7 @@ DEPENDENCIES
   webdrivers
   webmock
   webpacker
+  zlib
 
 RUBY VERSION
    ruby 3.3.0p0
