@@ -9,6 +9,7 @@ require:
   - rubocop-rails
   # Additional cops for working with RSpec. See https://github.com/backus/rubocop-rspec
   - rubocop-rspec
+  - rubocop-rspec_rails
 
 AllCops:
   NewCops: enable

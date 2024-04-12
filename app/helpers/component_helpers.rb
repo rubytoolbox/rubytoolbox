@@ -100,9 +100,9 @@ module ComponentHelpers
     render "components/trending_project_card", trend:
   end
 
-  def section_heading(title, description: nil, help_path: nil, &block)
+  def section_heading(title, description: nil, help_path: nil, &)
     help_page = docs.find help_path
-    render "components/section_heading", title:, description:, help_page:, &block
+    render("components/section_heading", title:, description:, help_page:, &)
   end
 
   def project_display_picker(display_mode)
@@ -130,12 +130,12 @@ module ComponentHelpers
            small:
   end
 
-  def landing_hero(title:, image:, &block)
-    render "components/landing_hero", title:, image:, &block
+  def landing_hero(title:, image:, &)
+    render("components/landing_hero", title:, image:, &)
   end
 
-  def landing_feature(title:, image:, &block)
-    render "components/landing_feature", title:, image:, &block
+  def landing_feature(title:, image:, &)
+    render("components/landing_feature", title:, image:, &)
   end
 
   def documentation_page(title, &)
