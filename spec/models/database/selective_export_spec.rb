@@ -61,6 +61,12 @@ RSpec.describe Database::SelectiveExport do
       expect { ApplicationRecord.connection.execute insert_sql }
         .to change(scope, :count).from(0).to original_count
     end
+
+    context "when scope is empty" do
+      let(:scope) { Project.none }
+
+      it { expect { described_class.sql_inserts_from_scope(scope, &_1) }.not_to yield_control }
+    end
   end
 
   describe described_class::EXPORT_ORDER do
