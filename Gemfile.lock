@@ -189,6 +189,9 @@ GEM
       ffi-compiler (>= 1.0, < 2.0)
     i18n (1.14.4)
       concurrent-ruby (~> 1.0)
+    image_processing (1.12.2)
+      mini_magick (>= 4.9.5, < 5)
+      ruby-vips (>= 2.0.17, < 3)
     iniparse (1.5.0)
     io-console (0.7.2)
     irb (1.12.0)
@@ -232,6 +235,7 @@ GEM
     marcel (1.0.3)
     matrix (0.4.2)
     method_source (1.0.0)
+    mini_magick (4.12.0)
     mini_mime (1.1.5)
     mini_portile2 (2.8.5)
     minitar (0.9)
@@ -404,6 +408,8 @@ GEM
       rubocop-capybara (~> 2.17)
       rubocop-factory_bot (~> 2.22)
     ruby-progressbar (1.13.0)
+    ruby-vips (2.1.4)
+      ffi (~> 1.12)
     ruby2ruby (2.5.0)
       ruby_parser (~> 3.1)
       sexp_processor (~> 4.6)
@@ -539,6 +545,7 @@ DEPENDENCIES
   hairtrigger
   high_voltage
   http (~> 4.4)
+  image_processing
   kaminari
   launchy
   listen
