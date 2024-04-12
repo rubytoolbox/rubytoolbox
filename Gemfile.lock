@@ -80,6 +80,22 @@ GEM
     appsignal (3.6.4)
       rack
     ast (2.4.2)
+    aws-eventstream (1.3.0)
+    aws-partitions (1.904.0)
+    aws-sdk-core (3.191.5)
+      aws-eventstream (~> 1, >= 1.3.0)
+      aws-partitions (~> 1, >= 1.651.0)
+      aws-sigv4 (~> 1.8)
+      jmespath (~> 1, >= 1.6.1)
+    aws-sdk-kms (1.78.0)
+      aws-sdk-core (~> 3, >= 3.191.0)
+      aws-sigv4 (~> 1.1)
+    aws-sdk-s3 (1.146.1)
+      aws-sdk-core (~> 3, >= 3.191.0)
+      aws-sdk-kms (~> 1)
+      aws-sigv4 (~> 1.8)
+    aws-sigv4 (1.8.0)
+      aws-eventstream (~> 1, >= 1.0.2)
     base64 (0.2.0)
     bigdecimal (3.1.7)
     bindex (0.8.1)
@@ -197,6 +213,7 @@ GEM
     irb (1.12.0)
       rdoc
       reline (>= 0.4.2)
+    jmespath (1.6.2)
     json (2.7.1)
     kaminari (1.2.2)
       activesupport (>= 4.1.0)
@@ -524,6 +541,7 @@ PLATFORMS
 DEPENDENCIES
   addressable
   appsignal
+  aws-sdk-s3
   blueprinter
   bootsnap
   brakeman

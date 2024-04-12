@@ -15,6 +15,8 @@ gem "hairtrigger"
 gem "pg"
 gem "pg_search"
 
+gem "aws-sdk-s3"
+
 gem "kaminari"
 
 # Use Puma as the app server
