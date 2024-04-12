@@ -7,6 +7,13 @@ RSpec.describe Webhooks::GithubController do
 
   describe "POST create" do
     let(:state) { :success }
+    let(:request_body) do
+      {
+        state:,
+        branches:   [{ name: branch }],
+        repository: { default_branch: "main" },
+      }
+    end
     let(:branch) { "main" }
 
     let(:event_name) { "page_build" }
@@ -14,14 +21,6 @@ RSpec.describe Webhooks::GithubController do
 
     def signature
       OpenSSL::HMAC.hexdigest OpenSSL::Digest.new("sha1"), secret, request_body.to_json
-    end
-
-    def request_body
-      {
-        state:,
-        branches:   [{ name: branch }],
-        repository: { default_branch: "main" },
-      }
     end
 
     def do_request
@@ -79,6 +78,12 @@ RSpec.describe Webhooks::GithubController do
 
     describe "with non-applicable branch" do
       let(:branch) { :pr }
+
+      it_behaves_like "a processed but ignored payload"
+    end
+
+    describe "ithout branches" do
+      before { request_body.delete :branches }
 
       it_behaves_like "a processed but ignored payload"
     end

@@ -21,6 +21,6 @@ module Github
     return unless repo_path.presence
     return repo_path unless repo_path.include? "/"
 
-    repo_path.presence&.downcase&.strip
+    repo_path.downcase.strip
   end
 end
