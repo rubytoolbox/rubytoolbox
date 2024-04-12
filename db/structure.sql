@@ -302,6 +302,36 @@ CREATE TABLE public.category_groups (
 
 
 --
+-- Name: database_exports; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.database_exports (
+    id bigint NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: database_exports_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.database_exports_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: database_exports_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.database_exports_id_seq OWNED BY public.database_exports.id;
+
+
+--
 -- Name: github_ignores; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -571,6 +601,13 @@ ALTER TABLE ONLY public.categorizations ALTER COLUMN id SET DEFAULT nextval('pub
 
 
 --
+-- Name: database_exports id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.database_exports ALTER COLUMN id SET DEFAULT nextval('public.database_exports_id_seq'::regclass);
+
+
+--
 -- Name: rubygem_dependencies id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -629,6 +666,14 @@ ALTER TABLE ONLY public.ar_internal_metadata
 
 ALTER TABLE ONLY public.categorizations
     ADD CONSTRAINT categorizations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: database_exports database_exports_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.database_exports
+    ADD CONSTRAINT database_exports_pkey PRIMARY KEY (id);
 
 
 --
@@ -1060,6 +1105,7 @@ ALTER TABLE ONLY public.projects
 SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
+('20240412142913'),
 ('20240412142709'),
 ('20211210110108'),
 ('20210531194507'),
