@@ -33,4 +33,9 @@ FileUtils.chdir APP_ROOT do
 
   puts "\n== Restarting application server =="
   system! "bin/rails restart"
+
+  puts "\n== 💡 Getting realistic data locally =="
+  puts "Please use `bin/pull_database` if you want to fetch a realistic subset of"
+  puts "production data for local development. It's recommended, but destructive, and"
+  puts "hence is a separate command"
 end
