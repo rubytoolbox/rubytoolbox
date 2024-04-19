@@ -41,6 +41,21 @@ RSpec.describe Cron, type: :service do
     cron.run time: time_at(1)
   end
 
+  describe "Database::StoreSelectiveExportJob" do
+    let(:allowed_hours) { 0.upto(23).select { (_1 % 4).zero? } }
+    let(:other_hours) { 0.upto(23).to_a - allowed_hours }
+
+    it "is queued every 4th hour" do
+      expect(Database::StoreSelectiveExportJob).to receive(:perform_async)
+      cron.run time: time_at(allowed_hours.sample)
+    end
+
+    it "is not queued on other hours" do
+      expect(Database::StoreSelectiveExportJob).not_to receive(:perform_async)
+      cron.run time: time_at(other_hours.sample)
+    end
+  end
+
   describe "on exceptions" do
     let(:err) { StandardError.new("Foobar") }
 

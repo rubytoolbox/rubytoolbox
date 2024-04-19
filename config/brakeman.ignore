@@ -72,50 +72,27 @@
     {
       "warning_type": "Redirect",
       "warning_code": 18,
-      "fingerprint": "d97a1e1c0d455e1c36c99d03c57ebb2864e179204eb85027acbe366f39767e40",
+      "fingerprint": "e29dd8666800a3d78cc8ce69367dba383602156b04c4f5e3348ac8056884757c",
       "check_name": "Redirect",
       "message": "Possible unprotected redirect",
-      "file": "app/controllers/categories_controller.rb",
+      "file": "app/controllers/database/exports_controller.rb",
       "line": 11,
       "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
-      "code": "redirect_to(Category.find_for_show!(params[:id], :order => current_order))",
+      "code": "redirect_to(Database::Export.latest.file_url, :allow_other_host => true)",
       "render_path": null,
       "location": {
         "type": "method",
-        "class": "CategoriesController",
-        "method": "show"
+        "class": "Database::ExportsController",
+        "method": "selective"
       },
-      "user_input": "Category.find_for_show!(params[:id], :order => current_order)",
-      "confidence": "High",
-      "cwe_id": [
-        601
-      ],
-      "note": "It's shielded by categories in the db, not random user input"
-    },
-    {
-      "warning_type": "Redirect",
-      "warning_code": 18,
-      "fingerprint": "ed22db20a4f142a7a02c42d900289a3a66370249a1e438397eefe4e18119f656",
-      "check_name": "Redirect",
-      "message": "Possible unprotected redirect",
-      "file": "app/controllers/projects_controller.rb",
-      "line": 7,
-      "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
-      "code": "redirect_to(\"/projects/#{Project.strict_loading.find_for_show!(params[:id]).permalink}\")",
-      "render_path": null,
-      "location": {
-        "type": "method",
-        "class": "ProjectsController",
-        "method": "show"
-      },
-      "user_input": "Project.strict_loading.find_for_show!(params[:id]).permalink",
-      "confidence": "High",
+      "user_input": "Database::Export.latest.file_url",
+      "confidence": "Weak",
       "cwe_id": [
         601
       ],
       "note": ""
     }
   ],
-  "updated": "2023-04-21 11:05:15 +0200",
-  "brakeman_version": "5.4.1"
+  "updated": "2024-04-19 09:45:09 +0200",
+  "brakeman_version": "6.1.2"
 }

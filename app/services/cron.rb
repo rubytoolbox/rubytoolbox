@@ -12,6 +12,8 @@ class Cron
       RubygemsSyncJob.perform_async
     end
 
+    Database::StoreSelectiveExportJob.perform_async if (time.hour % 4).zero?
+
     RubygemDownloadsPersistenceJob.perform_async
     RemoteUpdateSchedulerJob.perform_async
     CatalogImportJob.perform_async

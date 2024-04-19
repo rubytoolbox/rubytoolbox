@@ -108,9 +108,36 @@ class Database::SelectiveExport
     end
   end
 
-  def self.call
+  def self.banner
+    <<~BANNER
+      /*
+       *
+       * ===== The Ruby Toolbox - Selective database export =====
+       *
+       * * https://www.ruby-toolbox.com
+       * * https://github.com/rubytoolbox/rubytoolbox/
+       *
+       * This is a partial database export of the production data of the ruby toolbox,
+       * intended for getting a development environment based on realistic data up & running
+       * quickly without having to load the pretty massive full dataset, which can take several
+       * hours to import.
+       *
+       * More information can be found in https://github.com/rubytoolbox/rubytoolbox/issues/1205
+       *
+       + The latest export can be fetched from https://www.ruby-toolbox.com/database/exports/selective
+       *
+       * This export has been generated at #{Time.current.utc.iso8601}
+       *
+       */
+
+    BANNER
+  end
+
+  def self.call # rubocop:disable Metrics/MethodLength
     Tempfile.create("export.sql.gz") do |file|
       Zlib::GzipWriter.open(file.path) do |gz|
+        gz.write banner
+
         EXPORT_ORDER.each do |table_name|
           sql_inserts_from_scope Scopes.public_send(table_name) do |insert_sql|
             gz.write insert_sql

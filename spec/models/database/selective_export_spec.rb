@@ -101,11 +101,20 @@ RSpec.describe Database::SelectiveExport do
 
     let(:expected_contents) do
       (+"").tap do |output|
+        output << described_class.banner
+
         described_class::EXPORT_ORDER.each do |table_name|
           described_class.sql_inserts_from_scope described_class::Scopes.public_send(table_name) do |sql|
             output << sql
           end
         end
+      end
+    end
+
+    # We have to freeze time due to the banner timestamp
+    around do |example|
+      Timecop.freeze Time.current do
+        example.run
       end
     end
 
