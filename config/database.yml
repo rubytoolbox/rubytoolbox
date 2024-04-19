@@ -17,6 +17,13 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  # When developing in devcontainers / docker compose, we cannot use
+  # the default postgres UNIX socket and local auth, so we must provide
+  # these externally instead
+  username: <%= ENV.fetch("DATABASE_USERNAME", nil) %>
+  password: <%= ENV.fetch("DATABASE_PASSWORD", nil) %>
+  host: <%= ENV.fetch("DATABASE_HOST", nil) %>
+  port: <%= ENV.fetch("DATABASE_PORT", nil) %>
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>

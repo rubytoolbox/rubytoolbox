@@ -1,0 +1,35 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/ruby-rails-postgres
+{
+  "name": "The Ruby Toolbox",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+
+  // Features to add to the dev container. More info: https://containers.dev/features.
+  // "features": {},
+
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  // This can be used to network with other containers or the host.
+  "forwardPorts": [5000],
+
+  "postCreateCommand": "bin/setup && bin/pull_database && overcommit --install && atuin import bash" ,
+
+  // Configure tool-specific properties.
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-azuretools.vscode-docker",
+        "ms-vscode-remote.remote-containers",
+        "Shopify.ruby-lsp",
+        "EditorConfig.EditorConfig"
+      ]
+    },
+    "codespaces": {
+      "openFiles": [
+        ".devcontainer/README.md",
+        "README.md",
+      ]
+    }
+  }
+}
