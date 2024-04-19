@@ -1,45 +1,19 @@
-#!/usr/bin/env ruby
-# frozen_string_literal: true
+#!/usr/bin/env bash
+set -e
 
-APP_PATH = File.expand_path("../config/application", __dir__)
-require_relative "../config/environment"
+echo "=== Ruby Toolbox production database subset import ==="
+echo
+echo "This script will:"
+echo
+echo "* Drop your local database"
+echo "* Re-create it and load the current schema"
+echo "* Fetch a partial database export from https://www.ruby-toolbox.com/database/exports/selective and import it"
+echo
+echo "Proceeding in 5 seconds, please quickly hit CTRL+C if you want to cancel 🧨"
 
-#
-# This script would likely appreciate to be moved to some proper, tested code
-#
+sleep 5
 
-require "open-uri"
+set -x
 
-puts "== Fetching public database snapshots =="
-backups = Oj.load URI.parse("https://data.ruby-toolbox.com/backups.json").open
-most_recent_download_url = backups.first["download_url"]
-
-puts "Most recent database dump available is from #{backups.first['created_at']}"
-
-Dir.mktmpdir do |dir|
-  destination = File.join dir, "rubytoolbox.dump"
-
-  puts "Downloading dump to #{destination}"
-
-  download = URI.parse(most_recent_download_url).open
-
-  File.open destination, "w+" do |file|
-    IO.copy_stream download, file
-  end
-
-  puts "Dump downloaded successfully (#{File.size(destination)} bytes)"
-
-  target_database = ApplicationRecord.configurations[Rails.env]["database"]
-
-  puts "", "== Running pg_restore against #{target_database}"
-
-  result = system "pg_restore --clean --create --no-owner " \
-                  "--dbname=#{Shellwords.escape(target_database)} #{Shellwords.escape(destination)}"
-
-  if result
-    puts "Database successfully imported"
-  else
-    warn "Database import failed :("
-    exit 1
-  end
-end
+rails db:drop db:create db:schema:load
+curl -L https://www.ruby-toolbox.com/database/exports/selective | gunzip | rails dbconsole
