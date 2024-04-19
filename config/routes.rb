@@ -46,5 +46,7 @@ Rails.application.routes.draw do
   mount Sidekiq::Web, at: "/ops/sidekiq"
   mount PgHero::Engine, at: "/ops/pghero" if Rails.env.development?
 
+  get "/database/exports/selective", to: "database/exports#selective"
+
   root "welcome#home"
 end
