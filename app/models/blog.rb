@@ -103,9 +103,8 @@ class Blog
   private
 
   def load_posts
-    posts = []
-    Dir[root.join("*.md")].each do |path|
-      posts << PostLoader.new(path:).post
+    posts = Dir[root.join("*.md")].map do |path|
+      PostLoader.new(path:).post
     end
     posts.sort_by(&:title).reverse.sort_by(&:published_on).reverse
   end
