@@ -156,7 +156,7 @@ GEM
       rake
     font-awesome-rails (4.7.0.8)
       railties (>= 3.2, < 8.0)
-    foreman (0.87.2)
+    foreman (0.88.1)
     forgery (0.8.1)
     formatador (1.1.0)
     github_webhook (1.2.0)
