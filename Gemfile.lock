@@ -294,6 +294,7 @@ GEM
       activesupport (>= 5.2)
     pghero (3.4.1)
       activerecord (>= 6)
+    prism (0.27.0)
     pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -425,6 +426,15 @@ GEM
       rubocop (~> 1.40)
       rubocop-capybara (~> 2.17)
       rubocop-factory_bot (~> 2.22)
+    ruby-lsp (0.16.6)
+      language_server-protocol (~> 3.17.0)
+      prism (>= 0.23.0, < 0.28)
+      sorbet-runtime (>= 0.5.10782)
+    ruby-lsp-rails (0.3.6)
+      ruby-lsp (>= 0.16.5, < 0.17.0)
+      sorbet-runtime (>= 0.5.9897)
+    ruby-lsp-rspec (0.1.11)
+      ruby-lsp (~> 0.16.0)
     ruby-progressbar (1.13.0)
     ruby-vips (2.1.4)
       ffi (~> 1.12)
@@ -474,6 +484,7 @@ GEM
       actionpack (>= 3.1)
       railties (>= 3.1)
       slim (>= 3.0, < 6.0, != 5.0.0)
+    sorbet-runtime (0.5.11383)
     spring (4.2.1)
     spring-watcher-listen (2.1.0)
       listen (>= 2.7, < 4.0)
@@ -595,6 +606,9 @@ DEPENDENCIES
   rubocop-performance
   rubocop-rails
   rubocop-rspec
+  ruby-lsp
+  ruby-lsp-rails
+  ruby-lsp-rspec
   sanitize
   sass-rails
   selenium-webdriver

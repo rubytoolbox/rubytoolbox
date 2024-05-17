@@ -141,6 +141,10 @@ group :test do
 end
 
 group :development do
+  gem "ruby-lsp"
+  gem "ruby-lsp-rails"
+  gem "ruby-lsp-rspec"
+
   gem "brakeman", require: false
   gem "bundler-audit", require: false
 
