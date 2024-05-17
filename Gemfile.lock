@@ -104,7 +104,7 @@ GEM
       msgpack (~> 1.2)
     brakeman (6.1.2)
       racc
-    browser (5.3.1)
+    browser (6.0.0)
     builder (3.2.4)
     bundler-audit (0.9.1)
       bundler (>= 1.2.0, < 3)
