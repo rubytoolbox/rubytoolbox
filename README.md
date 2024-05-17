@@ -12,6 +12,8 @@ The Ruby Toolbox is a catalog of all Rubygems that keeps track of popularity and
 
 ## Development
 
+**💡 We provide a ready devcontainer configuration which you can use locally or on GitHub codespaces - for further details please refer to [.devcontainer/README.md](./.devcontainer/README.md)**
+
 ### Prerequisites
 
 The Ruby Toolbox depends on a few utilities which you will need to install before you begin.

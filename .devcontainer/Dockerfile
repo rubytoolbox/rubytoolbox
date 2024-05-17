@@ -1,4 +1,4 @@
-FROM ruby:3.3.0
+FROM ruby:3.3.1
 
 # Create non-privileged dev user
 RUN addgroup --gid 1000 rubytoolbox
@@ -51,6 +51,7 @@ RUN /bin/bash -l -c "nix-env -iA \
     nixpkgs.starship \
     nixpkgs.fzf \
     nixpkgs.tig \
+    nixpkgs.blesh \
     nixpkgs.atuin"
 
 USER 1000:1000
@@ -58,10 +59,13 @@ USER 1000:1000
 # Install latest rubygems & bundler
 RUN gem update --system && gem install bundler
 
-# RADAR: We could consider fetching the Gemfile & Gemfile.lock from main branch on github and bundling
-# at this point already - it might not be a perfect match, but would likely highly increase postCreate runtime
-# However, this only makes sense alongside a cached base build that can be used for codespaces, which
-# needs to be figured out as well.
+# We fetch the Gemfile, Gemfile.lock and .ruby-version from the main branch on github and install all
+# the gems at this point already - it might not be a perfect match, but reduces postCreateCommand runtime
+# when a devcontainer is set up.
+RUN cd /tmp && wget https://raw.githubusercontent.com/rubytoolbox/rubytoolbox/main/Gemfile && \
+    wget https://raw.githubusercontent.com/rubytoolbox/rubytoolbox/main/Gemfile.lock && \
+    wget https://raw.githubusercontent.com/rubytoolbox/rubytoolbox/main/.ruby-version && \
+    bundle
 
 # TODO: Bash completion for git etc.
 
