@@ -12,6 +12,9 @@ services:
     # Overrides default command so things don't shut down after the process ends.
     command: sleep infinity
 
+    environment:
+      SELENIUM_CHROME_URL: "http://localhost:4444/wd/hub"
+
     # Runs app on the same network as the database container, allows "forwardPorts" in devcontainer.json function.
     # RADAR: Doing it the other way around because https://stackoverflow.com/a/70221693, but it might cause issues
     # network_mode: service:db
@@ -35,6 +38,11 @@ services:
     # on container restarts!
     image: redis:7.0
     restart: unless-stopped
+    network_mode: service:app
+
+  selenium-chrome:
+    image: selenium/standalone-chrome
+    shm_size: 2gb
     network_mode: service:app
 
 volumes:

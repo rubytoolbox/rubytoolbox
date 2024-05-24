@@ -55,3 +55,14 @@ so here's a command you can run to SIGKILL and remove all devcontainers:
 ```bash
 docker ps -a | grep devcont | cut --fields 1 -d " " | xargs docker rm -f
 ```
+
+### Selenium Chrome
+
+For feature specs that require a browser, we are using Capybara with Selenium, backed by the dedicated
+[selenium/standalone-chome](https://hub.docker.com/r/selenium/standalone-chrome/) Docker image. It will be run
+automatically as part of the devcontainer services and your specs should be pre-configured to automatically use
+that.
+
+As per the selenium-chrome docs, you can view the running browser in your browser via VNC, by opening
+http://localhost:7900/?autoconnect=1&resize=scale&password=secret - when running via Codespaces, please note that
+the host will be different, but you need to open port 7900. You can do so from the "Ports" panel in VS Code.

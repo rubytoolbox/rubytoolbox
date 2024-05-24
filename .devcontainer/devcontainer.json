@@ -9,9 +9,10 @@
   // Features to add to the dev container. More info: https://containers.dev/features.
   // "features": {},
 
-  // Use 'forwardPorts' to make a list of ports inside the container available locally.
-  // This can be used to network with other containers or the host.
-  "forwardPorts": [5000],
+  // 5000 is the main rails app server
+  // 4444 is the selenium chrome grid management UI
+  // 7900 is the selenium chrome VNC remote UI
+  "forwardPorts": [5000, 4444, 7900],
 
   "postCreateCommand": "bin/setup && bin/pull_database && overcommit --install && atuin import bash" ,
 

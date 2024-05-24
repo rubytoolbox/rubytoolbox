@@ -18,13 +18,6 @@ RUN apt-get update \
     && apt-get install -y postgresql-client \
     && rm -rf /var/lib/apt/lists/*
 
-# Install chrome for browser-based capybara specs
-RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
-RUN echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/chrome.list
-RUN apt-get update \
-    && apt-get install -y google-chrome-stable \
-    && rm -rf /var/lib/apt/lists/*
-
 # Set up nix, which we will use for installing utilities, and switch to dev user
 # We use the determinate systems nix installer as per
 # https://github.com/DeterminateSystems/nix-installer#in-a-container
