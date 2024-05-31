@@ -1,0 +1,36 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/ruby-rails-postgres
+{
+  "name": "The Ruby Toolbox",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+
+  // Features to add to the dev container. More info: https://containers.dev/features.
+  // "features": {},
+
+  // 5000 is the main rails app server
+  // 4444 is the selenium chrome grid management UI
+  // 7900 is the selenium chrome VNC remote UI
+  "forwardPorts": [5000, 4444, 7900],
+
+  "postCreateCommand": "bin/setup && bin/pull_database && overcommit --install && atuin import bash" ,
+
+  // Configure tool-specific properties.
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-azuretools.vscode-docker",
+        "ms-vscode-remote.remote-containers",
+        "Shopify.ruby-lsp",
+        "EditorConfig.EditorConfig"
+      ]
+    },
+    "codespaces": {
+      "openFiles": [
+        ".devcontainer/README.md",
+        "README.md",
+      ]
+    }
+  }
+}

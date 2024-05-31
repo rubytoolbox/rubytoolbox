@@ -64,8 +64,24 @@ Capybara.register_driver :selenium_chrome_headless do |app|
                                       options: Selenium::WebDriver::Options.chrome(args: ["--headless=new"]))
 end
 
+# Remote selenium chrome in Docker, mainly used for the devcontainer setup
+Capybara.register_driver :selenium_chrome_remote do |app|
+  options = Selenium::WebDriver::Options.chrome(args: ["--headless=new"])
+  Capybara::Selenium::Driver.new(app, browser: :remote, url: ENV.fetch("SELENIUM_CHROME_URL", nil), options:)
+end
+
 Capybara.javascript_driver = :selenium_chrome_headless
 Capybara.javascript_driver = :selenium_chrome if ENV["CHROME_DEBUG"].present?
+
+# Again, mostly intended for the remote chrome selenium docker container used in devcontainer setup
+if ENV["SELENIUM_CHROME_URL"].present?
+  # Based on https://stackoverflow.com/a/48634299
+  Capybara.app_host = "http://localhost:3000"
+  Capybara.server_host = "localhost"
+  Capybara.server_port = "3000"
+  Capybara.always_include_port = true
+  Capybara.javascript_driver = :selenium_chrome_remote
+end
 
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
