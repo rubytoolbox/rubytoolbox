@@ -7,6 +7,8 @@ RSpec.describe Database::StoreSelectiveExportJob do
 
   let(:job) { described_class.new }
 
+  describe ".outdated_exports"
+
   describe "#perform" do
     subject(:perform) { job.perform }
 
@@ -30,6 +32,14 @@ RSpec.describe Database::StoreSelectiveExportJob do
         download: File.read(export_file),
         filename: ActiveStorage::Filename.new(File.basename(export_file))
       )
+    end
+
+    it "expires outdated exports" do
+      outdated = instance_double Database::Export.all.class
+      allow(Database::Export).to receive(:outdated).and_return outdated
+
+      expect(outdated).to receive(:destroy_all)
+      perform
     end
   end
 end

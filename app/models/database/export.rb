@@ -10,5 +10,7 @@ class Database::Export < ApplicationRecord
     order(created_at: :desc).first!
   end
 
+  scope :outdated, -> { order(created_at: :desc).offset(10) }
+
   delegate :url, to: :file, prefix: true
 end
