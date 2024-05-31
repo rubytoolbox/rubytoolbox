@@ -7,8 +7,6 @@ RSpec.describe Database::StoreSelectiveExportJob do
 
   let(:job) { described_class.new }
 
-  describe ".outdated_exports"
-
   describe "#perform" do
     subject(:perform) { job.perform }
 
