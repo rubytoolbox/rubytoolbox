@@ -5,6 +5,8 @@
 #
 class Database::StoreSelectiveExportJob < ApplicationJob
   def perform
+    Database::Export.outdated.destroy_all
+
     Database::SelectiveExport.call do |export_file|
       Database::Export.transaction do
         Database::Export.new.tap do |export_record|
