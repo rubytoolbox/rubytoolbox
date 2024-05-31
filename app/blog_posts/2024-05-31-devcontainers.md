@@ -25,8 +25,6 @@ regardless of having a category, plus only recent gem download data).
 
 Locally, you can simply run `bin/pull_database` to fetch the latest partial dump and import
 it into your local database, and you will immediately have a realistic-looking Ruby Toolbox running locally 🎉
-
-This functionality is also utilized for the devcontainers setup on launch, so after launching the
-devcontainer.
+This functionality is also utilized automatically for the devcontainers setup on launch.
 
 Best,<br/>Christoph
