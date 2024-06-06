@@ -546,7 +546,7 @@ GEM
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.6.15)
-    zlib (3.1.0)
+    zlib (3.1.1)
 
 PLATFORMS
   ruby
