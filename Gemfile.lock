@@ -211,7 +211,7 @@ GEM
       ruby2ruby (~> 2.4)
       ruby_parser (~> 3.10)
     hashdiff (1.1.0)
-    high_voltage (3.1.2)
+    high_voltage (4.0.0)
     htmlentities (4.3.4)
     http (4.4.1)
       addressable (~> 2.3)
