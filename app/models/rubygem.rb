@@ -9,6 +9,13 @@ class Rubygem < ApplicationRecord
           inverse_of:  :rubygem,
           dependent:   :destroy
 
+  has_many :advisories, -> { order(date: :desc) },
+           class_name:  "Rubygem::Advisory",
+           primary_key: :name,
+           foreign_key: :rubygem_name,
+           inverse_of:  :rubygem,
+           dependent:   :destroy
+
   has_many :download_stats, -> { order(date: :asc) },
            class_name:  "Rubygem::DownloadStat",
            primary_key: :name,

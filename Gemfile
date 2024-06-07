@@ -102,6 +102,11 @@ gem "turbolinks", "~> 5"
 
 gem "rack-cors"
 
+# We use this in development environment / CI for checking the bundle against known vulnerabilities,
+# but also at runtime as an easy way to fetch the latest db and sync it into our own database for
+# display on the site
+gem "bundler-audit"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem "byebug", platforms: %i[mri mingw x64_mingw]
@@ -146,7 +151,6 @@ group :development do
   gem "ruby-lsp-rspec"
 
   gem "brakeman", require: false
-  gem "bundler-audit", require: false
 
   gem "pghero"
 
