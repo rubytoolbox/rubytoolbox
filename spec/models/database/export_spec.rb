@@ -20,4 +20,10 @@ RSpec.describe Database::Export do
 
     it { is_expected.to be first }
   end
+
+  describe ".outdated" do
+    subject(:outdated) { described_class.outdated.to_sql }
+
+    it { is_expected.to eq described_class.order(created_at: :desc).offset(10).to_sql }
+  end
 end
