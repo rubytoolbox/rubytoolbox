@@ -35,6 +35,11 @@ RSpec.describe Project do
     }
 
     it {
+      expect(model).to have_many(:advisories)
+        .through(:rubygem)
+    }
+
+    it {
       expect(model).to belong_to(:github_repo)
         .with_primary_key(:path)
         .with_foreign_key(:github_repo_path)
@@ -59,10 +64,10 @@ RSpec.describe Project do
     it "only makes expected amount of queries" do
       nested_accessor = ->(p) { [p.categories.map(&:name), p.rubygem_downloads, p.github_repo_stargazers_count] }
 
-      # Sometimes activerecord sprinkles in a `SELECT a.attname, format_type(a.atttypid, a.atttypmod),`
-      # here for good measure. Actually it's supposed to be 4 queries.
+      # Sometimes activerecord sprinkles in a few `SELECT a.attname, format_type(a.atttypid, a.atttypmod),`
+      # here for good measure. Actually it's supposed to be 5 queries.
       expect { described_class.includes_associations.map(&nested_accessor) }
-        .to make_database_queries(count: 4..6)
+        .to make_database_queries(count: 5..9)
     end
   end
 
