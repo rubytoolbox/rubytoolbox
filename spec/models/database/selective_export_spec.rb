@@ -82,6 +82,7 @@ RSpec.describe Database::SelectiveExport do
         rubygem_code_statistics
         rubygem_dependencies
         rubygem_trends
+        rubygem_advisories
         github_repos
         github_readmes
         github_ignores
