@@ -6,6 +6,14 @@ class Rubygem::Advisory < ApplicationRecord
   # gem to make it accessible via a real ruby object
   #
   class Info < ApplicationStruct
+    # The input data structure for this from upstream is a bit complex, see the
+    # fixtures file for an example - we simplify this here somewhat
+    VersionRequirements = Types::Strict::Array.of(Types::Strict::String).constructor do |input|
+      input.fetch("requirements").map do |(comparison, info)|
+        Types::Strict::String["#{comparison} #{info.fetch('version')}"]
+      end
+    end
+
     attribute :id, Types::Strict::String
     attribute :url, Types::Strict::String.optional
     attribute :date, Types::Params::Date
@@ -22,6 +30,9 @@ class Rubygem::Advisory < ApplicationRecord
 
     attribute :title, Types::Strict::String.optional
     attribute :description, Types::Strict::String.optional
+
+    attribute :patched_versions, Types::Strict::Array.of(VersionRequirements)
+    attribute :unaffected_versions, Types::Strict::Array.of(VersionRequirements)
 
     alias identifier id
   end
