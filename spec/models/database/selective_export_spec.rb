@@ -35,6 +35,9 @@ RSpec.describe Database::SelectiveExport do
     expect_scope :rubygem_dependencies do
       RubygemDependency.where rubygem: described_class.rubygems, dependency: described_class.rubygems
     end
+    expect_scope :rubygem_advisories do
+      Rubygem::Advisory.where rubygem: described_class.rubygems
+    end
     expect_scope :rubygem_trends do
       Rubygem::Trend.where(rubygem: described_class.rubygems).where("date >= ?", 1.month.ago.to_date)
     end

@@ -54,6 +54,10 @@ class Database::SelectiveExport
         RubygemDependency.where rubygem: rubygems, dependency: rubygems
       end
 
+      def rubygem_advisories
+        Rubygem::Advisory.where rubygem: rubygems
+      end
+
       def rubygem_trends
         Rubygem::Trend.where(rubygem: rubygems).where("date >= ?", 1.month.ago.to_date)
       end
