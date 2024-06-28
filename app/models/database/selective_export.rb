@@ -42,7 +42,7 @@ class Database::SelectiveExport
       def rubygem_download_stats
         # RADAR: Use select instead of pluck?
         Rubygem::DownloadStat.where(rubygem_name: rubygems.pluck(:name))
-                             .where("date >= ?", 3.months.ago.to_date)
+                             .where(date: 3.months.ago.to_date..)
                              .order(date: :asc)
       end
 
@@ -59,7 +59,7 @@ class Database::SelectiveExport
       end
 
       def rubygem_trends
-        Rubygem::Trend.where(rubygem: rubygems).where("date >= ?", 1.month.ago.to_date)
+        Rubygem::Trend.where(rubygem: rubygems).where(date: 1.month.ago.to_date..)
       end
 
       def github_repos

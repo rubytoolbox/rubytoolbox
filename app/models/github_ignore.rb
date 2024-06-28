@@ -12,6 +12,6 @@ class GithubIgnore < ApplicationRecord
   end
 
   def self.expire!(timeframe: 14.days)
-    where("created_at < ?", timeframe.ago).destroy_all
+    where(created_at: ...timeframe.ago).destroy_all
   end
 end
