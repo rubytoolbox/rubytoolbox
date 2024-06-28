@@ -101,10 +101,24 @@ CREATE FUNCTION public.rubygem_stats_calculation_month() RETURNS trigger
     LANGUAGE plpgsql
     AS $$
 DECLARE
-    previous_downloads bigint;
+    previous_downloads int;
     previous_relative_change decimal;
 BEGIN
-    SELECT total_downloads, relative_change_month INTO previous_downloads, previous_relative_change FROM rubygem_download_stats WHERE rubygem_name = NEW.rubygem_name AND date = NEW.date - 28; IF previous_downloads IS NOT NULL THEN NEW.absolute_change_month := NEW.total_downloads - previous_downloads; IF previous_downloads > 0 THEN NEW.relative_change_month := ROUND((NEW.absolute_change_month * 100.0) / previous_downloads, 2); IF previous_relative_change IS NOT NULL THEN NEW.growth_change_month := NEW.relative_change_month - previous_relative_change; END IF; END IF; END IF;
+    SELECT total_downloads, relative_change_month INTO previous_downloads, previous_relative_change
+      FROM rubygem_download_stats
+      WHERE
+        rubygem_name = NEW.rubygem_name AND date = NEW.date - 28;
+    
+    IF previous_downloads IS NOT NULL THEN
+      NEW.absolute_change_month := NEW.total_downloads - previous_downloads;
+      IF previous_downloads > 0 THEN
+        NEW.relative_change_month := ROUND((NEW.absolute_change_month * 100.0) / previous_downloads, 2);
+    
+        IF previous_relative_change IS NOT NULL THEN
+          NEW.growth_change_month := NEW.relative_change_month - previous_relative_change;
+        END IF;
+      END IF;
+    END IF;
     RETURN NEW;
 END;
 $$;
@@ -494,7 +508,7 @@ CREATE TABLE public.rubygem_download_stats (
     id bigint NOT NULL,
     rubygem_name character varying NOT NULL,
     date date NOT NULL,
-    total_downloads bigint NOT NULL,
+    total_downloads integer NOT NULL,
     absolute_change_month integer,
     relative_change_month numeric,
     growth_change_month numeric
@@ -560,7 +574,7 @@ ALTER SEQUENCE public.rubygem_trends_id_seq OWNED BY public.rubygem_trends.id;
 
 CREATE TABLE public.rubygems (
     name character varying NOT NULL,
-    downloads bigint NOT NULL,
+    downloads integer NOT NULL,
     current_version character varying NOT NULL,
     authors character varying,
     description text,
@@ -1155,8 +1169,6 @@ ALTER TABLE ONLY public.projects
 SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
-('20240628122914'),
-('20240628122603'),
 ('20240607091753'),
 ('20240412142913'),
 ('20240412142709'),
