@@ -9,6 +9,7 @@ RSpec.describe Rubygem do
 
   describe "associations" do
     it { is_expected.to have_one(:project) }
+    it { is_expected.to have_many(:advisories).order(date: :desc) }
     it { is_expected.to have_many(:download_stats).order(date: :asc) }
     it { is_expected.to have_many(:trends).order(date: :asc) }
     it { is_expected.to have_many(:rubygem_dependencies).order(dependency_name: :asc).dependent(:destroy) }

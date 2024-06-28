@@ -26,6 +26,8 @@ class Project < ApplicationRecord
            through: :rubygem,
            source:  :reverse_dependency_projects
 
+  has_many :advisories, through: :rubygem
+
   belongs_to :github_repo,
              primary_key: :path,
              foreign_key: :github_repo_path,
@@ -33,7 +35,7 @@ class Project < ApplicationRecord
              inverse_of:  :projects
 
   scope :includes_associations, lambda {
-    includes(:github_repo, :rubygem, :categories)
+    includes(:github_repo, :categories, rubygem: %i[advisories])
       .left_outer_joins(:github_repo, :rubygem, :categories)
   }
 

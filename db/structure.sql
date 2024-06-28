@@ -417,6 +417,40 @@ CREATE TABLE public.projects (
 
 
 --
+-- Name: rubygem_advisories; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.rubygem_advisories (
+    id bigint NOT NULL,
+    rubygem_name character varying NOT NULL,
+    identifier character varying NOT NULL,
+    date date NOT NULL,
+    advisory_data jsonb DEFAULT '{}'::jsonb NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: rubygem_advisories_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.rubygem_advisories_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: rubygem_advisories_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.rubygem_advisories_id_seq OWNED BY public.rubygem_advisories.id;
+
+
+--
 -- Name: rubygem_code_statistics; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -608,6 +642,13 @@ ALTER TABLE ONLY public.database_exports ALTER COLUMN id SET DEFAULT nextval('pu
 
 
 --
+-- Name: rubygem_advisories id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.rubygem_advisories ALTER COLUMN id SET DEFAULT nextval('public.rubygem_advisories_id_seq'::regclass);
+
+
+--
 -- Name: rubygem_dependencies id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -674,6 +715,14 @@ ALTER TABLE ONLY public.categorizations
 
 ALTER TABLE ONLY public.database_exports
     ADD CONSTRAINT database_exports_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: rubygem_advisories rubygem_advisories_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.rubygem_advisories
+    ADD CONSTRAINT rubygem_advisories_pkey PRIMARY KEY (id);
 
 
 --
@@ -885,6 +934,13 @@ CREATE UNIQUE INDEX index_projects_on_rubygem_name ON public.projects USING btre
 
 
 --
+-- Name: index_rubygem_advisories_on_rubygem_name_and_identifier; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_rubygem_advisories_on_rubygem_name_and_identifier ON public.rubygem_advisories USING btree (rubygem_name, identifier);
+
+
+--
 -- Name: index_rubygem_code_statistics_on_rubygem_name_and_language; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -1091,6 +1147,14 @@ ALTER TABLE ONLY public.rubygem_code_statistics
 
 
 --
+-- Name: rubygem_advisories fk_rails_da0771e125; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.rubygem_advisories
+    ADD CONSTRAINT fk_rails_da0771e125 FOREIGN KEY (rubygem_name) REFERENCES public.rubygems(name);
+
+
+--
 -- Name: projects fk_rails_ddb4eb0108; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1105,6 +1169,7 @@ ALTER TABLE ONLY public.projects
 SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
+('20240607091753'),
 ('20240412142913'),
 ('20240412142709'),
 ('20211210110108'),
