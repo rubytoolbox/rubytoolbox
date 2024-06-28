@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe Rubygem::Advisory do
+  fixtures :all
+
   subject(:model) { described_class.new }
 
   it {

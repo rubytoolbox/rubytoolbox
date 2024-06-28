@@ -1,0 +1,34 @@
+nokogiri1:
+  rubygem_name: nokogiri
+  identifier: CVE-2019-18197
+  date: '2022-05-24'
+  created_at: <%= Time.current %>
+  updated_at: <%= Time.current %>
+  advisory_data:
+    id: CVE-2019-18197
+    cve: 2019-18197
+    url: https://github.com/sparklemotion/nokogiri/issues/1943
+    date: '2022-05-24'
+    ghsa: 242x-7cm6-4w8j
+    osvdb:
+    title: Nokogiri affected by libxslt Use of Uninitialized Resource/ Use After Free
+      vulnerability
+    cvss_v2: 5.1
+    cvss_v3: 7.5
+    criticality: high
+    description: |
+      In xsltCopyText in transform.c in libxslt 1.1.33, a pointer variable
+      isn't reset under certain circumstances. If the relevant memory area
+      happened to be freed and reused in a certain way, a bounds check could
+      fail and memory outside a buffer could be written to, or uninitialized
+      data could be disclosed.
+
+      Nokogiri prior to version 1.10.5 contains a vulnerable version of
+      libxslt. Nokogiri version 1.10.5 upgrades the dependency to
+      libxslt 1.1.34, which contains a patch for this issue.
+    patched_versions:
+    - requirements:
+      - - ">="
+        - version: 1.10.5
+          segments:
+    unaffected_versions: []
