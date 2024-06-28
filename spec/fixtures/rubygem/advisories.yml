@@ -1,0 +1,110 @@
+nokogiri1:
+  rubygem_name: nokogiri
+  identifier: CVE-2019-18197
+  date: '2022-05-24'
+  created_at: <%= Time.current %>
+  updated_at: <%= Time.current %>
+  advisory_data:
+    id: CVE-2019-18197
+    cve: 2019-18197
+    url: https://github.com/sparklemotion/nokogiri/issues/1943
+    date: '2022-05-24'
+    ghsa: 242x-7cm6-4w8j
+    osvdb:
+    title: Nokogiri affected by libxslt Use of Uninitialized Resource/ Use After Free
+      vulnerability
+    cvss_v2: 5.1
+    cvss_v3: 7.5
+    criticality: high
+    description: |
+      In xsltCopyText in transform.c in libxslt 1.1.33, a pointer variable
+      isn't reset under certain circumstances. If the relevant memory area
+      happened to be freed and reused in a certain way, a bounds check could
+      fail and memory outside a buffer could be written to, or uninitialized
+      data could be disclosed.
+
+      Nokogiri prior to version 1.10.5 contains a vulnerable version of
+      libxslt. Nokogiri version 1.10.5 upgrades the dependency to
+      libxslt 1.1.34, which contains a patch for this issue.
+    patched_versions:
+    - requirements:
+      - - ">="
+        - version: 1.10.5
+          segments:
+    unaffected_versions: []
+
+actionpack1:
+  # This is actually a vulnerability on actionpack, but we don't have that in the
+  # fixtures so might as well just re-map it
+  rubygem_name: actionpack
+  identifier: CVE-2022-22577
+  date: "2022-04-27"
+  created_at: <%= Time.current %>
+  updated_at: <%= Time.current %>
+  advisory_data:
+    id: CVE-2022-22577
+    cve: 2022-22577
+    url: https://groups.google.com/g/ruby-security-ann/c/NuFRKaN5swI
+    date: '2022-04-27'
+    ghsa: mm33-5vfq-3mm3
+    osvdb:
+    title: Possible XSS Vulnerability in Action Pack
+    cvss_v2:
+    cvss_v3: 6.1
+    criticality: medium
+    description: |
+      There is a possible XSS vulnerability in Rails / Action Pack. This vulnerability has been
+      assigned the CVE identifier CVE-2022-22577.
+
+      Versions Affected:  >= 5.2.0
+      Not affected:       < 5.2.0
+      Fixed Versions:     7.0.2.4, 6.1.5.1, 6.0.4.8, 5.2.7.1
+
+      ## Impact
+
+      CSP headers were only sent along with responses that Rails considered as
+      "HTML" responses.  This left API requests without CSP headers, which could
+      possibly expose users to XSS attacks.
+
+      ## Releases
+
+      The FIXED releases are available at the normal locations.
+
+      ## Workarounds
+
+      Set a CSP for your API responses manually.
+    patched_versions:
+    - requirements:
+      - - "~>"
+        - version: 5.2.7
+          segments:
+      - - ">="
+        - version: 5.2.7.1
+          segments:
+    - requirements:
+      - - "~>"
+        - version: 6.0.4
+          segments:
+      - - ">="
+        - version: 6.0.4.8
+          segments:
+    - requirements:
+      - - "~>"
+        - version: 6.1.5
+          segments:
+      - - ">="
+        - version: 6.1.5.1
+          segments:
+    - requirements:
+      - - ">="
+        - version: 7.0.2.4
+          segments:
+    unaffected_versions:
+    - requirements:
+      - - "<"
+        - version: 5.2.0
+          segments:
+          prerelease: false
+          canonical_segments:
+          - 5
+          - 2

@@ -18,7 +18,7 @@ class Rubygem::Trend::Navigation
     [
       Rubygem::Trend.where(date: parsed_date).limit(1),
       Rubygem::Trend.where("date > ?", parsed_date).order(date: :asc).limit(1),
-      Rubygem::Trend.where("date < ?", parsed_date).order(date: :desc).limit(1),
+      Rubygem::Trend.where(date: ...parsed_date).order(date: :desc).limit(1),
     ].each do |scope|
       matching_date = scope.pick(:date)
       return new(matching_date) if matching_date

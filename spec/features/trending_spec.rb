@@ -25,11 +25,10 @@ RSpec.describe "Trending Projects", :js do
 
     within(".footer") { click_link "Trends" }
 
-    take_snapshots! "Trending Projects: Default View"
-
     within ".hero" do
       expect(page).to have_text("Trending Projects for #{I18n.l(Time.current.to_date, format: :long)}")
     end
+    take_snapshots! "Trending Projects: Default View"
     expect(page).to have_css(".category-card", count: 2)
     expect(visible_project_names).to eq %w[widget foobar]
 

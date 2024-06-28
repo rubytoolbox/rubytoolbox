@@ -26,7 +26,7 @@ RSpec.describe Database::SelectiveExport do
     expect_scope(:rubygems) { Rubygem.where project: described_class.projects }
     expect_scope :rubygem_download_stats do
       Rubygem::DownloadStat.where(rubygem_name: described_class.rubygems.pluck(:name))
-                           .where("date >= ?", 3.months.ago.to_date)
+                           .where(date: 3.months.ago.to_date..)
                            .order(date: :asc)
     end
     expect_scope :rubygem_code_statistics do
@@ -35,8 +35,11 @@ RSpec.describe Database::SelectiveExport do
     expect_scope :rubygem_dependencies do
       RubygemDependency.where rubygem: described_class.rubygems, dependency: described_class.rubygems
     end
+    expect_scope :rubygem_advisories do
+      Rubygem::Advisory.where rubygem: described_class.rubygems
+    end
     expect_scope :rubygem_trends do
-      Rubygem::Trend.where(rubygem: described_class.rubygems).where("date >= ?", 1.month.ago.to_date)
+      Rubygem::Trend.where(rubygem: described_class.rubygems).where(date: 1.month.ago.to_date..)
     end
 
     expect_scope(:github_repos) { GithubRepo.where projects: described_class.projects }
