@@ -19,7 +19,8 @@ class RubygemAdvisoriesSyncJob < ApplicationJob
     return :unknown_gem unless Rubygem.exists?(name: rubygem_name)
 
     Rubygem::Advisory.find_or_initialize_by(rubygem_name:, identifier: advisory.id).tap do |record|
-      record.update! date: advisory.date, advisory_data: advisory.to_h
+      # The path is just the local bundler-audit yaml file, so it's not relevant to keep
+      record.update! date: advisory.date, advisory_data: advisory.to_h.excluding(:path)
     end
   end
 

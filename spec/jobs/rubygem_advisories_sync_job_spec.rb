@@ -16,7 +16,7 @@ RSpec.describe RubygemAdvisoriesSyncJob do
                       path:,
                       id:   "FOO-123",
                       date: Time.zone.today,
-                      to_h: { "the" => "data" }
+                      to_h: { the: "data", path: "local at import, so excluded" }
     end
 
     let(:advisory_count) do
@@ -25,7 +25,7 @@ RSpec.describe RubygemAdvisoriesSyncJob do
           rubygem_name:  "nokogiri",
           identifier:    advisory.id,
           date:          advisory.date,
-          advisory_data: advisory.to_h
+          advisory_data: advisory.to_h.excluding(:path)
         ).count
       end
     end
@@ -44,8 +44,11 @@ RSpec.describe RubygemAdvisoriesSyncJob do
       it { expect { import }.not_to change(Rubygem::Advisory, :count) }
 
       it "updates the existing record in place" do
+        advisory_data = advisory.to_h.excluding(:path).stringify_keys
+
         import
-        expect(existing_advisory.reload).to have_attributes(date: advisory.date, advisory_data: advisory.to_h)
+        expect(existing_advisory.reload).to have_attributes(date:          advisory.date,
+                                                            advisory_data:)
       end
     end
 
