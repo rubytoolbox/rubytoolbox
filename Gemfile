@@ -37,6 +37,9 @@ gem "addressable"
 
 gem "blueprinter"
 
+gem "dry-struct"
+gem "dry-types"
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
