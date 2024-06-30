@@ -3,7 +3,7 @@
   "private": false,
   "dependencies": {
     "@rails/ujs": "^7.1",
-    "bulma": ">=0.9.4",
+    "bulma": ">=1.0.1",
     "@creativebulma/bulma-tooltip": ">= 1.2.0",
     "chart.js": "^2.7.3",
     "github-syntax-light": ">= 0.5.0",
