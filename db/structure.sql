@@ -494,10 +494,10 @@ CREATE TABLE public.rubygem_download_stats (
     id bigint NOT NULL,
     rubygem_name character varying NOT NULL,
     date date NOT NULL,
+    total_downloads bigint NOT NULL,
     absolute_change_month integer,
     relative_change_month numeric,
-    growth_change_month numeric,
-    total_downloads bigint
+    growth_change_month numeric
 );
 
 
@@ -560,6 +560,7 @@ ALTER SEQUENCE public.rubygem_trends_id_seq OWNED BY public.rubygem_trends.id;
 
 CREATE TABLE public.rubygems (
     name character varying NOT NULL,
+    downloads bigint NOT NULL,
     current_version character varying NOT NULL,
     authors character varying,
     description text,
@@ -578,8 +579,7 @@ CREATE TABLE public.rubygems (
     releases_count integer,
     reverse_dependencies_count integer,
     fetched_at timestamp without time zone,
-    quarterly_release_counts jsonb DEFAULT '{}'::jsonb NOT NULL,
-    downloads bigint
+    quarterly_release_counts jsonb DEFAULT '{}'::jsonb NOT NULL
 );
 
 
@@ -980,6 +980,13 @@ CREATE INDEX index_rubygem_download_stats_on_relative_change_month ON public.rub
 --
 
 CREATE UNIQUE INDEX index_rubygem_download_stats_on_rubygem_name_and_date ON public.rubygem_download_stats USING btree (rubygem_name, date);
+
+
+--
+-- Name: index_rubygem_download_stats_on_total_downloads; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_rubygem_download_stats_on_total_downloads ON public.rubygem_download_stats USING btree (total_downloads DESC NULLS LAST);
 
 
 --
