@@ -60,7 +60,7 @@ class Rubygem < ApplicationRecord
            dependent:   :destroy
 
   scope :update_batch, lambda {
-    where("fetched_at < ? ", 24.hours.ago.utc)
+    where(fetched_at: ...24.hours.ago.utc)
       .order(fetched_at: :asc)
       .limit((count / 24.0).ceil)
   }

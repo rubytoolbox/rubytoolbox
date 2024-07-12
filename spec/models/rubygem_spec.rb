@@ -32,7 +32,7 @@ RSpec.describe Rubygem do
     subject(:scope) { described_class.update_batch.to_sql }
 
     let(:expected_sql) do
-      described_class.where("fetched_at < ? ", 24.hours.ago.utc)
+      described_class.where(fetched_at: ...24.hours.ago.utc)
                      .order(fetched_at: :asc)
                      .limit((described_class.count / 24.0).ceil)
                      .to_sql
