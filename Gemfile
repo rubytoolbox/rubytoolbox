@@ -14,6 +14,7 @@ gem "rails", "~> 7.1"
 gem "hairtrigger"
 gem "pg"
 gem "pg_search"
+gem "strong_migrations"
 
 gem "aws-sdk-s3"
 
