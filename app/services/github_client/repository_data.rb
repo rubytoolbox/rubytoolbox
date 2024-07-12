@@ -123,6 +123,12 @@ class GithubClient
 
       dates = edges.map { |edge| Time.zone.parse edge.dig("node", "authoredDate") }
       Time.zone.at dates.sum(&:to_i) / dates.count
+    # Yip, sometimes github actually has a 500 when accessing the commits history, i.e.
+    # https://github.com/grosser/open_id_authentication/commits/master/
+    #
+    # And then we get a null on this GraphQL property declared as non-nullable.
+    rescue TypeError
+      nil
     end
 
     def topics
