@@ -42,6 +42,37 @@ RSpec.describe GithubClient::RepositoryData, type: :service do
     end
   end
 
+  describe "#average_recent_committed_at" do
+    subject(:average_recent_committed_at) { repo.average_recent_committed_at }
+
+    let(:repo) do
+      data defaultBranchRef: {
+        target: {
+          history: {
+            edges:,
+          },
+        },
+      }
+    end
+
+    let(:edges) do
+      [
+        { node: { authoredDate: Time.utc(2024, 7, 1, 12).iso8601 } },
+        { node: { authoredDate: Time.utc(2024, 7, 7, 12).iso8601 } },
+      ]
+    end
+
+    it { is_expected.to eq Time.utc(2024, 7, 4, 12) }
+
+    # Yip, this can happen. https://github.com/grosser/open_id_authentication/commits/master/ throws a 500
+    # even on Github itself
+    context "when github doesn't return a proper authoredDate" do
+      before { edges.sample.fetch(:node)[:authoredDate] = nil }
+
+      it { is_expected.to be_nil }
+    end
+  end
+
   describe "#pull_request_acceptance_rate" do
     it "is nil if PR data is missing" do
       expect(data.pull_request_acceptance_rate).to be_nil
