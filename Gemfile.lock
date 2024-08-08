@@ -298,7 +298,7 @@ GEM
       shellany (~> 0.0)
     oj (3.16.4)
       bigdecimal (>= 3.0)
-    overcommit (0.63.0)
+    overcommit (0.64.0)
       childprocess (>= 0.6.3, < 6)
       iniparse (~> 1.4)
       rexml (~> 3.2)
