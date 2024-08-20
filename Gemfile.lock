@@ -490,7 +490,7 @@ GEM
     semantic_range (3.0.0)
     sexp_processor (4.17.0)
     shellany (0.0.1)
-    shoulda-matchers (6.2.0)
+    shoulda-matchers (6.4.0)
       activesupport (>= 5.2.0)
     sidekiq (7.3.0)
       concurrent-ruby (< 2)
