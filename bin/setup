@@ -3,8 +3,8 @@
 
 require "fileutils"
 
-# path to your application root.
 APP_ROOT = File.expand_path("..", __dir__)
+APP_NAME = "rubytoolbox"
 
 def system!(*)
   system(*, exception: true)
@@ -38,4 +38,8 @@ FileUtils.chdir APP_ROOT do
   puts "Please use `bin/pull_database` if you want to fetch a realistic subset of"
   puts "production data for local development. It's recommended, but destructive, and"
   puts "hence is a separate command"
+
+  # puts "\n== Configuring puma-dev =="
+  # system "ln -nfs #{APP_ROOT} ~/.puma-dev/#{APP_NAME}"
+  # system "curl -Is https://#{APP_NAME}.test/up | head -n 1"
 end
