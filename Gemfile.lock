@@ -395,7 +395,7 @@ GEM
       rack (>= 1.4)
     retriable (3.1.2)
     rexml (3.3.7)
-    rouge (4.3.0)
+    rouge (4.4.0)
     rspec (3.13.0)
       rspec-core (~> 3.13.0)
       rspec-expectations (~> 3.13.0)
