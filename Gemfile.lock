@@ -541,7 +541,6 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.8.2)
-    unicode-display_width (2.5.0)
     unicode-display_width (2.6.0)
     useragent (0.16.10)
     vcr (6.3.1)
