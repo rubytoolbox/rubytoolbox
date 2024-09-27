@@ -545,7 +545,8 @@ GEM
       unf_ext
     unf_ext (0.0.8.2)
     unicode-display_width (2.6.0)
-    vcr (6.2.0)
+    vcr (6.3.1)
+      base64
     web-console (4.2.1)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
