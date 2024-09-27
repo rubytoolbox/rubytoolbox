@@ -104,7 +104,8 @@ class Database::SelectiveExport
       # This is a private API of ActiveRecord, however it's the easiest way to get this done -
       # an integration test should hopefully cover for potential future breaking changes.
       insert_all = ActiveRecord::InsertAll.new(
-        batch.first.class,
+        batch,
+        ApplicationRecord.connection,
         batch.map(&:attributes),
         on_duplicate: :skip
       ).send(:to_sql)
