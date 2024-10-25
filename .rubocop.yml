@@ -17,6 +17,7 @@ AllCops:
     - 'tmp/**/*.rb'
     # Apparently needed for Travis CI since it bundles into this directory
     - 'vendor/bundle/**/*'
+    - bin/bundle
 
 Rails:
   Enabled: true
