@@ -145,6 +145,7 @@ GEM
       dotenv (= 3.1.4)
       railties (>= 6.1)
     drb (2.2.1)
+    dry-cli (1.2.0)
     dry-core (1.0.1)
       concurrent-ruby (~> 1.0)
       zeitwerk (~> 2.6)
@@ -547,6 +548,14 @@ GEM
     useragent (0.16.10)
     vcr (6.3.1)
       base64
+    vite_rails (3.0.18)
+      railties (>= 5.1, < 9)
+      vite_ruby (~> 3.0, >= 3.2.2)
+    vite_ruby (3.9.0)
+      dry-cli (>= 0.7, < 2)
+      logger (~> 1.6)
+      rack-proxy (~> 0.6, >= 0.6.1)
+      zeitwerk (~> 2.2)
     web-console (4.2.1)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -655,6 +664,7 @@ DEPENDENCIES
   tzinfo-data
   uglifier
   vcr
+  vite_rails
   web-console
   webdrivers
   webmock

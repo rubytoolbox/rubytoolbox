@@ -29,6 +29,8 @@ gem "uglifier"
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
+gem "vite_rails"
+
 # Heroku ruby buildpack installs yarn only when webpacker gem is detected...
 gem "webpacker", require: false
 
