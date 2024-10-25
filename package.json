@@ -1,23 +1,25 @@
 {
-  "name": "rubytoolbox",
-  "private": false,
-  "dependencies": {
-    "@creativebulma/bulma-tooltip": ">= 1.2.0",
-    "@rails/ujs": "^7.1",
-    "bulma": ">=0.9.4",
-    "chart.js": "^2.7.3",
-    "github-syntax-light": ">= 0.5.0",
-    "headroom.js": ">= 0.9.4",
-    "javascript-autocomplete": ">= 1.0.3"
-  },
-  "version": "1.0.0",
-  "main": "index.js",
-  "repository": "git@github.com:rubytoolbox/rubytoolbox.git",
-  "author": "Christoph Olszowka <christoph@olszowka.de>",
-  "license": "MIT",
-  "devDependencies": {
-    "@percy/cli": "^1.0.0-beta.71",
-    "vite": "^5.0.0",
-    "vite-plugin-ruby": "^5.1.0"
-  }
+    "name": "rubytoolbox",
+    "private": false,
+    "dependencies":
+    {
+        "@creativebulma/bulma-tooltip": ">= 1.2.0",
+        "@rails/ujs": "^7.1",
+        "bulma": ">=0.9.4",
+        "chart.js": "^2.7.3",
+        "github-syntax-light": ">= 0.5.0",
+        "headroom.js": ">= 0.9.4",
+        "javascript-autocomplete": ">= 1.0.3"
+    },
+    "version": "1.0.0",
+    "main": "index.js",
+    "repository": "git@github.com:rubytoolbox/rubytoolbox.git",
+    "author": "Christoph Olszowka <christoph@olszowka.de>",
+    "license": "MIT",
+    "devDependencies":
+    {
+        "@percy/cli": "^1.0.0-beta.71",
+        "vite": "^5.0.0",
+        "vite-plugin-rails": ">= 0.5.0"
+    }
 }
