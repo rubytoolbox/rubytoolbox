@@ -4,14 +4,15 @@ html.has-navbar-fixed-top lang="en"
     title= title
     = csrf_meta_tags
     = csp_meta_tag
+    = vite_client_tag
 
     meta charset="utf-8"/
     meta name="viewport" content="width=device-width, initial-scale=1"/
     meta http-equiv="x-ua-compatible" content="ie=edge"/
     meta name="description" content=description
 
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = vite_javascript_tag "application"
+    = vite_stylesheet_tag "application.sass", media: :all
 
     link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180" /
     link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png" /
