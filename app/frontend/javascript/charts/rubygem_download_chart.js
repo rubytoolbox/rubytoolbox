@@ -1,4 +1,6 @@
-var rubygemDownloadChart = function(selector, totalDownloads, monthlyDownloads) {
+import Chart from "chart.js"
+
+export default function(selector, totalDownloads, monthlyDownloads) {
   var ctx = document.querySelector(selector).getContext('2d');
 
   new Chart(ctx, {
