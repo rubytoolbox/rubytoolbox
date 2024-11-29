@@ -1,24 +1,22 @@
 {
     "name": "rubytoolbox",
     "private": false,
-    "dependencies":
-    {
+    "dependencies": {
         "@creativebulma/bulma-tooltip": ">= 1.2.0",
+        "@fontsource/lato": "^5.1.0",
+        "accessible-autocomplete": "^3.0.1",
         "bulma": ">=0.9.4",
         "chart.js": "^2.7.3",
-        "github-syntax-light": ">= 0.5.0",
-        "headroom.js": ">= 0.9.4",
-        "javascript-autocomplete": ">= 1.0.3",
         "font-awesome": "^4.7.0",
-        "@fontsource/lato": "^5.1.0"
+        "github-syntax-light": ">= 0.5.0",
+        "headroom.js": ">= 0.9.4"
     },
     "version": "1.0.0",
     "main": "index.js",
     "repository": "git@github.com:rubytoolbox/rubytoolbox.git",
     "author": "Christoph Olszowka <christoph@olszowka.de>",
     "license": "MIT",
-    "devDependencies":
-    {
+    "devDependencies": {
         "@percy/cli": "^1.0.0-beta.71",
         "sass-embedded": "^1.80.4",
         "vite": "^5.0.0",

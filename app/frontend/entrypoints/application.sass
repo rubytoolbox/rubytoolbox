@@ -1,6 +1,7 @@
 @import "font-awesome"
 @import "@fontsource/lato/400.css"
 @import "@fontsource/lato/700.css"
+@import "accessible-autocomplete/dist/accessible-autocomplete.min.css"
 
 // Default bulma font stack, plus Lato webfont as priority
 $family-sans-serif: "Lato", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif
@@ -199,14 +200,23 @@ article.blog-post
   &.small
     height: 180px
 
-.autocomplete-suggestions
-  .autocomplete-suggestion
+.autocomplete__menu--overlay
+  box-shadow: none
+  border: 1px solid #ddd
+  z-index: 1000
+
+  li.autocomplete__option
     padding: 10px 8px
-    &.selected
-      background: $primary
+    border-bottom: 1px solid #ddd
+
+    &.autocomplete__option--focused, &:hover
+      background: $primary !important
       color: white
       b
         color: white
+
+    &.autocomplete__option--odd
+      background: #efefef
     b
       color: black
       font-weight: bold
