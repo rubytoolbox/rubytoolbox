@@ -7,9 +7,11 @@ canvas class=element width="400" height="150"
       Due to the high range of values this graph uses a <a href="https://en.wikipedia.org/wiki/Logarithmic_scale">logarithmic scale</a>
 
 javascript:
-  lineChart(
-    ".#{element}",
-    #{Oj.dump(keys).html_safe},
-    #{Oj.dump(values).html_safe},
-    #{scale.inspect.html_safe}
-  )
+  document.addEventListener("DOMContentLoaded", function () {
+    Charts.lineChart(
+      ".#{element}",
+      #{Oj.dump(keys).html_safe},
+      #{Oj.dump(values).html_safe},
+      #{scale.inspect.html_safe}
+    )
+  })

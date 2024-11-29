@@ -1,21 +1,7 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_self
- *= require javascript-autocomplete/auto-complete.css
- */
-
 @import "font-awesome"
-@import "lato"
+@import "@fontsource/lato/400.css"
+@import "@fontsource/lato/700.css"
+@import "accessible-autocomplete/dist/accessible-autocomplete.min.css"
 
 // Default bulma font stack, plus Lato webfont as priority
 $family-sans-serif: "Lato", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif
@@ -50,11 +36,24 @@ $widescreen: 1152px + (2 * $gap)
 // since we have too many menu items
 $navbar-breakpoint: $widescreen
 
-@import "bulma/bulma"
-@import "@creativebulma/bulma-tooltip/dist/bulma-tooltip"
-@import "components/**/*"
 
+@import "bulma/bulma.sass"
+@import "@creativebulma/bulma-tooltip/dist/bulma-tooltip"
 @import "github-syntax-light/lib/github-light.css"
+
+@import "~/stylesheets/components/category_card"
+@import "~/stylesheets/components/documentation_page"
+@import "~/stylesheets/components/landing_feature"
+@import "~/stylesheets/components/landing_hero"
+@import "~/stylesheets/components/project"
+@import "~/stylesheets/components/project_comparison"
+@import "~/stylesheets/components/project_display_picker"
+@import "~/stylesheets/components/project_health_tag"
+@import "~/stylesheets/components/project_list"
+@import "~/stylesheets/components/project_order_dropdown"
+@import "~/stylesheets/components/project_release_history"
+@import "~/stylesheets/components/readme"
+@import "~/stylesheets/components/section_heading"
 
 .border-bottom
   border-bottom: 1px solid $light
@@ -201,14 +200,24 @@ article.blog-post
   &.small
     height: 180px
 
-.autocomplete-suggestions
-  .autocomplete-suggestion
+.autocomplete__menu--overlay
+  box-shadow: none
+  border: 1px solid #ddd
+  z-index: 1000
+
+  li.autocomplete__option
     padding: 10px 8px
-    &.selected
-      background: $primary
+    border-bottom: 1px solid #ddd
+
+    &.autocomplete__option--focused, &:hover
+      background: $primary !important
       color: white
       b
         color: white
+
+    &.autocomplete__option--odd
+      background: #efefef
     b
       color: black
       font-weight: bold
+

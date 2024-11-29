@@ -3,8 +3,10 @@
   canvas.bar-chart class=element
 
 javascript:
-  barChart(
-    ".#{element}",
-    #{Oj.dump(keys).html_safe},
-    #{Oj.dump(values).html_safe}
-  );
+  document.addEventListener("DOMContentLoaded", function () {
+    Charts.barChart(
+      ".#{element}",
+      #{Oj.dump(keys).html_safe},
+      #{Oj.dump(values).html_safe}
+    );
+  })

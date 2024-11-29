@@ -4,14 +4,15 @@ html.has-navbar-fixed-top lang="en"
     title= title
     = csrf_meta_tags
     = csp_meta_tag
+    = vite_client_tag
 
     meta charset="utf-8"/
     meta name="viewport" content="width=device-width, initial-scale=1"/
     meta http-equiv="x-ua-compatible" content="ie=edge"/
     meta name="description" content=description
 
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = vite_javascript_tag "application"
+    = vite_stylesheet_tag "application.sass", media: :all
 
     link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180" /
     link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png" /
@@ -46,7 +47,7 @@ html.has-navbar-fixed-top lang="en"
       nav.navbar aria-label="main navigation" role="navigation": .container
         .navbar-brand
           = link_to "/", title: title(default: true), class: "navbar-item" do
-            = image_tag "logo/regular.svg", alt: title(default: true)
+            = vite_image_tag "images/logo/regular.svg", alt: title(default: true)
 
           a.navbar-item.mobile-search href=search_path
             span.icon: i.fa.fa-search
@@ -168,11 +169,11 @@ html.has-navbar-fixed-top lang="en"
           .column
             .heading Development funded by
             a href="https://rubytogether.org/"
-              = image_tag "sponsors/rubytogether-white.svg", style: "height: 95px"
+              = vite_image_tag "images/sponsors/rubytogether-white.svg", style: "height: 95px"
           .column
             .heading Monitored with
             a href="https://appsignal.com/"
-              = image_tag "sponsors/appsignal-logo-horizontal.svg", style: "height: 35px; margin-top: 28px"
+              = vite_image_tag "images/sponsors/appsignal-logo-horizontal.svg", style: "height: 35px; margin-top: 28px"
         .columns: .column.has-text-centered: strong.heading Thank You!
 
 

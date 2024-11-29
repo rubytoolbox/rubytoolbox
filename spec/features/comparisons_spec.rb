@@ -81,7 +81,7 @@ RSpec.describe "Project Comparisons", :js do
     # Our autocomplete library interferes with the enter key on the input field -
     # it should be possible to just type a name and hit enter without interacting
     # with the autocompletion in any way.
-    page.find("input.autocomplete-comparison").send_keys "acme", :enter
+    autocomplete_input.send_keys "acme", :enter
     wait_for do
       listed_project_names == %w[acme toolkit widget]
     end
@@ -90,9 +90,13 @@ RSpec.describe "Project Comparisons", :js do
   private
 
   def add_using_autocomplete(name)
-    page.find("input.autocomplete-comparison").send_keys name[0..2]
-    expect(page).to have_css(".autocomplete-suggestions")
-    page.find("input.autocomplete-comparison").send_keys :down, :enter
+    autocomplete_input.send_keys name[0..2]
+    expect(page).to have_css(".autocomplete__menu--overlay")
+    autocomplete_input.send_keys :down, :enter
+  end
+
+  def autocomplete_input
+    page.find "input#comparison-autocomplete"
   end
 
   def comparison_project_tags

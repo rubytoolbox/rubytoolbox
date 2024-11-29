@@ -1,4 +1,6 @@
-var barChart = function(selector, labels, values) {
+import Chart from "chart.js"
+
+export default function(selector, labels, values) {
   var ctx = document.querySelector(selector)
                     .getContext('2d');
 

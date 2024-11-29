@@ -16,9 +16,6 @@ require "action_view/railtie"
 # require "action_cable/engine"
 require "rails/test_unit/railtie"
 
-# Still required until we get rid of sprockets via #1202
-require "sprockets/railtie"
-
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
@@ -45,8 +42,6 @@ module Rubytoolbox
     config.lograge.formatter = Lograge::Formatters::Logstash.new
 
     config.active_record.schema_format = :sql
-
-    config.assets.paths << Rails.root.join("node_modules")
 
     config.generators do |c|
       # Don't generate system test files.

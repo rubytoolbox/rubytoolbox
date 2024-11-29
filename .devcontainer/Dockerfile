@@ -38,7 +38,6 @@ RUN /bin/bash -l -c "nix-env -iA \
     nixpkgs.man \
     nixpkgs.zellij \
     nixpkgs.nodejs_20 \
-    nixpkgs.yarn \
     nixpkgs.redis \
     nixpkgs.watchexec \
     nixpkgs.starship \

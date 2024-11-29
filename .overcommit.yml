@@ -15,19 +15,19 @@
 PostCheckout:
   BundleInstall:
     enabled: true
-  YarnInstall:
+  NpmInstall:
     enabled: true
 
 PostMerge:
   BundleInstall:
     enabled: true
-  YarnInstall:
+  NpmInstall:
     enabled: true
 
 PostRewrite:
   BundleInstall:
     enabled: true
-  YarnInstall:
+  NpmInstall:
     enabled: true
 
 PreCommit:
@@ -40,5 +40,5 @@ PreCommit:
     command: ["bundle", "exec", "rubocop"]
   YamlSyntax:
     enabled: true
-  YarnCheck:
+  NpmCheck:
     enabled: true

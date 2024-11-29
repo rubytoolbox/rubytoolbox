@@ -77,9 +77,9 @@ jobs:
         RAILS_ENV: test
         PERCY_TOKEN: ${{secrets.PERCY_TOKEN}}
       run: |
-        yarn install
+        npm install
         bundle exec rake db:schema:load
-        yarn percy exec -- bundle exec rspec
+        npm exec percy exec -- bundle exec rspec
 
     - uses: actions/upload-artifact@v3
       with:
