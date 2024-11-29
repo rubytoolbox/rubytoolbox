@@ -4,11 +4,11 @@ section.landing-hero
       .text
 
         .mobile-image
-          = image_tag image, title: title
+          = vite_image_tag File.join("images", image), title: title
 
         h1.title= title
         = yield
 
 
       .image
-        = image_tag image, title: title
+        = vite_image_tag File.join("images", image), title: title
