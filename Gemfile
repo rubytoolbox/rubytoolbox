@@ -31,9 +31,6 @@ gem "uglifier"
 
 gem "vite_rails"
 
-# Heroku ruby buildpack installs yarn only when webpacker gem is detected...
-gem "webpacker", require: false
-
 gem "font-awesome-rails"
 
 gem "addressable"

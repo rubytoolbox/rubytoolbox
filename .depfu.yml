@@ -16,7 +16,7 @@ bundler:
   reasonably_up_to_date: true
   update_strategy: individual
 
-yarn:
+npm:
   automerge_dev_strategy: minor
   automerge_method: merge
   automerge_strategy: minor
