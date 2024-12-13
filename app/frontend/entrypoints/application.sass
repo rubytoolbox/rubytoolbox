@@ -63,6 +63,8 @@ header.main
     box-shadow: $box-shadow
     @extend .is-fixed-top
 
+    max-width: 100vw
+
     &.headroom
       will-change: transform
       transition: transform 200ms linear
@@ -98,7 +100,8 @@ header.main
     // them here to keep it consistent with the adjacent search icon
     // in mobile view
     .navbar-burger
-      margin-left: 0
+      &:last-child
+        margin-left: 0
       &:hover
         background: transparent
         span
@@ -109,15 +112,13 @@ header.main
     // Make the mobile search direct icon appear similar to the
     // navbar burger and ensure it's nicely aligned
     .mobile-search
-      margin-left: auto
+      position: relative
       @extend .is-hidden-widescreen
-      height: $navbar-height
-      width: $navbar-height
       .icon
-        display: inline-block
-        margin: 0 auto
-        width: auto
-        transform: scale(1.1)
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translateY(-50%) translateX(-50%)
 
 .hero
   @extend .border-bottom

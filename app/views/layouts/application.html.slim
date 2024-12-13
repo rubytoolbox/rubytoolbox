@@ -49,14 +49,12 @@ html.has-navbar-fixed-top lang="en"
           = link_to "/", title: title(default: true), class: "navbar-item" do
             = vite_image_tag "images/logo/regular.svg", alt: title(default: true)
 
-          a.navbar-item.mobile-search href=search_path
-            span.icon: i.fa.fa-search
-
+          a.navbar-burger.burger.mobile-search href=search_path role="button"
+            .icon: i.fa.fa-search
           a.navbar-burger.burger aria-expanded="false" data-target="mainMenu" aria-label="menu" role="button"
             span aria-hidden="true"
             span aria-hidden="true"
             span aria-hidden="true"
-
         .navbar-menu#mainMenu
           .navbar-end
             a.navbar-item.is-hidden-widescreen-only href="/" class=active_when(controller: :welcome)
