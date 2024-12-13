@@ -11,7 +11,7 @@ RSpec.describe "Mobile Navigation", :js, viewport: :mobile do
     within "header .navbar" do
       expect(page).to have_no_css(".navbar-menu")
 
-      page.find("a.navbar-burger").click
+      page.find("a.navbar-burger.toggle").click
 
       expect(page).to have_css(".navbar-menu")
       within ".navbar-menu" do
