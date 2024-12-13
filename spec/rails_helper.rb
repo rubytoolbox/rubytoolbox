@@ -142,6 +142,10 @@ RSpec.configure do |config|
     end
   end
 
+  config.after(:suite) do
+    ErrorPageGenerator.write_all!
+  end
+
   #
   # This method allows to submit visual regression testing screenshots
   # to percy.io. To do this

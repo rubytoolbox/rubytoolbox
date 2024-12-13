@@ -1,0 +1,48 @@
+doctype html
+html
+  head
+    title
+      = "#{title} (#{subtitle}) - The Ruby Toolbox"
+    meta charset="utf-8"
+    meta name="viewport" content="width=device-width,initial-scale=1"
+    meta http-equiv="x-ua-compatible" content="ie=edge"
+    css:
+      body {
+        padding: 0;
+        margin: 0;
+        border-top: 20px solid #A61414;
+      }
+      .dialog {
+        max-width: 760px;
+        margin: 0 auto;
+        margin-top: 150px;
+        padding: 20px;
+        font-family: Helvetica, Arial, system-ui, "Segoe UI", Roboto, sans-serif;
+
+        text-align: center;
+      }
+      .dialog svg {
+        max-width: 350px;
+      }
+      a {
+        color: #A61414;
+      }
+      a:hover {
+        color: black;
+      }
+      h4 {
+        color: #999;
+      }
+
+  body
+    .dialog
+      a href="/"
+        == Rails.root.join("app/frontend/images/logo/regular.svg").read
+
+      div
+        h1= title
+        h4= subtitle
+        p
+          span Please try again later or
+          span &nbsp;
+          a href="https://github.com/rubytoolbox/rubytoolbox/issues" report a bug
