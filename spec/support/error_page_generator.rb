@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class ErrorPageGenerator
   def self.write_all!
-    I18n.t(:error_pages).keys.each do |key|
+    I18n.t(:error_pages).each_key do |key|
       new(key).write!
     end
   end
@@ -10,7 +12,7 @@ class ErrorPageGenerator
   public :title, :subtitle
 
   def initialize(key)
-    self.path = Rails.root.join "public", "#{key}.html"
+    self.path = Rails.public_path.join("#{key}.html")
     self.title = I18n.t :title, scope: "error_pages.#{key}", raise: true
     self.subtitle = I18n.t :subtitle, scope: "error_pages.#{key}", raise: true
   end
