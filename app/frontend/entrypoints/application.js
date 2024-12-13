@@ -39,6 +39,7 @@ import BurgerHandler from "~/javascript/bulma_burger"
 import DocsAsideHandler from "~/javascript/docs_aside_handler"
 import LoadingStateHandlers from "~/javascript/loading_state_handlers"
 import ProjectAutocomplete from "~/javascript/project_autocomplete"
+import FixReadmeOverflow from "~/javascript/fix_readme_overflow"
 
 document.addEventListener("DOMContentLoaded", function () {
   // Make the sticky top nav hide on scroll, re-appear on scrolling up.
@@ -49,4 +50,5 @@ document.addEventListener("DOMContentLoaded", function () {
   DocsAsideHandler();
   LoadingStateHandlers();
   ProjectAutocomplete();
+  FixReadmeOverflow()
 });
