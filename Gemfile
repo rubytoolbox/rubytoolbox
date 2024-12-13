@@ -8,7 +8,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 # NOTE: Remember to bump package.json rails UJS constraint accordingly on upgrades!
-gem "rails", "~> 7.1"
+gem "rails", "~> 8.0"
 
 # Use postgresql as the database for Active Record
 gem "hairtrigger"
