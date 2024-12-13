@@ -37,6 +37,25 @@ en:
       previous: Previous page
       next: Next page
 
+  # We generate the standad error page files `after(:suite)` in RSpec to keep them
+  # up to date automatically
+  error_pages:
+    400:
+      title: The server cannot process the request due to a client error
+      subtitle: HTTP response status 400
+    404:
+      title: The page you were looking for doesn't exist
+      subtitle: HTTP response status 404
+    406-unsupported-browser:
+      title: Your browser is not supported
+      subtitle: HTTP response status 406
+    422:
+      title: The change you wanted was rejected
+      subtitle: HTTP response status 422
+    500:
+      title: We're sorry, but something went wrong
+      subtitle: HTTP response status 500
+
   project_health:
     github_repo_archived: Repository is archived
     github_repo_gone: Repository is gone
