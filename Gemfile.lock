@@ -554,7 +554,7 @@ GEM
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.7.1)
-    zlib (3.2.0)
+    zlib (3.2.1)
 
 PLATFORMS
   x86_64-linux
