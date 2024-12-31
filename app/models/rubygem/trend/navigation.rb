@@ -23,7 +23,6 @@ class Rubygem::Trend::Navigation
       matching_date = scope.pick(:date)
       return new(matching_date) if matching_date
     end
-    nil
   end
 
   def self.valid_date(date)
