@@ -10,7 +10,6 @@ module Factories
                 first_release: Date.new(2020, 3, 12),
                 latest_release: Date.new(2021, 1, 2),
                 description: nil)
-
       rubygem = self.rubygem(name, downloads:, first_release:, latest_release:)
 
       github_repo = GithubRepo.create!(
