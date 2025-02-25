@@ -81,7 +81,7 @@ jobs:
         bundle exec rake db:schema:load
         npm exec percy exec -- bundle exec rspec
 
-    - uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v4
       with:
         name: "Test Coverage"
         path: coverage/
