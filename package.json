@@ -3,7 +3,7 @@
     "private": false,
     "dependencies": {
         "@creativebulma/bulma-tooltip": ">= 1.2.0",
-        "@fontsource/lato": "^5.1.1",
+        "@fontsource/lato": "^5.2.5",
         "accessible-autocomplete": "^3.0.1",
         "bulma": ">=0.9.4",
         "chart.js": "^2.7.3",
