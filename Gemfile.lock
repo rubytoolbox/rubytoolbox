@@ -392,7 +392,7 @@ GEM
       logger
     rdoc (6.13.1)
       psych (>= 4.0.0)
-    redcarpet (3.6.0)
+    redcarpet (3.6.1)
     redis-client (0.23.2)
       connection_pool
     regexp_parser (2.10.0)
