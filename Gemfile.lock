@@ -653,7 +653,7 @@ DEPENDENCIES
   zlib
 
 RUBY VERSION
-   ruby 3.4.2p28
+   ruby 3.4.3
 
 BUNDLED WITH
    2.6.2
