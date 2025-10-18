@@ -25,7 +25,6 @@
                 | &nbsp;
                 strong= post.title
 
-
   section.section: .container: .landing-features
     = landing_feature title: "Categories", image: "startpage/box.png" do
       article
@@ -98,3 +97,29 @@
         - @new_categories.each do |category|
           .category-cards.four
             = category_card category
+
+  - if @recent_advisories.length > 0
+    section.section.recent-advisories: .container
+      / TODO: Link to https://github.com/rubysec/ruby-advisory-db, but the component doesn't support links / html in here
+      = section_heading "Recent Security Advisories", description: "Here are the most recent security advisories for Rubygems, sourced from the Ruby Advisory Database. You can find per-library advisory information and the full history on individual project pages."
+
+      / TODO: Break out into a reusable component
+      .columns.is-multiline
+        - @recent_advisories.each do |advisory|
+          .column.is-half
+            .columns
+              .column.is-one-quarter
+                .date= l advisory.date, format: :long
+                strong= link_to advisory.rubygem_name, project_path(advisory.rubygem_name), class: "button is-outlined is-small is-primary"
+
+              .column
+                div
+                  - if advisory.criticality
+                    - label_type = { high: "is-danger", medium: "is-warning", low: "is-info" }[advisory.criticality.to_sym]
+                    span.tag class=label_type
+                      = advisory.criticality.humanize
+                  - else
+                    | &nbsp;
+
+                a href=advisory.url
+                  strong= advisory.title
