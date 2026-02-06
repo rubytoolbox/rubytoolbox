@@ -103,5 +103,57 @@ RSpec.describe RubygemUpdateJob do
         expect { do_perform }.to raise_error "Unknown response status 500"
       end
     end
+
+    # Tests for correct date handling when built_at dates are unreliable
+    # This mimics real-world scenarios like smarter_csv where:
+    # - Version 2.0.0 has built_at of 1980-01-02 (bogus) but was actually released 2026-02-04
+    # - Version 1.0.0 has built_at of 2025-05-29 (correct)
+    # - Version 0.1.0 has built_at of 2012-07-29 (correct)
+    #
+    # The correct behavior should use created_at (actual push date to rubygems.org)
+    # instead of built_at (gemspec date field which can be bogus/missing)
+    describe "when built_at dates are unreliable" do
+      let(:gem_name) { "bogus_dates_gem" }
+
+      it "sets first_release_on based on created_at, not built_at" do
+        do_perform
+
+        # First release was 0.1.0 on 2012-07-29 (by created_at)
+        # NOT 1980-01-02 (bogus built_at from version 2.0.0)
+        expect(Rubygem.find(gem_name).first_release_on).to eq Date.new(2012, 7, 29)
+      end
+
+      it "sets latest_release_on based on version_created_at from gems API" do
+        do_perform
+
+        # Latest release was 2.0.0 on 2026-02-04 (version_created_at)
+        # NOT 2025-05-29 (built_at from version 1.0.0)
+        expect(Rubygem.find(gem_name).latest_release_on).to eq Date.new(2026, 2, 4)
+      end
+
+      it "groups quarterly_release_counts by created_at, not built_at" do
+        do_perform
+
+        quarterly_counts = Rubygem.find(gem_name).quarterly_release_counts
+
+        # Version 2.0.0 should be counted in Q1 2026 (created_at: 2026-02-04)
+        # NOT in Q1 1980 (bogus built_at: 1980-01-02)
+        expect(quarterly_counts).to include("2026-1" => 1)
+        expect(quarterly_counts).not_to have_key("1980-1")
+      end
+
+      it "does not include releases in quarters before the actual first release" do
+        do_perform
+
+        quarterly_counts = Rubygem.find(gem_name).quarterly_release_counts
+
+        # Should only have quarters from 2012 onwards (actual first release)
+        # No quarters from 1980
+        quarterly_counts.keys.each do |quarter|
+          year = quarter.split("-").first.to_i
+          expect(year).to be >= 2012
+        end
+      end
+    end
   end
 end

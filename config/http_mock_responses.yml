@@ -228,3 +228,94 @@
 "https://api.github.com/repos/ohnogithub/isdown":
   status: 500
 
+# Test gem with bogus built_at dates (mimics smarter_csv scenario)
+# - Version 2.0.0: built_at is 1980 (bogus), but created_at is 2026-02-04
+# - Version 1.0.0: built_at and created_at are both 2025-05-29
+# - Version 0.1.0: built_at and created_at are both 2012-07-29
+"https://rubygems.org/api/v1/gems/bogus_dates_gem.json":
+  status: 200
+  body: |
+    {
+      "name": "bogus_dates_gem",
+      "downloads": 5000000,
+      "version": "2.0.0",
+      "version_created_at": "2026-02-04T17:26:55.907Z",
+      "version_downloads": 1000,
+      "platform": "ruby",
+      "authors": "Test Author",
+      "info": "A gem for testing date handling",
+      "licenses": ["MIT"],
+      "metadata": {},
+      "project_uri": "https://rubygems.org/gems/bogus_dates_gem",
+      "gem_uri": "https://rubygems.org/gems/bogus_dates_gem-2.0.0.gem",
+      "homepage_uri": "http://example.com",
+      "wiki_uri": "",
+      "documentation_uri": "",
+      "mailing_list_uri": "",
+      "source_code_uri": "",
+      "bug_tracker_uri": "",
+      "changelog_uri": null,
+      "dependencies": {
+        "development": [],
+        "runtime": []
+      }
+    }
+
+"https://rubygems.org/api/v1/gems/bogus_dates_gem/reverse_dependencies.json":
+  status: 200
+  body: |
+    []
+
+"https://rubygems.org/api/v1/versions/bogus_dates_gem.json":
+  status: 200
+  body: |
+    [{
+      "authors": "Test Author",
+      "built_at": "1980-01-02T00:00:00.000Z",
+      "created_at": "2026-02-04T17:26:55.907Z",
+      "description": "A gem for testing date handling",
+      "downloads_count": 1000,
+      "metadata": {},
+      "number": "2.0.0",
+      "summary": "bogus_dates_gem-2.0.0",
+      "platform": "ruby",
+      "rubygems_version": ">= 0",
+      "ruby_version": ">= 0",
+      "prerelease": false,
+      "licenses": ["MIT"],
+      "requirements": [],
+      "sha": "abc123"
+    }, {
+      "authors": "Test Author",
+      "built_at": "2025-05-29T00:00:00.000Z",
+      "created_at": "2025-05-29T14:14:13.428Z",
+      "description": "A gem for testing date handling",
+      "downloads_count": 500000,
+      "metadata": {},
+      "number": "1.0.0",
+      "summary": "bogus_dates_gem-1.0.0",
+      "platform": "ruby",
+      "rubygems_version": ">= 0",
+      "ruby_version": ">= 0",
+      "prerelease": false,
+      "licenses": ["MIT"],
+      "requirements": [],
+      "sha": "def456"
+    }, {
+      "authors": "Test Author",
+      "built_at": "2012-07-29T00:00:00.000Z",
+      "created_at": "2012-07-29T23:25:27.563Z",
+      "description": "A gem for testing date handling",
+      "downloads_count": 100,
+      "metadata": {},
+      "number": "0.1.0",
+      "summary": "bogus_dates_gem-0.1.0",
+      "platform": "ruby",
+      "rubygems_version": ">= 0",
+      "ruby_version": null,
+      "prerelease": false,
+      "licenses": null,
+      "requirements": null,
+      "sha": "ghi789"
+    }]
+
