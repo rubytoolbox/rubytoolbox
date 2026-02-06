@@ -76,8 +76,8 @@ class RubygemUpdateJob < ApplicationJob
 
   def extra_attributes
     {
-      first_release_on:           releases.first["built_at"],
-      latest_release_on:          releases.last["built_at"],
+      first_release_on:           releases.first["created_at"],
+      latest_release_on:          info["version_created_at"],
       releases_count:             releases.count,
       reverse_dependencies_count: reverse_dependencies.count,
     }
@@ -88,13 +88,13 @@ class RubygemUpdateJob < ApplicationJob
   end
 
   def releases
-    @releases ||= fetch_gem_api_response("versions/#{name}.json").sort_by { |v| v["built_at"] }
+    @releases ||= fetch_gem_api_response("versions/#{name}.json").sort_by { |v| v["created_at"] }
   end
 
   def quarterly_releases
     grouped_by_quarter = releases.uniq { |r| r["number"] }.group_by do |r|
-      built = Time.zone.parse(r["built_at"])
-      "#{built.year}-#{(built.month / 3.0).ceil}"
+      created = Time.zone.parse(r["created_at"])
+      "#{created.year}-#{(created.month / 3.0).ceil}"
     end
 
     grouped_by_quarter.transform_values(&:count)

@@ -23,7 +23,7 @@ RSpec.describe RubygemUpdateJob do
         name:                       "rspec",
         source_code_url:            "http://github.com/rspec/rspec",
         wiki_url:                   nil,
-        first_release_on:           Date.new(2005, 8, 11),
+        first_release_on:           Date.new(2009, 7, 25),
         latest_release_on:          Date.new(2017, 10, 17),
         releases_count:             3,
         reverse_dependencies_count: 6,
@@ -65,7 +65,7 @@ RSpec.describe RubygemUpdateJob do
 
     it "stores quarterly release counts" do
       do_perform
-      expected = { "2005-3" => 1, "2017-2" => 1, "2017-4" => 1 }
+      expected = { "2009-3" => 1, "2017-2" => 1, "2017-4" => 1 }
       expect(Rubygem.find(gem_name).quarterly_release_counts).to eq expected
     end
 
