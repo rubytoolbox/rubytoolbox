@@ -13,7 +13,7 @@ RSpec.describe HttpService do
     end
 
     it "is an HTTP.rb client when given :real_http spec metadata", :real_http do
-      expect(client).to be_a HTTP::Client
+      expect(client).to be_a HTTP::Session
     end
   end
 

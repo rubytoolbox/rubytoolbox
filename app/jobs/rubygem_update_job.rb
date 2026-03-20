@@ -25,6 +25,20 @@ class RubygemUpdateJob < ApplicationJob
     end
   end
 
+  ATTRIBUTE_MAPPING = {
+    authors:           :authors,
+    bug_tracker_uri:   :bug_tracker_url,
+    documentation_uri: :documentation_url,
+    downloads:         :downloads,
+    homepage_uri:      :homepage_url,
+    info:              :description,
+    licenses:          :licenses,
+    mailing_list_uri:  :mailing_list_url,
+    source_code_uri:   :source_code_url,
+    version:           :current_version,
+    wiki_uri:          :wiki_url,
+  }.freeze
+
   private
 
   def perform_updates!
@@ -53,20 +67,6 @@ class RubygemUpdateJob < ApplicationJob
       return gem.previous_changes
     end
   end
-
-  ATTRIBUTE_MAPPING = {
-    authors:           :authors,
-    bug_tracker_uri:   :bug_tracker_url,
-    documentation_uri: :documentation_url,
-    downloads:         :downloads,
-    homepage_uri:      :homepage_url,
-    info:              :description,
-    licenses:          :licenses,
-    mailing_list_uri:  :mailing_list_url,
-    source_code_uri:   :source_code_url,
-    version:           :current_version,
-    wiki_uri:          :wiki_url,
-  }.freeze
 
   def mapped_info
     ATTRIBUTE_MAPPING.each_with_object({}) do |(remote_name, local_name), mapped|

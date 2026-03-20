@@ -14,7 +14,7 @@ RSpec.describe Database::StoreSelectiveExportJob do
 
     before do
       allow(Database::SelectiveExport).to receive(:call).and_yield export_file
-      File.open(export_file.path, "w+") { _1.puts SecureRandom.hex(128) }
+      File.open(export_file.path, "w+") { it.puts SecureRandom.hex(128) }
     end
 
     it "creates a new export" do

@@ -154,7 +154,7 @@ class GithubClient
       raw_data[key].presence
     end
 
-    def flag(key)
+    def flag(key) # rubocop:disable Naming/PredicateMethod -- not a predicate, converts to boolean flag value
       !!raw_data[key]
     end
 

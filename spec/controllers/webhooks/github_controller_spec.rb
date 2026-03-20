@@ -20,13 +20,13 @@ RSpec.describe Webhooks::GithubController do
     let(:secret) { ENV.fetch("GITHUB_WEBHOOK_SECRET") }
 
     def signature
-      OpenSSL::HMAC.hexdigest OpenSSL::Digest.new("sha1"), secret, request_body.to_json
+      OpenSSL::HMAC.hexdigest OpenSSL::Digest.new("sha256"), secret, request_body.to_json
     end
 
     def do_request
       request.headers["X-GitHub-Event"] = event_name
       request.headers["Content-Type"] = "application/json"
-      request.headers["X-Hub-Signature"] = "sha1=#{signature}"
+      request.headers["X-Hub-Signature-256"] = "sha256=#{signature}"
 
       post :create, body: request_body.to_json
     end
@@ -45,15 +45,15 @@ RSpec.describe Webhooks::GithubController do
     describe "with invalid signature" do
       let(:signature) { "INVALID" }
 
-      it "raises an GithubWebhook::Processor::SignatureError on invalid signature" do
-        expect { do_request }.to raise_error GithubWebhook::Processor::SignatureError
+      it "raises an Webhooks::GithubController::SignatureError on invalid signature" do
+        expect { do_request }.to raise_error Webhooks::GithubController::SignatureError
       end
 
       it "does not queue CatalogImportJob" do
         expect(CatalogImportJob).not_to receive(:perform_in)
         begin
           do_request
-        rescue GithubWebhook::Processor::SignatureError
+        rescue Webhooks::GithubController::SignatureError
           "this is fine"
         end
       end
@@ -91,8 +91,8 @@ RSpec.describe Webhooks::GithubController do
     describe "with invalid event name" do
       let(:event_name) { "cupcake!!!" }
 
-      it "raises UnsupportedEventError" do
-        expect { do_request }.to raise_error GithubWebhook::Processor::UnsupportedGithubEventError
+      it "raises Webhooks::GithubController::UnsupportedEventError" do
+        expect { do_request }.to raise_error Webhooks::GithubController::UnsupportedEventError
       end
     end
   end

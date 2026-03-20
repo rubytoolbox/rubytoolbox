@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# rubocop:disable Rails/BulkChangeTable - Legacy Migration
+# rubocop:disable Rails/BulkChangeTable -- Legacy Migration
 class AddReleaseAndDependencyDataForRubygems < ActiveRecord::Migration[5.1]
   def change
     add_column :rubygems, :first_release_on, :date

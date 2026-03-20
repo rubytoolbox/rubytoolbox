@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class Webhooks::GithubController < ApplicationController
+  class SignatureError < StandardError; end
+  class UnsupportedEventError < StandardError; end
+
   skip_before_action :verify_authenticity_token
   include GithubWebhook::Processor
 
@@ -22,6 +25,22 @@ class Webhooks::GithubController < ApplicationController
     default_branch = payload.dig("repository", "default_branch")
     referenced_branches = payload["branches"]&.pluck("name")
     payload["state"] == "success" && referenced_branches&.include?(default_branch)
+  end
+
+  # GithubWebhook::Processor raises generic AbstractController::ActionNotFound
+  # for signature failures. We wrap it to raise a more descriptive error.
+  def authenticate_github_request!
+    super
+  rescue AbstractController::ActionNotFound
+    raise SignatureError
+  end
+
+  # GithubWebhook::Processor raises generic AbstractController::ActionNotFound
+  # for unsupported events. We wrap it to raise a more descriptive error.
+  def check_github_event!
+    super
+  rescue AbstractController::ActionNotFound
+    raise UnsupportedEventError
   end
 
   def webhook_secret(_payload)

@@ -42,7 +42,7 @@ RSpec.describe Cron, type: :service do
   end
 
   describe "Database::StoreSelectiveExportJob" do
-    let(:allowed_hours) { 0.upto(23).select { (_1 % 4).zero? } }
+    let(:allowed_hours) { 0.upto(23).select { (it % 4).zero? } }
     let(:other_hours) { 0.upto(23).to_a - allowed_hours }
 
     it "is queued every 4th hour" do

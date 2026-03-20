@@ -65,7 +65,7 @@ RSpec.describe "Project Comparisons", :js do
     expect_display_mode "Compact"
   end
 
-  it "has working autocompletion for project addition form" do # rubocop:disable RSpec/NoExpectationExample wait_for would fail eventually
+  it "has working autocompletion for project addition form" do # rubocop:disable RSpec/NoExpectationExample -- wait_for would fail eventually
     visit "/compare"
 
     add_using_autocomplete "widget"

@@ -58,12 +58,11 @@ RSpec.describe Project::Order do
     end
   end
 
-  default_direction = described_class::DEFAULT_DIRECTIONS.first
-
   describe "for invalid order" do
     let(:order) { described_class.new(order: "lol") }
+    let(:default_direction) { described_class::DEFAULT_DIRECTIONS.first }
 
-    it "has ordered_by #{default_direction.key}" do
+    it "has ordered_by matching the default direction" do
       expect(order.ordered_by).to eq default_direction.key
     end
 
@@ -74,9 +73,9 @@ RSpec.describe Project::Order do
   end
 
   describe "#available_groups" do
-    expected_groups = described_class::DEFAULT_DIRECTIONS.map(&:group).uniq
+    let(:expected_groups) { described_class::DEFAULT_DIRECTIONS.map(&:group).uniq }
 
-    it "has expected groups: #{expected_groups.to_sentence}" do
+    it "has the expected groups" do
       expect(described_class.new(order: nil).available_groups.keys).to eq expected_groups
     end
   end

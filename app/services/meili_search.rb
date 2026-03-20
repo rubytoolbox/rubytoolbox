@@ -31,7 +31,7 @@ class MeiliSearch
     response = http.post "/indexes/#{index}/search", json: { q: query, limit: 1000 }
     raise UnknownResponseStatus, response unless response.status == 200
 
-    Oj.load(response).fetch("hits").map { _1.fetch("permalink") }
+    Oj.load(response).fetch("hits").map { it.fetch("permalink") }
   end
 
   def ranking_rules(index)
@@ -83,7 +83,7 @@ class MeiliSearch
     end
   end
 
-  def queue_index_update(index, path, data)
+  def queue_index_update(index, path, data) # rubocop:disable Naming/PredicateMethod -- not a predicate
     response = http.post "/indexes/#{index}/#{path}", json: data
     response.body.to_s
     raise UnknownResponseStatus, response unless response.status == 202

@@ -7,7 +7,7 @@ require File.expand_path("../config/environment", __dir__)
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require "rspec/rails"
-require "sidekiq/testing"
+Sidekiq.testing!(:fake)
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # It's early stages, and SimpleCov is not happy about those not being loaded
@@ -174,10 +174,11 @@ RSpec.configure do |config|
   config.include FeatureSpecHelpers, type: :feature
 
   config.around do |example|
-    Sidekiq::Testing.inline! if example.metadata[:sidekiq_inline]
-    example.run
-  ensure
-    Sidekiq::Testing.fake!
+    if example.metadata[:sidekiq_inline]
+      Sidekiq.testing!(:inline) { example.run }
+    else
+      example.run
+    end
   end
 
   # Filter lines from Rails gems in backtraces.

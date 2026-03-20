@@ -7,7 +7,7 @@ RSpec.describe RubygemsSyncJob do
 
   let(:job) { described_class.new }
 
-  fake_gem = Struct.new(:name)
+  let(:fake_gem) { Struct.new(:name) }
 
   describe "remote spec fetching" do
     def stub_gem_specs_fetch(type:, specs:)

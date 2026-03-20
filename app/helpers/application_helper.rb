@@ -41,7 +41,7 @@ module ApplicationHelper
   # A little utility method for displaying project rankings like most downloaded gems
   # in metrics docs pages without too much repetition of in-view logic
   #
-  # rubocop:disable Metrics/ParameterLists It's not great but I'm ok with it here
+  # rubocop:disable Metrics/ParameterLists -- It's not great but I'm ok with it here
   def project_ranking(title, table:, column:, scope: Project.for_display, direction: "DESC", description: nil)
     projects = scope.order("#{table}.#{column} #{direction} NULLS LAST").limit(100)
     metrics = if table == :github_repos

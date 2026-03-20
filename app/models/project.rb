@@ -62,6 +62,7 @@ class Project < ApplicationRecord
   end
 
   include PgSearch::Model
+
   pg_search_scope :search_scope,
                   # This is unfortunately not used when using explicit tsvector columns,
                   # see https://github.com/Casecommons/pg_search#using-tsvector-columns

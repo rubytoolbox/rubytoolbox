@@ -28,7 +28,7 @@ class RubygemAdvisoriesSyncJob < ApplicationJob
 
   def perform
     Bundler::Audit::Database.update!
-    Bundler::Audit::Database.new.advisories.each { import _1 }
+    Bundler::Audit::Database.new.advisories.each { import it }
     :complete
   end
 end

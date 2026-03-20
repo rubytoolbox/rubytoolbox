@@ -21,8 +21,6 @@ class GithubRepoUpdateJob < ApplicationJob
     end
   end
 
-  private
-
   ATTRIBUTE_MAPPING = {
     archived?:                    :archived,
     average_recent_committed_at:  :average_recent_committed_at,
@@ -54,6 +52,11 @@ class GithubRepoUpdateJob < ApplicationJob
     wiki?:                        :has_wiki,
   }.freeze
 
+  # Put it in a constant so we don't have to re-initialize the array all the time
+  FALSY_VALUES = [false, []].freeze
+
+  private
+
   def store_repo(path:, info:)
     GithubRepo.find_or_initialize_by(path: path.downcase).tap do |repo|
       # Set updated at to ensure we flag what we've pulled
@@ -65,9 +68,6 @@ class GithubRepoUpdateJob < ApplicationJob
       trigger_project_updates repo.projects.pluck(:permalink)
     end
   end
-
-  # Put it in a constant so we don't have to re-initialize the array all the time
-  FALSY_VALUES = [false, []].freeze
 
   def mapped_attributes(info)
     ATTRIBUTE_MAPPING.each_with_object({}) do |(remote_name, local_name), mapped|
