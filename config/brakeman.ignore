@@ -1,6 +1,40 @@
 {
   "ignored_warnings": [
     {
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 2,
+      "fingerprint": "23cd32092623ef25b4bb35fcbbf1b909627100d506bef0b6bde96192ffc1afae",
+      "check_name": "CrossSiteScripting",
+      "message": "Unescaped model attribute",
+      "file": "app/views/blog/show.html.slim",
+      "line": 18,
+      "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
+      "code": "Blog.new(:root => Rails.root.join(\"app\", \"blog_posts\"), :cache => Rails.env.production?).find(params[:id]).body_html",
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "BlogController",
+          "method": "show",
+          "line": 16,
+          "file": "app/controllers/blog_controller.rb",
+          "rendered": {
+            "name": "blog/show",
+            "file": "app/views/blog/show.html.slim"
+          }
+        }
+      ],
+      "location": {
+        "type": "template",
+        "template": "blog/show"
+      },
+      "user_input": null,
+      "confidence": "High",
+      "cwe_id": [
+        79
+      ],
+      "note": ""
+    },
+    {
       "warning_type": "SQL Injection",
       "warning_code": 0,
       "fingerprint": "5064a7c6abdc26594864aa9e12af582c0d859b3c6222624bd22ed7f3d893eeb1",
@@ -93,6 +127,5 @@
       "note": ""
     }
   ],
-  "updated": "2024-04-19 09:45:09 +0200",
-  "brakeman_version": "6.1.2"
+  "brakeman_version": "8.0.4"
 }
