@@ -8,7 +8,7 @@ class GithubIgnore < ApplicationRecord
   end
 
   def self.ignored?(path)
-    !where(path:).count.zero?
+    where(path:).any?
   end
 
   def self.expire!(timeframe: 14.days)

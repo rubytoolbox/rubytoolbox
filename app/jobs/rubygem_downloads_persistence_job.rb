@@ -13,7 +13,7 @@
 class RubygemDownloadsPersistenceJob < ApplicationJob
   sidekiq_options queue: :priority
 
-  def perform # rubocop:disable Metrics/MethodLength It's a simple method, the SQL code is just lengthy
+  def perform # rubocop:disable Metrics/MethodLength -- It's a simple method, the SQL code is just lengthy
     return unless should_run?
 
     upsert_sql = <<~SQL.squish

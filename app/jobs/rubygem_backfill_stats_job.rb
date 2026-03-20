@@ -17,7 +17,8 @@ class RubygemBackfillStatsJob < ApplicationJob
   # We only store weekly stats on sundays, so we start from a sunday here too.
   BESTGEMS_START_DATE = Date.new 2013, 6, 30
 
-  InvalidResponse = Class.new(StandardError)
+  class InvalidResponse < StandardError
+  end
 
   #
   # Fetches daily total downloads from bestgems.org and returns it in date => total_downloads
@@ -27,8 +28,8 @@ class RubygemBackfillStatsJob < ApplicationJob
     response = HTTP.get("https://bestgems.org/api/v1/gems/#{gem_name}/total_downloads.json")
     raise InvalidResponse, "Invalid response_status=#{response.status.to_i}" unless response.status == 200
 
-    Oj.load(response).each_with_object({}) do |entry, hash|
-      hash[Date.parse(entry.fetch("date"))] = entry.fetch("total_downloads")
+    Oj.load(response).to_h do |entry|
+      [Date.parse(entry.fetch("date")), entry.fetch("total_downloads")]
     end
   end
 
@@ -80,7 +81,7 @@ class RubygemBackfillStatsJob < ApplicationJob
   # table, we have to force-issue an sql-level update statement for the records (i.e. instead of doing
   # an active record `touch`)
   #
-  # rubocop:disable Rails/SkipsModelValidations It's fine & intended
+  # rubocop:disable Rails/SkipsModelValidations -- It's fine & intended
   def trigger_the_triggers!
     rubygem.download_stats.where(absolute_change_month: nil).update_all rubygem_name: rubygem.name
   end

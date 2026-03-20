@@ -56,7 +56,7 @@ RSpec.describe Database::SelectiveExport do
 
     it "yields SQL insert statements" do
       insert_sql = nil
-      described_class.sql_inserts_from_scope(scope) { insert_sql = _1 }
+      described_class.sql_inserts_from_scope(scope) { insert_sql = it }
       original_count = scope.count
 
       scope.delete_all
@@ -68,7 +68,7 @@ RSpec.describe Database::SelectiveExport do
     context "when scope is empty" do
       let(:scope) { Project.none }
 
-      it { expect { described_class.sql_inserts_from_scope(scope, &_1) }.not_to yield_control }
+      it { expect { described_class.sql_inserts_from_scope(scope, &it) }.not_to yield_control }
     end
   end
 
@@ -98,7 +98,7 @@ RSpec.describe Database::SelectiveExport do
     subject(:export_contents) do
       (+"").tap do |export|
         described_class.call do |file|
-          Zlib::GzipReader.open(file) { export << _1.read }
+          Zlib::GzipReader.open(file) { export << it.read }
         end
       end
     end
@@ -126,7 +126,7 @@ RSpec.describe Database::SelectiveExport do
 
     it "removes the file after completion" do
       path = nil
-      described_class.call { path = _1.path }
+      described_class.call { path = it.path }
       expect(File.exist?(path)).to be false
     end
   end

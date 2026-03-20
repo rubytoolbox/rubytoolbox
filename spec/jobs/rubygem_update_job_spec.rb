@@ -54,7 +54,7 @@ RSpec.describe RubygemUpdateJob do
 
     context "when current_version didn't change during update" do
       before do
-        Factories.rubygem("rspec").tap { _1.update! current_version: expected_attributes.fetch(:current_version) }
+        Factories.rubygem("rspec").tap { it.update! current_version: expected_attributes.fetch(:current_version) }
       end
 
       it do

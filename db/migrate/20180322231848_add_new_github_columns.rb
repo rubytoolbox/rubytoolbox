@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# rubocop:disable Rails/BulkChangeTable - Legacy Migration
+# rubocop:disable Rails/BulkChangeTable -- Legacy Migration
 class AddNewGithubColumns < ActiveRecord::Migration[5.1]
   def change
     add_column :github_repos, :primary_language, :string

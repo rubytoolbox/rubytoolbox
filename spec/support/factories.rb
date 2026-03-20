@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module Factories
-  # rubocop:disable Metrics/MethodLength All-in-one-place is more relevant than short methods here
-  # rubocop:disable Metrics/ParameterLists Yeah we kinda need it here to customize the thing :/
+  # rubocop:disable Metrics/MethodLength -- All-in-one-place is more relevant than short methods here
+  # rubocop:disable Metrics/ParameterLists -- Yeah we kinda need it here to customize the thing :/
   class << self
     def project(name,
                 score: 25,

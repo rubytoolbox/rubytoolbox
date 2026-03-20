@@ -5,8 +5,8 @@ require "rails_helper"
 RSpec.describe Project::Health do
   fixtures :all
 
-  def status(key: :healthy, level: :green, icon: :heartbeat, &block)
-    Project::Health::Status.new key, level, icon, &block
+  def status(key: :healthy, level: :green, icon: :heartbeat, &)
+    Project::Health::Status.new(key, level, icon, &)
   end
 
   let(:health) { described_class.new(project) }

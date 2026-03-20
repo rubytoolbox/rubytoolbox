@@ -3,7 +3,7 @@
 #
 # See http://rubocop.readthedocs.io/en/latest/ for detailed configuration options documentation
 
-require:
+plugins:
   - rubocop-capybara
   - rubocop-performance
   - rubocop-rails

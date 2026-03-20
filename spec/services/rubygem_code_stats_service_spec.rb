@@ -38,7 +38,7 @@ RSpec.describe RubygemCodeStatsService, type: :service do
 
     it { is_expected.to be_a(described_class::ResultSet).and have_attributes(count: 4) }
 
-    it do # rubocop:disable RSpec/ExampleLength Since extraction is a bit expensive better verify in one swoop
+    it do # rubocop:disable RSpec/ExampleLength -- Since extraction is a bit expensive better verify in one swoop
       expect(statistics).to include(
         have_attributes(
           language: "c",

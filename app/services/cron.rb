@@ -6,7 +6,7 @@
 # hour, i.e. using the Heroku hourly scheduler and `rake cron`
 #
 class Cron
-  def run(time: Time.current.utc) # rubocop:disable Metrics/MethodLength It's easier to have it in one place
+  def run(time: Time.current.utc) # rubocop:disable Metrics/MethodLength -- It's easier to have it in one place
     case time.hour
     when 0
       RubygemsSyncJob.perform_async

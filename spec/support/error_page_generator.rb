@@ -18,7 +18,7 @@ class ErrorPageGenerator
   end
 
   def write!
-    path.open("w+") { _1.puts rendered }
+    path.open("w+") { it.puts rendered }
   end
 
   def rendered

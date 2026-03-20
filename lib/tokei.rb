@@ -12,7 +12,8 @@
 class Tokei
   BIN_BASE_PATH = Pathname.new(__dir__).expand_path.join("tokei", "bin")
 
-  UnknownPlatformError = Class.new StandardError
+  class UnknownPlatformError < StandardError
+  end
 
   Platform = Struct.new(:arch, :executable, :sha256sum) do
     # Path of pre-built tokei binary suitable for current platform
@@ -33,7 +34,7 @@ class Tokei
   private attr_accessor :platform
 
   def initialize(arch = RbConfig::CONFIG["arch"])
-    match = PLATFORMS.find { _1.arch == arch }
+    match = PLATFORMS.find { it.arch == arch }
     raise UnknownPlatformError unless match
 
     self.platform = match
