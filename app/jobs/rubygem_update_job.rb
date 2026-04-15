@@ -74,10 +74,29 @@ class RubygemUpdateJob < ApplicationJob
     end
   end
 
+  # IMPORTANT: This uses created_at (when the version was pushed to rubygems.org)
+  # instead of built_at throughout this job. The built_at field comes from the
+  # gemspec date, which is no longer reliable:
+  #
+  # Starting with RubyGems 3.6+ (March 2025), gem builds default SOURCE_DATE_EPOCH
+  # to 315619200 (1980-01-02) for reproducible builds, i.e. for security.
+  # Reproducible builds let anyone rebuild a gem from source and verify the result
+  # is bit-for-bit identical to what's on rubygems.org. This prevents supply-chain
+  # attacks — like ruby/rubygems#3118 — because a tampered gem wouldn't reproduce.
+  # This means built_at is 1980-01-02 for any gem built with modern RubyGems
+  # unless the author explicitly sets spec.date or SOURCE_DATE_EPOCH.
+  # As developers upgrade RubyGems, the numbe rof gems with bogus built_at dates
+  # will only increase.
+  #
+  # The trade-off: for very old gems that predate rubygems.org (~2009), created_at
+  # reflects the import date rather than the original build date. This is a minor
+  # inaccuracy for a small, finite set of gems.
+  #
+  # See: https://github.com/rubygems/rubygems/pull/8568
   def extra_attributes
     {
-      first_release_on:           releases.first["built_at"],
-      latest_release_on:          releases.last["built_at"],
+      first_release_on:           releases.first["created_at"],
+      latest_release_on:          info["version_created_at"],
       releases_count:             releases.count,
       reverse_dependencies_count: reverse_dependencies.count,
     }
@@ -88,13 +107,13 @@ class RubygemUpdateJob < ApplicationJob
   end
 
   def releases
-    @releases ||= fetch_gem_api_response("versions/#{name}.json").sort_by { |v| v["built_at"] }
+    @releases ||= fetch_gem_api_response("versions/#{name}.json").sort_by { |v| v["created_at"] }
   end
 
   def quarterly_releases
     grouped_by_quarter = releases.uniq { |r| r["number"] }.group_by do |r|
-      built = Time.zone.parse(r["built_at"])
-      "#{built.year}-#{(built.month / 3.0).ceil}"
+      created = Time.zone.parse(r["created_at"])
+      "#{created.year}-#{(created.month / 3.0).ceil}"
     end
 
     grouped_by_quarter.transform_values(&:count)
