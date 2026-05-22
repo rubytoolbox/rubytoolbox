@@ -12,7 +12,7 @@ class TrendsController < ApplicationController
   end
 
   def show
-    @navigation = Rubygem::Trend::Navigation.find(params[:id])
+    @navigation = Rubygem::Trend::Navigation.find(params.expect(:id))
     redirect_to id: @navigation.date unless @navigation.exact_match?(params[:id])
 
     @trends = Rubygem::Trend.for_date(@navigation.date)
