@@ -138,8 +138,7 @@ RSpec.describe RubygemUpdateJob do
 
         # Version 2.0.0 should be counted in Q1 2026 (created_at: 2026-02-04)
         # NOT in Q1 1980 (bogus built_at: 1980-01-02)
-        expect(quarterly_counts).to include("2026-1" => 1)
-        expect(quarterly_counts).not_to have_key("1980-1")
+        expect(quarterly_counts).to include("2026-1" => 1).and exclude("1980-1")
       end
 
       it "does not include releases in quarters before the actual first release" do
@@ -149,7 +148,7 @@ RSpec.describe RubygemUpdateJob do
 
         # Should only have quarters from 2012 onwards (actual first release)
         # No quarters from 1980
-        quarterly_counts.keys.each do |quarter|
+        quarterly_counts.each_key do |quarter|
           year = quarter.split("-").first.to_i
           expect(year).to be >= 2012
         end
