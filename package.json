@@ -5,7 +5,7 @@
         "@creativebulma/bulma-tooltip": ">= 1.2.0",
         "@fontsource/lato": "^5.2.7",
         "accessible-autocomplete": "^3.0.1",
-        "bulma": ">=0.9.4",
+        "bulma": ">=1.0.4",
         "chart.js": "^2.7.3",
         "font-awesome": "^4.7.0",
         "github-syntax-light": ">= 0.5.0",
