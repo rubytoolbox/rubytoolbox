@@ -12,6 +12,6 @@ class BlogController < ApplicationController
   end
 
   def show
-    @post = BLOG.find(params[:id])
+    @post = BLOG.find(params.expect(:id))
   end
 end

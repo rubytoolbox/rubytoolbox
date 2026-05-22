@@ -3,13 +3,13 @@
     {
       "warning_type": "Cross-Site Scripting",
       "warning_code": 2,
-      "fingerprint": "23cd32092623ef25b4bb35fcbbf1b909627100d506bef0b6bde96192ffc1afae",
+      "fingerprint": "03ab278ac8565e7484a7e9ad844f4193836268cd57eea2ef00242315f83db0f2",
       "check_name": "CrossSiteScripting",
       "message": "Unescaped model attribute",
       "file": "app/views/blog/show.html.slim",
       "line": 18,
       "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
-      "code": "Blog.new(:root => Rails.root.join(\"app\", \"blog_posts\"), :cache => Rails.env.production?).find(params[:id]).body_html",
+      "code": "Blog.new(:root => Rails.root.join(\"app\", \"blog_posts\"), :cache => Rails.env.production?).find(params.expect(:id)).body_html",
       "render_path": [
         {
           "type": "controller",
