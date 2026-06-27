@@ -230,7 +230,7 @@ GEM
     i18n (1.14.8)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
-    image_processing (2.0.1)
+    image_processing (2.0.2)
     iniparse (1.5.0)
     io-console (0.8.2)
     irb (1.18.0)
