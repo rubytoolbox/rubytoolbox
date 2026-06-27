@@ -5,6 +5,8 @@ require "rails_helper"
 RSpec.describe Search do
   fixtures :all
 
+  let(:abusive_query) { "a" * (Search::QueryCheck::MAX_QUERY_LENGTH + 1) }
+
   describe "#query" do
     it "is the cleaned up search query" do
       expect(described_class.new(" foo bar ").query).to eq "foo bar"
@@ -22,6 +24,22 @@ RSpec.describe Search do
 
     it "is false for a blank query" do
       expect(described_class.new(" \n ")).not_to be_query
+    end
+  end
+
+  describe "#runnable?" do
+    # Exhaustive length/token boundaries live in Search::QueryCheck's spec;
+    # here we just confirm Search defers the decision to it.
+    it "is true for a regular query" do
+      expect(described_class.new("rails authentication")).to be_runnable
+    end
+
+    it "is false for a blank query" do
+      expect(described_class.new(" \n ")).not_to be_runnable
+    end
+
+    it "is false for an abusive query" do
+      expect(described_class.new(abusive_query)).not_to be_runnable
     end
   end
 
@@ -46,6 +64,15 @@ RSpec.describe Search do
       allow(Project).to receive(:search).with("my query", order: kind_of(Project::Order), show_forks: false)
                                         .and_return(collection)
       expect(described_class.new("my query").projects).to eq collection
+    end
+
+    it "does not run a project search for an abusive query" do
+      expect(Project).not_to receive(:search)
+      described_class.new(abusive_query).projects
+    end
+
+    it "returns no projects for an abusive query" do
+      expect(described_class.new(abusive_query).projects).to be_empty
     end
 
     describe "when NEW_SEARCH is enabled" do
@@ -102,6 +129,15 @@ RSpec.describe Search do
       collection = %w[some projects]
       allow(Category).to receive(:search).with("my query").and_return(collection)
       expect(described_class.new("my query").categories).to eq collection
+    end
+
+    it "does not run a category search for an abusive query" do
+      expect(Category).not_to receive(:search)
+      described_class.new(abusive_query).categories
+    end
+
+    it "returns no categories for an abusive query" do
+      expect(described_class.new(abusive_query).categories).to be_empty
     end
   end
 

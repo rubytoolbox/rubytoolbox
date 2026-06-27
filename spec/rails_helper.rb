@@ -126,12 +126,20 @@ RSpec.configure do |config|
   # Fail js capybara tests when the browser log has JS errors.
   # Snippet courtesy of:
   # https://medium.com/@coorasse/catch-javascript-errors-in-your-system-tests-89c2fe6773b1
-  config.after :each, :js, type: :feature do
+  config.after :each, :js, type: :feature do |example|
     # The latest magic incantation courtesy of https://stackoverflow.com/a/73879550
     errors = page.driver.browser.logs.get(:browser)
     if errors.present?
+      # Some examples intentionally exercise non-2xx responses (e.g. the search
+      # "unavailable" page returns 503), which the browser logs as a SEVERE
+      # "Failed to load resource" entry. Those examples can opt out of failing
+      # on that specific message via :allow_http_error_logs.
+      allow_http_error_logs = example.metadata[:allow_http_error_logs]
+
       aggregate_failures "javascript errrors" do
         errors.each do |error|
+          next if allow_http_error_logs && error.message.include?("Failed to load resource")
+
           expect(error.level).not_to eq("SEVERE"), error.message
           next unless error.level == "WARNING"
 

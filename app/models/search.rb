@@ -14,8 +14,17 @@ class Search
     query.present?
   end
 
+  # Whether the query is one we are actually willing to run against the
+  # database. Blank or abusive queries yield no results rather than risking a
+  # slow/expensive search; see Search::QueryCheck.
+  def runnable?
+    QueryCheck.new(query).runnable?
+  end
+
   def projects
-    @projects ||= if ENV["NEW_SEARCH"]
+    @projects ||= if !runnable?
+                    Project.none
+                  elsif ENV["NEW_SEARCH"]
                     meili_search_results
                   else
                     Project.search(query, order:, show_forks:)
@@ -23,7 +32,7 @@ class Search
   end
 
   def categories
-    @categories ||= Category.search(query)
+    @categories ||= runnable? ? Category.search(query) : Category.none
   end
 
   private
