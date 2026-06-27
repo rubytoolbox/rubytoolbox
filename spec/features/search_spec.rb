@@ -185,6 +185,33 @@ RSpec.describe "Search", :js do
     expect_display_mode "Compact"
   end
 
+  it "treats abusive queries as yielding no results instead of erroring" do
+    search_for "a" * (Search::QueryCheck::MAX_QUERY_LENGTH + 1)
+
+    expect(page).to have_text "No matching projects were found"
+    expect(page).to have_text "No matching categories were found"
+  end
+
+  it "shows an unavailable notice when the search killswitch is enabled", :allow_http_error_logs do
+    allow(SearchesController).to receive(:search_disabled?).and_return(true)
+
+    search_for "widget"
+
+    expect(page).to have_text "Search is temporarily unavailable"
+  end
+
+  it "shows an unavailable notice when a search query exceeds the statement timeout", :allow_http_error_logs do
+    # Mock the timeout to 1ms and force the search query to sleep far longer,
+    # so Postgres aborts it almost immediately — reproducing the real
+    # statement-timeout path end to end without slowing the test down.
+    allow(SearchesController).to receive(:statement_timeout_ms).and_return(1)
+    allow(Project).to receive(:search).and_return(Project.where("pg_sleep(1) IS NOT NULL"))
+
+    search_for "widget"
+
+    expect(page).to have_text "Search is temporarily unavailable"
+  end
+
   private
 
   #
