@@ -1,59 +1,39 @@
-@import "font-awesome"
+// `../stylesheets/variables` configures Bulma 1.x and re-forwards its modules,
+// so this @use both customizes Bulma's variables and makes its selectors
+// visible to @extend rules below.
+@use "../stylesheets/variables" as *
+@use "../stylesheets/components/category_card"
+@use "../stylesheets/components/documentation_page"
+@use "../stylesheets/components/landing_feature"
+@use "../stylesheets/components/landing_hero"
+@use "../stylesheets/components/project"
+@use "../stylesheets/components/project_comparison"
+@use "../stylesheets/components/project_display_picker"
+@use "../stylesheets/components/project_health_tag"
+@use "../stylesheets/components/project_list"
+@use "../stylesheets/components/project_order_dropdown"
+@use "../stylesheets/components/project_release_history"
+@use "../stylesheets/components/readme"
+@use "../stylesheets/components/section_heading"
+
+// Plain CSS dependencies — kept as CSS @import (with explicit .css) so Sass
+// emits them as native CSS @imports rather than parsing them as Sass modules.
+@import "font-awesome/css/font-awesome.css"
 @import "@fontsource/lato/400.css"
 @import "@fontsource/lato/700.css"
 @import "accessible-autocomplete/dist/accessible-autocomplete.min.css"
-
-// Default bulma font stack, plus Lato webfont as priority
-$family-sans-serif: "Lato", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif
-
-// Adjust bulma weight variables to weights of lato font that are actually loaded
-$weight-light:    400
-$weight-normal:   400
-$weight-medium:   400
-$weight-semibold: 700
-$weight-bold:     700
-
-// Bulma colors reference:
-// * https://bulma.io/documentation/overview/colors/
-// * https://bulma.io/documentation/modifiers/typography-helpers/
-$red: #A61414
-$link: $red
-$primary: $red
-$success: #59A80F
-$text: #222
-
-$navbar-height: 4.5rem
-$navbar-item-hover-background-color: transparent
-$navbar-item-active-background-color: transparent
-$navbar-tab-hover-background-color: transparent
-$navbar-tab-active-background-color: transparent
-// Need to set these variables despite them being bulma defaults
-// so we can customize the navbar breakpoint to the
-// default bulma widescreen breakpoint before importing bulma itself
-$gap: 64px
-$widescreen: 1152px + (2 * $gap)
-// Navbar burger toggles on desktop <-> widescreen (default: tablet <-> desktop)
-// since we have too many menu items
-$navbar-breakpoint: $widescreen
-
-
-@import "bulma/bulma.sass"
-@import "@creativebulma/bulma-tooltip/dist/bulma-tooltip"
+@import "@creativebulma/bulma-tooltip/dist/bulma-tooltip.css"
 @import "github-syntax-light/lib/github-light.css"
 
-@import "~/stylesheets/components/category_card"
-@import "~/stylesheets/components/documentation_page"
-@import "~/stylesheets/components/landing_feature"
-@import "~/stylesheets/components/landing_hero"
-@import "~/stylesheets/components/project"
-@import "~/stylesheets/components/project_comparison"
-@import "~/stylesheets/components/project_display_picker"
-@import "~/stylesheets/components/project_health_tag"
-@import "~/stylesheets/components/project_list"
-@import "~/stylesheets/components/project_order_dropdown"
-@import "~/stylesheets/components/project_release_history"
-@import "~/stylesheets/components/readme"
-@import "~/stylesheets/components/section_heading"
+// Bulma 1.x removed the `.heading` helper that 0.x exposed alongside
+// `.subtitle`; restore it so the existing slim templates keep their
+// small uppercase caption styling (e.g. `p.heading Project`).
+.heading
+  display: block
+  font-size: 11px
+  letter-spacing: 1px
+  margin-bottom: 5px
+  text-transform: uppercase
 
 .border-bottom
   border-bottom: 1px solid $light
@@ -221,4 +201,3 @@ article.blog-post
     b
       color: black
       font-weight: bold
-

@@ -1,0 +1,12 @@
+// Single configuration point for Bulma 1.x. Anything that @uses this module
+// also pulls in Bulma's selectors, so @extend can see them.
+//
+// `@forward ... with (...)` configures Bulma's `!default` variables and
+// re-exposes everything Bulma exports (palette, sizes, family/weight, etc.).
+// The with-clause cannot reference variables from the module being loaded, so
+// $widescreen and $navbar-breakpoint are inlined (1152px + 2 * $gap = 1280px).
+@forward "bulma/sass" with ($family-primary: ("Lato", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif), $weight-light: 400, $weight-normal: 400, $weight-medium: 400, $weight-semibold: 700, $weight-bold: 700, $red: #A61414, $link: #A61414, $primary: #A61414, $success: #59A80F, $text: #222, $gap: 64px, $widescreen: 1280px, $navbar-breakpoint: 1280px, $navbar-height: 4.5rem, $navbar-item-hover-background-l-delta: 0%, $navbar-item-active-background-l-delta: 0%)
+
+// $box-shadow no longer exists in Bulma 1.x; expose our own value for any
+// rule that still needs a Bulma-1-flavoured drop shadow.
+$box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02)
