@@ -42,7 +42,6 @@ module Rubytoolbox
     config.lograge.formatter = Lograge::Formatters::Logstash.new
 
     config.active_record.schema_format = :sql
-    config.active_storage.variant_processor = :mini_magick
 
     config.generators do |c|
       # Don't generate system test files.
