@@ -493,6 +493,7 @@ GEM
     rubyzip (3.4.1)
     ruby-vips (2.3.0)
       ffi (~> 1.12)
+      logger (>= 0)
     sanitize (7.0.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.16.8)
