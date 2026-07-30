@@ -1,4 +1,4 @@
-FROM ruby:4.0.5
+FROM ruby:4.0.6
 
 # Create non-privileged dev user
 RUN addgroup --gid 1000 rubytoolbox
