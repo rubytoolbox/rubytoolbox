@@ -112,8 +112,6 @@ group :test do
   gem "capybara"
   gem "launchy"
   gem "selenium-webdriver"
-  # Easy installation and use of selenium webdriver browsers to run system tests
-  gem "webdrivers"
 
   gem "percy-capybara"
 
