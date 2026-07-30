@@ -35,7 +35,7 @@ gem "dry-struct"
 gem "dry-types"
 
 # Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
+gem "mini_magick"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false

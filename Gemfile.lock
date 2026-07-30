@@ -283,6 +283,7 @@ GEM
     marcel (1.2.1)
     matrix (0.4.3)
     method_source (1.1.0)
+    mini_magick (4.13.2)
     mini_mime (1.1.5)
     minitar (1.1.0)
     minitest (6.0.6)
@@ -614,6 +615,7 @@ DEPENDENCIES
   listen
   lograge
   logstash-event
+  mini_magick
   minitar
   oj
   overcommit
