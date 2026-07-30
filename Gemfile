@@ -34,9 +34,6 @@ gem "blueprinter"
 gem "dry-struct"
 gem "dry-types"
 
-# Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
-
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
@@ -81,8 +78,6 @@ gem "logstash-event"
 # Faster JSON
 gem "oj"
 
-gem "image_processing"
-
 # Use CoffeeScript for .coffee assets and views
 # gem "coffee-rails", "~> 4.2"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -112,8 +107,6 @@ group :test do
   gem "capybara"
   gem "launchy"
   gem "selenium-webdriver"
-  # Easy installation and use of selenium webdriver browsers to run system tests
-  gem "webdrivers"
 
   gem "percy-capybara"
 

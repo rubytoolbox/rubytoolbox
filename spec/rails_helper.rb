@@ -36,15 +36,7 @@ ActiveRecord::Migration.maintain_test_schema!
 
 VCR.configure do |c|
   c.ignore_hosts "localhost",
-                 "127.0.0.1",
-                 # as per https://github.com/titusfortner/webdrivers/wiki/Using-with-VCR-or-WebMock
-                 "chromedriver.storage.googleapis.com",
-                 "googlechromelabs.github.io",
-                 "storage.googleapis.com",
-                 "edgedl.me.gvt1.com",
-                 "github.com/mozilla/geckodriver/releases",
-                 "selenium-release.storage.googleapis.com",
-                 "developer.microsoft.com/en-us/microsoft-edge/tools/webdriver"
+                 "127.0.0.1"
 
   c.cassette_library_dir = Rails.root.join("spec", "cassettes")
   c.default_cassette_options = { record: :new_episodes }
@@ -52,8 +44,6 @@ VCR.configure do |c|
   c.configure_rspec_metadata!
   c.filter_sensitive_data("<GITHUB_TOKEN>") { ENV.fetch("GITHUB_TOKEN", nil) }
 end
-
-Webdrivers.cache_time = 300
 
 # To clean up test output, comment this line to
 Capybara.server = :puma, { Silent: true }
