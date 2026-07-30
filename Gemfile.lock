@@ -230,7 +230,6 @@ GEM
     i18n (1.15.2)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
-    image_processing (2.0.2)
     iniparse (1.5.0)
     io-console (0.8.2)
     irb (1.18.0)
@@ -491,9 +490,6 @@ GEM
       racc (~> 1.5)
       sexp_processor (~> 4.16)
     rubyzip (3.4.1)
-    ruby-vips (2.3.0)
-      ffi (~> 1.12)
-      logger (>= 0)
     sanitize (7.0.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.16.8)
@@ -611,7 +607,6 @@ DEPENDENCIES
   hairtrigger
   high_voltage
   http
-  image_processing
   kaminari
   launchy
   listen
@@ -645,7 +640,6 @@ DEPENDENCIES
   ruby-lsp
   ruby-lsp-rails
   ruby-lsp-rspec
-  ruby-vips
   sanitize
   selenium-webdriver
   shoulda-matchers

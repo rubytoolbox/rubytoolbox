@@ -34,9 +34,6 @@ gem "blueprinter"
 gem "dry-struct"
 gem "dry-types"
 
-# Use ActiveStorage variant (Rails 8.1+ default)
-gem "ruby-vips"
-
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
@@ -80,8 +77,6 @@ gem "logstash-event"
 
 # Faster JSON
 gem "oj"
-
-gem "image_processing"
 
 # Use CoffeeScript for .coffee assets and views
 # gem "coffee-rails", "~> 4.2"
