@@ -222,7 +222,7 @@ GEM
     hashdiff (1.2.1)
     high_voltage (5.0.0)
     htmlentities (4.3.4)
-    http (6.0.3)
+    http (6.0.4)
       http-cookie (~> 1.0)
       llhttp (~> 0.6.1)
     http-cookie (1.1.6)
@@ -261,7 +261,7 @@ GEM
       logger
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    llhttp (0.6.1)
+    llhttp (0.6.2)
     logger (1.7.0)
     lograge (0.14.0)
       actionpack (>= 4)
