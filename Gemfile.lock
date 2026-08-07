@@ -346,7 +346,7 @@ GEM
     rack-cors (3.0.0)
       logger
       rack (>= 3.0.14)
-    rack-proxy (0.8.2)
+    rack-proxy (0.8.3)
       rack
     rack-session (2.1.2)
       base64 (>= 0.1.0)
@@ -550,7 +550,7 @@ GEM
     uri (1.1.1)
     useragent (0.16.11)
     vcr (6.4.0)
-    vite_rails (3.11.0)
+    vite_rails (3.11.1)
       railties (>= 5.1, < 9)
       vite_ruby (~> 3.0, >= 3.2.2)
     vite_ruby (3.10.2)
