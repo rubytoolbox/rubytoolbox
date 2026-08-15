@@ -1,0 +1,17 @@
+# Sidekiq server configuration, see https://github.com/sidekiq/sidekiq/wiki/Advanced-Options
+:queues:
+  - priority
+  - default
+
+# Recurring jobs via sidekiq-scheduler, replacing the former hourly
+# Heroku Scheduler invocation of `rake cron`.
+# See https://github.com/sidekiq-scheduler/sidekiq-scheduler
+:scheduler:
+  # Only schedule in production by default, so local development workers
+  # don't kick off recurring production-style jobs every hour
+  :enabled: <%= ENV["RAILS_ENV"] == "production" || ENV["SIDEKIQ_SCHEDULER_ENABLED"] == "true" %>
+  :schedule:
+    cron:
+      cron: "0 * * * *"
+      class: CronJob
+      description: "Hourly dispatcher for recurring jobs (see Cron service)"
