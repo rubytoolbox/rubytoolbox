@@ -1,3 +1,11 @@
+# No parent `deploy` meta task on purpose: the parent-task convention is
+# parallel fan-out over all subtasks, which makes no sense here (deploy:release
+# runs remotely on fly.io as part of deploy:fly's deployment).
+
+["deploy:fly"]
+description = "Deploy the app to production on fly.io"
+run = "fly deploy"
+
 ["deploy:release"]
 description = "Release phase before a new deployment goes live (migrations & post-release hooks)"
 run = "bundle exec rake db:migrate release"

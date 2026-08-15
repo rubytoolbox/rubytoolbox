@@ -1,0 +1,33 @@
+# Standalone redis instance for sidekiq queue & schedule data, running as
+# its own tiny fly.io app. See doc/deployment.md for the provisioning runbook.
+#
+# It is reachable exclusively over the organization's private network at
+# rubytoolbox-production-redis.internal:6379 - no public IPs are allocated since no
+# services are exposed - and requires authentication via the REDIS_PASSWORD
+# secret (fly secrets set --app rubytoolbox-production-redis REDIS_PASSWORD=...).
+#
+# Queue data is mostly transient, but persisted via append-only file on the
+# attached volume so a machine restart loses (almost) nothing.
+#
+# maxmemory-policy noeviction is required for sidekiq: when redis runs full
+# it must reject writes instead of silently dropping enqueued jobs.
+#
+# Deploy with: fly deploy --config .deploy/redis.toml
+
+app = "rubytoolbox-production-redis"
+primary_region = "fra"
+
+[build]
+  image = "redis:8-alpine"
+
+[processes]
+  redis = "sh -c 'exec redis-server --appendonly yes --dir /data --maxmemory 192mb --maxmemory-policy noeviction --requirepass \"$REDIS_PASSWORD\"'"
+
+[mounts]
+  source = "redis_data"
+  destination = "/data"
+
+[[vm]]
+  memory = "256mb"
+  cpu_kind = "shared"
+  cpus = 1
