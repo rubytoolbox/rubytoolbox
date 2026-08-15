@@ -35,3 +35,6 @@
 /spec
 /coverage
 /doc
+
+# Ignore fly.io deployment configuration (not needed inside the image)
+/.deploy

@@ -1,0 +1,93 @@
+# fly.io app configuration, see https://fly.io/docs/reference/configuration/
+# and doc/deployment.md for the overall setup & provisioning runbook.
+#
+# Secrets are managed exclusively via `fly secrets set` - see the runbook
+# for the expected list. CANONICAL_HOST intentionally stays unset until
+# the DNS cutover so the app remains debuggable under rubytoolbox.fly.dev.
+
+app = "rubytoolbox-production"
+primary_region = "fra"
+
+# Machines have no swap by default and OOM-kill on overrun (unlike heroku
+# dynos) - a little swap absorbs brief memory spikes
+swap_size_mb = 256
+
+# Give sidekiq time to finish or re-enqueue in-flight jobs on shutdown
+# (its default graceful shutdown period is 25s; fly's default of 5s would
+# hard-kill mid-job). Puma equally shuts down gracefully on SIGTERM.
+kill_signal = "SIGTERM"
+kill_timeout = 30
+
+# Used by `fly console` for an ephemeral console machine, as an alternative
+# to `mise run console:fly` which attaches to the running web machine
+console_command = "bin/rails console"
+
+[build]
+
+[deploy]
+  release_command = "mise run deploy:release"
+  # Migrations on the sizable production database may well take longer
+  # than the default 5 minute timeout
+  release_command_timeout = "15m"
+  # Zero-downtime deploys with a single web machine: the replacement is
+  # started and health-checked before traffic swaps over
+  strategy = "bluegreen"
+
+[env]
+  # These match the previous production settings on heroku. RAILS_MAX_THREADS
+  # also determines the database connection pool size (see config/database.yml)
+  RAILS_MAX_THREADS = "10"
+  # Technically obsolete nowadays: the current config/environments/production.rb
+  # serves static files and logs to stdout unconditionally, these env vars only
+  # mattered for the classic conditional defaults of older rails versions.
+  # RADAR: Consider removing them
+  RAILS_SERVE_STATIC_FILES = "enabled"
+  RAILS_LOG_TO_STDOUT = "enabled"
+
+[processes]
+  web = "bundle exec puma -C config/puma.rb"
+  # Queues and the recurring job schedule come from config/sidekiq.yml
+  worker = "bundle exec sidekiq"
+
+[http_service]
+  processes = ["web"]
+  internal_port = 5000
+  force_https = true
+  # Lightweight autoscaling: the machine pool is sized via
+  # `fly scale count web=3`, and the fly proxy starts stopped machines when
+  # the running ones approach their concurrency limits (and stops idle ones
+  # again), always keeping at least one machine running
+  # suspend resumes in a fraction of the time a stopped machine needs for
+  # a full rails boot, keeping first-request latency on scale-up low
+  auto_stop_machines = "suspend"
+  auto_start_machines = true
+  min_machines_running = 1
+
+  [http_service.concurrency]
+    # Matches the puma thread count (RAILS_MAX_THREADS): additional machines
+    # start as running ones approach thread saturation
+    type = "requests"
+    soft_limit = 8
+    hard_limit = 10
+
+  [[http_service.checks]]
+    path = "/up"
+    method = "GET"
+    interval = "15s"
+    timeout = "5s"
+    grace_period = "30s"
+
+# Both process types ran fine on 512mb dynos on heroku. YJIT adds some
+# memory overhead on top - if that bites, machines can be resized live
+# via `fly machine update --vm-memory` or by bumping this
+[[vm]]
+  processes = ["web"]
+  memory = "512mb"
+  cpu_kind = "shared"
+  cpus = 1
+
+[[vm]]
+  processes = ["worker"]
+  memory = "512mb"
+  cpu_kind = "shared"
+  cpus = 1
