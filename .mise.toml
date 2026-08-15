@@ -7,6 +7,10 @@
 # .ruby-version must remain a separate file because the Gemfile reads it.
 pnpm = "11"
 
+[env]
+# Load the local dotenv file like foreman used to (ignored when absent)
+_.file = ".env"
+
 [settings]
 # Honor .ruby-version / .node-version regardless of contributors' global mise config
 idiomatic_version_file_enable_tools = ["ruby", "node"]
