@@ -18,8 +18,9 @@ PostCheckout:
   PnpmInstall: &pnpm_install
     enabled: true
     description: 'Install pnpm dependencies'
-    required_executable: 'pnpm'
-    flags: ['install']
+    # Runs through mise to guarantee the project-pinned pnpm version is used
+    required_executable: 'mise'
+    flags: ['exec', '--', 'pnpm', 'install']
     requires_files: true
     include:
       - 'package.json'
