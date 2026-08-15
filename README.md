@@ -42,7 +42,7 @@ to get the full toolchain.
 1. Install the project's dependencies and prepare the database with `mise run setup`
 1. *Optional but recommended*: Import a partial production database dump using [`bin/pull_database`](./bin/pull_database). You can also load some test data quickly by running `rake db:fixtures:load`
 1. In order to access the GitHub GraphQL API for pulling repo data, you need to [create a OAuth token as per GitHub's documentation](https://developer.github.com/v4/guides/forming-calls/#authenticating-with-graphql). No auth scopes are needed. Place the token as `GITHUB_TOKEN=yourtoken` in `.env.local` and `.env.local.test`.
-1. Run the development processes (web, worker & vite) with `mise run server`. You can access the site at `http://localhost:3000`
+1. Run the development processes (web, worker & vite) with `mise run server`. You can access the site at `http://localhost:5000`
 
 ### Further steps
 
@@ -50,7 +50,7 @@ to get the full toolchain.
 * You can check code style and security with `mise run lint` (and auto-format with `mise run format`)
 * During development you can launch [guard](https://github.com/guard/guard) using `bundle exec guard` to continuously check your changes
 * The repo has [overcommit](https://github.com/brigade/overcommit) git hooks set up to check your changes before commit, push etc. You can set it up once with `bundle exec overcommit --install`. Whenever the hook config file `.overcommit.yml` changes, you need to verify it's contents and approve the changes with `bundle exec overcommit --sign`
-* You can find the [sidekiq](https://github.com/mperham/sidekiq/) web UI at `http://localhost:3000/ops/sidekiq`. Username can be empty, the default password is `development`.
+* You can find the [sidekiq](https://github.com/mperham/sidekiq/) web UI at `http://localhost:5000/ops/sidekiq`. Username can be empty, the default password is `development`.
 
 ## Production
 
