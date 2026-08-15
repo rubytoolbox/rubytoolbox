@@ -10,9 +10,6 @@ A [PostgreSQL][postgresql] database is required to store data. It's recommended 
 
 A [Redis][redis] instance is needed for [sidekiq][sidekiq] background processing. It is recommended to configure it by providing a `REDIS_URL` environment variable.
 
-On Heroku, when using a different Redis provider it's possible to alias the provider-specific `REDISXYZ_URL` to the required `REDIS_URL`
-using `heroku addons:attach ADDON_NAME --as REDIS`
-
 ## Github API Client (**required**)
 
 The `GITHUB_TOKEN` is used by the GraphQL API client to fetch repository data.
@@ -60,7 +57,7 @@ See also https://github.com/rubytoolbox/rubytoolbox/pull/339
 
 ## Serve assets from Rails *(optional)*
 
-By setting `RAILS_SERVE_STATIC_FILES` to true the Rails app will be hosting the assets. The regular production app is running on Heroku and has this enabled by default, including asset precompilation that Heroku takes care of automatically.
+By setting `RAILS_SERVE_STATIC_FILES` to true the Rails app will be hosting the assets. The production Docker image ships the precompiled assets (see the [Dockerfile](../Dockerfile)), so the app serves them directly with far-future cache headers.
 
 [appsignal]: https://appsignal.com/
 [catalog-gh-pages]: https://rubytoolbox.github.io/catalog

@@ -2,7 +2,7 @@
 # To get Appsignal running, remember to:
 #
 #   * Set the APPSIGNAL_PUSH_API_KEY env variable
-#   * Set up the deploy hook, i.e. via https://devcenter.heroku.com/articles/appsignal#add-a-deploy-hook-in-heroku
+#   * Optionally set up deploy markers, see https://docs.appsignal.com/application/markers/deploy-markers.html
 #
 # See https://docs.appsignal.com/ruby/configuration/
 default: &defaults

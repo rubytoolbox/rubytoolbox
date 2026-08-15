@@ -54,7 +54,7 @@ to get the full toolchain.
 
 ## Production
 
-See our overview of [Configuration](doc/configuration.md) settings for an overview of what needs to be set up to run the app in production.
+See our overview of [Configuration](doc/configuration.md) settings for an overview of what needs to be set up to run the app in production, and [Deployment](doc/deployment.md) for how the production app on fly.io is deployed and operated.
 
 ## Code of Conduct
 
