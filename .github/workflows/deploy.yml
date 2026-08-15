@@ -1,0 +1,38 @@
+name: Deploy
+on:
+  workflow_run:
+    workflows: ["CI"]
+    branches: ["main"]
+    types:
+      - completed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    # Only deploy when the CI run actually succeeded
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
+    # The FLY_API_TOKEN secret (an app-scoped deploy token) lives in the
+    # production environment, which is restricted to the main branch
+    environment: production
+
+    # Queue deployments instead of running them concurrently - parallel
+    # bluegreen deploys would fight each other
+    concurrency:
+      group: production-deploy
+      cancel-in-progress: false
+
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          # Deploy exactly the commit CI tested, not whatever main points at
+          # by the time this workflow runs
+          ref: ${{ github.event.workflow_run.head_sha }}
+      - uses: superfly/flyctl-actions/setup-flyctl@ed8efb33836e8b2096c7fd3ba1c8afe303ebbff1 # v1 / 1.6
+      # Uses the app's fly.toml; the image is built on fly.io's remote
+      # builders, so no local toolchain setup is needed here (which is why
+      # this deliberately does not go through `mise run deploy:fly`)
+      - run: flyctl deploy --remote-only
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}

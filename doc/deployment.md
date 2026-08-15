@@ -21,10 +21,16 @@ Two process groups, mirroring the former Procfile:
 
 ## Deploying, migrations & release tasks
 
-A deployment is triggered with `mise run deploy:fly` (wrapping `fly deploy`,
-see [fly.toml](../fly.toml)). It uses a bluegreen strategy: replacement
-machines are started and health-checked before traffic swaps over, giving
-zero-downtime deploys with a single web machine.
+Every push to `main` deploys automatically once CI has passed (see
+[.github/workflows/deploy.yml](../.github/workflows/deploy.yml)), authorized
+by an app-scoped deploy token stored in the `production` GitHub environment,
+which is restricted to the `main` branch. A manual deployment can be
+triggered with `mise run deploy:fly` (wrapping `fly deploy`, see
+[fly.toml](../fly.toml)).
+
+Deployments use a bluegreen strategy: replacement machines are started and
+health-checked before traffic swaps over, giving zero-downtime deploys with
+a single web machine.
 
 Each deployment runs `mise run deploy:release` (which wraps
 `bundle exec rake db:migrate release`, see [tasks/deploy.toml](../tasks/deploy.toml))
