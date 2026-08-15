@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
+# Template handlers (i.e. slim) only register themselves once ActionView is
+# fully loaded, and HighVoltage filters pages by the registered handlers
+require "action_view/base"
+
 class Docs
   class Page
     attr_accessor :id
