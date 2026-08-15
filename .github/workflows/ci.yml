@@ -5,51 +5,37 @@ on:
   pull_request:
     branches: [ main ]
 
+env:
+  # Bundler settings previously provided by ruby/setup-ruby's bundler-cache
+  BUNDLE_PATH: vendor/bundle
+  BUNDLE_JOBS: "4"
+  BUNDLE_RETRY: "3"
+  BUNDLE_FROZEN: "true"
+
 jobs:
   bundler-audit:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-
     steps:
-    - uses: actions/checkout@v3
-    - uses: ruby/setup-ruby@v1
-      with:
-        # See https://github.com/actions/cache/blob/main/examples.md#ruby---bundler
-        bundler-cache: true
-    - name: Run bundler-audit
-      run: bundle exec bundler-audit --update
+      - uses: actions/checkout@v5
+      - uses: ./.github/actions/setup-mise
+      - run: mise run lint:bundler-audit
 
   brakeman:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-
     steps:
-    - uses: actions/checkout@v3
-    - uses: ruby/setup-ruby@v1
-      with:
-        bundler-cache: true
-    - name: Run brakeman
-      run: bundle exec brakeman
+      - uses: actions/checkout@v5
+      - uses: ./.github/actions/setup-mise
+      - run: mise run lint:brakeman
 
   rubocop:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-
     steps:
-    - uses: actions/checkout@v3
-    - uses: ruby/setup-ruby@v1
-      with:
-        bundler-cache: true
-    - name: Run rubocop
-      run: bundle exec rubocop
+      - uses: actions/checkout@v5
+      - uses: ./.github/actions/setup-mise
+      - run: mise run lint:rubocop
 
   rspec:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
 
     # https://docs.github.com/en/free-pro-team@latest/actions/guides/about-service-containers#creating-service-containers
     services:
@@ -67,21 +53,24 @@ jobs:
           POSTGRES_PASSWORD: secret
 
     steps:
-    - uses: actions/checkout@v3
-    - uses: ruby/setup-ruby@v1
-      with:
-        bundler-cache: true
-    - name: Install dependencies and run RSpec
-      env:
-        DATABASE_URL: "postgresql://postgres:secret@localhost/test"
-        RAILS_ENV: test
-        PERCY_TOKEN: ${{secrets.PERCY_TOKEN}}
-      run: |
-        npm install
-        bundle exec rake db:schema:load
-        npm exec percy exec -- bundle exec rspec
+      - uses: actions/checkout@v5
+      - uses: ./.github/actions/setup-mise
+      - uses: actions/cache@v4
+        with:
+          path: ~/.local/share/pnpm/store
+          key: pnpm-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
+          restore-keys: pnpm-${{ runner.os }}-
+      - run: pnpm install --frozen-lockfile
+      - name: Run RSpec
+        env:
+          DATABASE_URL: "postgresql://postgres:secret@localhost/test"
+          RAILS_ENV: test
+          PERCY_TOKEN: ${{secrets.PERCY_TOKEN}}
+        run: |
+          bundle exec rake db:schema:load
+          pnpm exec percy exec -- bundle exec rspec
 
-    - uses: actions/upload-artifact@v4
-      with:
-        name: "Test Coverage"
-        path: coverage/
+      - uses: actions/upload-artifact@v4
+        with:
+          name: "Test Coverage"
+          path: coverage/

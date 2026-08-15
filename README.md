@@ -29,32 +29,28 @@ The Ruby Toolbox depends on a few utilities which you will need to install befor
 * **Linux:** On Ubuntu, you can use [this PPA](https://launchpad.net/%7Echris-lea/+archive/ubuntu/redis-server). Otherwise build from source as detailed in [The Redis quickstart](https://redis.io/topics/quickstart).
 * **Mac OS:** Use [HomeBrew](http://brewformulas.org/Redis) or build from source as detailed in [The Redis quickstart](https://redis.io/topics/quickstart).
 
-#### [Ruby](https://www.ruby-lang.org)
+#### Tooling via [mise](https://mise.jdx.dev)
 
-Install the [current project ruby version](./.ruby-version), preferrably with
-[a Ruby version manager like chruby, rbenv, or rvm](https://www.ruby-toolbox.com/categories/ruby_version_management)
-
-You will also need [Bundler](http://bundler.io/) for installing the project's dependencies.
-
-#### [Node.js](https://nodejs.org) and NPM
-
-vite, npm and node.js are to manage frontend dependencies for the project. You will need [Node.js and npm](https://nodejs.org/en/download/package-manager/).
+Tool versions ([Ruby](./.ruby-version), [Node.js](./.node-version) and [pnpm](./.mise.toml)) are managed with
+[mise](https://mise.jdx.dev), which also serves as the project's task runner. After
+[installing mise](https://mise.jdx.dev/getting-started.html), run `mise install` inside your checkout
+to get the full toolchain.
 
 ### Running the application
 
 1. Start postgres and redis
-1. Install the project's dependencies and prepare the database with `bin/setup`
+1. Install the project's dependencies and prepare the database with `mise run setup`
 1. *Optional but recommended*: Import a partial production database dump using [`bin/pull_database`](./bin/pull_database). You can also load some test data quickly by running `rake db:fixtures:load`
 1. In order to access the GitHub GraphQL API for pulling repo data, you need to [create a OAuth token as per GitHub's documentation](https://developer.github.com/v4/guides/forming-calls/#authenticating-with-graphql). No auth scopes are needed. Place the token as `GITHUB_TOKEN=yourtoken` in `.env.local` and `.env.local.test`.
-1. Run the services with `foreman start`. You can access the site at `http://localhost:5000`
+1. Run the development processes (web, worker & vite) with `mise run server`. You can access the site at `http://localhost:3000`
 
 ### Further steps
 
-* You can run the test suite with `bundle exec rspec`
-* You can check code style with `bundle exec rubocop`
+* You can run the test suite with `mise run test`
+* You can check code style and security with `mise run lint` (and auto-format with `mise run format`)
 * During development you can launch [guard](https://github.com/guard/guard) using `bundle exec guard` to continuously check your changes
 * The repo has [overcommit](https://github.com/brigade/overcommit) git hooks set up to check your changes before commit, push etc. You can set it up once with `bundle exec overcommit --install`. Whenever the hook config file `.overcommit.yml` changes, you need to verify it's contents and approve the changes with `bundle exec overcommit --sign`
-* You can find the [sidekiq](https://github.com/mperham/sidekiq/) web UI at `http://localhost:5000/ops/sidekiq`. Username can be empty, the default password is `development`.
+* You can find the [sidekiq](https://github.com/mperham/sidekiq/) web UI at `http://localhost:3000/ops/sidekiq`. Username can be empty, the default password is `development`.
 
 ## Production
 
