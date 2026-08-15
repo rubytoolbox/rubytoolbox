@@ -1,0 +1,37 @@
+# See https://docs.docker.com/engine/reference/builder/#dockerignore-file
+
+# Ignore git directory and metadata
+/.git*
+!/.gitignore
+
+# Ignore bundler config
+/.bundle
+
+# Ignore development tooling & CI configuration
+/.devcontainer
+/.github
+/Guardfile
+/.overcommit.yml
+
+# Ignore logs and temporary files
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+
+# IMPORTANT: local environment files may contain credentials (e.g. GITHUB_TOKEN)
+# and must never end up inside the image
+.env*
+*.local
+
+# Ignore node modules (reinstalled inside the image)
+/node_modules
+
+# Ignore precompiled/dev assets (rebuilt inside the image)
+/public/assets
+/public/vite*
+
+# Ignore test suite, coverage reports and docs
+/spec
+/coverage
+/doc
