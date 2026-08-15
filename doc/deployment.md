@@ -21,10 +21,11 @@ Two process groups, mirroring the former Procfile:
 
 ## Migrations & release tasks
 
-The deployment runs `bundle exec rake db:migrate release` as the fly.io
-[release command](https://fly.io/docs/reference/configuration/#run-one-off-commands-before-releasing-a-deployment)
+The deployment runs `mise run deploy:release` (which wraps
+`bundle exec rake db:migrate release`, see [tasks/deploy.toml](../tasks/deploy.toml))
+as the fly.io [release command](https://fly.io/docs/reference/configuration/#run-one-off-commands-before-releasing-a-deployment)
 before new machines go live — the direct equivalent of the former Heroku release
-phase. The `release` task (see [lib/tasks/release.rake](../lib/tasks/release.rake))
+phase. The `release` rake task (see [lib/tasks/release.rake](../lib/tasks/release.rake))
 queues post-deployment work such as refreshing the public database export.
 
 ## Recurring jobs
