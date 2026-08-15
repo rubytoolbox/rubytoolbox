@@ -1,0 +1,7 @@
+["console:local"]
+description = "Open a rails console for the local development environment"
+run = "bin/rails console"
+
+["console:fly"]
+description = "Open a rails console on the production app hosted on fly.io"
+run = 'fly ssh console --pty -C "bin/rails console"'

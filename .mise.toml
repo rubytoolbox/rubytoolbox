@@ -21,6 +21,8 @@ jobs = 4
 
 [task_config]
 includes = [
+  "tasks/console.toml",
+  "tasks/deploy.toml",
   "tasks/setup.toml",
   "tasks/install.toml",
   "tasks/server.toml",

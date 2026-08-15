@@ -3,7 +3,7 @@
 class SearchesController < ApplicationController
   # Default upper bound (in milliseconds) on how long a single search
   # request's database queries may run before Postgres aborts them. This
-  # keeps a pathological query from holding a web dyno until Heroku's 30s H12
+  # keeps a pathological query from holding a web process until the platform's
   # request timeout fires. Override via the SEARCH_STATEMENT_TIMEOUT_MS env
   # var.
   DEFAULT_STATEMENT_TIMEOUT_MS = 5_000
@@ -58,8 +58,9 @@ class SearchesController < ApplicationController
 
   # Bounds the database time a search request may consume so a runaway query
   # fails fast (raising ActiveRecord::QueryCanceled) instead of tying up a web
-  # dyno until Heroku's request timeout. statement_timeout is reset afterwards
-  # so the pooled connection does not carry the limit to other requests.
+  # process until the platform's request timeout. statement_timeout is reset
+  # afterwards so the pooled connection does not carry the limit to other
+  # requests.
   def with_statement_timeout
     connection = ActiveRecord::Base.connection
     connection.execute "SET statement_timeout = #{connection.quote statement_timeout_ms}"

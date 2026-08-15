@@ -1,24 +1,33 @@
 # Configuration
 
-**This document explains the various configurable parts of the Ruby Toolbox app that need to be set up for a production deployment**
+**This document explains the various configurable parts of the Ruby Toolbox app that need to be set up to run it, both in production and local development**
 
 ## PostgreSQL (**required**)
 
-A [PostgreSQL][postgresql] database is required to store data. It's recommended to provide it via the standard `DATABASE_URL` environment variable.
+A [PostgreSQL][postgresql] database (version 17) is required to store data. It's recommended to provide it via the standard `DATABASE_URL` environment variable.
+
+For installing it on a local development machine:
+
+* **Linux:** Use the official postgres repositories for [Apt](https://wiki.postgresql.org/wiki/Apt) or [Yum](https://yum.postgresql.org/)
+* **Mac OS:** Use [HomeBrew](http://brewformulas.org/Postgresql) or [Postgres.app](https://postgresapp.com/)
 
 ## Redis (**required**)
 
 A [Redis][redis] instance is needed for [sidekiq][sidekiq] background processing. It is recommended to configure it by providing a `REDIS_URL` environment variable.
 
-On Heroku, when using a different Redis provider it's possible to alias the provider-specific `REDISXYZ_URL` to the required `REDIS_URL`
-using `heroku addons:attach ADDON_NAME --as REDIS`
+For installing it on a local development machine:
+
+* **Linux:** On Ubuntu, you can use [this PPA](https://launchpad.net/%7Echris-lea/+archive/ubuntu/redis-server). Otherwise build from source as detailed in [The Redis quickstart](https://redis.io/topics/quickstart).
+* **Mac OS:** Use [HomeBrew](http://brewformulas.org/Redis) or build from source as detailed in [The Redis quickstart](https://redis.io/topics/quickstart).
 
 ## Github API Client (**required**)
 
 The `GITHUB_TOKEN` is used by the GraphQL API client to fetch repository data.
 Since Github's GraphQL API does not support unauthenticated usage you must provide this, even in local development.
 
-A "Personal Access Token" will do just fine, you can create one by following [Github's instructions](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/). At the time of writing, the direct link to the corresponding settings page is https://github.com/settings/tokens
+A "Personal Access Token" will do just fine, you can create one by following [Github's instructions](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/). At the time of writing, the direct link to the corresponding settings page is https://github.com/settings/tokens - no auth scopes are needed.
+
+For local development, place the token as `GITHUB_TOKEN=yourtoken` in `.env.local` and `.env.local.test`.
 
 To keep things nicely separated the main production site has a dedicated [rubytoolbox-bot](https://github.com/rubytoolbox-bot) user account for these tokens.
 
@@ -60,7 +69,7 @@ See also https://github.com/rubytoolbox/rubytoolbox/pull/339
 
 ## Serve assets from Rails *(optional)*
 
-By setting `RAILS_SERVE_STATIC_FILES` to true the Rails app will be hosting the assets. The regular production app is running on Heroku and has this enabled by default, including asset precompilation that Heroku takes care of automatically.
+By setting `RAILS_SERVE_STATIC_FILES` to true the Rails app will be hosting the assets. The production Docker image ships the precompiled assets (see the [Dockerfile](../Dockerfile)), so the app serves them directly with far-future cache headers.
 
 [appsignal]: https://appsignal.com/
 [catalog-gh-pages]: https://rubytoolbox.github.io/catalog

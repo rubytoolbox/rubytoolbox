@@ -57,6 +57,7 @@ gem "high_voltage"
 gem "http"
 
 gem "sidekiq"
+gem "sidekiq-scheduler"
 
 gem "sanitize"
 gem "truncato"
