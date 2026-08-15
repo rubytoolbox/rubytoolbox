@@ -1,0 +1,9 @@
+[setup]
+description = "Install dependencies and prepare the project for development"
+depends = ["install"]
+run = [
+  "bin/rails db:prepare",
+  "bin/rails log:clear tmp:clear",
+  "bin/rails restart",
+  "echo '💡 Use bin/pull_database to fetch a realistic subset of production data (recommended, but destructive)'",
+]

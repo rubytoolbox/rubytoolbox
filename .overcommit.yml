@@ -15,20 +15,28 @@
 PostCheckout:
   BundleInstall:
     enabled: true
-  NpmInstall:
+  PnpmInstall: &pnpm_install
     enabled: true
+    description: 'Install pnpm dependencies'
+    # Runs through mise to guarantee the project-pinned pnpm version is used
+    required_executable: 'mise'
+    flags: ['exec', '--', 'pnpm', 'install']
+    requires_files: true
+    include:
+      - 'package.json'
+      - 'pnpm-lock.yaml'
 
 PostMerge:
   BundleInstall:
     enabled: true
-  NpmInstall:
-    enabled: true
+  PnpmInstall:
+    <<: *pnpm_install
 
 PostRewrite:
   BundleInstall:
     enabled: true
-  NpmInstall:
-    enabled: true
+  PnpmInstall:
+    <<: *pnpm_install
 
 PreCommit:
   BundleCheck:
@@ -39,6 +47,4 @@ PreCommit:
     enabled: true
     command: ["bundle", "exec", "rubocop"]
   YamlSyntax:
-    enabled: true
-  NpmCheck:
     enabled: true

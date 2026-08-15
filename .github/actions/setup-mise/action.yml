@@ -1,0 +1,20 @@
+name: Setup toolchain
+description: Install mise-managed tools (ruby, node, pnpm) and gems with caching
+
+runs:
+  using: composite
+  steps:
+    - uses: jdx/mise-action@v4
+      with:
+        # No version input: always installs the latest official mise release
+        cache: true
+        # mise-action keys its cache on the mise config files; include the
+        # idiomatic version files explicitly so ruby/node bumps bust the cache
+        cache_key_prefix: mise-v1-${{ hashFiles('.ruby-version', '.node-version') }}
+    - uses: actions/cache@v4
+      with:
+        path: vendor/bundle
+        key: gems-${{ runner.os }}-${{ hashFiles('.ruby-version', 'Gemfile.lock') }}
+        restore-keys: gems-${{ runner.os }}-
+    - run: bundle install
+      shell: bash

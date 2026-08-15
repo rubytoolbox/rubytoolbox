@@ -20,7 +20,7 @@ chdir APP_ROOT do
   system("bundle check") || system!("bundle install")
 
   # Install JavaScript dependencies
-  system("npm install")
+  system("pnpm install")
 
   puts "\n== Updating database =="
   system! "bin/rails db:migrate"

@@ -39,10 +39,11 @@ Obviously, you will need Visual Studio Code installed for this :)
 
 ### Using devcontainers CLI
 
-You will need nodejs installed locally to use the CLI.
+You will need nodejs and pnpm installed locally to use the CLI - with [mise](https://mise.jdx.dev)
+set up, the project checkout provides both.
 
 * `git clone git@github.com:rubytoolbox/rubytoolbox.git` and open it in a terminal
-* Install the CLI with `npm install -g @devcontainers/cli`
+* Install the CLI with `pnpm add -g @devcontainers/cli`
 * Build the devcontainer docker images with `devcontainer --workspace-folder . build`
 * Launch the devcontainer docker images with `devcontainer --workspace-folder . up`
 * Open a bash shell in the running devcontainer with `devcontainer exec --workspace-folder . /usr/bin/env bash`

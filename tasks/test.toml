@@ -1,0 +1,7 @@
+[test]
+description = "Run the full test suite"
+depends = ["test:*"]
+
+["test:rspec"]
+description = "Run the RSpec suite"
+run = "bundle exec rspec"

@@ -10,11 +10,12 @@
   // "features": {},
 
   // 5000 is the main rails app server
+  // 3036 is the vite dev server (assets are proxied through rails, but direct access helps debugging)
   // 4444 is the selenium chrome grid management UI
   // 7900 is the selenium chrome VNC remote UI
-  "forwardPorts": [5000, 4444, 7900],
+  "forwardPorts": [5000, 3036, 4444, 7900],
 
-  "postCreateCommand": "bin/setup && bin/pull_database && overcommit --install && atuin import bash" ,
+  "postCreateCommand": "mise trust && mise install && mise run setup && bin/pull_database && mise exec -- overcommit --install && atuin import bash" ,
 
   // Configure tool-specific properties.
   "customizations": {
