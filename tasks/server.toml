@@ -1,0 +1,15 @@
+[server]
+description = "Run the development processes (web, worker, vite)"
+depends = ["server:*"]
+
+["server:web"]
+description = "Rails web server (puma)"
+run = "bundle exec puma --threads 4:$RAILS_MAX_THREADS"
+
+["server:worker"]
+description = "Sidekiq background worker"
+run = "bundle exec sidekiq --concurrency $RAILS_MAX_THREADS -q priority -q default"
+
+["server:vite"]
+description = "Vite dev server"
+run = "bin/vite dev"

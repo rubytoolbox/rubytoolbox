@@ -1,0 +1,26 @@
+# Tool versions and mise settings. Tasks live in tasks/*.toml (see
+# [task_config]): keeping them separate means task edits don't invalidate
+# the CI toolchain cache, which is keyed on this file.
+
+[tools]
+# ruby and node are pinned via .ruby-version / .node-version (see [settings]).
+# .ruby-version must remain a separate file because the Gemfile reads it.
+pnpm = "11"
+
+[settings]
+# Honor .ruby-version / .node-version regardless of contributors' global mise config
+idiomatic_version_file_enable_tools = ["ruby", "node"]
+# Always install precompiled ruby binaries instead of compiling from source
+ruby.compile = false
+# Parallel task execution (parent tasks fan out to their subtasks)
+jobs = 4
+
+[task_config]
+includes = [
+  "tasks/setup.toml",
+  "tasks/install.toml",
+  "tasks/server.toml",
+  "tasks/test.toml",
+  "tasks/lint.toml",
+  "tasks/format.toml",
+]

@@ -1,0 +1,15 @@
+[lint]
+description = "Run all linters (fail on violations)"
+depends = ["lint:*"]
+
+["lint:rubocop"]
+description = "Ruby style linting via RuboCop"
+run = "bundle exec rubocop"
+
+["lint:brakeman"]
+description = "Static security analysis via Brakeman"
+run = "bundle exec brakeman"
+
+["lint:bundler-audit"]
+description = "Known-vulnerability audit of gem dependencies"
+run = "bundle exec bundler-audit --update"

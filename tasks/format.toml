@@ -1,0 +1,7 @@
+[format]
+description = "Auto-format the codebase"
+depends = ["format:*"]
+
+["format:rubocop"]
+description = "RuboCop safe autocorrections"
+run = "bundle exec rubocop --autocorrect"
