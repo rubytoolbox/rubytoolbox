@@ -48,6 +48,11 @@ end
 # To clean up test output, comment this line to
 Capybara.server = :puma, { Silent: true }
 
+# A chromedriver found in PATH (e.g. Ubuntu's snap-confined shim at /usr/bin/chromedriver) can be
+# incompatible with the installed Chrome and unable to launch it. Make Selenium Manager always
+# provision a matching chromedriver itself instead of picking up whatever is in PATH.
+ENV["SE_SKIP_DRIVER_IN_PATH"] ||= "true"
+
 # Fixes a deprecation with Chrome 120+ - https://github.com/SeleniumHQ/selenium/issues/13112
 Capybara.register_driver :selenium_chrome_headless do |app|
   Capybara::Selenium::Driver.new(app, browser: :chrome,
