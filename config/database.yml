@@ -90,3 +90,10 @@ production:
   database: rubytoolbox_production
   username: rubytoolbox
   password: <%= ENV['RUBYTOOLBOX_DATABASE_PASSWORD'] %>
+  variables:
+    # Parallel query workers each allocate additional work memory plus
+    # dynamic shared memory segments, which can exhaust the database
+    # server ("could not resize shared memory segment ... No space left
+    # on device"). Parallelism buys us nothing here, so disable it for
+    # our sessions.
+    max_parallel_workers_per_gather: 0
