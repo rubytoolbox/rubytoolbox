@@ -17,17 +17,7 @@ to [.devcontainer/README.md](./.devcontainer/README.md). This is the easiest way
 
 ### Prerequisites
 
-The Ruby Toolbox depends on a few utilities which you will need to install before you begin.
-
-#### [PostgreSQL](https://www.postgresql.org/) (Version 16)
-
-* **Linux:** Use the official postgres repositories for [Apt](https://wiki.postgresql.org/wiki/Apt) or [Yum](https://yum.postgresql.org/)
-* **Mac OS:** Use [HomeBrew](http://brewformulas.org/Postgresql) or [Postgres.app](https://postgresapp.com/)
-
-#### [Redis](https://redis.io/)
-
-* **Linux:** On Ubuntu, you can use [this PPA](https://launchpad.net/%7Echris-lea/+archive/ubuntu/redis-server). Otherwise build from source as detailed in [The Redis quickstart](https://redis.io/topics/quickstart).
-* **Mac OS:** Use [HomeBrew](http://brewformulas.org/Redis) or build from source as detailed in [The Redis quickstart](https://redis.io/topics/quickstart).
+You will need [PostgreSQL](https://www.postgresql.org/) as the database and [Redis](https://redis.io/) for background job processing — see [Configuration](./doc/configuration.md) for details and installation pointers.
 
 #### Tooling via [mise](https://mise.jdx.dev)
 
@@ -41,7 +31,7 @@ to get the full toolchain.
 1. Start postgres and redis
 1. Install the project's dependencies and prepare the database with `mise run setup`
 1. *Optional but recommended*: Import a partial production database dump using [`bin/pull_database`](./bin/pull_database). You can also load some test data quickly by running `rake db:fixtures:load`
-1. In order to access the GitHub GraphQL API for pulling repo data, you need to [create a OAuth token as per GitHub's documentation](https://developer.github.com/v4/guides/forming-calls/#authenticating-with-graphql). No auth scopes are needed. Place the token as `GITHUB_TOKEN=yourtoken` in `.env.local` and `.env.local.test`.
+1. In order to access the GitHub GraphQL API for pulling repo data, you need to provide a `GITHUB_TOKEN` — see the [Github API Client configuration](./doc/configuration.md#github-api-client-required).
 1. Run the development processes (web, worker & vite) with `mise run server`. You can access the site at `http://localhost:5000`
 
 ### Further steps
