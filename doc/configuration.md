@@ -4,7 +4,7 @@
 
 ## PostgreSQL (**required**)
 
-A [PostgreSQL][postgresql] database (version 16) is required to store data. It's recommended to provide it via the standard `DATABASE_URL` environment variable.
+A [PostgreSQL][postgresql] database (version 17) is required to store data. It's recommended to provide it via the standard `DATABASE_URL` environment variable.
 
 For installing it on a local development machine:
 
