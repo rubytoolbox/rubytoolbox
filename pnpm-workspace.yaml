@@ -2,5 +2,6 @@
 # @percy/core downloads its Chromium at install time; protobufjs runs a
 # trivial postinstall. Both were implicitly allowed under npm before.
 allowBuilds:
+  '@parcel/watcher': true
   '@percy/core': true
   protobufjs: true
