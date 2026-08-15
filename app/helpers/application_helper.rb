@@ -6,7 +6,7 @@ module ApplicationHelper
   include StatsHelpers
 
   def expiring_cache(label, expiration: 10.minutes, &)
-    key = [label, ENV.fetch("HEROKU_RELEASE_VERSION", nil), (Time.current.to_i / expiration).to_s].join("-")
+    key = [label, ENV.fetch("RELEASE_VERSION", nil), (Time.current.to_i / expiration).to_s].join("-")
 
     cache(key, &)
   end
