@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "simplecov"
+SimpleCov.start :rails
 
 RSpec::Matchers.define_negated_matcher :exclude, :include
 
