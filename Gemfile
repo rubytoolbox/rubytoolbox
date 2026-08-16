@@ -37,8 +37,6 @@ gem "dry-types"
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
-gem "foreman", require: false
-
 gem "dotenv-rails"
 
 # https://github.com/appsignal/appsignal-ruby/issues/673

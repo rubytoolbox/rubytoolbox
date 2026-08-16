@@ -183,8 +183,6 @@ GEM
     ffi (1.17.4-x86_64-linux-gnu)
     font-awesome-rails (4.7.0.9)
       railties (>= 3.2, < 9.0)
-    foreman (0.90.0)
-      thor (~> 1.4)
     forgery (0.8.1)
     formatador (1.2.3)
       reline
@@ -603,7 +601,6 @@ DEPENDENCIES
   dry-types
   feedjira
   font-awesome-rails
-  foreman
   forgery
   github_webhook
   guard-bundler

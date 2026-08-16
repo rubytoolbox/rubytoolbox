@@ -3,8 +3,7 @@
   - priority
   - default
 
-# Recurring jobs via sidekiq-scheduler, replacing the former hourly
-# Heroku Scheduler invocation of `rake cron`.
+# Recurring jobs via sidekiq-scheduler
 # See https://github.com/sidekiq-scheduler/sidekiq-scheduler
 :scheduler:
   # Only schedule in production by default, so local development workers
