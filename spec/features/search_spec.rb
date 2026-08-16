@@ -162,10 +162,10 @@ RSpec.describe "Search", :js do
 
   it "automatically focuses the search input when accessed without query" do
     search_for ""
-    expect(active_element).to(satisfy { |e| e.tag_name == "input" && e["name"] == "q" })
+    expect(page).to have_css "input[name='q']:focus"
 
     search_for "foo"
-    expect(active_element.tag_name).to eq "body"
+    expect(page).to have_no_css "input[name='q']:focus"
   end
 
   it "puts search submit buttons into loading state" do
