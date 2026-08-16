@@ -8,8 +8,8 @@
 app = "rubytoolbox-production"
 primary_region = "fra"
 
-# Machines have no swap by default and OOM-kill on overrun (unlike heroku
-# dynos) - a little swap absorbs brief memory spikes
+# Machines have no swap by default and OOM-kill on overrun - a little swap
+# absorbs brief memory spikes
 swap_size_mb = 256
 
 # Give sidekiq time to finish or re-enqueue in-flight jobs on shutdown
@@ -34,8 +34,8 @@ console_command = "bin/rails console"
   strategy = "bluegreen"
 
 [env]
-  # These match the previous production settings on heroku. RAILS_MAX_THREADS
-  # also determines the database connection pool size (see config/database.yml)
+  # RAILS_MAX_THREADS also determines the database connection pool size
+  # (see config/database.yml)
   RAILS_MAX_THREADS = "10"
   # Technically obsolete nowadays: the current config/environments/production.rb
   # serves static files and logs to stdout unconditionally, these env vars only
@@ -77,9 +77,8 @@ console_command = "bin/rails console"
     timeout = "5s"
     grace_period = "30s"
 
-# Both process types ran fine on 512mb dynos on heroku. YJIT adds some
-# memory overhead on top - if that bites, machines can be resized live
-# via `fly machine update --vm-memory` or by bumping this
+# YJIT adds some memory overhead - if 512mb gets tight, machines can be
+# resized live via `fly machine update --vm-memory` or by bumping this
 [[vm]]
   processes = ["web"]
   memory = "512mb"

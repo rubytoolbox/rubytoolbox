@@ -14,7 +14,7 @@ for local development and CI. The runtime stage runs as the non-privileged
 
 ## Processes
 
-Two process groups, carried over from the former Heroku setup:
+Two process groups:
 
 * `web` — puma app server (listening on port 5000 by default)
 * `worker` — sidekiq for background jobs, including the recurring job scheduler
@@ -35,8 +35,7 @@ a single web machine.
 Each deployment runs `mise run deploy:release` (which wraps
 `bundle exec rake db:migrate release`, see [tasks/deploy.toml](../tasks/deploy.toml))
 as the fly.io [release command](https://fly.io/docs/reference/configuration/#run-one-off-commands-before-releasing-a-deployment)
-before new machines go live — the direct equivalent of the former Heroku release
-phase. The `release` rake task (see [lib/tasks/release.rake](../lib/tasks/release.rake))
+before new machines go live. The `release` rake task (see [lib/tasks/release.rake](../lib/tasks/release.rake))
 queues post-deployment work such as refreshing the public database export.
 
 Note this expects the database to already carry the schema (which the
@@ -86,5 +85,5 @@ High-level outline of the one-time production environment setup:
 7. First deployment via `mise run deploy:fly`, set up the autoscaling web
    machine pool, and verify the health check, the site itself, console
    access and background job processing
-8. Finally: canonical host configuration, custom domain certificates, DNS
-   cutover and heroku offboarding (#1748)
+8. Finally: canonical host configuration, custom domain certificates and
+   DNS cutover (#1748)
