@@ -23,10 +23,6 @@ module FeatureSpecHelpers
   end
   # rubocop:enable Performance/RedundantBlockCall
 
-  def active_element
-    page.evaluate_script "document.activeElement"
-  end
-
   def order_by(button_label, expect_navigation: true)
     within ".project-order-dropdown" do
       page.find("button").hover
