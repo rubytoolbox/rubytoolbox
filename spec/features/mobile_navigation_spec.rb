@@ -20,7 +20,7 @@ RSpec.describe "Mobile Navigation", :js, viewport: :mobile do
 
         fill_in :q, with: "My Search"
         click_button "Search"
-        expect(page.title).to eq "Search results for 'My Search' - The Ruby Toolbox"
+        expect(page).to have_title "Search results for 'My Search' - The Ruby Toolbox", exact: true
       end
     end
   end
