@@ -14,7 +14,7 @@ for local development and CI. The runtime stage runs as the non-privileged
 
 ## Processes
 
-Two process groups, mirroring the former Procfile:
+Two process groups, carried over from the former Heroku setup:
 
 * `web` — puma app server (listening on port 5000 by default)
 * `worker` — sidekiq for background jobs, including the recurring job scheduler

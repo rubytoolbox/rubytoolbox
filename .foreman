@@ -1,7 +1,0 @@
-# DEPRECATED: local development processes are now started via `mise run server`
-# (see tasks/server.toml). This file remains only for the Heroku deployment and
-# will be removed with the move to fly.io (#1748).
-#
-# Ensure that heroku release phase hook does not get run by foreman locally
-# See https://github.com/ddollar/foreman/issues/634#issuecomment-318235030
-formation: release=0,web=1,worker=1,vite=1
