@@ -7,5 +7,6 @@ class WelcomeController < ApplicationController
     @trending_projects = Rubygem::Trend.latest.limit(8)
     @stats = Stats.new
     @recent_posts = BlogController::BLOG.recent_posts.presence
+    @recent_advisories = Rubygem::Advisory.recent
   end
 end
