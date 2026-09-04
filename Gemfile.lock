@@ -414,7 +414,7 @@ GEM
       io-console (~> 0.5)
     request_store (1.7.0)
       rack (>= 1.4)
-    retriable (4.2.0)
+    retriable (5.0.1)
     rexml (3.4.4)
     rouge (5.1.0)
       strscan (~> 3.1)
