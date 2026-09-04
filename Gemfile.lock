@@ -325,7 +325,7 @@ GEM
     pg_search (2.3.8)
       activerecord (>= 7.2)
       activesupport (>= 7.2)
-    pghero (4.0.0)
+    pghero (4.0.1)
       activerecord (>= 7.2)
     pp (0.6.4)
       prettyprint
