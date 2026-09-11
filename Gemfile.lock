@@ -519,7 +519,7 @@ GEM
     sidekiq-scheduler (6.0.2)
       rufus-scheduler (~> 3.2)
       sidekiq (>= 7.3, < 9)
-    simplecov (1.1.1)
+    simplecov (1.2.0)
     slim (5.2.2)
       temple (~> 0.10.0)
       tilt (>= 2.1.0)
