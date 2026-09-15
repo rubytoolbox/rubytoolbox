@@ -17,6 +17,12 @@ RSpec.describe Rubygem::Advisory do
   it { expect(model).to validate_presence_of(:date) }
   it { expect(model).to validate_presence_of(:rubygem_name) }
 
+  describe ".recent" do
+    subject(:recent) { described_class.recent.to_sql }
+
+    it { is_expected.to eq described_class.where(date: 3.months.ago..).order(date: :desc).to_sql }
+  end
+
   %i[
     criticality
     cve
