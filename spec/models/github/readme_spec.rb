@@ -62,7 +62,7 @@ RSpec.describe Github::Readme do
         expect(described_class.scrub(html)).to eq "<p>Hello</p>"
       end
 
-      # rubocop:disable RSpec/ExampleLength
+      # rubocop:disable-next RSpec/ExampleLength
       it "exchanges relative links with base url when given" do
         html = <<~HTML
           <p><a href="https://example.com">Unchanged</a></p>
@@ -78,7 +78,6 @@ RSpec.describe Github::Readme do
 
         expect(described_class.scrub(html, base_url: "https://example.com/subpath")).to eq expected
       end
-      # rubocop:enable RSpec/ExampleLength
     end
   end
 end

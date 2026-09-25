@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-# rubocop:disable RSpec/ExampleLength -- Data-heavy stuff, and I prefer readability over brevity on those
+# rubocop:disable-next RSpec/ExampleLength -- Data-heavy stuff, and I prefer readability over brevity on those
 RSpec.describe Rubygem::DownloadStat do
   fixtures :all
 
@@ -77,4 +77,3 @@ RSpec.describe Rubygem::DownloadStat do
     end
   end
 end
-# rubocop:enable RSpec/ExampleLength

@@ -13,6 +13,10 @@ plugins:
 
 AllCops:
   NewCops: enable
+  # Build a project-wide index of declarations (via the rubydex gem) so cops can
+  # analyze across files, e.g. Lint/DuplicateMethods spotting a method defined
+  # twice in different files
+  UseProjectIndex: true
   Exclude:
     - 'tmp/**/*.rb'
     # Apparently needed for Travis CI since it bundles into this directory
