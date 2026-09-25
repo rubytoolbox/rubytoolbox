@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# rubocop:disable Metrics/ClassLength
+# rubocop:disable-next Metrics/ClassLength
 class Project < ApplicationRecord
   self.primary_key = :permalink
 
@@ -186,4 +186,3 @@ class Project < ApplicationRecord
     @health ||= Project::Health.new(self)
   end
 end
-# rubocop:enable Metrics/ClassLength

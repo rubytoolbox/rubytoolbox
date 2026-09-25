@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # This migration comes from active_storage (originally 20190112182829)
-# rubocop:disable Rails/SkipsModelValidations
+# rubocop:disable-next Rails/SkipsModelValidations
 class AddServiceNameToActiveStorageBlobs < ActiveRecord::Migration[6.0]
   def up
     return unless table_exists?(:active_storage_blobs)
@@ -23,4 +23,3 @@ class AddServiceNameToActiveStorageBlobs < ActiveRecord::Migration[6.0]
     remove_column :active_storage_blobs, :service_name
   end
 end
-# rubocop:enable Rails/SkipsModelValidations

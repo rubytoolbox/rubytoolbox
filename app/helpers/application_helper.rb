@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# rubocop:disable Rails/HelperInstanceVariable
+# rubocop:disable-next Rails/HelperInstanceVariable
 module ApplicationHelper
   include ComponentHelpers
   include StatsHelpers
@@ -20,7 +20,7 @@ module ApplicationHelper
   end
 
   # This should be refactored...
-  # rubocop:disable Metrics/MethodLength
+  # rubocop:disable-next Metrics/MethodLength
   def pretty_metric_value(value)
     case value
     when Float, BigDecimal
@@ -35,13 +35,12 @@ module ApplicationHelper
       value
     end
   end
-  # rubocop:enable Metrics/MethodLength
 
   #
   # A little utility method for displaying project rankings like most downloaded gems
   # in metrics docs pages without too much repetition of in-view logic
   #
-  # rubocop:disable Metrics/ParameterLists -- It's not great but I'm ok with it here
+  # rubocop:disable-next Metrics/ParameterLists -- It's not great but I'm ok with it here
   def project_ranking(title, table:, column:, scope: Project.for_display, direction: "DESC", description: nil)
     projects = scope.order("#{table}.#{column} #{direction} NULLS LAST").limit(100)
     metrics = if table == :github_repos
@@ -52,7 +51,6 @@ module ApplicationHelper
 
     project_list projects, title:, metrics:, description:
   end
-  # rubocop:enable Metrics/ParameterLists
 
   def docs
     @docs ||= Docs.new
@@ -147,4 +145,3 @@ module ApplicationHelper
     "is-active" if controller_name.to_s == controller.to_s
   end
 end
-# rubocop:enable Rails/HelperInstanceVariable

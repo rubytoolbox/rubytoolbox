@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-# rubocop:disable RSpec/ExampleLength -- Data-heavy stuff, and I prefer readability over brevity on those
+# rubocop:disable-next RSpec/ExampleLength -- Data-heavy stuff, and I prefer readability over brevity on those
 RSpec.describe Rubygem::DownloadStat::Timeseries do
   fixtures :all
 
@@ -52,11 +52,9 @@ RSpec.describe Rubygem::DownloadStat::Timeseries do
       expect { timeseries.stats }.to make_database_queries(matching: "SELECT \"rubygem_download_stats\"", count: 1)
     end
 
-    # rubocop:disable RSpec/IdenticalEqualityAssertion
+    # rubocop:disable-next RSpec/IdenticalEqualityAssertion
     it "memoizes the calculated stats" do
       expect(timeseries.stats.object_id).to eq timeseries.stats.object_id
     end
-    # rubocop:enable RSpec/IdenticalEqualityAssertion
   end
 end
-# rubocop:enable RSpec/ExampleLength

@@ -312,10 +312,9 @@ RSpec.describe Project do
       expect(project.health).to eq health
     end
 
-    # rubocop:disable RSpec/IdenticalEqualityAssertion
+    # rubocop:disable-next RSpec/IdenticalEqualityAssertion
     it "memoizes the instance" do
       expect(project.health.object_id).to eq project.health.object_id
     end
-    # rubocop:enable RSpec/IdenticalEqualityAssertion
   end
 end
