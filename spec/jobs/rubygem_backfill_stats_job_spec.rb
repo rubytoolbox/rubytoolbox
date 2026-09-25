@@ -99,4 +99,6 @@ RSpec.describe RubygemBackfillStatsJob do
       perform
     end
   end
+
+  it_behaves_like "a durable job"
 end

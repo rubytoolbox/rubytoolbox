@@ -5,6 +5,8 @@
 # recurring jobs based on the current time via the Cron service
 #
 class CronJob < ApplicationJob
+  ephemeral
+
   def perform
     Cron.new.run
   end

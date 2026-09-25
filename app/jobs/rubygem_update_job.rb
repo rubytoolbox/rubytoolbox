@@ -6,6 +6,8 @@
 # mirror db
 #
 class RubygemUpdateJob < ApplicationJob
+  ephemeral
+
   attr_accessor :name
   private :name=
 

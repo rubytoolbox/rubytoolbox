@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class GithubRepoUpdateJob < ApplicationJob
+  ephemeral
+
   attr_accessor :client
   private :client=
 

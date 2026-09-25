@@ -47,4 +47,6 @@ RSpec.describe ProjectSearchIndexJob do
       expect(job.perform(project.permalink)).to eq :not_configured
     end
   end
+
+  it_behaves_like "an ephemeral job"
 end
