@@ -241,7 +241,7 @@ GEM
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     jmespath (1.6.2)
-    json (3.0.2)
+    json (2.21.2)
     kaminari (1.2.2)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.2.2)
@@ -615,6 +615,7 @@ DEPENDENCIES
   hairtrigger
   high_voltage
   http
+  json (~> 2.0)
   kaminari
   launchy
   listen
