@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class CatalogImportJob < ApplicationJob
+  ephemeral
+
   sidekiq_options queue: :priority
 
   def perform

@@ -27,4 +27,6 @@ RSpec.describe CronJob do
       expect(schedule.dig("cron", "cron")).to eq "0 * * * *"
     end
   end
+
+  it_behaves_like "an ephemeral job"
 end

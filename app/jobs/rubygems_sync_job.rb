@@ -10,6 +10,8 @@ require "rubygems/name_tuple"
 # and queues updates on differing gems
 #
 class RubygemsSyncJob < ApplicationJob
+  ephemeral
+
   def perform
     (remote_gems - local_gems).each do |locally_missing_gem|
       RubygemUpdateJob.perform_async locally_missing_gem

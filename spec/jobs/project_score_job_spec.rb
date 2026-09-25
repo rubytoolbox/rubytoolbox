@@ -93,4 +93,6 @@ RSpec.describe ProjectScoreJob, :clean_database do
       end
     end
   end
+
+  it_behaves_like "an ephemeral job"
 end

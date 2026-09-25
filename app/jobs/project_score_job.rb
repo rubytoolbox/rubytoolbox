@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ProjectScoreJob < ApplicationJob
+  ephemeral
+
   attr_accessor :project
   private :project=
 

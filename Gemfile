@@ -56,6 +56,7 @@ gem "http"
 
 gem "sidekiq"
 gem "sidekiq-scheduler"
+gem "sidekiq-unique-jobs"
 
 gem "sanitize"
 gem "truncato"

@@ -50,6 +50,16 @@ on the current time (daily catalog syncs, the 4-hourly selective database export
 hourly update scheduling). The scheduler runs inside the `worker` process — no
 external cron infrastructure is required.
 
+Jobs declared `ephemeral` (see [ApplicationJob](../app/jobs/application_job.rb))
+are locked on their arguments while waiting in the queue via
+[sidekiq-unique-jobs](https://github.com/mhenrixon/sidekiq-unique-jobs)
+(configured in [config/initializers/sidekiq.rb](../config/initializers/sidekiq.rb)),
+so scheduling a record that is still queued does not enqueue it a second
+time. They are retried a few times and then discarded rather than kept in the
+dead set — the next cycle schedules them again anyway. Jobs that nothing
+re-enqueues by itself keep sidekiq's defaults instead. The Sidekiq web UI at
+`/ops/sidekiq` has a "Locks" tab for inspecting and clearing locks.
+
 ## Production rails console
 
 With [flyctl](https://fly.io/docs/flyctl/) installed and authenticated:
@@ -80,7 +90,9 @@ High-level outline of the one-time production environment setup:
 3. Bring over the existing production data
 4. Attach the database to the app (providing `DATABASE_URL`)
 5. Provision redis: volume, password, deployment via
-   [.deploy/redis.toml](../.deploy/redis.toml), and the app's `REDIS_URL`
+   [.deploy/redis.toml](../.deploy/redis.toml), and the app's `REDIS_URL`.
+   The queue data is disposable: to reset redis, destroy its machine and
+   volume, create a fresh `redis_data` volume and redeploy
 6. Set the remaining application secrets (see [Configuration](./configuration.md))
 7. First deployment via `mise run deploy:fly`, set up the autoscaling web
    machine pool, and verify the health check, the site itself, console

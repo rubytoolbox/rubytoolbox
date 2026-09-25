@@ -45,4 +45,6 @@ RSpec.describe CategoryRankingJob, :clean_database do
         .to(%w[C])
     end
   end
+
+  it_behaves_like "an ephemeral job"
 end
