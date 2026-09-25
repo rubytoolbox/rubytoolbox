@@ -81,9 +81,8 @@ class RubygemBackfillStatsJob < ApplicationJob
   # table, we have to force-issue an sql-level update statement for the records (i.e. instead of doing
   # an active record `touch`)
   #
-  # rubocop:disable Rails/SkipsModelValidations -- It's fine & intended
+  # rubocop:disable-next Rails/SkipsModelValidations -- It's fine & intended
   def trigger_the_triggers!
     rubygem.download_stats.where(absolute_change_month: nil).update_all rubygem_name: rubygem.name
   end
-  # rubocop:enable Rails/SkipsModelValidations
 end
