@@ -159,6 +159,8 @@ group :development do
   gem "rubocop-rails", require: false
   gem "rubocop-rspec", require: false
   gem "rubocop-rspec_rails", require: false
+  # Project index for cross-file rubocop analysis (see AllCops/UseProjectIndex in .rubocop.yml)
+  gem "rubydex", require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

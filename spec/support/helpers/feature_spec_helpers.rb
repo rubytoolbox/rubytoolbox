@@ -15,13 +15,12 @@ module FeatureSpecHelpers
   # this will retry at a high frequency until the maximum amount of tries is reached,
   # causing an exception to be raised.
   #
-  # rubocop:disable Performance/RedundantBlockCall
+  # rubocop:disable-next Performance/RedundantBlockCall
   def wait_for(&block)
     Retriable.retriable tries: 15, base_interval: 0.05, max_interval: 1.second do
       raise "Exceeded max retries while waiting for block to pass" unless block.call
     end
   end
-  # rubocop:enable Performance/RedundantBlockCall
 
   def order_by(button_label, expect_navigation: true)
     within ".project-order-dropdown" do
