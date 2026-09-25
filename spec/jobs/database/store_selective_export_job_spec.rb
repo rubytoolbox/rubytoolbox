@@ -40,4 +40,6 @@ RSpec.describe Database::StoreSelectiveExportJob do
       perform
     end
   end
+
+  it_behaves_like "an ephemeral job"
 end

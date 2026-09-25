@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ProjectSearchIndexJob < ApplicationJob
+  ephemeral
+
   private attr_accessor :project, :client
 
   # Converts given project records into documents suitable for

@@ -4,6 +4,8 @@
 # Creates a Database::SelectiveExport and saves it as a Database::Export
 #
 class Database::StoreSelectiveExportJob < ApplicationJob
+  ephemeral
+
   def perform
     Database::Export.outdated.destroy_all
 

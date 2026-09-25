@@ -48,4 +48,6 @@ RSpec.describe RubygemCodeStatsJob do
       end
     end
   end
+
+  it_behaves_like "a durable job"
 end

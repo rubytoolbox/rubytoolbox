@@ -51,4 +51,6 @@ RSpec.describe RemoteUpdateSchedulerJob do
     do_perform
   end
   # rubocop:enable RSpec/MultipleExpectations
+
+  it_behaves_like "an ephemeral job"
 end

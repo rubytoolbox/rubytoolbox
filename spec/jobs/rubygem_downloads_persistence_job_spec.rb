@@ -90,4 +90,6 @@ RSpec.describe RubygemDownloadsPersistenceJob, :clean_database do
       do_perform
     end
   end
+
+  it_behaves_like "an ephemeral job"
 end
