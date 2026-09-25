@@ -43,7 +43,6 @@ class Database::SelectiveExport
         # RADAR: Use select instead of pluck?
         Rubygem::DownloadStat.where(rubygem_name: rubygems.pluck(:name))
                              .where(date: 3.months.ago.to_date..)
-                             .order(date: :asc)
       end
 
       def rubygem_code_statistics
@@ -97,8 +96,14 @@ class Database::SelectiveExport
   # Generates SQL bulk insert statements from the given ActiveRecord scope,
   # in batches and yields each statement i.e. for further processing into a file
   #
+  # Batches always iterate by primary key, so an order on the scope could not be
+  # honored and is rejected instead of being silently dropped. The insert order
+  # does not matter for the export anyway: rows carry their stored derived values,
+  # and the download stats triggers either keep those (when no earlier row is
+  # present yet) or recompute the very same numbers.
+  #
   def self.sql_inserts_from_scope(scope)
-    scope.in_batches(of: 250).each do |batch|
+    scope.in_batches(of: 250, error_on_ignore: true).each do |batch|
       next if batch.empty?
 
       # This is a private API of ActiveRecord, however it's the easiest way to get this done -
