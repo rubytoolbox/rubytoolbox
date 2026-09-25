@@ -82,8 +82,8 @@ GEM
       rack (>= 2.0.0)
     ast (2.4.3)
     aws-eventstream (1.4.0)
-    aws-partitions (1.1281.0)
-    aws-sdk-core (3.254.1)
+    aws-partitions (1.1287.0)
+    aws-sdk-core (3.257.0)
       aws-eventstream (~> 1, >= 1.3.0)
       aws-partitions (~> 1, >= 1.992.0)
       aws-sigv4 (~> 1.9)
@@ -91,17 +91,18 @@ GEM
       bigdecimal
       jmespath (~> 1, >= 1.6.1)
       logger
-    aws-sdk-kms (1.130.0)
-      aws-sdk-core (~> 3, >= 3.254.0)
+      rexml (~> 3.4, >= 3.4.2)
+    aws-sdk-kms (1.132.0)
+      aws-sdk-core (~> 3, >= 3.256.0)
       aws-sigv4 (~> 1.5)
-    aws-sdk-s3 (1.229.0)
-      aws-sdk-core (~> 3, >= 3.254.1)
+    aws-sdk-s3 (1.232.1)
+      aws-sdk-core (~> 3, >= 3.256.0)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.5)
     aws-sigv4 (1.12.1)
       aws-eventstream (~> 1, >= 1.0.2)
     base64 (0.3.0)
-    bigdecimal (4.1.2)
+    bigdecimal (4.1.3)
     bindex (0.8.1)
     blueprinter (1.3.0)
     bootsnap (1.26.0)
@@ -315,16 +316,16 @@ GEM
       childprocess (>= 0.6.3, < 6)
       iniparse (~> 1.4)
       rexml (>= 3.4.2)
-    parallel (2.1.0)
+    parallel (2.2.0)
     parser (3.3.12.0)
       ast (~> 2.4.1)
       racc
     percy-capybara (5.0.1)
       capybara (>= 3)
     pg (1.6.3-x86_64-linux)
-    pg_search (2.3.8)
-      activerecord (>= 7.2)
-      activesupport (>= 7.2)
+    pg_search (2.4.0)
+      activerecord (>= 8.0)
+      activesupport (>= 8.0)
     pghero (4.0.1)
       activerecord (>= 7.2)
     pp (0.6.4)
@@ -443,8 +444,8 @@ GEM
     rspec-support (3.13.7)
     rspec_junit_formatter (0.6.0)
       rspec-core (>= 2, < 4, != 2.12.0)
-    rubocop (1.89.0)
-      json (~> 2.3)
+    rubocop (1.91.0)
+      json (>= 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
       parallel (>= 1.10)
@@ -492,7 +493,8 @@ GEM
     ruby_parser (3.22.0)
       racc (~> 1.5)
       sexp_processor (~> 4.16)
-    rubyzip (3.6.0)
+    rubydex (0.4.1-x86_64-linux)
+    rubyzip (3.7.0)
     rufus-scheduler (3.9.2)
       fugit (~> 1.1, >= 1.11.1)
     sanitize (7.0.0)
@@ -500,7 +502,7 @@ GEM
       nokogiri (>= 1.16.8)
     sax-machine (1.3.2)
     securerandom (0.4.1)
-    selenium-webdriver (4.48.0)
+    selenium-webdriver (4.49.0)
       base64 (~> 0.2)
       logger (~> 1.4)
       rexml (~> 3.2, >= 3.2.5)
@@ -519,6 +521,10 @@ GEM
     sidekiq-scheduler (6.0.2)
       rufus-scheduler (~> 3.2)
       sidekiq (>= 7.3, < 9)
+    sidekiq-unique-jobs (8.1.0)
+      concurrent-ruby (~> 1.0, >= 1.0.5)
+      sidekiq (>= 7.0.0, < 9.0.0)
+      thor (>= 1.0, < 3.0)
     simplecov (1.2.0)
     slim (5.2.2)
       temple (~> 0.10.0)
@@ -547,9 +553,9 @@ GEM
     tsort (0.2.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
-    unicode-display_width (3.2.0)
-      unicode-emoji (~> 4.1)
-    unicode-emoji (4.2.0)
+    unicode-display_width (3.3.0)
+      unicode-emoji (~> 4.3)
+    unicode-emoji (4.3.0)
     uri (1.1.1)
     useragent (0.16.11)
     vcr (6.4.0)
@@ -566,7 +572,7 @@ GEM
       actionview (>= 8.0.0)
       bindex (>= 0.4.0)
       railties (>= 8.0.0)
-    webmock (3.26.3)
+    webmock (3.26.4)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
@@ -609,6 +615,7 @@ DEPENDENCIES
   hairtrigger
   high_voltage
   http
+  json (~> 2.0)
   kaminari
   launchy
   listen
@@ -642,11 +649,13 @@ DEPENDENCIES
   ruby-lsp
   ruby-lsp-rails
   ruby-lsp-rspec
+  rubydex
   sanitize
   selenium-webdriver
   shoulda-matchers
   sidekiq
   sidekiq-scheduler
+  sidekiq-unique-jobs
   simplecov
   slim-rails
   spring
@@ -663,7 +672,7 @@ DEPENDENCIES
   zlib
 
 RUBY VERSION
-  ruby 4.0.6
+  ruby 4.0.7
 
 BUNDLED WITH
   4.0.16

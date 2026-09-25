@@ -49,6 +49,13 @@ console_command = "bin/rails console"
   # Queues and the recurring job schedule come from config/sidekiq.yml
   worker = "bundle exec sidekiq"
 
+# Sidekiq exits when redis is unreachable at boot. Keep restarting the worker
+# (flyd applies a backoff) instead of giving up after the default retry
+# budget, so redis being temporarily unreachable never leaves it stopped.
+[[restart]]
+  processes = ["worker"]
+  policy = "always"
+
 [http_service]
   processes = ["web"]
   internal_port = 5000

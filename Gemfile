@@ -9,6 +9,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 # NOTE: Remember to bump package.json rails UJS constraint accordingly on upgrades!
 gem "rails", "~> 8.0"
+# Active Support (as of rails 8.1.3.1) passes JSON.parse its options as a positional hash, which
+# json 3 only accepts as keyword arguments, so every jsonb column read raises an ArgumentError.
+# Fixed in rails/rails#58601 and backported to 8-1-stable: drop this pin once a rails 8.1 release
+# containing it is out. See https://github.com/rails/rails/issues/58685#issuecomment-5572420067
+gem "json", "~> 2.0"
 
 # Use postgresql as the database for Active Record
 gem "hairtrigger"
@@ -56,6 +61,7 @@ gem "http"
 
 gem "sidekiq"
 gem "sidekiq-scheduler"
+gem "sidekiq-unique-jobs"
 
 gem "sanitize"
 gem "truncato"
@@ -158,6 +164,8 @@ group :development do
   gem "rubocop-rails", require: false
   gem "rubocop-rspec", require: false
   gem "rubocop-rspec_rails", require: false
+  # Project index for cross-file rubocop analysis (see AllCops/UseProjectIndex in .rubocop.yml)
+  gem "rubydex", require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

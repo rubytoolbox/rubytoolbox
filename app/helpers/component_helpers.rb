@@ -2,7 +2,7 @@
 
 #
 # Shorthand methods for displaying UI components. See /pages/components
-# rubocop:disable Metrics/ModuleLength
+# rubocop:disable-next Metrics/ModuleLength
 module ComponentHelpers
   def category_card(category, compact: false, inline: false)
     extra_classes = inline ? %w[inline] : []
@@ -146,4 +146,3 @@ module ComponentHelpers
     render("components/component_example", heading:, &)
   end
 end
-# rubocop:enable Metrics/ModuleLength

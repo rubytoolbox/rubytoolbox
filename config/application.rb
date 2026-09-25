@@ -43,6 +43,10 @@ module Rubytoolbox
 
     config.active_record.schema_format = :sql
 
+    # Active Storage only holds the database export files, never images, so no
+    # variant processor (and thus no image_processing gem or libvips) is needed
+    config.active_storage.variant_processor = :disabled
+
     config.generators do |c|
       # Don't generate system test files.
       c.system_tests = false

@@ -9,6 +9,8 @@
 # output when run against the actual data :)
 #
 class CategoryRankingJob < ApplicationJob
+  ephemeral
+
   def perform(limit: 16)
     top_category_ids = Set.new
     occurences = Hash.new(0)

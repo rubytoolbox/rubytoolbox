@@ -74,4 +74,6 @@ RSpec.describe RubygemsSyncJob do
       job.perform
     end
   end
+
+  it_behaves_like "an ephemeral job"
 end

@@ -7,27 +7,44 @@
 # secret (fly secrets set --app rubytoolbox-production-redis REDIS_PASSWORD=...).
 #
 # Queue data is mostly transient, but persisted via append-only file on the
-# attached volume so a machine restart loses (almost) nothing.
+# attached volume so a machine restart loses (almost) nothing. It is also
+# disposable: to start from scratch, destroy the machine and its volume,
+# create a fresh `redis_data` volume and redeploy.
 #
 # maxmemory-policy noeviction is required for sidekiq: when redis runs full
 # it must reject writes instead of silently dropping enqueued jobs.
+#
+# The append-only file is compacted by a background rewrite once it has grown
+# by the configured percentage over its last compacted size, which keeps it
+# close to the dataset size on disk. The rewrite forks the redis process and
+# can need up to twice the dataset in memory under write load - hence the
+# machine size relative to maxmemory, plus swap to absorb the remaining
+# copy-on-write spikes.
 #
 # Deploy with: fly deploy --config .deploy/redis.toml
 
 app = "rubytoolbox-production-redis"
 primary_region = "fra"
 
+swap_size_mb = 256
+
 [build]
   image = "redis:8-alpine"
 
 [processes]
-  redis = "sh -c 'exec redis-server --appendonly yes --dir /data --maxmemory 192mb --maxmemory-policy noeviction --requirepass \"$REDIS_PASSWORD\"'"
+  redis = "sh -c 'exec redis-server --appendonly yes --dir /data --auto-aof-rewrite-percentage 50 --auto-aof-rewrite-min-size 32mb --maxmemory 192mb --maxmemory-policy noeviction --requirepass \"$REDIS_PASSWORD\"'"
 
 [mounts]
   source = "redis_data"
   destination = "/data"
 
+# Redis is a hard dependency of the worker, so it has to come back regardless
+# of why it exited: keep restarting (flyd applies a backoff) instead of giving
+# up after a fixed retry budget and staying down
+[[restart]]
+  policy = "always"
+
 [[vm]]
-  memory = "256mb"
+  memory = "512mb"
   cpu_kind = "shared"
   cpus = 1

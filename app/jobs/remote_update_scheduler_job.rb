@@ -8,6 +8,8 @@
 # to avoid creating a thundering herd at midnight.
 #
 class RemoteUpdateSchedulerJob < ApplicationJob
+  ephemeral
+
   def perform
     # If a repo reference changes from a gem, we leave the repo
     # behind in the db. This purges it afterwards since we don't need it

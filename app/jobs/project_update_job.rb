@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ProjectUpdateJob < ApplicationJob
+  ephemeral
+
   # The react-source gem references the upstream JS react
   # repo, which has an extremely large audience on github.
   # However it doesn't seem to have any affiliation with react

@@ -47,4 +47,6 @@ RSpec.describe RubygemTrendsJob do
     end
     # rubocop:enable RSpec/ExampleLength
   end
+
+  it_behaves_like "a durable job"
 end
