@@ -27,7 +27,6 @@ RSpec.describe Database::SelectiveExport do
     expect_scope :rubygem_download_stats do
       Rubygem::DownloadStat.where(rubygem_name: described_class.rubygems.pluck(:name))
                            .where(date: 3.months.ago.to_date..)
-                           .order(date: :asc)
     end
     expect_scope :rubygem_code_statistics do
       Rubygem::CodeStatistic.where rubygem: described_class.rubygems
@@ -52,7 +51,7 @@ RSpec.describe Database::SelectiveExport do
   end
 
   describe ".sql_inserts_from_scope(scope)" do
-    let(:scope) { Project.order(permalink: :asc) }
+    let(:scope) { Project.all }
 
     it "yields SQL insert statements" do
       insert_sql = nil
@@ -69,6 +68,15 @@ RSpec.describe Database::SelectiveExport do
       let(:scope) { Project.none }
 
       it { expect { described_class.sql_inserts_from_scope(scope, &it) }.not_to yield_control }
+    end
+
+    context "when scope carries an order" do
+      let(:scope) { Project.order(permalink: :asc) }
+
+      it "raises instead of silently ignoring the order" do
+        expect { described_class.sql_inserts_from_scope(scope, &it) }
+          .to raise_error ArgumentError, /Scoped order is ignored/
+      end
     end
   end
 
