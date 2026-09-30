@@ -46,5 +46,12 @@ RSpec.describe WelcomeController do
       do_request
       expect(assigns(:trending_projects)).to be array
     end
+
+    it "assigns recent_advisories" do
+      array = []
+      allow(Rubygem::Advisory).to receive(:recent).and_return array
+      do_request
+      expect(assigns(:recent_advisories)).to be array
+    end
   end
 end

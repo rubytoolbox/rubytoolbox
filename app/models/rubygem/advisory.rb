@@ -45,6 +45,8 @@ class Rubygem::Advisory < ApplicationRecord
   validates :date, presence: true
   validates :rubygem_name, presence: true
 
+  scope :recent, -> { where(date: 3.months.ago..).order(date: :desc) }
+
   delegate(*Rubygem::Advisory::Info.instance_methods(false).excluding(:id, :date), to: :info)
 
   def info
