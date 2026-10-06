@@ -266,9 +266,10 @@ GEM
       rb-inotify (~> 0.9, >= 0.9.10)
     llhttp (0.6.2)
     logger (1.7.0)
-    lograge (0.15.0)
+    lograge (0.15.1)
       actionpack (>= 4)
       activesupport (>= 4)
+      logger
       railties (>= 4)
       request_store (~> 1.0)
     logstash-event (1.2.02)
