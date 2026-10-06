@@ -81,6 +81,19 @@ module ComponentHelpers
     render "components/project_release_history", release_counts: quarterly_release_counts, compact:
   end
 
+  COMPACT_RELEASE_HISTORY_YEARS = 5
+
+  # The timeline starts with the year of the first recorded release, so
+  # younger projects do not waste space on empty leading years. The compact
+  # view additionally only reaches back a limited number of years.
+  def release_history_start_year(release_counts, compact: false)
+    first_release_year = release_counts.keys.filter_map { |quarter| quarter.to_s[/\A\d{4}/]&.to_i }.min
+    first_release_year ||= Time.current.year
+    return first_release_year unless compact
+
+    [first_release_year, Time.current.year - COMPACT_RELEASE_HISTORY_YEARS].max
+  end
+
   RELEASE_INDICATOR_RANKS = {
     0 => "none",
     1 => "low",
