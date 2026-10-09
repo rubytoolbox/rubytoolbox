@@ -323,7 +323,7 @@ GEM
       racc
     percy-capybara (5.0.1)
       capybara (>= 3)
-    pg (1.6.3-x86_64-linux)
+    pg (1.7.0-x86_64-linux)
     pg_search (2.4.0)
       activerecord (>= 8.0)
       activesupport (>= 8.0)
