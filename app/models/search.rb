@@ -21,6 +21,12 @@ class Search
     QueryCheck.new(query).runnable?
   end
 
+  # Whether the query was rejected for being too long or complex, as opposed
+  # to simply having no matches; see Search::QueryCheck.
+  def abusive?
+    QueryCheck.new(query).abusive?
+  end
+
   def projects
     @projects ||= if !runnable?
                     Project.none

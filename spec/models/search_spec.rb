@@ -43,6 +43,20 @@ RSpec.describe Search do
     end
   end
 
+  describe "#abusive?" do
+    it "is true for an abusive query" do
+      expect(described_class.new(abusive_query)).to be_abusive
+    end
+
+    it "is false for a regular query" do
+      expect(described_class.new("rails authentication")).not_to be_abusive
+    end
+
+    it "is false for a blank query" do
+      expect(described_class.new(" \n ")).not_to be_abusive
+    end
+  end
+
   describe "#projects" do
     it "searches projects for the given query" do
       expect(Project).to receive(:search).with("my query", order: kind_of(Project::Order), show_forks: false)
