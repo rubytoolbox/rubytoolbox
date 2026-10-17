@@ -1,5 +1,5 @@
 .project-release-history
-  - starts_in = compact ? Time.current.year - 5 : 2005
+  - starts_in = release_history_start_year release_counts, compact:
   - (starts_in..Time.current.year).each do |year|
     .year
       .label= year
