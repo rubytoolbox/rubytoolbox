@@ -185,11 +185,12 @@ RSpec.describe "Search", :js do
     expect_display_mode "Compact"
   end
 
-  it "treats abusive queries as yielding no results instead of erroring" do
+  it "tells users to shorten abusive queries instead of showing empty results" do
     search_for "a" * (Search::QueryCheck::MAX_QUERY_LENGTH + 1)
 
-    expect(page).to have_text "No matching projects were found"
-    expect(page).to have_text "No matching categories were found"
+    expect(page).to have_text "Your search query is too long or complex"
+    expect(page).to have_no_text "No matching projects were found"
+    expect(page).to have_no_text "No matching categories were found"
   end
 
   it "shows an unavailable notice when the search killswitch is enabled", :allow_http_error_logs do
