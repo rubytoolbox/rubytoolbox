@@ -5,6 +5,16 @@ require "rails_helper"
 RSpec.describe PagesController do
   fixtures :all
 
+  describe "canonical link tag" do
+    render_views
+
+    it "points at the page url without irrelevant query params" do
+      get :show, params: { id: "docs/index", utm_source: "newsletter" }
+      expect(Capybara.string(response.body))
+        .to have_css('link[rel="canonical"][href="http://test.host/pages/docs/index"]', visible: :all)
+    end
+  end
+
   describe "for valid page" do
     before do
       get :show, params: { id: "docs/index" }
