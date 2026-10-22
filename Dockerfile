@@ -5,7 +5,8 @@
 #
 # The toolchain (ruby, node, pnpm) comes through mise from the same pinned
 # version files used for local development and CI: .ruby-version,
-# .node-version and .mise.toml - ruby as a precompiled binary.
+# .node-version and .mise.toml - ruby as a precompiled binary when one is
+# available for the pinned version, compiled from source otherwise.
 #
 # Build & run locally:
 #   docker build -t rubytoolbox .
@@ -16,10 +17,10 @@ FROM ubuntu:26.04 AS base
 WORKDIR /rubytoolbox
 
 # Runtime packages: libpq for the pg gem, jemalloc for reduced memory
-# fragmentation, libyaml/zlib for the precompiled ruby, postgresql-client
-# for database import/maintenance tooling, curl for health checks & debugging
+# fragmentation, libssl/libyaml/zlib for ruby, postgresql-client for
+# database import/maintenance tooling, curl for health checks & debugging
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y ca-certificates curl libjemalloc2 libpq5 libyaml-0-2 postgresql-client tzdata zlib1g && \
+    apt-get install --no-install-recommends -y ca-certificates curl libjemalloc2 libpq5 libssl3t64 libyaml-0-2 postgresql-client tzdata zlib1g && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # mise lives in shared, user-independent locations so the build and runtime
@@ -43,12 +44,13 @@ ENV RAILS_ENV="production" \
 # Throw-away build stage to reduce size of final image
 FROM base AS build
 
-# Build packages: compilers & headers for native gem extensions
+# Build packages: compilers & headers for native gem extensions and for
+# compiling ruby when no precompiled binary is available (rustc enables YJIT)
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential git libpq-dev libyaml-dev pkg-config zlib1g-dev && \
+    apt-get install --no-install-recommends -y build-essential git libpq-dev libssl-dev libyaml-dev pkg-config rustc zlib1g-dev && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
-# Install mise and the pinned toolchain (ruby precompiled, node, pnpm)
+# Install mise and the pinned toolchain (ruby, node, pnpm)
 RUN curl -fsSL https://mise.run | MISE_INSTALL_PATH=/usr/local/bin/mise sh
 COPY .ruby-version .node-version .mise.toml ./
 COPY tasks/ tasks/
@@ -72,7 +74,7 @@ RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile && \
 
 # node and pnpm are only needed for the asset build - drop them (and the
 # download caches) so the runtime stage copies a ruby-only toolchain.
-# The precompiled ruby ships static libraries, headers, ri docs and an
+# The ruby install ships static libraries, headers, ri docs and an
 # unstripped binary - none of which are needed at runtime (~300MB)
 RUN mise uninstall node && mise uninstall pnpm && rm -rf /mise/cache && \
     RUBY_DIR="$(mise where ruby)" && \

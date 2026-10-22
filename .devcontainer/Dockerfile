@@ -6,10 +6,11 @@ RUN userdel -r ubuntu
 RUN groupadd --gid 1000 rubytoolbox
 RUN useradd rubytoolbox --create-home --shell /bin/bash --uid 1000 --gid 1000
 
-# Base packages: compilers & headers for native gem extensions (pg, psych...),
-# plus the general essentials mise and the dev tooling need
+# Base packages: compilers & headers for native gem extensions (pg, psych...)
+# and for compiling ruby when no precompiled binary is available, plus the
+# general essentials mise and the dev tooling need
 RUN apt-get update \
-    && apt-get install -y build-essential ca-certificates curl git gnupg libpq-dev libyaml-dev man procps wget zlib1g-dev \
+    && apt-get install -y build-essential ca-certificates curl git gnupg libpq-dev libssl-dev libyaml-dev man procps wget zlib1g-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Set up pgdg official postgres repository
