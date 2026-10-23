@@ -11,7 +11,14 @@
         javascript:
           document.querySelector(".hero.search input[type=text]").focus();
 
-- if @search
+- if @search&.abusive?
+  section.section.search-results: .container
+    .columns: .column
+      .notification.is-warning
+        span.icon: i.fa.fa-exclamation-triangle
+        span Your search query is too long or complex. Please try a shorter query with fewer terms.
+
+- elsif @search
   section.section.search-results: .container
     - if @projects.current_page == 1
       .columns: .column
