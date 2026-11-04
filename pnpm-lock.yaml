@@ -43,8 +43,8 @@ importers:
         specifier: ^8.2.1
         version: 8.2.1(@types/node@25.5.0)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0)
       vite-plugin-ruby:
-        specifier: ^5.2.5
-        version: 5.2.5(vite@8.2.1(@types/node@25.5.0)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0))
+        specifier: ^5.2.6
+        version: 5.2.6(vite@8.2.1(@types/node@25.5.0)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0))
 
 packages:
 
@@ -1112,8 +1112,8 @@ packages:
   varint@6.0.0:
     resolution: {integrity: sha512-cXEIW6cfr15lFv563k4GuVuW/fiwjknytD37jIOLSdSWuOI6WnO/oKwmP2FQTU2l01LP8/M5TSAJpzUaGe3uWg==}
 
-  vite-plugin-ruby@5.2.5:
-    resolution: {integrity: sha512-Oa1cmA7FobR49YcFPa+hvASenxd8tI1jQeOuDRJNh9gsbO8ugDCHI0zh75niQGq8cnMXriJfhJrPa2F2qDeA5Q==}
+  vite-plugin-ruby@5.2.6:
+    resolution: {integrity: sha512-bGIPoUWHwH4Ym5o5PacFUBaCGaftcUOYptdyPkyIvLfefdu0HbqIuT5aKPrFAp2p8wUMHmC4SqXF8yxtZuk6Tg==}
     peerDependencies:
       vite: '>=5.0.0'
 
@@ -1306,29 +1306,29 @@ snapshots:
       '@parcel/watcher-win32-x64': 2.5.1
     optional: true
 
-  '@percy/cli-app@1.32.6(supports-color@8.1.1)':
+  '@percy/cli-app@1.32.6':
     dependencies:
-      '@percy/cli-command': 1.32.6(supports-color@8.1.1)
-      '@percy/cli-exec': 1.32.6(supports-color@8.1.1)
+      '@percy/cli-command': 1.32.6
+      '@percy/cli-exec': 1.32.6
     transitivePeerDependencies:
       - bufferutil
       - supports-color
       - typescript
       - utf-8-validate
 
-  '@percy/cli-build@1.32.6(supports-color@8.1.1)':
+  '@percy/cli-build@1.32.6':
     dependencies:
-      '@percy/cli-command': 1.32.6(supports-color@8.1.1)
+      '@percy/cli-command': 1.32.6
     transitivePeerDependencies:
       - bufferutil
       - supports-color
       - typescript
       - utf-8-validate
 
-  '@percy/cli-command@1.32.6(supports-color@8.1.1)':
+  '@percy/cli-command@1.32.6':
     dependencies:
       '@percy/config': 1.32.6
-      '@percy/core': 1.32.6(supports-color@8.1.1)
+      '@percy/core': 1.32.6
       '@percy/logger': 1.32.6
     transitivePeerDependencies:
       - bufferutil
@@ -1336,24 +1336,24 @@ snapshots:
       - typescript
       - utf-8-validate
 
-  '@percy/cli-config@1.32.6(supports-color@8.1.1)':
+  '@percy/cli-config@1.32.6':
     dependencies:
-      '@percy/cli-command': 1.32.6(supports-color@8.1.1)
+      '@percy/cli-command': 1.32.6
     transitivePeerDependencies:
       - bufferutil
       - supports-color
       - typescript
       - utf-8-validate
 
-  '@percy/cli-doctor@1.32.6(supports-color@8.1.1)':
+  '@percy/cli-doctor@1.32.6':
     dependencies:
-      '@percy/cli-command': 1.32.6(supports-color@8.1.1)
+      '@percy/cli-command': 1.32.6
       '@percy/client': 1.32.6(supports-color@8.1.1)
       '@percy/config': 1.32.6
-      '@percy/core': 1.32.6(supports-color@8.1.1)
+      '@percy/core': 1.32.6
       '@percy/env': 1.32.6
       '@percy/logger': 1.32.6
-      '@percy/monitoring': 1.32.6(supports-color@8.1.1)
+      '@percy/monitoring': 1.32.6
       minimatch: 9.0.9
       ws: 8.21.3
     transitivePeerDependencies:
@@ -1362,9 +1362,9 @@ snapshots:
       - typescript
       - utf-8-validate
 
-  '@percy/cli-exec@1.32.6(supports-color@8.1.1)':
+  '@percy/cli-exec@1.32.6':
     dependencies:
-      '@percy/cli-command': 1.32.6(supports-color@8.1.1)
+      '@percy/cli-command': 1.32.6
       '@percy/logger': 1.32.6
       cross-spawn: 7.0.6
       which: 2.0.2
@@ -1374,9 +1374,9 @@ snapshots:
       - typescript
       - utf-8-validate
 
-  '@percy/cli-snapshot@1.32.6(supports-color@8.1.1)':
+  '@percy/cli-snapshot@1.32.6':
     dependencies:
-      '@percy/cli-command': 1.32.6(supports-color@8.1.1)
+      '@percy/cli-command': 1.32.6
       yaml: 2.9.0
     transitivePeerDependencies:
       - bufferutil
@@ -1384,9 +1384,9 @@ snapshots:
       - typescript
       - utf-8-validate
 
-  '@percy/cli-upload@1.32.6(supports-color@8.1.1)':
+  '@percy/cli-upload@1.32.6':
     dependencies:
-      '@percy/cli-command': 1.32.6(supports-color@8.1.1)
+      '@percy/cli-command': 1.32.6
       fast-glob: 3.3.2
       image-size: 1.0.2
     transitivePeerDependencies:
@@ -1397,14 +1397,14 @@ snapshots:
 
   '@percy/cli@1.32.6(supports-color@8.1.1)':
     dependencies:
-      '@percy/cli-app': 1.32.6(supports-color@8.1.1)
-      '@percy/cli-build': 1.32.6(supports-color@8.1.1)
-      '@percy/cli-command': 1.32.6(supports-color@8.1.1)
-      '@percy/cli-config': 1.32.6(supports-color@8.1.1)
-      '@percy/cli-doctor': 1.32.6(supports-color@8.1.1)
-      '@percy/cli-exec': 1.32.6(supports-color@8.1.1)
-      '@percy/cli-snapshot': 1.32.6(supports-color@8.1.1)
-      '@percy/cli-upload': 1.32.6(supports-color@8.1.1)
+      '@percy/cli-app': 1.32.6
+      '@percy/cli-build': 1.32.6
+      '@percy/cli-command': 1.32.6
+      '@percy/cli-config': 1.32.6
+      '@percy/cli-doctor': 1.32.6
+      '@percy/cli-exec': 1.32.6
+      '@percy/cli-snapshot': 1.32.6
+      '@percy/cli-upload': 1.32.6
       '@percy/client': 1.32.6(supports-color@8.1.1)
       '@percy/logger': 1.32.6
     transitivePeerDependencies:
@@ -1433,7 +1433,7 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
-  '@percy/core@1.32.6(supports-color@8.1.1)':
+  '@percy/core@1.32.6':
     dependencies:
       '@grpc/grpc-js': 1.14.4
       '@grpc/proto-loader': 0.8.1
@@ -1441,8 +1441,8 @@ snapshots:
       '@percy/config': 1.32.6
       '@percy/dom': 1.32.6
       '@percy/logger': 1.32.6
-      '@percy/monitoring': 1.32.6(supports-color@8.1.1)
-      '@percy/webdriver-utils': 1.32.6(supports-color@8.1.1)
+      '@percy/monitoring': 1.32.6
+      '@percy/webdriver-utils': 1.32.6
       adm-zip: 0.6.0
       busboy: 1.6.0
       content-disposition: 0.5.4
@@ -1457,7 +1457,7 @@ snapshots:
       ws: 8.21.3
       yaml: 2.9.0
     optionalDependencies:
-      '@percy/cli-doctor': 1.32.6(supports-color@8.1.1)
+      '@percy/cli-doctor': 1.32.6
     transitivePeerDependencies:
       - bufferutil
       - supports-color
@@ -1472,26 +1472,26 @@ snapshots:
 
   '@percy/logger@1.32.6': {}
 
-  '@percy/monitoring@1.32.6(supports-color@8.1.1)':
+  '@percy/monitoring@1.32.6':
     dependencies:
       '@percy/config': 1.32.6
       '@percy/logger': 1.32.6
-      '@percy/sdk-utils': 1.32.6(supports-color@8.1.1)
+      '@percy/sdk-utils': 1.32.6
       systeminformation: 5.33.1
     transitivePeerDependencies:
       - supports-color
       - typescript
 
-  '@percy/sdk-utils@1.32.6(supports-color@8.1.1)':
+  '@percy/sdk-utils@1.32.6':
     dependencies:
       pac-proxy-agent: 7.2.0(supports-color@8.1.1)
     transitivePeerDependencies:
       - supports-color
 
-  '@percy/webdriver-utils@1.32.6(supports-color@8.1.1)':
+  '@percy/webdriver-utils@1.32.6':
     dependencies:
       '@percy/config': 1.32.6
-      '@percy/sdk-utils': 1.32.6(supports-color@8.1.1)
+      '@percy/sdk-utils': 1.32.6
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -2209,7 +2209,7 @@ snapshots:
 
   varint@6.0.0: {}
 
-  vite-plugin-ruby@5.2.5(vite@8.2.1(@types/node@25.5.0)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0)):
+  vite-plugin-ruby@5.2.6(vite@8.2.1(@types/node@25.5.0)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0)):
     dependencies:
       obug: 2.1.4
       tinyglobby: 0.2.17
