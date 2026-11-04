@@ -11,6 +11,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 gem "rails", "~> 8.0"
 # Use postgresql as the database for Active Record
 gem "hairtrigger"
+# hairtrigger requires ostruct without declaring it as a dependency, and since
+# Ruby 3.5 ostruct is a bundled gem that is only loadable when in the bundle
+gem "ostruct"
 gem "pg"
 gem "pg_search"
 gem "strong_migrations"

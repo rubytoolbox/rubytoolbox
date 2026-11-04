@@ -6,7 +6,7 @@ RSpec.describe Blog do
   fixtures :all
 
   describe "with posts from fixtures" do
-    let(:root) { Rails.root.join("spec", "fixtures", "blog_posts") }
+    let(:root) { file_fixture("blog_posts") }
     let(:blog) { described_class.new root: }
 
     describe "#posts" do

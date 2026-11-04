@@ -6,7 +6,7 @@ RSpec.describe GithubRepoUpdateJob do
   fixtures :all
 
   let(:repo_data) do
-    json = Rails.root.join("spec", "fixtures", "graphql_responses", "github", "rails.json").read
+    json = file_fixture("graphql_responses/github/rails.json").read
     GithubClient::RepositoryData.new Oj.load(json)
   end
   let(:readme_data) do
