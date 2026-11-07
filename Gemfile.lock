@@ -312,7 +312,7 @@ GEM
     oj (3.17.8)
       bigdecimal (>= 3.0)
     ostruct (0.6.3)
-    overcommit (0.74.0)
+    overcommit (0.75.0)
       childprocess (>= 5.0.0, < 6)
       iniparse (~> 1.4)
       rexml (>= 3.4.2)
