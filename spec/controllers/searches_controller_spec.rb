@@ -109,6 +109,11 @@ RSpec.describe SearchesController do
       expect(response).to have_http_status(:success)
     end
 
+    it "does not redirect to results including forks for an abusive query" do
+      do_request query: "a" * (Search::QueryCheck::MAX_QUERY_LENGTH + 1)
+      expect(response).to have_http_status(:success).and render_template(:show)
+    end
+
     describe "when search is disabled" do
       before { allow(described_class).to receive(:search_disabled?).and_return(true) }
 
