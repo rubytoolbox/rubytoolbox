@@ -88,8 +88,10 @@ class SearchesController < ApplicationController
   # search with bugfix forks included. However this must only
   # happen if the show forks param is not set at all, otherwise
   # it becomes impossible to reduce the query back to "without forks" :)
+  # Queries rejected as too complex are never run, so including forks
+  # would not change anything.
   def should_redirect_to_included_forks?
-    !show_forks? && !params.key?(:show_forks) && @projects.empty?
+    !show_forks? && !params.key?(:show_forks) && !@search.abusive? && @projects.empty?
   end
 
   def redirect_to_search_with_forks_included
