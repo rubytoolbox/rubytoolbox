@@ -130,7 +130,7 @@ GEM
     climate_control (1.2.0)
     coderay (1.1.3)
     concurrent-ruby (1.3.8)
-    connection_pool (3.0.2)
+    connection_pool (3.0.3)
     crack (1.0.1)
       bigdecimal
       rexml
@@ -266,7 +266,7 @@ GEM
       rb-inotify (~> 0.9, >= 0.9.10)
     llhttp (0.6.2)
     logger (1.7.0)
-    lograge (0.15.1)
+    lograge (0.16.0)
       actionpack (>= 4)
       activesupport (>= 4)
       logger
@@ -343,7 +343,7 @@ GEM
       nio4r (~> 2.0)
     raabro (1.5.0)
     racc (1.8.1)
-    rack (3.2.8)
+    rack (3.2.9)
     rack-canonical-host (1.3.0)
       addressable (> 0, < 3)
       rack (>= 1.6, < 4)
